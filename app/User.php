@@ -12,6 +12,9 @@ use App\Models\Rating;
 use App\Models\Save;
 use App\Models\JobApplication;
 use App\Models\Document;
+use App\Models\Stage;
+use App\Models\Country;
+use App\Models\Material;
 use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
@@ -27,7 +30,9 @@ class User extends Authenticatable
         'name', 'email', 'password',
         'phone', 'country_id', 'address', 
         'exper_years', 'salary_month', 'salary_hour',
-        'no_of_students', 'breif_ar', 'breif_en',
+        // 'no_of_students', 'breif_ar', 'breif_en', 
+        'stage_id', 'country_id', 'age',
+        'edu_level', 
     ];
 
     /**
@@ -74,5 +79,17 @@ class User extends Authenticatable
 
     public function documents(){
         return $this->hasMany(Document::class);
+    }
+
+    public function stage(){
+        return $this->belongsTo(Stage::class);
+    }
+
+    public function country(){
+        return $this->belongsTo(Country::class);
+    }
+
+    public function materials(){
+        return $this->belongsToMany(Material::class);
     }
 }

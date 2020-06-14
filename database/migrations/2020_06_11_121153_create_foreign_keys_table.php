@@ -13,6 +13,16 @@ class CreateForeignKeysTable extends Migration
      */
     public function up()
     {
+        Schema::table('users', function(Blueprint $table) {
+            $table->foreign('country_id')->references('id')->on('countries')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+
+            $table->foreign('stage_id')->references('id')->on('stages')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+        });
+
         Schema::table('reservations', function(Blueprint $table) {
             $table->foreign('user_id')->references('id')->on('users')
                 ->onDelete('cascade')
@@ -65,6 +75,16 @@ class CreateForeignKeysTable extends Migration
                 ->onUpdate('cascade');
                 
             $table->foreign('stage_id')->references('id')->on('stages')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+        });
+
+        Schema::table('material_user', function(Blueprint $table) {
+            $table->foreign('material_id')->references('id')->on('materials')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+                
+            $table->foreign('user_id')->references('id')->on('users')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
         });
