@@ -1,16 +1,42 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
+/** Set default language to Arabic for Website **/
 Route::get('/', function () {
-    return view('welcome');
+    \LaravelLocalization::setLocale('ar');
+    $url = \LaravelLocalization::getLocalizedURL(\App::getLocale(), \URL::previous());
+        return Redirect::to($url);
 });
+
+/** Set default language to Arabic for Admin **/
+Route::get('/admin/', function () {
+    \LaravelLocalization::setLocale('ar');
+    $url = \LaravelLocalization::getLocalizedURL(\App::getLocale(), \URL::previous());
+        return Redirect::to($url);
+});
+
+/* ADMIN */
+Route::group(['prefix' => LaravelLocalization::setLocale()], function()
+{
+    Route::group(['prefix' => 'admin/'], function(){
+
+        /** ADD ALL LOCALIZED ROUTES INSIDE THIS GROUP **/
+
+        // Admin Auth
+        Route::get('login', 'Admin\Auth\LoginController@showLoginForm')->name('admin.login');
+        Route::post('login', 'Admin\Auth\LoginController@login');
+        Route::post('admin-password/email', 'Admin\Auth\ForgotPasswordController@sendResetSendEmail')->name('admin.password.email');
+        Route::get('admin-password/reset', 'Admin\Auth\ForgotPasswordController@showLinkRequestForm')->name('admin.password.request');
+        Route::post('admin-password/reset', 'Admin\Auth\ResetPasswordController@reset');
+        Route::get('admin-password/reset/{email}', 'Admin\Auth\ResetPasswordController@showResetForm')->name('admin.password.reset');
+        Route::post('admin-password/update', 'Admin\Auth\ResetPasswordController@update')->name('admin.password.update');
+
+        Route::get('test',function(){
+            return View::make('test');
+        });
+    });
+});
+
+
+
+/* WEBSITE */
