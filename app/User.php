@@ -14,6 +14,7 @@ use App\Models\JobApplication;
 use App\Models\Document;
 use App\Models\Stage;
 use App\Models\Country;
+use App\Models\City;
 use App\Models\Material;
 use Spatie\Permission\Traits\HasRoles;
 
@@ -91,5 +92,9 @@ class User extends Authenticatable
 
     public function materials(){
         return $this->belongsToMany(Material::class);
+    }
+
+    public function city(){
+        return $this->belongsTo(City::class);
     }
 }

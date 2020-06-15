@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Image;
 use App\Models\Save;
+use App\Models\City;
 use User;
 
 class Job extends Model
@@ -27,5 +28,9 @@ class Job extends Model
 
     public function announcer(){
         return $this->belongsTo(User::class);
+    }
+
+    public function cities(){
+        return $this->belongsToMany(City::class);
     }
 }
