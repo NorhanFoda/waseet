@@ -10,7 +10,7 @@ class Image extends Model
         'path', 'model_id', 'model_type',
     ];
 
-    public function imagable(){
+    public function imageRef(){
         return $this->morphTo();
     }
 }

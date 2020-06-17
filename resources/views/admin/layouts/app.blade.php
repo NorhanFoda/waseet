@@ -11,45 +11,45 @@
     <meta name="author" content="PIXINVENT">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('pageTitle') | @yield('pageSubTitle')</title>
-    <link rel="apple-touch-icon" href="{{asset('admin/app-assets/app-assets/images/ico/apple-icon-120.png')}}">
-    <link rel="shortcut icon" type="image/x-icon" href="{{asset('admin/app-assets/images/ico/favicon.ico')}}">
+    <link rel="apple-touch-icon" href="{{asset('admin/images/ico/apple-icon-120.png')}}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('admin/images/ico/favicon.ico')}}">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600" rel="stylesheet">
 
     <!-- BEGIN: Vendor CSS-->
     @if(\App()->getLocale()=='ar')
-        <link rel="stylesheet" type="text/css" href="{{asset('admin/app-assets/vendors/css/vendors-rtl.min.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{asset('admin/vendors/css/vendors-rtl.min.css')}}">
 
     @else
-        <link rel="stylesheet" type="text/css" href="{{asset('admin/app-assets/vendors/css/vendors.min.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{asset('admin/vendors/css/vendors.min.css')}}">
     @endif
-    <link rel="stylesheet" type="text/css" href="{{asset('admin/app-assets/vendors/css/charts/apexcharts.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('admin/app-assets/vendors/css/extensions/tether-theme-arrows.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('admin/app-assets/vendors/css/extensions/tether.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('admin/app-assets/vendors/css/extensions/shepherd-theme-default.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('admin/vendors/css/charts/apexcharts.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('admin/vendors/css/extensions/tether-theme-arrows.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('admin/vendors/css/extensions/tether.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('admin/vendors/css/extensions/shepherd-theme-default.css')}}">
     <!-- END: Vendor CSS-->
 
     <!-- BEGIN: Theme CSS-->
     @php $locale=(\App()->getLocale()=='ar')?'-rtl':''; @endphp
-    <link rel="stylesheet" type="text/css" href="{{asset('admin/app-assets/css'.$locale.'/bootstrap.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('admin/app-assets/css'.$locale.'/bootstrap-extended.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('admin/app-assets/css'.$locale.'/colors.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('admin/app-assets/css'.$locale.'/components.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('admin/app-assets/css'.$locale.'/themes/dark-layout.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('admin/app-assets/css'.$locale.'/themes/semi-dark-layout.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('admin/css'.$locale.'/bootstrap.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('admin/css'.$locale.'/bootstrap-extended.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('admin/css'.$locale.'/colors.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('admin/css'.$locale.'/components.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('admin/css'.$locale.'/themes/dark-layout.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('admin/css'.$locale.'/themes/semi-dark-layout.css')}}">
 
     <!-- BEGIN: Page CSS-->
-    <link rel="stylesheet" type="text/css" href="{{asset('admin/app-assets/css'.$locale.'/core/menu/menu-types/vertical-menu.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('admin/app-assets/css'.$locale.'/core/colors/palette-gradient.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('admin/app-assets/css'.$locale.'/pages/dashboard-analytics.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('admin/app-assets/css'.$locale.'/pages/card-analytics.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('admin/app-assets/css'.$locale.'/plugins/tour/tour.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('admin/css'.$locale.'/core/menu/menu-types/vertical-menu.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('admin/css'.$locale.'/core/colors/palette-gradient.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('admin/css'.$locale.'/pages/dashboard-analytics.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('admin/css'.$locale.'/pages/card-analytics.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('admin/css'.$locale.'/plugins/tour/tour.css')}}">
     <!-- END: Page CSS-->
-    <link rel="stylesheet" type="text/css" href="{{asset('admin/app-assets/css-rtl/pages/data-list-view.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('admin/css-rtl/pages/data-list-view.css')}}">
 
     <!-- BEGIN: Custom CSS-->
-    <link rel="stylesheet" type="text/css" href="{{asset('admin/app-assets/css'.$locale.'/style.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('admin/css'.$locale.'/style.css')}}">
     @if($locale=='ar')
-    <link rel="stylesheet" type="text/css" href="{{asset('admin/app-assets/css/style-rtl.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('admin/css/style-rtl.css')}}">
     @endif
 
 
@@ -91,31 +91,31 @@
 @include('admin.layouts.footer')
 
 <!-- BEGIN: Vendor JS-->
-<script src="{{asset('admin/app-assets/vendors/js/vendors.min.js')}}"></script>
+<script src="{{asset('admin/vendors/js/vendors.min.js')}}"></script>
 <!-- BEGIN Vendor JS-->
 
 <!-- BEGIN: Page Vendor JS-->
-<script src="{{asset('admin/app-assets/vendors/js/charts/apexcharts.min.js')}}"></script>
-<script src="{{asset('admin/app-assets/vendors/js/extensions/tether.min.js')}}"></script>
-<script src="{{asset('admin/app-assets/vendors/js/extensions/shepherd.min.js')}}"></script>
-<script src="{{asset('admin/app-assets/vendors/js/extensions/sweetalert2.all.min.js')}}"></script>
-<script src="{{asset('admin/app-assets/vendors/js/extensions/polyfill.min.js')}}"></script>
+<script src="{{asset('admin/vendors/js/charts/apexcharts.min.js')}}"></script>
+<script src="{{asset('admin/vendors/js/extensions/tether.min.js')}}"></script>
+<script src="{{asset('admin/vendors/js/extensions/shepherd.min.js')}}"></script>
+<script src="{{asset('admin/vendors/js/extensions/sweetalert2.all.min.js')}}"></script>
+<script src="{{asset('admin/vendors/js/extensions/polyfill.min.js')}}"></script>
 <!-- END: Page Vendor JS-->
 
 <!-- BEGIN: Theme JS-->
-<script src="{{asset('admin/app-assets/js/core/app-menu.js')}}"></script>
-<script src="{{asset('admin/app-assets/js/core/app.js')}}"></script>
-<script src="{{asset('admin/app-assets/js/scripts/components.js')}}"></script>
+<script src="{{asset('admin/js/core/app-menu.js')}}"></script>
+<script src="{{asset('admin/js/core/app.js')}}"></script>
+<script src="{{asset('admin/js/scripts/components.js')}}"></script>
 <!-- END: Theme JS-->
-<script src="{{asset('admin/app-assets/js/scripts/ui/data-list-view.js')}}"></script>
+<script src="{{asset('admin/js/scripts/ui/data-list-view.js')}}"></script>
 
 <!-- BEGIN: Page JS-->
-<script src="{{asset('admin/app-assets/js/scripts/pages/dashboard-analytics.js')}}"></script>
-<script src="{{asset('admin/app-assets/js/scripts/extensions/sweet-alerts.js')}}"></script>
+<script src="{{asset('admin/js/scripts/pages/dashboard-analytics.js')}}"></script>
+<script src="{{asset('admin/js/scripts/extensions/sweet-alerts.js')}}"></script>
 <!-- END: Page JS-->
 
 <!-- BEGIN: Main JS-->
-<script src="{{asset('admin/app-assets/js/scripts/main.js')}}"></script>
+<script src="{{asset('admin/js/scripts/main.js')}}"></script>
 <!-- END: Main JS-->
 
 

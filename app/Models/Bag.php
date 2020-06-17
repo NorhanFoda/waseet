@@ -8,6 +8,7 @@ use App\Models\Video;
 use App\Models\BagCategory;
 use App\Models\Rating;
 use App\Models\Save;
+use App\Models\BagContent;
 
 class Bag extends Model
 {
@@ -19,7 +20,7 @@ class Bag extends Model
     ];
 
     public function images(){
-        return $this->morphMany(Image::class, 'imagable');
+        return $this->morphMany(Image::class, 'imageRef');
     }
 
     public function videos(){
@@ -32,5 +33,9 @@ class Bag extends Model
 
     public function ratings(){
         return $this->morphMany(Rating::class, 'ratable');
+    }
+
+    public function contents(){
+        return $this->hasMany(BagContent::class);
     }
 }

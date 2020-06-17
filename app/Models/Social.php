@@ -9,6 +9,6 @@ class Social extends Model
     protected $fillable = ['link', 'appear_in_footer'];
 
     public function images(){
-        return $this->morphMany(Image::class, 'imagable');
+        return $this->morphMany(Image::class, 'imageRef');
     }
 }

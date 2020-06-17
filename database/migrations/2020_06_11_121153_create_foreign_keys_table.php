@@ -104,6 +104,12 @@ class CreateForeignKeysTable extends Migration
             ->onDelete('cascade')
             ->onUpdate('cascade');
         });
+
+        Schema::table('bag_contents', function(Blueprint $table){
+            $table->foreign('bag_id')->references('id')->on('bags')
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
+        });
     }
 
     /**

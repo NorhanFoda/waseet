@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateImagesTable extends Migration
+class CreateBagContentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateImagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('images', function (Blueprint $table) {
+        Schema::create('bag_contents', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('bag_id')->nullable()->index();
             $table->string('path');
-            $table->unsignedBigInteger('imageRef_id')->nullable()->index();
-            $table->string('imageRef_type');
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreateImagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('images');
+        Schema::dropIfExists('bag_contents');
     }
 }

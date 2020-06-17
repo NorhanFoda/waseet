@@ -31,8 +31,24 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
         Route::get('admin-password/reset/{email}', 'Admin\Auth\ResetPasswordController@showResetForm')->name('admin.password.reset');
         Route::post('admin-password/update', 'Admin\Auth\ResetPasswordController@update')->name('admin.password.update');
 
+        // Change lang
+        Route::get('change_locale/{locale}', 'Admin\HomeController@change_locale')->name('change_locale');
+
         Route::get('test',function(){
             return View::make('test');
+        });
+
+
+        Route::group(['middleware' => ['admin']], function(){
+
+            // Home
+            Route::get('home', 'Admin\HomeController@index')->name('admin.home');
+
+            // Bag categories
+            Route::resource('bag_categories', 'Admin\BagCategoryController');
+
+            // Users
+            Route::resource('users', 'Admin\UserController');
         });
     });
 });
@@ -40,3 +56,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 
 
 /* WEBSITE */
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

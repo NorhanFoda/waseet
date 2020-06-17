@@ -54,8 +54,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function images(){
-        return $this->morphMany(Image::class, 'imagable');
+    public function image(){
+        return $this->morphOne(Image::class, 'imageRef');
     }
 
     public function job_announces(){
