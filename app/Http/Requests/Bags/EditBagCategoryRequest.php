@@ -4,7 +4,7 @@ namespace App\Http\Requests\Bags;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class BagCategoryRequest extends FormRequest
+class EditBagCategoryRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,8 @@ class BagCategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'name_ar' => 'required',
+            'name_ar' =>'required',
             'name_en' => 'required',
-            'image' => 'required',
         ];
     }
 }

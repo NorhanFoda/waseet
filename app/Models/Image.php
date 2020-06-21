@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Image extends Model
 {
     protected $fillable = [
-        'path', 'model_id', 'model_type',
+        'path', 'imageRef_id', 'imageRef_type',
     ];
 
     public function imageRef(){

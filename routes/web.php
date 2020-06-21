@@ -4,6 +4,7 @@
 /** Set default language to Arabic for Website **/
 Route::get('/', function () {
     \LaravelLocalization::setLocale('ar');
+    session(['lang' => \App::getLocale()]);
     $url = \LaravelLocalization::getLocalizedURL(\App::getLocale(), \URL::previous());
         return Redirect::to($url);
 });
@@ -11,6 +12,7 @@ Route::get('/', function () {
 /** Set default language to Arabic for Admin **/
 Route::get('/admin/', function () {
     \LaravelLocalization::setLocale('ar');
+    session(['lang' => \App::getLocale()]);
     $url = \LaravelLocalization::getLocalizedURL(\App::getLocale(), \URL::previous());
         return Redirect::to($url);
 });
@@ -18,6 +20,8 @@ Route::get('/admin/', function () {
 /* ADMIN */
 Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 {
+    session(['lang' => \App::getLocale()]);
+
     Route::group(['prefix' => 'admin/'], function(){
 
         /** ADD ALL LOCALIZED ROUTES INSIDE THIS GROUP **/
@@ -39,7 +43,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
         });
 
 
-        Route::group(['middleware' => ['admin']], function(){
+        Route::group(['middleware' => ['admin', 'auth:web']], function(){
 
             // Home
             Route::get('home', 'Admin\HomeController@index')->name('admin.home');

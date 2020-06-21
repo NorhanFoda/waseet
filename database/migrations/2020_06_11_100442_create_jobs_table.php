@@ -26,7 +26,7 @@ class CreateJobsTable extends Migration
             $table->text('description_en');
             $table->string('organization_name');
             $table->string('organization_phone');
-            $table->string('organization_email');
+            $table->string('organization_email')->unique();
             $table->integer('required_age');
             $table->string('salary');
             $table->timestamps();

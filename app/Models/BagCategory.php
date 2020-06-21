@@ -12,8 +12,8 @@ class BagCategory extends Model
         'name_ar', 'name_en',
     ];
 
-    public function images(){
-        return $this->morphMany(Image::class, 'imageRef');
+    public function image(){
+        return $this->morphOne(Image::class, 'imageRef');
     }
 
     public function bags(){

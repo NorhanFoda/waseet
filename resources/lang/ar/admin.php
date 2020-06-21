@@ -10,9 +10,17 @@ return [
     // Feedbacks
     'name_required' => 'الإسم مطلوب',
     'image_required' => 'الصورة مطلوبة',
+    'creatd' => 'تمت الإضافة بنجاح',
+    'updated' => 'تم التعديل بنجاح',
+    'deleted' => 'تم الحذف بنجاح',
+    '' => '',
+    '' => '',
+    '' => '',
+    '' => '',
 
     // Controles
     'add' => 'إضافة',
+    'edit' => 'تعديل',
     'save' => 'حفظ',
 
     // Login

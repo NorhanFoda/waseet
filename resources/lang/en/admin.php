@@ -10,9 +10,17 @@ return [
     // Feedbacks
     'name_required' => 'Name is required',
     'image_required' => 'Image is required',
+    'created' => 'Created successfully',
+    'updated' => 'Updated successfully',
+    'deleted' => 'Deleted successfully',
+    '' => '',
+    '' => '',
+    '' => '',
+    '' => '',
 
     // Controles
     'add' => 'Add',
+    'edit' => 'Edit',
     'save' => 'Save',
 
     // Login

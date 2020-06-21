@@ -4,6 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Bags\BagCategoryRequest;
+use App\Http\Requests\Bags\EditBagCategoryRequest;
+use App\Models\BagCategory;
+use App\Models\Image;
+use App\Classes\Upload;
 
 class BagCategoryController extends Controller
 {
@@ -33,9 +38,23 @@ class BagCategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(BagCategoryRequest $request)
     {
-        //
+        $category = BagCategory::create($request->all());
+        
+        if($request->has('image')){
+            $url = Upload::uploadImage($request->image);
+            $image = Image::create([
+                'path' => $url,
+                'imageRef_id' => $category->id,
+                'imageRef_type' => 'App\Models\BagCategory'
+            ]);
+            $category->image()->save($image);
+        }
+
+        session()->flash('message', trans('admin.created'));
+        return redirect()->route('bag_categories.index');
+
     }
 
     /**
@@ -57,7 +76,8 @@ class BagCategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = BagCategory::find($id);
+        return view('admin.bag_categories.edit', compact('category'));
     }
 
     /**
@@ -67,9 +87,32 @@ class BagCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(EditBagCategoryRequest $request, $id)
     {
-        //
+        $category = BagCategory::find($id);
+        $category->update($request->all());
+
+        if($request->has('image')){
+            $file_name = pathinfo($category->image->path, PATHINFO_FILENAME);
+            $extension = substr($category->image->path,strrpos($category->image->path,'.'));
+            $full_name = $file_name.$extension;
+            $file_path = 'images/'.$full_name;
+            if(\File::exists($file_path)){
+                \File::delete($file_path);
+            }
+        }
+        $url = Upload::uploadImage($request->image);
+        $image = Image::where('imageRef_id', $id)->where('imageRef_type', 'App\Models\BagCategory')->first();
+            $image->update([
+            'path' => $url,
+            'imageRef_id' => $category->id,
+            'imageRef_type' => 'App\Models\BagCategory'
+        ]);
+        $category->image()->save($image);
+
+        session()->flash('message', trans('admin.updated'));
+        return redirect()->route('bag_categories.index');
+        
     }
 
     /**
