@@ -15,6 +15,8 @@
 
             <li class=" nav-item"><a href="{{route('bag_categories.index')}}"><i class="fa fa-th-large"></i><span class="menu-title" data-i18n="Dashboard">{{trans('admin.bag_categories')}}</span></a></li>
             <li class=" nav-item"><a href="{{route('bags.index')}}"><i class="fa fa-briefcase"></i><span class="menu-title" data-i18n="Dashboard">{{trans('admin.bags')}}</span></a></li>
+            <li class=" nav-item"><a href="{{route('stages.index')}}"><i class="fa fa-level-up"></i><span class="menu-title" data-i18n="Dashboard">{{trans('admin.stages')}}</span></a></li>
+            <li class=" nav-item"><a href="{{route('materials.index')}}"><i class="fa fa-book"></i><span class="menu-title" data-i18n="Dashboard">{{trans('admin.materials')}}</span></a></li>
 
         </ul>
     </div>

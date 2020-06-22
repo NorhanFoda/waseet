@@ -56,6 +56,14 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
             Route::resource('bags', 'Admin\BagController');
             Route::post('delete_bags', 'Admin\BagController@deleteBag')->name('bags.delete');
 
+            // Stages
+            Route::resource('stages', 'Admin\StageController');
+            Route::post('delete_stages', 'Admin\StageController@deleteStage')->name('stages.delete');
+
+            // Stages
+            Route::resource('materials', 'Admin\MaterialController');
+            Route::post('delete_material', 'Admin\MaterialController@deleteMaterial')->name('materials.delete');
+
             // Users
             Route::resource('users', 'Admin\UserController');
         });

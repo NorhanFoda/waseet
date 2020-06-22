@@ -17,7 +17,8 @@ return [
     'alert_title' => 'Are you sure?',
     'yes' => 'Yes',
     'no' => 'No',
-    'error' => 'Please try again',
+    'error' => 'Operation can not be completed',
+    'alert_cancelled' => 'Operation cancelled',
 
     // Controles
     'add' => 'Add',
@@ -58,5 +59,18 @@ return [
     'description' => 'Description',
     'contents' => 'Bag contents',
     'benefits' => 'Bag benefits',
+
+    // Stages
+    'stages' => 'Educational levels',
+
+    // Users
+    'name' => 'Name',
+    'phone_main' => 'Main phone number',
+    'online_teachers' => 'Online teachers',
+    'direct_teachers' => 'Direct teachers',
+    'students' => 'Students',
+
+    // Materials
+    'materials' => 'Subjects',
     
 ];

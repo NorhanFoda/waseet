@@ -111,7 +111,7 @@
                                 if(data.data == 1){
                                     Swal.fire({
                                         type: 'success',
-                                        title: '{{trans('admin.prodcut_deleted')}}',
+                                        title: '{{trans('admin.deleted')}}',
                                         showConfirmButton: false,
                                         timer: 1500
                                     });
@@ -121,7 +121,7 @@
                                 else if(data.data == 0){
                                     Swal.fire({
                                         type: 'error',
-                                        title: '{{trans('admin.product_can_not_be_deleted')}}',
+                                        title: '{{trans('admin.error')}}',
                                         showConfirmButton: false,
                                         timer: 1500
                                     });

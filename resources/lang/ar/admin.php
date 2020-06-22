@@ -17,7 +17,8 @@ return [
     'alert_title' => 'متأكد من إتمام العملية؟',
     'yes' => 'نعم',
     'no' => 'لا',
-    'error' => 'من فضلك أعد المحاولة',
+    'error' => 'لا يمكن إتمام العملية',
+    'alert_cancelled' => 'تم الإلغاء',
 
     // Controles
     'add' => 'إضافة',
@@ -58,5 +59,18 @@ return [
     'description' => 'الوصف',
     'contents' => 'محتوى الحقيبة',
     'benefits' => 'ما يكسبة الطالب',
+
+    // Stages
+    'stages' => 'المراحل التعليمية',
+    
+    // Users
+    'name' => 'الإسم',
+    'phone_main' => 'الجوال الرئيسى',
+    'online_teachers' => 'المعلمون الإفتراضيون',
+    'direct_teachers' => 'المعلمون المباشرون',
+    'students' => 'الطلاب',
+
+    // Materials
+    'materials' => 'المواد الدراسية',
     
 ];

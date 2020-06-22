@@ -16,6 +16,9 @@ class DatabaseSeeder extends Seeder
         $this->call(ImageSeeder::class);
         $this->call(RoleSeeder::class);
         $this->call(ModelHasRoleSeeder::class);
+        $this->call(StagesSeeder::class);
+        $this->call(MaterialsSeeder::class);
+        $this->call(MaterialStageSeeder::class);
         $this->call(EduTypeSeeder::class);
         $this->call(EduLevelSeeder::class);
     }

@@ -130,6 +130,11 @@ class BagCategoryController extends Controller
 
         $removed = Upload::deleteImage($category->image->path);
         if($removed){
+            Image::where('imageRef_id', $category->id)->first()->delete();
+            foreach($category->bags as $bag){
+                Image::where('imageRef_id', $bag->id)->first()->delete();
+                Video::where('bag_id', $bag->id)->first()->delete();
+            }
             $category->delete();
             return response()->json([
                 'data' => 1
