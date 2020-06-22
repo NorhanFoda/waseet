@@ -28,11 +28,11 @@ class Bag extends Model
     }
 
     public function category(){
-        return $this->belongTo(BagCategory::class);
+        return $this->belongsTo(BagCategory::class, 'bag_category_id');
     }
 
     public function ratings(){
-        return $this->morphMany(Rating::class, 'ratable');
+        return $this->morphMany(Rating::class, 'rateRef');
     }
 
     public function contents(){

@@ -39,6 +39,7 @@ return [
 
     // Bag categories
     'bag_categories' => 'أقسام الحقائب',
+    'bag_category' => 'القسم',
 
     // Bags
     'bags' => 'الحقائب التعليمية',
@@ -51,7 +52,11 @@ return [
     'benefits_ar' => 'فوائد الحقيبة بالعربية',
     'benefits_en' => 'فوائد الحقيبة بالإنجليزية',
     'video' => 'فيديو',
-    'Rating' => 'التقييم',
+    'rate' => 'التقييم',
     'User' => 'المستخدم',
+    'no_ratings' => 'لا يوجد تقييمات',
+    'description' => 'الوصف',
+    'contents' => 'محتوى الحقيبة',
+    'benefits' => 'ما يكسبة الطالب',
     
 ];

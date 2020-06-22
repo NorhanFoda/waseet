@@ -17,8 +17,8 @@ class CreateRatingsTable extends Migration
             $table->bigIncrements('id');
             $table->integer('rate');
             $table->unsignedBigInteger('user_id')->nullable()->index();
-            $table->UnsignedBigInteger('model_id');
-            $table->string('model_type');
+            $table->UnsignedBigInteger('rateRef_id');
+            $table->string('rateRef_type');
             $table->timestamps();
         });
     }

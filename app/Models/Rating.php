@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Rating extends Model
 {
-    protected $fillable = ['rate', 'user_id', 'model_id', 'model_type'];
+    protected $fillable = ['rate', 'user_id', 'rateRef_id', 'rateRef_type'];
 
-    public function ratable(){
+    public function rateRef(){
         return $this->morphTo();
     }
 }

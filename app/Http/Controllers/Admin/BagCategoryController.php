@@ -103,14 +103,15 @@ class BagCategoryController extends Controller
                 $category->image->update([
                     'path' => $url,
                 ]);
-                session()->flash('message', trans('admin.updated'));
-                return redirect()->route('bag_categories.index');
             }
             else{
                 session()->flash('message', trans('admin.error'));
                 return redirect()->route('bag_categories.index');     
             }
         }
+
+        session()->flash('message', trans('admin.updated'));
+        return redirect()->route('bag_categories.index');
     }
 
     /**
@@ -127,7 +128,7 @@ class BagCategoryController extends Controller
     public function deleteBagCategory(Request $request){
         $category = BagCategory::find($request->id);
 
-        $removed = Upload::removeImage($category->image->path);
+        $removed = Upload::deleteImage($category->image->path);
         if($removed){
             $category->delete();
             return response()->json([

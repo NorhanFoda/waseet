@@ -43,68 +43,151 @@
                         <div class="row">
                             <div class="users-view-image">
                                 <img src="{{$bag->image ? $bag->image->path : 'images/product-avatar.png'}}" class="users-avatar-shadow rounded mb-2 pr-2 ml-1" 
-                                alt="avatar" style="width:150px; height:150px;">
+                                    alt="avatar" style="width:150px; height:150px;">
                             </div>
+                            {{trans('admin.rate')}}: {{$bag->ratings->count() > 0 ? ceil($bag->ratings->sum('rate') / $bag->ratings->count()).'/5' : trans('admin.no_ratings')}}
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <a href="{{route('bags.edit', $bag->id)}}" class="btn btn-primary mr-1"><i class="feather icon-edit-1"></i>{{trans('admin.edit')}}</a>
-                            <a title="delete" onclick="return true;" id="confirm-color" object_id='{{$bag->id}}'
-                                class="delete btn btn-outline-danger" style="color:white;"><i class="feather icon-trash-2"></i>{{trans('admin.delete')}}</a>
+                        <div class="row">
+                            <div class="col-12 col-sm-9 col-md-6 col-lg-5">
+                                <table>
+                                    <tr>
+                                        <td class="font-weight-bold">{{trans('admin.bag_category')}}</td>
+                                        <td style='margin: 5px; padding: 15px;'>
+                                            {{$bag->category->{'name_'.session('lang')} }}
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div class="col-12 col-sm-9 col-md-6 col-lg-5">
+                                <table>
+                                    <tr>
+                                        <td class="font-weight-bold">{{trans('admin.price')}}</td>
+                                        <td style='margin: 5px; padding: 15px;'>
+                                            {{$bag->price}} {{trans('admin.sr')}}
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div class="col-12">
+                                <a href="{{route('bags.edit', $bag->id)}}" class="btn btn-primary mr-1"><i class="feather icon-edit-1"></i>{{trans('admin.edit')}}</a>
+
+
+                                <a title="delete" onclick="return true;" id="confirm-color" object_id='{{$bag->id}}'
+                                    class="delete btn btn-outline-danger" style="color:white;"><i class="feather icon-trash-2"></i>{{trans('admin.delete')}}</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
             <!-- account end -->
 
-            <!-- rating start -->
+            {{-- description start --}}
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header border-bottom mx-2 px-0">
+                        <h6 class="border-bottom py-1 mb-0 font-medium-2">
+                            <i class="fa fa-align-right"></i>
+                            {{trans('admin.description')}}
+                        </h6>
+                    </div>
+                    <div class="card-body px-75">
+                        {{$bag->{'description_'.session('lang')} }}
+                    </div>
+                </div>
+            </div>
+            {{-- description end --}}
+
+            {{-- contents start --}}
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header border-bottom mx-2 px-0">
+                        <h6 class="border-bottom py-1 mb-0 font-medium-2">
+                            <i class="fa fa-align-right"></i>
+                            {{trans('admin.contents')}}
+                        </h6>
+                    </div>
+                    <div class="card-body px-75">
+                        {!! $bag->{'contents_'.session('lang')} !!}
+                    </div>
+                </div>
+            </div>
+            {{-- contents end --}}
+
+            {{-- bemefits start --}}
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header border-bottom mx-2 px-0">
+                        <h6 class="border-bottom py-1 mb-0 font-medium-2">
+                            <i class="fa fa-align-right"></i>
+                            {{trans('admin.benefits')}}
+                        </h6>
+                    </div>
+                    <div class="card-body px-75">
+                        {!! $bag->{'benefits_'.session('lang')} !!}
+                    </div>
+                </div>
+            </div>
+            {{-- benefits end --}}
+
+            {{-- video start --}}
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header border-bottom mx-2 px-0">
+                        <h6 class="border-bottom py-1 mb-0 font-medium-2">
+                            <i class="fa fa-align-right"></i>
+                            {{trans('admin.video')}}
+                        </h6>
+                    </div>
+                    <div class="card-body px-75" style="text-align: center;">
+                        <video width="320" height="240" poster="{{$bag->video->poster}}" controls>
+                            <source src="{{$bag->video->path}}" type="video/mp4">
+                            <source src="{{$bag->video->path}}" type="video/ogg">
+                         </video>
+                    </div>
+                </div>
+            </div>
+            {{-- video end --}}
+
+            <!-- ratings start -->
             <div class="col-12">
                 <div class="card">
                     <div class="card-header border-bottom mx-2 px-0">
                         <h6 class="border-bottom py-1 mb-0 font-medium-2">
                             <i class="fa fa-star-half-o"></i>
-                            {{trans('admin.rating')}}
+                            {{trans('admin.rate')}}
                         </h6>
                     </div>
                     <div class="card-body px-75">
                         <div class="table-responsive users-view-permission">
-                            <table class="table table-borderless dt-responsive nowrap" id="data_table">
+                            <table class="table table-borderless">
                                 <thead>
                                     <tr>
                                         <th>#</th>
                                         <th>{{trans('admin.user')}}</th>
-                                        <th>{{trans('admin.rating')}}</th>
-                                        <th>{{trans('admin.action')}}</th>
+                                        <th>{{trans('admin.rate')}}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {{-- @foreach($bags as $bag)
+                                    @if(count($bag->ratings) > 0)
+                                        @foreach($bag->ratings as $rate)
                                         <tr>
                                             <td>{{$loop->iteration}}</td>
-                                            <td>
-                                                @if(\App()->getLocale()=='ar')
-                                                    {{$bag->name_ar}}
-                                                @else
-                                                    {{$bag->name_en}}
-                                                @endif
-                                            </td>
-                                            <td>
-                                                {{$bag->price}} {{trans('admin.sr')}}
-                                            </td>
-                                            <td>
-                                                <a href="{{route('bags.show', $pro->id)}}" class="btn" style="color:white;"><i class="fa fa-eye"></i></a>
-                                            </td>
+                                            <td>{{$rate->user->name}}</td>
+                                            <td>{{$rate->rate}}</td>
                                         </tr>
-                                    @endforeach --}}
+                                        @endforeach
+                                    @else
+                                        {{trans('admin.no_ratings')}}
+                                    @endif
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- bags end -->
-
+            <!-- ratings end -->
         </div>
     </section>
     <!-- page users view end -->
@@ -139,7 +222,7 @@
                     var status = $(this).attr('object_status');
                         token = $('meta[name="csrf-token"]').attr('content');
                         $.ajax({
-                            url: "{{route('bag_categories.delete')}}",
+                            url: "{{route('bags.delete')}}",
                             type: "post",
                             dataType: 'json',
                             data: {"_token": "{{ csrf_token() }}", id: id},
@@ -151,18 +234,16 @@
                                         showConfirmButton: false,
                                         timer: 1500
                                     });
-
-                                    window.location.href = "{{route('bag_categories.index')}}";
+                                    window.location.href = '{{route("bags.index")}}';
                                 }
                                 else if(data.data == 0){
                                     Swal.fire({
                                         type: 'error',
-                                        title: '{{trans('admin.category_can_not_be_deleted')}}',
+                                        title: '{{trans('admin.error')}}',
                                         showConfirmButton: false,
                                         timer: 1500
                                     });
-
-                                    window.location.href = "{{route('bag_categories.index')}}";
+                                    window.location.href = '{{route("bags.index")}}';
                                 }
                             }
                         });
@@ -173,7 +254,7 @@
                     swalWithBootstrapButtons.fire({
                         title: '{{trans('admin.alert_cancelled')}}',
                         showConfirmButton: false,
-                        timer: 1500
+                        timer: 1000
                     });
                 }
             })

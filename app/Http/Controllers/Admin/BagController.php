@@ -20,7 +20,7 @@ class BagController extends Controller
      */
     public function index()
     {
-        $bags = Bag::all();
+        $bags = Bag::with('image')->get();
         return view('admin.bags.index', compact('bags'));
     }
 
@@ -31,7 +31,7 @@ class BagController extends Controller
      */
     public function create()
     {
-        $categories = BagCategory::all();
+        $categories = BagCategory::with('image')->get();
         return view('admin.bags.create', compact('categories'));
     }
 
@@ -87,7 +87,7 @@ class BagController extends Controller
      */
     public function show($id)
     {
-        $bag = Bag::find($id);
+        $bag = Bag::with('ratings')->where('id', $id)->first();
 
         return view('admin.bags.show', compact('bag'));
     }
@@ -144,8 +144,6 @@ class BagController extends Controller
 
             $video_removed = Upload::deleteVideo($bag->video->path);
             $poster_removed = Upload::deleteImage($bag->video->poster);
-            // dump($bag->video->path);
-            // dd($bag->video->path);
 
             if($video_removed && $poster_removed){
                 $poster_url = $bag->video->poster;
@@ -154,14 +152,15 @@ class BagController extends Controller
                     'path' => $video_url,
                     'poster' => $poster_url,
                 ]);
-                session()->flash('message', trans('admin.created'));
-                return redirect()->route('bags.index');
             }
             else{
                 session()->flash('message', trans('admin.error'));
                 return redirect()->route('bags.index');        
             }
         }
+
+        session()->flash('message', trans('admin.created'));
+        return redirect()->route('bags.index');
     }
 
     /**
@@ -172,6 +171,23 @@ class BagController extends Controller
      */
     public function destroy($id)
     {
-        //
+        abort(404);
+    }
+
+    public function deleteBag(Request $request){
+        $bag = Bag::find($request->id);
+
+        $removed = Upload::deleteImage($bag->image->path);
+        if($removed){
+            $bag->delete();
+            return response()->json([
+                'data' => 1
+            ], 200);
+        }
+        else{
+            return response()->json([
+                'data' => 0
+            ], 200);
+        }
     }
 }

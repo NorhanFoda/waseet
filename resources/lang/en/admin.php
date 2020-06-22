@@ -39,6 +39,7 @@ return [
 
     // Bag categories
     'bag_categories' => 'Bag categories',
+    'bag_category' => 'Category',
 
     // Bags
     'bags' => 'Educational bags',
@@ -51,7 +52,11 @@ return [
     'benefits_ar' => 'Bag benefits in Arabic',
     'benefits_en' => 'Bag benefits in English',
     'video' => 'Video',
-    'rating' => 'Rating',
+    'rate' => 'Rating',
     'user' => 'User',
+    'no_ratings' => 'No ratings',
+    'description' => 'Description',
+    'contents' => 'Bag contents',
+    'benefits' => 'Bag benefits',
     
 ];
