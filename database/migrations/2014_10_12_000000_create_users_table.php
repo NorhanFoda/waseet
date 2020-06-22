@@ -17,7 +17,8 @@ class CreateUsersTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('email')->unique();
-            $table->string('phone')->nullable()->unique();
+            $table->string('phone_main')->unique();
+            $table->string('phone_secondary')->nullable();
             $table->unsignedBigInteger('country_id')->nullable()->index();
             $table->unsignedBigInteger('city_id')->nullable()->index();
             $table->unsignedBigInteger('stage_id')->nullable()->index();
@@ -26,10 +27,9 @@ class CreateUsersTable extends Migration
             $table->string('salary_month')->nullable();
             $table->string('salary_hour')->nullable();
             $table->integer('age')->nullable();
-            $table->string('edu_level')->nullable();
-            // $table->integer('no_of_students')->nullable();
-            // $table->text('breif_ar')->nullable();
-            // $table->text('breif_en')->nullable();
+            $table->unsignedBigInteger('edu_level_id')->nullable()->index();
+            $table->unsignedBigInteger('edu_type_id')->nullable()->index();
+            $table->boolean('organizayion_gender')->default(1); // 0 -> sons - 1 -> girls
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

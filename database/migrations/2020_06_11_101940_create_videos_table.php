@@ -16,6 +16,7 @@ class CreateVideosTable extends Migration
         Schema::create('videos', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('path');
+            $table->string('poster');
             $table->unsignedBigInteger('bag_id')->nullable()->index();
             $table->timestamps();
         });

@@ -20,7 +20,7 @@
             <div class="breadcrumb-wrapper col-12">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item">
-                        <a href="/admin/home">{{trans('admin.home')}}</a>
+                        <a href="{{route('admin.home')}}">{{trans('admin.home')}}</a>
                     </li>
                     <li class="breadcrumb-item active">{{trans('admin.add')}}
                     </li>

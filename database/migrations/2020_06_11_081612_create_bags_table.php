@@ -20,11 +20,11 @@ class CreateBagsTable extends Migration
             $table->text('description_ar');
             $table->text('description_en');
             $table->string('price');
-            $table->text('conents_ar');
-            $table->text('conents_en');
+            $table->text('contents_ar');
+            $table->text('contents_en');
             $table->text('benefits_ar');
             $table->text('benefits_en');
-            $table->unsignedBigInteger('category_id')->nullable()->index(); // bags category id
+            $table->unsignedBigInteger('bag_category_id')->nullable()->index(); // bags category id
             $table->timestamps();
         });
     }

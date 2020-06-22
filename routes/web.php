@@ -50,6 +50,11 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 
             // Bag categories
             Route::resource('bag_categories', 'Admin\BagCategoryController');
+            Route::post('delete_categories', 'Admin\BagCategoryController@deleteBagCategory')->name('bag_categories.delete');
+
+            // Bags
+            Route::resource('bags', 'Admin\BagController');
+            Route::post('delete_bags', 'Admin\BagController@deleteBag')->name('bags.delete');
 
             // Users
             Route::resource('users', 'Admin\UserController');

@@ -13,7 +13,8 @@
     <div class="main-menu-content">
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
 
-            <li class=" nav-item"><a href="{{route('bag_categories.create')}}"><i class="feather icon-home"></i><span class="menu-title" data-i18n="Dashboard">{{trans('admin.bag_categories')}}</span></a></li>
+            <li class=" nav-item"><a href="{{route('bag_categories.index')}}"><i class="fa fa-th-large"></i><span class="menu-title" data-i18n="Dashboard">{{trans('admin.bag_categories')}}</span></a></li>
+            <li class=" nav-item"><a href="{{route('bags.index')}}"><i class="fa fa-briefcase"></i><span class="menu-title" data-i18n="Dashboard">{{trans('admin.bags')}}</span></a></li>
 
         </ul>
     </div>

@@ -14,17 +14,17 @@ class Bag extends Model
 {
     protected $fillable = [
         'name_ar', 'name_en', 'description_ar',
-        'description_en', 'price', 'conents_ar',
-        'conents_en', 'benefits_ar', 'benefits_en',
-        'category_id',
+        'description_en', 'price', 'contents_ar',
+        'contents_en', 'benefits_ar', 'benefits_en',
+        'bag_category_id',
     ];
 
-    public function images(){
-        return $this->morphMany(Image::class, 'imageRef');
+    public function image(){
+        return $this->morphOne(Image::class, 'imageRef');
     }
 
-    public function videos(){
-        return $this->hasMany(Video::class);
+    public function video(){
+        return $this->hasOne(Video::class);
     }
 
     public function category(){

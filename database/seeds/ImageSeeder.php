@@ -22,6 +22,16 @@ class ImageSeeder extends Seeder
                 'imageRef_id' => '2',
                 'imageRef_type' => 'App\User',
             ],
+            [
+                'path' => 'http://127.0.0.1:8000/images/product-avatar.png',
+                'imageRef_id' => '1',
+                'imageRef_type' => 'App\Models\BagCategory',
+            ],
+            [
+                'path' => 'http://127.0.0.1:8000/images/product-avatar.png',
+                'imageRef_id' => '2',
+                'imageRef_type' => 'App\Models\BagCategory',
+            ],
         ]);
     }
 }

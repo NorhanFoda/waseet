@@ -13,15 +13,18 @@ return [
     'created' => 'Created successfully',
     'updated' => 'Updated successfully',
     'deleted' => 'Deleted successfully',
-    '' => '',
-    '' => '',
-    '' => '',
-    '' => '',
+    'no_data_registred' => 'No data registered',
+    'alert_title' => 'Are you sure?',
+    'yes' => 'Yes',
+    'no' => 'No',
+    'error' => 'Please try again',
 
     // Controles
     'add' => 'Add',
     'edit' => 'Edit',
+    'delete' => 'Delete',
     'save' => 'Save',
+    'action' => 'Action',
 
     // Login
     'login' => 'Log in',
@@ -36,5 +39,19 @@ return [
 
     // Bag categories
     'bag_categories' => 'Bag categories',
+
+    // Bags
+    'bags' => 'Educational bags',
+    'price' => 'Price',
+    'sr' => 'SR',
+    'description_ar' => 'Description in Arabic',
+    'description_en' => 'Description in English',
+    'contents_ar' => 'Bag contents in Arabic',
+    'contents_en' => 'Bag contents in English',
+    'benefits_ar' => 'Bag benefits in Arabic',
+    'benefits_en' => 'Bag benefits in English',
+    'video' => 'Video',
+    'rating' => 'Rating',
+    'user' => 'User',
     
 ];

@@ -25,10 +25,18 @@ class CreateForeignKeysTable extends Migration
             $table->foreign('stage_id')->references('id')->on('stages')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
+
+            $table->foreign('edu_level_id')->references('id')->on('edu_levels')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+
+            $table->foreign('edu_type_id')->references('id')->on('edu_types')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
         });
 
         Schema::table('bags', function(Blueprint $table) {
-            $table->foreign('category_id')->references('id')->on('bag_categories')
+            $table->foreign('bag_category_id')->references('id')->on('bag_categories')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
         });

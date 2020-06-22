@@ -7,7 +7,7 @@ use App\Models\Bag;
 
 class Video extends Model
 {
-    protected $fillable = ['path'];
+    protected $fillable = ['path', 'bag_id', 'poster'];
 
     public function bag(){
         return $this->belongsto(Bag::class);

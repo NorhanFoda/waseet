@@ -46,6 +46,9 @@
     <!-- END: Page CSS-->
     <link rel="stylesheet" type="text/css" href="{{asset('admin/css-rtl/pages/data-list-view.css')}}">
 
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" type="text/css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap4.min.css" type="text/css" />
+
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="{{asset('admin/css'.$locale.'/style.css')}}">
     @if($locale=='ar')
@@ -110,16 +113,45 @@
 <script src="{{asset('admin/js/scripts/ui/data-list-view.js')}}"></script>
 
 <!-- BEGIN: Page JS-->
-<script src="{{asset('admin/js/scripts/pages/dashboard-analytics.js')}}"></script>
+{{-- <script src="{{asset('admin/js/scripts/pages/dashboard-analytics.js')}}"></script> --}}
 <script src="{{asset('admin/js/scripts/extensions/sweet-alerts.js')}}"></script>
 <!-- END: Page JS-->
+
+{{-- BEGIN: ck editor --}}
+<script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
+<script>
+    CKEDITOR.replace('article-ckeditor');
+</script>
+{{-- END: ck editor --}}
 
 <!-- BEGIN: Main JS-->
 <script src="{{asset('admin/js/scripts/main.js')}}"></script>
 <!-- END: Main JS-->
 
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script> 
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script> 
+<script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"> </script> 
+<script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap4.min.js"> </script>
+
 
 @yield('scripts')
+
+@if(\App::getLocale() == 'ar')
+    <script> 
+        $(document).ready(function () { 
+            $('#data_table').DataTable({ 
+                "language": { "url": "//cdn.datatables.net/plug-ins/1.10.19/i18n/Arabic.json" }, 
+            });
+        });
+    </script>
+@else
+    <script> 
+        $(document).ready(function () { 
+            $('#data_table').DataTable({ 
+            });
+        });
+    </script>
+@endif
 
 {{--remove-alert--}}
 <script>

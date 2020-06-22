@@ -20,7 +20,7 @@
             <div class="breadcrumb-wrapper col-12">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item">
-                        <a href="/admin/home">{{trans('admin.home')}}</a>
+                        <a href="{{route('admin.home')}}">{{trans('admin.home')}}</a>
                     </li>
                     <li class="breadcrumb-item active">{{trans('admin.edit')}}
                     </li>
@@ -89,7 +89,7 @@
                                             <span>{{trans('admin.image')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <input type="file" name="image" class="form-control" placeholder="{{trans('admin.image')}}" required>
+                                            <input type="file" name="image" class="form-control" placeholder="{{trans('admin.image')}}">
                                             <div class="invalid-feedback">
                                                 {{trans('admin.image_required')}}
                                             </div>

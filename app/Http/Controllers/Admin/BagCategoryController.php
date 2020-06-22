@@ -19,7 +19,8 @@ class BagCategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = BagCategory::all();
+        return view('admin.bag_categories.index', compact('categories'));
     }
 
     /**
@@ -65,7 +66,10 @@ class BagCategoryController extends Controller
      */
     public function show($id)
     {
-        //
+        $cat = BagCategory::find($id);
+        $bags = $cat->bags;
+        
+        return view('admin.bag_categories.show', compact('cat', 'bags'));
     }
 
     /**
@@ -93,26 +97,20 @@ class BagCategoryController extends Controller
         $category->update($request->all());
 
         if($request->has('image')){
-            $file_name = pathinfo($category->image->path, PATHINFO_FILENAME);
-            $extension = substr($category->image->path,strrpos($category->image->path,'.'));
-            $full_name = $file_name.$extension;
-            $file_path = 'images/'.$full_name;
-            if(\File::exists($file_path)){
-                \File::delete($file_path);
+            $removed = Upload::deleteImage($category->image->path);
+            if($removed){
+                $url = Upload::uploadImage($request->image);
+                $category->image->update([
+                    'path' => $url,
+                ]);
+                session()->flash('message', trans('admin.updated'));
+                return redirect()->route('bag_categories.index');
+            }
+            else{
+                session()->flash('message', trans('admin.error'));
+                return redirect()->route('bag_categories.index');     
             }
         }
-        $url = Upload::uploadImage($request->image);
-        $image = Image::where('imageRef_id', $id)->where('imageRef_type', 'App\Models\BagCategory')->first();
-            $image->update([
-            'path' => $url,
-            'imageRef_id' => $category->id,
-            'imageRef_type' => 'App\Models\BagCategory'
-        ]);
-        $category->image()->save($image);
-
-        session()->flash('message', trans('admin.updated'));
-        return redirect()->route('bag_categories.index');
-        
     }
 
     /**
@@ -123,6 +121,23 @@ class BagCategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        abort(404);
+    }
+
+    public function deleteBagCategory(Request $request){
+        $category = BagCategory::find($request->id);
+
+        $removed = Upload::removeImage($category->image->path);
+        if($removed){
+            $category->delete();
+            return response()->json([
+                'data' => 1
+            ], 200);
+        }
+        else{
+            return response()->json([
+                'data' => 0
+            ], 200);
+        }
     }
 }
