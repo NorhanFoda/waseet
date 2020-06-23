@@ -69,7 +69,7 @@
                     </div>
                     <div class="card-body px-75">
                         <div class="table-responsive users-view-permission">
-                            <table class="table table-borderless dt-responsive nowrap" id="data_table">
+                            <table class="table table-borderless dt-responsive nowrap data_table">
                                 <thead>
                                     <tr>
                                         <th>#</th>

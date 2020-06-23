@@ -56,7 +56,7 @@ class StageController extends Controller
     {
         $stage = Stage::with(['users.roles' => function($q){
             $q->where('name', 'student')->orWhere('name', 'direct_teacher')->orWhere('name', 'online_teacher')->get();
-        }], 'materials')->where('id', $id)->first();
+        }, 'materials'])->where('id', $id)->first();
 
         return view('admin.stages.show', compact('stage'));
     }

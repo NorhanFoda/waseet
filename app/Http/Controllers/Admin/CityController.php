@@ -4,9 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\City;
 use App\Models\Country;
 
-class CountryController extends Controller
+class CityController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +16,9 @@ class CountryController extends Controller
      */
     public function index()
     {
-        $countries = Country::all();
+        $cities = City::all();
 
-        return view('admin.countries.index', compact('countries'));
+        return view('admin.cities.index', compact('cities'));
     }
 
     /**
@@ -27,7 +28,8 @@ class CountryController extends Controller
      */
     public function create()
     {
-        return view('admin.countries.create');
+        $countries = Country::all();
+        return view('admin.cities.create', compact('countries'));
     }
 
     /**
@@ -38,12 +40,18 @@ class CountryController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,['name_ar' => 'required', 'name_en' => 'required']);
+        $this->validate($request, ['name_ar' => 'required', 'name_en' => 'required', 'country_id' => 'required']);
 
-        Country::create($request->all());
+        $city = City::create($request->all());
 
-        session()->flash('success', trans('admin.created'));
-        return redirect()->route('countries.index');
+        if($city){
+            session()->flash('success', trans('admin.created'));
+            return redirect()->route('cities.index');
+        }
+        else{
+            session()->flash('error', trans('admin.error'));
+            return redirect()->back();
+        }
     }
 
     /**
@@ -54,11 +62,11 @@ class CountryController extends Controller
      */
     public function show($id)
     {
-        $country = Country::with(['users.roles' => function($q){
+        $city = City::with(['users.roles' => function($q){
             $q->where('name', 'student')->orWhere('name', 'direct_teacher')->orWhere('name', 'online_teacher')->get();
-        }, 'jobs', 'cities'])->where('id', $id)->first();
+        }, 'jobs', 'country'])->where('id', $id)->first();
 
-        return view('admin.countries.show', compact('country'));
+        return view('admin.cities.show', compact('city'));
     }
 
     /**
@@ -69,9 +77,10 @@ class CountryController extends Controller
      */
     public function edit($id)
     {
-        $country = Country::find($id);
+        $city = City::find($id);
+        $countries = Country::all();
 
-        return view('admin.countries.edit', compact('country'));
+        return view('admin.cities.edit', compact('city', 'countries'));
     }
 
     /**
@@ -83,12 +92,20 @@ class CountryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request,['name_ar' => 'required', 'name_en' => 'required']);
+        $this->validate($request, ['name_ar' => 'required', 'name_en' => 'required', 'country_id' => 'required']);
 
-        Country::find($id)->update($request->all());
+        $city = City::find($id);
 
-        session()->flash('success', trans('admin.updated'));
-        return redirect()->route('countries.index');
+        $city->update($request->all());
+
+        if($city){
+            session()->flash('success', trans('admin.updated'));
+            return redirect()->route('cities.index');
+        }
+        else{
+            session()->flash('error', trans('admin.error'));
+            return redirect()->back();
+        }
     }
 
     /**
@@ -102,25 +119,16 @@ class CountryController extends Controller
         abort(404);
     }
 
-    public function deleteCountry(Request $request){
-        $country = Country::find($request->id);
-        $flag = false;
+    public function deleteCity(Request $request){
+        $city = City::find($request->id);
 
-        if(count($country->cities) > 0){
-            foreach($country->cities as $city){
-                if(count($city->users) > 0){
-                    $flag = true;
-                }
-            }
-        }
-
-        if($flag == true){
+        if(count($city->users) > 0){
             return response()->json([
                 'data' => 0
             ], 200);
         }
         else{
-            $country->delete();
+            $city->delete();
             return response()->json([
                 'data' => 1
             ], 200);

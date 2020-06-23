@@ -13,7 +13,7 @@ class City extends Model
     protected $fillable = ['name_ar', 'name_en', 'country_id'];
 
     public function users(){
-        return $this->hansMany(User::class);
+        return $this->hasMany(User::class);
     }
 
     public function country(){

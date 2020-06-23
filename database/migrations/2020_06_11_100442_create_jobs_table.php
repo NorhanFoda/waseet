@@ -29,6 +29,7 @@ class CreateJobsTable extends Migration
             $table->string('organization_email')->unique();
             $table->integer('required_age');
             $table->string('salary');
+            $table->unsignedBigInteger('country_id')->nullable()->index();
             $table->timestamps();
         });
     }

@@ -19,6 +19,7 @@ return [
     'no' => 'No',
     'error' => 'Operation can not be completed',
     'alert_cancelled' => 'Operation cancelled',
+    'fields_required' => 'Please fill required fields',
 
     // Controles
     'add' => 'Add',
@@ -72,5 +73,16 @@ return [
 
     // Materials
     'materials' => 'Subjects',
+
+    // Countries
+    'countries' => 'Countries',
+
+    // Cities
+    'cities' => 'Cities',
+
+    // Jobs
+    'announced_jobs' => 'Announced jobs',
+    'organization_name' => 'Educational institution',
+    'location' => 'Location',
     
 ];

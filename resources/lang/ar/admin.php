@@ -19,6 +19,7 @@ return [
     'no' => 'لا',
     'error' => 'لا يمكن إتمام العملية',
     'alert_cancelled' => 'تم الإلغاء',
+    'fields_required' => 'من فضلك أدخل الحقول المطلوبة',
 
     // Controles
     'add' => 'إضافة',
@@ -72,5 +73,16 @@ return [
 
     // Materials
     'materials' => 'المواد الدراسية',
+
+    // Countries
+    'countries' => 'الدول',
+
+    // Cities
+    'cities' => 'المدن',
+
+    // Jobs
+    'announced_jobs' => 'الوظائف المعلن عنها',
+    'organization_name' => 'المؤسسة التعليمية',
+    'location' => 'الموقع',
     
 ];

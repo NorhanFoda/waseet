@@ -61,7 +61,7 @@ class MaterialController extends Controller
     {
         $material = Material::with(['users.roles' => function($q){
             $q->where('name', 'student')->orWhere('name', 'direct_teacher')->orWhere('name', 'online_teacher')->get();
-        }], 'stages')->where('id', $id)->first();
+        }, 'stages'],)->where('id', $id)->first();
 
         return view('admin.materials.show', compact('material'));
     }

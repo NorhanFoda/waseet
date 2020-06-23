@@ -40,7 +40,7 @@
                     <div class="card-body">
                         <div class="table-responsive">
                             <a href="{{route('bag_categories.create')}}" class="btn btn-primary btn-block my-2 waves-effect waves-light">{{trans('admin.add')}} </a>
-                            <table class="table table-bordered mb-0 dt-responsive nowrap" id="data_table">
+                            <table class="table table-bordered mb-0 dt-responsive nowrap data_table">
                                 <thead>
                                 <tr align="center">
                                     <th>#</th>

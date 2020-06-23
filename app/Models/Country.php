@@ -4,7 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\User;
-use App\Models\Country;
+use App\Models\City;
+use App\Models\Job;
 
 class Country extends Model
 {
@@ -16,5 +17,9 @@ class Country extends Model
 
     public function cities(){
         return $this->hasMany(City::class);
+    }
+
+    public function jobs(){
+        return $this->hasMany(Job::class);
     }
 }

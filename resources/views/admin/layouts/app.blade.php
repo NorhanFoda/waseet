@@ -139,7 +139,7 @@
 @if(\App::getLocale() == 'ar')
     <script> 
         $(document).ready(function () { 
-            $('#data_table').DataTable({ 
+            $('#data_table, .data_table').DataTable({ 
                 "language": { "url": "//cdn.datatables.net/plug-ins/1.10.19/i18n/Arabic.json" }, 
             });
         });
@@ -147,7 +147,7 @@
 @else
     <script> 
         $(document).ready(function () { 
-            $('#data_table').DataTable({ 
+            $('#data_table, .data_table').DataTable({ 
             });
         });
     </script>
@@ -219,18 +219,41 @@
 </script>
 
 @if(session()->has('message'))
-
-
     <script>
         Swal.fire({
-            title: '{{ session()->get('message')}}',
+            title: "{{ session()->get('message')}}",
             timer: 1000,
             showCancelButton: false,
             showConfirmButton: false,
         });
         location.reload();
     </script>
+@endif
 
+@if(session()->has('success'))
+    <script>
+        Swal.fire({
+            title: "{{ session()->get('success')}}",
+            type: 'success',
+            timer: 1500,
+            showCancelButton: false,
+            showConfirmButton: false,
+        });
+        location.reload();
+    </script>
+@endif
+
+@if(session()->has('error'))
+    <script>
+        Swal.fire({
+            title: "{{ session()->get('error')}}",
+            type: 'error',
+            timer: 1500,
+            showCancelButton: false,
+            showConfirmButton: false,
+        });
+        location.reload();
+    </script>
 @endif
 
 
