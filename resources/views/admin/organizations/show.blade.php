@@ -5,7 +5,7 @@
 @endsection
 
 @section('pageSubTitle')
-    {{trans('admin.bags')}}
+    {{trans('admin.organizations')}}
 @endsection
 
 @section('content')
@@ -14,14 +14,14 @@
     <div class="row breadcrumbs-top">
         <div class="col-12">
             <h2 class="content-header-title float-left mb-0">
-                {{trans('admin.bags')}}
+                {{trans('admin.organizations')}}
             </h2>
             <div class="breadcrumb-wrapper col-12">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item">
                         <a href="{{route('admin.home')}}">{{trans('admin.home')}}</a>
                     </li>
-                    <li class="breadcrumb-item active">{{trans('admin.bags')}}
+                    <li class="breadcrumb-item active">{{trans('admin.organizations')}}
                     </li>
                 </ol>
             </div>
@@ -36,158 +36,77 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="card-title">
-                            {{$bag->{'name_'.session('lang')} }}
+                            {{$org->name}}
+                        </div>
+                        <div class="card-title">
+                            {{$org->country->{'name_'.session('lang')} }} - 
+                            {{$org->city->{'name_'.session('lang')} }}
                         </div>
                     </div>
                     <div class="card-body">
                         <div class="row">
                             <div class="users-view-image">
-                                <img src="{{$bag->image ? $bag->image->path : 'images/product-avatar.png'}}" class="users-avatar-shadow rounded mb-2 pr-2 ml-1" 
-                                    alt="avatar" style="width:150px; height:150px;">
+                                <img src="{{$org->image ? $org->image->path : 'images/product-avatar.png'}}" class="users-avatar-shadow rounded mb-2 pr-2 ml-1" 
+                                alt="avatar" style="width:150px; height:150px;">
                             </div>
-                            {{trans('admin.rate')}}: {{$bag->ratings->count() > 0 ? ceil($bag->ratings->sum('rate') / $bag->ratings->count()).'/5' : trans('admin.no_ratings')}}
                         </div>
-                        <div class="row">
-                            <div class="col-12 col-sm-9 col-md-6 col-lg-5">
-                                <table>
-                                    <tr>
-                                        <td class="font-weight-bold">{{trans('admin.bag_category')}}</td>
-                                        <td style='margin: 5px; padding: 15px;'>
-                                            {{$bag->category->{'name_'.session('lang')} }}
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
-
-                            <div class="col-12 col-sm-9 col-md-6 col-lg-5">
-                                <table>
-                                    <tr>
-                                        <td class="font-weight-bold">{{trans('admin.price')}}</td>
-                                        <td style='margin: 5px; padding: 15px;'>
-                                            {{$bag->price}} {{trans('admin.sr')}}
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
-
-                            <div class="col-12">
-                                <a href="{{route('bags.edit', $bag->id)}}" class="btn btn-primary mr-1"><i class="feather icon-edit-1"></i>{{trans('admin.edit')}}</a>
-
-
-                                <a title="delete" onclick="return true;" id="confirm-color" object_id='{{$bag->id}}'
-                                    class="delete btn btn-outline-danger" style="color:white;"><i class="feather icon-trash-2"></i>{{trans('admin.delete')}}</a>
-                            </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <a href="{{route('organizations.edit', $org->id)}}" class="btn btn-primary mr-1"><i class="feather icon-edit-1"></i>{{trans('admin.edit')}}</a>
+                            <a title="delete" onclick="return true;" id="confirm-color" object_id='{{$org->id}}'
+                                class="delete btn btn-outline-danger" style="color:white;"><i class="feather icon-trash-2"></i>{{trans('admin.delete')}}</a>
                         </div>
                     </div>
                 </div>
             </div>
             <!-- account end -->
 
-            {{-- description start --}}
+            <!-- announced jobs start -->
             <div class="col-12">
                 <div class="card">
                     <div class="card-header border-bottom mx-2 px-0">
                         <h6 class="border-bottom py-1 mb-0 font-medium-2">
-                            <i class="fa fa-align-right"></i>
-                            {{trans('admin.description')}}
-                        </h6>
-                    </div>
-                    <div class="card-body px-75">
-                        {{$bag->{'description_'.session('lang')} }}
-                    </div>
-                </div>
-            </div>
-            {{-- description end --}}
-
-            {{-- contents start --}}
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-header border-bottom mx-2 px-0">
-                        <h6 class="border-bottom py-1 mb-0 font-medium-2">
-                            <i class="fa fa-align-right"></i>
-                            {{trans('admin.contents')}}
-                        </h6>
-                    </div>
-                    <div class="card-body px-75">
-                        {!! $bag->{'contents_'.session('lang')} !!}
-                    </div>
-                </div>
-            </div>
-            {{-- contents end --}}
-
-            {{-- bemefits start --}}
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-header border-bottom mx-2 px-0">
-                        <h6 class="border-bottom py-1 mb-0 font-medium-2">
-                            <i class="fa fa-align-right"></i>
-                            {{trans('admin.benefits')}}
-                        </h6>
-                    </div>
-                    <div class="card-body px-75">
-                        {!! $bag->{'benefits_'.session('lang')} !!}
-                    </div>
-                </div>
-            </div>
-            {{-- benefits end --}}
-
-            {{-- video start --}}
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-header border-bottom mx-2 px-0">
-                        <h6 class="border-bottom py-1 mb-0 font-medium-2">
-                            <i class="fa fa-align-right"></i>
-                            {{trans('admin.video')}}
-                        </h6>
-                    </div>
-                    <div class="card-body px-75" style="text-align: center;">
-                        <video width="320" height="240" poster="{{$bag->video->poster}}" controls>
-                            <source src="{{$bag->video->path}}" type="video/mp4">
-                            <source src="{{$bag->video->path}}" type="video/ogg">
-                         </video>
-                    </div>
-                </div>
-            </div>
-            {{-- video end --}}
-
-            <!-- ratings start -->
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-header border-bottom mx-2 px-0">
-                        <h6 class="border-bottom py-1 mb-0 font-medium-2">
-                            <i class="fa fa-star-half-o"></i>
-                            {{trans('admin.rate')}}
+                            <i class="fa fa-bullhorn"></i>
+                            {{trans('admin.announced_jobs')}}
                         </h6>
                     </div>
                     <div class="card-body px-75">
                         <div class="table-responsive users-view-permission">
-                            <table class="table table-borderless">
+                            <table class="table table-borderless dt-responsive nowrap" id="data_table">
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>{{trans('admin.user')}}</th>
-                                        <th>{{trans('admin.rate')}}</th>
+                                        <th>{{trans('admin.name')}}</th>
+                                        <th>{{trans('admin.location')}}</th>
+                                        <th>{{trans('admin.required_number')}}</th>
+                                        <th>{{trans('admin.salary')}}</th>
+                                        <th>{{trans('admin.action')}}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @if(count($bag->ratings) > 0)
-                                        @foreach($bag->ratings as $rate)
-                                        <tr>
-                                            <td>{{$loop->iteration}}</td>
-                                            <td>{{$rate->user->name}}</td>
-                                            <td>{{$rate->rate}}</td>
-                                        </tr>
-                                        @endforeach
-                                    @else
-                                        {{trans('admin.no_ratings')}}
-                                    @endif
+                                    @foreach($org->job_announces as $job)
+                                        @if($user->hasrole('online_teacher'))
+                                            <tr>
+                                                <td>{{$loop->iteration}}</td>
+                                                <td>{{$job->{'name_'.session('lang')} }}</td>
+                                                <td>{{$job->address}}</td>
+                                                <td>{{$job->required_number}}</td>
+                                                <td>{{$job->salary}}</td>
+                                                <td>
+                                                    <a href="{{route('users.show', $user->id)}}" class="btn" style="color:white;"><i class="fa fa-eye"></i></a>
+                                                </td>
+                                            </tr>
+                                        @endif
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- ratings end -->
+            <!-- announced jobs end -->
+
         </div>
     </section>
     <!-- page users view end -->
@@ -222,7 +141,7 @@
                     var status = $(this).attr('object_status');
                         token = $('meta[name="csrf-token"]').attr('content');
                         $.ajax({
-                            url: "{{route('bags.delete')}}",
+                            url: "{{route('organizations.delete')}}",
                             type: "post",
                             dataType: 'json',
                             data: {"_token": "{{ csrf_token() }}", id: id},
@@ -234,7 +153,8 @@
                                         showConfirmButton: false,
                                         timer: 1500
                                     });
-                                    window.location.href = '{{route("bags.index")}}';
+
+                                    window.location.href = "{{route('organizations.index')}}";
                                 }
                                 else if(data.data == 0){
                                     Swal.fire({
@@ -243,7 +163,8 @@
                                         showConfirmButton: false,
                                         timer: 1500
                                     });
-                                    window.location.href = '{{route("bags.index")}}';
+
+                                    window.location.href = "{{route('organizations.index')}}";
                                 }
                             }
                         });
@@ -254,7 +175,7 @@
                     swalWithBootstrapButtons.fire({
                         title: '{{trans('admin.alert_cancelled')}}',
                         showConfirmButton: false,
-                        timer: 1000
+                        timer: 1500
                     });
                 }
             })

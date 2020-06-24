@@ -19,6 +19,7 @@
             <li class=" nav-item"><a href="{{route('materials.index')}}"><i class="fa fa-book"></i><span class="menu-title" data-i18n="Dashboard">{{trans('admin.materials')}}</span></a></li>
             <li class=" nav-item"><a href="{{route('countries.index')}}"><i class="fa fa-flag"></i><span class="menu-title" data-i18n="Dashboard">{{trans('admin.countries')}}</span></a></li>
             <li class=" nav-item"><a href="{{route('cities.index')}}"><i class="fa fa-map-marker"></i><span class="menu-title" data-i18n="Dashboard">{{trans('admin.cities')}}</span></a></li>
+            <li class=" nav-item"><a href="{{route('organizations.index')}}"><i class="fa fa-university"></i><span class="menu-title" data-i18n="Dashboard">{{trans('admin.organizations')}}</span></a></li>
 
         </ul>
     </div>

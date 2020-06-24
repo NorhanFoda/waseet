@@ -71,13 +71,19 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
             // Countries
             Route::resource('countries', 'Admin\CountryController');
             Route::post('delete_country', 'Admin\CountryController@deleteCountry')->name('countries.delete');
+            Route::post('get_cities', 'Admin\CountryController@getCities')->name('countries.getCities');
 
             // Cities
             Route::resource('cities', 'Admin\CityController');
             Route::post('delete_city', 'Admin\CityController@deleteCity')->name('cities.delete');
 
+            // Organizations
+            Route::resource('organizations', 'Admin\OrganizationController');
+            Route::post('delete_organization', 'Admin\OrganizationController@deleteOrganization')->name('organizations.delete');
+
             // Users
             Route::resource('users', 'Admin\UserController');
+            Route::post('delete_user', 'Admin\UserController@deleteUser')->name('users.delete');
         });
     });
 });

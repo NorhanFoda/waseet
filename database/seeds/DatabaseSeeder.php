@@ -21,5 +21,7 @@ class DatabaseSeeder extends Seeder
         $this->call(MaterialStageSeeder::class);
         $this->call(EduTypeSeeder::class);
         $this->call(EduLevelSeeder::class);
+        $this->call(CountrySeeder::class);
+        $this->call(CitySeeder::class);
     }
 }

@@ -40,10 +40,16 @@ class StageController extends Controller
     {
         $this->validate($request,['name_ar' => 'required', 'name_en' => 'required']);
 
-        Stage::create($request->all());
+        $stage = Stage::create($request->all());
 
-        session()->flash('message', trans('admin.created'));
-        return redirect()->route('stages.index');
+        if($stage){
+            session()->flash('success', trans('admin.created'));
+            return redirect()->route('stages.index');    
+        }
+        else{
+            session()->flash('error', trans('admin.error'));
+            return redirect()->back();
+        }
     }
 
     /**
@@ -85,10 +91,16 @@ class StageController extends Controller
     {
         $this->validate($request,['name_ar' => 'required', 'name_en' => 'required']);
 
-        Stage::find($id)->update($request->all());
+        $stage = Stage::find($id)->update($request->all());
 
-        session()->flash('message', trans('admin.updated'));
-        return redirect()->route('stages.index');
+        if($stage){
+            session()->flash('success', trans('admin.updated'));
+            return redirect()->route('stages.index');    
+        }
+        else{
+            session()->flash('error', trans('admin.error'));
+            return redirect()->back();
+        }
     }
 
     /**

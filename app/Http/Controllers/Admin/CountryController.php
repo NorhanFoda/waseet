@@ -40,10 +40,16 @@ class CountryController extends Controller
     {
         $this->validate($request,['name_ar' => 'required', 'name_en' => 'required']);
 
-        Country::create($request->all());
+        $country = Country::create($request->all());
 
-        session()->flash('success', trans('admin.created'));
-        return redirect()->route('countries.index');
+        if($country){
+            session()->flash('success', trans('admin.created'));
+            return redirect()->route('countries.index');    
+        }
+        else{
+            session()->flash('error', trans('admin.error'));
+            return redirect()->back();
+        }
     }
 
     /**
@@ -85,10 +91,16 @@ class CountryController extends Controller
     {
         $this->validate($request,['name_ar' => 'required', 'name_en' => 'required']);
 
-        Country::find($id)->update($request->all());
+        $country = Country::find($id)->update($request->all());
 
-        session()->flash('success', trans('admin.updated'));
-        return redirect()->route('countries.index');
+        if($country){
+            session()->flash('success', trans('admin.updated'));
+            return redirect()->route('countries.index');    
+        }
+        else{
+            session()->flash('error', trans('admin.error'));
+            return redirect()->back();
+        }
     }
 
     /**
@@ -125,5 +137,11 @@ class CountryController extends Controller
                 'data' => 1
             ], 200);
         }
+    }
+
+    public function getCities(Request $request){
+        $cities = Country::find($request->id)->cities;
+
+        return view('admin.organizations.ajax.cities', compact('cities'));
     }
 }

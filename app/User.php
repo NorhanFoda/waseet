@@ -33,7 +33,7 @@ class User extends Authenticatable
         'name', 'email', 'password',
         'phone_main', 'phone_secondary', 'country_id', 'address', 
         'exper_years', 'salary_month', 'salary_hour',
-        'stage_id', 'country_id', 'age',
+        'stage_id', 'city_id', 'age',
         'edu_level_id', 'edu_type_id', 'organizayion_gender',
     ];
 

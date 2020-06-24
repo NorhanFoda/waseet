@@ -47,8 +47,15 @@ class MaterialController extends Controller
 
         $stage->materials()->attach($material);
 
-        session()->flash('message', trans('created'));
-        return redirect()->route('materials.index');
+        if($material){
+            session()->flash('success', trans('admin.created'));
+            return redirect()->route('materials.index');    
+        }
+        else{
+            session()->flash('error', trans('admin.error'));
+            return redirect()->back();
+        }
+
     }
 
     /**
@@ -96,8 +103,14 @@ class MaterialController extends Controller
 
         $stage->materials()->sync($material);
 
-        session()->flash('message', trans('created'));
-        return redirect()->route('materials.index');
+        if($material){
+            session()->flash('success', trans('admin.updated'));
+            return redirect()->route('materials.index');    
+        }
+        else{
+            session()->flash('error', trans('admin.error'));
+            return redirect()->back();
+        }
     }
 
     /**

@@ -4,7 +4,7 @@
 @section('pageTitle'){{trans('admin.home')}}
 @endsection
 
-@section('pageSubTitle') {{trans('admin.bags')}}
+@section('pageSubTitle') {{trans('admin.organizations')}}
 @endsection
 
 @section('content')
@@ -15,7 +15,7 @@
     <div class="row breadcrumbs-top">
         <div class="col-12">
             <h2 class="content-header-title float-left mb-0">
-                {{trans('admin.bags')}}
+                {{trans('admin.organizations')}}
             </h2>
             <div class="breadcrumb-wrapper col-12">
                 <ol class="breadcrumb">
@@ -29,14 +29,9 @@
         </div>
     </div>
 
-    @foreach($errors->all() as $error)
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            <span style="color:red;">{{$error}}</span>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>    
-    @endforeach
+    @if(count($errors->all()) > 0)
+        {{session()->flash('error', trans('admin.fields_required'))}}
+    @endif
 
     <div class="col-12">
         <div class="card">
@@ -45,175 +40,160 @@
             </div>
             <div class="card-content">
                 <div class="card-body">
-                    <form class="form form-horizontal needs-validation" enctype="multipart/form-data" novalidate method="post" action="{{route('bags.store')}}">
+                    <form class="form form-horizontal needs-validation" enctype="multipart/form-data" novalidate method="post" action="{{route('organizations.store')}}">
                         @csrf
                         <div class="form-body">
                             <div class="row">
 
-                                {{-- bag categories start --}}
+                                {{-- enter name --}}
                                 <div class="col-12">
                                     <div class="form-group row">
                                         <div class="col-md-2">
-                                            <span>{{trans('admin.bag_categories')}}</span>
+                                            <span>{{trans('admin.name')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <select name="bag_category_id" class="form-control">
-                                                @foreach ($categories as $cat)
-                                                    <option value="{{$cat->id}}">{{$cat->{'name_'.session('lang')} }}</option>
+                                            <input type="text" class="form-control" placeholder="{{trans('admin.name')}}" name="name" required>
+                                            <div class="invalid-feedback">
+                                                {{trans('admin.name')}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- enter name end --}}
+
+                                {{-- enter email --}}
+                                <div class="col-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-2">
+                                            <span>{{trans('admin.email')}}</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <input type="text" class="form-control" placeholder="{{trans('admin.email')}}" name="email" required>
+                                            <div class="invalid-feedback">
+                                                {{trans('admin.email')}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- enter email end --}}
+
+                                {{-- enter phone main --}}
+                                <div class="col-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-2">
+                                            <span>{{trans('admin.phone_main')}}</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <input type="tel" class="form-control" placeholder="{{trans('admin.phone_main')}}" name="phone_main" required>
+                                            <div class="invalid-feedback">
+                                                {{trans('admin.phone_main')}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- enter phone main end --}}
+
+                                {{-- enter phone secondary --}}
+                                <div class="col-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-2">
+                                            <span>{{trans('admin.phone_secondary')}}</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <input type="tel" class="form-control" placeholder="{{trans('admin.phone_secondary')}}" name="phone_secondary">
+                                            <div class="invalid-feedback">
+                                                {{trans('admin.phone_secondary')}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- enter phone secondary end --}}
+
+                                {{-- enter password --}}
+                                <div class="col-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-2">
+                                            <span>{{trans('admin.password')}}</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <input type="password" class="form-control" placeholder="{{trans('admin.password')}}" name="password">
+                                            <div class="invalid-feedback">
+                                                {{trans('admin.password')}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-2">
+                                            <span>{{trans('admin.password_confirmation')}}</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <input type="password" class="form-control" placeholder="{{trans('admin.password_confirmation')}}" name="password_confirmation">
+                                            <div class="invalid-feedback">
+                                                {{trans('admin.password_confirmation')}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- enter password end --}}
+
+                                {{-- select country  --}}
+                                <div class="col-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-2">
+                                            <span>{{trans('admin.country')}}</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <select name="country_id" class="form-control" id="country_id">
+                                                @foreach($countries as $country)
+                                                    <option value="{{$country->id}}">{{$country->{'name_'.session('lang')} }}</option>
                                                 @endforeach
                                             </select>
                                             <div class="invalid-feedback">
-                                                {{trans('admin.bag_categories')}}
+                                                {{trans('admin.country')}}
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                {{-- bag categories end --}}
+                                {{-- select country end --}}
 
-
-                                {{-- enter arabic name --}}
+                                {{-- select city --}}
                                 <div class="col-12">
                                     <div class="form-group row">
                                         <div class="col-md-2">
-                                            <span>{{trans('admin.name_ar')}}</span>
+                                            <span>{{trans('admin.city')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <input type="text" class="form-control" placeholder="{{trans('admin.name_ar')}}" name="name_ar" required>
+                                            <select name="city_id" class="form-control" id="city_id">
+                                                @foreach ($countries[0]->cities as $city)
+                                                    <option value="{{$city->id}}">{{$city->{'name_'.session('lang')} }}</option>
+                                                @endforeach
+                                            </select>
                                             <div class="invalid-feedback">
-                                                {{trans('admin.name_ar')}}
+                                                {{trans('admin.city')}}
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                {{-- enter arabic name end --}}
+                                {{-- select city end --}}
 
-                                {{-- enter english name --}}
+                                {{-- enter location --}}
                                 <div class="col-12">
                                     <div class="form-group row">
                                         <div class="col-md-2">
-                                            <span>{{trans('admin.name_en')}}</span>
+                                            <span>{{trans('admin.location')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <input type="text" class="form-control" placeholder="{{trans('admin.name_en')}}" name="name_en" required>
+                                            <input type="text" class="form-control" placeholder="{{trans('admin.location')}}" name="address" required>
                                             <div class="invalid-feedback">
-                                                {{trans('admin.name_en')}}
+                                                {{trans('admin.location')}}
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                {{-- enter english name end --}}
-
-                                {{-- enter description_ar --}}
-                                <div class="col-12">
-                                    <div class="form-group row">
-                                        <div class="col-md-2">
-                                            <span>{{trans('admin.description_ar')}}</span>
-                                        </div>
-                                        <div class="col-md-10">
-                                            <textarea name="description_ar" class="form-control" cols="30" rows="6" placeholder="{{trans('admin.description_ar')}}" required></textarea>
-                                            <div class="invalid-feedback">
-                                                {{trans('admin.description_ar')}}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                {{-- enter description_ar end --}}
-
-                                {{-- enter description_en --}}
-                                <div class="col-12">
-                                    <div class="form-group row">
-                                        <div class="col-md-2">
-                                            <span>{{trans('admin.description_en')}}</span>
-                                        </div>
-                                        <div class="col-md-10">
-                                            <textarea name="description_en" class="form-control" cols="30" rows="6" placeholder="{{trans('admin.description_en')}}" required></textarea>
-                                            <div class="invalid-feedback">
-                                                {{trans('admin.description_en')}}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                {{-- enter description_en end --}}
-
-                                {{-- contents_ar start --}}
-                                <div class="col-12">
-                                    <div class="form-group row">
-                                        <div class="col-md-2">
-                                            <span>{{trans('admin.contents_ar')}}</span>
-                                        </div>
-                                        <div class="col-md-10">
-                                            <textarea name="contents_ar" class="form-control myTextArea" cols="30" rows="6" placeholder="{{trans('admin.contents_ar')}}" required></textarea>
-                                            <div class="invalid-feedback">
-                                                {{trans('admin.contents_ar')}}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                {{-- contents_ar end --}}
-
-                                {{-- contents_en start --}}
-                                <div class="col-12">
-                                    <div class="form-group row">
-                                        <div class="col-md-2">
-                                            <span>{{trans('admin.contents_en')}}</span>
-                                        </div>
-                                        <div class="col-md-10">
-                                            <textarea name="contents_en" class="form-control myTextArea" cols="30" rows="6" placeholder="{{trans('admin.contents_en')}}" required></textarea>
-                                            <div class="invalid-feedback">
-                                                {{trans('admin.contents_en')}}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                {{-- contents_en end --}}
-
-                                {{-- benefits_ar start --}}
-                                <div class="col-12">
-                                    <div class="form-group row">
-                                        <div class="col-md-2">
-                                            <span>{{trans('admin.benefits_ar')}}</span>
-                                        </div>
-                                        <div class="col-md-10">
-                                            <textarea name="benefits_ar" class="form-control myTextArea" cols="30" rows="6" placeholder="{{trans('admin.benefits_ar')}}" required></textarea>
-                                            <div class="invalid-feedback">
-                                                {{trans('admin.benefits_ar')}}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                {{-- benefits_ar end --}}
-
-                                {{-- benefits_en start --}}
-                                <div class="col-12">
-                                    <div class="form-group row">
-                                        <div class="col-md-2">
-                                            <span>{{trans('admin.benefits_en')}}</span>
-                                        </div>
-                                        <div class="col-md-10">
-                                            <textarea name="benefits_en" class="form-control myTextArea" cols="30" rows="6" placeholder="{{trans('admin.benefits_en')}}" required></textarea>
-                                            <div class="invalid-feedback">
-                                                {{trans('admin.benefits_en')}}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                {{-- benefits_en end --}}
-
-                                {{-- price start --}}
-                                <div class="col-12">
-                                    <div class="form-group row">
-                                        <div class="col-md-2">
-                                            <span>{{trans('admin.price')}}</span>
-                                        </div>
-                                        <div class="col-md-10">
-                                            <input type="number" step="0.1" class="form-control" placeholder="{{trans('admin.price')}}" name="price" required>
-                                            <div class="invalid-feedback">
-                                                {{trans('admin.price')}}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                {{-- proce end --}}
+                                {{-- enter location end --}}
 
                                 {{-- enter image --}}
                                 <div class="col-12">
@@ -222,7 +202,7 @@
                                             <span>{{trans('admin.image')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <input type="file" name="image" class="form-control" accept="image/*" placeholder="{{trans('admin.image')}}" required>
+                                            <input type="file" name="image" class="form-control" accept="image/*" placeholder="{{trans('admin.image')}}">
                                             <div class="invalid-feedback">
                                                 {{trans('admin.image_required')}}
                                             </div>
@@ -230,39 +210,6 @@
                                     </div>
                                 </div>
                                 {{-- enter image end --}}
-
-                                {{-- video start --}}
-                                <div class="col-12">
-                                    <div class="form-group row">
-                                        <div class="col-md-2">
-                                            <span>{{trans('admin.video')}}</span>
-                                        </div>
-                                        <div class="col-md-10">
-                                            <input type="file" name="video" class="form-control" accept="video/*" placeholder="{{trans('admin.video')}}" required>
-                                            <div class="invalid-feedback">
-                                                {{trans('admin.video_required')}}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                {{-- video end --}}
-
-                                {{-- enter video poster start --}}
-                                <div class="col-12">
-                                    <div class="form-group row">
-                                        <div class="col-md-2">
-                                            <span>{{trans('admin.poster')}}</span>
-                                        </div>
-                                        <div class="col-md-10">
-                                            <input type="file" name="poster" class="form-control" accept="image/*" placeholder="{{trans('admin.poster')}}" required>
-                                            <div class="invalid-feedback">
-                                                {{trans('admin.poster_required')}}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                {{-- enter video poster end --}}
-
 
                                 <div class="col-12 text-center">
                                     <button type="submit" class="btn btn-primary mr-1 mb-1 waves-effect waves-light">{{trans('admin.save')}}</button>
@@ -275,4 +222,22 @@
         </div>
     </div>
 
+@endsection
+
+@section('scripts')
+    <script>
+        $(document).ready(function(){
+            $('#country_id').change(function(){
+                $.ajax({
+                    url: "{{route('countries.getCities')}}",
+                    type: "POST",
+                    dataType: 'html',
+                    data: {"_token": "{{ csrf_token() }}", id: $(this).val() },
+                    success: function(data){
+                        $('#city_id').html(data);
+                    }
+                });
+            });
+        });
+    </script>
 @endsection

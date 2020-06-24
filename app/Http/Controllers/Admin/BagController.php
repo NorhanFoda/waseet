@@ -75,8 +75,14 @@ class BagController extends Controller
             $bag->video()->save($video);
         }
 
-        session()->flash('message', trans('admin.created'));
-        return redirect()->route('bags.index');
+        if($bag){
+            session()->flash('success', trans('admin.created'));
+            return redirect()->route('bags.index');    
+        }
+        else{
+            session()->flash('error', trans('admin.error'));
+            return redirect()->back();
+        }
     }
 
     /**
@@ -159,8 +165,14 @@ class BagController extends Controller
             }
         }
 
-        session()->flash('message', trans('admin.created'));
-        return redirect()->route('bags.index');
+        if($bag){
+            session()->flash('success', trans('admin.updated'));
+            return redirect()->route('bags.index');    
+        }
+        else{
+            session()->flash('error', trans('admin.error'));
+            return redirect()->back();
+        }
     }
 
     /**

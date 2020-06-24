@@ -16,7 +16,7 @@ class Job extends Model
         'exper_years', 'address', 'required_number',
         'free_places', 'description_ar', 'description_en',
         'organization_name', 'organization_phone', 'organization_email',
-        'required_age', 'salary', 'country_id',
+        'required_age', 'salary', 'country_id', 'user_id',
     ];
 
     public function images(){

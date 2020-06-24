@@ -31,6 +31,7 @@ class HomeController extends Controller
 
     public function change_locale($locale){
         \LaravelLocalization::setLocale($locale);
+        session(['lang' => $locale]);
 	    $url = \LaravelLocalization::getLocalizedURL(\App::getLocale(), \URL::previous());
 		return \Redirect::to($url);
     }

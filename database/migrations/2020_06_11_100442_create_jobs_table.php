@@ -30,6 +30,7 @@ class CreateJobsTable extends Migration
             $table->integer('required_age');
             $table->string('salary');
             $table->unsignedBigInteger('country_id')->nullable()->index();
+            $table->unsignedBigInteger('user_id')->nullable()->index();
             $table->timestamps();
         });
     }

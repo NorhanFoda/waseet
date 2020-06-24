@@ -4,6 +4,13 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\User;
+use App\Models\Country;
+use App\Models\Image;
+use App\Http\Requests\Organizations\OrganizationRequest;
+use App\Http\Requests\Organizations\EditOrganizationRequest;
+use App\Classes\Upload;
+use Illuminate\Support\Facades\Hash;
 
 class OrganizationController extends Controller
 {
@@ -14,7 +21,11 @@ class OrganizationController extends Controller
      */
     public function index()
     {
-        //
+        $organizations = User::whereHas('roles', function($q){
+            $q->where('name', 'organization');
+        })->get();
+
+        return view('admin.organizations.index', compact('organizations'));
     }
 
     /**
@@ -24,7 +35,8 @@ class OrganizationController extends Controller
      */
     public function create()
     {
-        //
+        $countries = Country::all();
+        return view('admin.organizations.create', compact('countries'));
     }
 
     /**
@@ -33,9 +45,33 @@ class OrganizationController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(OrganizationRequest $request)
     {
-        //
+        $org = User::create($request->all());
+
+        $org->update(['password' => Hash::make($request->password)]);
+
+        $org->assignRole('organization');
+
+        if($request->has('image')){
+            $url = Upload::uploadImage($request->image);
+            $image = Image::create([
+                'path' => $url,
+                'imageRef_id' => $org->id,
+                'imageRef_type' => 'App\User'
+            ]);
+            $org->image()->save($image);
+        }
+
+        if($org){
+            session()->flash('success', trans('admin.created'));
+            return redirect()->route('organizations.index');
+        }
+        else{
+            session()->flash('error', trans('admin.error'));
+            return redirect()->back();
+        }
+
     }
 
     /**
@@ -46,7 +82,9 @@ class OrganizationController extends Controller
      */
     public function show($id)
     {
-        //
+        $org = User::with('job_announces', 'image', 'country', 'city', 'job_announces.applicants')->where('id' ,$id)->first();
+        
+        return view('admin.organizations.show', compact('org'));
     }
 
     /**
@@ -57,7 +95,10 @@ class OrganizationController extends Controller
      */
     public function edit($id)
     {
-        //
+        $org = User::find($id);
+        $countries = Country::all();
+        $cities = Country::find($org->country_id)->cities;
+        return view('admin.organizations.edit', compact('org', 'countries', 'cities'));
     }
 
     /**
@@ -69,7 +110,46 @@ class OrganizationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $org = User::find($id);
+        $org->update($request->all());
+
+        $org->assignRole('organization');
+
+        if($request->has('image')){
+            if($org->image != null){
+                $remove = Upload::deleteImage($org->image->path);
+                if($remove){
+                    $url = Upload::uploadImage($request->image);
+                    $image = Image::where('imageRef_id', $org->id)->first();
+                    $image->update([
+                        'path' => $url,
+                    ]);
+                    $org->image()->save($image);
+                }
+                else{
+                    session()->flash('error', trans('admin.error'));
+                    return redirect()->back();
+                }
+            }
+            else{
+                $url = Upload::uploadImage($request->image);
+                $image = Image::create([
+                    'path' => $url,
+                    'imageRef_id' => $org->id,
+                    'imageRef_type' => 'App\User'
+                ]);
+                $org->image()->save($image);
+            }
+        }
+
+        if($org){
+            session()->flash('success', trans('admin.updated'));
+            return redirect()->route('organizations.index');
+        }
+        else{
+            session()->flash('error', trans('admin.error'));
+            return redirect()->back();
+        }
     }
 
     /**

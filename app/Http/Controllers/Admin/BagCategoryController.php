@@ -53,8 +53,14 @@ class BagCategoryController extends Controller
             $category->image()->save($image);
         }
 
-        session()->flash('message', trans('admin.created'));
-        return redirect()->route('bag_categories.index');
+        if($category){
+            session()->flash('success', trans('admin.created'));
+            return redirect()->route('bag_categories.index');    
+        }
+        else{
+            session()->flash('error', trans('admin.error'));
+            return redirect()->back();
+        }
 
     }
 
@@ -110,8 +116,14 @@ class BagCategoryController extends Controller
             }
         }
 
-        session()->flash('message', trans('admin.updated'));
-        return redirect()->route('bag_categories.index');
+        if($category){
+            session()->flash('success', trans('admin.updated'));
+            return redirect()->route('bag_categories.index');    
+        }
+        else{
+            session()->flash('error', trans('admin.error'));
+            return redirect()->back();
+        }
     }
 
     /**
