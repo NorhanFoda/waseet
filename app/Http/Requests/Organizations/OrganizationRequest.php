@@ -32,6 +32,8 @@ class OrganizationRequest extends FormRequest
             'country_id' => 'required',
             'city_id' => 'required',
             'address' => 'required',
+            'edu_type_id' => 'required',
+            'other_edu_type' => 'required_if:edu_type_id,4'
         ];
     }
 }

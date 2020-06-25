@@ -7,7 +7,7 @@ use App\User;
 
 class EduType extends Model
 {
-    protected $fillable = ['type_ar', 'type_en', 'other'];
+    protected $fillable = ['name_ar', 'name_en'];
 
     public function users(){
         return $this->hasMany(User::class);

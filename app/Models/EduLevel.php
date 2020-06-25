@@ -7,7 +7,7 @@ use App\User;
 
 class EduLevel extends Model
 {
-    protected $fillable = ['level_ar', 'level_en', 'other'];
+    protected $fillable = ['name_ar', 'name_en'];
 
     public function users(){
         return $this->hasMany(User::class);

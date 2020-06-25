@@ -28,7 +28,9 @@ class CreateUsersTable extends Migration
             $table->string('salary_hour')->nullable();
             $table->integer('age')->nullable();
             $table->unsignedBigInteger('edu_level_id')->nullable()->index();
+            $table->string('other_edu_level')->nullable();
             $table->unsignedBigInteger('edu_type_id')->nullable()->index();
+            $table->string('other_edu_type')->nullable();
             $table->boolean('organizayion_gender')->default(1); // 0 -> sons - 1 -> girls
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

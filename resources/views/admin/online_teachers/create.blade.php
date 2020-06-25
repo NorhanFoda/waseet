@@ -22,7 +22,7 @@
                     <li class="breadcrumb-item">
                         <a href="{{route('admin.home')}}">{{trans('admin.home')}}</a>
                     </li>
-                    <li class="breadcrumb-item active">{{trans('admin.edit')}}
+                    <li class="breadcrumb-item active">{{trans('admin.add')}}
                     </li>
                 </ol>
             </div>
@@ -40,46 +40,10 @@
             </div>
             <div class="card-content">
                 <div class="card-body">
-                    <form class="form form-horizontal needs-validation" enctype="multipart/form-data" novalidate method="post" action="{{route('organizations.update', $org->id)}}">
+                    <form class="form form-horizontal needs-validation" enctype="multipart/form-data" novalidate method="post" action="{{route('organizations.store')}}">
                         @csrf
-                        @method('PUT')
                         <div class="form-body">
                             <div class="row">
-
-                                {{-- organization type start --}}
-                                <div class="col-12">
-                                    <div class="form-group row">
-                                        <div class="col-md-2">
-                                            <span>{{trans('admin.organization_type')}}</span>
-                                        </div>
-                                        <div class="col-md-10">
-                                            <select name="edu_type_id" class="form-control" id="edu_type_id" required>
-                                                @foreach ($edu_types as $type)
-                                                    <option value="{{$type->id}}" @if($org->edu_type_id == $type->id) selected @endif>{{$type->{'name_'.session('lang')} }}</option>
-                                                @endforeach
-                                            </select>
-                                            <div class="invalid-feedback">
-                                                {{trans('admin.organization_type')}}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                {{-- organization type end --}}
-
-                                {{-- enter other organization type start --}}
-                                <div class="col-12" id="other_organization_type" @if($org->edu_type_id != 4) hidden @endif>
-                                    <div class="form-group row">
-                                        <div class="col-md-2">
-                                        </div>
-                                        <div class="col-md-10">
-                                            <input type="text" class="form-control" value="{{$org->other_edu_type}}" id="other_organization_type_text" name="other_edu_type" placeholder="{{trans('admin.organization_type')}}">
-                                            <div class="invalid-feedback">
-                                                {{trans('admin.organization_type')}}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                {{-- enter other organization type end --}}
 
                                 {{-- enter name --}}
                                 <div class="col-12">
@@ -88,7 +52,7 @@
                                             <span>{{trans('admin.name')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <input type="text" class="form-control" value="{{$org->name}}" placeholder="{{trans('admin.name')}}" name="name" required>
+                                            <input type="text" class="form-control" placeholder="{{trans('admin.name')}}" name="name" required>
                                             <div class="invalid-feedback">
                                                 {{trans('admin.name')}}
                                             </div>
@@ -104,7 +68,7 @@
                                             <span>{{trans('admin.email')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <input type="text" class="form-control" value="{{$org->email}}" placeholder="{{trans('admin.email')}}" name="email" required>
+                                            <input type="text" class="form-control" placeholder="{{trans('admin.email')}}" name="email" required>
                                             <div class="invalid-feedback">
                                                 {{trans('admin.email')}}
                                             </div>
@@ -120,7 +84,7 @@
                                             <span>{{trans('admin.phone_main')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <input type="tel" class="form-control" value="{{$org->phone_main}}" placeholder="{{trans('admin.phone_main')}}" name="phone_main" required>
+                                            <input type="tel" class="form-control" placeholder="{{trans('admin.phone_main')}}" name="phone_main" required>
                                             <div class="invalid-feedback">
                                                 {{trans('admin.phone_main')}}
                                             </div>
@@ -136,7 +100,7 @@
                                             <span>{{trans('admin.phone_secondary')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <input type="tel" class="form-control" value="{{$org->phone_secondary}}" placeholder="{{trans('admin.phone_secondary')}}" name="phone_secondary">
+                                            <input type="tel" class="form-control" placeholder="{{trans('admin.phone_secondary')}}" name="phone_secondary">
                                             <div class="invalid-feedback">
                                                 {{trans('admin.phone_secondary')}}
                                             </div>
@@ -144,6 +108,36 @@
                                     </div>
                                 </div>
                                 {{-- enter phone secondary end --}}
+
+                                {{-- enter password --}}
+                                <div class="col-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-2">
+                                            <span>{{trans('admin.password')}}</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <input type="password" class="form-control" placeholder="{{trans('admin.password')}}" name="password">
+                                            <div class="invalid-feedback">
+                                                {{trans('admin.password')}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-2">
+                                            <span>{{trans('admin.password_confirmation')}}</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <input type="password" class="form-control" placeholder="{{trans('admin.password_confirmation')}}" name="password_confirmation">
+                                            <div class="invalid-feedback">
+                                                {{trans('admin.password_confirmation')}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- enter password end --}}
 
                                 {{-- select country  --}}
                                 <div class="col-12">
@@ -154,7 +148,7 @@
                                         <div class="col-md-10">
                                             <select name="country_id" class="form-control" id="country_id">
                                                 @foreach($countries as $country)
-                                                    <option value="{{$country->id}}" @if($org->country_id == $country->id) selected @endif>{{$country->{'name_'.session('lang')} }}</option>
+                                                    <option value="{{$country->id}}">{{$country->{'name_'.session('lang')} }}</option>
                                                 @endforeach
                                             </select>
                                             <div class="invalid-feedback">
@@ -173,8 +167,8 @@
                                         </div>
                                         <div class="col-md-10">
                                             <select name="city_id" class="form-control" id="city_id">
-                                                @foreach ($cities as $city)
-                                                    <option value="{{$city->id}}" @if($org->city_id == $city->id) selected @endif>{{$city->{'name_'.session('lang')} }}</option>
+                                                @foreach ($countries[0]->cities as $city)
+                                                    <option value="{{$city->id}}">{{$city->{'name_'.session('lang')} }}</option>
                                                 @endforeach
                                             </select>
                                             <div class="invalid-feedback">
@@ -192,7 +186,7 @@
                                             <span>{{trans('admin.location')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <input type="text" class="form-control" value="{{$org->address}}" placeholder="{{trans('admin.location')}}" name="address" required>
+                                            <input type="text" class="form-control" placeholder="{{trans('admin.location')}}" name="address" required>
                                             <div class="invalid-feedback">
                                                 {{trans('admin.location')}}
                                             </div>
@@ -215,15 +209,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-12">
-                                    <div class="form-group row">
-                                        <div class="col-md-12">
-                                            @if($org->image != null)
-                                                <img src="{{$org->image->path}}" alt="{{$org->name}}" width="100px" height="100px" style="border-radius: :5px">
-                                            @endif
-                                        </div>
-                                    </div>
-                                </div>
                                 {{-- enter image end --}}
 
                                 <div class="col-12 text-center">
@@ -242,7 +227,7 @@
 @section('scripts')
     <script>
         $(document).ready(function(){
-            $(document).on('change', '#country_id', function(){
+            $('#country_id').change(function(){
                 $.ajax({
                     url: "{{route('countries.getCities')}}",
                     type: "POST",
@@ -252,21 +237,6 @@
                         $('#city_id').html(data);
                     }
                 });
-            });
-
-            $(document).on('change', '#edu_type_id', function(){
-                if($(this).val() == 4){
-                    $(this).removeAttr('required');
-                    $('#other_organization_type').removeAttr('hidden');
-                    $('#other_organization_type_text').attr('required', 'required');
-                    $('#other_organization_type_text').val('{{$org->other_edu_type}}');
-                }
-                else{
-                    $('#other_organization_type_text').val('');
-                    $(this).attr('required', 'required');
-                    $('#other_organization_type').attr('hidden', 'hidden');
-                    $('#other_organization_type_text').removeAttr('required');
-                }
             });
         });
     </script>

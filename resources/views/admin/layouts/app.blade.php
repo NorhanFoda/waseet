@@ -117,13 +117,6 @@
 <script src="{{asset('admin/js/scripts/extensions/sweet-alerts.js')}}"></script>
 <!-- END: Page JS-->
 
-{{-- BEGIN: ck editor --}}
-<script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
-<script>
-    CKEDITOR.replace('article-ckeditor');
-</script>
-{{-- END: ck editor --}}
-
 <!-- BEGIN: Main JS-->
 <script src="{{asset('admin/js/scripts/main.js')}}"></script>
 <!-- END: Main JS-->
@@ -217,7 +210,7 @@
 
 
 </script>
-
+{{-- 
 @if(session()->has('message'))
     <script>
         Swal.fire({
@@ -228,7 +221,7 @@
         });
         location.reload();
     </script>
-@endif
+@endif --}}
 
 @if(session()->has('success'))
     <script>
@@ -239,7 +232,6 @@
             showCancelButton: false,
             showConfirmButton: false,
         });
-        location.reload();
     </script>
 @endif
 
@@ -252,7 +244,6 @@
             showCancelButton: false,
             showConfirmButton: false,
         });
-        location.reload();
     </script>
 @endif
 

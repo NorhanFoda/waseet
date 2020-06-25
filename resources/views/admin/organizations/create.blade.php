@@ -45,6 +45,41 @@
                         <div class="form-body">
                             <div class="row">
 
+                                {{-- organization type start --}}
+                                <div class="col-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-2">
+                                            <span>{{trans('admin.organization_type')}}</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <select name="edu_type_id" class="form-control" id="edu_type_id" required>
+                                                @foreach ($edu_types as $type)
+                                                    <option value="{{$type->id}}">{{$type->{'name_'.session('lang')} }}</option>
+                                                @endforeach
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                {{trans('admin.organization_type')}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- organization type end --}}
+
+                                {{-- enter other organization type start --}}
+                                <div class="col-12" id="other_organization_type" hidden>
+                                    <div class="form-group row">
+                                        <div class="col-md-2">
+                                        </div>
+                                        <div class="col-md-10">
+                                            <input type="text" class="form-control" id="other_organization_type_text" name="other_edu_type" placeholder="{{trans('admin.organization_type')}}">
+                                            <div class="invalid-feedback">
+                                                {{trans('admin.organization_type')}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- enter other organization type end --}}
+
                                 {{-- enter name --}}
                                 <div class="col-12">
                                     <div class="form-group row">
@@ -227,7 +262,7 @@
 @section('scripts')
     <script>
         $(document).ready(function(){
-            $('#country_id').change(function(){
+            $(document).on('change', '#country_id', function(){
                 $.ajax({
                     url: "{{route('countries.getCities')}}",
                     type: "POST",
@@ -237,6 +272,19 @@
                         $('#city_id').html(data);
                     }
                 });
+            });
+
+            $(document).on('change', '#edu_type_id', function(){
+                if($(this).val() == 4){
+                    $(this).removeAttr('required');
+                    $('#other_organization_type').removeAttr('hidden');
+                    $('#other_organization_type_text').attr('required', 'required');
+                }
+                else{
+                    $(this).attr('required', 'required');
+                    $('#other_organization_type').attr('hidden', 'hidden');
+                    $('#other_organization_type_text').removeAttr('required');
+                }
             });
         });
     </script>

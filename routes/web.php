@@ -81,6 +81,19 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
             Route::resource('organizations', 'Admin\OrganizationController');
             Route::post('delete_organization', 'Admin\OrganizationController@deleteOrganization')->name('organizations.delete');
 
+            // Online teachers
+            Route::resource('online_teachers', 'Admin\OnlineTeacherController');
+            Route::post('delete_online_teacher', 'Admin\OnlineTeacherController@deleteOnlineTeacher')->name('onlineTeachers.delete');
+
+
+            // EduTypes
+            Route::resource('edu_types', 'Admin\EduTypeController');
+            Route::post('delete_edu_type', 'Admin\EduTypeController@deleteEduType')->name('eduTypes.delete');
+
+            // EduLevels
+            Route::resource('edu_levels', 'Admin\EduLevelController');
+            Route::post('delete_edu_level', 'Admin\EduLevelController@deleteEduLevel')->name('eduLevels.delete');
+            
             // Users
             Route::resource('users', 'Admin\UserController');
             Route::post('delete_user', 'Admin\UserController@deleteUser')->name('users.delete');

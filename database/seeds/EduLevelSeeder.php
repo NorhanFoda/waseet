@@ -13,16 +13,16 @@ class EduLevelSeeder extends Seeder
     {
         DB::table('edu_levels')->insert([
             [
-                'level_ar' => 'بكالوريوس',
-                'level_en' => 'Bachelor',
+                'name_ar' => 'بكالوريوس',
+                'name_en' => 'Bachelor',
             ],
             [
-                'level_ar' => 'ماجستير',
-                'level_en' => 'Master',
+                'name_ar' => 'ماجستير',
+                'name_en' => 'Master',
             ],
             [
-                'level_ar' => 'دكتوراه',
-                'level_en' => 'Doctorate',
+                'name_ar' => 'دكتوراه',
+                'name_en' => 'Doctorate',
             ],
         ]);
     }

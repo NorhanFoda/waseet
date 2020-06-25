@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEduTypesTable extends Migration
+class CreateOrganizationSeekerTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateEduTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('edu_types', function (Blueprint $table) {
+        Schema::create('organization_seeker', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name_ar');
-            $table->string('name_en');
+            $table->unsignedBigInteger('org_id')->nullable()->index();
+            $table->unsignedBigInteger('seeker_id')->nullable()->index();
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateEduTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('edu_types');
+        Schema::dropIfExists('organization_seeker');
     }
 }

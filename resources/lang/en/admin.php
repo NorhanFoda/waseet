@@ -62,7 +62,7 @@ return [
     'benefits' => 'Bag benefits',
 
     // Stages
-    'stages' => 'Educational levels',
+    'stages' => 'Stages',
 
     // Users
     'name' => 'Name',
@@ -93,10 +93,12 @@ return [
     'organizations' => 'Educational institutions',
     'required_number' => 'Required number',
     'salary' => 'Salary',
-    '' => '',
-    '' => '',
-    '' => '',
-    '' => '',
+    'job_applicants' => 'Job applicants',
+    'organization_type' => 'Type of study',
+
+    // EduTypes
+    'edu_types' => 'Education types',
+    'edu_levels' => 'Education levels',
     '' => '',
     '' => '',
     '' => '',

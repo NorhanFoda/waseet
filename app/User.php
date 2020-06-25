@@ -35,6 +35,7 @@ class User extends Authenticatable
         'exper_years', 'salary_month', 'salary_hour',
         'stage_id', 'city_id', 'age',
         'edu_level_id', 'edu_type_id', 'organizayion_gender',
+        'other_edu_type', 'other_edu_level',
     ];
 
     /**
@@ -59,12 +60,24 @@ class User extends Authenticatable
         return $this->morphOne(Image::class, 'imageRef');
     }
 
+    // get the announced jobs of the announcing organization
     public function job_announces(){
         return $this->hasMany(Job::class);
     }
 
+    // get the jobs that the job seeker(user) applied to it
     public function job_applications(){
         return $this->belongsToMany(Job::class);
+    }
+
+    // get the organizations that the job seeker applied to their announced jobs
+    public function job_organizations(){
+        return $this->belongsToMany(Self::class, 'organization_seeker', 'seeker_id', 'org_id');
+    }
+
+    //get the job seekers of specific organization
+    public function org_applicants(){
+        return $this->belongsToMany(Self::class, 'organization_seeker', 'org_id', 'seeker_id');
     }
 
     public function ratings(){

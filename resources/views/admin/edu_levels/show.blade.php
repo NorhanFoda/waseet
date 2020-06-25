@@ -5,7 +5,7 @@
 @endsection
 
 @section('pageSubTitle')
-    {{trans('admin.organizations')}}
+    {{trans('admin.edu_levels')}}
 @endsection
 
 @section('content')
@@ -14,14 +14,14 @@
     <div class="row breadcrumbs-top">
         <div class="col-12">
             <h2 class="content-header-title float-left mb-0">
-                {{trans('admin.organizations')}}
+                {{trans('admin.edu_levels')}}
             </h2>
             <div class="breadcrumb-wrapper col-12">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item">
                         <a href="{{route('admin.home')}}">{{trans('admin.home')}}</a>
                     </li>
-                    <li class="breadcrumb-item active">{{trans('admin.organizations')}}
+                    <li class="breadcrumb-item active">{{trans('admin.edu_levels')}}
                     </li>
                 </ol>
             </div>
@@ -36,25 +36,13 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="card-title">
-                            {{$org->name}}
-                        </div>
-                        <div class="card-title">
-                            {{$org->country->{'name_'.session('lang')} }} - 
-                            {{$org->city->{'name_'.session('lang')} }}
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="users-view-image">
-                                <img src="{{$org->image ? $org->image->path : '/images/product-avatar.png'}}" class="users-avatar-shadow rounded mb-2 pr-2 ml-1" 
-                                alt="avatar" style="width:150px; height:150px;">
-                            </div>
+                            {{$level->{'name_'.session('lang')} }}
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <a href="{{route('organizations.edit', $org->id)}}" class="btn btn-primary mr-1"><i class="feather icon-edit-1"></i>{{trans('admin.edit')}}</a>
-                            <a title="delete" onclick="return true;" id="confirm-color" object_id='{{$org->id}}'
+                            <a href="{{route('edu_levels.edit', $level->id)}}" class="btn btn-primary mr-1"><i class="feather icon-edit-1"></i>{{trans('admin.edit')}}</a>
+                            <a title="delete" onclick="return true;" id="confirm-color" object_id='{{$level->id}}'
                                 class="delete btn btn-outline-danger" style="color:white;"><i class="feather icon-trash-2"></i>{{trans('admin.delete')}}</a>
                         </div>
                     </div>
@@ -62,61 +50,18 @@
             </div>
             <!-- account end -->
 
-            <!-- announced jobs start -->
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-header border-bottom mx-2 px-0">
-                        <h6 class="border-bottom py-1 mb-0 font-medium-2">
-                            <i class="fa fa-bullhorn"></i>
-                            {{trans('admin.announced_jobs')}}
-                        </h6>
-                    </div>
-                    <div class="card-body px-75">
-                        <div class="table-responsive users-view-permission">
-                            <table class="table table-borderless dt-responsive nowrap" id="data_table">
-                                <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>{{trans('admin.name')}}</th>
-                                        <th>{{trans('admin.location')}}</th>
-                                        <th>{{trans('admin.required_number')}}</th>
-                                        <th>{{trans('admin.salary')}}</th>
-                                        <th>{{trans('admin.action')}}</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach($org->job_announces as $job)
-                                        <tr>
-                                            <td>{{$loop->iteration}}</td>
-                                            <td>{{$job->{'name_'.session('lang')} }}</td>
-                                            <td>{{$job->address}}</td>
-                                            <td>{{$job->required_number}}</td>
-                                            <td>{{$job->salary}} {{trans('admin.sr')}}</td>
-                                            <td>
-                                                <a href="{{route('jobs.show', $job->id)}}" class="btn" style="color:white;"><i class="fa fa-eye"></i></a>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- announced jobs end -->
-
-            {{-- organization jobs applicants start --}}
+            <!-- online teachers start -->
             <div class="col-12">
                 <div class="card">
                     <div class="card-header border-bottom mx-2 px-0">
                         <h6 class="border-bottom py-1 mb-0 font-medium-2">
                             <i class="fa fa-users"></i>
-                            {{trans('admin.job_applicants')}}
+                            {{trans('admin.online_teachers')}}
                         </h6>
                     </div>
                     <div class="card-body px-75">
                         <div class="table-responsive users-view-permission">
-                            <table class="table table-borderless dt-responsive nowrap" id="data_table">
+                            <table class="table table-borderless dt-responsive nowrap data_table">
                                 <thead>
                                     <tr>
                                         <th>#</th>
@@ -127,16 +72,18 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($org->org_applicants as $user)
-                                        <tr>
-                                            <td>{{$loop->iteration}}</td>
-                                            <td>{{$user->name}}</td>
-                                            <td>{{$user->email}}</td>
-                                            <td>{{$user->phone_main}}</td>
-                                            <td>
-                                                <a href="{{route('users.show', $user->id)}}" class="btn" style="color:white;"><i class="fa fa-eye"></i></a>
-                                            </td>
-                                        </tr>
+                                    @foreach($level->users as $user)
+                                        @if($user->hasRole('online_teacher'))
+                                            <tr>
+                                                <td>{{$loop->iteration}}</td>
+                                                <td>{{$user->name}}</td>
+                                                <td>{{$user->email}}</td>
+                                                <td>{{$user->phone_main}}</td>
+                                                <td>
+                                                    <a href="{{route('users.show', $user->id)}}" class="btn" style="color:white;"><i class="fa fa-eye"></i></a>
+                                                </td>
+                                            </tr>
+                                        @endif
                                     @endforeach
                                 </tbody>
                             </table>
@@ -144,7 +91,50 @@
                     </div>
                 </div>
             </div>
-            {{-- organization jobs applicants end --}}
+            <!-- online teachers end -->
+
+            <!-- direct teachers start -->
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header border-bottom mx-2 px-0">
+                        <h6 class="border-bottom py-1 mb-0 font-medium-2">
+                            <i class="fa fa-users"></i>
+                            {{trans('admin.direct_teachers')}}
+                        </h6>
+                    </div>
+                    <div class="card-body px-75">
+                        <div class="table-responsive users-view-permission">
+                            <table class="table table-borderless dt-responsive nowrap data_table">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>{{trans('admin.name')}}</th>
+                                        <th>{{trans('admin.email')}}</th>
+                                        <th>{{trans('admin.phone_main')}}</th>
+                                        <th>{{trans('admin.action')}}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($level->users as $user)
+                                        @if($user->hasRole('direct_teacher'))
+                                            <tr>
+                                                <td>{{$loop->iteration}}</td>
+                                                <td>{{$user->name}}</td>
+                                                <td>{{$user->email}}</td>
+                                                <td>{{$user->phone_main}}</td>
+                                                <td>
+                                                    <a href="{{route('users.show', $user->id)}}" class="btn" style="color:white;"><i class="fa fa-eye"></i></a>
+                                                </td>
+                                            </tr>
+                                        @endif
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- direct teachers end -->
 
         </div>
     </section>
@@ -180,7 +170,7 @@
                     var status = $(this).attr('object_status');
                         token = $('meta[name="csrf-token"]').attr('content');
                         $.ajax({
-                            url: "{{route('organizations.delete')}}",
+                            url: "{{route('eduLevels.delete')}}",
                             type: "post",
                             dataType: 'json',
                             data: {"_token": "{{ csrf_token() }}", id: id},
@@ -193,7 +183,7 @@
                                         timer: 1500
                                     });
 
-                                    window.location.href = "{{route('organizations.index')}}";
+                                    window.location.href = "{{route('countries.index')}}";
                                 }
                                 else if(data.data == 0){
                                     Swal.fire({
@@ -203,7 +193,7 @@
                                         timer: 1500
                                     });
 
-                                    window.location.href = "{{route('organizations.index')}}";
+                                    window.location.href = "{{route('countries.index')}}";
                                 }
                             }
                         });

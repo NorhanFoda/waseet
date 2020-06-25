@@ -6,7 +6,7 @@
 @endsection
 
 @section('pageSubTitle') 
-{{trans('admin.organizations')}}
+{{trans('admin.online_teachers')}}
 @endsection
 
 @section('content')
@@ -19,14 +19,14 @@
         <div class="row breadcrumbs-top">
             <div class="col-12">
                 <h2 class="content-header-title float-left mb-0">
-                    {{trans('admin.organizations')}}
+                    {{trans('admin.online_teachers')}}
                 </h2>
                 <div class="breadcrumb-wrapper col-12">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
                             <a href="{{route('admin.home')}}">{{trans('admin.home')}}</a>
                         </li>
-                        <li class="breadcrumb-item active">{{trans('admin.organizations')}}
+                        <li class="breadcrumb-item active">{{trans('admin.online_teachers')}}
                         </li>
                     </ol>
                 </div>
@@ -39,7 +39,7 @@
                 <div class="card-content">
                     <div class="card-body">
                         <div class="table-responsive">
-                            <a href="{{route('organizations.create')}}" class="btn btn-primary btn-block my-2 waves-effect waves-light">{{trans('admin.add')}} </a>
+                            <a href="{{route('online_teachers.create')}}" class="btn btn-primary btn-block my-2 waves-effect waves-light">{{trans('admin.add')}} </a>
                             <table class="table table-bordered mb-0 dt-responsive nowrap data_table">
                                 <thead>
                                 <tr align="center">

@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\User;
 use App\Models\Country;
 use App\Models\Image;
+use App\Models\EduType;
 use App\Http\Requests\Organizations\OrganizationRequest;
 use App\Http\Requests\Organizations\EditOrganizationRequest;
 use App\Classes\Upload;
@@ -36,7 +37,8 @@ class OrganizationController extends Controller
     public function create()
     {
         $countries = Country::all();
-        return view('admin.organizations.create', compact('countries'));
+        $edu_types = EduType::all();
+        return view('admin.organizations.create', compact('countries', 'edu_types'));
     }
 
     /**
@@ -82,7 +84,7 @@ class OrganizationController extends Controller
      */
     public function show($id)
     {
-        $org = User::with('job_announces', 'image', 'country', 'city', 'job_announces.applicants')->where('id' ,$id)->first();
+        $org = User::with('job_announces', 'image', 'country', 'city', 'org_applicants')->where('id' ,$id)->first();
         
         return view('admin.organizations.show', compact('org'));
     }
@@ -98,7 +100,8 @@ class OrganizationController extends Controller
         $org = User::find($id);
         $countries = Country::all();
         $cities = Country::find($org->country_id)->cities;
-        return view('admin.organizations.edit', compact('org', 'countries', 'cities'));
+        $edu_types = EduType::all();
+        return view('admin.organizations.edit', compact('org', 'countries', 'cities', 'edu_types'));
     }
 
     /**
@@ -160,6 +163,32 @@ class OrganizationController extends Controller
      */
     public function destroy($id)
     {
-        //
+        abort(404);
+    }
+
+    public function deleteOrganization(Request $request){
+        $org = User::find($request->id);
+
+        if(count($org->org_applicants) > 0){
+            return response()->json([
+                'data' => 0
+            ], 200);
+        }
+        else{
+            if($org->image != null){
+                $remove = Upload::deleteImage($org->image->path);
+                if($remove){
+                    $org->delete();
+                    return response()->json([
+                        'data' => 1
+                    ], 200);
+                }
+                else{
+                    return response()->json([
+                        'data' => 0
+                    ], 200);
+                }
+            }
+        }
     }
 }

@@ -15,7 +15,7 @@ class Job extends Model
         'name_ar', 'name_en', 'work_hours',
         'exper_years', 'address', 'required_number',
         'free_places', 'description_ar', 'description_en',
-        'organization_name', 'organization_phone', 'organization_email',
+        // 'organization_name', 'organization_phone', 'organization_email',
         'required_age', 'salary', 'country_id', 'user_id',
     ];
 

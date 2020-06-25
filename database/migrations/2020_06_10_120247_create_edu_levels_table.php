@@ -15,9 +15,8 @@ class CreateEduLevelsTable extends Migration
     {
         Schema::create('edu_levels', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('level_ar');
-            $table->string('level_en');
-            $table->string('other')->nullable();
+            $table->string('name_ar');
+            $table->string('name_en');
             $table->timestamps();
         });
     }

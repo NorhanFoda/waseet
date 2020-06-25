@@ -24,9 +24,9 @@ class CreateJobsTable extends Migration
             $table->integer('free_places');
             $table->text('description_ar');
             $table->text('description_en');
-            $table->string('organization_name');
-            $table->string('organization_phone');
-            $table->string('organization_email')->unique();
+            // $table->string('organization_name');
+            // $table->string('organization_phone');
+            // $table->string('organization_email')->unique();
             $table->integer('required_age');
             $table->string('salary');
             $table->unsignedBigInteger('country_id')->nullable()->index();

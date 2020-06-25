@@ -13,16 +13,20 @@ class EduTypeSeeder extends Seeder
     {
         DB::table('edu_types')->insert([
             [
-                'type_ar' => 'أهلى',
-                'type_en' => 'Private',
+                'name_ar' => 'أهلى',
+                'name_en' => 'Private',
             ],
             [
-                'type_ar' => 'أجنبى',
-                'type_en' => 'International',
+                'name_ar' => 'أجنبى',
+                'name_en' => 'International',
             ],
             [
-                'type_ar' => 'دبلومة',
-                'type_en' => 'Diploma',
+                'name_ar' => 'دبلومة',
+                'name_en' => 'Diploma',
+            ],
+            [
+                'name_ar' => 'أخرى',
+                'name_en' => 'Other',
             ],
         ]);
     }
