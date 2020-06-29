@@ -106,7 +106,7 @@ return [
     'exper_years' => 'Experience years',
     'age' => 'Age',
     'nationality' => 'Nationality',
-    '' => '',
+    'address' => 'Address',
     '' => '',
     '' => '',
     '' => '',

@@ -90,7 +90,8 @@ class DirectTeacherController extends Controller
      */
     public function show($id)
     {
-        //
+        $teacher = User::with('image', 'ratings.user', 'country', 'city', 'materials', 'edu_level', 'nationality')->find($id);
+        return view('admin.direct_teachers.show', compact('teacher'));
     }
 
     /**
@@ -171,6 +172,24 @@ class DirectTeacherController extends Controller
      */
     public function destroy($id)
     {
-        //
+        abort(404);
+    }
+
+    public function deleteDirectTeacher(Request $request){
+        $teacher = User::find($request->id);
+        $removed = false;
+        
+        if($teacher->image != null){
+            $removed = Upload::deleteImage($teacher->image->path);
+        }
+
+        if($removed){
+            Image::where('imageRef_id', $teacher->id)->first()->delete();
+        }
+        
+        $teacher->delete();
+        return response()->json([
+            'data' => 1
+        ], 200);
     }
 }

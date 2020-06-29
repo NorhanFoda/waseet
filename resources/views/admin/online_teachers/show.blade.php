@@ -39,10 +39,10 @@
                             {{$teacher->name}}
                         </div>
                         <div class="card-title">
-                            {{$teacher->country->{'name_'.session('lang')} }} - 
+                            {{trans('admin.address')}} : {{$teacher->country->{'name_'.session('lang')} }} - 
                             {{$teacher->city->{'name_'.session('lang')} }}
                             <br>
-                            {{$teacher->nationality->{'name_'.session('lang')} }}
+                            {{trans('admin.nationality')}} : {{$teacher->nationality->{'name_'.session('lang')} }}
                         </div>
                     </div>
                     <div class="card-body">
@@ -175,7 +175,7 @@
                     var status = $(this).attr('object_status');
                         token = $('meta[name="csrf-token"]').attr('content');
                         $.ajax({
-                            url: "{{route('organizations.delete')}}",
+                            url: "{{route('onlineTeachers.delete')}}",
                             type: "post",
                             dataType: 'json',
                             data: {"_token": "{{ csrf_token() }}", id: id},
@@ -188,7 +188,7 @@
                                         timer: 1500
                                     });
 
-                                    window.location.href = "{{route('organizations.index')}}";
+                                    window.location.href = "{{route('online_teachers.index')}}";
                                 }
                                 else if(data.data == 0){
                                     Swal.fire({

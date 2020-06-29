@@ -5,7 +5,7 @@
 @endsection
 
 @section('pageSubTitle')
-    {{trans('admin.online_teachers')}}
+    {{trans('admin.direct_teachers')}}
 @endsection
 
 @section('content')
@@ -14,14 +14,14 @@
     <div class="row breadcrumbs-top">
         <div class="col-12">
             <h2 class="content-header-title float-left mb-0">
-                {{trans('admin.online_teachers')}}
+                {{trans('admin.direct_teachers')}}
             </h2>
             <div class="breadcrumb-wrapper col-12">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item">
                         <a href="{{route('admin.home')}}">{{trans('admin.home')}}</a>
                     </li>
-                    <li class="breadcrumb-item active">{{trans('admin.online_teachers')}}
+                    <li class="breadcrumb-item active">{{trans('admin.direct_teachers')}}
                     </li>
                 </ol>
             </div>
@@ -39,10 +39,11 @@
                             {{$teacher->name}}
                         </div>
                         <div class="card-title">
-                            {{$teacher->country->{'name_'.session('lang')} }} - 
+                            {{trans('admin.address')}} : {{$teacher->country->{'name_'.session('lang')} }} - 
                             {{$teacher->city->{'name_'.session('lang')} }}
                             <br>
-                            {{$teacher->nationality->{'name_'.session('lang')} }}
+                            {{trans('admin.nationality')}} : {{$teacher->nationality->{'name_'.session('lang')} }} <br>
+                            {{trans('admin.teaching_address')}} : {{$teacher->teaching_address }}
                         </div>
                     </div>
                     <div class="card-body">
@@ -60,7 +61,7 @@
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <a href="{{route('online_teachers.edit', $teacher->id)}}" class="btn btn-primary mr-1"><i class="feather icon-edit-1"></i>{{trans('admin.edit')}}</a>
+                            <a href="{{route('direct_teachers.edit', $teacher->id)}}" class="btn btn-primary mr-1"><i class="feather icon-edit-1"></i>{{trans('admin.edit')}}</a>
                             <a title="delete" onclick="return true;" id="confirm-color" object_id='{{$teacher->id}}'
                                 class="delete btn btn-outline-danger" style="color:white;"><i class="feather icon-trash-2"></i>{{trans('admin.delete')}}</a>
                         </div>
@@ -175,7 +176,7 @@
                     var status = $(this).attr('object_status');
                         token = $('meta[name="csrf-token"]').attr('content');
                         $.ajax({
-                            url: "{{route('organizations.delete')}}",
+                            url: "{{route('directTeachers.delete')}}",
                             type: "post",
                             dataType: 'json',
                             data: {"_token": "{{ csrf_token() }}", id: id},
@@ -188,7 +189,7 @@
                                         timer: 1500
                                     });
 
-                                    window.location.href = "{{route('organizations.index')}}";
+                                    window.location.href = "{{route('direct_teachers.index')}}";
                                 }
                                 else if(data.data == 0){
                                     Swal.fire({

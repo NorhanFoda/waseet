@@ -81,7 +81,7 @@
                                 </thead>
                                 <tbody>
                                     @foreach($material->users as $user)
-                                        @if($user->hasrole('online_teacher'))
+                                        @if($user->hasRole('online_teacher'))
                                             <tr>
                                                 <td>{{$loop->iteration}}</td>
                                                 <td>{{$user->name}}</td>
@@ -187,13 +187,13 @@
             </div>
             <!-- students end -->
 
-            <!-- materials start -->
+            <!-- stages start -->
             <div class="col-12">
                 <div class="card">
                     <div class="card-header border-bottom mx-2 px-0">
                         <h6 class="border-bottom py-1 mb-0 font-medium-2">
-                            <i class="fa fa-book"></i>
-                            {{trans('admin.materials')}}
+                            <i class="fa fa-level-up"></i>
+                            {{trans('admin.stages')}}
                         </h6>
                     </div>
                     <div class="card-body px-75">
@@ -222,7 +222,7 @@
                     </div>
                 </div>
             </div>
-            <!-- materials end -->
+            <!-- stages end -->
 
         </div>
     </section>
