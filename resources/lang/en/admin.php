@@ -99,11 +99,13 @@ return [
     // EduTypes
     'edu_types' => 'Education types',
     'edu_levels' => 'Education levels',
-    '' => '',
-    '' => '',
-    '' => '',
-    '' => '',
-    '' => '',
+
+    // Online teachers
+    'edu_level' => 'Education level',
+    'teaching_address' => 'Teaching place',
+    'exper_years' => 'Experience years',
+    'age' => 'Age',
+    'nationality' => 'Nationality',
     '' => '',
     '' => '',
     '' => '',

@@ -161,7 +161,7 @@
                     </div>
                     <div class="card-body px-75">
                         <div class="table-responsive users-view-permission">
-                            <table class="table table-borderless">
+                            <table class="table table-borderless dt-responsive nowrap" id="data_table">
                                 <thead>
                                     <tr>
                                         <th>#</th>
@@ -170,17 +170,13 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @if(count($bag->ratings) > 0)
-                                        @foreach($bag->ratings as $rate)
+                                    @foreach($bag->ratings as $rate)
                                         <tr>
                                             <td>{{$loop->iteration}}</td>
                                             <td>{{$rate->user->name}}</td>
                                             <td>{{$rate->rate}}</td>
                                         </tr>
-                                        @endforeach
-                                    @else
-                                        {{trans('admin.no_ratings')}}
-                                    @endif
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>

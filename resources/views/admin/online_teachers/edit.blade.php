@@ -1,10 +1,9 @@
-
 @extends('admin.layouts.app')
 
 @section('pageTitle'){{trans('admin.home')}}
 @endsection
 
-@section('pageSubTitle') {{trans('admin.organizations')}}
+@section('pageSubTitle') {{trans('admin.online_teachers')}}
 @endsection
 
 @section('content')
@@ -15,7 +14,7 @@
     <div class="row breadcrumbs-top">
         <div class="col-12">
             <h2 class="content-header-title float-left mb-0">
-                {{trans('admin.organizations')}}
+                {{trans('admin.online_teachers')}}
             </h2>
             <div class="breadcrumb-wrapper col-12">
                 <ol class="breadcrumb">
@@ -36,11 +35,11 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">{{trans('admin.add')}}</h4>
+                <h4 class="card-title">{{trans('admin.edit')}}</h4>
             </div>
             <div class="card-content">
                 <div class="card-body">
-                    <form class="form form-horizontal needs-validation" enctype="multipart/form-data" novalidate method="post" action="{{route('organizations.update', $org->id)}}">
+                    <form class="form form-horizontal needs-validation" enctype="multipart/form-data" novalidate method="post" action="{{route('online_teachers.update', $teacher->id)}}">
                         @csrf
                         @method('PUT')
                         <div class="form-body">
@@ -53,7 +52,7 @@
                                             <span>{{trans('admin.name')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <input type="text" class="form-control" value="{{$org->name}}" placeholder="{{trans('admin.name')}}" name="name" required>
+                                            <input type="text" class="form-control" value="{{$teacher->name}}" placeholder="{{trans('admin.name')}}" name="name" required>
                                             <div class="invalid-feedback">
                                                 {{trans('admin.name')}}
                                             </div>
@@ -69,7 +68,7 @@
                                             <span>{{trans('admin.email')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <input type="text" class="form-control" value="{{$org->email}}" placeholder="{{trans('admin.email')}}" name="email" required>
+                                            <input type="text" class="form-control" value="{{$teacher->email}}" placeholder="{{trans('admin.email')}}" name="email" required>
                                             <div class="invalid-feedback">
                                                 {{trans('admin.email')}}
                                             </div>
@@ -85,7 +84,7 @@
                                             <span>{{trans('admin.phone_main')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <input type="tel" class="form-control" value="{{$org->phone_main}}" placeholder="{{trans('admin.phone_main')}}" name="phone_main" required>
+                                            <input type="tel" class="form-control" value="{{$teacher->phone_main}}" placeholder="{{trans('admin.phone_main')}}" name="phone_main" required>
                                             <div class="invalid-feedback">
                                                 {{trans('admin.phone_main')}}
                                             </div>
@@ -101,7 +100,7 @@
                                             <span>{{trans('admin.phone_secondary')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <input type="tel" class="form-control" value="{{$org->phone_secondary}}" placeholder="{{trans('admin.phone_secondary')}}" name="phone_secondary">
+                                            <input type="tel" class="form-control" value="{{$teacher->phone_secondary}}" placeholder="{{trans('admin.phone_secondary')}}" name="phone_secondary">
                                             <div class="invalid-feedback">
                                                 {{trans('admin.phone_secondary')}}
                                             </div>
@@ -110,16 +109,108 @@
                                 </div>
                                 {{-- enter phone secondary end --}}
 
-                                {{-- select country  --}}
+                                {{-- enter experience years start --}}
+                                <div class="col-6">
+                                    <div class="form-group row">
+                                        <div class="col-md-4">
+                                            <span>{{trans('admin.exper_years')}}</span>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <input type="number" class="form-control" value="{{$teacher->exper_years}}" placeholder="{{trans('admin.exper_years')}}" name="exper_years" required>
+                                            <div class="invalid-feedback">
+                                                {{trans('admin.exper_years')}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- enter experience years end --}}
+
+                                {{-- enter age start --}}
+                                <div class="col-6">
+                                    <div class="form-group row">
+                                        <div class="col-md-2">
+                                            <span>{{trans('admin.age')}}</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <input type="number" class="form-control" value="{{$teacher->age}}" placeholder="{{trans('admin.age')}}" name="age" required>
+                                            <div class="invalid-feedback">
+                                                {{trans('admin.age')}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- enter age end --}}
+
+                                {{-- enter edu level start --}}
                                 <div class="col-12">
                                     <div class="form-group row">
                                         <div class="col-md-2">
-                                            <span>{{trans('admin.country')}}</span>
+                                            <span>{{trans('admin.edu_level')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <select name="country_id" class="form-control" id="country_id">
+                                            <select name="edu_level_id" class="form-control" required>
+                                                @foreach($levels as $level)
+                                                    <option value="{{$level->id}}" @if($teacher->edu_level_id == $level->id) selected @endif>{{$level->{'name_'.session('lang')} }}</option>
+                                                @endforeach
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                {{trans('admin.edu_level')}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- enter edu level end --}}
+
+                                {{-- enter material start --}}
+                                <div class="col-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-2">
+                                            <span>{{trans('admin.materials')}}</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <select name="material_ids[]" class="form-control" multiple required>
+                                                @foreach($materials as $material)
+                                                        <option value="{{$material->id}}" @if($teacher->materials->contains($material->id)) selected @endif>{{$material->{'name_'.session('lang')} }}</option>
+                                                @endforeach
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                {{trans('admin.materials')}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- enter material end --}}
+
+                                {{-- select nationality start --}}
+                                <div class="col-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-2">
+                                            <span>{{trans('admin.nationality')}}</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <select name="nationality_id" class="form-control" required>
+                                                @foreach($nationalities as $nation)
+                                                    <option value="{{$nation->id}}" @if($teacher->nationality_id == $nation->id) selected @endif>{{$nation->{'name_'.session('lang')} }}</option>
+                                                @endforeach
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                {{trans('admin.nationality')}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- select nationality end --}}
+
+                                {{-- select country start --}}
+                                <div class="col-6">
+                                    <div class="form-group row">
+                                        <div class="col-md-4">
+                                            <span>{{trans('admin.country')}}</span>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <select name="country_id" class="form-control" id="country_id" required>
                                                 @foreach($countries as $country)
-                                                    <option value="{{$country->id}}" @if($org->country_id == $country->id) selected @endif>{{$country->{'name_'.session('lang')} }}</option>
+                                                    <option value="{{$country->id}}" @if($teacher->country_id == $country->id) selected @endif>{{$country->{'name_'.session('lang')} }}</option>
                                                 @endforeach
                                             </select>
                                             <div class="invalid-feedback">
@@ -131,15 +222,15 @@
                                 {{-- select country end --}}
 
                                 {{-- select city --}}
-                                <div class="col-12">
+                                <div class="col-6">
                                     <div class="form-group row">
                                         <div class="col-md-2">
                                             <span>{{trans('admin.city')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <select name="city_id" class="form-control" id="city_id">
-                                                @foreach ($cities as $city)
-                                                    <option value="{{$city->id}}" @if($org->city_id == $city->id) selected @endif>{{$city->{'name_'.session('lang')} }}</option>
+                                            <select name="city_id" class="form-control" id="city_id" required>
+                                                @foreach ($countries[0]->cities as $city)
+                                                    <option value="{{$city->id}}" @if($teacher->city_id == $city->id) selected @endif>{{$city->{'name_'.session('lang')} }}</option>
                                                 @endforeach
                                             </select>
                                             <div class="invalid-feedback">
@@ -150,14 +241,14 @@
                                 </div>
                                 {{-- select city end --}}
 
-                                {{-- enter location --}}
+                                {{-- enter address --}}
                                 <div class="col-12">
                                     <div class="form-group row">
                                         <div class="col-md-2">
                                             <span>{{trans('admin.location')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <input type="text" class="form-control" value="{{$org->address}}" placeholder="{{trans('admin.location')}}" name="address" required>
+                                            <input type="text" class="form-control" value="{{$teacher->address}}" placeholder="{{trans('admin.location')}}" name="address" required>
                                             <div class="invalid-feedback">
                                                 {{trans('admin.location')}}
                                             </div>
@@ -165,6 +256,22 @@
                                     </div>
                                 </div>
                                 {{-- enter location end --}}
+
+                                {{-- enter teaching address start --}}
+                                {{-- <div class="col-6">
+                                    <div class="form-group row">
+                                        <div class="col-md-2">
+                                            <span>{{trans('admin.teaching_address')}}</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <input type="text" class="form-control" placeholder="{{trans('admin.teaching_address')}}" name="teaching_address" required>
+                                            <div class="invalid-feedback">
+                                                {{trans('admin.teaching_address')}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> --}}
+                                {{-- enter teaching address end --}}
 
                                 {{-- enter image --}}
                                 <div class="col-12">
@@ -182,10 +289,9 @@
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group row">
-                                        <div class="col-md-12">
-                                            @if($org->image != null)
-                                                <img src="{{$org->image->path}}" alt="{{$org->name}}" width="100px" height="100px" style="border-radius: :5px">
-                                            @endif
+                                        <div class="col-md-10">
+                                            <img src="{{$teacher->image ? $teacher->image->path : '/images/avatar.png'}}" 
+                                                width="100px" height="100px" style="border-radius: 5px" alt="{{$teacher->name}}">
                                         </div>
                                     </div>
                                 </div>

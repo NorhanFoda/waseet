@@ -84,7 +84,7 @@ class OrganizationController extends Controller
      */
     public function show($id)
     {
-        $org = User::with('job_announces', 'image', 'country', 'city', 'org_applicants')->where('id' ,$id)->first();
+        $org = User::with('job_announces', 'image', 'country', 'city', 'org_applicants')->find($id);
         
         return view('admin.organizations.show', compact('org'));
     }

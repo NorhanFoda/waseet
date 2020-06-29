@@ -62,7 +62,7 @@ class CountryController extends Controller
     {
         $country = Country::with(['users.roles' => function($q){
             $q->where('name', 'student')->orWhere('name', 'direct_teacher')->orWhere('name', 'online_teacher')->get();
-        }, 'jobs', 'cities'])->where('id', $id)->first();
+        }, 'jobs', 'cities'])->find($id);
 
         return view('admin.countries.show', compact('country'));
     }

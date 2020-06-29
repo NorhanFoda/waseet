@@ -68,7 +68,7 @@ class MaterialController extends Controller
     {
         $material = Material::with(['users.roles' => function($q){
             $q->where('name', 'student')->orWhere('name', 'direct_teacher')->orWhere('name', 'online_teacher')->get();
-        }, 'stages'],)->where('id', $id)->first();
+        }, 'stages'],)->find($id);
 
         return view('admin.materials.show', compact('material'));
     }
@@ -82,7 +82,7 @@ class MaterialController extends Controller
     public function edit($id)
     {
         $stages = Stage::all();
-        $material = Material::with('stages')->where('id', $id)->first();
+        $material = Material::with('stages')->find($id);
         return view('admin.materials.edit', compact('stages', 'material'));
     }
 

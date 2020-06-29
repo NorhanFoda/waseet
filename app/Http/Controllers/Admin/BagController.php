@@ -93,7 +93,7 @@ class BagController extends Controller
      */
     public function show($id)
     {
-        $bag = Bag::with('ratings')->where('id', $id)->first();
+        $bag = Bag::with('ratings')->find($id);
 
         return view('admin.bags.show', compact('bag'));
     }

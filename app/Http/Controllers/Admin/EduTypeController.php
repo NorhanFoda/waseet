@@ -59,7 +59,7 @@ class EduTypeController extends Controller
     {
         $type = EduType::with(['users.roles' => function($q){
             $q->where('name', 'organization')->get();
-        }])->where('id', $id)->first();
+        }])->find($id);
 
         return view('admin.edu_types.show', compact('type'));
     }

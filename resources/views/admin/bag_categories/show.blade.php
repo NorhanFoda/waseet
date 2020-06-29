@@ -80,7 +80,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($bags as $bag)
+                                    @foreach($cat->bags as $bag)
                                         <tr>
                                             <td>{{$loop->iteration}}</td>
                                             <td>{{$bag->name_ar}}</td>

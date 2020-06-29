@@ -72,10 +72,9 @@ class BagCategoryController extends Controller
      */
     public function show($id)
     {
-        $cat = BagCategory::find($id);
-        $bags = $cat->bags;
+        $cat = BagCategory::with('bags')->find($id);
         
-        return view('admin.bag_categories.show', compact('cat', 'bags'));
+        return view('admin.bag_categories.show', compact('cat'));
     }
 
     /**

@@ -47,22 +47,22 @@
                                     <th>{{trans('admin.name')}}</th>
                                     <th>{{trans('admin.phone_main')}}</th>
                                     <th>{{trans('admin.email')}}</th>
-                                    <th>{{trans('admin.location')}}</th>
+                                    <th>{{trans('admin.edu_level')}}</th>
                                     <th>{{trans('admin.action')}}</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($organizations as $org)
+                                    @foreach($teachers as $teacher)
                                         <tr align="center">
                                             <td>{{$loop->iteration}}</td>
-                                            <td>{{$org->name}}</td>
-                                            <td>{{$org->phone_main}}</td>
-                                            <td>{{$org->email}}</td>
-                                            <td>{{$org->address}}</td>
+                                            <td>{{$teacher->name}}</td>
+                                            <td>{{$teacher->phone_main}}</td>
+                                            <td>{{$teacher->email}}</td>
+                                            <td>{{$teacher->address}}</td>
                                             <td>
-                                                <a href="{{route('organizations.show', $org->id)}}" class="btn" style="color:white;"><i class="fa fa-eye"></i></a>
-                                                <a href="{{route('organizations.edit', $org->id)}}" class="btn" style="color:white;"><i class="fa fa-pencil-square-o"></i></a>
-                                                <a title="delete" onclick="return true;" id="confirm-color" object_id='{{$org->id}}'
+                                                <a href="{{route('online_teachers.show', $teacher->id)}}" class="btn" style="color:white;"><i class="fa fa-eye"></i></a>
+                                                <a href="{{route('online_teachers.edit', $teacher->id)}}" class="btn" style="color:white;"><i class="fa fa-pencil-square-o"></i></a>
+                                                <a title="delete" onclick="return true;" id="confirm-color" object_id='{{$teacher->id}}'
                                                     class="delete btn" style="color:red;"><i class="fa fa-trash-o"></i></a>
                                             </td>
                                         </tr>
@@ -107,7 +107,7 @@
                     var status = $(this).attr('object_status');
                         token = $('meta[name="csrf-token"]').attr('content');
                         $.ajax({
-                            url: "{{route('organizations.delete')}}",
+                            url: "{{route('onlineTeachers.delete')}}",
                             type: "post",
                             dataType: 'json',
                             data: {"_token": "{{ csrf_token() }}", id: id},

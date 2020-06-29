@@ -25,7 +25,7 @@ class OrganizationRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'email' => 'required',
+            'email' => 'required|email|unique:users',
             'phone_main' => 'required',
             'password' => 'min:9|required_with:password_confirmation|same:password_confirmation',
             'password_confirmation' => 'required|min:9',
@@ -33,7 +33,8 @@ class OrganizationRequest extends FormRequest
             'city_id' => 'required',
             'address' => 'required',
             'edu_type_id' => 'required',
-            'other_edu_type' => 'required_if:edu_type_id,4'
+            'other_edu_type' => 'required_if:edu_type_id,4',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
     }
 }

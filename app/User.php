@@ -17,8 +17,9 @@ use App\Models\Country;
 use App\Models\City;
 use App\Models\Material;
 use Spatie\Permission\Traits\HasRoles;
-use App\Modesl\EduLevel;
-use App\Modesl\EduType;
+use App\Models\EduLevel;
+use App\Models\EduType;
+use App\Models\Nationality;
 
 class User extends Authenticatable
 {
@@ -35,7 +36,8 @@ class User extends Authenticatable
         'exper_years', 'salary_month', 'salary_hour',
         'stage_id', 'city_id', 'age',
         'edu_level_id', 'edu_type_id', 'organizayion_gender',
-        'other_edu_type', 'other_edu_level',
+        'other_edu_type', 'other_edu_level', 'nationality_id',
+        'teaching_address',
     ];
 
     /**
@@ -81,7 +83,7 @@ class User extends Authenticatable
     }
 
     public function ratings(){
-        return $this->morphMany(Rating::class, 'ratable');
+        return $this->morphMany(Rating::class, 'rateRef');
     }
 
     public function saves(){
@@ -114,5 +116,9 @@ class User extends Authenticatable
 
     public function edu_type(){
         return $this->belongsTo(EduType::class);
+    }
+
+    public function nationality(){
+        return $this->belongsTo(Nationality::class);
     }
 }

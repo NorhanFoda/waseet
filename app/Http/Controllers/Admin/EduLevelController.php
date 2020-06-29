@@ -59,7 +59,7 @@ class EduLevelController extends Controller
     {
         $level = EduLevel::with(['users.roles' => function($q){
             $q->where('name', 'direct_teacher')->orWhere('name', 'online_teacher');
-        }])->where('id', $id)->first();
+        }])->find($id);
 
         return view('admin.edu_levels.show', compact('level'));
     }

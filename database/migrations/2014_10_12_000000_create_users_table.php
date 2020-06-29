@@ -22,7 +22,9 @@ class CreateUsersTable extends Migration
             $table->unsignedBigInteger('country_id')->nullable()->index();
             $table->unsignedBigInteger('city_id')->nullable()->index();
             $table->unsignedBigInteger('stage_id')->nullable()->index();
+            $table->unsignedBigInteger('nationality_id')->nullable()->index();
             $table->string('address')->nullable();
+            $table->string('teaching_address')->nullable();
             $table->integer('exper_years')->nullable();
             $table->string('salary_month')->nullable();
             $table->string('salary_hour')->nullable();

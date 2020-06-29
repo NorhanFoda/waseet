@@ -25,13 +25,14 @@ class EditOrganizationRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'email' => 'required',
+            'email' => 'required|email|unique:users',
             'phone_main' => 'required',
             'country_id' => 'required',
             'city_id' => 'required',
             'address' => 'required',
             'edu_type_id' => 'required',
-            'other_edu_type' => 'required_if:edu_type_id,4'
+            'other_edu_type' => 'required_if:edu_type_id,4',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
     }
 }

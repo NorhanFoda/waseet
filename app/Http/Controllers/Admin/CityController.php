@@ -64,7 +64,7 @@ class CityController extends Controller
     {
         $city = City::with(['users.roles' => function($q){
             $q->where('name', 'student')->orWhere('name', 'direct_teacher')->orWhere('name', 'online_teacher')->get();
-        }, 'jobs', 'country'])->where('id', $id)->first();
+        }, 'jobs', 'country'])->find($id);
 
         return view('admin.cities.show', compact('city'));
     }
