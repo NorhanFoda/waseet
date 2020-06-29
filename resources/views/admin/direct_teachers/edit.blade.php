@@ -231,7 +231,7 @@
                                         </div>
                                         <div class="col-md-10">
                                             <select name="city_id" class="form-control" id="city_id" required>
-                                                @foreach ($countries[0]->cities as $city)
+                                                @foreach ($cities as $city)
                                                     <option value="{{$city->id}}" @if($teacher->city_id == $city->id) selected @endif>{{$city->{'name_'.session('lang')} }}</option>
                                                 @endforeach
                                             </select>

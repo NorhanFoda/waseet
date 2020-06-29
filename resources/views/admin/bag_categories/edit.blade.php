@@ -32,7 +32,7 @@
     @if(count($errors->all()) > 0)
         @foreach($errors->all() as $error)
             {{session()->flash('error', $error)}}
-        @endforeachs
+        @endforeach
     @endif
 
     <div class="col-12">

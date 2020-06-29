@@ -19,8 +19,8 @@ class Job extends Model
         'required_age', 'salary', 'country_id', 'user_id',
     ];
 
-    public function images(){
-        return $this->morphMany(Image::class, 'imageRef');
+    public function image(){
+        return $this->morphOne(Image::class, 'imageRef');
     }
 
     public function applicants(){

@@ -108,7 +108,8 @@ class OnlineTeacherController extends Controller
         $levels = EduLevel::all();
         $countries = Country::all();
         $teacher = User::find($id);
-        return view('admin.online_teachers.edit', compact('nationalities', 'materials', 'levels', 'countries', 'teacher'));
+        $cities = City::where('country_id', $teacher->country_id)->get();
+        return view('admin.online_teachers.edit', compact('nationalities', 'materials', 'levels', 'countries', 'teacher', 'cities'));
     }
 
     /**
@@ -122,9 +123,7 @@ class OnlineTeacherController extends Controller
     {
         $teacher = User::find($id);
         $teacher->update($request->all());
-        foreach($request->material_ids as $id){
-            $teacher->materials()->attach($id);
-        }
+        $teacher->materials()->sync($request->material_ids);
 
         if($request->has('image')){
             $this->validate($request, [

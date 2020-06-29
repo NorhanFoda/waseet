@@ -59,7 +59,7 @@
             <!-- account end -->
 
             <!-- online teachers start -->
-            <div class="col-12">
+            {{-- <div class="col-12">
                 <div class="card">
                     <div class="card-header border-bottom mx-2 px-0">
                         <h6 class="border-bottom py-1 mb-0 font-medium-2">
@@ -98,11 +98,11 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <!-- online teachers end -->
 
             <!-- direct teachers start -->
-            <div class="col-12">
+            {{-- <div class="col-12">
                 <div class="card">
                     <div class="card-header border-bottom mx-2 px-0">
                         <h6 class="border-bottom py-1 mb-0 font-medium-2">
@@ -141,7 +141,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <!-- direct teachers end -->
 
             <!-- students start -->
