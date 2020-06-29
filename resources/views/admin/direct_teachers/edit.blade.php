@@ -29,7 +29,6 @@
     </div>
 
     @if(count($errors->all()) > 0)
-        {{-- {{session()->flash('error', trans('admin.fields_required'))}} --}}
         @foreach($errors->all() as $error)
             {{session()->flash('error', $error)}}
         @endforeach
