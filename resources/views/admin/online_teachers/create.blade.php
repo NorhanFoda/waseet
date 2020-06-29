@@ -287,22 +287,6 @@
                                 </div>
                                 {{-- enter location end --}}
 
-                                {{-- enter teaching address start --}}
-                                {{-- <div class="col-6">
-                                    <div class="form-group row">
-                                        <div class="col-md-2">
-                                            <span>{{trans('admin.teaching_address')}}</span>
-                                        </div>
-                                        <div class="col-md-10">
-                                            <input type="text" class="form-control" placeholder="{{trans('admin.teaching_address')}}" name="teaching_address" required>
-                                            <div class="invalid-feedback">
-                                                {{trans('admin.teaching_address')}}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> --}}
-                                {{-- enter teaching address end --}}
-
                                 {{-- enter image --}}
                                 <div class="col-12">
                                     <div class="form-group row">

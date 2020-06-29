@@ -233,6 +233,7 @@
             showConfirmButton: false,
         });
     </script>
+    {{session()->forget('success')}}
 @endif
 
 @if(session()->has('error'))
@@ -245,6 +246,7 @@
             showConfirmButton: false,
         });
     </script>
+    {{session()->forget('error')}}
 @endif
 
 

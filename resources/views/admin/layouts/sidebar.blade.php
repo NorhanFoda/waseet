@@ -23,6 +23,7 @@
             <li class=" nav-item"><a href="{{route('edu_types.index')}}"><i class="fa fa-th"></i><span class="menu-title" data-i18n="Dashboard">{{trans('admin.edu_types')}}</span></a></li>
             <li class=" nav-item"><a href="{{route('edu_levels.index')}}"><i class="fa fa-level-up"></i><span class="menu-title" data-i18n="Dashboard">{{trans('admin.edu_levels')}}</span></a></li>
             <li class=" nav-item"><a href="{{route('online_teachers.index')}}"><i class="fa fa-users"></i><span class="menu-title" data-i18n="Dashboard">{{trans('admin.online_teachers')}}</span></a></li>
+            <li class=" nav-item"><a href="{{route('direct_teachers.index')}}"><i class="fa fa-users"></i><span class="menu-title" data-i18n="Dashboard">{{trans('admin.direct_teachers')}}</span></a></li>
 
         </ul>
     </div>

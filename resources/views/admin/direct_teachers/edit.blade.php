@@ -3,7 +3,7 @@
 @section('pageTitle'){{trans('admin.home')}}
 @endsection
 
-@section('pageSubTitle') {{trans('admin.online_teachers')}}
+@section('pageSubTitle') {{trans('admin.direct_teachers')}}
 @endsection
 
 @section('content')
@@ -14,7 +14,7 @@
     <div class="row breadcrumbs-top">
         <div class="col-12">
             <h2 class="content-header-title float-left mb-0">
-                {{trans('admin.online_teachers')}}
+                {{trans('admin.direct_teachers')}}
             </h2>
             <div class="breadcrumb-wrapper col-12">
                 <ol class="breadcrumb">
@@ -29,6 +29,7 @@
     </div>
 
     @if(count($errors->all()) > 0)
+        {{-- {{session()->flash('error', trans('admin.fields_required'))}} --}}
         @foreach($errors->all() as $error)
             {{session()->flash('error', $error)}}
         @endforeach
@@ -41,7 +42,7 @@
             </div>
             <div class="card-content">
                 <div class="card-body">
-                    <form class="form form-horizontal needs-validation" enctype="multipart/form-data" novalidate method="post" action="{{route('online_teachers.update', $teacher->id)}}">
+                    <form class="form form-horizontal needs-validation" enctype="multipart/form-data" novalidate method="post" action="{{route('direct_teachers.update', $teacher->id)}}">
                         @csrf
                         @method('PUT')
                         <div class="form-body">
@@ -244,12 +245,12 @@
                                 {{-- select city end --}}
 
                                 {{-- enter address --}}
-                                <div class="col-12">
+                                <div class="col-6">
                                     <div class="form-group row">
-                                        <div class="col-md-2">
+                                        <div class="col-md-4">
                                             <span>{{trans('admin.location')}}</span>
                                         </div>
-                                        <div class="col-md-10">
+                                        <div class="col-md-8">
                                             <input type="text" class="form-control" value="{{$teacher->address}}" placeholder="{{trans('admin.location')}}" name="address" required>
                                             <div class="invalid-feedback">
                                                 {{trans('admin.location')}}
@@ -258,6 +259,22 @@
                                     </div>
                                 </div>
                                 {{-- enter location end --}}
+
+                                {{-- enter teaching address start --}}
+                                <div class="col-6">
+                                    <div class="form-group row">
+                                        <div class="col-md-2">
+                                            <span>{{trans('admin.teaching_address')}}</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <input type="text" class="form-control" value="{{$teacher->teaching_address}}" placeholder="{{trans('admin.teaching_address')}}" name="teaching_address" required>
+                                            <div class="invalid-feedback">
+                                                {{trans('admin.teaching_address')}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- enter teaching address end --}}
 
                                 {{-- enter image --}}
                                 <div class="col-12">
