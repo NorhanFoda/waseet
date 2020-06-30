@@ -198,7 +198,7 @@
                                         timer: 1500
                                     });
 
-                                    window.location.href = "{{route('organizations.index')}}";
+                                    window.location.href = "{{route('online_teachers.index')}}";
                                 }
                             }
                         });

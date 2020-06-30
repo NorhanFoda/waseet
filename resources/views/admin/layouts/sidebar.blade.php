@@ -26,6 +26,8 @@
             <li class=" nav-item"><a href="{{route('direct_teachers.index')}}"><i class="fa fa-users"></i><span class="menu-title" data-i18n="Dashboard">{{trans('admin.direct_teachers')}}</span></a></li>
             <li class=" nav-item"><a href="{{route('jobs.index')}}"><i class="fa fa-bullhorn"></i><span class="menu-title" data-i18n="Dashboard">{{trans('admin.jobs')}}</span></a></li>
             <li class=" nav-item"><a href="{{route('nationalities.index')}}"><i class="fa fa-globe"></i><span class="menu-title" data-i18n="Dashboard">{{trans('admin.nationalities')}}</span></a></li>
+            <li class=" nav-item"><a href="{{route('seekers.index')}}"><i class="fa fa-users"></i><span class="menu-title" data-i18n="Dashboard">{{trans('admin.job_seekers')}}</span></a></li>
+            <li class=" nav-item"><a href="{{route('applicants.index')}}"><i class="fa fa-users"></i><span class="menu-title" data-i18n="Dashboard">{{trans('admin.job_applicants')}}</span></a></li>
 
         </ul>
     </div>

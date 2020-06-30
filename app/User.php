@@ -90,8 +90,8 @@ class User extends Authenticatable
         return $this->morphMany(Save::class, 'savable');
     }
 
-    public function documents(){
-        return $this->hasMany(Document::class);
+    public function document(){
+        return $this->hasOne(Document::class);
     }
 
     public function stage(){

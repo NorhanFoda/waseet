@@ -117,10 +117,12 @@ return [
 
     // Nationalities
     'nationalities' => 'Nationalities',
+
+    // Job seekers
     'job_seekers' => 'Job seekers',
-    '' => '',
-    '' => '',
-    '' => '',
+    'cv' => 'C.V.',
+    'view_cv' => 'View CV',
+    'years' => 'Years',
     '' => '',
     '' => '',
     '' => '',

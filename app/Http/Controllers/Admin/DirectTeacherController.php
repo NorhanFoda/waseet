@@ -139,7 +139,7 @@ class DirectTeacherController extends Controller
                     ]);
                 }
                 else{
-                    session()->flash('message', trans('admin.error'));
+                    session()->flash('error', trans('admin.error'));
                     return redirect()->route('direct_teachers.index');        
                 }
             }

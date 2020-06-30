@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\User;
 
 class ApplicantsController extends Controller
 {
@@ -14,7 +15,9 @@ class ApplicantsController extends Controller
      */
     public function index()
     {
-        //
+        $applicants = User::withCount('job_applications')->get();
+        
+        return view('admin.applicants.index', compact('applicants'));
     }
 
     /**

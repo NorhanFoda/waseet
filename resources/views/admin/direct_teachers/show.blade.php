@@ -199,7 +199,7 @@
                                         timer: 1500
                                     });
 
-                                    window.location.href = "{{route('organizations.index')}}";
+                                    window.location.href = "{{route('direct_teachers.index')}}";
                                 }
                             }
                         });
