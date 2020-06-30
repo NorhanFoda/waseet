@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Models;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\User;
 
-class CountryController extends Controller
+class SeekerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,11 @@ class CountryController extends Controller
      */
     public function index()
     {
-        //
+        $seekers = User::whereHas('roles', function($q){
+            $q->where('name', 'job_seeker');
+        })->get();
+
+        return view('admin.seekers.index', compact('seekers'));
     }
 
     /**

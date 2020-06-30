@@ -13,12 +13,12 @@ class NationalitySeeder extends Seeder
     {
         DB::table('nationalities')->insert([
             [
-                'name_ar' => 'Saudi',
-                'name_en' => 'سعودى',
+                'name_ar' => 'سعودى',
+                'name_en' => 'Saudi',
             ],
             [
-                'name_ar' => 'Egyption',
-                'name_en' => 'مصرى',
+                'name_ar' => 'مصرى',
+                'name_en' => 'Egyption',
             ],
         ]);
     }

@@ -9,6 +9,7 @@ use App\Models\Nationality;
 use App\Models\Material;
 use App\Models\EduLevel;
 use App\Models\Country;
+use App\Models\City;
 use App\Models\Image;
 use App\Classes\Upload;
 use App\Http\Requests\Teachers\DirectTeacherRequest;

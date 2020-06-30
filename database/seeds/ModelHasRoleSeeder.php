@@ -20,6 +20,36 @@ class ModelHasRoleSeeder extends Seeder
             [
                 'role_id' => '2',
                 'model_type' => 'App\User',
+                'model_id' => '1'
+            ],
+            [
+                'role_id' => '3',
+                'model_type' => 'App\User',
+                'model_id' => '1'
+            ],
+            [
+                'role_id' => '4',
+                'model_type' => 'App\User',
+                'model_id' => '1'
+            ],
+            [
+                'role_id' => '5',
+                'model_type' => 'App\User',
+                'model_id' => '1'
+            ],
+            [
+                'role_id' => '6',
+                'model_type' => 'App\User',
+                'model_id' => '1'
+            ],
+            [
+                'role_id' => '7',
+                'model_type' => 'App\User',
+                'model_id' => '1'
+            ],
+            [
+                'role_id' => '2',
+                'model_type' => 'App\User',
                 'model_id' => '2'
             ],
         ]);

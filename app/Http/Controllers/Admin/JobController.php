@@ -46,6 +46,7 @@ class JobController extends Controller
     {
         $job = Job::create($request->all());
         $job->cities()->attach($request->city_ids);
+        $job->update(['user_id' => auth()->user()->id]);
 
         if($request->has('image')){
             $image_url = Upload::uploadImage($request->image);
@@ -75,7 +76,15 @@ class JobController extends Controller
      */
     public function show($id)
     {
-        //
+        $job = Job::with(['image', 'country', 'cities', 'applicants.roles' => function($q){
+                $q->where('name', 'job_seeker')->get();
+            }
+        , 'announcer.roles' => function($q){
+                $q->where('name', 'organization')->get();
+            }
+        ])->find($id);
+
+        return view('admin.jobs.show', compact('job'));
     }
 
     /**

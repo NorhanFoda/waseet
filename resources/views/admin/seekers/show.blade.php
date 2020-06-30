@@ -5,7 +5,7 @@
 @endsection
 
 @section('pageSubTitle')
-    {{trans('admin.jobs')}}
+    {{trans('admin.online_teachers')}}
 @endsection
 
 @section('content')
@@ -14,14 +14,14 @@
     <div class="row breadcrumbs-top">
         <div class="col-12">
             <h2 class="content-header-title float-left mb-0">
-                {{trans('admin.jobs')}}
+                {{trans('admin.online_teachers')}}
             </h2>
             <div class="breadcrumb-wrapper col-12">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item">
                         <a href="{{route('admin.home')}}">{{trans('admin.home')}}</a>
                     </li>
-                    <li class="breadcrumb-item active">{{trans('admin.jobs')}}
+                    <li class="breadcrumb-item active">{{trans('admin.online_teachers')}}
                     </li>
                 </ol>
             </div>
@@ -31,44 +31,51 @@
     <!-- page users view start -->
     <section class="page-users-view">
         <div class="row">
-            <!-- job start -->
+            <!-- account start -->
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
                         <div class="card-title">
-                            {{$job->{'name_'.session('lang')} }}
+                            {{$teacher->name}}
                         </div>
                         <div class="card-title">
-                            {{$job->country->{'name_'.session('lang')} }} <br>
-                            {{trans('admin.announcer')}} : {{$job->announcer->name}}
+                            {{trans('admin.address')}} : {{$teacher->country->{'name_'.session('lang')} }} - 
+                            {{$teacher->city->{'name_'.session('lang')} }}
+                            <br>
+                            {{trans('admin.nationality')}} : {{$teacher->nationality->{'name_'.session('lang')} }}
                         </div>
                     </div>
                     <div class="card-body">
                         <div class="row">
                             <div class="users-view-image">
-                                <img src="{{$job->image ? $job->image->path : '/images/product-avatar.png'}}" class="users-avatar-shadow rounded mb-2 pr-2 ml-1" 
-                                alt="{{$job->{'name_'.session('lang')} }}" style="width:150px; height:150px;">
+                                <img src="{{$teacher->image ? $teacher->image->path : '/images/product-avatar.png'}}" class="users-avatar-shadow rounded mb-2 pr-2 ml-1" 
+                                alt="avatar" style="width:150px; height:150px;">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="users-view-image col-md-4">
+                                <h2>{{$teacher->edu_level->{'name_'.session('lang')} }}</h2>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <a href="{{route('jobs.edit', $job->id)}}" class="btn btn-primary mr-1"><i class="feather icon-edit-1"></i>{{trans('admin.edit')}}</a>
-                            <a title="delete" onclick="return true;" id="confirm-color" object_id='{{$job->id}}'
+                            <a href="{{route('online_teachers.edit', $teacher->id)}}" class="btn btn-primary mr-1"><i class="feather icon-edit-1"></i>{{trans('admin.edit')}}</a>
+                            <a title="delete" onclick="return true;" id="confirm-color" object_id='{{$teacher->id}}'
                                 class="delete btn btn-outline-danger" style="color:white;"><i class="feather icon-trash-2"></i>{{trans('admin.delete')}}</a>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- job end -->
+            <!-- account end -->
 
-            <!-- cities start -->
+            <!-- materials jobs start -->
             <div class="col-12">
                 <div class="card">
                     <div class="card-header border-bottom mx-2 px-0">
                         <h6 class="border-bottom py-1 mb-0 font-medium-2">
-                            <i class="fa fa-map-marker"></i>
-                            {{trans('admin.cities')}}
+                            <i class="fa fa-book"></i>
+                            {{trans('admin.materials')}}
                         </h6>
                     </div>
                     <div class="card-body px-75">
@@ -82,12 +89,12 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($job->cities as $city)
+                                    @foreach($teacher->materials as $material)
                                         <tr>
                                             <td>{{$loop->iteration}}</td>
-                                            <td>{{$city->{'name_'.session('lang')} }}</td>
+                                            <td>{{$material->{'name_'.session('lang')} }}</td>
                                             <td>
-                                                <a href="{{route('cities.show', $city->id)}}" class="btn" style="color:white;"><i class="fa fa-eye"></i></a>
+                                                <a href="{{route('materials.show', $material->id)}}" class="btn" style="color:white;"><i class="fa fa-eye"></i></a>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -97,15 +104,15 @@
                     </div>
                 </div>
             </div>
-            <!-- cities end -->
+            <!-- materials jobs end -->
 
-            <!-- job applicants start -->
+            <!-- ratings start -->
             <div class="col-12">
                 <div class="card">
                     <div class="card-header border-bottom mx-2 px-0">
                         <h6 class="border-bottom py-1 mb-0 font-medium-2">
-                            <i class="fa fa-users"></i>
-                            {{trans('admin.applicants')}}
+                            <i class="fa fa-star-half-o"></i>
+                            {{trans('admin.rate')}}
                         </h6>
                     </div>
                     <div class="card-body px-75">
@@ -114,25 +121,17 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>{{trans('admin.name')}}</th>
-                                        <th>{{trans('admin.email')}}</th>
-                                        <th>{{trans('admin.phone_main')}}</th>
-                                        <th>{{trans('admin.action')}}</th>
+                                        <th>{{trans('admin.user')}}</th>
+                                        <th>{{trans('admin.rate')}}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($job->applicants as $app)
-                                        @if($app->hasrole('job_seeker'))
-                                            <tr>
-                                                <td>{{$loop->iteration}}</td>
-                                                <td>{{$app->name}}</td>
-                                                <td>{{$app->email}}</td>
-                                                <td>{{$app->phone_main}}</td>
-                                                <td>
-                                                    <a href="{{route('applicants.show', $app->id)}}" class="btn" style="color:white;"><i class="fa fa-eye"></i></a>
-                                                </td>
-                                            </tr>
-                                        @endif
+                                    @foreach($teacher->ratings as $rate)
+                                        <tr>
+                                            <td>{{$loop->iteration}}</td>
+                                            <td>{{$rate->user->name}}</td>
+                                            <td>{{$rate->rate}}</td>
+                                        </tr>
                                     @endforeach
                                 </tbody>
                             </table>
@@ -140,7 +139,7 @@
                     </div>
                 </div>
             </div>
-            <!-- job applicants end -->
+            <!-- ratings end -->
 
         </div>
     </section>
@@ -176,7 +175,7 @@
                     var status = $(this).attr('object_status');
                         token = $('meta[name="csrf-token"]').attr('content');
                         $.ajax({
-                            url: "{{route('jobs.delete')}}",
+                            url: "{{route('onlineTeachers.delete')}}",
                             type: "post",
                             dataType: 'json',
                             data: {"_token": "{{ csrf_token() }}", id: id},
@@ -189,17 +188,17 @@
                                         timer: 1500
                                     });
 
-                                    window.location.href = "{{route('jobs.index')}}";
+                                    window.location.href = "{{route('online_teachers.index')}}";
                                 }
                                 else if(data.data == 0){
                                     Swal.fire({
                                         type: 'error',
-                                        title: '{{trans('admin.category_can_not_be_deleted')}}',
+                                        title: '{{trans('admin.error')}}',
                                         showConfirmButton: false,
                                         timer: 1500
                                     });
 
-                                    window.location.href = "{{route('jobs.index')}}";
+                                    window.location.href = "{{route('organizations.index')}}";
                                 }
                             }
                         });

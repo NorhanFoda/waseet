@@ -89,6 +89,14 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
             Route::resource('direct_teachers', 'Admin\DirectTeacherController');
             Route::post('delete_direct_teacher', 'Admin\DirectTeacherController@deleteDirectTeacher')->name('directTeachers.delete');
 
+            // Job seekers
+            Route::resource('seekers', 'Admin\SeekerController');
+            Route::post('delete_seeker', 'Admin\SeekerController@deleteSeeker')->name('seekers.delete');
+
+            // Job applicants
+            Route::resource('applicants', 'Admin\ApplicantsController');
+            Route::post('delete_applicant', 'Admin\ApplicantsController@deleteApplicant')->name('applicants.delete');
+
             // EduTypes
             Route::resource('edu_types', 'Admin\EduTypeController');
             Route::post('delete_edu_type', 'Admin\EduTypeController@deleteEduType')->name('eduTypes.delete');
@@ -96,6 +104,10 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
             // EduLevels
             Route::resource('edu_levels', 'Admin\EduLevelController');
             Route::post('delete_edu_level', 'Admin\EduLevelController@deleteEduLevel')->name('eduLevels.delete');
+
+            // Nationalities
+            Route::resource('nationalities', 'Admin\NationalityController');
+            Route::post('delete_nationality', 'Admin\NationalityController@deleteNationality')->name('nationalities.delete');
             
             // Users
             Route::resource('users', 'Admin\UserController');

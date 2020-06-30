@@ -7,7 +7,7 @@ use App\Models\Image;
 use App\Models\Save;
 use App\Models\City;
 use App\Models\Country;
-use User;
+use App\User;
 
 class Job extends Model
 {
@@ -28,7 +28,7 @@ class Job extends Model
     }
 
     public function announcer(){
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function cities(){

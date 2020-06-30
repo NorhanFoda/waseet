@@ -305,6 +305,38 @@
                                 </div>
                                 {{-- enter teaching address end --}}
 
+                                {{-- bio_ar start --}}
+                                <div class="col-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-2">
+                                            <span>{{trans('admin.bio_ar')}}</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <textarea name="bio_ar" cols="30" rows="6" class="form-control" placeholder="{{trans('admin.bio_ar')}}"></textarea>
+                                            <div class="invalid-feedback">
+                                                {{trans('admin.bio_ar')}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- bio_ar end --}}
+
+                                {{-- bio_en start --}}
+                                <div class="col-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-2">
+                                            <span>{{trans('admin.bio_en')}}</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <textarea name="bio_en" cols="30" rows="6" class="form-control" placeholder="{{trans('admin.bio_en')}}"></textarea>
+                                            <div class="invalid-feedback">
+                                                {{trans('admin.bio_en')}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- bio_en end --}}
+
                                 {{-- enter image --}}
                                 <div class="col-12">
                                     <div class="form-group row">

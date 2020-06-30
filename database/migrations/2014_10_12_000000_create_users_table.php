@@ -29,6 +29,8 @@ class CreateUsersTable extends Migration
             $table->string('salary_month')->nullable();
             $table->string('salary_hour')->nullable();
             $table->integer('age')->nullable();
+            $table->text('bio_ar')->nullable();
+            $table->text('bio_en')->nullable();
             $table->unsignedBigInteger('edu_level_id')->nullable()->index();
             $table->string('other_edu_level')->nullable();
             $table->unsignedBigInteger('edu_type_id')->nullable()->index();

@@ -107,11 +107,17 @@ return [
     'age' => 'Age',
     'nationality' => 'Nationality',
     'address' => 'Address',
+    'bio_ar' => 'Additional information in Arabic',
+    'bio_en' => 'Additional information in English',
 
     // Jobs
     'work_hours' => 'Work hours',
     'free_places' => 'Free places',
     'jobs' => 'Jobs',
+
+    // Nationalities
+    'nationalities' => 'Nationalities',
+    'job_seekers' => 'Job seekers',
     '' => '',
     '' => '',
     '' => '',
