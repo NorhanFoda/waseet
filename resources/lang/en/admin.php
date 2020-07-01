@@ -137,6 +137,15 @@ return [
     'socials' => 'Social networks',
     'link' => 'Link',
     'appear_in_footer' => 'Appear in page footer',
+
+    // Sliders
+    'slider' => 'Slider',
+    'body' => 'Text',
+    'title_ar' => 'Title in Arabic',
+    'title_en' => 'Title in English',
+    'body_ar' => 'Text in Arabic',
+    'body_en' => 'Text in English',
+    'title' => 'Title',
     '' => '',
     '' => '',
     '' => '',

@@ -8,10 +8,10 @@ use App\Models\Image;
 class Slider extends Model
 {
     protected $fillable = [
-        'title', 'body',
+        'title_ar', 'title_en', 'body_ar', 'body_en'
     ];
 
-    public function images(){
-        return $this->morphMany(Image::class, 'imageRef');
+    public function image(){
+        return $this->morphOne(Image::class, 'imageRef');
     }
 }

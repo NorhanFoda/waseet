@@ -120,6 +120,10 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
             // Socials
             Route::resource('socials', 'Admin\SocialController');
             Route::post('delete_social', 'Admin\SocialController@deleteSocial')->name('socials.delete');
+
+            // Sliders
+            Route::resource('sliders', 'Admin\SliderController');
+            Route::post('delete_slider', 'Admin\SliderController@deleteSlider')->name('sliders.delete');
             
             // Users
             Route::resource('users', 'Admin\UserController');

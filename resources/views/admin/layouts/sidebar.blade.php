@@ -31,6 +31,7 @@
             <li class=" nav-item"><a href="{{route('students.index')}}"><i class="fa fa-graduation-cap"></i><span class="menu-title" data-i18n="Dashboard">{{trans('admin.students')}}</span></a></li>
             <li class=" nav-item"><a href="{{route('methods.index')}}"><i class="fa fa-money"></i><span class="menu-title" data-i18n="Dashboard">{{trans('admin.payment_methods')}}</span></a></li>
             <li class=" nav-item"><a href="{{route('socials.index')}}"><i class="fa fa-link"></i><span class="menu-title" data-i18n="Dashboard">{{trans('admin.socials')}}</span></a></li>
+            <li class=" nav-item"><a href="{{route('sliders.index')}}"><i class="fa fa-sliders"></i><span class="menu-title" data-i18n="Dashboard">{{trans('admin.slider')}}</span></a></li>
 
         </ul>
     </div>
