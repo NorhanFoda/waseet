@@ -124,6 +124,10 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
             // Sliders
             Route::resource('sliders', 'Admin\SliderController');
             Route::post('delete_slider', 'Admin\SliderController@deleteSlider')->name('sliders.delete');
+
+            // Setting
+            Route::get('setting', 'Admin\SettingController@edit')->name('setting.edit');
+            Route::post('setting', 'Admin\SettingController@update')->name('setting.update');
             
             // Users
             Route::resource('users', 'Admin\UserController');
