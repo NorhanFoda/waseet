@@ -112,6 +112,14 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
             // Nationalities
             Route::resource('nationalities', 'Admin\NationalityController');
             Route::post('delete_nationality', 'Admin\NationalityController@deleteNationality')->name('nationalities.delete');
+
+            // Payment methods
+            Route::resource('methods', 'Admin\PaymentMethodsController');
+            Route::post('delete_method', 'Admin\PaymentMethodsController@deleteMethod')->name('methods.delete');
+
+            // Socials
+            Route::resource('socials', 'Admin\SocialController');
+            Route::post('delete_social', 'Admin\SocialController@deleteSocial')->name('socials.delete');
             
             // Users
             Route::resource('users', 'Admin\UserController');

@@ -4,7 +4,7 @@
 @section('pageTitle'){{trans('admin.home')}}
 @endsection
 
-@section('pageSubTitle') {{trans('admin.countries')}}
+@section('pageSubTitle') {{trans('admin.payment_methods')}}
 @endsection
 
 @section('content')
@@ -15,7 +15,7 @@
     <div class="row breadcrumbs-top">
         <div class="col-12">
             <h2 class="content-header-title float-left mb-0">
-                {{trans('admin.countries')}}
+                {{trans('admin.payment_methods')}}
             </h2>
             <div class="breadcrumb-wrapper col-12">
                 <ol class="breadcrumb">
@@ -42,7 +42,7 @@
             </div>
             <div class="card-content">
                 <div class="card-body">
-                    <form class="form form-horizontal needs-validation" enctype="multipart/form-data" novalidate method="post" action="{{route('countries.store')}}">
+                    <form class="form form-horizontal needs-validation" enctype="multipart/form-data" novalidate method="post" action="{{route('methods.store')}}">
                         @csrf
                         <div class="form-body">
                             <div class="row">
@@ -77,6 +77,22 @@
                                     </div>
                                 </div>
                                 {{-- enter english name end --}}
+
+                                 {{-- enter image --}}
+                                 <div class="col-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-2">
+                                            <span>{{trans('admin.image')}}</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <input type="file" name="image" class="form-control" accept="image/*" placeholder="{{trans('admin.image')}}" required>
+                                            <div class="invalid-feedback">
+                                                {{trans('admin.image')}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- enter image end --}}
 
                                 <div class="col-12 text-center">
                                     <button type="submit" class="btn btn-primary mr-1 mb-1 waves-effect waves-light">{{trans('admin.save')}}</button>

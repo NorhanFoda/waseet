@@ -129,7 +129,9 @@ return [
 
     // Students
     'stage' => 'Stage',
-    '' => '',
+
+    // Payment methods
+    'payment_methods' => 'Payment methods',
     '' => '',
     '' => '',
     '' => '',

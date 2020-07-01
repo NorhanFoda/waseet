@@ -4,7 +4,7 @@
 @section('pageTitle'){{trans('admin.home')}}
 @endsection
 
-@section('pageSubTitle') {{trans('admin.countries')}}
+@section('pageSubTitle') {{trans('admin.payment_methods')}}
 @endsection
 
 @section('content')
@@ -15,7 +15,7 @@
     <div class="row breadcrumbs-top">
         <div class="col-12">
             <h2 class="content-header-title float-left mb-0">
-                {{trans('admin.countries')}}
+                {{trans('admin.payment_methods')}}
             </h2>
             <div class="breadcrumb-wrapper col-12">
                 <ol class="breadcrumb">
@@ -28,7 +28,7 @@
             </div>
         </div>
     </div>
-    
+
     @if(count($errors->all()) > 0)
         @foreach($errors->all() as $error)
             {{session()->flash('error', $error)}}
@@ -38,11 +38,11 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">{{trans('admin.edit')}}</h4>
+                <h4 class="card-title">{{trans('admin.add')}}</h4>
             </div>
             <div class="card-content">
                 <div class="card-body">
-                    <form class="form form-horizontal needs-validation" enctype="multipart/form-data" novalidate method="post" action="{{route('countries.update', $country->id)}}">
+                    <form class="form form-horizontal needs-validation" enctype="multipart/form-data" novalidate method="post" action="{{route('methods.update', $method->id)}}">
                         @csrf
                         @method('PUT')
                         <div class="form-body">
@@ -54,7 +54,7 @@
                                             <span>{{trans('admin.name_ar')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <input type="text" class="form-control" value="{{$country->name_ar}}" placeholder="{{trans('admin.name_ar')}}" name="name_ar" required>
+                                            <input type="text" class="form-control" value="{{$method->name_ar}}" placeholder="{{trans('admin.name_ar')}}" name="name_ar" required>
                                             <div class="invalid-feedback">
                                                 {{trans('admin.name_required')}}
                                             </div>
@@ -70,7 +70,7 @@
                                             <span>{{trans('admin.name_en')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <input type="text" class="form-control" value="{{$country->name_en}}" placeholder="{{trans('admin.name_en')}}" name="name_en" required>
+                                            <input type="text" class="form-control" value="{{$method->name_en}}" placeholder="{{trans('admin.name_en')}}" name="name_en" required>
                                             <div class="invalid-feedback">
                                                 {{trans('admin.name_required')}}
                                             </div>
@@ -78,6 +78,30 @@
                                     </div>
                                 </div>
                                 {{-- enter english name end --}}
+
+                                 {{-- enter image --}}
+                                 <div class="col-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-2">
+                                            <span>{{trans('admin.image')}}</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <input type="file" name="image" class="form-control" accept="image/*" placeholder="{{trans('admin.image')}}">
+                                            <div class="invalid-feedback">
+                                                {{trans('admin.image')}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-10">
+                                            <img src="{{$method->image->path}}" alt="{{$method->{'name_'.session('lang')} }}">
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- enter image end --}}
 
                                 <div class="col-12 text-center">
                                     <button type="submit" class="btn btn-primary mr-1 mb-1 waves-effect waves-light">{{trans('admin.save')}}</button>

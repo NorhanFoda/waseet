@@ -129,7 +129,9 @@ return [
 
     // Students
     'stage' => 'المرحلة',
-    '' => '',
+
+    // Payment methods
+    'payment_methods' => 'وسائل الدفع',
     '' => '',
     '' => '',
     '' => '',
