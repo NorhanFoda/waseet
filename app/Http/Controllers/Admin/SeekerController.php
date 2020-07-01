@@ -162,7 +162,7 @@ class SeekerController extends Controller
         }
         else{
             return response()->json([
-                'data' => 1
+                'data' => 0
             ], 200);
         }
     }

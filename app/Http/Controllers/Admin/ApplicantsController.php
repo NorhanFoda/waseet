@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
+use App\Models\Job;
 
 class ApplicantsController extends Controller
 {
@@ -27,7 +28,14 @@ class ApplicantsController extends Controller
      */
     public function create()
     {
-        //
+        $seekers = User::whereHas('roles', function($q){
+                $q->where('name', 'job_seeker');
+            }
+        )->get();
+
+        $jobs = Job::all();
+
+        return view('admin.applicants.create', compact('seekers', 'jobs'));
     }
 
     /**
@@ -38,7 +46,21 @@ class ApplicantsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, ['user_id' => 'required', 'job_ids' => 'required|array']);
+
+        $applicant = User::find($request->user_id);
+
+        //attacht the job to seeker
+        $applicant->job_applications()->sync($request->job_ids);
+
+        //attche the seeker to the announced organization
+        foreach($request->job_ids as $job_id){
+            $org = Job::find($job_id)->announcer;
+            $org->org_applicants()->sync($applicant->id);   
+        }
+
+        session()->flash('success', trans('admin.created'));
+        return redirect()->route('applicants.index');
     }
 
     /**
@@ -49,7 +71,9 @@ class ApplicantsController extends Controller
      */
     public function show($id)
     {
-        //
+        $applicant = User::with(['document', 'country', 'city', 'job_applications', 'job_organizations'])->find($id);
+
+        return view('admin.applicants.show', compact('applicant'));
     }
 
     /**
@@ -60,7 +84,14 @@ class ApplicantsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $applicant = User::with('job_applications')->find($id);
+        $seekers = User::whereHas('roles', function($q){
+                $q->where('name', 'job_seeker');
+            }
+        )->get();
+        $jobs = Job::all();
+
+        return view('admin.applicants.edit', compact('applicant', 'jobs', 'seekers'));
     }
 
     /**
@@ -72,7 +103,21 @@ class ApplicantsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, ['job_ids' => 'required|array']);
+
+        $applicant = User::find($id);
+
+        //attach the job to the seeker
+        $applicant->job_applications()->sync($request->job_ids);
+
+        //attach the seeker to the announced organization
+        foreach($request->job_ids as $job_id){
+            $org = Job::find($job_id)->announcer;
+            $org->org_applicants()->sync($applicant->id);   
+        }
+
+        session()->flash('success', trans('admin.updated'));
+        return redirect()->route('applicants.index');
     }
 
     /**
@@ -83,6 +128,15 @@ class ApplicantsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        abort(404);
+    }
+
+    public function deleteApplicant(Request $request){
+        $applicant = User::find($request->id);
+        $applicant->delete();
+        return response()->json([
+            'data' => 1
+        ], 200);
+        
     }
 }

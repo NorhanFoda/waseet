@@ -123,8 +123,12 @@ return [
     'cv' => 'C.V.',
     'view_cv' => 'View CV',
     'years' => 'Years',
-    '' => '',
-    '' => '',
+
+    // Job applicants
+    'announcer' => 'Announcer',
+
+    // Students
+    'stage' => 'Stage',
     '' => '',
     '' => '',
     '' => '',
