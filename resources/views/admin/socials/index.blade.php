@@ -6,7 +6,7 @@
 @endsection
 
 @section('pageSubTitle') 
-{{trans('admin.payment_methods')}}
+{{trans('admin.socials')}}
 @endsection
 
 @section('content')
@@ -19,14 +19,14 @@
         <div class="row breadcrumbs-top">
             <div class="col-12">
                 <h2 class="content-header-title float-left mb-0">
-                    {{trans('admin.payment_methods')}}
+                    {{trans('admin.socials')}}
                 </h2>
                 <div class="breadcrumb-wrapper col-12">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
                             <a href="{{route('admin.home')}}">{{trans('admin.home')}}</a>
                         </li>
-                        <li class="breadcrumb-item active">{{trans('admin.payment_methods')}}
+                        <li class="breadcrumb-item active">{{trans('admin.socials')}}
                         </li>
                     </ol>
                 </div>
@@ -39,27 +39,29 @@
                 <div class="card-content">
                     <div class="card-body">
                         <div class="table-responsive">
-                            <a href="{{route('methods.create')}}" class="btn btn-primary btn-block my-2 waves-effect waves-light">{{trans('admin.add')}} </a>
+                            <a href="{{route('socials.create')}}" class="btn btn-primary btn-block my-2 waves-effect waves-light">{{trans('admin.add')}} </a>
                             <table class="table table-bordered mb-0 dt-responsive nowrap data_table">
                                 <thead>
                                 <tr align="center">
                                     <th>#</th>
-                                    <th>{{trans('admin.name_ar')}}</th>
-                                    <th>{{trans('admin.name_en')}}</th>
                                     <th>{{trans('admin.image')}}</th>
+                                    <th>{{trans('admin.appear_in_footer')}}</th>
+                                    <th>{{trans('admin.link')}}</th>
                                     <th>{{trans('admin.action')}}</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($methods as $method)
+                                    @foreach($socials as $social)
                                         <tr align="center">
                                             <td>{{$loop->iteration}}</td>
-                                            <td>{{$method->name_ar}}</td>
-                                            <td>{{$method->name_en}}</td>
-                                            <td><img src="{{$method->image->path}}" alt="{{$method->{'name_'.session('lang')} }}"></td>
+                                            <td><img src="{{$social->image->path}}" alt="{{$social->{'name_'.session('lang')} }}"></td>
+                                            <td>
+                                                @if($social->appear_in_footer == 1) {{trans('admin.yes')}}  @else {{trans('admin.no')}} @endif
+                                            </td>
+                                            <td>{{$social->link}}</td>
                                             <td> 
-                                                <a href="{{route('methods.edit', $method->id)}}" class="btn" style="color:white;"><i class="fa fa-pencil-square-o"></i></a>
-                                                <a title="delete" onclick="return true;" id="confirm-color" object_id='{{$method->id}}'
+                                                <a href="{{route('socials.edit', $social->id)}}" class="btn" style="color:white;"><i class="fa fa-pencil-square-o"></i></a>
+                                                <a title="delete" onclick="return true;" id="confirm-color" object_id='{{$social->id}}'
                                                     class="delete btn" style="color:red;"><i class="fa fa-trash-o"></i></a>
                                             </td>
                                         </tr>
@@ -104,7 +106,7 @@
                     var status = $(this).attr('object_status');
                         token = $('meta[name="csrf-token"]').attr('content');
                         $.ajax({
-                            url: "{{route('methods.delete')}}",
+                            url: "{{route('socials.delete')}}",
                             type: "post",
                             dataType: 'json',
                             data: {"_token": "{{ csrf_token() }}", id: id},

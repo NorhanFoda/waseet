@@ -132,9 +132,11 @@ return [
 
     // Payment methods
     'payment_methods' => 'Payment methods',
-    '' => '',
-    '' => '',
-    '' => '',
+
+    // Socials
+    'socials' => 'Social networks',
+    'link' => 'Link',
+    'appear_in_footer' => 'Appear in page footer',
     '' => '',
     '' => '',
     '' => '',
