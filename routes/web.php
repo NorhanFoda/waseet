@@ -93,6 +93,9 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
             Route::resource('seekers', 'Admin\SeekerController');
             Route::post('delete_seeker', 'Admin\SeekerController@deleteSeeker')->name('seekers.delete');
 
+            // CVs
+            Route::get('cvs', 'Admin\CVController@index')->name('cvs.index');
+
             // Job applicants
             Route::resource('applicants', 'Admin\ApplicantsController');
             Route::post('delete_applicant', 'Admin\ApplicantsController@deleteApplicant')->name('applicants.delete');
@@ -128,6 +131,10 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
             // Setting
             Route::get('setting', 'Admin\SettingController@edit')->name('setting.edit');
             Route::post('setting', 'Admin\SettingController@update')->name('setting.update');
+
+            // Announces
+            Route::resource('announces', 'Admin\AnnouncController');
+            Route::post('delete_announce', 'Admin\AnnouncController@deleteAnnounce')->name('announces.delete');
             
             // Users
             Route::resource('users', 'Admin\UserController');

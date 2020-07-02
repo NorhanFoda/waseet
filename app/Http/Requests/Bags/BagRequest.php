@@ -34,6 +34,12 @@ class BagRequest extends FormRequest
             'benefits_en' => 'required',
             'bag_category_id' => 'required',
             'price' => 'required',
+            'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'poster' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'video' => 'sometimes|mimetypes:video/x-ms-asf,video/x-flv,video/mp4,application/x-mpegURL,video/MP2T,video/3gpp,video/quicktime,video/x-msvideo,video/x-ms-wmv,video/avi',
+            'documents' => 'array|required_without_all:images,videos',
+            'images' => 'array|required_without_all:documents,videos',
+            'videos' => 'array|required_without_all:documents,images',
         ];
     }
 }

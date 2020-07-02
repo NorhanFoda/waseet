@@ -15,8 +15,9 @@ class CreateDocumentsTable extends Migration
     {
         Schema::create('documents', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('user_id')->nullable()->index();
             $table->string('path');
+            $table->unsignedBigInteger('doucmentRef_id')->nullable()->index();
+            $table->string('doucmentRef_type');
             $table->timestamps();
         });
     }

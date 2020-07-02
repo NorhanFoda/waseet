@@ -230,7 +230,7 @@
                                 <div class="col-12">
                                     <div class="form-group row">
                                         <div class="col-md-12">
-                                            <img src="{{$bag->image ? $bag->image->path : 'images/product-avatar.png'}}" alt="{{$bag->{'name_'.session('lang')} }}"
+                                            <img src="{{$bag->image}}" alt="{{$bag->{'name_'.session('lang')} }}"
                                             width="100px" height="100px" style="border-radius: 5px;">
                                         </div>
                                     </div>
@@ -254,9 +254,9 @@
                                 <div class="col-12">
                                     <div class="form-group row">
                                         <div class="col-md-12">
-                                            <video width="320" height="240" poster="{{$bag->video->poster}}" controls>
-                                                <source src="{{$bag->video->path}}" type="video/mp4">
-                                                <source src="{{$bag->video->path}}" type="video/ogg">
+                                            <video width="320" height="240" poster="{{$bag->poster}}" controls>
+                                                <source src="{{$bag->video}}" type="video/mp4">
+                                                <source src="{{$bag->video}}" type="video/ogg">
                                              </video>
                                         </div>
                                     </div>
@@ -280,7 +280,7 @@
                                 <div class="col-12">
                                     <div class="form-group row">
                                         <div class="col-md-12">
-                                            <img src="{{$bag->video ? $bag->video->poster : 'images/product-avatar.png'}}" alt="{{$bag->{'name_'.session('lang')} }}"
+                                            <img src="{{$bag->poster}}" alt="{{$bag->{'name_'.session('lang')} }}"
                                             width="100px" height="100px" style="border-radius: 5px;">
                                         </div>
                                     </div>

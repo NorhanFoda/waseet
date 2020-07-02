@@ -45,12 +45,6 @@ class CreateForeignKeysTable extends Migration
                 ->onUpdate('cascade');
         });
 
-        Schema::table('videos', function(Blueprint $table) {
-            $table->foreign('bag_id')->references('id')->on('bags')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
-        });
-
         Schema::table('job_user', function(Blueprint $table) {
             $table->foreign('user_id')->references('id')->on('users')
                 ->onDelete('cascade')
@@ -68,12 +62,6 @@ class CreateForeignKeysTable extends Migration
         });
 
         Schema::table('saves', function(Blueprint $table) {
-            $table->foreign('user_id')->references('id')->on('users')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
-        });
-
-        Schema::table('documents', function(Blueprint $table) {
             $table->foreign('user_id')->references('id')->on('users')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');

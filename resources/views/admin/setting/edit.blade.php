@@ -44,7 +44,6 @@
                 <div class="card-body">
                     <form class="form form-horizontal needs-validation" enctype="multipart/form-data" novalidate method="post" action="{{route('setting.update')}}">
                         @csrf
-                        @method('PUT')
                         <div class="form-body">
                             <div class="row">
 
@@ -73,7 +72,7 @@
                                             <span>{{trans('admin.text_before_add_ar')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <textarea name="text_before_add_ar" {{trans('admin.text_before_add_ar')}} class="form-control" cols="30" rows="6">{{$set->text_before_add_ar}}</textarea>
+                                            <textarea name="text_before_add_ar" {{trans('admin.text_before_add_ar')}} class="form-control" cols="30" rows="6" required>{{$set->text_before_add_ar}}</textarea>
                                             <div class="invalid-feedback">
                                                 {{trans('admin.text_before_add_ar')}}
                                             </div>
@@ -89,7 +88,7 @@
                                             <span>{{trans('admin.text_after_add_ar')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <textarea name="text_after_add_ar" {{trans('admin.text_after_add_ar')}} class="form-control" cols="30" rows="6">{{$set->text_after_add_ar}}</textarea>
+                                            <textarea name="text_after_add_ar" {{trans('admin.text_after_add_ar')}} class="form-control" cols="30" rows="6" required>{{$set->text_after_add_ar}}</textarea>
                                             <div class="invalid-feedback">
                                                 {{trans('admin.text_after_add_ar')}}
                                             </div>
@@ -121,7 +120,7 @@
                                             <span>{{trans('admin.section_1_text_ar')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <textarea name="section_1_text_ar" {{trans('admin.section_1_text_ar')}} class="form-control" cols="30" rows="6">{{$set->section_1_text_ar}}</textarea>
+                                            <textarea name="section_1_text_ar" {{trans('admin.section_1_text_ar')}} class="form-control" cols="30" rows="6" required>{{$set->section_1_text_ar}}</textarea>
                                             <div class="invalid-feedback">
                                                 {{trans('admin.section_1_text_ar')}}
                                             </div>
@@ -153,7 +152,7 @@
                                             <span>{{trans('admin.section_2_text_ar')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <textarea name="section_2_text_ar" {{trans('admin.section_2_text_ar')}} class="form-control" cols="30" rows="6">{{$set->section_2_text_ar}}</textarea>
+                                            <textarea name="section_2_text_ar" {{trans('admin.section_2_text_ar')}} class="form-control" cols="30" rows="6" required>{{$set->section_2_text_ar}}</textarea>
                                             <div class="invalid-feedback">
                                                 {{trans('admin.section_2_text_ar')}}
                                             </div>
@@ -185,7 +184,7 @@
                                             <span>{{trans('admin.section_3_text_ar')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <textarea name="section_3_text_ar" {{trans('admin.section_3_text_ar')}} class="form-control" cols="30" rows="6">{{$set->section_3_text_ar}}</textarea>
+                                            <textarea name="section_3_text_ar" {{trans('admin.section_3_text_ar')}} class="form-control" cols="30" rows="6" required>{{$set->section_3_text_ar}}</textarea>
                                             <div class="invalid-feedback">
                                                 {{trans('admin.section_3_text_ar')}}
                                             </div>
@@ -233,7 +232,7 @@
                                             <span>{{trans('admin.contact_us_text_ar')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <textarea name="contact_us_text_ar" {{trans('admin.contact_us_text_ar')}} class="form-control" cols="30" rows="6">{{$set->contact_us_text_ar}}</textarea>
+                                            <textarea name="contact_us_text_ar" {{trans('admin.contact_us_text_ar')}} class="form-control" cols="30" rows="6" required>{{$set->contact_us_text_ar}}</textarea>
                                             <div class="invalid-feedback">
                                                 {{trans('admin.contact_us_text_ar')}}
                                             </div>
@@ -265,7 +264,7 @@
                                             <span>{{trans('admin.saved_text_ar')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <textarea name="saved_text_ar" {{trans('admin.saved_text_ar')}} class="form-control" cols="30" rows="6">{{$set->saved_text_ar}}</textarea>
+                                            <textarea name="saved_text_ar" {{trans('admin.saved_text_ar')}} class="form-control" cols="30" rows="6" required>{{$set->saved_text_ar}}</textarea>
                                             <div class="invalid-feedback">
                                                 {{trans('admin.saved_text_ar')}}
                                             </div>
@@ -300,7 +299,7 @@
                                             <span>{{trans('admin.text_before_add_en')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <textarea name="text_before_add_en" {{trans('admin.text_before_add_en')}} class="form-control" cols="30" rows="6">{{$set->text_before_add_en}}</textarea>
+                                            <textarea name="text_before_add_en" {{trans('admin.text_before_add_en')}} class="form-control" cols="30" rows="6" required>{{$set->text_before_add_en}}</textarea>
                                             <div class="invalid-feedback">
                                                 {{trans('admin.text_before_add_en')}}
                                             </div>
@@ -316,7 +315,7 @@
                                             <span>{{trans('admin.text_after_add_en')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <textarea name="text_after_add_en" {{trans('admin.text_after_add_en')}} class="form-control" cols="30" rows="6">{{$set->text_after_add_en}}</textarea>
+                                            <textarea name="text_after_add_en" {{trans('admin.text_after_add_en')}} class="form-control" cols="30" rows="6" required>{{$set->text_after_add_en}}</textarea>
                                             <div class="invalid-feedback">
                                                 {{trans('admin.text_after_add_en')}}
                                             </div>
@@ -348,7 +347,7 @@
                                             <span>{{trans('admin.section_1_text_en')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <textarea name="section_1_text_en" {{trans('admin.section_1_text_en')}} class="form-control" cols="30" rows="6">{{$set->section_1_text_en}}</textarea>
+                                            <textarea name="section_1_text_en" {{trans('admin.section_1_text_en')}} class="form-control" cols="30" rows="6" required>{{$set->section_1_text_en}}</textarea>
                                             <div class="invalid-feedback">
                                                 {{trans('admin.section_1_text_en')}}
                                             </div>
@@ -380,7 +379,7 @@
                                             <span>{{trans('admin.section_2_text_en')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <textarea name="section_2_text_en" {{trans('admin.section_2_text_en')}} class="form-control" cols="30" rows="6">{{$set->section_2_text_en}}</textarea>
+                                            <textarea name="section_2_text_en" {{trans('admin.section_2_text_en')}} class="form-control" cols="30" rows="6" required>{{$set->section_2_text_en}}</textarea>
                                             <div class="invalid-feedback">
                                                 {{trans('admin.section_2_text_en')}}
                                             </div>
@@ -412,7 +411,7 @@
                                             <span>{{trans('admin.section_3_text_en')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <textarea name="section_3_text_en" {{trans('admin.section_3_text_en')}} class="form-control" cols="30" rows="6">{{$set->section_3_text_en}}</textarea>
+                                            <textarea name="section_3_text_en" {{trans('admin.section_3_text_en')}} class="form-control" cols="30" rows="6" required>{{$set->section_3_text_en}}</textarea>
                                             <div class="invalid-feedback">
                                                 {{trans('admin.section_3_text_en')}}
                                             </div>
@@ -460,7 +459,7 @@
                                             <span>{{trans('admin.contact_us_text_en')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <textarea name="contact_us_text_en" {{trans('admin.contact_us_text_en')}} class="form-control" cols="30" rows="6">{{$set->contact_us_text_en}}</textarea>
+                                            <textarea name="contact_us_text_en" {{trans('admin.contact_us_text_en')}} class="form-control" cols="30" rows="6" required>{{$set->contact_us_text_en}}</textarea>
                                             <div class="invalid-feedback">
                                                 {{trans('admin.contact_us_text_en')}}
                                             </div>
@@ -492,7 +491,7 @@
                                             <span>{{trans('admin.saved_text_en')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <textarea name="saved_text_en" {{trans('admin.saved_text_en')}} class="form-control" cols="30" rows="6">{{$set->saved_text_en}}</textarea>
+                                            <textarea name="saved_text_en" {{trans('admin.saved_text_en')}} class="form-control" cols="30" rows="6" required>{{$set->saved_text_en}}</textarea>
                                             <div class="invalid-feedback">
                                                 {{trans('admin.saved_text_en')}}
                                             </div>
@@ -510,7 +509,7 @@
                                             <span>{{trans('admin.header_logo')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <input type="file" name="header_logo" class="form-control" accept="image/*" placeholder="{{trans('admin.header_logo')}}" required>
+                                            <input type="file" name="header_logo" class="form-control" accept="image/*" placeholder="{{trans('admin.header_logo')}}">
                                             <div class="invalid-feedback">
                                                 {{trans('admin.header_logo')}}
                                             </div>
@@ -534,7 +533,7 @@
                                             <span>{{trans('admin.footer_logo')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <input type="file" name="footer_logo" class="form-control" accept="image/*" placeholder="{{trans('admin.footer_logo')}}" required>
+                                            <input type="file" name="footer_logo" class="form-control" accept="image/*" placeholder="{{trans('admin.footer_logo')}}">
                                             <div class="invalid-feedback">
                                                 {{trans('admin.footer_logo')}}
                                             </div>
@@ -558,7 +557,7 @@
                                             <span>{{trans('admin.text_after_add_image')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <input type="file" name="text_after_add_image" class="form-control" accept="image/*" placeholder="{{trans('admin.text_after_add_image')}}" required>
+                                            <input type="file" name="text_after_add_image" class="form-control" accept="image/*" placeholder="{{trans('admin.text_after_add_image')}}">
                                             <div class="invalid-feedback">
                                                 {{trans('admin.text_after_add_image')}}
                                             </div>

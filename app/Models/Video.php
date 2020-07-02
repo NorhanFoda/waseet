@@ -7,9 +7,9 @@ use App\Models\Bag;
 
 class Video extends Model
 {
-    protected $fillable = ['path', 'bag_id', 'poster'];
+    protected $fillable = ['path', 'videoRef_id', 'poster', 'videoRef_type'];
 
-    public function bag(){
-        return $this->belongsto(Bag::class);
+    public function videoRef(){
+        return $this->morphTo();
     }
 }

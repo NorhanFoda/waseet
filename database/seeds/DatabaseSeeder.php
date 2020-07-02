@@ -24,5 +24,6 @@ class DatabaseSeeder extends Seeder
         $this->call(EduLevelSeeder::class);
         $this->call(CountrySeeder::class);
         $this->call(CitySeeder::class);
+        $this->call(SettingSeeder::class);
     }
 }

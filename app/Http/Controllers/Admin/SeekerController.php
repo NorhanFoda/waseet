@@ -53,7 +53,8 @@ class SeekerController extends Controller
         $image_url = Upload::uploadPDF($request->cv);
             $cv = Document::create([
                 'path' => $image_url,
-                'user_id' => $seeker->id,
+                'doucmentRef_id' => $seeker->id,
+                'doucmentRef_type' => 'App\User',
             ]);
             $seeker->document()->save($cv);
 
@@ -124,7 +125,8 @@ class SeekerController extends Controller
                 $pdf_url = Upload::uploadPDF($request->cv);
                 $pdf = Document::create([
                     'path' => $pdf_url,
-                    'user_id' => $seeker->id,
+                    'doucmentRef_id' => $seeker->id,
+                    'doucmentRef_type' => 'App\User',
                 ]);
                 $seeker->document()->save($pdf);
             }
@@ -155,6 +157,7 @@ class SeekerController extends Controller
         $seeker = User::find($request->id);
         $removed = Upload::deletePDF($seeker->document->path);
         if($removed){
+            Document::where('documentRef_id', $seeker->id)->first()->delete();
             $seeker->delete();
             return response()->json([
                 'data' => 1

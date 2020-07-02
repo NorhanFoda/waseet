@@ -7,9 +7,9 @@ use App\User;
 
 class Document extends Model
 {
-    protected $fillable = ['user_id', 'path'];
+    protected $fillable = ['doucmentRef_id', 'path', 'doucmentRef_type'];
 
-    public function user(){
-        return $this->belongsTo(User::class);
+    public function doucmentRef(){
+        return $this->morphTo();
     }
 }

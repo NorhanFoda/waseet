@@ -8,8 +8,10 @@ use App\Models\Bag;
 use App\Models\BagCategory;
 use App\Models\Image;
 use App\Models\Video;
+use App\Models\Document;
 use App\Classes\Upload;
 use App\Http\Requests\Bags\BagRequest;
+use Illuminate\Support\Facades\Validator;
 
 class BagController extends Controller
 {
@@ -20,7 +22,7 @@ class BagController extends Controller
      */
     public function index()
     {
-        $bags = Bag::with('image')->get();
+        $bags = Bag::all();
         return view('admin.bags.index', compact('bags'));
     }
 
@@ -43,36 +45,87 @@ class BagController extends Controller
      */
     public function store(BagRequest $request)
     {
+
+        // Store basic data of the bag
         $bag = Bag::create($request->all());
 
-        if($request->has('image')){
-            $this->validate($request, [
-                'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            ]);
+        $image_url = Upload::uploadImage($request->image);
+        $poster_url = Upload::uploadImage($request->poster);
+        $video_url = Upload::uploadVideo($request->video);
+        $bag->update([
+            'image' => $image_url,
+            'video' => $video_url,
+            'poster' => $poster_url
+        ]);
 
-            $image_url = Upload::uploadImage($request->image);
-            $image = Image::create([
-                'path' => $image_url,
-                'imageRef_id' => $bag->id,
-                'imageRef_type' => 'App\Models\Bag'
-            ]);
-            $bag->image()->save($image);
+        // Store bag contents
+        if($request->has('documents')){
+            $documentRules = array(
+                'document' => 'mimetypes:application/pdf|max:10000',
+            );
+
+            foreach($request->documents as $doc){
+                //Validate doc
+                $doc_to_validate = array('document' => $doc);
+                $docValidator = Validator::make($doc_to_validate, $documentRules);
+                if ($docValidator->fails()) {
+                    return $docValidator->messages();
+                }
+
+                $pdf_url = Upload::uploadPDF($doc);
+                $pdf = Document::create([
+                    'path' => $pdf_url,
+                    'doucmentRef_id' => $bag->id,
+                    'doucmentRef_type' => 'App\Models\Bag'
+                ]);
+                $bag->documents()->save($pdf);
+            }
         }
 
-        if($request->has('poster') && $request->has('video')){
-            $this->validate($request,[
-                'poster' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-                'video' => 'mimetypes:video/x-ms-asf,video/x-flv,video/mp4,application/x-mpegURL,video/MP2T,video/3gpp,video/quicktime,video/x-msvideo,video/x-ms-wmv,video/avi',
-            ]);
+        if($request->has('images')){
+            $imageRules = array(
+                'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            );
 
-            $poster_url = Upload::uploadImage($request->poster);
-            $video_url = Upload::uploadVideo($request->video);
-            $video = Video::create([
-                'path' => $video_url,
-                'poster' => $poster_url,
-                'bag_id' => $bag->id,
-            ]);
-            $bag->video()->save($video);
+            foreach($request->images as $image){
+                //Validate image
+                $image_to_validate = array('image' => $image);
+                $imageValidator = Validator::make($image_to_validate, $imageRules);
+                if ($imageValidator->fails()) {
+                    return $imageValidator->messages();
+                }
+
+                $content_image_url = Upload::uploadImage($image);
+                $content_image = Image::create([
+                    'path' => $content_image_url,
+                    'imageRef_id' => $bag->id,
+                    'imageRef_type' => 'App\Models\Bag'
+                ]);
+                $bag->images()->save($content_image);
+            }
+        }
+
+        if($request->has('videos')){
+            $videoRules = array(
+                'video' => 'mimetypes:video/x-ms-asf,video/x-flv,video/mp4,application/x-mpegURL,video/MP2T,video/3gpp,video/quicktime,video/x-msvideo,video/x-ms-wmv,video/avi',
+            );
+
+            foreach($request->videos as $video){
+                //Validate video
+                $video_to_validate = array('video' => $video);
+                $videoValidator = Validator::make($video_to_validate, $videoRules);
+                if ($videoValidator->fails()) {
+                    return $videoValidator->messages();
+                }
+
+                $content_video_url = Upload::uploadVideo($video);
+                $content_video = video::create([
+                    'path' => $content_video_url,
+                    'videoRef_id' => $bag->id,
+                    'videoRef_type' => 'App\Models\Bag'
+                ]);
+                $bag->videos()->save($content_video);
+            }
         }
 
         if($bag){
@@ -122,18 +175,27 @@ class BagController extends Controller
     public function update(BagRequest $request, $id)
     {
         $bag = Bag::find($id);
-        $bag->update($request->all());
+
+        // Update basic data of the bag
+        $bag->update([
+            'name_ar' => $request->name_ar,
+            'name_en' => $request->name_en,
+            'description_ar' => $request->description_ar,
+            'description_en' => $request->description_en,
+            'price' => $request->price,
+            'contents_ar' => $request->contents_ar,
+            'contents_en' => $request->contents_en,
+            'benefits_ar' => $request->benefits_ar,
+            'benefits_en' => $request->benefits_en,
+            'bag_category_id' => $request->bag_category_id,
+        ]);
 
         if($request->has('image')){
-            $this->validate($request, [
-                'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            ]);
-
-            $removed = Upload::deleteImage($bag->image->path);
+            $removed = Upload::deleteImage($bag->image);
             if($removed){
                 $image_url = Upload::uploadImage($request->image);
-                $bag->image->update([
-                    'path' => $image_url,
+                $bag->update([
+                    'image' => $image_url,
                 ]);
             }
             else{
@@ -142,20 +204,25 @@ class BagController extends Controller
             }
         }
 
-        if($request->has('poster') && $request->has('video')){
-            $this->validate($request,[
-                'poster' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-                'video' => 'mimetypes:video/x-ms-asf,video/x-flv,video/mp4,application/x-mpegURL,video/MP2T,video/3gpp,video/quicktime,video/x-msvideo,video/x-ms-wmv,video/avi',
-            ]);
-
-            $video_removed = Upload::deleteVideo($bag->video->path);
-            $poster_removed = Upload::deleteImage($bag->video->poster);
-
-            if($video_removed && $poster_removed){
-                $poster_url = $bag->video->poster;
+        if($request->has('video')){
+            $video_removed = Upload::deleteVideo($bag->video);
+            if($video_removed){
                 $video_url = Upload::uploadVideo($request->video);
-                $bag->video->update([
-                    'path' => $video_url,
+                $bag->update([
+                    'video' => $video_url,
+                ]);
+            }
+            else{
+                session()->flash('message', trans('admin.error'));
+                return redirect()->route('bags.index');        
+            }
+        }
+
+        if($request->has('poster')){
+            $poster_removed = Upload::deleteImage($bag->poster);
+            if($poster_removed){
+                $poster_url = Upload::uploadImage($request->poster);
+                $bag->update([
                     'poster' => $poster_url,
                 ]);
             }
@@ -189,10 +256,63 @@ class BagController extends Controller
     public function deleteBag(Request $request){
         $bag = Bag::find($request->id);
 
-        $removed = Upload::deleteImage($bag->image->path);
-        if($removed){
-            Image::where('imageRef_id', $bag->id)->first()->delete();
-            Video::where('bag_id', $bag->id)->first()->delete();
+        // Delete basic data of the bag
+        $image_removed = Upload::deleteImage($bag->image);
+        $video_removed = Upload::deleteVideo($bag->video);
+        $poster_removed = Upload::deleteImage($bag->poster);
+        $docs_removed = false;
+        $videos_removed = false;
+        $images_removed = false;
+
+        if(count($bag->documents) > 0){
+            foreach($bag->documents as $doc){
+                $docs_removed = Upload::deletePDF($doc->path);
+            }
+
+            $docs = Document::where('doucmentRef_id', $bag->id)->get();
+            foreach($docs as $doc){
+                $doc->delete();
+            }
+        }
+        else{
+            $docs_removed = true;
+        }
+
+        if(count($bag->images) > 0){
+            foreach($bag->images as $image){
+                $images_removed = Upload::deleteImage($image->path);
+            }
+
+            $images = Image::where('imageRef_id', $bag->id)->get();
+            foreach($images as $image){
+                $image->delete();
+            }
+        }
+        else{
+            $images_removed = true;
+        }
+
+        if(count($bag->videos) > 0){
+            foreach($bag->videos as $video){
+                $videos_removed = Upload::deleteImage($video->path);
+            }
+
+            $videos = Video::where('videoRef_id', $bag->id)->get();
+            foreach($videos as $video){
+                $video->delete();
+            }
+        }
+        else{
+            $videos_removed = true;
+        }
+
+        // dump($image_removed);
+        // dump($video_removed);
+        // dump($poster_removed);
+        // dump($videos_removed);
+        // dump($images_removed);
+        // dd($docs_removed);
+        if($image_removed && $video_removed && $poster_removed && $videos_removed && $images_removed && $docs_removed){
             $bag->delete();
             return response()->json([
                 'data' => 1

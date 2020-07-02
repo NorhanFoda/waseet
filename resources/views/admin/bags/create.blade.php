@@ -212,7 +212,7 @@
                                 </div>
                                 {{-- proce end --}}
 
-                                {{-- enter image --}}
+                                {{-- enter document --}}
                                 <div class="col-12">
                                     <div class="form-group row">
                                         <div class="col-md-2">
@@ -261,6 +261,104 @@
                                 {{-- enter video poster end --}}
 
 
+
+                                {{-- bag contents start --}}
+                                <div class="col-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-12">
+                                            <h4>{{trans('admin.bag_contents')}}</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- bag contents end --}}
+
+                                {{-- documents start --}}
+                                <div class="col-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-2">
+                                            <span>{{trans('admin.document')}}</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <div class="input-group control-group document_increment" >
+                                                <input type="file" name="documents[]" class="form-control" accept="application/pdf">
+                                                <div class="invalid-feedback">
+                                                    {{trans('admin.document')}}
+                                                </div>
+                                                <div class="input-group-btn"> 
+                                                    <button class="btn btn-success doc-btn-success" type="button"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                                                </div>
+                                            </div>
+                                            <div class="document_clone hidden">
+                                                <div class="control-group input-group" style="margin-top:10px">
+                                                    <input type="file" name="documents[]" class="form-control" accept="application/pdf">
+                                                    <div class="input-group-btn"> 
+                                                        <button class="btn btn-danger doc-btn-danger" type="button"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- documents end --}}
+
+                                {{-- images start --}}
+                                <div class="col-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-2">
+                                            <span>{{trans('admin.image')}}</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <div class="input-group control-group image_increment" >
+                                                <input type="file" name="images[]" class="form-control" accept=".gif, .jpg, .png, .webp">
+                                                <div class="invalid-feedback">
+                                                    {{trans('admin.image')}}
+                                                </div>
+                                                <div class="input-group-btn"> 
+                                                    <button class="btn btn-success img-btn-success" type="button"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                                                </div>
+                                            </div>
+                                            <div class="image_clone hidden">
+                                                <div class="control-group input-group" style="margin-top:10px">
+                                                    <input type="file" name="images[]" class="form-control" accept=".gif, .jpg, .png, .webp">
+                                                    <div class="input-group-btn"> 
+                                                        <button class="btn btn-danger img-btn-danger" type="button"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- images end --}}
+
+                                {{-- videos start --}}
+                                <div class="col-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-2">
+                                            <span>{{trans('admin.video')}}</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <div class="input-group control-group video_increment" >
+                                                <input type="file" name="videos[]" class="form-control" accept="video/*">
+                                                <div class="invalid-feedback">
+                                                    {{trans('admin.video')}}
+                                                </div>
+                                                <div class="input-group-btn"> 
+                                                    <button class="btn btn-success vid-btn-success" type="button"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                                                </div>
+                                            </div>
+                                            <div class="video_clone hidden">
+                                                <div class="control-group input-group" style="margin-top:10px">
+                                                    <input type="file" name="videos[]" class="form-control" accept="video/*">
+                                                    <div class="input-group-btn"> 
+                                                        <button class="btn btn-danger vid-btn-danger" type="button"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- videos end --}}
+
                                 <div class="col-12 text-center">
                                     <button type="submit" class="btn btn-primary mr-1 mb-1 waves-effect waves-light">{{trans('admin.save')}}</button>
                                 </div>
@@ -272,4 +370,41 @@
         </div>
     </div>
 
+@endsection
+
+@section('scripts')
+    <script>
+        $(document).ready(function(){
+            //add multi images
+            $(".img-btn-success").click(function(){ 
+                var html = $(".image_clone").html();
+                $(".image_increment").after(html);
+            });
+
+            $("body").on("click",".img-btn-danger",function(){ 
+                $(this).parents(".control-group").remove();
+            });
+
+
+            //add multi documents
+            $(".doc-btn-success").click(function(){ 
+                var html = $(".document_clone").html();
+                $(".document_increment").after(html);
+            });
+
+            $("body").on("click",".doc-btn-danger",function(){ 
+                $(this).parents(".control-group").remove();
+            });
+
+            //add multi videos
+            $(".vid-btn-success").click(function(){ 
+                var html = $(".video_clone").html();
+                $(".video_increment").after(html);
+            });
+
+            $("body").on("click",".vid-btn-danger",function(){ 
+                $(this).parents(".control-group").remove();
+            });
+        });
+    </script>
 @endsection

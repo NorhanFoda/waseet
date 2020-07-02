@@ -16,15 +16,19 @@ class Bag extends Model
         'name_ar', 'name_en', 'description_ar',
         'description_en', 'price', 'contents_ar',
         'contents_en', 'benefits_ar', 'benefits_en',
-        'bag_category_id',
+        'bag_category_id', 'image', 'video', 'poster',
     ];
 
-    public function image(){
-        return $this->morphOne(Image::class, 'imageRef');
+    public function images(){
+        return $this->morphMany(Image::class, 'imageRef');
     }
 
-    public function video(){
-        return $this->hasOne(Video::class);
+    public function videos(){
+        return $this->morphMany(Video::class, 'videoRef');
+    }
+
+    public function documents(){
+        return $this->morphMany(Document::class, 'doucmentRef');
     }
 
     public function category(){
