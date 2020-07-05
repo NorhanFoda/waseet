@@ -52,18 +52,20 @@
                                 </thead>
                                 <tbody>
                                     @foreach($seekers as $seeker)
-                                        <tr align="center">
-                                            <td>{{$loop->iteration}}</td>
-                                            <td>{{$seeker->name}}</td>
-                                            <td>{{$seeker->phone_main}}</td>
-                                            <td>{{$seeker->email}}</td>
-                                            <td>
-                                                <a href="{{route('seekers.show', $seeker->id)}}" class="btn" style="color:white;"><i class="fa fa-eye"></i></a>
-                                                <a href="{{route('seekers.edit', $seeker->id)}}" class="btn" style="color:white;"><i class="fa fa-pencil-square-o"></i></a>
-                                                <a title="delete" onclick="return true;" id="confirm-color" object_id='{{$seeker->id}}'
-                                                    class="delete btn" style="color:red;"><i class="fa fa-trash-o"></i></a>
-                                            </td>
-                                        </tr>
+                                        @if(!$seeker->hasRole('admin'))
+                                            <tr align="center">
+                                                <td>{{$loop->iteration}}</td>
+                                                <td>{{$seeker->name}}</td>
+                                                <td>{{$seeker->phone_main}}</td>
+                                                <td>{{$seeker->email}}</td>
+                                                <td>
+                                                    <a href="{{route('seekers.show', $seeker->id)}}" class="btn" style="color:white;"><i class="fa fa-eye"></i></a>
+                                                    <a href="{{route('seekers.edit', $seeker->id)}}" class="btn" style="color:white;"><i class="fa fa-pencil-square-o"></i></a>
+                                                    <a title="delete" onclick="return true;" id="confirm-color" object_id='{{$seeker->id}}'
+                                                        class="delete btn" style="color:red;"><i class="fa fa-trash-o"></i></a>
+                                                </td>
+                                            </tr>
+                                        @endif
                                     @endforeach
                                 </tbody>
                             </table>

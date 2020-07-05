@@ -114,7 +114,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
             // EduLevels
             Route::resource('edu_levels', 'Admin\EduLevelController');
             Route::post('delete_edu_level', 'Admin\EduLevelController@deleteEduLevel')->name('eduLevels.delete');
-
+            
             // Nationalities
             Route::resource('nationalities', 'Admin\NationalityController');
             Route::post('delete_nationality', 'Admin\NationalityController@deleteNationality')->name('nationalities.delete');

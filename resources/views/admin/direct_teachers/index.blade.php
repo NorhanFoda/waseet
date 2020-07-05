@@ -53,19 +53,21 @@
                                 </thead>
                                 <tbody>
                                     @foreach($teachers as $teacher)
-                                        <tr align="center">
-                                            <td>{{$loop->iteration}}</td>
-                                            <td>{{$teacher->name}}</td>
-                                            <td>{{$teacher->phone_main}}</td>
-                                            <td>{{$teacher->email}}</td>
-                                            <td>{{$teacher->address}}</td>
-                                            <td>
-                                                <a href="{{route('direct_teachers.show', $teacher->id)}}" class="btn" style="color:white;"><i class="fa fa-eye"></i></a>
-                                                <a href="{{route('direct_teachers.edit', $teacher->id)}}" class="btn" style="color:white;"><i class="fa fa-pencil-square-o"></i></a>
-                                                <a title="delete" onclick="return true;" id="confirm-color" object_id='{{$teacher->id}}'
-                                                    class="delete btn" style="color:red;"><i class="fa fa-trash-o"></i></a>
-                                            </td>
-                                        </tr>
+                                        @if(!$teacher->hasRole('admin'))
+                                            <tr align="center">
+                                                <td>{{$loop->iteration}}</td>
+                                                <td>{{$teacher->name}}</td>
+                                                <td>{{$teacher->phone_main}}</td>
+                                                <td>{{$teacher->email}}</td>
+                                                <td>{{$teacher->address}}</td>
+                                                <td>
+                                                    <a href="{{route('direct_teachers.show', $teacher->id)}}" class="btn" style="color:white;"><i class="fa fa-eye"></i></a>
+                                                    <a href="{{route('direct_teachers.edit', $teacher->id)}}" class="btn" style="color:white;"><i class="fa fa-pencil-square-o"></i></a>
+                                                    <a title="delete" onclick="return true;" id="confirm-color" object_id='{{$teacher->id}}'
+                                                        class="delete btn" style="color:red;"><i class="fa fa-trash-o"></i></a>
+                                                </td>
+                                            </tr>
+                                        @endif
                                     @endforeach
                                 </tbody>
                             </table>

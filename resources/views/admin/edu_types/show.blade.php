@@ -140,7 +140,7 @@
                                         timer: 1500
                                     });
 
-                                    window.location.href = "{{route('countries.index')}}";
+                                    window.location.href = "{{route('edu_types.index')}}";
                                 }
                                 else if(data.data == 0){
                                     Swal.fire({
@@ -150,7 +150,7 @@
                                         timer: 1500
                                     });
 
-                                    window.location.href = "{{route('countries.index')}}";
+                                    window.location.href = "{{route('edu_types.index')}}";
                                 }
                             }
                         });

@@ -67,8 +67,6 @@
                             <a href="{{route('applicants.edit', $applicant->id)}}" class="btn btn-primary mr-1"><i class="feather icon-edit-1"></i>{{trans('admin.edit')}}</a>
                             <a title="delete" onclick="return true;" id="confirm-color" object_id='{{$applicant->id}}'
                                 class="delete btn btn-outline-danger" style="color:white;"><i class="feather icon-trash-2"></i>{{trans('admin.delete')}}</a>
-
-                            {{-- <a href="{{$applicant->document->path}}" class="delete btn btn-outline-danger" style="color:white; float:left"><i class="feather icon-edit-1"></i>{{trans('admin.view_cv')}}</a> --}}
                         </div>
                     </div>
                 </div>

@@ -110,7 +110,7 @@
                                         timer: 1500
                                     });
 
-                                    window.location.href = "{{route('seekers.index')}}";
+                                    window.location.href = "{{route('students.index')}}";
                                 }
                                 else if(data.data == 0){
                                     Swal.fire({
@@ -120,7 +120,7 @@
                                         timer: 1500
                                     });
 
-                                    window.location.href = "{{route('seekers.index')}}";
+                                    window.location.href = "{{route('students.index')}}";
                                 }
                             }
                         });

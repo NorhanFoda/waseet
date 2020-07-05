@@ -334,7 +334,9 @@
                                             @foreach ($bag->documents as $doc)
                                                 <div class="delete_document_clone delete_files">
                                                     <div class="control-group input-group" style="margin-top:10px">
-                                                        <img src="{{asset('admin/images/logo/cv.png')}}" width="60px" height="70" alt="{{$bag->{'name_'.session('lang')} }}">
+                                                        <a href="{{$doc->path}}">
+                                                            <img src="{{asset('admin/images/logo/cv.png')}}" width="60px" height="70" alt="{{$bag->{'name_'.session('lang')} }}">
+                                                        </a>
                                                         @php
                                                             $pdf = explode('/', $doc->path);
                                                             $file_name = $pdf[count($pdf)-1];

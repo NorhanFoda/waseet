@@ -161,7 +161,7 @@
                                                 <td>{{$user->email}}</td>
                                                 <td>{{$user->phone_main}}</td>
                                                 <td>
-                                                    <a href="{{route('users.show', $user->id)}}" class="btn" style="color:white;"><i class="fa fa-eye"></i></a>
+                                                    <a href="{{route('online_teachers.show', $user->id)}}" class="btn" style="color:white;"><i class="fa fa-eye"></i></a>
                                                 </td>
                                             </tr>
                                         @endif
@@ -204,7 +204,7 @@
                                                 <td>{{$user->email}}</td>
                                                 <td>{{$user->phone_main}}</td>
                                                 <td>
-                                                    <a href="{{route('users.show', $user->id)}}" class="btn" style="color:white;"><i class="fa fa-eye"></i></a>
+                                                    <a href="{{route('direct_teachers.show', $user->id)}}" class="btn" style="color:white;"><i class="fa fa-eye"></i></a>
                                                 </td>
                                             </tr>
                                         @endif
@@ -247,7 +247,7 @@
                                                 <td>{{$user->email}}</td>
                                                 <td>{{$user->phone_main}}</td>
                                                 <td>
-                                                    <a href="{{route('users.show', $user->id)}}" class="btn" style="color:white;"><i class="fa fa-eye"></i></a>
+                                                    <a href="{{route('students.show', $user->id)}}" class="btn" style="color:white;"><i class="fa fa-eye"></i></a>
                                                 </td>
                                             </tr>
                                         @endif

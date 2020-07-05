@@ -39,14 +39,6 @@
                             {{$material->{'name_'.session('lang')} }}
                         </div>
                     </div>
-                    {{-- <div class="card-body">
-                        <div class="row">
-                            <div class="users-view-image">
-                                <img src="{{$cat->image ? $cat->image->path : 'images/product-avatar.png'}}" class="users-avatar-shadow rounded mb-2 pr-2 ml-1" 
-                                alt="avatar" style="width:150px; height:150px;">
-                            </div>
-                        </div>
-                    </div> --}}
                     <div class="row">
                         <div class="col-12">
                             <a href="{{route('materials.edit', $material->id)}}" class="btn btn-primary mr-1"><i class="feather icon-edit-1"></i>{{trans('admin.edit')}}</a>
@@ -88,7 +80,7 @@
                                                 <td>{{$user->email}}</td>
                                                 <td>{{$user->phone_main}}</td>
                                                 <td>
-                                                    <a href="{{route('users.show', $user->id)}}" class="btn" style="color:white;"><i class="fa fa-eye"></i></a>
+                                                    <a href="{{route('online_teachers.show', $user->id)}}" class="btn" style="color:white;"><i class="fa fa-eye"></i></a>
                                                 </td>
                                             </tr>
                                         @endif
@@ -131,7 +123,7 @@
                                                 <td>{{$user->email}}</td>
                                                 <td>{{$user->phone_main}}</td>
                                                 <td>
-                                                    <a href="{{route('users.show', $user->id)}}" class="btn" style="color:white;"><i class="fa fa-eye"></i></a>
+                                                    <a href="{{route('direct_teachers.show', $user->id)}}" class="btn" style="color:white;"><i class="fa fa-eye"></i></a>
                                                 </td>
                                             </tr>
                                         @endif
@@ -174,7 +166,7 @@
                                                 <td>{{$user->email}}</td>
                                                 <td>{{$user->phone_main}}</td>
                                                 <td>
-                                                    <a href="{{route('users.show', $user->id)}}" class="btn" style="color:white;"><i class="fa fa-eye"></i></a>
+                                                    <a href="{{route('students.show', $user->id)}}" class="btn" style="color:white;"><i class="fa fa-eye"></i></a>
                                                 </td>
                                             </tr>
                                         @endif

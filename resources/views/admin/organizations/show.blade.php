@@ -134,7 +134,7 @@
                                             <td>{{$user->email}}</td>
                                             <td>{{$user->phone_main}}</td>
                                             <td>
-                                                <a href="{{route('users.show', $user->id)}}" class="btn" style="color:white;"><i class="fa fa-eye"></i></a>
+                                                <a href="{{route('applicants.show', $user->id)}}" class="btn" style="color:white;"><i class="fa fa-eye"></i></a>
                                             </td>
                                         </tr>
                                     @endforeach

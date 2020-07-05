@@ -53,19 +53,21 @@
                                 </thead>
                                 <tbody>
                                     @foreach($organizations as $org)
-                                        <tr align="center">
-                                            <td>{{$loop->iteration}}</td>
-                                            <td>{{$org->name}}</td>
-                                            <td>{{$org->phone_main}}</td>
-                                            <td>{{$org->email}}</td>
-                                            <td>{{$org->address}}</td>
-                                            <td>
-                                                <a href="{{route('organizations.show', $org->id)}}" class="btn" style="color:white;"><i class="fa fa-eye"></i></a>
-                                                <a href="{{route('organizations.edit', $org->id)}}" class="btn" style="color:white;"><i class="fa fa-pencil-square-o"></i></a>
-                                                <a title="delete" onclick="return true;" id="confirm-color" object_id='{{$org->id}}'
-                                                    class="delete btn" style="color:red;"><i class="fa fa-trash-o"></i></a>
-                                            </td>
-                                        </tr>
+                                        @if(!$org->hasRole('admin'))
+                                            <tr align="center">
+                                                <td>{{$loop->iteration}}</td>
+                                                <td>{{$org->name}}</td>
+                                                <td>{{$org->phone_main}}</td>
+                                                <td>{{$org->email}}</td>
+                                                <td>{{$org->address}}</td>
+                                                <td>
+                                                    <a href="{{route('organizations.show', $org->id)}}" class="btn" style="color:white;"><i class="fa fa-eye"></i></a>
+                                                    <a href="{{route('organizations.edit', $org->id)}}" class="btn" style="color:white;"><i class="fa fa-pencil-square-o"></i></a>
+                                                    <a title="delete" onclick="return true;" id="confirm-color" object_id='{{$org->id}}'
+                                                        class="delete btn" style="color:red;"><i class="fa fa-trash-o"></i></a>
+                                                </td>
+                                            </tr>
+                                        @endif
                                     @endforeach
                                 </tbody>
                             </table>
