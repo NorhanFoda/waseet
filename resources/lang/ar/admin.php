@@ -6,6 +6,7 @@ return [
     'name_ar' => 'الإسم بالعربية',
     'name_en' => 'الإسم بالإنجليزية',
     'image' => 'الصورة',
+    'welcome' => 'مرحباً',
 
     // Feedbacks
     'name_required' => 'الإسم مطلوب',

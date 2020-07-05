@@ -6,6 +6,7 @@ return [
     'name_ar' => 'Name in Arabic',
     'name_en' => 'Name in English',
     'image' => 'Image',
+    'welcome' => 'Welcome',
 
     // Feedbacks
     'name_required' => 'Name is required',

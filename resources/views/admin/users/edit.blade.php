@@ -4,7 +4,7 @@
 @section('pageTitle'){{trans('admin.home')}}
 @endsection
 
-@section('pageSubTitle') {{trans('admin.students')}}
+@section('pageSubTitle') {{trans('admin.users')}}
 @endsection
 
 @section('content')
@@ -15,7 +15,7 @@
     <div class="row breadcrumbs-top">
         <div class="col-12">
             <h2 class="content-header-title float-left mb-0">
-                {{trans('admin.students')}}
+                {{trans('admin.users')}}
             </h2>
             <div class="breadcrumb-wrapper col-12">
                 <ol class="breadcrumb">
@@ -42,7 +42,7 @@
             </div>
             <div class="card-content">
                 <div class="card-body">
-                    <form class="form form-horizontal needs-validation" enctype="multipart/form-data" novalidate method="post" action="{{route('students.update', $std->id)}}">
+                    <form class="form form-horizontal needs-validation" enctype="multipart/form-data" novalidate method="post" action="{{route('users.update', $user->id)}}">
                         @csrf
                         @method('PUT')
                         <div class="form-body">
@@ -55,7 +55,7 @@
                                             <span>{{trans('admin.name')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <input type="text" class="form-control" value="{{$std->name}}" placeholder="{{trans('admin.name')}}" name="name" required>
+                                            <input type="text" class="form-control" value="{{$user->name}}" placeholder="{{trans('admin.name')}}" name="name" required>
                                             <div class="invalid-feedback">
                                                 {{trans('admin.name')}}
                                             </div>
@@ -71,7 +71,7 @@
                                             <span>{{trans('admin.email')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <input type="text" class="form-control" value="{{$std->email}}" placeholder="{{trans('admin.email')}}" name="email" required>
+                                            <input type="text" class="form-control" value="{{$user->email}}" placeholder="{{trans('admin.email')}}" name="email" required>
                                             <div class="invalid-feedback">
                                                 {{trans('admin.email')}}
                                             </div>
@@ -79,74 +79,6 @@
                                     </div>
                                 </div>
                                 {{-- enter email end --}}
-
-                                {{-- enter phone main --}}
-                                <div class="col-12">
-                                    <div class="form-group row">
-                                        <div class="col-md-2">
-                                            <span>{{trans('admin.phone_main')}}</span>
-                                        </div>
-                                        <div class="col-md-10">
-                                            <input type="tel" class="form-control" value="{{$std->phone_main}}" placeholder="{{trans('admin.phone_main')}}" name="phone_main" required>
-                                            <div class="invalid-feedback">
-                                                {{trans('admin.phone_main')}}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                {{-- enter phone main end --}}
-
-                                {{-- enter phone secondary --}}
-                                <div class="col-12">
-                                    <div class="form-group row">
-                                        <div class="col-md-2">
-                                            <span>{{trans('admin.phone_secondary')}}</span>
-                                        </div>
-                                        <div class="col-md-10">
-                                            <input type="tel" class="form-control" value="{{$std->phone_secondary}}" placeholder="{{trans('admin.phone_secondary')}}" name="phone_secondary">
-                                            <div class="invalid-feedback">
-                                                {{trans('admin.phone_secondary')}}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                {{-- enter phone secondary end --}}
-
-                                {{-- enter age start --}}
-                                <div class="col-6">
-                                    <div class="form-group row">
-                                        <div class="col-md-4">
-                                            <span>{{trans('admin.age')}}</span>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <input type="number" class="form-control" value="{{$std->age}}" placeholder="{{trans('admin.age')}}" name="age" required>
-                                            <div class="invalid-feedback">
-                                                {{trans('admin.age')}}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                {{-- enter age end --}}
-
-                                {{-- select stage start --}}
-                                <div class="col-6">
-                                    <div class="form-group row">
-                                        <div class="col-md-4">
-                                            <span>{{trans('admin.stage')}}</span>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <select name="stage_id" class="form-control" required>
-                                                @foreach($stages as $stage)
-                                                    <option value="{{$stage->id}}" @if($std->stage_id == $stage->id) selected @endif>{{$stage->{'name_'.session('lang')} }}</option>
-                                                @endforeach
-                                            </select>
-                                            <div class="invalid-feedback">
-                                                {{trans('admin.stage')}}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                {{-- select stage end --}}
 
                                 {{-- enter image --}}
                                 <div class="col-12">
@@ -166,7 +98,7 @@
                                 <div class="col-12">
                                     <div class="form-group row">
                                         <div class="col-md-10">
-                                            <img src="{{$std->image ? $std->image->path : '/images/avatar.png'}}" alt="{{$std->name}}"
+                                            <img src="{{$user->image ? $user->image->path : '/images/avatar.png'}}" alt="{{$user->name}}"
                                             width="100px" height="100px" style="border-radius: 5px">
                                         </div>
                                     </div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
+use App\Classes\Upload;
 
 class UserController extends Controller
 {
@@ -75,6 +76,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
+        $user = User::with('image')->find($id);
+
+        return view('admin.users.edit', compact('user'));
     }
 
     /**
@@ -86,7 +90,48 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required'
+        ]);
+
+        $user = User::find($id);
+
+        $user->update($request->all());
+
+        if($request->has('image')){
+            if($user->image != null){
+                $removed = false;
+                $image_path = explode('/', $user->image->path);
+                $image_name = $image_path[count($image_path) - 1];
+
+                if($image_name != 'avatar.png'){
+                    $removed = Upload::deleteImage($user->image->path);
+                }
+
+                if($removed){
+                    $image_url = Upload::uploadImage($request->image);
+                    $user->image->update([
+                        'path' => $image_url
+                    ]);
+                }
+                else{
+                    session()->flash('error', trans('admin.error'));
+                    return redirect()->back();
+                }
+            }
+            else{
+                $image_url = Upload::uploadImage($request->image);
+                $image = Image::create([
+                    'path' => $image_url,
+                    'imageRef_id' => $user->id,
+                    'imageRef_type' => 'App\User'
+                ]);
+            }
+        }
+
+        session()->flash('success', trans('admin.updated'));
+        return redirect()->route('admin.home');
     }
 
     /**
