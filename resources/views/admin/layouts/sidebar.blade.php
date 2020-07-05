@@ -24,6 +24,7 @@
             <li class=" nav-item"><a href="{{route('edu_levels.index')}}"><i class="fa fa-level-up"></i><span class="menu-title" data-i18n="Dashboard">{{trans('admin.edu_levels')}}</span></a></li>
             <li class=" nav-item"><a href="{{route('online_teachers.index')}}"><i class="fa fa-users"></i><span class="menu-title" data-i18n="Dashboard">{{trans('admin.online_teachers')}}</span></a></li>
             <li class=" nav-item"><a href="{{route('direct_teachers.index')}}"><i class="fa fa-users"></i><span class="menu-title" data-i18n="Dashboard">{{trans('admin.direct_teachers')}}</span></a></li>
+            <li class=" nav-item"><a href="{{route('users.index')}}"><i class="fa fa-users"></i><span class="menu-title" data-i18n="Dashboard">{{trans('admin.users')}}</span></a></li>
             <li class=" nav-item"><a href="{{route('jobs.index')}}"><i class="fa fa-bullhorn"></i><span class="menu-title" data-i18n="Dashboard">{{trans('admin.jobs')}}</span></a></li>
             <li class=" nav-item"><a href="{{route('nationalities.index')}}"><i class="fa fa-globe"></i><span class="menu-title" data-i18n="Dashboard">{{trans('admin.nationalities')}}</span></a></li>
             <li class=" nav-item"><a href="{{route('seekers.index')}}"><i class="fa fa-users"></i><span class="menu-title" data-i18n="Dashboard">{{trans('admin.job_seekers')}}</span></a></li>
@@ -34,6 +35,7 @@
             <li class=" nav-item"><a href="{{route('sliders.index')}}"><i class="fa fa-sliders"></i><span class="menu-title" data-i18n="Dashboard">{{trans('admin.slider')}}</span></a></li>
             <li class=" nav-item"><a href="{{route('cvs.index')}}"><img src="{{asset('admin/images/logo/cv.png')}}" width="20px" height="25px" style="margin: 5px"/><span class="menu-title" data-i18n="Dashboard">{{trans('admin.cvs')}}</span></a></li>
             <li class=" nav-item"><a href="{{route('announces.index')}}"><i class="fa fa-bullhorn"></i><span class="menu-title" data-i18n="Dashboard">{{trans('admin.announces')}}</span></a></li>
+            <li class=" nav-item"><a href="{{route('static_pages.index')}}"><i class="fa fa-thumb-tack"></i><span class="menu-title" data-i18n="Dashboard">{{trans('admin.static_pages')}}</span></a></li>
             <li class=" nav-item"><a href="{{route('setting.edit')}}"><i class="fa fa-gear"></i><span class="menu-title" data-i18n="Dashboard">{{trans('admin.setting')}}</span></a></li>
 
         </ul>

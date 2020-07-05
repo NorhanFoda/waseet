@@ -222,7 +222,7 @@
                                         <div class="col-md-10">
                                             <input type="file" name="image" class="form-control" accept="image/*" placeholder="{{trans('admin.image')}}">
                                             <div class="invalid-feedback">
-                                                {{trans('admin.image_required')}}
+                                                {{trans('admin.image')}}
                                             </div>
                                         </div>
                                     </div>
@@ -244,9 +244,9 @@
                                             <span>{{trans('admin.video')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <input type="file" name="video" accept="video/*" class="form-control" placeholder="{{trans('admin.video')}}">
+                                            <input type="file" name="video" accept="video/mp4,video/ogg, video/webm" class="form-control" placeholder="{{trans('admin.video')}}">
                                             <div class="invalid-feedback">
-                                                {{trans('admin.video_required')}}
+                                                {{trans('admin.video')}}
                                             </div>
                                         </div>
                                     </div>
@@ -254,10 +254,11 @@
                                 <div class="col-12">
                                     <div class="form-group row">
                                         <div class="col-md-12">
-                                            <video width="320" height="240" poster="{{$bag->poster}}" controls>
+                                            <video width="220" height="140" poster="{{$bag->poster}}" controls>
                                                 <source src="{{$bag->video}}" type="video/mp4">
                                                 <source src="{{$bag->video}}" type="video/ogg">
-                                             </video>
+                                                <source src="{{$bag->video}}" type="video/webm">
+                                            </video>
                                         </div>
                                     </div>
                                 </div>
@@ -285,8 +286,176 @@
                                         </div>
                                     </div>
                                 </div>
-                                {{-- enter image end --}}
+                                {{-- enter poster end --}}
 
+
+
+                                {{-- bag contents start --}}
+                                <div class="col-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-12">
+                                            <h4>{{trans('admin.bag_contents')}}</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- bag contents end --}}
+
+                                {{-- documents start --}}
+                                <div class="col-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-2">
+                                            <span>{{trans('admin.document')}}</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <div class="input-group control-group document_increment" >
+                                                <input type="file" name="documents[]" class="form-control" accept="application/pdf">
+                                                <div class="invalid-feedback">
+                                                    {{trans('admin.document')}}
+                                                </div>
+                                                <div class="input-group-btn"> 
+                                                    <button class="btn btn-success doc-btn-success" type="button"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                                                </div>
+                                            </div>
+                                            <div class="document_clone hidden">
+                                                <div class="control-group input-group" style="margin-top:10px">
+                                                    <input type="file" name="documents[]" class="form-control" accept="application/pdf">
+                                                    <div class="input-group-btn"> 
+                                                        <button class="btn btn-danger doc-btn-danger" type="button"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-10 offset-md-2">
+                                            @foreach ($bag->documents as $doc)
+                                                <div class="delete_document_clone delete_files">
+                                                    <div class="control-group input-group" style="margin-top:10px">
+                                                        <img src="{{asset('admin/images/logo/cv.png')}}" width="60px" height="70" alt="{{$bag->{'name_'.session('lang')} }}">
+                                                        @php
+                                                            $pdf = explode('/', $doc->path);
+                                                            $file_name = $pdf[count($pdf)-1];
+                                                        @endphp
+                                                        <p>{{$file_name}}</p>
+                                                        <div class="input-group-btn"> 
+                                                            <button class="btn btn-danger delete-doc-btn-danger" onClick="deletePDF({{$doc->id}})" type="button"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- documents end --}}
+
+                                {{-- images start --}}
+                                <div class="col-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-2">
+                                            <span>{{trans('admin.image')}}</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <div class="input-group control-group image_increment" >
+                                                <input type="file" name="images[]" class="form-control" accept=".gif, .jpg, .png, .webp">
+                                                <div class="invalid-feedback">
+                                                    {{trans('admin.image')}}
+                                                </div>
+                                                <div class="input-group-btn"> 
+                                                    <button class="btn btn-success img-btn-success" type="button"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                                                </div>
+                                            </div>
+                                            <div class="image_clone hidden">
+                                                <div class="control-group input-group" style="margin-top:10px">
+                                                    <input type="file" name="images[]" class="form-control" accept=".gif, .jpg, .png, .webp">
+                                                    <div class="input-group-btn"> 
+                                                        <button class="btn btn-danger img-btn-danger" type="button"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-10 offset-md-2">
+                                            @foreach ($bag->images as $image)
+                                                <div class="delete_image_clone delete_files">
+                                                    <div class="control-group input-group" style="margin-top:10px">
+                                                        <img src="{{$image->path}}" width="100px" height="100px" style="border-radius: 5px" alt="{{$bag->{'name_'.session('lang')} }}">
+                                                        @php
+                                                            $image_arr = explode('/', $image->path);
+                                                            $image_name = $image_arr[count($image_arr)-1];
+                                                        @endphp
+                                                        <p>{{$image_name}}</p>
+                                                        <div class="input-group-btn"> 
+                                                            <button class="btn btn-danger delete-image-btn-danger" onClick="deleteImage({{$image->id}})" type="button"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- images end --}}
+
+                                {{-- videos start --}}
+                                <div class="col-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-2">
+                                            <span>{{trans('admin.video')}}</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <div class="input-group control-group video_increment" >
+                                                <input type="file" name="videos[]" class="form-control" accept="video/mp4,video/ogg">
+                                                <div class="invalid-feedback">
+                                                    {{trans('admin.video')}}
+                                                </div>
+                                                <div class="input-group-btn"> 
+                                                    <button class="btn btn-success vid-btn-success" type="button"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                                                </div>
+                                            </div>
+                                            <div class="video_clone hidden">
+                                                <div class="control-group input-group" style="margin-top:10px">
+                                                    <input type="file" name="videos[]" class="form-control" accept="video/mp4,video/ogg">
+                                                    <div class="input-group-btn"> 
+                                                        <button class="btn btn-danger vid-btn-danger" type="button"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-10 offset-md-2">
+                                            @foreach ($bag->videos as $video)
+                                                <div class="delete_video_clone delete_files">
+                                                    <div class="control-group input-group" style="margin-top:10px">
+                                                        <video width="220" height="140" poster="{{$video->poster}}" controls>
+                                                            <source src="{{$video->path}}" type="video/mp4">
+                                                            <source src="{{$video->path}}" type="video/ogg">
+                                                            <source src="{{$video->path}}" type="video/webm">
+                                                        </video>
+                                                        @php
+                                                            $video_arr = explode('/', $video->path);
+                                                            $video_name = $video_arr[count($video_arr)-1];
+                                                        @endphp
+                                                        <p>{{$video_name}}</p>
+                                                        <div class="input-group-btn"> 
+                                                            <button class="btn btn-danger delete-image-btn-danger" onClick="deleteVideo({{$video->id}})" type="button"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- videos end --}}
 
                                 <div class="col-12 text-center">
                                     <button type="submit" class="btn btn-primary mr-1 mb-1 waves-effect waves-light">{{trans('admin.save')}}</button>
@@ -299,4 +468,134 @@
         </div>
     </div>
 
+@endsection
+
+@section('scripts')
+    <script>
+        $(document).ready(function(){
+            //add multi images
+            $(".img-btn-success").click(function(){ 
+                var html = $(".image_clone").html();
+                $(".image_increment").after(html);
+            });
+
+            $("body").on("click",".img-btn-danger",function(){ 
+                $(this).parents(".control-group").remove();
+            });
+
+
+            //add multi documents
+            $(".doc-btn-success").click(function(){ 
+                var html = $(".document_clone").html();
+                $(".document_increment").after(html);
+            });
+
+            $("body").on("click",".doc-btn-danger",function(){ 
+                $(this).parents(".control-group").remove();
+            });
+
+            //add multi videos
+            $(".vid-btn-success").click(function(){ 
+                var html = $(".video_clone").html();
+                $(".video_increment").after(html);
+            });
+
+            $("body").on("click",".vid-btn-danger",function(){ 
+                $(this).parents(".control-group").remove();
+            });
+        });
+
+        function deletePDF(file_id){
+            $.ajax({
+                url: "{{route('bags.delete_pdf')}}",
+                type: "POST",
+                dataType: 'html',
+                data: {"_token": "{{ csrf_token() }}", id: file_id },
+                success: function(data){
+                    data = JSON.parse(data);
+                    if(data.data == 1){
+                        Swal.fire({
+                            title: "{{ trans('admin.deleted')}}",
+                            type: 'success',
+                            timer: 1500,
+                            showCancelButton: false,
+                            showConfirmButton: false,
+                        });
+                        location.reload();
+                    }
+                    else{
+                        Swal.fire({
+                            title: "{{trans('admin.error')}}",
+                            type: 'error',
+                            timer: 1500,
+                            showCancelButton: false,
+                            showConfirmButton: false,
+                        });
+                    }
+                }
+            });
+        }
+
+        function deleteImage(image_id){
+            $.ajax({
+                url: "{{route('bags.delete_image')}}",
+                type: "POST",
+                dataType: 'html',
+                data: {"_token": "{{ csrf_token() }}", id: image_id },
+                success: function(data){
+                    data = JSON.parse(data);
+                    if(data.data == 1){
+                        Swal.fire({
+                            title: "{{ trans('admin.deleted')}}",
+                            type: 'success',
+                            timer: 1500,
+                            showCancelButton: false,
+                            showConfirmButton: false,
+                        });
+                        location.reload();
+                    }
+                    else{
+                        Swal.fire({
+                            title: "{{trans('admin.error')}}",
+                            type: 'error',
+                            timer: 1500,
+                            showCancelButton: false,
+                            showConfirmButton: false,
+                        });
+                    }
+                }
+            });
+        }
+
+        function deleteVideo(video_id){
+            $.ajax({
+                url: "{{route('bags.delete_video')}}",
+                type: "POST",
+                dataType: 'html',
+                data: {"_token": "{{ csrf_token() }}", id: video_id },
+                success: function(data){
+                    data = JSON.parse(data);
+                    if(data.data == 1){
+                        Swal.fire({
+                            title: "{{ trans('admin.deleted')}}",
+                            type: 'success',
+                            timer: 1500,
+                            showCancelButton: false,
+                            showConfirmButton: false,
+                        });
+                        location.reload();
+                    }
+                    else{
+                        Swal.fire({
+                            title: "{{trans('admin.error')}}",
+                            type: 'error',
+                            timer: 1500,
+                            showCancelButton: false,
+                            showConfirmButton: false,
+                        });
+                    }
+                }
+            });
+        }
+    </script>
 @endsection

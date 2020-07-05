@@ -65,6 +65,7 @@
                                                 <td>{{$std->age}}</td>
                                                 <td>{{$std->stage->{'name_'.session('lang')} }}</td>
                                                 <td>
+                                                    <a href="{{route('students.show', $std->id)}}" class="btn" style="color:white;"><i class="fa fa-eye"></i></a>
                                                     <a href="{{route('students.edit', $std->id)}}" class="btn" style="color:white;"><i class="fa fa-pencil-square-o"></i></a>
                                                     <a title="delete" onclick="return true;" id="confirm-color" object_id='{{$std->id}}'
                                                         class="delete btn" style="color:red;"><i class="fa fa-trash-o"></i></a>

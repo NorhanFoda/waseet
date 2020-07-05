@@ -1,0 +1,9 @@
+
+
+.delete_files {
+    display: inline-block;
+    width: 23%;
+}
+.delete_files p {
+    margin: 10px 0px;
+}

@@ -188,8 +188,17 @@ return [
     'cvs' => 'CVs',
     'announces' => 'Announces',
     'appear_in_home' => 'Appear in home page',
-    '' => '',
-    '' => '',
+
+    // Static pages
+    'static_pages' => 'Static pages',
+    'short_description_ar' => 'Short description in Arabic',
+    'short_description_en' => 'Short description in English',
+    'full_description_ar' => 'Full description in Arabic',
+    'full_description_en' => 'Full description in English',
+
+    // Users
+    'users' => 'Users',
+    'role' => 'Role',
     '' => '',
     '' => '',
     '' => '',

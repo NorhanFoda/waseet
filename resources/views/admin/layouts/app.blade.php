@@ -54,6 +54,7 @@
     @if($locale=='ar')
     <link rel="stylesheet" type="text/css" href="{{asset('admin/css/style-rtl.css')}}">
     @endif
+    <link rel="stylesheet" type="text/css" href="{{asset('admin/css/custom-style.css')}}">
 
 
 

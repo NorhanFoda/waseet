@@ -160,7 +160,7 @@ class BagController extends Controller
     public function edit($id)
     {
         $categories = BagCategory::all();
-        $bag = Bag::find($id);
+        $bag = Bag::with(['images', 'videos', 'documents'])->find($id);
 
         return view('admin.bags.edit', compact('categories', 'bag'));
     }
@@ -232,6 +232,76 @@ class BagController extends Controller
             }
         }
 
+        // Store bag contents
+        if($request->has('documents')){
+            $documentRules = array(
+                'document' => 'mimetypes:application/pdf|max:10000',
+            );
+
+            foreach($request->documents as $doc){
+                //Validate doc
+                $doc_to_validate = array('document' => $doc);
+                $docValidator = Validator::make($doc_to_validate, $documentRules);
+                if ($docValidator->fails()) {
+                    return $docValidator->messages();
+                }
+
+                $pdf_url = Upload::uploadPDF($doc);
+                $pdf = Document::create([
+                    'path' => $pdf_url,
+                    'doucmentRef_id' => $bag->id,
+                    'doucmentRef_type' => 'App\Models\Bag'
+                ]);
+                $bag->documents()->save($pdf);
+            }
+        }
+
+        if($request->has('images')){
+            $imageRules = array(
+                'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            );
+
+            foreach($request->images as $image){
+                //Validate image
+                $image_to_validate = array('image' => $image);
+                $imageValidator = Validator::make($image_to_validate, $imageRules);
+                if ($imageValidator->fails()) {
+                    return $imageValidator->messages();
+                }
+
+                $content_image_url = Upload::uploadImage($image);
+                $content_image = Image::create([
+                    'path' => $content_image_url,
+                    'imageRef_id' => $bag->id,
+                    'imageRef_type' => 'App\Models\Bag'
+                ]);
+                $bag->images()->save($content_image);
+            }
+        }
+
+        if($request->has('videos')){
+            $videoRules = array(
+                'video' => 'mimetypes:video/x-ms-asf,video/x-flv,video/mp4,application/x-mpegURL,video/MP2T,video/3gpp,video/quicktime,video/x-msvideo,video/x-ms-wmv,video/avi',
+            );
+
+            foreach($request->videos as $video){
+                //Validate video
+                $video_to_validate = array('video' => $video);
+                $videoValidator = Validator::make($video_to_validate, $videoRules);
+                if ($videoValidator->fails()) {
+                    return $videoValidator->messages();
+                }
+
+                $content_video_url = Upload::uploadVideo($video);
+                $content_video = video::create([
+                    'path' => $content_video_url,
+                    'videoRef_id' => $bag->id,
+                    'videoRef_type' => 'App\Models\Bag'
+                ]);
+                $bag->videos()->save($content_video);
+            }
+        }
+
         if($bag){
             session()->flash('success', trans('admin.updated'));
             return redirect()->route('bags.index');    
@@ -294,7 +364,7 @@ class BagController extends Controller
 
         if(count($bag->videos) > 0){
             foreach($bag->videos as $video){
-                $videos_removed = Upload::deleteImage($video->path);
+                $videos_removed = Upload::deleteVideo($video->path);
             }
 
             $videos = Video::where('videoRef_id', $bag->id)->get();
@@ -305,13 +375,7 @@ class BagController extends Controller
         else{
             $videos_removed = true;
         }
-
-        // dump($image_removed);
-        // dump($video_removed);
-        // dump($poster_removed);
-        // dump($videos_removed);
-        // dump($images_removed);
-        // dd($docs_removed);
+        
         if($image_removed && $video_removed && $poster_removed && $videos_removed && $images_removed && $docs_removed){
             $bag->delete();
             return response()->json([
@@ -322,6 +386,43 @@ class BagController extends Controller
             return response()->json([
                 'data' => 0
             ], 200);
+        }
+    }
+
+    /* DELETE BAG CONTENTS */
+    public function deletePDF(Request $request){
+        $doc = Document::find($request->id);
+        $removed = Upload::deletePDF($doc->path);
+        if($removed){
+            $doc->delete();
+            return response()->json(['data' => 1], 200);
+        }
+        else{
+            return response()->json(['data' => 0], 200);
+        }
+    }
+
+    public function deleteImage(Request $request){
+        $image = Image::find($request->id);
+        $removed = Upload::deleteImage($image->path);
+        if($removed){
+            $image->delete();
+            return response()->json(['data' => 1], 200);
+        }
+        else{
+            return response()->json(['data' => 0], 200);
+        }
+    }
+
+    public function deleteVideo(Request $request){
+        $video = Video::find($request->id);
+        $removed = Upload::deleteVideo($video->path);
+        if($removed){
+            $video->delete();
+            return response()->json(['data' => 1], 200);
+        }
+        else{
+            return response()->json(['data' => 0], 200);
         }
     }
 }

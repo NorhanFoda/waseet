@@ -55,6 +55,9 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
             // Bags
             Route::resource('bags', 'Admin\BagController');
             Route::post('delete_bags', 'Admin\BagController@deleteBag')->name('bags.delete');
+            Route::post('delete_pdf', 'Admin\BagController@deletePDF')->name('bags.delete_pdf');
+            Route::post('delete_image', 'Admin\BagController@deleteImage')->name('bags.delete_image');
+            Route::post('delete_video', 'Admin\BagController@deleteVideo')->name('bags.delete_video');
 
             // Stages
             Route::resource('stages', 'Admin\StageController');
@@ -128,6 +131,11 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
             Route::resource('sliders', 'Admin\SliderController');
             Route::post('delete_slider', 'Admin\SliderController@deleteSlider')->name('sliders.delete');
 
+            // Static pages
+            Route::get('static_pages', 'Admin\StaticPagesController@index')->name('static_pages.index');
+            Route::get('static_pages/{id}', 'Admin\StaticPagesController@edit')->name('static_pages.edit');
+            Route::put('static_pages/{id}', 'Admin\StaticPagesController@update')->name('static_pages.update');
+
             // Setting
             Route::get('setting', 'Admin\SettingController@edit')->name('setting.edit');
             Route::post('setting', 'Admin\SettingController@update')->name('setting.update');
@@ -138,7 +146,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
             
             // Users
             Route::resource('users', 'Admin\UserController');
-            Route::post('delete_user', 'Admin\UserController@deleteUser')->name('users.delete');
+            Route::get('delete_user', 'Admin\UserController@deleteUser')->name('users.delete');
         });
     });
 });

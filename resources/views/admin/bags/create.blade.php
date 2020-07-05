@@ -221,7 +221,7 @@
                                         <div class="col-md-10">
                                             <input type="file" name="image" class="form-control" accept="image/*" placeholder="{{trans('admin.image')}}" required>
                                             <div class="invalid-feedback">
-                                                {{trans('admin.image_required')}}
+                                                {{trans('admin.image')}}
                                             </div>
                                         </div>
                                     </div>
@@ -237,7 +237,7 @@
                                         <div class="col-md-10">
                                             <input type="file" name="video" class="form-control" accept="video/*" placeholder="{{trans('admin.video')}}" required>
                                             <div class="invalid-feedback">
-                                                {{trans('admin.video_required')}}
+                                                {{trans('admin.video')}}
                                             </div>
                                         </div>
                                     </div>

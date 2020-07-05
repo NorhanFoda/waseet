@@ -79,7 +79,9 @@ class StudentController extends Controller
      */
     public function show($id)
     {
-        //
+        $std = User::with(['image', 'stage'])->find($id);
+
+        return view('admin.students.show', compact('std'));
     }
 
     /**
