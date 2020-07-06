@@ -37,7 +37,8 @@ class User extends Authenticatable
         'stage_id', 'city_id', 'age',
         'edu_level_id', 'edu_type_id', 'organizayion_gender',
         'other_edu_type', 'other_edu_level', 'nationality_id',
-        'teaching_address', 'bio_ar', 'bio_en', 'is_verified', 'allow_notification', 'lang',
+        'teaching_address', 'bio_ar', 'bio_en', 'is_verified', 'allow_notification',
+        'api_token', 'code',
     ];
 
     /**

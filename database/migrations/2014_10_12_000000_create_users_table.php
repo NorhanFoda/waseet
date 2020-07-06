@@ -21,8 +21,9 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->boolean('is_verified')->default(0);
             $table->boolean('allow_notification')->default(1);
-            $table->string('lang')->default('ar');
+            $table->string('api_token', 191)->unique()->nullable();
             $table->string('phone_secondary')->nullable();
+            $table->string('code')->nullable();
             $table->unsignedBigInteger('country_id')->nullable()->index();
             $table->unsignedBigInteger('city_id')->nullable()->index();
             $table->unsignedBigInteger('stage_id')->nullable()->index();
