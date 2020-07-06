@@ -18,6 +18,10 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('phone_main')->unique();
+            $table->string('password');
+            $table->boolean('is_verified')->default(0);
+            $table->boolean('allow_notification')->default(1);
+            $table->string('lang')->default('ar');
             $table->string('phone_secondary')->nullable();
             $table->unsignedBigInteger('country_id')->nullable()->index();
             $table->unsignedBigInteger('city_id')->nullable()->index();
@@ -37,7 +41,6 @@ class CreateUsersTable extends Migration
             $table->string('other_edu_type')->nullable();
             $table->boolean('organizayion_gender')->default(1); // 0 -> sons - 1 -> girls
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
             $table->rememberToken();
             $table->timestamps();
         });

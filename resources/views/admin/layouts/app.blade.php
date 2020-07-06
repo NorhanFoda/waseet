@@ -11,8 +11,8 @@
     <meta name="author" content="PIXINVENT">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('pageTitle') | @yield('pageSubTitle')</title>
-    <link rel="apple-touch-icon" href="{{asset('admin/images/ico/apple-icon-120.png')}}">
-    <link rel="shortcut icon" type="image/x-icon" href="{{asset('admin/images/ico/favicon.ico')}}">
+    <link rel="apple-touch-icon" href="{{asset('/images/logo.png')}}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('/images/logo.png')}}">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600" rel="stylesheet">
 
     <!-- BEGIN: Vendor CSS-->
