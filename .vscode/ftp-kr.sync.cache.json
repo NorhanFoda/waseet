@@ -1,0 +1,134 @@
+{
+  "ftp://waset-elmo3lm.jadara.work:21@wasetjadara": {
+    "public_html": {
+      ".editorconfig": {
+        "type": "-",
+        "size": 228,
+        "lmtime": 0,
+        "modified": false
+      },
+      ".env": {
+        "type": "-",
+        "size": 843,
+        "lmtime": 0,
+        "modified": false
+      },
+      ".env.example": {
+        "type": "-",
+        "size": 726,
+        "lmtime": 0,
+        "modified": false
+      },
+      ".ftpquota": {
+        "type": "-",
+        "size": 16,
+        "lmtime": 0,
+        "modified": false
+      },
+      ".git": {},
+      ".gitattributes": {
+        "type": "-",
+        "size": 116,
+        "lmtime": 0,
+        "modified": false
+      },
+      ".gitignore": {
+        "type": "-",
+        "size": 175,
+        "lmtime": 0,
+        "modified": false
+      },
+      ".htaccess": {
+        "type": "-",
+        "size": 1176,
+        "lmtime": 0,
+        "modified": false
+      },
+      ".rnd": {
+        "type": "-",
+        "size": 1024,
+        "lmtime": 0,
+        "modified": false
+      },
+      ".styleci.yml": {
+        "type": "-",
+        "size": 187,
+        "lmtime": 0,
+        "modified": false
+      },
+      ".well-known": {},
+      "LICENSE": {
+        "type": "-",
+        "size": 0,
+        "lmtime": 0,
+        "modified": false
+      },
+      "app": {},
+      "artisan": {
+        "type": "-",
+        "size": 1739,
+        "lmtime": 0,
+        "modified": false
+      },
+      "bootstrap": {},
+      "cgi-bin": {},
+      "composer.json": {
+        "type": "-",
+        "size": 1678,
+        "lmtime": 0,
+        "modified": false
+      },
+      "composer.lock": {
+        "type": "-",
+        "size": 179062,
+        "lmtime": 0,
+        "modified": false
+      },
+      "config": {},
+      "database": {},
+      "error_log": {
+        "type": "-",
+        "size": 422,
+        "lmtime": 0,
+        "modified": false
+      },
+      "package.json": {
+        "type": "-",
+        "size": 1151,
+        "lmtime": 0,
+        "modified": false
+      },
+      "phpunit.xml": {
+        "type": "-",
+        "size": 1189,
+        "lmtime": 0,
+        "modified": false
+      },
+      "public": {},
+      "readme.md": {
+        "type": "-",
+        "size": 12,
+        "lmtime": 0,
+        "modified": false
+      },
+      "resources": {},
+      "routes": {},
+      "server.php": {
+        "type": "-",
+        "size": 584,
+        "lmtime": 0,
+        "modified": false
+      },
+      "storage": {},
+      "tests": {},
+      "vendor": {},
+      "webpack.mix.js": {
+        "type": "-",
+        "size": 553,
+        "lmtime": 0,
+        "modified": false
+      }
+    }
+  },
+  "$version": 1
+}

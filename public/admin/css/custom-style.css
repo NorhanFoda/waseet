@@ -7,3 +7,7 @@
 .delete_files p {
     margin: 10px 0px;
 }
+.doc{
+    display: inline-block;
+    margin: 0px 10px;
+}

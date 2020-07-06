@@ -105,7 +105,7 @@
                     <div class="card-header border-bottom mx-2 px-0">
                         <h6 class="border-bottom py-1 mb-0 font-medium-2">
                             <i class="fa fa-users"></i>
-                            {{trans('admin.applicants')}}
+                            {{trans('admin.job_applicants')}}
                         </h6>
                     </div>
                     <div class="card-body px-75">

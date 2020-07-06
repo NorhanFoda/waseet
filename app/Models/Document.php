@@ -10,6 +10,6 @@ class Document extends Model
     protected $fillable = ['doucmentRef_id', 'path', 'doucmentRef_type'];
 
     public function doucmentRef(){
-        return $this->morphTo();
+        return $this->morphTo(__FUNCTION__, 'doucmentRef_type', 'doucmentRef_id');
     }
 }

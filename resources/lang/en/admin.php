@@ -86,7 +86,7 @@ return [
 
     // Jobs
     'announced_jobs' => 'Announced jobs',
-    'organization_name' => 'Educational institution',
+    'organization_name' => 'Educational institutions',
     'location' => 'Location',
 
     // Organizations
@@ -200,6 +200,11 @@ return [
     // Users
     'users' => 'Users',
     'role' => 'Role',
+    'student' => 'Student',
+    'organization' => 'Educational institution',
+    'job_seeker' => 'Job seeker',
+    'online_teacher' => 'Online teacher',
+    'direct_teacher' => 'Direct teacher',
     '' => '',
     '' => '',
     '' => '',

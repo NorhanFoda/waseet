@@ -9,8 +9,7 @@ use App\Models\Document;
 class CVController extends Controller
 {
     public function index(){
-        $cvs = Document::with('user')->get();
-
+        $cvs = Document::all();
         return view('admin.cv.index', compact('cvs'));
     }
 }

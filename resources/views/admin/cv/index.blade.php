@@ -45,19 +45,15 @@
                                     <th>#</th>
                                     <th>{{trans('admin.name')}}</th>
                                     <th>{{trans('admin.cv')}}</th>
-                                    <th>{{trans('admin.action')}}</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                     @foreach($cvs as $cv)
                                         <tr align="center">
                                             <td>{{$loop->iteration}}</td>
-                                            <td>{{$cv->user->name}}</td>
+                                            <td>{{$cv->doucmentRef->name}}</td>
                                             <td>
-                                                <img src="{{asset('admin/images/logo/cv.png')}}" alt="cv">
-                                            </td>
-                                            <td>
-                                                <a href="{{$cv->path}}" class="btn" style="color:white;"><i class="fa fa-eye"></i></a>
+                                                <a href="{{$cv->path}}"><img src="{{asset('admin/images/logo/cv.png')}}" alt="cv"></a>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -73,73 +69,3 @@
 
 @endsection
 
-@section('scripts')
-    <script>
-        //delete categories
-        $(document).on('click', '.delete', function (e) {
-            const swalWithBootstrapButtons = Swal.mixin({
-                customClass: {
-                    confirmButton: 'swal2-confirm',
-                    cancelButton: 'swal2-cancel'
-                },
-                buttonsStyling: true
-            });
-            swalWithBootstrapButtons.fire({
-                title: '{{trans('admin.alert_title')}}',
-                type: 'warning',
-                showCancelButton: true,
-                confirmButtonText: '{{trans('admin.yes')}}',
-                cancelButtonText: '{{trans('admin.no')}}',
-            }).then((result) => {
-                if (result.value) {
-                    $.ajaxSetup({
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        }
-                    })
-                    var id = $(this).attr('object_id');
-                    var status = $(this).attr('object_status');
-                        token = $('meta[name="csrf-token"]').attr('content');
-                        $.ajax({
-                            url: "{{route('countries.delete')}}",
-                            type: "post",
-                            dataType: 'json',
-                            data: {"_token": "{{ csrf_token() }}", id: id},
-                            success: function(data){
-                                if(data.data == 1){
-                                    Swal.fire({
-                                        type: 'success',
-                                        title: '{{trans('admin.deleted')}}',
-                                        showConfirmButton: false,
-                                        timer: 1500
-                                    });
-
-                                    window.location.reload();
-                                }
-                                else if(data.data == 0){
-                                    Swal.fire({
-                                        type: 'error',
-                                        title: '{{trans('admin.error')}}',
-                                        showConfirmButton: false,
-                                        timer: 1500
-                                    });
-
-                                    window.location.reload();
-                                }
-                            }
-                        });
-                } else if (
-                    // / Read more about handling dismissals below /
-                    result.dismiss === Swal.DismissReason.cancel
-                ) {
-                    swalWithBootstrapButtons.fire({
-                        title: '{{trans('admin.alert_cancelled')}}',
-                        showConfirmButton: false,
-                        timer: 1500
-                    });
-                }
-            })
-        });
-    </script>
-
-@endsection

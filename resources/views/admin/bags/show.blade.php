@@ -171,10 +171,12 @@
                                 $pdf = explode('/', $doc->path);
                                 $file_name = $pdf[count($pdf)-1];
                             @endphp
-                            <a href="{{$doc->path}}">
-                                <img src="{{asset('admin/images/logo/cv.png')}}" alt="{{$bag->{'name_'.session('lang')} }}" width="65px" height="70pc">
-                            </a>
-                            <p>{{$file_name}}</p>
+                            <div class="doc">
+                                <a href="{{$doc->path}}">
+                                    <img src="{{asset('admin/images/logo/cv.png')}}" alt="{{$bag->{'name_'.session('lang')} }}" width="65px" height="70pc">
+                                </a>
+                                <p>{{$file_name}}</p>
+                            </div>
                         @endforeach
                     </div>
                 </div>

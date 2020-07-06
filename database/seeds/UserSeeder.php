@@ -17,13 +17,14 @@ class UserSeeder extends Seeder
                 'name' => 'Jaadara',
                 'email' => 'admin@jaadara.com',
                 'password' => bcrypt('123456789'),
-                'phone_main' => '+966563793461',
+                'phone_main' => '00966563793461',
+                'stage_id' => null,
             ],
             [
                 'name' => 'test',
                 'email' => 'test@jaadara.com',
                 'password' => bcrypt('123456789'),
-                'phone_main' => '+966563793462',
+                'phone_main' => '00966563793462',
                 'stage_id' => 1,
             ],
         ]);
