@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Support\Facades\Hash;
@@ -11,6 +12,8 @@ use Auth;
 
 class LoginController extends Controller
 {
+    use AuthenticatesUsers;
+    
     public function __construct()
     {
         $this->middleware('auth:api', ['except' => ['login', 'logout']]);
@@ -37,7 +40,6 @@ class LoginController extends Controller
             if($user->api_token == null){
                 if(Hash::check($request->password, $user->password)){ 
                     $user->update(['api_token' => Str::random(191)]);
-
                     return response()->json([
                         'data' => Auth::loginUsingId($user->id)
                     ], 200);

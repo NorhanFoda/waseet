@@ -16,6 +16,11 @@ class CreateSettingsTable extends Migration
         Schema::create('settings', function (Blueprint $table) {
             $table->bigIncrements('id');
 
+            $table->string('phone');
+            $table->string('email');
+            $table->string('location_ar');
+            $table->string('location_en');
+
             $table->string('welcome_text_ar');
             $table->string('welcome_text_en');
 
@@ -31,6 +36,8 @@ class CreateSettingsTable extends Migration
 
             $table->string('section_1_title_ar');
             $table->string('section_1_title_en');
+
+            $table->string('section_1_image');
 
             $table->text('section_1_text_ar');
             $table->text('section_1_text_en');
@@ -59,8 +66,12 @@ class CreateSettingsTable extends Migration
             $table->text('step_3_text_ar');
             $table->text('step_3_text_en');
 
+            $table->string('section_2_image');
+
             $table->string('section_2_title_ar');
             $table->string('section_2_title_en');
+
+            $table->string('section_3_image');
 
             $table->text('section_2_text_ar');
             $table->text('section_2_text_en');

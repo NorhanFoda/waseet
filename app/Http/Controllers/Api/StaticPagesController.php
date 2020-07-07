@@ -37,4 +37,14 @@ class StaticPagesController extends Controller
             'full_description' => $page{'full_description_'.$lang}
         ], 200);
     }
+
+    public function getAboutUs(){
+        $page = StaticPage::where('name_ar', 'من نحن')->where('name_en', 'About us')->first();
+        $lang = \App::getLocale();
+        return response()->json([
+            'title' => $page->{'name_'.$lang},
+            'short_description' => $page->{'short_description_'.$lang},
+            'full_description' => $page{'full_description_'.$lang}
+        ], 200);
+    }
 }

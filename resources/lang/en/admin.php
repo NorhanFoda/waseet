@@ -152,6 +152,10 @@ return [
     'title' => 'Title',
 
     // Setting
+    'phone' => 'Phone',
+    'location_ar' => 'Location in Arabic',
+    'location_en' => 'Location en English',
+
     'welcome_text_ar' => 'Welcome text in Arabic',
     'welcome_text_en' => 'Welcome text in English',
 

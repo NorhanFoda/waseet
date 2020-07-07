@@ -152,6 +152,10 @@ return [
     'title' => 'العنوان',
 
     // Setting
+    'phone' => 'الجوال',
+    'location_ar' => 'الموقع بالعربية',
+    'location_en' => 'الموقع بالإنجليزية',
+
     'welcome_text_ar' => 'جملة الترحيب بالعربية',
     'welcome_text_en' => 'جملة الترحيب بالإنجليزية',
     'header_logo' => 'لوجو رأس الصفحة',

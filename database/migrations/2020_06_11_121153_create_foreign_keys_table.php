@@ -128,6 +128,16 @@ class CreateForeignKeysTable extends Migration
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
         });
+
+        Schema::table('addresses', function(Blueprint $table){
+            $table->foreign('country_id')->references('id')->on('countries')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+
+            $table->foreign('city_id')->references('id')->on('cities')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+        });
     }
 
     /**

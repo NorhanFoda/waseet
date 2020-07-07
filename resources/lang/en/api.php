@@ -5,7 +5,10 @@ return [
     'user_not_logged' => 'User is not logged in',
     'verification_code_sent' => 'A verification code was sent to your email',
     'email_is_verified' => 'Email is verified successfully',
-    '' => '',
+    'success' => 'Task completed successfully',
+
+    // Text
+    'about_waseet_text' => 'About Waseet Al Moalm',
     '' => '',
     '' => '',
     '' => '',
@@ -23,6 +26,7 @@ return [
     'email_not_found' => 'Email not found',
     'email_is_verified_before' => 'This email is already verified',
     'invalid_code' => 'Invalid verification code',
+    'error' => 'Task can not be completed',
     '' => '',
     '' => '',
     '' => '',

@@ -12,6 +12,11 @@ class SettingSeeder extends Seeder
     public function run()
     {
         DB::table('settings')->insert([
+            'location_ar' => 'الرياض، المملكة العربية السعودية',
+            'location_en' => 'Al Riyadh, Saudi Arabia Kingdom',
+            'phone' => '+12345678900',
+            'email' => 'sitename@gmail.com',
+
             'welcome_text_ar' => 'مرحباَ بك فى موقع وسيط المعلم ... !',
             'welcome_text_en' => 'Welcome to Waseet Al Moalm ...!',
 
@@ -24,6 +29,8 @@ class SettingSeeder extends Seeder
             'text_after_add_en' => 'We seek to provide multiple options of educational jobs through a technical portal with international standards to be the mediator between job seekers and educational facilities to take advantage of expertise and competencies. We also provide a number of educational bags to help the teacher develop his educational skills with high efficiency.',
             
             'text_after_add_image' => 'http://127.0.0.1:8000/images/logo.png',
+
+            'section_1_image' => 'http://127.0.0.1:8000/images/section1.png',
             
             'section_1_title_ar' => 'البحث عن عمل',
             'section_1_title_en' => 'Job search',
@@ -55,12 +62,15 @@ class SettingSeeder extends Seeder
             'step_3_text_ar' => 'النص الثالث',
             'step_3_text_en' => 'Third text',
 
+            'section_2_image' => 'http://127.0.0.1:8000/images/section2.png',
             
             'section_2_title_ar' => 'المعلم الخصوصى',
             'section_2_title_en' => 'Private teacher',
             
             'section_2_text_ar' => 'لخلق منصة عمل لخريجات الأقسام التربوية و الإستفادة من خبراتهم التعليمية و كفاءاتهم',
             'section_2_text_en' => 'To create a work platform for female graduates of educational departments and to benefit from their educational experiences and competencies',
+            
+            'section_3_image' => 'http://127.0.0.1:8000/images/section3.png',
             
             'section_3_title_ar' => 'الحقائب التعليمية',
             'section_3_title_en' => 'Educational bags',

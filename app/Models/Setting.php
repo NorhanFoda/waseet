@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Setting extends Model
 {
     protected $fillable = [
+        'phone', 'email', 'location_ar', 'location_en',
+        
         'welcome_text_ar',
         'welcome_text_en',
 
@@ -19,6 +21,8 @@ class Setting extends Model
         'text_after_add_en',
 
         'text_after_add_image',
+
+        'section_1_image',
 
         'section_1_title_ar',
         'section_1_title_en',
@@ -50,11 +54,15 @@ class Setting extends Model
         'step_3_text_ar',
         'step_3_text_en',
 
+        'section_2_image',
+
         'section_2_title_ar',
         'section_2_title_en',
 
         'section_2_text_ar',
         'section_2_text_en',
+
+        'section_3_image',
 
         'section_3_title_ar',
         'section_3_title_en',

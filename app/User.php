@@ -20,6 +20,7 @@ use Spatie\Permission\Traits\HasRoles;
 use App\Models\EduLevel;
 use App\Models\EduType;
 use App\Models\Nationality;
+use App\Models\Address;
 
 class User extends Authenticatable
 {
@@ -121,5 +122,9 @@ class User extends Authenticatable
 
     public function nationality(){
         return $this->belongsTo(Nationality::class);
+    }
+
+    public function addresses(){
+        return $this->hasMany(Address::class);
     }
 }

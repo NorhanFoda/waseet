@@ -49,6 +49,54 @@
 
                                 {{--------------------------------- Arabic data start ---------------------------------}}
 
+                                {{-- phone --}}
+                                <div class="col-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-2">
+                                            <span>{{trans('admin.phone')}}</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <input type="tel" class="form-control" value="{{$set->phone}}" placeholder="{{trans('admin.phone')}}" name="phone" required>
+                                            <div class="invalid-feedback">
+                                                {{trans('admin.phone')}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- phone end --}}
+
+                                {{-- email --}}
+                                <div class="col-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-2">
+                                            <span>{{trans('admin.email')}}</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <input type="email" class="form-control" value="{{$set->email}}" placeholder="{{trans('admin.email')}}" name="email" required>
+                                            <div class="invalid-feedback">
+                                                {{trans('admin.email')}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- email end --}}
+
+                                {{-- location_ar --}}
+                                <div class="col-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-2">
+                                            <span>{{trans('admin.location_ar')}}</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <input type="text" class="form-control" value="{{$set->location_ar}}" placeholder="{{trans('admin.location_ar')}}" name="location_ar" required>
+                                            <div class="invalid-feedback">
+                                                {{trans('admin.location_ar')}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- location_ar end --}}
+
                                 {{-- welcome_text_ar --}}
                                 <div class="col-12">
                                     <div class="form-group row">
@@ -372,6 +420,23 @@
                                 {{--------------------------------- Arabic data end ---------------------------------}}
 
                                 {{--------------------------------- English data start -------------------------------}}
+
+                                {{-- location_en --}}
+                                <div class="col-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-2">
+                                            <span>{{trans('admin.location_en')}}</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <input type="text" class="form-control" value="{{$set->location_en}}" placeholder="{{trans('admin.location_en')}}" name="location_en" required>
+                                            <div class="invalid-feedback">
+                                                {{trans('admin.location_en')}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- location_ar end --}}
+
                                 {{-- welcome_text_en --}}
                                 <div class="col-12">
                                     <div class="form-group row">
