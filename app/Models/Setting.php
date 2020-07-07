@@ -26,6 +26,30 @@ class Setting extends Model
         'section_1_text_ar',
         'section_1_text_en',
 
+        'step_1_image',
+
+        'step_1_title_ar',
+        'step_1_title_en',
+
+        'step_1_text_ar',
+        'step_1_text_en',
+
+        'step_2_image',
+
+        'step_2_title_ar',
+        'step_2_title_en',
+
+        'step_2_text_ar',
+        'step_2_text_en',
+
+        'step_3_image',
+
+        'step_3_title_ar',
+        'step_3_title_en',
+
+        'step_3_text_ar',
+        'step_3_text_en',
+
         'section_2_title_ar',
         'section_2_title_en',
 

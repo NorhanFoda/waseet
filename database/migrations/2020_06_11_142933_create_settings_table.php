@@ -35,6 +35,30 @@ class CreateSettingsTable extends Migration
             $table->text('section_1_text_ar');
             $table->text('section_1_text_en');
 
+            $table->string('step_1_image');
+
+            $table->string('step_1_title_ar');
+            $table->string('step_1_title_en');
+
+            $table->text('step_1_text_ar');
+            $table->text('step_1_text_en');
+
+            $table->string('step_2_image');
+
+            $table->string('step_2_title_ar');
+            $table->string('step_2_title_en');
+
+            $table->text('step_2_text_ar');
+            $table->text('step_2_text_en');
+
+            $table->string('step_3_image');
+
+            $table->string('step_3_title_ar');
+            $table->string('step_3_title_en');
+
+            $table->text('step_3_text_ar');
+            $table->text('step_3_text_en');
+
             $table->string('section_2_title_ar');
             $table->string('section_2_title_en');
 

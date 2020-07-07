@@ -154,35 +154,76 @@ return [
     // Setting
     'welcome_text_ar' => 'Welcome text in Arabic',
     'welcome_text_en' => 'Welcome text in English',
+
     'header_logo' => 'Header logo',
+
     'text_before_add_ar' => 'Text before ad space in Arabic',
     'text_before_add_en' => 'Text before ad space in English',
+
     'text_after_add_ar' => 'Text after ad space in Arabic',
     'text_after_add_en' => 'Text after ad space in English',
-    'text_after_add_image' => '÷mage accompanying the text after as space',
+
+    'text_after_add_image' => 'Image accompanying the text after as space',
+
     'section_1_title_ar' => 'Section 1 title in Arabic',
     'section_1_title_en' => 'Section 1 title in English',
+
     'section_1_text_ar' => 'Section 1 text in Arabic',
     'section_1_text_en' => 'Section 1 text in English',
+
+    'step_1_image' => 'Step 1 image',
+
+    'step_1_title_ar' => 'Step 1 title in Arabic',
+    'step_1_title_en' => 'Step 1 title in English',
+    
+    'step_1_text_ar' => 'Step 1 text in Arabic',
+    'step_1_text_en' => 'Step 1 text in English',
+
+    'step_2_image' => 'Step 2 image',
+
+    'step_2_title_ar' => 'Step 2 title in Arabic',
+    'step_2_title_en' => 'Step21 title in English',
+    
+    'step_2_text_ar' => 'Step 2 text in Arabic',
+    'step_2_text_en' => 'Step 2 text in English',
+
+    'step_3_image' => 'Step 3 image',
+
+    'step_3_title_ar' => 'Step 3 title in Arabic',
+    'step_3_title_en' => 'Step 3 title in English',
+    
+    'step_3_text_ar' => 'Step 3 text in Arabic',
+    'step_3_text_en' => 'Step 3 text in English',
+
     'section_2_title_ar' => 'Section 2 title in Arabic',
     'section_2_title_en' => 'Section 2 title in English',
+
     'section_2_text_ar' => 'Section 1 text in Arabic',
     'section_2_text_en' => 'Section 1 text in English',
+    
     'section_3_title_ar' => 'Section 3 title in Arabic',
     'section_3_title_en' => 'Section 3 title in English',
+
     'section_3_text_ar' => 'Section 3 text in Arabic',
     'section_3_text_en' => 'Section 3 text in English',
+
     'footer_text_ar' => 'Footer text in Arabic',
     'footer_text_en' => 'Footer text in English',
+    
     'footer_logo' => 'Footer logo',
+
     'contact_us_title_ar' => 'Contact uo title in Arabic',
     'contact_us_title_en' => 'Contact us title in English',
+
     'contact_us_text_ar' => 'Contact us text in Arabic',
     'contact_us_text_en' => 'Contact us text in English',
+
     'saved_title_ar' => 'Saved posts title in Arabic',
     'saved_title_en' => 'Saved posts title in English',
+
     'saved_text_ar' => 'Saved posts text in Arabic',
     'saved_text_en' => 'Saved posts text in English',
+
     'setting' => 'Setting',
 
     // CVs

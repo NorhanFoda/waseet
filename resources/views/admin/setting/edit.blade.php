@@ -129,6 +129,102 @@
                                 </div>
                                 {{-- section_1_text_ar end --}}
 
+                                {{-- step_1_title_ar --}}
+                                <div class="col-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-2">
+                                            <span>{{trans('admin.step_1_title_ar')}}</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <input type="text" class="form-control" value="{{$set->step_1_title_ar}}" placeholder="{{trans('admin.step_1_title_ar')}}" name="step_1_title_ar" required>
+                                            <div class="invalid-feedback">
+                                                {{trans('admin.step_1_title_ar')}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- step_1_title_ar end --}}
+
+                                {{-- step_1_text_ar --}}
+                                <div class="col-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-2">
+                                            <span>{{trans('admin.step_1_text_ar')}}</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <textarea name="step_1_text_ar" {{trans('admin.step_1_text_ar')}} class="form-control" cols="30" rows="6" required>{{$set->step_1_text_ar}}</textarea>
+                                            <div class="invalid-feedback">
+                                                {{trans('admin.step_1_text_ar')}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- step_1_text_ar end --}}
+
+                                {{-- step_2_title_ar --}}
+                                <div class="col-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-2">
+                                            <span>{{trans('admin.step_2_title_ar')}}</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <input type="text" class="form-control" value="{{$set->step_2_title_ar}}" placeholder="{{trans('admin.step_2_title_ar')}}" name="step_2_title_ar" required>
+                                            <div class="invalid-feedback">
+                                                {{trans('admin.step_2_title_ar')}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- step_2_title_ar end --}}
+
+                                {{-- step_2_text_ar --}}
+                                <div class="col-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-2">
+                                            <span>{{trans('admin.step_2_text_ar')}}</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <textarea name="step_2_text_ar" {{trans('admin.step_2_text_ar')}} class="form-control" cols="30" rows="6" required>{{$set->step_2_text_ar}}</textarea>
+                                            <div class="invalid-feedback">
+                                                {{trans('admin.step_2_text_ar')}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- step_2_text_ar end --}}
+
+                                {{-- step_3_title_ar --}}
+                                <div class="col-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-2">
+                                            <span>{{trans('admin.step_3_title_ar')}}</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <input type="text" class="form-control" value="{{$set->step_3_title_ar}}" placeholder="{{trans('admin.step_3_title_ar')}}" name="step_3_title_ar" required>
+                                            <div class="invalid-feedback">
+                                                {{trans('admin.step_3_title_ar')}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- step_3_title_ar end --}}
+
+                                {{-- step_3_text_ar --}}
+                                <div class="col-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-2">
+                                            <span>{{trans('admin.step_3_text_ar')}}</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <textarea name="step_3_text_ar" {{trans('admin.step_3_text_ar')}} class="form-control" cols="30" rows="6" required>{{$set->step_3_text_ar}}</textarea>
+                                            <div class="invalid-feedback">
+                                                {{trans('admin.step_3_text_ar')}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- step_3_text_ar end --}}
+
                                 {{-- section_2_title_ar --}}
                                 <div class="col-12">
                                     <div class="form-group row">
@@ -356,6 +452,102 @@
                                 </div>
                                 {{-- section_1_text_en end --}}
 
+                                {{-- step_1_title_en --}}
+                                <div class="col-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-2">
+                                            <span>{{trans('admin.step_1_title_en')}}</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <input type="text" class="form-control" value="{{$set->step_1_title_en}}" placeholder="{{trans('admin.step_1_title_en')}}" name="step_1_title_en" required>
+                                            <div class="invalid-feedback">
+                                                {{trans('admin.step_1_title_en')}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- step_1_title_en end --}}
+
+                                {{-- step_1_text_en --}}
+                                <div class="col-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-2">
+                                            <span>{{trans('admin.step_1_text_en')}}</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <textarea name="step_1_text_en" {{trans('admin.step_1_text_en')}} class="form-control" cols="30" rows="6" required>{{$set->step_1_text_en}}</textarea>
+                                            <div class="invalid-feedback">
+                                                {{trans('admin.step_1_text_en')}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- step_1_text_en end --}}
+
+                                {{-- step_2_title_en --}}
+                                <div class="col-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-2">
+                                            <span>{{trans('admin.step_2_title_en')}}</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <input type="text" class="form-control" value="{{$set->step_2_title_en}}" placeholder="{{trans('admin.step_2_title_en')}}" name="step_2_title_en" required>
+                                            <div class="invalid-feedback">
+                                                {{trans('admin.step_2_title_en')}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- step_2_title_en end --}}
+
+                                {{-- step_2_text_en --}}
+                                <div class="col-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-2">
+                                            <span>{{trans('admin.step_2_text_en')}}</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <textarea name="step_2_text_en" {{trans('admin.step_2_text_en')}} class="form-control" cols="30" rows="6" required>{{$set->step_2_text_en}}</textarea>
+                                            <div class="invalid-feedback">
+                                                {{trans('admin.step_2_text_en')}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- step_2_text_en end --}}
+
+                                {{-- step_3_title_en --}}
+                                <div class="col-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-2">
+                                            <span>{{trans('admin.step_3_title_en')}}</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <input type="text" class="form-control" value="{{$set->step_3_title_en}}" placeholder="{{trans('admin.step_3_title_en')}}" name="step_3_title_en" required>
+                                            <div class="invalid-feedback">
+                                                {{trans('admin.step_3_title_en')}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- step_3_title_en end --}}
+
+                                {{-- step_3_text_en --}}
+                                <div class="col-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-2">
+                                            <span>{{trans('admin.step_3_text_en')}}</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <textarea name="step_3_text_en" {{trans('admin.step_3_text_en')}} class="form-control" cols="30" rows="6" required>{{$set->step_3_text_en}}</textarea>
+                                            <div class="invalid-feedback">
+                                                {{trans('admin.step_3_text_en')}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- step_3_text_en end --}}
+
                                 {{-- section_2_title_en --}}
                                 <div class="col-12">
                                     <div class="form-group row">
@@ -573,6 +765,78 @@
                                     </div>
                                 </div>
                                 {{-- text_after_add_image end --}}
+
+                                {{-- step_1_image --}}
+                                <div class="col-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-2">
+                                            <span>{{trans('admin.step_1_image')}}</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <input type="file" name="step_1_image" class="form-control" accept="image/*" placeholder="{{trans('admin.step_1_image')}}">
+                                            <div class="invalid-feedback">
+                                                {{trans('admin.step_1_image')}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-10">
+                                            <img src="{{$set->step_1_image}}" alt="" width="200px" height="100px">
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- step_1_image end --}}
+
+                                {{-- step_2_image --}}
+                                <div class="col-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-2">
+                                            <span>{{trans('admin.step_2_image')}}</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <input type="file" name="step_2_image" class="form-control" accept="image/*" placeholder="{{trans('admin.step_2_image')}}">
+                                            <div class="invalid-feedback">
+                                                {{trans('admin.step_2_image')}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-10">
+                                            <img src="{{$set->step_2_image}}" alt="" width="200px" height="100px">
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- step_2_image end --}}
+
+                                {{-- step_3_image --}}
+                                <div class="col-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-2">
+                                            <span>{{trans('admin.step_3_image')}}</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <input type="file" name="step_3_image" class="form-control" accept="image/*" placeholder="{{trans('admin.step_3_image')}}">
+                                            <div class="invalid-feedback">
+                                                {{trans('admin.step_3_image')}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-10">
+                                            <img src="{{$set->step_3_image}}" alt="" width="200px" height="100px">
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- step_3_image end --}}
 
                                 <div class="col-12 text-center">
                                     <button type="submit" class="btn btn-primary mr-1 mb-1 waves-effect waves-light">{{trans('admin.save')}}</button>
