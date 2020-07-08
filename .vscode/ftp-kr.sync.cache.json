@@ -89,6 +89,18 @@
         "Http": {
           "Controllers": {
             "Api": {
+              "AddressController.php": {
+                "type": "-",
+                "size": 1139,
+                "lmtime": 1594129394052,
+                "modified": false
+              },
+              "ContactUsController.php": {
+                "type": "-",
+                "size": 1312,
+                "lmtime": 1594122121547,
+                "modified": false
+              },
               "HomeController.php": {
                 "type": "-",
                 "size": 1337,
@@ -97,20 +109,26 @@
               },
               "LoginController.php": {
                 "type": "-",
-                "size": 2847,
-                "lmtime": 1594039216057,
+                "size": 2930,
+                "lmtime": 1594128399517,
                 "modified": false
               },
               "RegisterController.php": {
                 "type": "-",
                 "size": 4297,
-                "lmtime": 1594042544784,
+                "lmtime": 1594128414390,
                 "modified": false
               },
               "ResetPasswordController.php": {
                 "type": "-",
                 "size": 2428,
                 "lmtime": 1594044808957,
+                "modified": false
+              },
+              "SearchController.php": {
+                "type": "-",
+                "size": 164,
+                "lmtime": 1594118753532,
                 "modified": false
               },
               "StaticPagesController.php": {
@@ -183,7 +201,17 @@
               "modified": false
             }
           },
-          "Requests": {}
+          "Requests": {},
+          "Resources": {
+            "Socials": {
+              "SocialResurce.php": {
+                "type": "-",
+                "size": 436,
+                "lmtime": 1594121374349,
+                "modified": false
+              }
+            }
+          }
         },
         "Mail": {
           "AdminResetPassword.php": {
@@ -212,6 +240,12 @@
           }
         },
         "Models": {
+          "Address.php": {
+            "type": "-",
+            "size": 277,
+            "lmtime": 1594128923779,
+            "modified": false
+          },
           "Announce.php": {
             "type": "-",
             "size": 252,
@@ -240,6 +274,12 @@
             "type": "-",
             "size": 474,
             "lmtime": 0,
+            "modified": false
+          },
+          "ContactUs.php": {
+            "type": "-",
+            "size": 161,
+            "lmtime": 1594122251031,
             "modified": false
           },
           "Country.php": {
@@ -310,8 +350,8 @@
           },
           "Setting.php": {
             "type": "-",
-            "size": 1525,
-            "lmtime": 1594117453613,
+            "size": 1590,
+            "lmtime": 1594120388945,
             "modified": false
           },
           "Slider.php": {
@@ -354,8 +394,8 @@
         "Providers": {},
         "User.php": {
           "type": "-",
-          "size": 3246,
-          "lmtime": 1594031691465,
+          "size": 3357,
+          "lmtime": 1594128917549,
           "modified": false
         }
       },
@@ -434,6 +474,12 @@
             "type": "-",
             "size": 678,
             "lmtime": 0,
+            "modified": false
+          },
+          "2020_06_10_133042_create_addresses_table.php": {
+            "type": "-",
+            "size": 830,
+            "lmtime": 1594128960575,
             "modified": false
           },
           "2020_06_10_140152_create_documents_table.php": {
@@ -528,8 +574,8 @@
           },
           "2020_06_11_121153_create_foreign_keys_table.php": {
             "type": "-",
-            "size": 4884,
-            "lmtime": 0,
+            "size": 5263,
+            "lmtime": 1594128802451,
             "modified": false
           },
           "2020_06_11_125422_create_payment_methods_table.php": {
@@ -546,8 +592,8 @@
           },
           "2020_06_11_142933_create_settings_table.php": {
             "type": "-",
-            "size": 2915,
-            "lmtime": 1594117337643,
+            "size": 3076,
+            "lmtime": 1594120078285,
             "modified": false
           },
           "2020_06_11_144001_create_sub_scribers_table.php": {
@@ -573,13 +619,109 @@
             "size": 726,
             "lmtime": 0,
             "modified": false
+          },
+          "2020_07_07_113350_create_contact_us_table.php": {
+            "type": "-",
+            "size": 713,
+            "lmtime": 1594121667667,
+            "modified": false
           }
         },
         "seeds": {
+          "BagCategorySeeder.php": {
+            "type": "-",
+            "size": 476,
+            "lmtime": 0,
+            "modified": false
+          },
+          "CitySeeder.php": {
+            "type": "-",
+            "size": 528,
+            "lmtime": 0,
+            "modified": false
+          },
+          "CountrySeeder.php": {
+            "type": "-",
+            "size": 564,
+            "lmtime": 0,
+            "modified": false
+          },
+          "DatabaseSeeder.php": {
+            "type": "-",
+            "size": 860,
+            "lmtime": 0,
+            "modified": false
+          },
+          "EduLevelSeeder.php": {
+            "type": "-",
+            "size": 600,
+            "lmtime": 0,
+            "modified": false
+          },
+          "EduTypeSeeder.php": {
+            "type": "-",
+            "size": 694,
+            "lmtime": 0,
+            "modified": false
+          },
+          "ImageSeeder.php": {
+            "type": "-",
+            "size": 1063,
+            "lmtime": 0,
+            "modified": false
+          },
+          "MaterialStageSeeder.php": {
+            "type": "-",
+            "size": 615,
+            "lmtime": 0,
+            "modified": false
+          },
+          "MaterialsSeeder.php": {
+            "type": "-",
+            "size": 612,
+            "lmtime": 0,
+            "modified": false
+          },
+          "ModelHasRoleSeeder.php": {
+            "type": "-",
+            "size": 1242,
+            "lmtime": 0,
+            "modified": false
+          },
+          "NationalitySeeder.php": {
+            "type": "-",
+            "size": 473,
+            "lmtime": 0,
+            "modified": false
+          },
+          "RoleSeeder.php": {
+            "type": "-",
+            "size": 893,
+            "lmtime": 0,
+            "modified": false
+          },
           "SettingSeeder.php": {
             "type": "-",
-            "size": 5703,
-            "lmtime": 1594117606003,
+            "size": 5946,
+            "lmtime": 1594120539237,
+            "modified": false
+          },
+          "StagesSeeder.php": {
+            "type": "-",
+            "size": 583,
+            "lmtime": 0,
+            "modified": false
+          },
+          "StaticPagesSeeder.php": {
+            "type": "-",
+            "size": 1997,
+            "lmtime": 0,
+            "modified": false
+          },
+          "UserSeeder.php": {
+            "type": "-",
+            "size": 767,
+            "lmtime": 0,
             "modified": false
           }
         }
@@ -748,6 +890,14 @@
                 "lmtime": 1594023847445,
                 "modified": false
               }
+            },
+            "setting": {
+              "edit.blade.php": {
+                "type": "-",
+                "size": 57908,
+                "lmtime": 1594120214205,
+                "modified": false
+              }
             }
           },
           "Email": {
@@ -770,13 +920,91 @@
               "modified": false
             }
           }
+        },
+        "lang": {
+          "en": {
+            "admin.php": {
+              "type": "-",
+              "size": 8441,
+              "lmtime": 1594120777672,
+              "modified": false
+            },
+            "api.php": {
+              "type": "-",
+              "size": 1464,
+              "lmtime": 1594122081383,
+              "modified": false
+            },
+            "auth.php": {
+              "type": "-",
+              "size": 617,
+              "lmtime": 0,
+              "modified": false
+            },
+            "pagination.php": {
+              "type": "-",
+              "size": 534,
+              "lmtime": 0,
+              "modified": false
+            },
+            "passwords.php": {
+              "type": "-",
+              "size": 788,
+              "lmtime": 0,
+              "modified": false
+            },
+            "validation.php": {
+              "type": "-",
+              "size": 7592,
+              "lmtime": 0,
+              "modified": false
+            }
+          },
+          "ar": {
+            "admin.php": {
+              "type": "-",
+              "size": 10520,
+              "lmtime": 1594120730153,
+              "modified": false
+            },
+            "api.php": {
+              "type": "-",
+              "size": 1887,
+              "lmtime": 1594129488701,
+              "modified": false
+            },
+            "auth.php": {
+              "type": "-",
+              "size": 612,
+              "lmtime": 0,
+              "modified": false
+            },
+            "pagination.php": {
+              "type": "-",
+              "size": 546,
+              "lmtime": 0,
+              "modified": false
+            },
+            "passwords.php": {
+              "type": "-",
+              "size": 841,
+              "lmtime": 0,
+              "modified": false
+            },
+            "validation.php": {
+              "type": "-",
+              "size": 11725,
+              "lmtime": 0,
+              "modified": false
+            }
+          }
         }
       },
       "routes": {
         "api.php": {
           "type": "-",
-          "size": 1561,
-          "lmtime": 1594118887761,
+          "size": 1850,
+          "lmtime": 1594129329977,
           "modified": false
         },
         "channels.php": {

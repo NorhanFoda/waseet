@@ -106,7 +106,7 @@ class RegisterController extends Controller
 
         if($verified){
             return response()->json([
-                'data' => Auth::loginUsingId($user->id)
+                'data' => Auth::loginUsingId($user->id, true)
             ], 200);
         }
         

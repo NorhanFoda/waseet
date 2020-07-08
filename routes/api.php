@@ -42,12 +42,18 @@ Route::group(['middleware' => 'lang'], function(){
     Route::get('contact_us', 'Api\ContactUsController@index');
     Route::post('contact_us', 'Api\ContactUsController@store');
 
+    // BAg categories
+    Route::get('bag_categories', 'Api\BagCategoryController@index');
+
     // Auth routes
     Route::group(['middleware' => 'auth:api'], function(){
 
         // Addresses
+        Route::get('user_addresses', 'Api\AddressController@index');
+        Route::get('addresses', 'Api\AddressController@getAddressesDetails');
         Route::post('addresses', 'Api\AddressController@store');
-        Route::get('countries', 'Api\AddressController@getCountries');
+        Route::put('addresses', 'Api\AddressController@update');
+        Route::delete('addresses', 'Api\AddressController@destroy');
 
     });
     

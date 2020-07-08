@@ -41,7 +41,7 @@ class LoginController extends Controller
                 if(Hash::check($request->password, $user->password)){ 
                     $user->update(['api_token' => Str::random(191)]);
                     return response()->json([
-                        'data' => Auth::loginUsingId($user->id)
+                        'data' => Auth::loginUsingId($user->id, true)
                     ], 200);
                 }
                 else{
@@ -53,7 +53,7 @@ class LoginController extends Controller
             else{
                 if (Hash::check($request->password, $user->password)){
                     return response()->json([
-                        'data' => Auth::loginUsingId($user->id)
+                        'data' => Auth::loginUsingId($user->id, true)
                     ], 200);
                 }
                 else{

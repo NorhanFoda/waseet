@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\User;
 use App\Models\Country;
 use App\Models\Job;
+use App\Models\Address;
 
 
 class City extends Model
@@ -22,5 +23,9 @@ class City extends Model
 
     public function jobs(){
         return $this->belongsToMany(Job::class);
+    }
+
+    public function addresses(){
+        return $this->hasMany(Address::class);
     }
 }
