@@ -57,6 +57,11 @@ Route::group(['middleware' => 'lang'], function(){
         Route::put('addresses', 'Api\AddressController@update');
         Route::delete('addresses', 'Api\AddressController@destroy');
 
+        Route::get('carts', 'Api\CartController@index');
+        Route::post('carts', 'Api\CartController@store');
+        Route::put('carts', 'Api\CartController@update');
+        Route::delete('carts', 'Api\CartController@destroy');
+
     });
     
 });

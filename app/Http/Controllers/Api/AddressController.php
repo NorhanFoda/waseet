@@ -45,6 +45,7 @@ class AddressController extends Controller
             auth()->user()->addresses()->save($address);
 
             if($address == null){
+                dd('1');
                 return response()->json([
                     'error' => trans('api.error')
                 ], 400);
@@ -52,7 +53,7 @@ class AddressController extends Controller
 
             return response()->json([
                 'success' => trans('api.success')
-            ], 400);
+            ], 200);
         }
         else{
             return response()->json([
@@ -90,7 +91,7 @@ class AddressController extends Controller
 
             return response()->json([
                 'success' => trans('api.success')
-            ], 400);
+            ], 200);
         }
         else{
             return response()->json([
@@ -116,7 +117,7 @@ class AddressController extends Controller
 
             return response()->json([
                 'success' => trans('api.success')
-            ]);
+            ], 200);
         }
         else{
             return response()->json([

@@ -91,8 +91,8 @@
             "Api": {
               "AddressController.php": {
                 "type": "-",
-                "size": 1139,
-                "lmtime": 1594129394052,
+                "size": 3664,
+                "lmtime": 1594196391829,
                 "modified": false
               },
               "ContactUsController.php": {
@@ -109,14 +109,14 @@
               },
               "LoginController.php": {
                 "type": "-",
-                "size": 2930,
-                "lmtime": 1594128399517,
+                "size": 2942,
+                "lmtime": 1594191981549,
                 "modified": false
               },
               "RegisterController.php": {
                 "type": "-",
-                "size": 4297,
-                "lmtime": 1594128414390,
+                "size": 4303,
+                "lmtime": 1594192003553,
                 "modified": false
               },
               "ResetPasswordController.php": {
@@ -135,6 +135,12 @@
                 "type": "-",
                 "size": 1927,
                 "lmtime": 1594118928564,
+                "modified": false
+              },
+              "BagCategoryController.php": {
+                "type": "-",
+                "size": 1235,
+                "lmtime": 1594201164201,
                 "modified": false
               }
             }
@@ -203,11 +209,51 @@
           },
           "Requests": {},
           "Resources": {
+            "Address": {
+              "AddressResource.php": {
+                "type": "-",
+                "size": 625,
+                "lmtime": 1594196223242,
+                "modified": false
+              },
+              "CityResource.php": {
+                "type": "-",
+                "size": 468,
+                "lmtime": 1594195662355,
+                "modified": false
+              },
+              "CountryResource.php": {
+                "type": "-",
+                "size": 471,
+                "lmtime": 1594195659785,
+                "modified": false
+              }
+            },
             "Socials": {
               "SocialResurce.php": {
                 "type": "-",
                 "size": 436,
                 "lmtime": 1594121374349,
+                "modified": false
+              }
+            },
+            "Bags": {
+              "BagCategoryResource.php": {
+                "type": "-",
+                "size": 524,
+                "lmtime": 1594201393671,
+                "modified": false
+              },
+              "BagDetailsResource.php": {
+                "type": "-",
+                "size": 885,
+                "lmtime": 1594201282100,
+                "modified": false
+              },
+              "BagResource.php": {
+                "type": "-",
+                "size": 775,
+                "lmtime": 1594201313865,
                 "modified": false
               }
             }
@@ -242,8 +288,8 @@
         "Models": {
           "Address.php": {
             "type": "-",
-            "size": 277,
-            "lmtime": 1594128923779,
+            "size": 501,
+            "lmtime": 1594196289396,
             "modified": false
           },
           "Announce.php": {
@@ -272,8 +318,8 @@
           },
           "City.php": {
             "type": "-",
-            "size": 474,
-            "lmtime": 0,
+            "size": 585,
+            "lmtime": 1594195768731,
             "modified": false
           },
           "ContactUs.php": {
@@ -284,8 +330,8 @@
           },
           "Country.php": {
             "type": "-",
-            "size": 447,
-            "lmtime": 0,
+            "size": 558,
+            "lmtime": 1594195781846,
             "modified": false
           },
           "Document.php": {
@@ -478,9 +524,9 @@
           },
           "2020_06_10_133042_create_addresses_table.php": {
             "type": "-",
-            "size": 830,
+            "size": 902,
             "lmtime": 1594128960575,
-            "modified": false
+            "modified": true
           },
           "2020_06_10_140152_create_documents_table.php": {
             "type": "-",
@@ -574,8 +620,8 @@
           },
           "2020_06_11_121153_create_foreign_keys_table.php": {
             "type": "-",
-            "size": 5263,
-            "lmtime": 1594128802451,
+            "size": 5411,
+            "lmtime": 1594188798364,
             "modified": false
           },
           "2020_06_11_125422_create_payment_methods_table.php": {
@@ -1003,8 +1049,8 @@
       "routes": {
         "api.php": {
           "type": "-",
-          "size": 1850,
-          "lmtime": 1594129329977,
+          "size": 2295,
+          "lmtime": 1594200531925,
           "modified": false
         },
         "channels.php": {
@@ -1022,7 +1068,7 @@
         "web.php": {
           "type": "-",
           "size": 7617,
-          "lmtime": 0,
+          "lmtime": 1593957023195,
           "modified": false
         }
       },

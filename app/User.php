@@ -21,6 +21,7 @@ use App\Models\EduLevel;
 use App\Models\EduType;
 use App\Models\Nationality;
 use App\Models\Address;
+use App\Models\Cart;
 
 class User extends Authenticatable
 {
@@ -126,5 +127,9 @@ class User extends Authenticatable
 
     public function addresses(){
         return $this->hasMany(Address::class);
+    }
+
+    public function carts(){
+        return $this->hasMany(Cart::class);
     }
 }
