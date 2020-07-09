@@ -19,7 +19,7 @@ class CreateCartsTable extends Migration
             $table->unsignedBigInteger('bag_id')->nullable()->index();
             $table->integer('quantity')->nullable();
             $table->float('total_price')->nullable();
-            $table->integer('buy_type')->default(1);  // 1 -> onlinebuy, 2 -> printcontent
+            // $table->integer('buy_type')->default(1);  // 1 -> onlinebuy, 2 -> printcontent
             $table->timestamps();
         });
     }

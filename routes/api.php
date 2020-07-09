@@ -57,10 +57,18 @@ Route::group(['middleware' => 'lang'], function(){
         Route::put('addresses', 'Api\AddressController@update');
         Route::delete('addresses', 'Api\AddressController@destroy');
 
+        // Carts
         Route::get('carts', 'Api\CartController@index');
         Route::post('carts', 'Api\CartController@store');
         Route::put('carts', 'Api\CartController@update');
         Route::delete('carts', 'Api\CartController@destroy');
+
+        // Payment methods
+        Route::get('methods', 'Api\PaymentMethodController@index');
+
+        // Payment
+        Route::get('get_payment_form', 'Api\PaymentController@getPaymentForm');
+        Route::get('pay_url_api/{order_id}', 'Api\PaymentController@payUrlApi')->name('payUrlApi');
 
     });
     

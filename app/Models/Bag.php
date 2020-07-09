@@ -10,6 +10,7 @@ use App\Models\Rating;
 use App\Models\Save;
 use App\Models\BagContent;
 use App\Models\Cart;
+use App\Models\Order;
 
 class Bag extends Model
 {
@@ -46,5 +47,9 @@ class Bag extends Model
 
     public function carts(){
         return $this->hasMany(Cart::class);
+    }
+
+    public function orders(){
+        return $this->belongsToMany(Bag::class);
     }
 }

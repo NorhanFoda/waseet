@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\User;
 use App\Models\Country;
 use App\Models\City;
+use App\Models\Order;
 
 class Address extends Model
 {
@@ -21,5 +22,9 @@ class Address extends Model
 
     public function city(){
         return $this->belongsTo(City::class);
+    }
+
+    public function order(){
+        return $this->hasMany(Order::class);
     }
 }

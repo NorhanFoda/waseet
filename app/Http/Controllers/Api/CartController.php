@@ -39,7 +39,7 @@ class CartController extends Controller
                 'bag_id' => 'required',
                 'quantity' => 'required',
                 'total_price' => 'required',
-                'buy_type' => 'required'
+                // 'buy_type' => 'required'
             ]);
 
             $cart = Cart::create([
@@ -47,7 +47,7 @@ class CartController extends Controller
                 'bag_id' => $request->bag_id,
                 'quantity' => $request->quantity,
                 'total_price' => $request->total_price,
-                'buy_type' => $request->buy_type == 'onlinebuy' ? 1 : 2
+                // 'buy_type' => $request->buy_type == 'onlinebuy' ? 1 : 2
             ]);
             
             auth()->user()->carts()->save($cart);
