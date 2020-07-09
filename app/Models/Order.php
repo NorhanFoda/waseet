@@ -16,7 +16,7 @@ class Order extends Model
     ];
 
     public function bags(){
-        return $this->benlongsToMany(Order::class)
+        return $this->belongsToMany(Bag::class)
                         ->withPivot('total_price', 'quantity', 'accepted', 'shipped', 'delivered',
                         'id', 'created_at', 'updated_at', 'bag_id', 'order_id');
     }

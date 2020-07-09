@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Auth;
 use App\Models\Order;
 use App\Models\Setting;
+use App\Models\BagOrder;
 
 class PaymentController extends Controller
 {
@@ -19,9 +20,13 @@ class PaymentController extends Controller
                 'buy_type' => 'required',
             ]);
 
-            // dd($request->all());
-
             $carts = auth()->user()->carts;
+
+            if($carts->count() == 0){
+                return response()->json([
+                    'error' => trans('api.error')
+                ], 400);
+            }
             
             $order_total_price = 0;
 
@@ -32,12 +37,23 @@ class PaymentController extends Controller
             $order = Order::create([
                 'user_id' => auth()->user()->id,
                 'total_price' => $order_total_price,
-                'address_id' => $cart->buy_type == 'onlinebuy' ? null : $request->address_id,
+                'address_id' => $request->buy_type == 'onlinebuy' ? null : $request->address_id,
                 'status' => 1, // not confirmed
                 'shipping_fees' =>  Setting::find(1)->shipping_fees,
                 'buy_type' => $request->buy_type == 'onlinebuy' ? 1 : 2,
                 'payment_method_id' => $request->payment_method_id
             ]);
+
+            foreach($carts as $cart){
+                // $order->bags()->attach($cart);
+                BagOrder::create([
+                    'bag_id' => $cart->bag_id,
+                    'order_id' => $order->id,
+                    'total_price' => $cart->total_price,
+                    'quantity' => $cart->quantity
+                ]);
+                $cart->delete();
+            }
 
             $cost = $order->total_price + $order->shipping_fees;
             $order_id = $order->id;

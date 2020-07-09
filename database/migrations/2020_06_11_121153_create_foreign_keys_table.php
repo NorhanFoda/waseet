@@ -103,12 +103,6 @@ class CreateForeignKeysTable extends Migration
                 ->onUpdate('cascade');
         });
 
-        Schema::table('bag_contents', function(Blueprint $table){
-            $table->foreign('bag_id')->references('id')->on('bags')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
-        });
-
         Schema::table('jobs', function(Blueprint $table){
             $table->foreign('country_id')->references('id')->on('countries')
                 ->onDelete('cascade')

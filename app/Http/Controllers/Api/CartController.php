@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Cart;
 use App\Models\Setting;
+use App\Models\Bag;
 use App\Http\Resources\Cart\CartResource;
 use Auth;
 
@@ -38,15 +39,22 @@ class CartController extends Controller
             $this->validate($request, [
                 'bag_id' => 'required',
                 'quantity' => 'required',
-                'total_price' => 'required',
+                // 'total_price' => 'required',
                 // 'buy_type' => 'required'
             ]);
+
+            $bag = Bag::find($request->bag_id);
+            if($bag == null){
+                return response()->json([
+                    'error' => trans('api.error'),
+                ], 400);
+            }
 
             $cart = Cart::create([
                 'user_id' => auth()->user()->id,
                 'bag_id' => $request->bag_id,
                 'quantity' => $request->quantity,
-                'total_price' => $request->total_price,
+                'total_price' => $bag->price * $request->quantity,
                 // 'buy_type' => $request->buy_type == 'onlinebuy' ? 1 : 2
             ]);
             
@@ -75,17 +83,24 @@ class CartController extends Controller
                 'id' => 'required',
                 'bag_id' => 'required',
                 'quantity' => 'required',
-                'total_price' => 'required',
-                'buy_type' => 'required'
+                // 'total_price' => 'required',
+                // 'buy_type' => 'required'
             ]);
     
             $cart = auth()->user()->carts()->find($request->id);
     
+            $bag = Bag::find($request->bag_id);
+            if($bag == null){
+                return response()->json([
+                    'error' => trans('api.error'),
+                ], 400);
+            }
+
             $cart->update([
                 'bag_id' => $request->bag_id,
                 'quantity' => $request->quantity,
-                'total_price' => $request->total_price,
-                'buy_type' => $request->buy_type == 'onlinebuy' ? 1 : 2
+                'total_price' => $bag->price * $request->quantity,
+                // 'buy_type' => $request->buy_type == 'onlinebuy' ? 1 : 2
             ]);
     
             if(!$cart){

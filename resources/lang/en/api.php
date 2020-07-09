@@ -9,10 +9,10 @@ return [
 
     // Text
     'about_waseet_text' => 'About Waseet Al Moalm',
-    '' => '',
-    '' => '',
-    '' => '',
-    '' => '',
+    'not_confirmed' => 'Order is not confirmed',
+    'waiting' => 'Order is waiting',
+    'shipping' => 'Order is shipping',
+    'delivered' => 'Order id delivered',
     '' => '',
     '' => '',
     '' => '',

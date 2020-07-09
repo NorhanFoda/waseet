@@ -70,6 +70,10 @@ Route::group(['middleware' => 'lang'], function(){
         Route::get('get_payment_form', 'Api\PaymentController@getPaymentForm');
         Route::get('pay_url_api/{order_id}', 'Api\PaymentController@payUrlApi')->name('payUrlApi');
 
+        // Orders
+        Route::get('orders', 'Api\OrderController@index');
+        Route::get('track_order', 'Api\OrderController@trackOrder');
+
     });
     
 });
