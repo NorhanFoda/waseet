@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Cart;
+use App\Models\Setting;
 use App\Http\Resources\Cart\CartResource;
 use Auth;
 
@@ -12,8 +13,23 @@ class CartController extends Controller
 {
 
     public function index(){
+
+        $shipping_fees = Setting::find(1)->shipping_fees;
+        $total_branch_price = 0;
+
+        $carts = auth()->user()->carts;
+
+        foreach($carts as $cart){
+            $total_branch_price += $cart->total_price;
+        }
+
+        $total = $total_branch_price  +  $shipping_fees;
+
         return response()->json([
-            'carts' => CartResource::collection(auth()->user()->carts)
+            'carts' => CartResource::collection($carts),
+            'shipping_fees' => $shipping_fees,
+            'total_branch_price' => $total_branch_price,
+            'total' => $total
         ], 200);
     }
 

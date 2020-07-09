@@ -21,6 +21,8 @@ class CreateSettingsTable extends Migration
             $table->string('location_ar');
             $table->string('location_en');
 
+            $table->float('shipping_fees')->default(50.00);
+
             $table->string('welcome_text_ar');
             $table->string('welcome_text_en');
 
