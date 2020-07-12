@@ -1,0 +1,229 @@
+* {
+    direction: rtl !important;
+}
+
+body,
+html {
+    direction: rtl !important;
+}
+
+
+.humburger,
+.footer-social,
+.footer-logo,
+.text-right-dir,
+.teacher_info .info .img_name_rate,
+.apply-form .big-label,
+.custom-file label,
+.packsWrap.book-details .pack_name p,
+.packsWrap.book-details .about_pack p {
+    text-align: right;
+}
+
+.text-left-dir {
+    text-align: left;
+}
+
+.home .navBar nav .search input {
+    padding-left: 45px;
+}
+
+.teachersWrap .teacher ul li::before,
+.teacher_info .info .about_teacher h6::before,
+.apply-form .big-label::before {
+    right: 0;
+}
+
+.circle-title::before,.circle-list li:before {
+    margin-right: -15px;
+}
+
+.teacher_info .info .about_teacher h6 {
+    padding-right: 15px;
+}
+
+footer form input {
+    padding-left: 60px !important;
+}
+
+.teachersWrap .teacher .teacher_info .teacher_name,
+.teacher_info .info .img_name_rate .teacher_name {
+    margin-right: 0;
+    padding-right: 15px;
+}
+
+.apply-form .big-label,
+.circle-title  ,.circle-list li{
+    padding-right: 20px;
+}
+
+.bookmark,
+.custom-file label i {
+    left: 10px;
+}
+
+.teachersWrap .teacher ul li {
+    padding-right: 22px;
+}
+
+.signUp form .userName label img,
+.signUp form .userName label i,
+.custom-input {
+    margin-left: 10px;
+}
+
+.custom-btn i,.book-details-next  h3 i {
+    margin-left: 7px;
+}
+
+
+.gray-form form .custom-select2 select,
+.custom-select2 select {
+    padding-right: 30px;
+}
+
+.form-icon {
+    right: 10px;
+}
+
+.custom-file label {
+    padding: 0 10px 0 40px;
+}
+
+.book-details .pack_rate {
+    margin-right: 0;
+}
+
+.choose-login-link i {
+    margin-left: 15px;
+}
+
+.book-details .custom-check-box label {
+    margin-left: 0;
+    margin-right: auto;
+}
+
+.book-details .footer-social a {
+    margin-right: auto;
+    margin-left: 7px;
+}
+
+.profile-image > img{
+    right: 0;
+}
+
+.profile-image {
+    padding-right: 140px;
+    padding-left: 50px;
+}
+
+.circle-shape:hover{
+    background:#56ccf2
+}
+.profile-image .circle-shape{
+    left: 0;
+}
+
+.prof-edit-list li a i{
+    margin-left: 10px;
+  }
+
+  .arrow-list li a{
+      padding-left: 20px;
+  }
+
+  .arrow-list li a:before{
+      left: 10px;
+  }
+
+  .avatar-upload .avatar-edit{
+      left: 40px;
+  }
+
+  .prof-edit-list > ul > li > a {
+      padding-right: 35px;
+  }
+
+  .prof-edit-list > ul > li > a > i{
+      right: 10px;
+  }
+  
+  .prof-edit-list li .left-icon{
+      right: auto;
+      left: 10px;
+  }
+
+
+  .shipping-list > ul > li > a{
+      padding-left: 40px;
+  }
+
+  .order-list > ul > li > a{
+      padding-right: 20px;
+      padding-left: 50px;
+  }
+
+  
+  .order-list 
+.pack-width{
+    padding-right: 10px;
+}
+
+.track-order li{
+    padding-right: 80px;
+}
+
+.track-order li .track-img{
+    right: 0;
+}
+
+.counter{
+    margin-right: 10px;
+}
+
+
+.secondary-price {
+    left: 0;
+}
+
+
+.shipping-list2 li span{
+    float: left;
+  }
+
+  .custom-check img{
+      margin-left: 20px;
+  }
+
+  .custom-check label:after{
+      left: 0;
+  }
+
+  .custom-check label:before{
+      left: 3px;
+  }
+
+  footer form .form-group label button{
+      margin-left: 10px;
+  }
+
+  @media screen and (max-width:767px) {
+    
+    .custom-check img{
+        margin-left: 10px;
+    }
+  
+    .teachersWrap .teacher .teacher_info .teacher_rate{
+        margin-right: 75px;
+    }
+}
+@media screen and (max-width:576px) {
+    .profile-image {
+        padding-right: 80px;
+    }
+    
+    .custom-check img{
+        margin-left: 10px;
+    }
+  
+}

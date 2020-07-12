@@ -86,13 +86,186 @@
         },
         "Console": {},
         "Exceptions": {},
+        "Helper": {
+          "helper.php": {
+            "type": "-",
+            "size": 1382,
+            "lmtime": 1594293453957,
+            "modified": false
+          }
+        },
         "Http": {
           "Controllers": {
+            "Admin": {
+              "AnnouncController.php": {
+                "type": "-",
+                "size": 4077,
+                "lmtime": 0,
+                "modified": false
+              },
+              "ApplicantsController.php": {
+                "type": "-",
+                "size": 3796,
+                "lmtime": 0,
+                "modified": false
+              },
+              "Auth": {},
+              "BagCategoryController.php": {
+                "type": "-",
+                "size": 4402,
+                "lmtime": 1594475033619,
+                "modified": false
+              },
+              "BagController.php": {
+                "type": "-",
+                "size": 13731,
+                "lmtime": 0,
+                "modified": false
+              },
+              "CVController.php": {
+                "type": "-",
+                "size": 302,
+                "lmtime": 0,
+                "modified": false
+              },
+              "CityController.php": {
+                "type": "-",
+                "size": 3432,
+                "lmtime": 0,
+                "modified": false
+              },
+              "CountryController.php": {
+                "type": "-",
+                "size": 3724,
+                "lmtime": 0,
+                "modified": false
+              },
+              "DirectTeacherController.php": {
+                "type": "-",
+                "size": 5586,
+                "lmtime": 0,
+                "modified": false
+              },
+              "EduLevelController.php": {
+                "type": "-",
+                "size": 2860,
+                "lmtime": 0,
+                "modified": false
+              },
+              "EduTypeController.php": {
+                "type": "-",
+                "size": 3203,
+                "lmtime": 0,
+                "modified": false
+              },
+              "HomeController.php": {
+                "type": "-",
+                "size": 2737,
+                "lmtime": 0,
+                "modified": false
+              },
+              "JobController.php": {
+                "type": "-",
+                "size": 4835,
+                "lmtime": 0,
+                "modified": false
+              },
+              "MaterialController.php": {
+                "type": "-",
+                "size": 3550,
+                "lmtime": 0,
+                "modified": false
+              },
+              "NationalityController.php": {
+                "type": "-",
+                "size": 3196,
+                "lmtime": 0,
+                "modified": false
+              },
+              "OnlineTeacherController.php": {
+                "type": "-",
+                "size": 5833,
+                "lmtime": 0,
+                "modified": false
+              },
+              "OrganizationController.php": {
+                "type": "-",
+                "size": 5461,
+                "lmtime": 0,
+                "modified": false
+              },
+              "PaymentMethodsController.php": {
+                "type": "-",
+                "size": 4154,
+                "lmtime": 0,
+                "modified": false
+              },
+              "SeekerController.php": {
+                "type": "-",
+                "size": 4833,
+                "lmtime": 0,
+                "modified": false
+              },
+              "SettingController.php": {
+                "type": "-",
+                "size": 5631,
+                "lmtime": 1594472904403,
+                "modified": false
+              },
+              "SliderController.php": {
+                "type": "-",
+                "size": 3950,
+                "lmtime": 0,
+                "modified": false
+              },
+              "SocialController.php": {
+                "type": "-",
+                "size": 3253,
+                "lmtime": 1594479236097,
+                "modified": false
+              },
+              "StageController.php": {
+                "type": "-",
+                "size": 3259,
+                "lmtime": 0,
+                "modified": false
+              },
+              "StaticPagesController.php": {
+                "type": "-",
+                "size": 964,
+                "lmtime": 0,
+                "modified": false
+              },
+              "StudentController.php": {
+                "type": "-",
+                "size": 4702,
+                "lmtime": 0,
+                "modified": false
+              },
+              "UserController.php": {
+                "type": "-",
+                "size": 3844,
+                "lmtime": 0,
+                "modified": false
+              }
+            },
             "Api": {
               "AddressController.php": {
                 "type": "-",
-                "size": 3664,
-                "lmtime": 1594196391829,
+                "size": 3694,
+                "lmtime": 1594280084550,
+                "modified": false
+              },
+              "BagCategoryController.php": {
+                "type": "-",
+                "size": 1235,
+                "lmtime": 1594201164201,
+                "modified": false
+              },
+              "CartController.php": {
+                "type": "-",
+                "size": 4367,
+                "lmtime": 1594296325103,
                 "modified": false
               },
               "ContactUsController.php": {
@@ -111,6 +284,24 @@
                 "type": "-",
                 "size": 2942,
                 "lmtime": 1594191981549,
+                "modified": false
+              },
+              "OrderController.php": {
+                "type": "-",
+                "size": 1376,
+                "lmtime": 1594299408911,
+                "modified": false
+              },
+              "PaymentController.php": {
+                "type": "-",
+                "size": 5473,
+                "lmtime": 1594297747419,
+                "modified": false
+              },
+              "PaymentMethodController.php": {
+                "type": "-",
+                "size": 676,
+                "lmtime": 1594291738553,
                 "modified": false
               },
               "RegisterController.php": {
@@ -136,11 +327,26 @@
                 "size": 1927,
                 "lmtime": 1594118928564,
                 "modified": false
-              },
-              "BagCategoryController.php": {
+              }
+            },
+            "Auth": {},
+            "Controller.php": {
+              "type": "-",
+              "size": 361,
+              "lmtime": 0,
+              "modified": false
+            },
+            "HomeController.php": {
+              "type": "-",
+              "size": 838,
+              "lmtime": 1594480637197,
+              "modified": false
+            },
+            "web": {
+              "BagController.php": {
                 "type": "-",
-                "size": 1235,
-                "lmtime": 1594201164201,
+                "size": 509,
+                "lmtime": 1594481986343,
                 "modified": false
               }
             }
@@ -256,6 +462,42 @@
                 "lmtime": 1594201313865,
                 "modified": false
               }
+            },
+            "Cart": {
+              "CartResource.php": {
+                "type": "-",
+                "size": 914,
+                "lmtime": 1594292661710,
+                "modified": false
+              }
+            },
+            "Payment": {
+              "PaymentMethodResource.php": {
+                "type": "-",
+                "size": 521,
+                "lmtime": 1594286929997,
+                "modified": false
+              }
+            },
+            "Order": {
+              "orderBagResource.php": {
+                "type": "-",
+                "size": 770,
+                "lmtime": 1594299365062,
+                "modified": false
+              },
+              "OrderResource.php": {
+                "type": "-",
+                "size": 635,
+                "lmtime": 1594298520826,
+                "modified": false
+              },
+              "trackOrderResource.php": {
+                "type": "-",
+                "size": 892,
+                "lmtime": 1594300247257,
+                "modified": false
+              }
             }
           }
         },
@@ -288,8 +530,8 @@
         "Models": {
           "Address.php": {
             "type": "-",
-            "size": 501,
-            "lmtime": 1594196289396,
+            "size": 604,
+            "lmtime": 1594287987309,
             "modified": false
           },
           "Announce.php": {
@@ -300,8 +542,8 @@
           },
           "Bag.php": {
             "type": "-",
-            "size": 1077,
-            "lmtime": 0,
+            "size": 1467,
+            "lmtime": 1594295587666,
             "modified": false
           },
           "BagCategory.php": {
@@ -310,10 +552,16 @@
             "lmtime": 0,
             "modified": false
           },
-          "BagContent.php": {
+          "BagOrder.php": {
             "type": "-",
-            "size": 251,
-            "lmtime": 0,
+            "size": 377,
+            "lmtime": 1594288395904,
+            "modified": false
+          },
+          "Cart.php": {
+            "type": "-",
+            "size": 397,
+            "lmtime": 1594281371913,
             "modified": false
           },
           "City.php": {
@@ -376,10 +624,16 @@
             "lmtime": 0,
             "modified": false
           },
+          "Order.php": {
+            "type": "-",
+            "size": 871,
+            "lmtime": 1594295565265,
+            "modified": false
+          },
           "PaymentMethod.php": {
             "type": "-",
-            "size": 275,
-            "lmtime": 0,
+            "size": 379,
+            "lmtime": 1594288796990,
             "modified": false
           },
           "Rating.php": {
@@ -408,8 +662,8 @@
           },
           "Social.php": {
             "type": "-",
-            "size": 252,
-            "lmtime": 0,
+            "size": 269,
+            "lmtime": 1594476588204,
             "modified": false
           },
           "Stage.php": {
@@ -440,8 +694,8 @@
         "Providers": {},
         "User.php": {
           "type": "-",
-          "size": 3357,
-          "lmtime": 1594128917549,
+          "size": 3593,
+          "lmtime": 1594297924827,
           "modified": false
         }
       },
@@ -455,8 +709,8 @@
       "cgi-bin": {},
       "composer.json": {
         "type": "-",
-        "size": 1678,
-        "lmtime": 1594045792935,
+        "size": 1778,
+        "lmtime": 1594290392583,
         "modified": false
       },
       "composer.lock": {
@@ -504,10 +758,22 @@
             "lmtime": 0,
             "modified": false
           },
-          "2020_06_10_092023_create_bag_contents_table.php": {
+          "2020_06_10_093331_create_orders_table.php": {
             "type": "-",
-            "size": 716,
-            "lmtime": 0,
+            "size": 1117,
+            "lmtime": 1594292307758,
+            "modified": false
+          },
+          "2020_06_10_093753_create_bag_order_table.php": {
+            "type": "-",
+            "size": 1023,
+            "lmtime": 1594295916184,
+            "modified": false
+          },
+          "2020_06_10_100259_create_carts_table.php": {
+            "type": "-",
+            "size": 921,
+            "lmtime": 1594292572012,
             "modified": false
           },
           "2020_06_10_120247_create_edu_levels_table.php": {
@@ -620,9 +886,9 @@
           },
           "2020_06_11_121153_create_foreign_keys_table.php": {
             "type": "-",
-            "size": 5411,
-            "lmtime": 1594188798364,
-            "modified": false
+            "size": 6467,
+            "lmtime": 1594288922377,
+            "modified": true
           },
           "2020_06_11_125422_create_payment_methods_table.php": {
             "type": "-",
@@ -638,8 +904,8 @@
           },
           "2020_06_11_142933_create_settings_table.php": {
             "type": "-",
-            "size": 3076,
-            "lmtime": 1594120078285,
+            "size": 3137,
+            "lmtime": 1594284764498,
             "modified": false
           },
           "2020_06_11_144001_create_sub_scribers_table.php": {
@@ -650,8 +916,8 @@
           },
           "2020_06_11_144057_create_socials_table.php": {
             "type": "-",
-            "size": 680,
-            "lmtime": 0,
+            "size": 716,
+            "lmtime": 1594476593420,
             "modified": false
           },
           "2020_06_11_144541_create_static_pages_table.php": {
@@ -774,9 +1040,9 @@
       },
       "error_log": {
         "type": "-",
-        "size": 422,
+        "size": 3378,
         "lmtime": 0,
-        "modified": false
+        "modified": true
       },
       "package.json": {
         "type": "-",
@@ -792,99 +1058,135 @@
       },
       "public": {
         "images": {
-          "Microsoft_Account.svg.png": {
-            "type": "-",
-            "size": 63362,
-            "lmtime": 0,
-            "modified": false
-          },
           "avatar.png": {
             "type": "-",
             "size": 52534,
             "lmtime": 0,
             "modified": false
           },
-          "download.png": {
+          "php1DAD_1594474176.png": {
             "type": "-",
-            "size": 4697,
+            "size": 10840,
+            "lmtime": 1594474176158,
+            "modified": false
+          },
+          "php1gUcdu_1594114312.png": {
+            "type": "-",
+            "size": 2293,
             "lmtime": 0,
             "modified": false
           },
-          "download1.png": {
+          "php222F_1594474243.png": {
             "type": "-",
-            "size": 2425,
+            "size": 8293,
+            "lmtime": 1594474242861,
+            "modified": false
+          },
+          "php260_1594472859.png": {
+            "type": "-",
+            "size": 34383,
+            "lmtime": 1594472858459,
+            "modified": false
+          },
+          "php261_1594472859.png": {
+            "type": "-",
+            "size": 27303,
+            "lmtime": 1594472858467,
+            "modified": false
+          },
+          "php272_1594472860.png": {
+            "type": "-",
+            "size": 24357,
+            "lmtime": 1594472858475,
+            "modified": false
+          },
+          "php5CBD_1594474127.png": {
+            "type": "-",
+            "size": 8698,
+            "lmtime": 1594474126765,
+            "modified": false
+          },
+          "php5lChMx_1594114312.png": {
+            "type": "-",
+            "size": 2293,
             "lmtime": 0,
             "modified": false
           },
-          "logo.png": {
+          "php6F9D_1594306099.jpg": {
+            "type": "-",
+            "size": 174041,
+            "lmtime": 1594306098614,
+            "modified": false
+          },
+          "php764F_1594481343.png": {
+            "type": "-",
+            "size": 54341,
+            "lmtime": 1594481342276,
+            "modified": false
+          },
+          "php768F_1594481343.png": {
+            "type": "-",
+            "size": 51683,
+            "lmtime": 1594481342333,
+            "modified": false
+          },
+          "php76A1_1594481343.png": {
+            "type": "-",
+            "size": 51683,
+            "lmtime": 1594481342353,
+            "modified": false
+          },
+          "php76A2_1594481344.png": {
+            "type": "-",
+            "size": 54341,
+            "lmtime": 1594481342357,
+            "modified": false
+          },
+          "php76A3_1594481344.png": {
+            "type": "-",
+            "size": 37387,
+            "lmtime": 1594481342361,
+            "modified": false
+          },
+          "php9D4B_1594474274.png": {
+            "type": "-",
+            "size": 7749,
+            "lmtime": 1594474274365,
+            "modified": false
+          },
+          "phpA349_1594474210.png": {
+            "type": "-",
+            "size": 48360,
+            "lmtime": 1594474210366,
+            "modified": false
+          },
+          "phpC28C_1594474153.png": {
+            "type": "-",
+            "size": 15982,
+            "lmtime": 1594474152841,
+            "modified": false
+          },
+          "phpIVJ8Dq_1594114312.png": {
+            "type": "-",
+            "size": 2293,
+            "lmtime": 0,
+            "modified": false
+          },
+          "phpTUJRHg_1594114312.png": {
+            "type": "-",
+            "size": 10439,
+            "lmtime": 0,
+            "modified": false
+          },
+          "phpdn764m_1594114312.png": {
             "type": "-",
             "size": 38084,
-            "lmtime": 1594022865591,
-            "modified": false
-          },
-          "php4hBBaF_1594020195.jpg": {
-            "type": "-",
-            "size": 733126,
             "lmtime": 0,
             "modified": false
           },
-          "phpJtarLI_1594021114.png": {
+          "phpr1WfNj_1594114312.png": {
             "type": "-",
-            "size": 925,
-            "lmtime": 0,
-            "modified": false
-          },
-          "phpPvcfQ3_1594017946.png": {
-            "type": "-",
-            "size": 52534,
-            "lmtime": 0,
-            "modified": false
-          },
-          "phpQb5duG_1594020195.png": {
-            "type": "-",
-            "size": 52534,
-            "lmtime": 0,
-            "modified": false
-          },
-          "phpTcafhy_1594020195.png": {
-            "type": "-",
-            "size": 52534,
-            "lmtime": 0,
-            "modified": false
-          },
-          "phpVrERzi_1594020195.png": {
-            "type": "-",
-            "size": 52534,
-            "lmtime": 0,
-            "modified": false
-          },
-          "phpXhHoP8_1593961568.jpg": {
-            "type": "-",
-            "size": 13467,
-            "lmtime": 0,
-            "modified": false
-          },
-          "phpYO9THp_1594020984.png": {
-            "type": "-",
-            "size": 23782,
-            "lmtime": 0,
-            "modified": false
-          },
-          "phpcnPRFZ_1594019602.jpg": {
-            "type": "-",
-            "size": 13467,
-            "lmtime": 0,
-            "modified": false
-          },
-          "phpv1J7tG_1594017729.jpg": {
-            "type": "-",
-            "size": 13467,
-            "lmtime": 0,
-            "modified": false
-          },
-          "phpv9nqTz_1594019652.jpg": {
-            "type": "-",
-            "size": 733126,
+            "size": 10439,
             "lmtime": 0,
             "modified": false
           },
@@ -894,11 +1196,687 @@
             "lmtime": 0,
             "modified": false
           },
-          "logo2.png": {
+          "phpD8B7_1594474093.png": {
             "type": "-",
-            "size": 10439,
-            "lmtime": 1594023813136,
+            "size": 13993,
+            "lmtime": 1594474092977,
             "modified": false
+          }
+        },
+        "documents": {
+          "php7690_1594481343.pdf": {
+            "type": "-",
+            "size": 23959,
+            "lmtime": 1594481342337,
+            "modified": false
+          }
+        },
+        "videos": {
+          "php5264_1593941465.mp4": {
+            "type": "-",
+            "size": 552999,
+            "lmtime": 0,
+            "modified": false
+          },
+          "php6274_1593940094.mp4": {
+            "type": "-",
+            "size": 552999,
+            "lmtime": 0,
+            "modified": false
+          },
+          "php76B3_1594481344.mp4": {
+            "type": "-",
+            "size": 552999,
+            "lmtime": 1594481342365,
+            "modified": false
+          },
+          "php7770_1593956287.mp4": {
+            "type": "-",
+            "size": 552999,
+            "lmtime": 0,
+            "modified": false
+          },
+          "php77A3_1593956287.mp4": {
+            "type": "-",
+            "size": 552999,
+            "lmtime": 0,
+            "modified": false
+          },
+          "php9NAc6y_1594020195.mp4": {
+            "type": "-",
+            "size": 552999,
+            "lmtime": 0,
+            "modified": false
+          },
+          "phpEE72_1593941571.mp4": {
+            "type": "-",
+            "size": 552999,
+            "lmtime": 0,
+            "modified": false
+          },
+          "phpEF22_1593941572.mp4": {
+            "type": "-",
+            "size": 552999,
+            "lmtime": 0,
+            "modified": false
+          },
+          "phpSjWXtN_1594020195.mp4": {
+            "type": "-",
+            "size": 552999,
+            "lmtime": 0,
+            "modified": false
+          },
+          "phplrd1Ta_1594020195.mp4": {
+            "type": "-",
+            "size": 552999,
+            "lmtime": 0,
+            "modified": false
+          },
+          "php765F_1594481343.mp4": {
+            "type": "-",
+            "size": 552999,
+            "lmtime": 1594481342284,
+            "modified": false
+          }
+        },
+        "web": {
+          "css": {
+            "aos.css": {
+              "type": "-",
+              "size": 26053,
+              "lmtime": 1592181906756,
+              "modified": false
+            },
+            "ar.css": {
+              "type": "-",
+              "size": 3577,
+              "lmtime": 1593072244118,
+              "modified": false
+            },
+            "bootstrap-theme.css": {
+              "type": "-",
+              "size": 22474,
+              "lmtime": 1592181906640,
+              "modified": false
+            },
+            "bootstrap-theme.css.map": {
+              "type": "-",
+              "size": 43029,
+              "lmtime": 1592181906661,
+              "modified": false
+            },
+            "bootstrap-theme.min.css": {
+              "type": "-",
+              "size": 19835,
+              "lmtime": 1592181906803,
+              "modified": false
+            },
+            "bootstrap.css": {
+              "type": "-",
+              "size": 173442,
+              "lmtime": 1592181906685,
+              "modified": false
+            },
+            "bootstrap.css.map": {
+              "type": "-",
+              "size": 426412,
+              "lmtime": 1592181906712,
+              "modified": false
+            },
+            "bootstrap.min.css": {
+              "type": "-",
+              "size": 140930,
+              "lmtime": 1592181906855,
+              "modified": false
+            },
+            "bootstrap.min.css.map": {
+              "type": "-",
+              "size": 559636,
+              "lmtime": 1592181906832,
+              "modified": false
+            },
+            "main.css": {
+              "type": "-",
+              "size": 68262,
+              "lmtime": 1593073275295,
+              "modified": false
+            },
+            "main.css.map": {
+              "type": "-",
+              "size": 58446,
+              "lmtime": 1592181906587,
+              "modified": false
+            },
+            "main.scss": {
+              "type": "-",
+              "size": 47336,
+              "lmtime": 1592181906616,
+              "modified": false
+            },
+            "owl.carousel.min.css": {
+              "type": "-",
+              "size": 3351,
+              "lmtime": 1592181906734,
+              "modified": false
+            },
+            "owl.theme.default.css": {
+              "type": "-",
+              "size": 1380,
+              "lmtime": 1592181906778,
+              "modified": false
+            },
+            "responsive.css": {
+              "type": "-",
+              "size": 9221,
+              "lmtime": 1593072179831,
+              "modified": false
+            }
+          },
+          "fonts": {
+            "cairo": {
+              "Cairo-Black.ttf": {
+                "type": "-",
+                "size": 155840,
+                "lmtime": 1592181906461,
+                "modified": false
+              },
+              "Cairo-Bold.ttf": {
+                "type": "-",
+                "size": 154184,
+                "lmtime": 1592181906538,
+                "modified": false
+              },
+              "Cairo-ExtraLight.ttf": {
+                "type": "-",
+                "size": 141972,
+                "lmtime": 1592181906484,
+                "modified": false
+              },
+              "Cairo-Light.ttf": {
+                "type": "-",
+                "size": 143888,
+                "lmtime": 1592181906411,
+                "modified": false
+              },
+              "Cairo-Regular.ttf": {
+                "type": "-",
+                "size": 151580,
+                "lmtime": 1592181906434,
+                "modified": false
+              },
+              "Cairo-SemiBold.ttf": {
+                "type": "-",
+                "size": 162588,
+                "lmtime": 1592181906514,
+                "modified": false
+              }
+            },
+            "glyphicons-halflings-regular.eot": {
+              "type": "-",
+              "size": 20335,
+              "lmtime": 1592181906299,
+              "modified": false
+            },
+            "glyphicons-halflings-regular.svg": {
+              "type": "-",
+              "size": 62926,
+              "lmtime": 1592181906355,
+              "modified": false
+            },
+            "glyphicons-halflings-regular.ttf": {
+              "type": "-",
+              "size": 41280,
+              "lmtime": 1592181906326,
+              "modified": false
+            },
+            "glyphicons-halflings-regular.woff": {
+              "type": "-",
+              "size": 23320,
+              "lmtime": 1592181906264,
+              "modified": false
+            },
+            "jfFlat": {
+              "ArbFONTS-JF-Flat-regular.ttf": {
+                "type": "-",
+                "size": 45960,
+                "lmtime": 1592181906385,
+                "modified": false
+              }
+            }
+          },
+          "images": {
+            "Vector-Smart-Object1.png": {
+              "type": "-",
+              "size": 38084,
+              "lmtime": 1592181907354,
+              "modified": false
+            },
+            "Vector-Smart-Object2.png": {
+              "type": "-",
+              "size": 34508,
+              "lmtime": 1592181907303,
+              "modified": false
+            },
+            "arrow.png": {
+              "type": "-",
+              "size": 1457,
+              "lmtime": 1592228606515,
+              "modified": false
+            },
+            "bg.png": {
+              "type": "-",
+              "size": 15724,
+              "lmtime": 1592921384184,
+              "modified": false
+            },
+            "big-book.png": {
+              "type": "-",
+              "size": 54341,
+              "lmtime": 1592921572960,
+              "modified": false
+            },
+            "book.png": {
+              "type": "-",
+              "size": 51683,
+              "lmtime": 1592181907639,
+              "modified": false
+            },
+            "book2.png": {
+              "type": "-",
+              "size": 37387,
+              "lmtime": 1592181907328,
+              "modified": false
+            },
+            "bookmark.png": {
+              "type": "-",
+              "size": 1808,
+              "lmtime": 1592181907021,
+              "modified": false
+            },
+            "bookmark2.png": {
+              "type": "-",
+              "size": 1409,
+              "lmtime": 1592726955324,
+              "modified": false
+            },
+            "books.png": {
+              "type": "-",
+              "size": 62089,
+              "lmtime": 1592181906894,
+              "modified": false
+            },
+            "certificate.png": {
+              "type": "-",
+              "size": 2423,
+              "lmtime": 1592181906963,
+              "modified": false
+            },
+            "close.png": {
+              "type": "-",
+              "size": 288,
+              "lmtime": 1592181907586,
+              "modified": false
+            },
+            "comment.png": {
+              "type": "-",
+              "size": 401,
+              "lmtime": 1592181907415,
+              "modified": false
+            },
+            "contactus-bg.png": {
+              "type": "-",
+              "size": 44752,
+              "lmtime": 1592181907277,
+              "modified": false
+            },
+            "conversation.png": {
+              "type": "-",
+              "size": 501,
+              "lmtime": 1592181907074,
+              "modified": false
+            },
+            "email.png": {
+              "type": "-",
+              "size": 415,
+              "lmtime": 1592181907173,
+              "modified": false
+            },
+            "facebook.png": {
+              "type": "-",
+              "size": 1032,
+              "lmtime": 1592181907549,
+              "modified": false
+            },
+            "favicon.ico": {
+              "type": "-",
+              "size": 1150,
+              "lmtime": 1592229427185,
+              "modified": false
+            },
+            "files.png": {
+              "type": "-",
+              "size": 8293,
+              "lmtime": 1592814692208,
+              "modified": false
+            },
+            "footer-bg.png": {
+              "type": "-",
+              "size": 250196,
+              "lmtime": 1592181907187,
+              "modified": false
+            },
+            "games.png": {
+              "type": "-",
+              "size": 48360,
+              "lmtime": 1592814713290,
+              "modified": false
+            },
+            "head-banner.jpg": {
+              "type": "-",
+              "size": 174041,
+              "lmtime": 1592181907499,
+              "modified": false
+            },
+            "instagram.png": {
+              "type": "-",
+              "size": 1968,
+              "lmtime": 1592181907481,
+              "modified": false
+            },
+            "interface.png": {
+              "type": "-",
+              "size": 4394,
+              "lmtime": 1592181907085,
+              "modified": false
+            },
+            "interface.svg": {
+              "type": "-",
+              "size": 533,
+              "lmtime": 1592181906951,
+              "modified": false
+            },
+            "job-search-bg.png": {
+              "type": "-",
+              "size": 437094,
+              "lmtime": 1592181907037,
+              "modified": false
+            },
+            "job.png": {
+              "type": "-",
+              "size": 3111,
+              "lmtime": 1592729274184,
+              "modified": false
+            },
+            "jobs-bg.jpg": {
+              "type": "-",
+              "size": 371529,
+              "lmtime": 1592181907005,
+              "modified": false
+            },
+            "location.png": {
+              "type": "-",
+              "size": 580,
+              "lmtime": 1592181907561,
+              "modified": false
+            },
+            "logo.png": {
+              "type": "-",
+              "size": 16780,
+              "lmtime": 1592181907379,
+              "modified": false
+            },
+            "mail-bg.png": {
+              "type": "-",
+              "size": 252430,
+              "lmtime": 1592181907099,
+              "modified": false
+            },
+            "man.png": {
+              "type": "-",
+              "size": 2361,
+              "lmtime": 1592181906883,
+              "modified": false
+            },
+            "menuicon.png": {
+              "type": "-",
+              "size": 277,
+              "lmtime": 1592181906973,
+              "modified": false
+            },
+            "message.png": {
+              "type": "-",
+              "size": 825,
+              "lmtime": 1592181907512,
+              "modified": false
+            },
+            "pack.png": {
+              "type": "-",
+              "size": 98099,
+              "lmtime": 1592181907403,
+              "modified": false
+            },
+            "packs-bg.png": {
+              "type": "-",
+              "size": 119055,
+              "lmtime": 1592181907456,
+              "modified": false
+            },
+            "packs-vector-2.png": {
+              "type": "-",
+              "size": 8698,
+              "lmtime": 1592181907148,
+              "modified": false
+            },
+            "packs-vector-3.png": {
+              "type": "-",
+              "size": 15982,
+              "lmtime": 1592181907290,
+              "modified": false
+            },
+            "packs-vector-4.png": {
+              "type": "-",
+              "size": 10840,
+              "lmtime": 1592181907050,
+              "modified": false
+            },
+            "packs-vector.png": {
+              "type": "-",
+              "size": 13993,
+              "lmtime": 1592181907341,
+              "modified": false
+            },
+            "padlock.png": {
+              "type": "-",
+              "size": 431,
+              "lmtime": 1592181907652,
+              "modified": false
+            },
+            "pay-1.png": {
+              "type": "-",
+              "size": 5738,
+              "lmtime": 1593011961111,
+              "modified": false
+            },
+            "pay-2.png": {
+              "type": "-",
+              "size": 7165,
+              "lmtime": 1593011975726,
+              "modified": false
+            },
+            "pay-3.png": {
+              "type": "-",
+              "size": 4031,
+              "lmtime": 1593011988367,
+              "modified": false
+            },
+            "pencil.png": {
+              "type": "-",
+              "size": 1359,
+              "lmtime": 1592985514923,
+              "modified": false
+            },
+            "pointer.png": {
+              "type": "-",
+              "size": 1559,
+              "lmtime": 1592228782049,
+              "modified": false
+            },
+            "powerpoint.png": {
+              "type": "-",
+              "size": 7749,
+              "lmtime": 1592814671475,
+              "modified": false
+            },
+            "rate.png": {
+              "type": "-",
+              "size": 3209,
+              "lmtime": 1592181907536,
+              "modified": false
+            },
+            "school-logo.png": {
+              "type": "-",
+              "size": 3903,
+              "lmtime": 1592181907391,
+              "modified": false
+            },
+            "scope.png": {
+              "type": "-",
+              "size": 11898,
+              "lmtime": 1592181907598,
+              "modified": false
+            },
+            "search-vector-2.png": {
+              "type": "-",
+              "size": 27303,
+              "lmtime": 1592181906906,
+              "modified": false
+            },
+            "search-vector-3.png": {
+              "type": "-",
+              "size": 24357,
+              "lmtime": 1592181906930,
+              "modified": false
+            },
+            "search-vector.png": {
+              "type": "-",
+              "size": 34383,
+              "lmtime": 1592181907225,
+              "modified": false
+            },
+            "searchicon.png": {
+              "type": "-",
+              "size": 845,
+              "lmtime": 1592181907136,
+              "modified": false
+            },
+            "send.png": {
+              "type": "-",
+              "size": 239,
+              "lmtime": 1592181907124,
+              "modified": false
+            },
+            "send.svg": {
+              "type": "-",
+              "size": 1394,
+              "lmtime": 1592181907441,
+              "modified": false
+            },
+            "sm-books.png": {
+              "type": "-",
+              "size": 8399,
+              "lmtime": 1592181907612,
+              "modified": false
+            },
+            "smartphone.png": {
+              "type": "-",
+              "size": 311,
+              "lmtime": 1592181906918,
+              "modified": false
+            },
+            "snapchat.png": {
+              "type": "-",
+              "size": 808,
+              "lmtime": 1592181907211,
+              "modified": false
+            },
+            "students.png": {
+              "type": "-",
+              "size": 2952,
+              "lmtime": 1592181907062,
+              "modified": false
+            },
+            "teacher-bg.png": {
+              "type": "-",
+              "size": 15885,
+              "lmtime": 1592181907237,
+              "modified": false
+            },
+            "teacher-img.png": {
+              "type": "-",
+              "size": 26135,
+              "lmtime": 1592181907626,
+              "modified": false
+            },
+            "teacher-vector-2.png": {
+              "type": "-",
+              "size": 31547,
+              "lmtime": 1592181907250,
+              "modified": false
+            },
+            "teacher-vector-3.png": {
+              "type": "-",
+              "size": 57678,
+              "lmtime": 1592181907573,
+              "modified": false
+            },
+            "teacher-vector.png": {
+              "type": "-",
+              "size": 46782,
+              "lmtime": 1592181907367,
+              "modified": false
+            },
+            "teacher.png": {
+              "type": "-",
+              "size": 11257,
+              "lmtime": 1592181907468,
+              "modified": false
+            },
+            "track-1.png": {
+              "type": "-",
+              "size": 1715,
+              "lmtime": 1592999392805,
+              "modified": false
+            },
+            "track-2.png": {
+              "type": "-",
+              "size": 9479,
+              "lmtime": 1592999780022,
+              "modified": false
+            },
+            "track-3.png": {
+              "type": "-",
+              "size": 6713,
+              "lmtime": 1592999700651,
+              "modified": false
+            },
+            "twitter.png": {
+              "type": "-",
+              "size": 1332,
+              "lmtime": 1592181907160,
+              "modified": false
+            },
+            "user.png": {
+              "type": "-",
+              "size": 413,
+              "lmtime": 1592181907199,
+              "modified": false
+            },
+            "user2.png": {
+              "type": "-",
+              "size": 37316,
+              "lmtime": 1592985884527,
+              "modified": false
+            }
           }
         }
       },
@@ -910,6 +1888,26 @@
       },
       "resources": {
         "views": {
+          "Email": {
+            "admin_reset_passwrod.blade.php": {
+              "type": "-",
+              "size": 1995,
+              "lmtime": 0,
+              "modified": false
+            },
+            "reset_password.blade.php": {
+              "type": "-",
+              "size": 1732,
+              "lmtime": 1594040806080,
+              "modified": false
+            },
+            "verification.blade.php": {
+              "type": "-",
+              "size": 1728,
+              "lmtime": 1594041874641,
+              "modified": false
+            }
+          },
           "admin": {
             "layouts": {
               "app.blade.php": {
@@ -946,25 +1944,25 @@
               }
             }
           },
-          "Email": {
-            "admin_reset_passwrod.blade.php": {
-              "type": "-",
-              "size": 1995,
-              "lmtime": 0,
-              "modified": false
-            },
-            "reset_password.blade.php": {
-              "type": "-",
-              "size": 1732,
-              "lmtime": 1594040806080,
-              "modified": false
-            },
-            "verification.blade.php": {
-              "type": "-",
-              "size": 1728,
-              "lmtime": 1594041874641,
-              "modified": false
-            }
+          "auth": {},
+          "home.blade.php": {
+            "type": "-",
+            "size": 626,
+            "lmtime": 0,
+            "modified": false
+          },
+          "layouts": {},
+          "online_payment_form.blade.php": {
+            "type": "-",
+            "size": 719,
+            "lmtime": 1594297701945,
+            "modified": false
+          },
+          "welcome.blade.php": {
+            "type": "-",
+            "size": 2887,
+            "lmtime": 0,
+            "modified": false
           }
         },
         "lang": {
@@ -977,8 +1975,8 @@
             },
             "api.php": {
               "type": "-",
-              "size": 1464,
-              "lmtime": 1594122081383,
+              "size": 1574,
+              "lmtime": 1594300193765,
               "modified": false
             },
             "auth.php": {
@@ -1015,8 +2013,8 @@
             },
             "api.php": {
               "type": "-",
-              "size": 1887,
-              "lmtime": 1594129488701,
+              "size": 2096,
+              "lmtime": 1594301121269,
               "modified": false
             },
             "auth.php": {
@@ -1049,8 +2047,8 @@
       "routes": {
         "api.php": {
           "type": "-",
-          "size": 2295,
-          "lmtime": 1594200531925,
+          "size": 2991,
+          "lmtime": 1594299491542,
           "modified": false
         },
         "channels.php": {

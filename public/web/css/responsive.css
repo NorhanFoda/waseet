@@ -1,0 +1,479 @@
+@media screen and (max-width: 992px) {
+
+    .navBar nav .logo img:first-child {
+        max-width: 65px;
+    }
+
+    .navBar nav .logo img:last-child {
+        max-width: 160px;
+    }
+
+
+    .search {
+        margin-top: 6px;
+    }
+
+    .navBar nav .humburger img {
+        margin-top: 19px;
+    }
+
+    .navBar nav .search img {
+        max-width: 20px;
+        margin-top: 12px;
+    }
+
+    .slider .item {
+        height: 380px;
+    }
+
+    .slider .owl-carousel .owl-dots {
+        bottom: 0;
+        padding-bottom: 0;
+    }
+
+    .contactUs_form .contactInfo {
+        width: 40%;
+    }
+
+    .contactUs_form form .inputs-contain {
+        width: 60%;
+        left: -35%;
+    }
+
+    .cardBody {
+        position: relative;
+        width: 100%;
+        -webkit-transform: none;
+        transform: none;
+        top: 0;
+        left: 0;
+        padding: 50px 0px 20px 0;
+        background: none
+    }
+
+    .cardBody .goLogin,
+    .cardBody .goSignUp {
+        width: 90%;
+        margin-bottom: 50px;
+    }
+
+    .cardBody .goLogin .welcome,
+    .cardBody .goSignUp .welcome {
+        margin: 20px auto;
+    }
+
+    .cardBody .signUp form .userName {
+        width: 90%;
+    }
+
+    .cardBody .signUp form,
+    .cardBody .logIn form {
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
+        border-radius: 15px;
+    }
+
+    .cardBody .logIn form .email,
+    .cardBody .logIn form .password {
+        width: 90%;
+    }
+
+    .background {
+        background: -webkit-gradient(linear, left top, left bottom, from(#6d1d9c), to(#af8adc));
+        background: linear-gradient(to bottom, #6d1d9c, #af8adc);
+    }
+
+    .md-center {
+        text-align: center;
+    }
+
+    .packsWrap.book-details .pack_img img {
+        margin: auto;
+    }
+}
+
+
+@media screen and (max-width: 767px) {
+
+
+    .navBar nav .logo img:last-child {
+        max-width: 150px;
+    }
+
+
+    .slider .item h4 {
+        font-size: 18px;
+    }
+
+    .feature-text #shadow {
+        font-size: 25px;
+        line-height: 65px;
+    }
+
+
+    .wrapper .text p {
+        line-height: 25px;
+        font-size: 17px;
+        text-align: center;
+    }
+
+    .search-job .job img {
+        max-width: 160px;
+    }
+
+    .packs {
+        margin-bottom: 0px;
+    }
+
+    .footer-logo {
+        text-align: center;
+    }
+
+    .private-teacher .teacher img {
+        max-width: 160px;
+    }
+
+
+
+
+    .helpCenter h5 {
+        font-size: 15px;
+    }
+
+    .helpCenter p {
+        font-size: 13px;
+        color: #ebebeb
+    }
+
+    .contactUs_form {
+        padding: 20px 0;
+    }
+
+
+    .contactUs_form .contactInfo {
+        position: relative;
+        width: 95%;
+        right: 0;
+        left: 0;
+        margin: auto;
+        border-radius:10px;
+        -webkit-border-radius:10px;
+        -moz-border-radius:10px;
+        -ms-border-radius:10px;
+        -o-border-radius:10px;
+        overflow: hidden;
+}
+
+    .contactUs_form form {
+        width: 95%;
+        left: 0;
+        right: 0;
+        margin: 15px auto;
+        padding: 10px;
+        box-shadow: 0 0 8px #999;
+        border-radius:10px;
+        -webkit-border-radius:10px;
+        -moz-border-radius:10px;
+        -ms-border-radius:10px;
+        -o-border-radius:10px;
+}
+
+    .contactUs_form form .inputs-contain {
+        width: 100%;
+        left: 0;
+    }
+
+    .teachersWrap .teacher .teacher_info .teacher_img {
+        width: 55px;
+        height: 55px;
+        padding: 10px;
+        display: inline-block;
+    }
+
+    .teachersWrap .teacher ul {
+        width: 90%;
+    }
+
+    .teachersWrap .teacher .teacher_contact {
+        width: 95%;
+    }
+
+    .teacher_info .info .img_name_rate {
+        width: 95%;
+    }
+
+    .teacher_info .info .teacher_contact {
+        width: 95%;
+    }
+
+
+
+    .aboutus_wrapper {
+        margin-top: 0;
+    }
+
+    .helpCenter h5 {
+        color: #fff;
+    }
+
+    .helpCenter {
+        min-height: 100px;
+        background-attachment: fixed;
+        position: relative;
+        background-size: inherit;
+        background-repeat: repeat;
+        margin-top: 0;
+    }
+
+    .helpCenter:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        background: #7c5ca2;
+        right: 0;
+        opacity: .5;
+    }
+
+    .tabs-div .nav-tabs .nav-link {
+        padding: 10px 20px;
+    }
+
+    .secondary-price {
+        position: static;
+        margin: 15px auto 0;
+        text-align: center;
+        max-width: 250px;
+    }
+
+    .teachersWrap .teacher .teacher_info .teacher_name{
+        width: 100%;
+    }
+
+    .teachersWrap .teacher .teacher_info {
+        display: block;
+    }
+    .teachersWrap .teacher .teacher_info .teacher_name {
+        /* width: 100%; */
+        display: inline-block;
+        width: calc(100% - 60px);
+    }
+    .teachersWrap .teacher .teacher_info .teacher_rate{
+        max-width: 100px;
+    }
+}
+
+
+@media screen and (max-width: 576px) {
+    .feature-text #shadow {
+        display: none;
+    }
+
+    .slider .item {
+        height: 300px;
+    }
+
+    .slider .item p {
+        margin: 20px auto;
+    }
+
+    .feature-text h5 {
+        line-height: 30px;
+        font-size: 16px;
+    }
+
+    .ad-space .ad h1 {
+        top: 0;
+    }
+
+    .ad-space .ad {
+        min-height: 50px;
+    }
+
+    .wrapper {
+        text-align: center;
+    }
+
+    .cardBody .signUp,
+    .cardBody .logIn {
+        width: 90%;
+    }
+
+    .teacher_info .info .other_info .phone_num,
+    .teacher_info .info .other_info .email,
+    .teacher_info .info .other_info .salary,
+    .teacher_info .info .other_info .location {
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+    }
+
+    .teacher_info .info .other_info .phone_num p::before,
+    .teacher_info .info .other_info .email p::before,
+    .teacher_info .info .other_info .salary p::before,
+    .teacher_info .info .other_info .location p::before {
+        display: none;
+    }
+
+    .teacher_info .info .other_info .phone_num p,
+    .teacher_info .info .other_info .email p,
+    .teacher_info .info .other_info .salary p,
+    .teacher_info .info .other_info .location p {
+        width: 90%;
+        text-align: center;
+        margin-bottom: 5px;
+
+    }
+
+    .teacher_info .info .other_info .phone_num h6,
+    .teacher_info .info .other_info .email h6,
+    .teacher_info .info .other_info .salary h6,
+    .teacher_info .info .other_info .location h6 {
+        width: 90%;
+        text-align: center;
+
+    }
+
+
+    .job-title div {
+        text-align: center;
+    }
+
+    .job-title h3 {
+        margin-bottom: 15px;
+    }
+
+    .apply-form .big-label,
+    .apply-form form .userName {
+        width: 100%;
+        flex: 0 0 100%;
+
+    }
+
+
+
+    .multi-about .row div {
+        margin-bottom: 0;
+    }
+
+    .about-prg {
+        margin-top: 7px;
+        margin-bottom: 15px !important;
+    }
+
+    .book-share .custom-check-box,
+    .book-share .social-icons a,
+    .book-share .social-icons {
+        display: inline-block;
+    }
+
+    .book-share {
+        text-align: center;
+    }
+
+    .book-share>span {
+        display: none;
+    }
+
+    .profile-image {
+        min-height: 80px;
+    }
+
+    .profile-image>img {
+        height: 70px;
+        width: 70px;
+        border-width: 5px;
+    }
+
+    .profile-image .circle-shape {
+        top: -30px
+    }
+
+    .gray-bg {
+        padding: 15px;
+    }
+
+    .track-order li .track-img:after {
+        height: 50px;
+    }
+
+    .track-order li {
+        padding-bottom: 70px;
+    }
+
+    .custom-check img {
+        max-width: 50px
+      }
+      
+      
+      .custom-check label {
+        width: calc(100% - 65px)
+      }
+      
+}
+
+
+@media screen and (max-width:410px) {
+
+    .navBar nav .logo img:first-child {
+        max-width: 45px;
+    }
+
+    .navBar nav .logo img:last-child {
+        max-width: 133px;
+    }
+
+    .navBar nav .humburger img {
+        margin-top: 11px;
+        max-width: 28px;
+    }
+
+    .navBar nav .search img {
+        margin-top: 0;
+    }
+
+    .navBar nav .search form {
+        top: -100%;
+        position: fixed;
+        left: 0;
+        right: 0;
+        margin: auto;
+        width: 100%;
+        padding: 10px;
+        background: #c3afe5;
+        transition: all .5s ease-in-out;
+        -webkit-transition: all .5s ease-in-out;
+        -moz-transition: all .5s ease-in-out;
+        -ms-transition: all .5s ease-in-out;
+        -o-transition: all .5s ease-in-out;
+    }
+
+    .navBar nav .search.active form {
+        top: 0;
+        z-index: 91;
+
+    }
+
+    .navBar nav .search input {
+        width: 100%;
+        position: static;
+
+    }
+
+    .navBar nav .search.active input {
+        width: 100%;
+    }
+
+    .search-btn {
+        left: 18px;
+        top: 14px;
+    }
+
+    .navBar.scrolling nav .logo {
+        padding-top: 6px;
+
+    }
+
+
+}

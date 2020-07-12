@@ -64,7 +64,6 @@ class SettingController extends Controller
 
         if($request->has('header_logo')){
             $removed = Upload::deleteImage($set->header_logo);
-            dump($removed);
             if($removed){
                 $header_logo = Upload::uploadImage($request->header_logo);
                 $set->update(['header_logo' => $header_logo]);
@@ -77,7 +76,6 @@ class SettingController extends Controller
 
         if($request->has('footer_logo')){
             $removed = Upload::deleteImage($set->footer_logo);
-            dump($removed);
             if($removed){
                 $footer_logo = Upload::uploadImage($request->footer_logo);
                 $set->update(['footer_logo' => $footer_logo]);
@@ -90,7 +88,6 @@ class SettingController extends Controller
 
         if($request->has('text_after_add_image')){
             $removed = Upload::deleteImage($set->text_after_add_image);
-            dump($removed);
             if($removed){
                 $text_after_add_image = Upload::uploadImage($request->text_after_add_image);
                 $set->update(['text_after_add_image' => $text_after_add_image]);
@@ -103,7 +100,6 @@ class SettingController extends Controller
 
         if($request->has('step_1_image')){
             $removed = Upload::deleteImage($set->step_1_image);
-            dump($removed);
             if($removed){
                 $step_1_image = Upload::uploadImage($request->step_1_image);
                 $set->update(['step_1_image' => $step_1_image]);
@@ -116,7 +112,6 @@ class SettingController extends Controller
 
         if($request->has('step_2_image')){
             $removed = Upload::deleteImage($set->step_2_image);
-            dump($removed);
             if($removed){
                 $step_2_image = Upload::uploadImage($request->step_2_image);
                 $set->update(['step_2_image' => $step_2_image]);
@@ -129,7 +124,6 @@ class SettingController extends Controller
 
         if($request->has('step_3_image')){
             $removed = Upload::deleteImage($set->step_3_image);
-            dump($removed);
             if($removed){
                 $step_3_image = Upload::uploadImage($request->step_3_image);
                 $set->update(['step_3_image' => $step_3_image]);
@@ -139,7 +133,6 @@ class SettingController extends Controller
                 return back();
             }
         }
-        dd('end');
 
         session()->flash('success', trans('admin.updated'));
         return back();

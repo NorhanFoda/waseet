@@ -44,7 +44,7 @@
                                 <thead>
                                 <tr align="center">
                                     <th>#</th>
-                                    <th>{{trans('admin.image')}}</th>
+                                    <th>{{trans('admin.icon')}}</th>
                                     <th>{{trans('admin.appear_in_footer')}}</th>
                                     <th>{{trans('admin.link')}}</th>
                                     <th>{{trans('admin.action')}}</th>
@@ -54,7 +54,7 @@
                                     @foreach($socials as $social)
                                         <tr align="center">
                                             <td>{{$loop->iteration}}</td>
-                                            <td><img src="{{$social->image->path}}" alt="{{$social->{'name_'.session('lang')} }}"></td>
+                                            <td><i class="{{$social->icon}}"></i></td>
                                             <td>
                                                 @if($social->appear_in_footer == 1) {{trans('admin.yes')}}  @else {{trans('admin.no')}} @endif
                                             </td>

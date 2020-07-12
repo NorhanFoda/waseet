@@ -16,6 +16,7 @@ class CreateSocialsTable extends Migration
         Schema::create('socials', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('link');
+            $table->string('icon');
             $table->boolean('appear_in_footer');
             $table->timestamps();
         });

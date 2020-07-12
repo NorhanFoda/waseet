@@ -4,16 +4,16 @@
 /** Set default language to Arabic for Website **/
 Route::get('/', function () {
     \LaravelLocalization::setLocale('ar');
-    session(['lang' => \App::getLocale()]);
     $url = \LaravelLocalization::getLocalizedURL(\App::getLocale(), \URL::previous());
+        session(['lang' => \App::getLocale()]);
         return Redirect::to($url);
 });
 
 /** Set default language to Arabic for Admin **/
 Route::get('/admin/', function () {
     \LaravelLocalization::setLocale('ar');
-    session(['lang' => \App::getLocale()]);
     $url = \LaravelLocalization::getLocalizedURL(\App::getLocale(), \URL::previous());
+        session(['lang' => \App::getLocale()]);
         return Redirect::to($url);
 });
 
@@ -149,12 +149,18 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
             Route::get('delete_user', 'Admin\UserController@deleteUser')->name('users.delete');
         });
     });
+
+    /* WEBSITE */
+
+    Auth::routes();
+
+    // Home
+    Route::get('/', 'HomeController@index')->name('home');
+
+    // Educational Bags
+    Route::get('/bags/{id}', 'web\BagController@index')->name('bags');
+
+    Route::group(['middleware' => ['admin', 'auth:web']], function(){
+    });
+
 });
-
-
-
-/* WEBSITE */
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

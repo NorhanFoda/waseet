@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Social extends Model
 {
-    protected $fillable = ['link', 'appear_in_footer'];
+    protected $fillable = ['link', 'appear_in_footer', 'icon'];
 
-    public function image(){
-        return $this->morphOne(Image::class, 'imageRef');
-    }
+    // public function image(){
+    //     return $this->morphOne(Image::class, 'imageRef');
+    // }
 }

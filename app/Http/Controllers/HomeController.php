@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Slider;
+use App\Models\Setting;
+use App\Models\BagCategory;
+use App\Models\StaticPage;
+use App\Models\Social;
 
 class HomeController extends Controller
 {
@@ -13,7 +18,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
 
     /**
@@ -23,6 +28,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        \App::setLocale('ar');
+        session(['lang' => \App::getLocale()]);
+
+        $sliders = Slider::all();
+        $cats = BagCategory::with('image')->get();
+        $set = Setting::find(1);
+        return view('web.home.index', compact('sliders', 'set', 'cats'));
     }
 }

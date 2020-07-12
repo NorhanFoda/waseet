@@ -141,6 +141,7 @@ return [
     'socials' => 'Social networks',
     'link' => 'Link',
     'appear_in_footer' => 'Appear in page footer',
+    'icon' => 'Icon',
 
     // Sliders
     'slider' => 'Slider',
@@ -186,7 +187,7 @@ return [
     'step_2_image' => 'Step 2 image',
 
     'step_2_title_ar' => 'Step 2 title in Arabic',
-    'step_2_title_en' => 'Step21 title in English',
+    'step_2_title_en' => 'Step2 title in English',
     
     'step_2_text_ar' => 'Step 2 text in Arabic',
     'step_2_text_en' => 'Step 2 text in English',

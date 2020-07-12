@@ -79,29 +79,21 @@
                                 </div>
                                 {{--appear in footer end --}}
 
-                                 {{-- enter image --}}
+                                {{-- enter icon --}}
                                  <div class="col-12">
                                     <div class="form-group row">
                                         <div class="col-md-2">
-                                            <span>{{trans('admin.image')}}</span>
+                                            <span>{{trans('admin.icon')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <input type="file" name="image" class="form-control" accept="image/*" placeholder="{{trans('admin.image')}}">
+                                            <input type="text" class="form-control" value="{{$social->icon}}" placeholder="{{trans('admin.icon')}}" name="icon" required>
                                             <div class="invalid-feedback">
-                                                {{trans('admin.image')}}
+                                                {{trans('admin.icon')}}
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
-                                <div class="col-12">
-                                    <div class="form-group row">
-                                        <div class="col-md-10">
-                                            <img src="{{$social->image->path}}" alt="{{$social->link}}">
-                                        </div>
-                                    </div>
-                                </div>
-                                {{-- enter image end --}}
+                                {{-- enter icon end --}}
 
                                 <div class="col-12 text-center">
                                     <button type="submit" class="btn btn-primary mr-1 mb-1 waves-effect waves-light">{{trans('admin.save')}}</button>
