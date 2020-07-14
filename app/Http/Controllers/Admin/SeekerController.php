@@ -48,15 +48,16 @@ class SeekerController extends Controller
     public function store(SeekerRequest $request)
     {
         $seeker = User::create($request->all());
+        $seeker->update(['is_verified' => 1]);
         $seeker->assignRole('job_seeker');
 
         $image_url = Upload::uploadPDF($request->cv);
-            $cv = Document::create([
-                'path' => $image_url,
-                'doucmentRef_id' => $seeker->id,
-                'doucmentRef_type' => 'App\User',
-            ]);
-            $seeker->document()->save($cv);
+        $cv = Document::create([
+            'path' => $image_url,
+            'doucmentRef_id' => $seeker->id,
+            'doucmentRef_type' => 'App\User',
+        ]);
+        $seeker->document()->save($cv);
 
         if($seeker){
             session()->flash('success', trans('admin.created'));

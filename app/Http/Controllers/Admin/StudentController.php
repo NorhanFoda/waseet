@@ -48,6 +48,7 @@ class StudentController extends Controller
     public function store(StudentRequest $request)
     {
         $student = User::create($request->all());
+        $student->update(['is_verified' => 1]);
         $student->assignRole('student');
 
         if($request->has('image')){

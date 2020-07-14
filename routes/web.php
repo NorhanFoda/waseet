@@ -157,6 +157,13 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 
     // Register
     Route::get('register_user/{role_id}', 'Web\RegisterController@getRegisterForm')->name('register.form');
+    Route::post('register_user/{role_id}', 'Web\RegisterController@register')->name('register.user');
+    Route::post('verify', 'Web\RegisterController@verify')->name('register.verify');
+    Route::post('resend_code', 'Web\RegisterController@resendCode')->name('register.resend_code');
+
+    // Login
+    Route::get('login_user', 'Web\LoginController@getLoginForm')->name('login.form');
+    Route::post('login_user', 'Web\LoginController@loginUser')->name('login.user');
 
     // Home
     Route::get('/home', 'HomeController@index')->name('home');

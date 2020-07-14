@@ -32,7 +32,10 @@
       </div>
 
       <ul class="links">
-        <li><a href="#" data-toggle="modal" data-target="#login-choose">{{trans('web.login')}}</a></li>
+        <li>
+          {{-- <a href="#" data-toggle="modal" data-target="#login-choose">{{trans('web.login')}}</a> --}}
+          <a href="{{route('login.form')}}">{{trans('web.login')}}</a>
+        </li>
         <li><a href="">{{trans('web.look_for_job')}}</a></li>
         <li><a href="">{{trans('web.private_teacher')}}</a></li>
         <li><a href="{{route('bags')}}">{{trans('web.bags')}}</a></li>
@@ -40,6 +43,14 @@
         <li><a href="">{{trans('web.orders')}}</a></li>
         <li><a href="">{{trans('web.saved')}}</a></li>
         <li><a href="">{{trans('web.contact_us')}}</a></li>
+        @if(Auth::check())
+          <li>
+            <form action="{{route('logout')}}" method="POST">
+                @csrf
+                <button type="submit">{{trans('web.logout')}}</button>
+            </form>
+          </li>
+        @endif
       </ul>
 
       <div class="border"></div>
@@ -63,7 +74,7 @@
           <div class="drop-icon">
             <i class="fas fa-globe-americas"></i> {{trans('web.country')}} :
           </div>
-          {{-- <div class="lang">المملكة العربية السعودية</div>s --}}
+          {{-- <div class="lang">المملكة العربية السعودية</div> --}}
         </a>
 
         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink2">

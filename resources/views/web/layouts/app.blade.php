@@ -30,6 +30,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.0/animate.min.css" />
   <link rel="stylesheet" href="{{asset('web/css/aos.css')}}" />
   <link href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.css" type="text/css" />
   <link href="https://fonts.googleapis.com/css?family=Cairo" rel="stylesheet" />
   <link rel="stylesheet" href="{{asset('web/css/main.css')}}" />
   <link rel="stylesheet" href="{{asset('web/css/ar.css')}}" />
@@ -49,7 +50,6 @@
     <![endif]-->
 
     <div class="home-pg">
-        @include('web.layouts.login')
 
         <section class="welcome text-center">
             <div class="container">
@@ -85,27 +85,152 @@
     <script src="{{asset('web/js/vendor/vanilla-tilt.min.js')}}"></script>
     <script src="{{asset('web/js/vendor/typed.js')}}"></script>
     <script src="{{asset('web/js/vendor/aos.js')}}"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.all.min.js"></script>
     <script src="{{asset('web/js/main.js')}}"></script>
     <script>
         $("#owl2").owlCarousel({
-        rtl: true,
-        loop: true,
-        margin: 0,
-        nav: false,
-        items: 4,
-        responsive: {
-            0: {
-            items: 1,
-            },
-            600: {
-            items: 2,
-            },
-            1000: {
+            rtl: true,
+            loop: true,
+            margin: 0,
+            nav: false,
             items: 4,
+            responsive: {
+                0: {
+                items: 1,
+                },
+                600: {
+                items: 2,
+                },
+                1000: {
+                items: 4,
+                },
             },
-        },
+        });
+
+        // Welcome text
+        $(document).ready(function () {
+            console.log();
+            var typed = new Typed(".typed", {
+            strings: [" ^1500"+'{{$set->{"welcome_text_".session("lang") } }}'],
+            smartBackspace: true, // Default value
+            typeSpeed: 50,
+            backSpeed: 20,
+            loop: true,
+            });
         });
     </script>
+
+    @yield('scripts')
+
+    {{--remove-alert--}}
+    <script>
+        $(document).on('click', '.remove-alert', function (e) {
+            const swalWithBootstrapButtons = Swal.mixin({
+                customClass: {
+                    confirmButton: 'swal2-confirm',
+                    cancelButton: 'swal2-cancel'
+                },
+                buttonsStyling: true
+            });
+            swalWithBootstrapButtons.fire({
+                title: '{{trans('sweet_alert.title')}}',
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonText: '{{trans('sweet_alert.yes')}}',
+                cancelButtonText: '{{trans('sweet_alert.no')}}',
+            }).then((result) => {
+                if (result.value) {
+                    $.ajaxSetup({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        }
+                    })
+                    var id = $(this).attr('object_id');
+                    var d_url = $(this).attr('delete_url');
+                    var elem = $(this).parent('td').parent('tr');
+                    var proelem =$(this).closest(".remove-oneitem"),
+                        token = $('meta[name="csrf-token"]').attr('content');
+                    $.ajax({
+                        type: 'post',
+                        url: '/admin'+d_url+id,
+                        data: {
+                            _method:'delete',
+                            _token: token
+                        } ,
+                        dataType: 'json',
+                        success: function (result) {
+                            console.log('result', result);
+                            elem.remove();
+                            proelem.remove();
+                            swalWithBootstrapButtons.fire({
+                                title: '{{trans('sweet_alert.deleted_successfully')}}',
+                                showConfirmButton: false,
+                                timer: 1000
+                            });
+                        }
+                    });
+                } else if (
+                    // / Read more about handling dismissals below /
+                    result.dismiss === Swal.DismissReason.cancel
+                ) {
+                    swalWithBootstrapButtons.fire({
+                        title: '{{trans('sweet_alert.cancelled')}}',
+                        showConfirmButton: false,
+                        timer: 1000
+                    });
+
+                }
+            })
+        });
+    </script>
+
+    @if(session()->has('success'))
+    <script>
+        Swal.fire({
+            title: "{{ session()->get('success')}}",
+            type: 'success',
+            timer: 1500,
+            showCancelButton: false,
+            showConfirmButton: false,
+        });
+    </script>
+    @endif
+
+    @if(session()->has('error'))
+    <script>
+        Swal.fire({
+            title: "{{ session()->get('error')}}",
+            type: 'error',
+            timer: 1500,
+            showCancelButton: false,
+            showConfirmButton: false,
+        });
+    </script>
+    @endif
+
+    @if(session()->has('warning'))
+    <script>
+        Swal.fire({
+            title: "{{ session()->get('warning')}}",
+            type: 'warning',
+            timer: 1500,
+            showCancelButton: false,
+            showConfirmButton: false,
+        });
+    </script>
+    @endif
+
+    @foreach($errors->all() as $error)
+        <script> 
+            Swal.fire({
+                title: "{{ $error }}",
+                type: 'error',
+                timer: 1500,
+                showCancelButton: false,
+                showConfirmButton: false,
+            });
+        </script>
+    @endforeach
 </body>
 
 </html>

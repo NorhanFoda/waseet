@@ -40,9 +40,8 @@ class AppServiceProvider extends ServiceProvider
             $pages = StaticPage::where('appear_in_footer', 1)->get();
             $socials = Social::all();
             $countries = Country::all();
-            $roles = DB::table('roles')->where('name', '!=', 'admin')->get();
             $view->with(['set' => $set, 'pages' => $pages, 'socials' => $socials, 
-                        'countries' => $countries, 'roles' => $roles]);
+                        'countries' => $countries]);
 
         });
     }

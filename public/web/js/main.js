@@ -72,15 +72,15 @@ $(document).ready(function () {
   // AOS ------------------------------------------------------
 
   // typed js -------------------------------------------------
-  $(document).ready(function () {
-    var typed = new Typed(".typed", {
-      strings: ["مرحبا بك فى موقع وسيط المعلم . . ! ^1500"],
-      smartBackspace: true, // Default value
-      typeSpeed: 50,
-      backSpeed: 20,
-      loop: true,
-    });
-  });
+  // $(document).ready(function () {
+  //   var typed = new Typed(".typed", {
+  //     strings: ["مرحبا بك فى موقع وسيط المعلم . . ! ^1500"],
+  //     smartBackspace: true, // Default value
+  //     typeSpeed: 50,
+  //     backSpeed: 20,
+  //     loop: true,
+  //   });
+  // });
   // typed js -------------------------------------------------
 
   // side bar menu
