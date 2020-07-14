@@ -14,7 +14,7 @@
         <div class="col-lg-2 col-md-6 col-11" data-aos="fade-in">
           <ul>
             @foreach($pages as $page)
-              <li><a href="#">{{$page->{'name_'.session('lang')} }}</a></li>
+              <li><a href="{{route('pages', $page->name_en)}}">{{$page->{'name_'.session('lang')} }}</a></li>
             @endforeach
           </ul>
         </div>
@@ -38,14 +38,10 @@
           </form>
 
           <div class="social-icons footer-social">
-            {{-- @foreach($socials as $social)
-              <a href="{{$social->link}}" class="fc"><i class="{{$social->icon}}"></i></a>
-            @endforeach --}}
-
-            <a href="#" class="fc"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" class="tw"><i class="fab fa-twitter"></i></a>
-            <a href="#" class="sn"><i class="fab fa-snapchat"></i></a>
-            <a href="#" class="nst"><i class="fab fa-instagram"></i></a>
+              <a href="{{$socials[0]->link}}" class="fc"><i class="fab fa-facebook-f"></i></a>
+              <a href="{{$socials[1]->link}}" class="tw"><i class="fab fa-twitter"></i></a>
+              <a href="{{$socials[2]->link}}" class="sn"><i class="fab fa-snapchat"></i></a>
+              <a href="{{$socials[3]->link}}" class="nst"><i class="fab fa-instagram"></i></a>
           </div>
         </div>
       </div>

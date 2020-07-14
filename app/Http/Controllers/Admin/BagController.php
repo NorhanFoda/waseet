@@ -11,6 +11,7 @@ use App\Models\Video;
 use App\Models\Document;
 use App\Classes\Upload;
 use App\Http\Requests\Bags\BagRequest;
+use App\Http\Requests\Bags\EditBagRequest;
 use Illuminate\Support\Facades\Validator;
 
 class BagController extends Controller
@@ -172,7 +173,7 @@ class BagController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(BagRequest $request, $id)
+    public function update(EditBagRequest $request, $id)
     {
         $bag = Bag::find($id);
 

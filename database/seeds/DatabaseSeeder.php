@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
         $this->call(StagesSeeder::class);
         $this->call(UserSeeder::class);
         $this->call(BagCategorySeeder::class);
-        $this->call(ImageSeeder::class);
+        $this->call(BagSeeder::class);
         $this->call(RoleSeeder::class);
         $this->call(ModelHasRoleSeeder::class);
         $this->call(MaterialsSeeder::class);
@@ -25,6 +25,12 @@ class DatabaseSeeder extends Seeder
         $this->call(CountrySeeder::class);
         $this->call(CitySeeder::class);
         $this->call(SettingSeeder::class);
+        $this->call(SliderSeeder::class);
         $this->call(StaticPagesSeeder::class);
+        $this->call(SocialSeeder::class);
+        $this->call(ImageSeeder::class);
+        $this->call(VideoSeeder::class);
+        $this->call(DocumentSeeder::class);
+        $this->call(GoalSeeder::class);
     }
 }

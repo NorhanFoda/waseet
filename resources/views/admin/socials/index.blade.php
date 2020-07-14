@@ -39,7 +39,6 @@
                 <div class="card-content">
                     <div class="card-body">
                         <div class="table-responsive">
-                            <a href="{{route('socials.create')}}" class="btn btn-primary btn-block my-2 waves-effect waves-light">{{trans('admin.add')}} </a>
                             <table class="table table-bordered mb-0 dt-responsive nowrap data_table">
                                 <thead>
                                 <tr align="center">
@@ -61,8 +60,6 @@
                                             <td>{{$social->link}}</td>
                                             <td> 
                                                 <a href="{{route('socials.edit', $social->id)}}" class="btn" style="color:white;"><i class="fa fa-pencil-square-o"></i></a>
-                                                <a title="delete" onclick="return true;" id="confirm-color" object_id='{{$social->id}}'
-                                                    class="delete btn" style="color:red;"><i class="fa fa-trash-o"></i></a>
                                             </td>
                                         </tr>
                                     @endforeach

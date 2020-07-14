@@ -118,8 +118,8 @@
               },
               "BagController.php": {
                 "type": "-",
-                "size": 13731,
-                "lmtime": 0,
+                "size": 13778,
+                "lmtime": 1594646525797,
                 "modified": false
               },
               "CVController.php": {
@@ -232,8 +232,8 @@
               },
               "StaticPagesController.php": {
                 "type": "-",
-                "size": 964,
-                "lmtime": 0,
+                "size": 2010,
+                "lmtime": 1594639347918,
                 "modified": false
               },
               "StudentController.php": {
@@ -338,15 +338,59 @@
             },
             "HomeController.php": {
               "type": "-",
-              "size": 838,
-              "lmtime": 1594480637197,
+              "size": 758,
+              "lmtime": 1594623532652,
               "modified": false
             },
             "web": {
+              "BagCategoryController.php": {
+                "type": "-",
+                "size": 515,
+                "lmtime": 1594625598847,
+                "modified": false
+              },
               "BagController.php": {
                 "type": "-",
-                "size": 509,
-                "lmtime": 1594481986343,
+                "size": 805,
+                "lmtime": 1594652435082,
+                "modified": false
+              },
+              "RegisterController.php": {
+                "type": "-",
+                "size": 274,
+                "lmtime": 1594650125045,
+                "modified": false
+              },
+              "StaticPagesController.php": {
+                "type": "-",
+                "size": 359,
+                "lmtime": 1594626776841,
+                "modified": false
+              }
+            },
+            "Web": {
+              "BagCategoryController.php": {
+                "type": "-",
+                "size": 515,
+                "lmtime": 1594625598847,
+                "modified": false
+              },
+              "BagController.php": {
+                "type": "-",
+                "size": 805,
+                "lmtime": 1594652435082,
+                "modified": false
+              },
+              "RegisterController.php": {
+                "type": "-",
+                "size": 274,
+                "lmtime": 1594650125045,
+                "modified": false
+              },
+              "StaticPagesController.php": {
+                "type": "-",
+                "size": 359,
+                "lmtime": 1594626776841,
                 "modified": false
               }
             }
@@ -413,7 +457,24 @@
               "modified": false
             }
           },
-          "Requests": {},
+          "Requests": {
+            "Bags": {
+              "EditBagRequest.php": {
+                "type": "-",
+                "size": 1224,
+                "lmtime": 1594646638736,
+                "modified": false
+              }
+            },
+            "StaticPages": {
+              "StaticPageRequest.php": {
+                "type": "-",
+                "size": 1197,
+                "lmtime": 1594627670845,
+                "modified": false
+              }
+            }
+          },
           "Resources": {
             "Address": {
               "AddressResource.php": {
@@ -600,6 +661,12 @@
             "lmtime": 0,
             "modified": false
           },
+          "Goal.php": {
+            "type": "-",
+            "size": 288,
+            "lmtime": 1594631594063,
+            "modified": false
+          },
           "Image.php": {
             "type": "-",
             "size": 256,
@@ -662,8 +729,8 @@
           },
           "Social.php": {
             "type": "-",
-            "size": 269,
-            "lmtime": 1594476588204,
+            "size": 138,
+            "lmtime": 1594563102764,
             "modified": false
           },
           "Stage.php": {
@@ -674,8 +741,8 @@
           },
           "StaticPage.php": {
             "type": "-",
-            "size": 302,
-            "lmtime": 0,
+            "size": 474,
+            "lmtime": 1594634667428,
             "modified": false
           },
           "SubScriber.php": {
@@ -691,7 +758,38 @@
             "modified": false
           }
         },
-        "Providers": {},
+        "Providers": {
+          "AppServiceProvider.php": {
+            "type": "-",
+            "size": 1154,
+            "lmtime": 1594651281684,
+            "modified": false
+          },
+          "AuthServiceProvider.php": {
+            "type": "-",
+            "size": 578,
+            "lmtime": 0,
+            "modified": false
+          },
+          "BroadcastServiceProvider.php": {
+            "type": "-",
+            "size": 380,
+            "lmtime": 0,
+            "modified": false
+          },
+          "EventServiceProvider.php": {
+            "type": "-",
+            "size": 710,
+            "lmtime": 0,
+            "modified": false
+          },
+          "RouteServiceProvider.php": {
+            "type": "-",
+            "size": 1529,
+            "lmtime": 0,
+            "modified": false
+          }
+        },
         "User.php": {
           "type": "-",
           "size": 3593,
@@ -715,11 +813,102 @@
       },
       "composer.lock": {
         "type": "-",
-        "size": 179062,
+        "size": 180678,
         "lmtime": 0,
-        "modified": false
+        "modified": true
       },
-      "config": {},
+      "config": {
+        "app.php": {
+          "type": "-",
+          "size": 9235,
+          "lmtime": 1594623593213,
+          "modified": false
+        },
+        "auth.php": {
+          "type": "-",
+          "size": 3280,
+          "lmtime": 0,
+          "modified": false
+        },
+        "broadcasting.php": {
+          "type": "-",
+          "size": 1601,
+          "lmtime": 0,
+          "modified": false
+        },
+        "cache.php": {
+          "type": "-",
+          "size": 3066,
+          "lmtime": 0,
+          "modified": false
+        },
+        "database.php": {
+          "type": "-",
+          "size": 5045,
+          "lmtime": 0,
+          "modified": false
+        },
+        "filesystems.php": {
+          "type": "-",
+          "size": 2133,
+          "lmtime": 0,
+          "modified": false
+        },
+        "hashing.php": {
+          "type": "-",
+          "size": 1571,
+          "lmtime": 0,
+          "modified": false
+        },
+        "laravellocalization.php": {
+          "type": "-",
+          "size": 41570,
+          "lmtime": 0,
+          "modified": false
+        },
+        "logging.php": {
+          "type": "-",
+          "size": 2657,
+          "lmtime": 0,
+          "modified": false
+        },
+        "mail.php": {
+          "type": "-",
+          "size": 4701,
+          "lmtime": 0,
+          "modified": false
+        },
+        "permission.php": {
+          "type": "-",
+          "size": 4849,
+          "lmtime": 0,
+          "modified": false
+        },
+        "queue.php": {
+          "type": "-",
+          "size": 2657,
+          "lmtime": 0,
+          "modified": false
+        },
+        "services.php": {
+          "type": "-",
+          "size": 1024,
+          "lmtime": 0,
+          "modified": false
+        },
+        "session.php": {
+          "type": "-",
+          "size": 6972,
+          "lmtime": 0,
+          "modified": false
+        },
+        "view.php": {
+          "type": "-",
+          "size": 1053,
+          "lmtime": 0,
+          "modified": false
+        }
+      },
       "database": {
         "migrations": {
           "2014_10_12_000000_create_users_table.php": {
@@ -731,31 +920,37 @@
           "2014_10_12_100000_create_password_resets_table.php": {
             "type": "-",
             "size": 683,
-            "lmtime": 0,
+            "lmtime": 1590913290444,
             "modified": false
           },
           "2020_06_10_083046_create_nationalities_table.php": {
             "type": "-",
             "size": 691,
-            "lmtime": 0,
+            "lmtime": 1593074584581,
             "modified": false
           },
           "2020_06_10_090237_create_cities_table.php": {
             "type": "-",
             "size": 745,
-            "lmtime": 0,
+            "lmtime": 1592212674767,
             "modified": false
           },
           "2020_06_10_090737_create_organization_seeker_table.php": {
             "type": "-",
             "size": 775,
-            "lmtime": 0,
+            "lmtime": 1592989714227,
+            "modified": false
+          },
+          "2020_06_10_091011_create_goals_table.php": {
+            "type": "-",
+            "size": 822,
+            "lmtime": 1594638898743,
             "modified": false
           },
           "2020_06_10_091652_create_city_job_table.php": {
             "type": "-",
             "size": 740,
-            "lmtime": 0,
+            "lmtime": 1592212973563,
             "modified": false
           },
           "2020_06_10_093331_create_orders_table.php": {
@@ -779,127 +974,133 @@
           "2020_06_10_120247_create_edu_levels_table.php": {
             "type": "-",
             "size": 681,
-            "lmtime": 0,
+            "lmtime": 1592999434084,
             "modified": false
           },
           "2020_06_10_121539_create_edu_types_table.php": {
             "type": "-",
             "size": 678,
-            "lmtime": 0,
+            "lmtime": 1592999486771,
+            "modified": false
+          },
+          "2020_06_10_125422_create_payment_methods_table.php": {
+            "type": "-",
+            "size": 696,
+            "lmtime": 1594651980605,
             "modified": false
           },
           "2020_06_10_133042_create_addresses_table.php": {
             "type": "-",
             "size": 902,
-            "lmtime": 1594128960575,
-            "modified": true
+            "lmtime": 1594191881410,
+            "modified": false
           },
           "2020_06_10_140152_create_documents_table.php": {
             "type": "-",
             "size": 764,
-            "lmtime": 0,
+            "lmtime": 1593695483924,
             "modified": false
           },
           "2020_06_10_141319_create_materials_table.php": {
             "type": "-",
             "size": 679,
-            "lmtime": 0,
+            "lmtime": 1592144070212,
             "modified": false
           },
           "2020_06_10_141443_create_stages_table.php": {
             "type": "-",
             "size": 670,
-            "lmtime": 0,
+            "lmtime": 1592144110786,
             "modified": false
           },
           "2020_06_10_141853_create_material_stage_table.php": {
             "type": "-",
             "size": 764,
-            "lmtime": 0,
+            "lmtime": 1592144422335,
             "modified": false
           },
           "2020_06_10_143403_create_countries_table.php": {
             "type": "-",
             "size": 679,
-            "lmtime": 0,
+            "lmtime": 1592145273148,
             "modified": false
           },
           "2020_06_10_144447_create_material_user_table.php": {
             "type": "-",
             "size": 760,
-            "lmtime": 0,
+            "lmtime": 1592145934206,
+            "modified": false
+          },
+          "2020_06_10_144541_create_static_pages_table.php": {
+            "type": "-",
+            "size": 1146,
+            "lmtime": 1594634634667,
             "modified": false
           },
           "2020_06_11_081612_create_bags_table.php": {
             "type": "-",
             "size": 1165,
-            "lmtime": 0,
+            "lmtime": 1593689570213,
             "modified": false
           },
           "2020_06_11_093434_create_bag_categories_table.php": {
             "type": "-",
             "size": 693,
-            "lmtime": 0,
+            "lmtime": 1591869720532,
             "modified": false
           },
           "2020_06_11_095640_create_images_table.php": {
             "type": "-",
             "size": 749,
-            "lmtime": 0,
+            "lmtime": 1592401300965,
             "modified": false
           },
           "2020_06_11_100442_create_jobs_table.php": {
             "type": "-",
             "size": 1368,
-            "lmtime": 0,
+            "lmtime": 1592992932457,
             "modified": false
           },
           "2020_06_11_101346_create_sliders_table.php": {
             "type": "-",
             "size": 749,
-            "lmtime": 0,
+            "lmtime": 1593603435442,
             "modified": false
           },
           "2020_06_11_101940_create_videos_table.php": {
             "type": "-",
             "size": 749,
-            "lmtime": 0,
+            "lmtime": 1593700280731,
             "modified": false
           },
           "2020_06_11_102449_create_job_user_table.php": {
             "type": "-",
             "size": 740,
-            "lmtime": 0,
+            "lmtime": 1591877166130,
             "modified": false
           },
           "2020_06_11_110952_create_ratings_table.php": {
             "type": "-",
             "size": 802,
-            "lmtime": 0,
+            "lmtime": 1592816863526,
             "modified": false
           },
           "2020_06_11_113942_create_saves_table.php": {
             "type": "-",
             "size": 776,
-            "lmtime": 0,
+            "lmtime": 1591875658047,
             "modified": false
           },
           "2020_06_11_121153_create_foreign_keys_table.php": {
             "type": "-",
-            "size": 6467,
-            "lmtime": 1594288922377,
-            "modified": true
-          },
-          "2020_06_11_125422_create_payment_methods_table.php": {
-            "type": "-",
-            "size": 696,
-            "lmtime": 0,
+            "size": 6699,
+            "lmtime": 1594632906235,
             "modified": false
           },
           "2020_06_11_131941_create_permission_tables.php": {
             "type": "-",
             "size": 4104,
-            "lmtime": 0,
+            "lmtime": 1591881581863,
             "modified": false
           },
           "2020_06_11_142933_create_settings_table.php": {
@@ -911,25 +1112,19 @@
           "2020_06_11_144001_create_sub_scribers_table.php": {
             "type": "-",
             "size": 656,
-            "lmtime": 0,
+            "lmtime": 1592697241799,
             "modified": false
           },
           "2020_06_11_144057_create_socials_table.php": {
             "type": "-",
-            "size": 716,
-            "lmtime": 1594476593420,
-            "modified": false
-          },
-          "2020_06_11_144541_create_static_pages_table.php": {
-            "type": "-",
-            "size": 938,
-            "lmtime": 0,
+            "size": 667,
+            "lmtime": 1594563106298,
             "modified": false
           },
           "2020_06_28_123453_create_announces_table.php": {
             "type": "-",
             "size": 726,
-            "lmtime": 0,
+            "lmtime": 1593685333037,
             "modified": false
           },
           "2020_07_07_113350_create_contact_us_table.php": {
@@ -942,105 +1137,141 @@
         "seeds": {
           "BagCategorySeeder.php": {
             "type": "-",
-            "size": 476,
-            "lmtime": 0,
+            "size": 1096,
+            "lmtime": 1594539858543,
+            "modified": false
+          },
+          "BagSeeder.php": {
+            "type": "-",
+            "size": 7883,
+            "lmtime": 1594560242557,
             "modified": false
           },
           "CitySeeder.php": {
             "type": "-",
             "size": 528,
-            "lmtime": 0,
+            "lmtime": 1592985731766,
             "modified": false
           },
           "CountrySeeder.php": {
             "type": "-",
             "size": 564,
-            "lmtime": 0,
+            "lmtime": 1592985623881,
             "modified": false
           },
           "DatabaseSeeder.php": {
             "type": "-",
-            "size": 860,
-            "lmtime": 0,
+            "size": 1108,
+            "lmtime": 1594635941638,
+            "modified": false
+          },
+          "DocumentSeeder.php": {
+            "type": "-",
+            "size": 1901,
+            "lmtime": 1594561178761,
             "modified": false
           },
           "EduLevelSeeder.php": {
             "type": "-",
             "size": 600,
-            "lmtime": 0,
+            "lmtime": 1592996860214,
             "modified": false
           },
           "EduTypeSeeder.php": {
             "type": "-",
             "size": 694,
-            "lmtime": 0,
+            "lmtime": 1592997092328,
+            "modified": false
+          },
+          "GoalSeeder.php": {
+            "type": "-",
+            "size": 1638,
+            "lmtime": 1594637422001,
             "modified": false
           },
           "ImageSeeder.php": {
             "type": "-",
-            "size": 1063,
-            "lmtime": 0,
+            "size": 5180,
+            "lmtime": 1594564085221,
             "modified": false
           },
           "MaterialStageSeeder.php": {
             "type": "-",
             "size": 615,
-            "lmtime": 0,
+            "lmtime": 1592836113271,
             "modified": false
           },
           "MaterialsSeeder.php": {
             "type": "-",
             "size": 612,
-            "lmtime": 0,
+            "lmtime": 1592837126902,
             "modified": false
           },
           "ModelHasRoleSeeder.php": {
             "type": "-",
             "size": 1242,
-            "lmtime": 0,
+            "lmtime": 1593948225928,
             "modified": false
           },
           "NationalitySeeder.php": {
             "type": "-",
             "size": 473,
-            "lmtime": 0,
+            "lmtime": 1593509519969,
             "modified": false
           },
           "RoleSeeder.php": {
             "type": "-",
             "size": 893,
-            "lmtime": 0,
+            "lmtime": 1593947841493,
             "modified": false
           },
           "SettingSeeder.php": {
             "type": "-",
-            "size": 5946,
-            "lmtime": 1594120539237,
+            "size": 7743,
+            "lmtime": 1594563764049,
+            "modified": false
+          },
+          "SliderSeeder.php": {
+            "type": "-",
+            "size": 3232,
+            "lmtime": 1594564001141,
+            "modified": false
+          },
+          "SocialSeeder.php": {
+            "type": "-",
+            "size": 747,
+            "lmtime": 1594563121981,
             "modified": false
           },
           "StagesSeeder.php": {
             "type": "-",
             "size": 583,
-            "lmtime": 0,
+            "lmtime": 1592832883659,
             "modified": false
           },
           "StaticPagesSeeder.php": {
             "type": "-",
-            "size": 1997,
-            "lmtime": 0,
+            "size": 3595,
+            "lmtime": 1594636263359,
             "modified": false
           },
           "UserSeeder.php": {
             "type": "-",
             "size": 767,
-            "lmtime": 0,
+            "lmtime": 1593961087452,
+            "modified": false
+          },
+          "VideoSeeder.php": {
+            "type": "-",
+            "size": 1823,
+            "lmtime": 1594560571793,
             "modified": false
           }
         }
       },
       "error_log": {
         "type": "-",
-        "size": 3378,
+        "size": 13728,
         "lmtime": 0,
         "modified": true
       },
@@ -1942,6 +2173,40 @@
                 "lmtime": 1594120214205,
                 "modified": false
               }
+            },
+            "socials": {
+              "create.blade.php": {
+                "type": "-",
+                "size": 4946,
+                "lmtime": 0,
+                "modified": false
+              },
+              "edit.blade.php": {
+                "type": "-",
+                "size": 4105,
+                "lmtime": 1594559753969,
+                "modified": false
+              },
+              "index.blade.php": {
+                "type": "-",
+                "size": 6104,
+                "lmtime": 1594559766007,
+                "modified": false
+              }
+            },
+            "static_pages": {
+              "edit.blade.php": {
+                "type": "-",
+                "size": 26853,
+                "lmtime": 1594639824691,
+                "modified": false
+              },
+              "index.blade.php": {
+                "type": "-",
+                "size": 2784,
+                "lmtime": 0,
+                "modified": false
+              }
             }
           },
           "auth": {},
@@ -1963,6 +2228,84 @@
             "size": 2887,
             "lmtime": 0,
             "modified": false
+          },
+          "web": {
+            "auth": {
+              "register.blade.php": {
+                "type": "-",
+                "size": 3873,
+                "lmtime": 1594651234044,
+                "modified": false
+              }
+            },
+            "bags": {
+              "index.blade.php": {
+                "type": "-",
+                "size": 5366,
+                "lmtime": 1594651012871,
+                "modified": false
+              },
+              "show.blade.php": {
+                "type": "-",
+                "size": 7809,
+                "lmtime": 1594651008800,
+                "modified": false
+              }
+            },
+            "home": {
+              "index.blade.php": {
+                "type": "-",
+                "size": 5960,
+                "lmtime": 1594646172766,
+                "modified": false
+              }
+            },
+            "layouts": {
+              "app.blade.php": {
+                "type": "-",
+                "size": 4255,
+                "lmtime": 1594651119261,
+                "modified": false
+              },
+              "footer.blade.php": {
+                "type": "-",
+                "size": 2308,
+                "lmtime": 1594639603592,
+                "modified": false
+              },
+              "login.blade.php": {
+                "type": "-",
+                "size": 2225,
+                "lmtime": 1594650070150,
+                "modified": false
+              },
+              "navbar.blade.php": {
+                "type": "-",
+                "size": 3996,
+                "lmtime": 1594647575235,
+                "modified": false
+              },
+              "slider.blade.php": {
+                "type": "-",
+                "size": 662,
+                "lmtime": 0,
+                "modified": false
+              },
+              "register.blade.php": {
+                "type": "-",
+                "size": 4138,
+                "lmtime": 1594651313438,
+                "modified": false
+              }
+            },
+            "pages": {
+              "index.blade.php": {
+                "type": "-",
+                "size": 3325,
+                "lmtime": 1594640453964,
+                "modified": false
+              }
+            }
           }
         },
         "lang": {
@@ -2065,8 +2408,8 @@
         },
         "web.php": {
           "type": "-",
-          "size": 7617,
-          "lmtime": 1593957023195,
+          "size": 8319,
+          "lmtime": 1594650037582,
           "modified": false
         }
       },

@@ -157,7 +157,7 @@
                 <img src="{{$cat->image->path}}" alt="" />
               </div>
               <div class="row">
-                <a href="{{route('bags', $cat->id)}}" class="custom-btn">{{$cat->{'name_'.session('lang')} }}</a>
+                <a href="{{route('categories.bags', $cat->id)}}" class="custom-btn">{{$cat->{'name_'.session('lang')} }}</a>
               </div>
             </div>
           </div>

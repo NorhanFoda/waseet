@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSocialsTable extends Migration
+class CreateGoalsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,13 @@ class CreateSocialsTable extends Migration
      */
     public function up()
     {
-        Schema::create('socials', function (Blueprint $table) {
+        Schema::create('goals', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('link');
-            $table->string('icon');
+            $table->string('title_ar');
+            $table->string('title_en');
+            $table->text('text_ar');
+            $table->text('text_en');
+            $table->unsignedBigInteger('static_page_id')->nullable()->index();
             $table->timestamps();
         });
     }
@@ -28,6 +31,6 @@ class CreateSocialsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('socials');
+        Schema::dropIfExists('goals');
     }
 }

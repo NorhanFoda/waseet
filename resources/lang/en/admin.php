@@ -242,6 +242,14 @@ return [
     'short_description_en' => 'Short description in English',
     'full_description_ar' => 'Full description in Arabic',
     'full_description_en' => 'Full description in English',
+    'vision_ar' => 'Vision in Arabic',
+    'vision_en' => 'Vision in English',
+    'message_ar' => 'Message in Arabic',
+    'message_en' => 'Message in English',
+    'goals_ar' => 'Goals in Arabic',
+    'goals_en' => 'Goals in English',
+    'text_ar' => 'Text in Arabic',
+    'text_en' => 'Text in English',
 
     // Users
     'users' => 'Users',

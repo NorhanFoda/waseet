@@ -13,12 +13,32 @@ class BagCategorySeeder extends Seeder
     {
         DB::table('bag_categories')->insert([
             [
+                'name_ar' => 'معلم الصف',
+                'name_en' => 'Class teacher',
+            ],
+            [
+                'name_ar' => 'الأيام العالمية',
+                'name_en' => 'Universal days',
+            ],
+            [
                 'name_ar' => 'رياضيات',
                 'name_en' => 'Math',
             ],
             [
-                'name_ar' => 'علوم',
-                'name_en' => 'Science',
+                'name_ar' => 'لغتى',
+                'name_en' => 'My language',
+            ],
+            [
+                'name_ar' => 'ألعاب',
+                'name_en' => 'Games',
+            ],
+            [
+                'name_ar' => 'شروحات',
+                'name_en' => 'Explanations',
+            ],
+            [
+                'name_ar' => 'باور بوينت',
+                'name_en' => 'PowerPoint',
             ],
         ]);
     }

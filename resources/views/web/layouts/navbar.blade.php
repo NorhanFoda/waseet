@@ -2,10 +2,6 @@
     <div class="container">
       <nav class="row">
         <div class="humburger col-lg-3 col-sm-3 col-2">
-          <!-- <span></span>
-          <span></span>
-          <span></span> -->
-
           <img src="{{asset('web/images/menuicon.png')}}" alt="" />
         </div>
 
@@ -17,7 +13,6 @@
         </div>
 
         <div class="search col-lg-3 col-sm-3 col-2">
-          <!-- <span><i class="fas fa-search fa-2x"></i></span> -->
           <img src="{{asset('web/images/searchicon.png')}}" alt="" />
           <form action="" method="">
             <input type="text" id="search" placeholder="البحث" />
@@ -37,14 +32,14 @@
       </div>
 
       <ul class="links">
-        <li><a href="#" data-toggle="modal" data-target="#login-choose">تسجيل الدخول</a></li>
-        <li><a href="">البحث عن عمل</a></li>
-        <li><a href="">المعلم الخصوصى</a></li>
-        <li><a href="">الحقائب التعليمية</a></li>
-        <li><a href="">حسابي</a></li>
-        <li><a href="">الطلبات</a></li>
-        <li><a href="">المحفوظات</a></li>
-        <li><a href="">تواصل معنا</a></li>
+        <li><a href="#" data-toggle="modal" data-target="#login-choose">{{trans('web.login')}}</a></li>
+        <li><a href="">{{trans('web.look_for_job')}}</a></li>
+        <li><a href="">{{trans('web.private_teacher')}}</a></li>
+        <li><a href="{{route('bags')}}">{{trans('web.bags')}}</a></li>
+        <li><a href="">{{trans('web.profile')}}</a></li>
+        <li><a href="">{{trans('web.orders')}}</a></li>
+        <li><a href="">{{trans('web.saved')}}</a></li>
+        <li><a href="">{{trans('web.contact_us')}}</a></li>
       </ul>
 
       <div class="border"></div>
@@ -52,12 +47,13 @@
       <div class="dropdown">
         <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <div><i class="fas fa-globe"></i> اللغة :</div>
-          <div class="lang">اللغة العربية</div>
+          <div><i class="fas fa-globe"></i> {{trans('web.lang')}} :</div>
+            <div class="lang"> {{\App::getLocale() == 'ar' ? 'العربية' : 'English'}}</div>
         </a>
 
         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-          <a class="dropdown-item" href="#">EN</a>
+          <a class="dropdown-item" href="{{route('change_locale', 'ar')}}">العربية</a>
+          <a class="dropdown-item" href="{{route('change_locale', 'en')}}">English</a>
         </div>
       </div>
 
@@ -65,39 +61,40 @@
         <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink2"
           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <div class="drop-icon">
-            <i class="fas fa-globe-americas"></i> الدولة :
+            <i class="fas fa-globe-americas"></i> {{trans('web.country')}} :
           </div>
-          <div class="lang">المملكة العربية السعودية</div>
+          {{-- <div class="lang">المملكة العربية السعودية</div>s --}}
         </a>
 
         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink2">
-          <a class="dropdown-item" href="#">مصر</a>
+          @foreach($countries as $country)
+            <a class="dropdown-item" href="#">{{$country->{'name_'.session('lang')} }}</a>
+          @endforeach
         </div>
       </div>
 
       <div class="border"></div>
 
       <ul class="support">
-        <li><a href="aboutUs.html">من نحن</a></li>
-        <li><a href="privacy.html">سياسة الخصوصية</a></li>
-        <li><a href="terms.html">الشروط و الاحكام</a></li>
-        <li><a href="helpCenter.html">مركز المساعدة</a></li>
+        @foreach ($pages as $page)
+        <li><a href="{{route('pages', $page->name_en)}}">{{$page->{'name_'.session('lang')} }}</a></li>
+        @endforeach
       </ul>
 
       <div class="border"></div>
 
       <ul class="social">
         <li>
-          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="{{$socials[0]->link}}"><i class="fab fa-facebook"></i></a>
         </li>
         <li>
-          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="{{$socials[1]->link}}"><i class="fab fa-twitter"></i></a>
         </li>
         <li>
-          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="{{$socials[2]->link}}"><i class="fab fa-snapchat"></i></a>
         </li>
         <li>
-          <a href="#"><i class="fab fa-snapchat"></i></a>
+          <a href="{{$socials[3]->link}}"><i class="fab fa-instagram"></i></a>
         </li>
       </ul>
     </div>

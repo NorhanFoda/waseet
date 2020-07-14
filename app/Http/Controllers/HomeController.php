@@ -28,9 +28,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        \App::setLocale('ar');
-        session(['lang' => \App::getLocale()]);
-
         $sliders = Slider::all();
         $cats = BagCategory::with('image')->get();
         $set = Setting::find(1);

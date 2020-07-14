@@ -170,6 +170,12 @@ class CreateForeignKeysTable extends Migration
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
         });
+
+        Schema::table('goals', function(Blueprint $table){
+            $table->foreign('static_page_id')->references('id')->on('static_pages')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+        });
     }
 
     /**

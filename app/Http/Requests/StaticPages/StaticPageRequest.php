@@ -30,6 +30,16 @@ class StaticPageRequest extends FormRequest
             'short_description_en' => 'required',
             'full_description_ar' => 'required',
             'full_description_en' => 'required',
+
+            'vision_title_ar' => 'required_if:id,1',
+            'vision_title_en' => 'required_if:id,1',
+            'vision_text_ar' => 'required_if:id,1',
+            'vision_text_en' => 'required_if:id,1',
+            
+            'message_title_ar' => 'required_if:id,1',
+            'message_title_en' => 'required_if:id,1',
+            'message_text_ar' => 'required_if:id,1',
+            'message_text_ar' => 'required_if:id,1',
         ];
     }
 }

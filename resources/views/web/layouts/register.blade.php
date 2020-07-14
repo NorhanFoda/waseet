@@ -49,7 +49,6 @@
     <![endif]-->
 
     <div class="home-pg">
-        @include('web.layouts.login')
 
         <section class="welcome text-center">
             <div class="container">
@@ -61,13 +60,10 @@
             </div>
         </section>
 
-        @include('web.layouts.navbar')
-
         @yield('content')
 
     </div>
 
-    @include('web.layouts.footer')
 
     <script src="{{asset('web/js/vendor/jquery-1.11.2.min.js')}}"></script>
     {{-- <script>

@@ -4,7 +4,7 @@
 /** Set default language to Arabic for Website **/
 Route::get('/', function () {
     \LaravelLocalization::setLocale('ar');
-    $url = \LaravelLocalization::getLocalizedURL(\App::getLocale(), \URL::previous());
+    $url = \LaravelLocalization::getLocalizedURL(\App::getLocale(), route('home'));
         session(['lang' => \App::getLocale()]);
         return Redirect::to($url);
 });
@@ -135,6 +135,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
             Route::get('static_pages', 'Admin\StaticPagesController@index')->name('static_pages.index');
             Route::get('static_pages/{id}', 'Admin\StaticPagesController@edit')->name('static_pages.edit');
             Route::put('static_pages/{id}', 'Admin\StaticPagesController@update')->name('static_pages.update');
+            Route::post('delete_goal', 'Admin\StaticPagesController@deleteGoal')->name('goals.delete');
 
             // Setting
             Route::get('setting', 'Admin\SettingController@edit')->name('setting.edit');
@@ -154,11 +155,19 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 
     Auth::routes();
 
+    // Register
+    Route::get('register_user/{role_id}', 'Web\RegisterController@getRegisterForm')->name('register.form');
+
     // Home
-    Route::get('/', 'HomeController@index')->name('home');
+    Route::get('/home', 'HomeController@index')->name('home');
 
     // Educational Bags
-    Route::get('/bags/{id}', 'web\BagController@index')->name('bags');
+    Route::get('/categories/{id}', 'Web\BagCategoryController@show')->name('categories.bags');
+    Route::get('/bags', 'Web\BagController@index')->name('bags');
+    Route::get('/bags/{id}', 'Web\BagController@show')->name('bags.show');
+
+    // Static pages
+    Route::get('/pages/{page}', 'Web\StaticPagesController@aboutUs')->name('pages');
 
     Route::group(['middleware' => ['admin', 'auth:web']], function(){
     });
