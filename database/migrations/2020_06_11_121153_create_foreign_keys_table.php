@@ -93,18 +93,22 @@ class CreateForeignKeysTable extends Migration
                 ->onUpdate('cascade');
         });
 
-        Schema::table('city_job', function (Blueprint $table) {
-            $table->foreign('city_id')->references('id')->on('cities')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
+        // Schema::table('city_job', function (Blueprint $table) {
+        //     $table->foreign('city_id')->references('id')->on('cities')
+        //         ->onDelete('cascade')
+        //         ->onUpdate('cascade');
 
-            $table->foreign('job_id')->references('id')->on('jobs')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
-        });
+        //     $table->foreign('job_id')->references('id')->on('jobs')
+        //         ->onDelete('cascade')
+        //         ->onUpdate('cascade');
+        // });
 
         Schema::table('jobs', function(Blueprint $table){
             $table->foreign('country_id')->references('id')->on('countries')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+            
+            $table->foreign('city_id')->references('id')->on('cities')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
 

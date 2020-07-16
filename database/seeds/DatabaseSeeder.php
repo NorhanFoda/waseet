@@ -32,5 +32,6 @@ class DatabaseSeeder extends Seeder
         $this->call(VideoSeeder::class);
         $this->call(DocumentSeeder::class);
         $this->call(GoalSeeder::class);
+        $this->call(JobSeeder::class);
     }
 }

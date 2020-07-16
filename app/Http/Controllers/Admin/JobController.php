@@ -45,7 +45,7 @@ class JobController extends Controller
     public function store(JobRequest $request)
     {
         $job = Job::create($request->all());
-        $job->cities()->attach($request->city_ids);
+        // $job->cities()->attach($request->city_ids);
         $job->update(['user_id' => auth()->user()->id]);
 
         if($request->has('image')){
@@ -112,7 +112,7 @@ class JobController extends Controller
     {
         $job = Job::find($id);
         $job->update($request->all());
-        $job->cities()->sync($request->city_ids);
+        // $job->cities()->sync($request->city_ids);
 
         if($job->image != null){
             $removed = Upload::deleteImage($job->image->path);

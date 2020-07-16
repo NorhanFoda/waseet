@@ -21,8 +21,12 @@ class City extends Model
         return $this->belongsTo(Country::class);
     }
 
+    // public function jobs(){
+    //     return $this->belongsToMany(Job::class);
+    // }
+
     public function jobs(){
-        return $this->belongsToMany(Job::class);
+        return $this->hasMany(Job::class);
     }
 
     public function addresses(){

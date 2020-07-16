@@ -16,8 +16,8 @@ class CreateSavesTable extends Migration
         Schema::create('saves', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id')->nullable()->index();
-            $table->unsignedBigInteger('model_id')->nullable()->index();
-            $table->string('model_type');
+            $table->unsignedBigInteger('saveRef_id')->nullable()->index();
+            $table->string('saveRef_type');
             $table->timestamps();
         });
     }

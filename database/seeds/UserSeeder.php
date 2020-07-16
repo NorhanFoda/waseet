@@ -26,6 +26,7 @@ class UserSeeder extends Seeder
                 'email' => 'test@jaadara.com',
                 'password' => bcrypt('123456789'),
                 'phone_main' => '00966563793462',
+                'is_verified' => 1,
                 'stage_id' => 1,
             ],
         ]);

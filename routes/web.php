@@ -74,7 +74,6 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
             // Countries
             Route::resource('countries', 'Admin\CountryController');
             Route::post('delete_country', 'Admin\CountryController@deleteCountry')->name('countries.delete');
-            Route::post('get_cities', 'Admin\CountryController@getCities')->name('countries.getCities');
 
             // Cities
             Route::resource('cities', 'Admin\CityController');
@@ -149,6 +148,9 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
             Route::resource('users', 'Admin\UserController');
             Route::get('delete_user', 'Admin\UserController@deleteUser')->name('users.delete');
         });
+
+        //Get cities
+        Route::post('get_cities', 'Admin\CountryController@getCities')->name('countries.getCities');
     });
 
     /* WEBSITE */
@@ -172,6 +174,13 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
     Route::get('/categories/{id}', 'Web\BagCategoryController@show')->name('categories.bags');
     Route::get('/bags', 'Web\BagController@index')->name('bags');
     Route::get('/bags/{id}', 'Web\BagController@show')->name('bags.show');
+
+    //Jobs
+    Route::get('web_jobs', 'Web\JobsController@index')->name('jobs.web_index');
+    Route::get('web_jobs/{id}', 'Web\JobsController@show')->name('jobs.details');
+    Route::get('web_jobs/apply/{job_id}', 'Web\JobsController@applyToJob')->name('jobs.apply');
+    Route::post('web_jobs/apply', 'Web\JobsController@updateSeekerData')->name('jobs.update_seeker');
+    Route::post('web_jobs/save', 'Web\JobsController@saveJob')->name('jobs.save');
 
     // Static pages
     Route::get('/pages/{page}', 'Web\StaticPagesController@aboutUs')->name('pages');

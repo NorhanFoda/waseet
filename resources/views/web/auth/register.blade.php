@@ -241,7 +241,7 @@
           @if($role_id == 6)
           {{-- salary start --}}
           <div class="userName">
-            <input type="number" name="salary" value="{{old('salary')}}" required />
+            <input type="number" name="salary_month" value="{{old('salary')}}" required />
             <label for="country">
               <i class="far fa-building"></i> {{trans('web.salary')}}
             </label>

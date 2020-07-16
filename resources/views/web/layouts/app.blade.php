@@ -8,6 +8,7 @@
 
 <head>
   <meta charset="utf-8" />
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
     <title>{{trans('admin.waseet')}} | @yield('title')</title>
@@ -117,6 +118,12 @@
             backSpeed: 20,
             loop: true,
             });
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
         });
     </script>
 
@@ -189,10 +196,11 @@
         Swal.fire({
             title: "{{ session()->get('success')}}",
             type: 'success',
-            timer: 1500,
+            timer: 2000,
             showCancelButton: false,
             showConfirmButton: false,
         });
+        '{{session()->forget("success")}}';
     </script>
     @endif
 
@@ -201,10 +209,11 @@
         Swal.fire({
             title: "{{ session()->get('error')}}",
             type: 'error',
-            timer: 1500,
+            timer: 2000,
             showCancelButton: false,
             showConfirmButton: false,
         });
+        '{{session()->forget("error")}}';
     </script>
     @endif
 
@@ -213,10 +222,11 @@
         Swal.fire({
             title: "{{ session()->get('warning')}}",
             type: 'warning',
-            timer: 1500,
+            timer: 2000,
             showCancelButton: false,
             showConfirmButton: false,
         });
+        '{{session()->forget("warning")}}';
     </script>
     @endif
 

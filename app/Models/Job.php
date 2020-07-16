@@ -13,10 +13,10 @@ class Job extends Model
 {
     protected $fillable = [
         'name_ar', 'name_en', 'work_hours',
-        'exper_years', 'address', 'required_number',
+        'exper_years', 'required_number',
         'free_places', 'description_ar', 'description_en',
-        // 'organization_name', 'organization_phone', 'organization_email',
-        'required_age', 'salary', 'country_id', 'user_id',
+        'required_age', 'salary', 'country_id', 'user_id', 'city_id', 
+        // 'address',
     ];
 
     public function image(){
@@ -31,8 +31,12 @@ class Job extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function cities(){
-        return $this->belongsToMany(City::class);
+    // public function cities(){
+    //     return $this->belongsToMany(City::class);
+    // }
+
+    public function city(){
+        return $this->belongsTo(City::class);
     }
 
     public function country(){

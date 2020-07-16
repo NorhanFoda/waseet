@@ -91,7 +91,7 @@ class User extends Authenticatable
     }
 
     public function saves(){
-        return $this->morphMany(Save::class, 'savable');
+        return $this->morphMany(Save::class, 'saveRef');
     }
 
     public function document(){

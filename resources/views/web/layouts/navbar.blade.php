@@ -32,11 +32,10 @@
       </div>
 
       <ul class="links">
-        <li>
-          {{-- <a href="#" data-toggle="modal" data-target="#login-choose">{{trans('web.login')}}</a> --}}
-          <a href="{{route('login.form')}}">{{trans('web.login')}}</a>
-        </li>
-        <li><a href="">{{trans('web.look_for_job')}}</a></li>
+        @if(!Auth::check())
+          <li><a href="{{route('login.form')}}">{{trans('web.login')}}</a></li>
+        @endif
+        <li><a href="{{route('jobs.web_index')}}">{{trans('web.look_for_job')}}</a></li>
         <li><a href="">{{trans('web.private_teacher')}}</a></li>
         <li><a href="{{route('bags')}}">{{trans('web.bags')}}</a></li>
         <li><a href="">{{trans('web.profile')}}</a></li>

@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Save extends Model
 {
     protected $fillable = [
-        'user_id', 'model_id', 'model_type',
+        'user_id', 'saveRef_id', 'saveRef_type',
     ];
 
-    public function savable(){
+    public function saveRef(){
         return $this->morphTo();
     }
 }

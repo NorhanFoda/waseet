@@ -28,7 +28,7 @@ class JobRequest extends FormRequest
             'name_en' => 'required',
             'work_hours' => 'required',
             'exper_years' => 'required',
-            'address' => 'required',
+            // 'address' => 'required',
             'required_number' => 'required',
             'free_places' => 'required',
             'description_ar' => 'required',
@@ -36,7 +36,8 @@ class JobRequest extends FormRequest
             'required_age' => 'required',
             'salary' => 'required',
             'country_id' => 'required',
-            'city_ids' => 'required',
+            // 'city_ids' => 'required',
+            'city_id' => 'required',
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
     }

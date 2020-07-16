@@ -196,7 +196,7 @@
                                 {{-- select country end --}}
 
                                 {{-- select city --}}
-                                <div class="col-12">
+                                {{-- <div class="col-12">
                                     <div class="form-group row">
                                         <div class="col-md-2">
                                             <span>{{trans('admin.city')}}</span>
@@ -212,11 +212,28 @@
                                             </div>
                                         </div>
                                     </div>
+                                </div> --}}
+                                <div class="col-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-2">
+                                            <span>{{trans('admin.city')}}</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <select name="city_id" class="form-control" id="city_id" required>
+                                                @foreach ($cities as $city)
+                                                    <option value="{{$city->id}}" @if($job->city_id == $city->id) selected @endif>{{$city->{'name_'.session('lang')} }}</option>
+                                                @endforeach
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                {{trans('admin.city')}}
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 {{-- select city end --}}
 
                                 {{-- enter location --}}
-                                <div class="col-12">
+                                {{-- <div class="col-12">
                                     <div class="form-group row">
                                         <div class="col-md-2">
                                             <span>{{trans('admin.location')}}</span>
@@ -228,7 +245,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                                 {{-- enter location end --}}
 
                                 {{-- description_ar --}}
