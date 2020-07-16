@@ -54,4 +54,8 @@ class Bag extends Model
                         ->withPivot('total_price', 'quantity', 'accepted', 'shipped', 'delivered',
                         'id', 'created_at', 'updated_at', 'bag_id', 'order_id');
     }
+
+    public function saves(){
+        return $this->morphMany(Save::class, 'saveRef');
+    }
 }

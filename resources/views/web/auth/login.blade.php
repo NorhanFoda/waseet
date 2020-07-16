@@ -110,3 +110,18 @@
     {{-- Register modal end --}}
 
 @endsection
+@section('scripts')
+    <script>
+        $(document).ready(function(){
+
+$(".inputs-contain input").focusout(function(){
+    if ($(this).val() != ""){
+        $(this).addClass("active")
+    }else{
+        $(this).removeClass("active")
+    }});
+
+   
+        });
+    </script>
+@endsection

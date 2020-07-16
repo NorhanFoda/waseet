@@ -102,7 +102,7 @@
                     <div class="book-share col-sm-2 text-left-dir">
                         <div class="custom-check-box text-left-dir">
                             <form action="">
-                                <input type="checkbox" id="bookmark" />
+                                <input type="checkbox" data-type="Bag" data-id="{{$bag->id}}" id="bookmark" @if(auth()->user()->saved_bags->contains('saveRef_id', $bag->id)) checked @endif />
                                 <label for="bookmark">
                                     <span> <i class="fas fa-bookmark"></i></span>
                                 </label>
@@ -145,6 +145,31 @@
             </div>
         </div>
         <!--end packsWrap-->
+        
+       
 
     </div>
+    
+          <!--start packsWrap-->
+        <div class="book-details-next book-details-next2 text-right-dir" data-aos="fade-in">
+          <div class="container"> 
+          <div class="m-2">
+
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h3 class="first_color"><i class="fa fa-star"></i>{{trans('web.bag_contents')}} :</h3>
+                        <ul class="list-unstyled second_color circle-list">
+                           <li> {!! $bag->{'contents_'.session('lang')} !!}</li>
+                           
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-6 text-center">
+                        <img src="{{asset('web/images/book3.png')}}" alt="img"/>
+                    </div>
+</div>
+                </div>
+            </div>
+        </div>
+        <!--end packsWrap-->
 @endsection

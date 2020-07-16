@@ -42,4 +42,8 @@ class Job extends Model
     public function country(){
         return $this->belongsTo(Country::class);
     }
+
+    public function saves(){
+        return $this->morphMany(Save::class, 'saveRef');
+    }
 }

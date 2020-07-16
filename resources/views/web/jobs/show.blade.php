@@ -34,14 +34,12 @@
 
             <div class="teacher_contact text-left-dir custom-check-box">
               <form action="">
-                {{-- {{dd(auth()->user()->saves)}} --}}
-                <input type="checkbox" id="bookmark" @if(auth()->user()->saves->contains($job->id)) checked @endif />
+                <input type="checkbox" data-type="Job" data-id="{{$job->id}}" id="bookmark" @if(auth()->user()->saved_jobs->contains('saveRef_id', $job->id)) checked @endif />
                 <label for="bookmark">
                   <span> <i class="fas fa-bookmark"></i></span>
                 </label>
               </form>
             </div>
-
 
             <div class="other_info">
               <div class="phone_num">
@@ -86,26 +84,8 @@
 
 @endsection
 
-@section('scripts')
+{{-- @section('scripts')
     <script>
-      $(document).ready(function(){
-          $('#bookmark').click(function(){
-            $.ajax({
-                url: "{{route('jobs.save')}}",
-                type: "POST",
-                dataType: 'json',
-                data: {"_token": "{{ csrf_token() }}", id: '{{$job->id}}' },
-                success: function(data){
-                  Swal.fire({
-                      title: data['msg'],
-                      type: 'success',
-                      timer: 2000,
-                      showCancelButton: false,
-                      showConfirmButton: false,
-                  });
-                }
-            });
-          });
-      });
+      
     </script>
-@endsection
+@endsection --}}

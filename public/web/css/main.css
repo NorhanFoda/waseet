@@ -47,6 +47,10 @@ a {
   cursor: url(../images/pointer.png), pointer !important;
 }
 
+.menu .links li button {
+      cursor: url(../images/pointer.png), pointer !important;
+
+}
 a *,
 .navBar nav .humburger img,
 .menu span img,
@@ -59,13 +63,23 @@ body {
   font-family: cairoRegular;
 
 }
+.btn-secondary:not(:disabled):not(.disabled).active, .btn-secondary:not(:disabled):not(.disabled):active, .show>.btn-secondary.dropdown-toggle{
+        background: #cfabfd;
+    border-color: #cfabfd;
+}
 
-
+.btn-secondary:not(:disabled):not(.disabled).active:focus, .btn-secondary:not(:disabled):not(.disabled):active:focus, .show>.btn-secondary.dropdown-toggle:focus {
+    box-shadow:none;
+}
 .home {
   background-image: url(../images/bg.png);
   background-attachment: fixed;
 }
 
+
+.dropdown-menu{
+    padding:0;
+}
 body,
 html {
   scroll-behavior: smooth;
@@ -339,12 +353,15 @@ button:focus {
 }
 
 
-
-.menu .links li a {
+.menu .links li form{
+      width: 100%;
+}
+.menu .links li a,.menu .links li button {
   width: 100%;
   text-decoration: none;
   color: #fff;
   text-align: center;
+  border:none;
   height: 40px;
   background: #cfabfd;
   border-radius: 5px;
@@ -354,7 +371,7 @@ button:focus {
   transition: 0.55s ease;
 }
 
-.menu .links li a:hover {
+.menu .links li a:hover,.menu .links li button:hover {
   background: -webkit-gradient(linear, left bottom, left top, from(#c3afe5), to(#dfeef9));
   background: linear-gradient(to top, #c3afe5, #dfeef9);
   color: #6b1a9a;
@@ -367,6 +384,9 @@ button:focus {
   border: 0.7px solid #c1a5e3 !important;
 }
 
+.menu .dropdown.show{
+    z-index:9;
+}
 .menu .dropdown {
   width: 90%;
   margin: auto;
@@ -377,21 +397,25 @@ button:focus {
 }
 
 .menu .dropdown a {
-  background: #cfabfd;
-  border-color: #cfabfd;
-  font-family: cairoRegular;
-  width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -ms-flex-line-pack: center;
-  align-content: center;
+    background: #cfabfd;
+    border-color: #cfabfd;
+    font-family: cairoRegular;
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-line-pack: center;
+    align-content: center;
+    font-size: 14px;
+    padding: 7px 20px;
+    border-bottom: 1px solid #b28edf;
+    color: #fff;
 }
 
 .menu .dropdown a::after {
@@ -1414,15 +1438,15 @@ footer .copyright p a:hover {
 /*start login*/
 
 .cardBody {
-  margin: auto;
+  margin:20px auto;
   background: -webkit-gradient(linear, left top, left bottom, from(#6d1d9c), to(#af8adc));
   background: linear-gradient(to bottom, #6d1d9c, #af8adc);
   width: 85%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
+  /*position: absolute;*/
+  /*top: 50%;*/
+  /*left: 50%;*/
+  -webkit-transform: translate(0, 0);
+  transform: translate(0, 0);
   padding: 50px 15px 50px 0;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1619,9 +1643,9 @@ footer .copyright p a:hover {
   opacity: 0;
 }
 
-.signUp form .userName input:valid+label,
-.logIn form .userName input:valid+label,
-.custom-input:valid+label {
+.signUp form .userName input.active+label,
+.logIn form .userName input.active+label,
+.custom-input input.active+label {
   top: -40px;
   opacity: 0;
 }
@@ -2905,7 +2929,7 @@ footer .copyright p a:hover {
 }
 
 .bookmark label,
-.circle-shape {
+.circle-shape,.bookmark  a {
   height: 40px;
   width: 40px;
   background: linear-gradient(-90deg, #8b53b4, #b296d3);
@@ -2918,7 +2942,10 @@ footer .copyright p a:hover {
   -ms-transition: all .5s ease-in;
   -o-transition: all .5s ease-in;
 }
-
+.bookmark  a {
+        display: inline-block;
+    color: #fff;
+}
 .teachersWrap .teacher .teacher_info {
   position: relative;
 }
@@ -3246,6 +3273,26 @@ footer .copyright p a:hover {
   border-radius: 10px;
 }
 
+
+.book-details-next2{
+    background-image:url("../images/book-bg.png");
+    background-size:cover;
+    background-attachment:fixed;  
+    padding: 40px 0;
+
+}
+
+.book-details-next2 h3 {
+    color: #c1a5e3;
+}
+
+.book-details-next2 .circle-list li:before{
+    background:#c1a5e3
+}
+
+.book-details-next2 ul{
+    color:#fff;
+}
 .profile-image {
   position: relative;
   min-height: 140px;

@@ -8,6 +8,19 @@ Route::get('/', function () {
         session(['lang' => \App::getLocale()]);
         return Redirect::to($url);
 });
+Route::get('/ar', function () {
+    \LaravelLocalization::setLocale('ar');
+    $url = \LaravelLocalization::getLocalizedURL(\App::getLocale(), route('home'));
+        session(['lang' => \App::getLocale()]);
+        return Redirect::to($url);
+});
+Route::get('/en', function () {
+    \LaravelLocalization::setLocale('en');
+    $url = \LaravelLocalization::getLocalizedURL(\App::getLocale(), route('home'));
+        session(['lang' => \App::getLocale()]);
+        return Redirect::to($url);
+});
+
 
 /** Set default language to Arabic for Admin **/
 Route::get('/admin/', function () {

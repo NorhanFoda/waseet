@@ -129,6 +129,28 @@
 
     @yield('scripts')
 
+    <script>
+        $(document).ready(function(){
+            $('#bookmark').click(function(){
+                $.ajax({
+                    url: "{{route('jobs.save')}}",
+                    type: "POST",
+                    dataType: 'json',
+                    data: {"_token": "{{ csrf_token() }}", id: $(this).data('id'), type: $(this).data('type') },
+                    success: function(data){
+                    Swal.fire({
+                        title: data['msg'],
+                        type: 'success',
+                        timer: 2000,
+                        showCancelButton: false,
+                        showConfirmButton: false,
+                    });
+                    }
+                });
+            });
+        });
+    </script>
+
     {{--remove-alert--}}
     <script>
         $(document).on('click', '.remove-alert', function (e) {

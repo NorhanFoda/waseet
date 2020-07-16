@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Web;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Job;
+use App\Models\Bag;
 use App\Models\Setting;
 use App\Models\Document;
 use App\Models\Save;
@@ -114,17 +115,34 @@ class JobsController extends Controller
     }
 
     public function saveJob(Request $request){
-        Save::create([
-            'user_id' => auth()->user()->id,
-            'saveRef_id' => $request->id,
-            'saveRef_type' => 'App\Models\Job'
-        ]);
+        $saved = Save::where('user_id', auth()->user()->id)->where('saveRef_id', $request->id)->where('saveRef_type', 'App\Models\\'.$request->type)->first();
+        if($saved != null){
+            $saved->delete();
+            return response()->json([
+                'msg' => trans("web.deleted_from_saved")
+            ], 200);
+        }
+        else{
+            $save = Save::create([
+                'user_id' => auth()->user()->id,
+                'saveRef_id' => $request->id,
+                'saveRef_type' => 'App\Models\\'.$request->type
+            ]);
 
-        // $job = Job::find($request->id);
-        // auth()->user()->saves()->save($job);
+            if($request->type == 'Job'){
+                $job = Job::find($request->id);
+                $job->saves()->save($save);
+                auth()->user()->saved_jobs()->save($save);
+            }
+            else{
+                $bag = Bag::find($request->id);
+                $bag->saves()->save($save);
+                auth()->user()->saved_bags()->save($save);
+            }
 
-        return response()->json([
-            'msg' => trans("web.added_to_saved")
-        ], 200);
+            return response()->json([
+                'msg' => trans("web.added_to_saved")
+            ], 200);
+        }
     }
 }

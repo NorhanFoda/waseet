@@ -23,7 +23,7 @@
         <div class="col-12">
           <div class="ad">
 
-            <h1>مساحة اعلانية</h1>
+          <img src="{{asset('/images/ad.png')}}" alt="" />
           </div>
         </div>
       </div>

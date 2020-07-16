@@ -7,7 +7,7 @@
 <div class="background"></div>
 
   <div class="cardBody">
-    <div class="goSignUp" data-aos="fade-in">
+    <div class="goSignUp">
         <div class="logo">
             <img src="{{asset('web/images/Vector-Smart-Object2.png')}}" alt="" />
         </div>
@@ -19,7 +19,7 @@
         </div>
 
         <div class="login-btn">
-            <a href="#" data-toggle="modal" data-target="#login-choose" class="white-btn">{{trans('web.register')}}</a>
+            <a href="{{route('login.form')}}" class="white-btn">{{trans('web.login')}}</a>
         </div>
     </div>
 
@@ -28,7 +28,11 @@
         @csrf
         <h5>{{trans('web.register')}}</h5>
 
-        @if($role_id == 5)
+
+
+        {{-- name start --}}
+        <div class="inputs-contain">
+                    @if($role_id == 5)
         {{-- edu type start --}}
         <div class="userName custom-select2">
           <select class="custom-input" name="edu_type_id" required>
@@ -43,9 +47,6 @@
         </div>
         {{-- edu type end --}}
         @endif
-
-        {{-- name start --}}
-        <div class="inputs-contain">
           <div class="userName">
             <input type="text" id="username" name="name" value="{{old('name')}}" required />
             <label for="username" id="label">
@@ -249,10 +250,10 @@
           {{-- salary end --}}
 
           {{-- cv start --}}
-          <div class="userName">
+          <div class="userName custom-file">
             <input type="file" id="cv" name="cv" accept="application/pdf" required/>
             <label for="cv">
-              <i class="fa fa-mobile-alt"></i> {{trans('web.cv')}} 
+              <i class="fa fa-file"></i> <span>{{trans('web.cv')}} </span>
             </label>
           </div>
         {{-- cv end --}}
@@ -274,17 +275,19 @@
               <i class="fa fa-lock"></i> {{trans('web.password_confirmation')}}  
             </label>
           </div>
+            {{-- image start --}}
+        <div class="userName custom-file">
+          <input type="file" id="image" name="image"  accept="image/*" />
+          <label for="image">
+            <i class="fa fa-file"></i> <span>{{trans('web.image')}}</span> 
+          </label>
+        </div>
+        
+        {{-- image end --}}
         </div>
         {{-- password confirmation end --}}
 
-        {{-- image start --}}
-        <div class="userName">
-          <input type="file" id="image" name="image" accept="image/*" />
-          <label for="image">
-            <i class="fa fa-mobile-alt"></i> {{trans('web.image')}} 
-          </label>
-        </div>
-        {{-- image end --}}
+      
 
         <div class="submit">
           <button type="submit" class="custom-btn">{{trans('web.do_register')}}</button>
@@ -308,6 +311,20 @@
                     }
                 });
             });
+            
+$(".custom-file input").on("change", function() {
+  var fileName = $(this).val().split("\\").pop();
+  $(this).next("label").find("span").html(fileName);
+});
+
+$(".inputs-contain input").focusout(function(){
+    if ($(this).val() != ""){
+        $(this).addClass("active")
+    }else{
+        $(this).removeClass("active")
+    }});
+
+   
         });
     </script>
 @endsection
