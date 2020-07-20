@@ -1294,7 +1294,7 @@ footer form input {
   margin: 15px auto
 }
 
-.footer-social a {
+.footer-social a,.st-custom-button {
   height: 40px;
   width: 40px;
   display: inline-block;
@@ -1307,7 +1307,7 @@ footer form input {
   text-align: center;
 }
 
-.footer-social a:before {
+.footer-social a:before,.st-custom-button:after {
   content: "";
   position: absolute;
   top: 0;
@@ -1321,25 +1321,28 @@ footer form input {
   z-index: -1;
 }
 
-.footer-social a.fc:before {
+.footer-social a.fc:before,.st-custom-button.fc:after {
   background: #3B5898
 }
 
-.footer-social a.tw:before {
+.footer-social a.tw:before,.st-custom-button.tw:after {
   background: #08A1E8
 }
 
 
-.footer-social a.sn:before {
+.footer-social a.sn:before,.st-custom-button.sn:after {
   background: #ffce07
 }
 
+.st-custom-button.wts:after {
+  background: #23CE64
+}
 
-.footer-social a.nst:before {
+.footer-social a.nst:before,.st-custom-button.nst:after {
   background: linear-gradient(45deg, #c939af, #EF9423)
 }
 
-.footer-social a:hover:before {
+.footer-social a:hover:before,.st-custom-button:hover:after {
   transform: rotate(30deg) scale(2);
   box-shadow: 0 0 20px #666;
   opacity: 0;
@@ -1352,7 +1355,7 @@ footer form input {
 
 }
 
-.footer-social a:hover {
+.footer-social a:hover,.st-custom-button:hover {
   color: #56ccf2;
 
 }
@@ -3225,17 +3228,22 @@ footer .copyright p a:hover {
   border-color: #fff
 }
 
-.book-share .social-icons a {
-  display: block;
-  margin-bottom: 10px;
+iframe#st_gdpr_iframe{
+    left:0 !important;
 }
 
-.book-share .social-icons a:before {
+.book-share .social-icons div {
+  display: block;
+  margin-bottom: 10px;
+  cursor:pointer;
+}
+
+.book-share .social-icons div:after {
   border-radius: 5px;
 
 }
 
-.book-share .social-icons a i {
+.book-share .social-icons div:before {
   text-shadow: 0 5px 5px #000;
 }
 

@@ -14,6 +14,7 @@ use App\Models\City;
 use App\Models\Image;
 use App\Http\Requests\Teachers\OnlineTeacherRequest;
 use App\Http\Requests\Teachers\EditOnlineTeacherRequest;
+use Illuminate\Support\Facades\Hash;
 
 class OnlineTeacherController extends Controller
 {
@@ -55,6 +56,7 @@ class OnlineTeacherController extends Controller
     {
         $teacher = User::create($request->all());
         $teacher->assignRole('online_teacher');
+        $seeker->update(['is_verified' => 1, 'password' => Hash::make($request->password)]);
         foreach($request->material_ids as $id){
             $teacher->materials()->attach($id);
         }

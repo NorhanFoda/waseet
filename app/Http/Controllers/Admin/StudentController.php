@@ -10,6 +10,7 @@ use App\Http\Requests\Students\StudentRequest;
 use App\Http\Requests\Students\EditStudentRequest;
 use App\Classes\Upload;
 use App\Models\Image;
+use Illuminate\Support\Facades\Hash;
 
 class StudentController extends Controller
 {
@@ -48,7 +49,7 @@ class StudentController extends Controller
     public function store(StudentRequest $request)
     {
         $student = User::create($request->all());
-        $student->update(['is_verified' => 1]);
+        $seeker->update(['is_verified' => 1, 'password' => Hash::make($request->password)]);
         $student->assignRole('student');
 
         if($request->has('image')){

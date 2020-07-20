@@ -32,21 +32,23 @@
 
         {{-- name start --}}
         <div class="inputs-contain">
-                    @if($role_id == 5)
-        {{-- edu type start --}}
-        <div class="userName custom-select2">
-          <select class="custom-input" name="edu_type_id" required>
-            <option value="{{null}}">{{trans('web.edu_type')}}</option>
-            @foreach($types as $type)
-              <option value="{{$type->id}}" @if(old('level_id') == $type->id) selected @endif>{{$type->{'name_'.session('lang')} }}</option>
-            @endforeach
-          </select>
-          <span class="form-icon">
-            <i class="fa fa-level-up"></i>
-          </span>
-        </div>
-        {{-- edu type end --}}
+          
+        @if($role_id == 5)
+          {{-- edu type start --}}
+          <div class="userName custom-select2">
+            <select class="custom-input" name="edu_type_id" required>
+              <option value="{{null}}">{{trans('web.edu_type')}}</option>
+              @foreach($types as $type)
+                <option value="{{$type->id}}" @if(old('level_id') == $type->id) selected @endif>{{$type->{'name_'.session('lang')} }}</option>
+              @endforeach
+            </select>
+            <span class="form-icon">
+              <i class="fa fa-level-up"></i>
+            </span>
+          </div>
+          {{-- edu type end --}}
         @endif
+
           <div class="userName">
             <input type="text" id="username" name="name" value="{{old('name')}}" required />
             <label for="username" id="label">
@@ -64,25 +66,29 @@
           </div>
           {{-- email end --}}
 
-          {{-- phone main start --}}
-          <div class="userName">
-            <input type="tel" id="mob" name="phone_main" value="{{old('phone_main')}}" required />
-            <label for="mob">
-              <i class="fa fa-mobile-alt"></i> {{trans('web.phone_main')}} 
-            </label>
-          </div>
-          {{-- phone main end --}}
+          @if($role_id != 'visitor')
+            {{-- phone main start --}}
+            <div class="userName">
+              <input type="tel" id="mob" name="phone_main" value="{{old('phone_main')}}" required />
+              <label for="mob">
+                <i class="fa fa-mobile-alt"></i> {{trans('web.phone_main')}} 
+              </label>
+            </div>
+            {{-- phone main end --}}
+          @endif
 
-          {{-- phone secondary start --}}
-          <div class="userName">
-            <input type="tel" id="secondary_mob" value="{{old('phone_secondary')}}" name="phone_secondary" />
-            <label for="secondary_mob">
-              <i class="fa fa-mobile-alt"></i> {{trans('web.phone_secondary')}} 
-            </label>
-          </div>
-          {{-- phone secondary end --}}
+          @if($role_id != 'visitor')
+            {{-- phone secondary start --}}
+            <div class="userName">
+              <input type="tel" id="secondary_mob" value="{{old('phone_secondary')}}" name="phone_secondary" />
+              <label for="secondary_mob">
+                <i class="fa fa-mobile-alt"></i> {{trans('web.phone_secondary')}} 
+              </label>
+            </div>
+            {{-- phone secondary end --}}
+          @endif
 
-          @if($role_id != 5)
+          @if($role_id != 5 && $role_id != 'visitor')
           {{-- age start --}}
           <div class="userName">
             <input type="number" name="age" value="{{old('age')}}" required />
@@ -168,7 +174,7 @@
           {{-- nationalities end --}}
           @endif
 
-          @if($role_id != 2)
+          @if($role_id != 2 && $role_id != 'visitor')
           {{-- countries start --}}
           <div class="userName custom-select2">
             <select class="custom-input" id="country_id" name="country_id">
@@ -184,7 +190,7 @@
           {{-- countries end --}}
           @endif
 
-          @if($role_id != 2)
+          @if($role_id != 2 && $role_id != 'visitor')
           {{-- cities start --}}
           <div class="userName custom-select2">
             <select class="custom-input" id="city_id" name="city_id">
@@ -197,7 +203,7 @@
           {{-- cities end --}}
           @endif
 
-          @if($role_id != 2)
+          @if($role_id != 2 && $role_id != 'visitor')
           {{-- address start --}}
           <div class="userName">
             <input type="text" name="address" value="{{old('address')}}" required />

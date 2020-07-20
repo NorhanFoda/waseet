@@ -14,6 +14,7 @@ use App\Models\Image;
 use App\Classes\Upload;
 use App\Http\Requests\Teachers\DirectTeacherRequest;
 use App\Http\Requests\Teachers\EditDirectTeacherRequest;
+use Illuminate\Support\Facades\Hash;
 
 class DirectTeacherController extends Controller
 {
@@ -54,6 +55,7 @@ class DirectTeacherController extends Controller
     public function store(DirectTeacherRequest $request)
     {
         $teacher = User::create($request->all());
+        $seeker->update(['is_verified' => 1, 'password' => Hash::make($request->password)]);
         $teacher->assignRole('direct_teacher');
         foreach($request->material_ids as $id){
             $teacher->materials()->attach($id);

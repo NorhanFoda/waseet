@@ -102,6 +102,10 @@ class User extends Authenticatable
         return $this->hasMany(Save::class)->where('saveRef_type', 'App\Models\Bag');
     }
 
+    public function saved_teachers(){
+        return $this->hasMany(Save::class)->where('saveRef_type', 'App\User');
+    }
+
     public function document(){
         return $this->morphOne(Document::class, 'doucmentRef');
     }

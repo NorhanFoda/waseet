@@ -34,7 +34,8 @@ class RegisterController extends Controller
     public function validateRegister(Request $request){
         $this->validate($request, [
             'name' => 'required',
-            'email' => 'required|unique:users|email',
+            // 'email' => 'required|unique:users|email',
+            'email' => 'required|email',
             'phone_main' => 'required|unique:users',
             'password' => 'min:9|required_with:password_confirmation|same:password_confirmation',
             'password_confirmation' => 'required|min:9',
@@ -80,6 +81,12 @@ class RegisterController extends Controller
         $code = $this->createVerificationCode();
         $user = User::where('email', $request->email)->first();
 
+        if($user == null){
+            return response()->json([
+                'error' => trans('api.email_not_found'),
+            ], 400);
+        }
+        
         if($user->is_verified == 0){
             $user->update(['code' => $code]);
             return $this->sendEmail($request->email, $code);

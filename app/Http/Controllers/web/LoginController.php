@@ -26,7 +26,10 @@ class LoginController extends Controller
         ]);
 
         $user = User::where('email', $request->email)->first();
-        $email = $user->email;
+        $email;
+        if($user){
+            $email = $user->email;
+        }
 
         if($user == null){
             session()->flash('error', trans('web.email_or_password_wrong'));

@@ -195,10 +195,26 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
     Route::post('web_jobs/apply', 'Web\JobsController@updateSeekerData')->name('jobs.update_seeker');
     Route::post('web_jobs/save', 'Web\JobsController@saveJob')->name('jobs.save');
 
+    // Teachers
+    Route::get('teachers', 'Web\TeachersController@index')->name('teachers.index');
+    Route::get('teachers/{id}', 'Web\TeachersController@show')->name('teachers.show');
+
     // Static pages
     Route::get('/pages/{page}', 'Web\StaticPagesController@aboutUs')->name('pages');
 
     Route::group(['middleware' => ['admin', 'auth:web']], function(){
+
+        // Cart
+        Route::get('carts', 'Web\CartController@index')->name('carts.index');
+        Route::post('carts', 'Web\CartController@store')->name('carts.store');
+        Route::put('carts/update', 'Web\CartController@update')->name('carts.update');
+        Route::delete('cart/delete', 'Web\CartController@delete')->name('carts.delete');
+
+        // Orders
+        Route::get('payment', 'Web\PaymentController@prepareOrder')->name('payment.prepare_order');
+
+        // Profile
+        Route::get('profile', 'Web\ProfileController@index')->name('profile.index');
     });
 
 });

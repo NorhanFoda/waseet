@@ -11,6 +11,7 @@ use App\Models\Document;
 use App\Classes\Upload;
 use App\Http\Requests\Seekers\SeekerRequest;
 use App\Http\Requests\Seekers\EditSeekerRequest;
+use Illuminate\Support\Facades\Hash;
 
 class SeekerController extends Controller
 {
@@ -48,7 +49,7 @@ class SeekerController extends Controller
     public function store(SeekerRequest $request)
     {
         $seeker = User::create($request->all());
-        $seeker->update(['is_verified' => 1]);
+        $seeker->update(['is_verified' => 1, 'password' => Hash::make($request->password)]);
         $seeker->assignRole('job_seeker');
 
         $image_url = Upload::uploadPDF($request->cv);

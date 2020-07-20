@@ -11,6 +11,7 @@ use App\Models\Document;
 use App\Models\Save;
 use App\Classes\Upload;
 use App\Classes\SendEmail;
+use App\User;
 
 
 class JobsController extends Controller
@@ -115,7 +116,17 @@ class JobsController extends Controller
     }
 
     public function saveJob(Request $request){
-        $saved = Save::where('user_id', auth()->user()->id)->where('saveRef_id', $request->id)->where('saveRef_type', 'App\Models\\'.$request->type)->first();
+        
+        $save;
+        $saved;
+
+        if($request->type != 'User'){
+            $saved = Save::where('user_id', auth()->user()->id)->where('saveRef_id', $request->id)->where('saveRef_type', 'App\Models\\'.$request->type)->first();
+        }
+        else{
+            $saved = Save::where('user_id', auth()->user()->id)->where('saveRef_id', $request->id)->where('saveRef_type', 'App\\'.$request->type)->first();
+        }
+
         if($saved != null){
             $saved->delete();
             return response()->json([
@@ -123,21 +134,35 @@ class JobsController extends Controller
             ], 200);
         }
         else{
-            $save = Save::create([
-                'user_id' => auth()->user()->id,
-                'saveRef_id' => $request->id,
-                'saveRef_type' => 'App\Models\\'.$request->type
-            ]);
+            if($request->type != 'User'){
+                $save = Save::create([
+                    'user_id' => auth()->user()->id,
+                    'saveRef_id' => $request->id,
+                    'saveRef_type' => 'App\Models\\'.$request->type
+                ]);
+            }
+            else{
+                $save = Save::create([
+                    'user_id' => auth()->user()->id,
+                    'saveRef_id' => $request->id,
+                    'saveRef_type' => 'App\\'.$request->type
+                ]);
+            }
 
             if($request->type == 'Job'){
                 $job = Job::find($request->id);
                 $job->saves()->save($save);
                 auth()->user()->saved_jobs()->save($save);
             }
-            else{
+            else if($request->type == 'Bag'){
                 $bag = Bag::find($request->id);
                 $bag->saves()->save($save);
                 auth()->user()->saved_bags()->save($save);
+            }
+            else if($request->type == 'User'){
+                $user = User::find($request->id);
+                $user->saves()->save($save);
+                auth()->user()->saved_teachers()->save($save);
             }
 
             return response()->json([

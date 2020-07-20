@@ -31,6 +31,7 @@ return [
     'buy_online' => 'Buy Online',
     'share' => 'Share',
     'bag_contents' => 'Educational Bag Contents',
+    'bag_benefits' => 'What the student earns',
     
 
     //Login
@@ -40,6 +41,8 @@ return [
     'online_teacher' => 'Online Teacher',
     'organization' => 'Educational Institution',
     'job_seeker' => 'Job Seeker',
+    'dashboard' => 'Dashboard',
+    'visitor' => 'Visitor',
 
     // Register
     'user_name' => 'User Name',
@@ -77,6 +80,8 @@ return [
     'bio_ar' => 'Additional Infromation In Arabic',
     'bio_en' => 'Additional Infromation in English',
     'salary' => 'Expected Salary',
+    'added_to_cart' => 'Bag Added To Cart',
+    'removed_from_cart' => 'Bag Removed From Cart',
 
     // Job
     'work_hours' => 'Work Hours',
@@ -93,10 +98,39 @@ return [
     'login_first' => 'Please Login to View Job Details',
     'login_to_apply' => 'Please Login to Apply to Job',
     'login_as_job_seeker' => 'Please Resgister as A Job Seeker',
+    'do_login_2' => 'Pleae login to continue',
     'applied_job' => 'The Job',
     'cv' => 'C.V.',
     'full_name' => 'Full Name',
     'view_cv' => 'View my Perviuosly Uploaded C.V.',
     'job_applied' => 'Your Request Has Been Applied Suucessfully',
     'added_to_saved' => 'Job Saved',
+
+    // Teachers
+    'contact' => 'Contact',
+    'teachers' => 'Private Teachers',
+    'rating' => 'Rating',
+    'year' => 'Years Old',
+    'teacher_bio' => 'About The Teacher',
+
+    // Cart
+    'cart' => 'Cart',
+    'cart_text' => 'This text is an example of text that can be replaced in the same space',
+    'count' => 'Count',
+    'sub_price' => 'Sub Price',
+    'shipping_fees' => 'Shipping Fees',
+    'sub_price_total' => 'Sub Total',
+    'total' => 'Total',
+    'continue_pay' => 'Continue Payment',
+
+
+    // Profile
+    'profile' => 'Profile',
+    'profile_text' => 'This text is an example of text that can be replaced in the same space',
+    'personal_info' => 'Personal Info',
+    'saved' => 'Saved',
+    'orders' => 'Orders',
+    'shipping_addresses' => 'Shipping Addresses',
+    'cart' => 'Cart',
+    'help_center' => 'Help Center',
 ];

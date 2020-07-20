@@ -67,7 +67,9 @@ class RegisterController extends Controller
 
         $user = User::create($request->all());
         $user->update(['password' => Hash::make($request->password)]);
-        $user->assignRole(DB::table('roles')->find($role_id)->name);
+        if($role_id != 'visitor'){
+            $user->assignRole(DB::table('roles')->find($role_id)->name);
+        }
 
         if($role_id == 3 || $role_id == 4){
             foreach($request->material_ids as $id){

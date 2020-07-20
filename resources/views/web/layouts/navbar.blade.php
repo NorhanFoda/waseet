@@ -35,12 +35,19 @@
         @if(!Auth::check())
           <li><a href="{{route('login.form')}}">{{trans('web.login')}}</a></li>
         @endif
+        @if(Auth::check() && auth()->user()->hasRole('admin'))
+          <li><a href="{{route('admin.home')}}">{{trans('web.dashboard')}}</a></li>
+        @endif
         <li><a href="{{route('jobs.web_index')}}">{{trans('web.look_for_job')}}</a></li>
-        <li><a href="">{{trans('web.private_teacher')}}</a></li>
+        <li><a href="{{route('teachers.index')}}">{{trans('web.private_teacher')}}</a></li>
         <li><a href="{{route('bags')}}">{{trans('web.bags')}}</a></li>
-        <li><a href="">{{trans('web.profile')}}</a></li>
-        <li><a href="">{{trans('web.orders')}}</a></li>
-        <li><a href="">{{trans('web.saved')}}</a></li>
+
+        @if(Auth::check())
+          <li><a href="{{route('profile.index')}}">{{trans('web.profile')}}</a></li>
+          <li><a href="">{{trans('web.orders')}}</a></li>
+          <li><a href="">{{trans('web.saved')}}</a></li>
+        @endif
+        
         <li><a href="">{{trans('web.contact_us')}}</a></li>
         @if(Auth::check())
           <li>

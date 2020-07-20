@@ -7,6 +7,8 @@
 <!--<![endif]-->
 
 <head>
+    @yield('meta')
+
   <meta charset="utf-8" />
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -38,6 +40,8 @@
   <link rel="stylesheet" href="{{asset('web/css/responsive.css')}}" />
   <script src="{{asset('web/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js')}}"></script>
   <link rel="shortcut icon" href="{{asset('web/images/favicon.ico')}}" />
+
+  <script src="//platform-api.sharethis.com/js/sharethis.js#property=58b550fc949fce00118ce697&product=inline-share-buttons"></script>
 
 </head>
 
@@ -71,12 +75,6 @@
     @include('web.layouts.footer')
 
     <script src="{{asset('web/js/vendor/jquery-1.11.2.min.js')}}"></script>
-    {{-- <script>
-        window.jQuery ||
-        document.write(
-            '<script src="{{asset("js/vendor/jquery-1.11.2.min.js")}}"></script>'
-        );
-    </script> --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
         integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous">
     </script>
@@ -87,6 +85,30 @@
     <script src="{{asset('web/js/vendor/typed.js')}}"></script>
     <script src="{{asset('web/js/vendor/aos.js')}}"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.all.min.js"></script>
+
+    <!--Floating WhatsApp css-->
+    <link rel="stylesheet" href="https://rawcdn.githack.com/rafaelbotazini/floating-whatsapp/3d18b26d5c7d430a1ab0b664f8ca6b69014aed68/floating-wpp.min.css">
+    <!--Floating WhatsApp javascript-->
+    <script type="text/javascript" src="https://rawcdn.githack.com/rafaelbotazini/floating-whatsapp/3d18b26d5c7d430a1ab0b664f8ca6b69014aed68/floating-wpp.min.js"></script>
+    header   
+    <script type="text/javascript">
+        $(function () {
+        $('#WAButton').floatingWhatsApp({
+            phone: 01009160863, //WhatsApp Business phone number International format-
+            //Get it with Toky at https://toky.co/en/features/whatsapp.
+            headerTitle: "whats app header",
+            popupMessage: "whats app message",
+            showPopup: true, //Enables popup display
+            buttonImage: '<img src="https://rawcdn.githack.com/rafaelbotazini/floating-whatsapp/3d18b26d5c7d430a1ab0b664f8ca6b69014aed68/whatsapp.svg" />', //Button Image
+            //headerColor: 'crimson', //Custom header color
+            //backgroundColor: 'crimson', //Custom background button color
+            position: "right",
+            size: 60
+        });
+        });
+    </script>
+    <!--End of Tawk.to Script--> 
+
     <script src="{{asset('web/js/main.js')}}"></script>
     <script>
         $("#owl2").owlCarousel({
@@ -132,21 +154,32 @@
     <script>
         $(document).ready(function(){
             $('#bookmark').click(function(){
-                $.ajax({
-                    url: "{{route('jobs.save')}}",
-                    type: "POST",
-                    dataType: 'json',
-                    data: {"_token": "{{ csrf_token() }}", id: $(this).data('id'), type: $(this).data('type') },
-                    success: function(data){
+                if(!'{{Auth::check()}}'){
                     Swal.fire({
-                        title: data['msg'],
-                        type: 'success',
+                        title: "{{trans('web.do_login_2')}}",
+                        type: 'warning',
                         timer: 2000,
                         showCancelButton: false,
                         showConfirmButton: false,
                     });
-                    }
-                });
+                }
+                else{
+                    $.ajax({
+                        url: "{{route('jobs.save')}}",
+                        type: "POST",
+                        dataType: 'json',
+                        data: {"_token": "{{ csrf_token() }}", id: $(this).data('id'), type: $(this).data('type') },
+                        success: function(data){
+                        Swal.fire({
+                            title: data['msg'],
+                            type: 'success',
+                            timer: 2000,
+                            showCancelButton: false,
+                            showConfirmButton: false,
+                        });
+                        }
+                    });
+                }
             });
         });
     </script>

@@ -68,40 +68,42 @@
             </div>
             <div class="modal-body text-right-dir">
                 <div class="choose-login" data-aos="fade-in">
-        
-                @foreach($roles as $role)
-        
-                    @if($role->name == 'student')
+                    @foreach($roles as $role)
+                        @if($role->name == 'student')
+                        <div class="choose-login-link">
+                            <a href="{{route('register.form', $role->id)}}"> <i class="fa fa-user-graduate"></i>{{trans('web.student')}}</a>
+                        </div>
+                        @endif
+            
+                        @if($role->name == 'direct_teacher')
+                        <div class="choose-login-link">
+                            <a href="{{route('register.form', $role->id)}}"><i class="fa fa-user"></i>{{trans('web.direct_teacher')}}</a>
+                        </div>
+                        @endif
+            
+                        @if($role->name == 'online_teacher')
+                        <div class="choose-login-link">
+                            <a href="{{route('register.form', $role->id)}}"><i class="fa fa-user"></i>{{trans('web.online_teacher')}}</a>
+                        </div>
+                        @endif
+            
+                        @if($role->name == 'organization')
+                        <div class="choose-login-link">
+                            <a href="{{route('register.form', $role->id)}}"><i class="fa fa-school"></i>{{trans('web.organization')}}</a>
+                        </div>
+                        @endif
+            
+                        @if($role->name == 'job_seeker')
+                        <div class="choose-login-link">
+                            <a href="{{route('register.form', $role->id)}}"><i class="fa  fa-search"></i> {{trans('web.job_seeker')}}</a>
+                        </div>
+                        @endif
+                    @endforeach
+
                     <div class="choose-login-link">
-                        <a href="{{route('register.form', $role->id)}}"> <i class="fa fa-user-graduate"></i>{{trans('web.student')}}</a>
+                        <a href="{{route('register.form', 'visitor')}}"><i class="fa  fa-search"></i> {{trans('web.visitor')}}</a>
                     </div>
-                    @endif
-        
-                    @if($role->name == 'direct_teacher')
-                    <div class="choose-login-link">
-                        <a href="{{route('register.form', $role->id)}}"><i class="fa fa-user"></i>{{trans('web.direct_teacher')}}</a>
-                    </div>
-                    @endif
-        
-                    @if($role->name == 'online_teacher')
-                    <div class="choose-login-link">
-                        <a href="{{route('register.form', $role->id)}}"><i class="fa fa-user"></i>{{trans('web.online_teacher')}}</a>
-                    </div>
-                    @endif
-        
-                    @if($role->name == 'organization')
-                    <div class="choose-login-link">
-                        <a href="{{route('register.form', $role->id)}}"><i class="fa fa-school"></i>{{trans('web.organization')}}</a>
-                    </div>
-                    @endif
-        
-                    @if($role->name == 'job_seeker')
-                    <div class="choose-login-link">
-                        <a href="{{route('register.form', $role->id)}}"><i class="fa  fa-search"></i> {{trans('web.job_seeker')}}</a>
-                    </div>
-                    @endif
-        
-                @endforeach
+
                 </div>
             </div>
             </div>
