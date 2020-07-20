@@ -3818,3 +3818,25 @@ iframe#st_gdpr_iframe{
 .custom-check input:checked ~ label:before{
   opacity: 1;
 } 
+
+
+
+
+.add-address {
+  position: relative;
+}
+
+.add-address select {
+  width: 95%;
+}
+
+
+.sub-add-address {
+  position: absolute;
+  border-radius: 50%;
+  background: #b28edf;
+  padding: 10px 14px;
+  color: #fff;
+  top: 3px;
+  font-size: 13px;
+}

@@ -17,11 +17,12 @@ class CreateBagOrderTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('bag_id')->index();
             $table->unsignedBigInteger('order_id')->index();
-            $table->float('total_price'); // total price = single bag price * bag quantity
-            $table->Integer('quantity')->index();
+            $table->float('total_price')->nullable(); // total price = single bag price * bag quantity
+            $table->Integer('quantity')->nullable()->index();
             $table->datetime('accepted')->nullable();
             $table->datetime('shipped')->nullable();
             $table->datetime('delivered')->nullable();
+            $table->integer('buy_type')->nullable();  // 1 -> onlinebuy, 2 -> printcontent
             $table->timestamps();
         });
     }

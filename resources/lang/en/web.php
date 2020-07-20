@@ -122,6 +122,9 @@ return [
     'sub_price_total' => 'Sub Total',
     'total' => 'Total',
     'continue_pay' => 'Continue Payment',
+    'select_payment_method' => 'Select Payment Method',
+    'select_shipping_address' => 'Select Shipping Address',
+    'add_address' => 'Add Shipping Address',
 
 
     // Profile
@@ -133,4 +136,14 @@ return [
     'shipping_addresses' => 'Shipping Addresses',
     'cart' => 'Cart',
     'help_center' => 'Help Center',
+
+    // Shipping address
+    'addresses' => 'Shipping Addresses',
+    'address_details' => 'Address in Details',
+    'postal_code' => 'Postal Code',
+    'add' => 'Add',
+    'add_city' => 'Add A New City',
+    'city_added' => 'City Added Successfully',
+    'address_added' => 'Address Added Successfully',
+    'ps' => 'Postal Code',
 ];

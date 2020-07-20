@@ -6,13 +6,15 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Cart;
 use App\Models\Setting;
+use App\Models\PaymentMethod;
 
 class CartController extends Controller
 {
     public function index(){
         $carts = Cart::with('bag')->where('user_id', auth()->user()->id)->get();
         $shipping_fees = Setting::find(1)->shipping_fees;
-        return view('web.carts.index', compact('carts', 'shipping_fees'));
+        $methods = PaymentMethod::with('image')->get();
+        return view('web.carts.index', compact('carts', 'shipping_fees', 'methods'));
     }
 
     public function store(Request $request){

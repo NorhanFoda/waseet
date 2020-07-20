@@ -20,8 +20,7 @@ class CreateOrdersTable extends Migration
             $table->unsignedBigInteger('address_id')->nullable()->index();
             $table->integer('status'); // 1 -> not confirmed / 2 -> waiting / 3 -> shipping / 4 -> delivered
             $table->float('shipping_fees');
-            $table->integer('buy_type');  // 1 -> onlinebuy, 2 -> printcontent
-            $table->unsignedBigInteger('payment_method_id')->index();
+            $table->unsignedBigInteger('payment_method_id')->nullable()->index();
             $table->timestamps();
         });
     }

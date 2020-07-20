@@ -22,7 +22,7 @@
                 <h5 class="second_title second_color text-center">{{trans('web.profile')}} </h5>
                 <div class="gray-bg">
                     <div class="profile-image">
-                        <img src="{{auth()->user()->image ? auth()->user()->image : asset('web/images/user2.png')}}" alt="user">
+                        <img src="{{auth()->user()->image ? auth()->user()->image->path : asset('web/images/user2.png')}}" alt="user">
                         <div class="side-prof">
                             <h3 class="first_color">{{auth()->user()->name}}</h3>
                             <span class="second_color">{{auth()->user()->email}}</span>
@@ -39,7 +39,7 @@
                             @endif
                             <li><a href="saving.html"><i class="fa fa-bookmark"></i>{{trans('web.saved')}}</a></li>
                             <li><a href="orders.html"><i class="fa fa-list-alt"></i>{{trans('web.orders')}}</a></li>
-                            <li><a href="shipping.html"><i class="fa fa-map-marker-alt"></i>{{trans('web.shipping_addresses')}}</a></li>
+                            <li><a href="{{route('addresses.index')}}"><i class="fa fa-map-marker-alt"></i>{{trans('web.shipping_addresses')}}</a></li>
                             <li><a href="{{route('carts.index')}}"><i class="fa fa-shopping-cart"></i>{{trans('web.cart')}}</a></li>
                             <li><a href="helpCenter.html"><i class="fa fa-question-circle"></i>{{trans('web.help_center')}}</a></li>
                         </ul>

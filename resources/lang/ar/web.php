@@ -122,6 +122,9 @@ return [
     'sub_price_total' => 'إجمالى المبلغ الفرعى',
     'total' => 'الإجمالى',
     'continue_pay' => 'متابعة الدفع',
+    'select_payment_method' => 'إختر طريقة الدفع',
+    'select_shipping_address' => 'إختر عنوان الشحن',
+    'add_address' => 'أضف عنوان',
 
     // Profile
     'profile' => 'حسابى',
@@ -132,4 +135,14 @@ return [
     'shipping_addresses' => 'عناوين الشحن',
     'cart' => 'عربة التسوق',
     'help_center' => 'مركز المساعدة',
+
+    // Shipping addresses
+    'addresses' => 'عناوين الشحن',
+    'address_details' => 'العنوان بالتفصيل',
+    'postal_code' => 'الرمز البريدى',
+    'add' => 'إضافة',
+    'add_city' => 'إضافة مدينة جديدة',
+    'city_added' => 'تمت إضافة المدينة بنجاح',
+    'address_added' => 'تمت إضافة العنوان بنجاح',
+    'ps' => 'رمز بريدى',
 ];

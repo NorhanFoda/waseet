@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder
         $this->call(SliderSeeder::class);
         $this->call(StaticPagesSeeder::class);
         $this->call(SocialSeeder::class);
+        $this->call(PaymentMethodsSeeder::class);
         $this->call(ImageSeeder::class);
         $this->call(VideoSeeder::class);
         $this->call(DocumentSeeder::class);

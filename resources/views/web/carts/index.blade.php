@@ -138,46 +138,74 @@
                     </ul>
                 </div>
 
-                <div class="submit col-12 text-center">
-                    <a href="{{route('payment.prepare_order')}}" class="custom-btn" data-toggle="modal" data-target="#payment-choose">{{trans('web.continue_pay')}}</a>
-                </div>
+                @if(count($carts) > 0)
+                    <div class="submit col-12 text-center">
+                        <button type="submit" class="custom-btn" data-toggle="modal" data-target="#address-choose">{{trans('web.continue_pay')}}</button>
+                    </div>
+                @endif
 
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-    <div class="modal fade" id="payment-choose" tabindex="-1" role="dialog" aria-labelledby="payment-choose" aria-hidden="true">
+    {{-- Select payment method modal start --}}
+    {{-- <div class="modal fade" id="payment-choose" tabindex="-1" role="dialog" aria-labelledby="payment-choose" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header text-center">
-                    <h5 class="modal-title first_color">اختر طريقة الدفع</h5>
+                    <h5 class="modal-title first_color">{{trans('web.select_payment_method')}}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body text-right-dir">
                     <div class="custom-checkboxes" data-aos="fade-in">
-                        <div class="custom-check">
-                            <img src="{{asset('web/images/pay-1.png')}}" alt="pay">
-                            <input type="radio" name="pay" id="check-1" checked>
-                            <label for="check-1">بطاقة فيزا</label>
-                        </div>
-                        <div class="custom-check">
-                            <img src="{{asset('web/images/pay-2.png')}}" alt="pay">
-                            <input type="radio" name="pay" id="check-2">
-                            <label for="check-2">بطاقة ماستر</label>
-                        </div>
-                        <div class="custom-check">
-                            <img src="{{asset('web/images/pay-3.png')}}" alt="pay">
-                            <input type="radio" name="pay" id="check-3">
-                            <label for="check-3">بطاقة باي بال</label>
-                        </div>
+                        @foreach($methods as $method)
+                            <div class="custom-check" data-toggle="modal" data-target="#address-choose">
+                                <img src="{{$method->image->path}}" alt="pay">
+                                <input type="radio" name="payment_method" id="check-1" @if($loop->iteration == 1) checked @endif>
+                                <label for="check-1">{{$method->{'name_'.session('lang')} }}</label>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> --}}
+    {{-- Select payment method modal end --}}
+
+    {{-- Select shipping address modal start --}}
+    <div class="modal fade" id="address-choose" tabindex="-1" role="dialog" aria-labelledby="address-choose" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h5 class="modal-title first_color">{{trans('web.select_shipping_address')}}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body text-right-dir">
+                    <div class="custom-checkboxes" data-aos="fade-in">
+                        @if(count(auth()->user()->addresses) > 0)
+                            @foreach(auth()->user()->addresses as $address)
+                                <a href="{{route('payment.prepare_order', $address->id)}}">
+                                    <div class="custom-check">
+                                        <input type="radio" name="address" id="check-{{$address->id}}" @if($loop->iteration == 1) checked @endif>
+                                        <label for="check-{{$address->id}}">{{$address->country->{'name_'.session('lang')} }} - {{$address->city->{'name_'.session('lang')} }} - {{$address->address}} - {{trans('web.ps')}}: {{$address->postal_code}}</label>
+                                    </div>
+                                </a>
+                            @endforeach
+                        @else
+                            <div class="submit col-12 text-center">
+                                <a href="{{route('addresses.create')}}" class="custom-btn">{{trans('web.add_address')}}</a>
+                            </div> 
+                        @endif
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    {{-- Select shipping address modal end --}}
 @endsection
 
 @section('scripts')

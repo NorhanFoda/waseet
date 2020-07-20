@@ -12,7 +12,7 @@ class Order extends Model
 {
     protected $fillable = [
         'user_id', 'total_price', 'address_id',
-        'status', 'shipping_fees', 'payment_method_id', 'buy_type'
+        'status', 'shipping_fees', 'payment_method_id'
     ];
 
     public function bags(){
