@@ -28,7 +28,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $sliders = Slider::all();
+        $sliders = Slider::with('image')->get();
         $cats = BagCategory::with('image')->get();
         $set = Setting::find(1);
         return view('web.home.index', compact('sliders', 'set', 'cats'));

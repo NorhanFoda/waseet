@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Setting;
 use App\Models\StaticPage;
+use App\Models\Slider;
 
 class HomeController extends Controller
 {
@@ -14,8 +15,8 @@ class HomeController extends Controller
 
         $set = Setting::find(1);
 
-        $header_title = $set->{'text_after_add_'.$lang};
-        $header_image = $set->text_after_add_image;
+        // $header_title = $set->{'text_after_add_'.$lang};
+        // $header_image = $set->text_after_add_image;
 
         $search_for_job_title = $set->{'section_1_text_'.$lang};
         $search_for_job_image = $set->section_1_image;
@@ -28,9 +29,11 @@ class HomeController extends Controller
         $about_waseet_text = trans('api.about_waseet_text');
         $about_waseet_image = $set->text_after_add_image;
 
+        $slider = Slider::with('image')->get();
+
         return response()->json([
-            'header_title' => $header_title,
-            'header_image' => $header_image,
+            // 'header_title' => $header_title,
+            // 'header_image' => $header_image,
             'search_for_job_title' => $search_for_job_title,
             'search_for_job_image' => $search_for_job_image,
             'edu_bags_title' => $edu_bags_title,
@@ -38,6 +41,7 @@ class HomeController extends Controller
             'teacher_text' => $teacher_text,
             'about_waseet_text' => $about_waseet_text,
             'about_waseet_image' => $about_waseet_image,
+            'slider' => $slider
         ], 200);
     }
 }
