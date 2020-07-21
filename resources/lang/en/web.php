@@ -141,6 +141,7 @@ return [
     'saved' => 'Saved',
     'edit_personal_info' => 'Edit Personal Info',
     'save' => 'Save',
+    'personal_info_updated' => 'Profile Updated Successfully',
 
     // Shipping address
     'addresses' => 'Shipping Addresses',

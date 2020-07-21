@@ -140,6 +140,7 @@ return [
     'saved' => 'المحفوظات',
     'edit_personal_info' => 'تعديل الملف الشخصى',
     'save' => 'حفظ',
+    'personal_info_updated' => 'تم تعديل الملف الشخصى بنجاح',
 
     // Shipping addresses
     'addresses' => 'عناوين الشحن',

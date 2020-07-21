@@ -10,6 +10,8 @@ use App\Models\Nationality;
 use App\Models\EduLevel;
 use App\Models\EduType;
 use App\Models\Country;
+use App\Models\Image;
+use App\Classes\Upload;
 
 class ProfileController extends Controller
 {
@@ -34,6 +36,58 @@ class ProfileController extends Controller
     }
 
     public function storePersonalInfo(Request $request){
-        dd($request->all());
+
+        auth()->user()->update($request->all());
+
+        if(auth()->user()->hasRole('online_teacher') || auth()->user()->hasRole('direct_teacher')){
+            foreach($request->material_ids as $id){
+                auth()->user()->materials()->sync($id);
+            }
+        }
+
+        if(auth()->user()->hasRole('job_seeker')){
+            if($request->has('cv')){
+                $removed = Upload::deletePDF(auth()->user()->document->path);
+                if($removed){
+                    $new_cv = Upload::uploadPDF($request->cv);
+                    auth()->user()->document->update([
+                        'path' => $new_cv
+                    ]);
+                }
+                else{
+                    session()->flash('error', trans('admin.error'));
+                    return redirect()->back();
+                }
+            }
+        }
+
+        if($request->has('image')){  
+            if(auth()->user()->image != null)          {
+                $removed = Upload::deleteImage(auth()->user()->image->path);
+                if($removed){
+                    $new_image = Upload::uploadImage($request->image);
+                    auth()->user()->image->update([
+                        'path' => $new_image
+                    ]);
+                }
+                else{
+                    session()->flash('error', trans('admin.error'));
+                    return redirect()->back();
+                }
+            }
+            else{
+                $image_url = Upload::uploadImage($request->image);
+                $image = Image::create([
+                    'path' => $image_url,
+                    'imageRef_id' => Auth()->user()->id,
+                    'imageRef_type' => 'App\User'
+                ]);
+                auth()->user()->image()->save($image);
+            }
+        }
+
+        session()->flash('success', trans('web.personal_info_updated'));
+        return redirect()->route('profile.index');
+
     }
 }

@@ -8,7 +8,7 @@ use App\Models\StaticPage;
 
 class StaticPagesController extends Controller
 {
-    public function aboutUs($page){
+    public function getPage($page){
         $page = StaticPage::where('name_en', $page)->first();
         
         return view('web.pages.index', compact('page'));

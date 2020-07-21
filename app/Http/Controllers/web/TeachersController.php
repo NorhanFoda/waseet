@@ -13,7 +13,7 @@ class TeachersController extends Controller
 {
     public function index(){
 
-        $teachers = User::with(['image', 'materials', 'ratings', 'nationality', 'roles'])->whereHas('roles', function($q){
+        $teachers = User::with(['image', 'materials', 'ratings', 'nationality'])->whereHas('roles', function($q){
             $q->where('name', 'direct_teacher')->orWhere('name', 'online_teacher');
         })->get();
 

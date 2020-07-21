@@ -35,13 +35,13 @@
                         <ul class="list-unstyled arrow-list">
                             {{-- <li><a href="{{route('profile.edit_personal_info')}}"><i class="fa fa-user"></i>{{trans('web.personal_info')}}</a></li> --}}
                             @if(auth()->user()->hasRole('job_seeker'))
-                                <li><a href="cv.html"><i class="fa fa-file"></i>{{trans('web.cv')}}</a></li>
+                                <li><a href="{{auth()->user()->document != null ? auth()->user()->document->path : '#'}}"><i class="fa fa-file"></i>{{trans('web.cv')}}</a></li>
                             @endif
                             <li><a href="{{route('saved.index')}}"><i class="fa fa-bookmark"></i>{{trans('web.saved')}}</a></li>
                             <li><a href="orders.html"><i class="fa fa-list-alt"></i>{{trans('web.orders')}}</a></li>
                             <li><a href="{{route('addresses.index')}}"><i class="fa fa-map-marker-alt"></i>{{trans('web.shipping_addresses')}}</a></li>
                             <li><a href="{{route('carts.index')}}"><i class="fa fa-shopping-cart"></i>{{trans('web.cart')}}</a></li>
-                            <li><a href="helpCenter.html"><i class="fa fa-question-circle"></i>{{trans('web.help_center')}}</a></li>
+                            <li><a href="{{route('pages', 'Help center')}}"><i class="fa fa-question-circle"></i>{{trans('web.help_center')}}</a></li>
                         </ul>
                     </div>
                     <!--end edit-->

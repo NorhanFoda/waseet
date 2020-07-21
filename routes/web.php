@@ -200,7 +200,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
     Route::get('teachers/{id}', 'Web\TeachersController@show')->name('teachers.show');
 
     // Static pages
-    Route::get('/pages/{page}', 'Web\StaticPagesController@aboutUs')->name('pages');
+    Route::get('/pages/{page}', 'Web\StaticPagesController@getPage')->name('pages');
 
     Route::group(['middleware' => ['auth:web']], function(){
 
