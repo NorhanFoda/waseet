@@ -55,7 +55,7 @@ class DirectTeacherController extends Controller
     public function store(DirectTeacherRequest $request)
     {
         $teacher = User::create($request->all());
-        $seeker->update(['is_verified' => 1, 'password' => Hash::make($request->password)]);
+        $teacher->update(['is_verified' => 1, 'password' => Hash::make($request->password)]);
         $teacher->assignRole('direct_teacher');
         foreach($request->material_ids as $id){
             $teacher->materials()->attach($id);

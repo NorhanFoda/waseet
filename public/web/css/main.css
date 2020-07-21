@@ -38,6 +38,15 @@ a:hover {
   text-decoration: none;
 }
 
+#swal2-title {
+    color: #000;
+    font-size: 17px;
+    font-weight: normal;
+}
+
+textarea{
+    min-height:100px;
+}
 a {
   transition: all .5s ease-in-out;
   -webkit-transition: all .5s ease-in-out;
@@ -263,7 +272,7 @@ button:focus {
 .menu span {
   color: #fff;
   font-size: 25px;
-  cursor: pointer;
+  cursor: url(../images/pointer.png), pointer !important;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -346,6 +355,16 @@ button:focus {
 .menu.active .links li:nth-of-type(8) {
   animation-delay: 1.7s;
 }
+.menu.active .links li:nth-of-type(9) {
+  animation-delay: 1.9s;
+}
+
+
+.menu.active .links li:nth-of-type(10) {
+  animation-delay: 2.1s;
+}
+
+
 
 .menu.active .dropdown {
   animation: fadeIn .5s linear both 1.9s;
@@ -601,7 +620,7 @@ button:focus {
 }
 
 .navBar nav .humburger {
-  cursor: pointer;
+  cursor: url(../images/pointer.png), pointer !important;
 }
 
 .navBar nav .humburger img {
@@ -634,13 +653,13 @@ button:focus {
 
 .navBar nav .search img {
   max-width: 30px;
-  cursor: pointer;
+  cursor: url(../images/pointer.png), pointer !important;
   position: relative;
   z-index: 11;
 }
 
 .navBar nav .search span {
-  cursor: pointer;
+  cursor: url(../images/pointer.png), pointer !important;
   color: #c1a5e3;
 }
 
@@ -1273,7 +1292,7 @@ footer form .form-group label button {
   border: none;
   border-radius: 5px;
   padding: 1px 0;
-  cursor: pointer;
+  cursor: url(../images/pointer.png), pointer !important;
 }
 
 footer form .form-group label button img {
@@ -1610,7 +1629,7 @@ footer .copyright p a:hover {
 }
 
 
-.signUp form .userName input,
+.signUp form .userName input,.signUp form .userName textarea,
 .logIn form .userName input,
 .custom-input {
   width: 100%;
@@ -1639,7 +1658,7 @@ footer .copyright p a:hover {
   -moz-appearance: textfield;
 }
 
-.signUp form .userName input:focus+label,
+.signUp form .userName input:focus+label,.signUp form .userName textarea:focus+label,
 .logIn form .userName input:focus+label,
 .custom-input:focus+label {
   top: -40px;
@@ -1648,7 +1667,7 @@ footer .copyright p a:hover {
 
 .signUp form .userName input.active+label,
 .logIn form .userName input.active+label,
-.custom-input input.active+label {
+.custom-input input.active+label,.signUp form .userName textarea.active+label {
   top: -40px;
   opacity: 0;
 }
@@ -1693,7 +1712,7 @@ footer .copyright p a:hover {
   border: none;
   width: 170px;
   height: 40px;
-  cursor: pointer;
+  cursor: url(../images/pointer.png), pointer !important;
   font-family: cairoRegular;
 }
 
@@ -2007,7 +2026,7 @@ footer .copyright p a:hover {
   border: none;
   width: 170px;
   height: 40px;
-  cursor: pointer;
+  cursor: url(../images/pointer.png), pointer !important;
   font-family: cairoRegular;
 }
 
@@ -2151,7 +2170,7 @@ footer .copyright p a:hover {
 }
 
 .teachersWrap .teacher .teacher_info .teacher_rate form label {
-  cursor: pointer;
+  cursor: url(../images/pointer.png), pointer !important;
   color: #848484;
   -webkit-transition: 0.2s ease;
   transition: 0.2s ease;
@@ -2365,7 +2384,7 @@ footer .copyright p a:hover {
 }
 
 .teacher_info .info .img_name_rate .teacher_rate form label {
-  cursor: pointer;
+  cursor: url(../images/pointer.png), pointer !important;
   color: #848484;
   -webkit-transition: 0.2s ease;
   transition: 0.2s ease;
@@ -2456,7 +2475,7 @@ footer .copyright p a:hover {
 
 .teacher_info .info .teacher_contact form label {
   color: #ffffff;
-  cursor: pointer;
+  cursor: url(../images/pointer.png), pointer !important;
   width: 50px;
   height: 50px;
   background: #c1a5e3;
@@ -2481,7 +2500,7 @@ footer .copyright p a:hover {
 }
 .custom-check-box label {
   color: #ffffff;
-  cursor: pointer;
+  cursor: url(../images/pointer.png), pointer !important;
   width: 50px;
   height: 50px;
   background: #c1a5e3;
@@ -2635,7 +2654,7 @@ footer .copyright p a:hover {
 
 
 
-.teacher_info .info .other_info .phone_num h6 {
+.teacher_info .info .other_info .phone_num h6,.teacher_info .info .other_info .phone_num a {
   color: #56ccf2;
   font-family: cairoRegular;
   margin: auto 5px;
@@ -2841,7 +2860,7 @@ footer .copyright p a:hover {
 }
 
 .pack_rate form label {
-  cursor: pointer;
+  cursor: url(../images/pointer.png), pointer !important;
   color: #848484;
   -webkit-transition: 0.2s ease;
   transition: 0.2s ease;
@@ -2989,8 +3008,8 @@ footer .copyright p a:hover {
 
 }
 
-.gray-form form .userName input,
-.gray-form form .userName select {
+.gray-form form .userName input,.gray-form form .userName.custom-file label,
+.gray-form form .userName select,.gray-form form .userName textarea {
   background: #f1eafa
 }
 
@@ -3441,7 +3460,7 @@ iframe#st_gdpr_iframe{
   border-radius: 100%;
   background: #c4ace0;
   border: 1px solid transparent;
-  cursor: pointer;
+  cursor: url(../images/pointer.png), pointer !important;
   transition: all 0.2s ease-in-out;
   position: absolute;
   top: calc(100% + 60px);
@@ -3463,7 +3482,7 @@ iframe#st_gdpr_iframe{
   margin: auto;
   font-size: 18px;
   line-height: 30px;
-  cursor: pointer;
+  cursor: url(../images/pointer.png), pointer !important;
   font-weight: 900;
   text-shadow: 0 0 2px #000;
 }
@@ -3676,7 +3695,7 @@ iframe#st_gdpr_iframe{
   vertical-align: middle;
   font-size: 25px;
   background: #b28edf;
-  cursor: pointer;
+  cursor: url(../images/pointer.png), pointer !important;
   color: #fff;
   transition: all .5s;
   -webkit-transition: all .5s;
@@ -3782,7 +3801,7 @@ iframe#st_gdpr_iframe{
 
 .custom-check label {
   position: relative;
-  width: calc(100% - 105px)
+  width: 100%
 }
 
 .custom-check label:after {
@@ -3818,25 +3837,63 @@ iframe#st_gdpr_iframe{
 .custom-check input:checked ~ label:before{
   opacity: 1;
 } 
-
-
-
-
-.add-address {
-  position: relative;
-}
-
-.add-address select {
-  width: 95%;
-}
-
-
 .sub-add-address {
-  position: absolute;
-  border-radius: 50%;
-  background: #b28edf;
-  padding: 10px 14px;
-  color: #fff;
-  top: 3px;
-  font-size: 13px;
+    margin-top: 20px;
+    color: #6b1a9a;
+    cursor: url(../images/pointer.png), pointer !important;
+
+}
+
+.sub-add-address i{
+    font-size:14px;
+}
+.city-add{
+    display:none;
+    background: #f6f6f6;
+    padding: 20px 15px 15px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+.img-show{
+  display: none;
+}
+.file-upload-image {
+  max-height: 200px;
+}
+
+
+.white-payment {
+  border-radius: 30px;
+  text-align: center;
+  padding: 35px;
+  background: #f8f8f8;
+    border-radius: 15px;
+}
+
+.payment-grid {
+  margin-bottom: 30px;
+  background: #fff;
+  padding: 20px 20px 2px;
+  border-radius: 20px;
+  box-shadow: 0 0 8px #ccc;
+}
+.payment-grid ul {
+  color: #333;
+  font-size: 16.22px;
+  margin-top: 30px;
+}
+
+.payment-grid ul li {
+  margin-bottom: 20px
+}
+
+.payment-grid img {
+  max-height: 200px;
+  vertical-align: middle;
+}
+
+
+
+.payment-grid li span {
+ color:#56ccf2
 }

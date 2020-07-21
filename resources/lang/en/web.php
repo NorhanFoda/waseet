@@ -82,6 +82,7 @@ return [
     'salary' => 'Expected Salary',
     'added_to_cart' => 'Bag Added To Cart',
     'removed_from_cart' => 'Bag Removed From Cart',
+    'edu_type' => 'Education Type',
 
     // Job
     'work_hours' => 'Work Hours',
@@ -105,6 +106,7 @@ return [
     'view_cv' => 'View my Perviuosly Uploaded C.V.',
     'job_applied' => 'Your Request Has Been Applied Suucessfully',
     'added_to_saved' => 'Job Saved',
+    'send' => 'Send',
 
     // Teachers
     'contact' => 'Contact',
@@ -136,6 +138,9 @@ return [
     'shipping_addresses' => 'Shipping Addresses',
     'cart' => 'Cart',
     'help_center' => 'Help Center',
+    'saved' => 'Saved',
+    'edit_personal_info' => 'Edit Personal Info',
+    'save' => 'Save',
 
     // Shipping address
     'addresses' => 'Shipping Addresses',
@@ -146,4 +151,8 @@ return [
     'city_added' => 'City Added Successfully',
     'address_added' => 'Address Added Successfully',
     'ps' => 'Postal Code',
+
+    // Saved
+    'jobs' => 'Educational Jobs',
+    'save_city' => 'Save City',
 ];

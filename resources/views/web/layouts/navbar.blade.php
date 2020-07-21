@@ -44,8 +44,8 @@
 
         @if(Auth::check())
           <li><a href="{{route('profile.index')}}">{{trans('web.profile')}}</a></li>
-          <li><a href="">{{trans('web.orders')}}</a></li>
-          <li><a href="">{{trans('web.saved')}}</a></li>
+          {{-- <li><a href="">{{trans('web.orders')}}</a></li> --}}
+          {{-- <li><a href="{{route('saved.index')}}">{{trans('web.saved')}}</a></li> --}}
         @endif
         
         <li><a href="">{{trans('web.contact_us')}}</a></li>

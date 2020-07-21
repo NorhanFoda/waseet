@@ -11,6 +11,6 @@ class Save extends Model
     ];
 
     public function saveRef(){
-        return $this->morphTo();
+        return $this->morphTo(__FUNCTION__, 'saveRef_type', 'saveRef_id');
     }
 }

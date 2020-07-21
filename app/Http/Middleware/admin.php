@@ -16,7 +16,7 @@ class admin
     public function handle($request, Closure $next)
     {
         if(auth()->user() == null || !auth()->user()->hasRole('admin')){
-            return redirect()->route('admin.login');
+            return redirect()->route('home');
         }
 
         return $next($request);

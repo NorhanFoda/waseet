@@ -56,7 +56,7 @@ class OnlineTeacherController extends Controller
     {
         $teacher = User::create($request->all());
         $teacher->assignRole('online_teacher');
-        $seeker->update(['is_verified' => 1, 'password' => Hash::make($request->password)]);
+        $teacher->update(['is_verified' => 1, 'password' => Hash::make($request->password)]);
         foreach($request->material_ids as $id){
             $teacher->materials()->attach($id);
         }

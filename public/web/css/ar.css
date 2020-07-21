@@ -79,13 +79,22 @@ footer form input {
     left: auto;
 }
 .custom-file label i {
-    right: 10px;
-    left: auto;
+    left: 10px;
+    right: auto;
 }
 .custom-btn i,.book-details-next  h3 i {
     margin-left: 7px;
 }
 
+.signUp form  .right-custom-file.custom-file label i {
+
+    right: 10px;
+    left: auto;
+}
+
+.signUp form  .right-custom-file label {
+    padding-right:40px;
+}
 
 .gray-form form .custom-select2 select,
 .custom-select2 select {
@@ -196,9 +205,6 @@ footer form input {
     left: 0;
 }
 
-.sub-add-address {
-    left: 0px;
-  }
 
 .shipping-list2 li span{
     float: left;
@@ -215,6 +221,10 @@ footer form input {
   .custom-check label:before{
       left: 3px;
   }
+  
+  .custom-check label {
+      padding-left:40px;
+}
 
   footer form .form-group label button{
       margin-left: 10px;

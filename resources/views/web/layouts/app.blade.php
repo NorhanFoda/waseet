@@ -89,8 +89,7 @@
     <!--Floating WhatsApp css-->
     <link rel="stylesheet" href="https://rawcdn.githack.com/rafaelbotazini/floating-whatsapp/3d18b26d5c7d430a1ab0b664f8ca6b69014aed68/floating-wpp.min.css">
     <!--Floating WhatsApp javascript-->
-    <script type="text/javascript" src="https://rawcdn.githack.com/rafaelbotazini/floating-whatsapp/3d18b26d5c7d430a1ab0b664f8ca6b69014aed68/floating-wpp.min.js"></script>
-    header   
+    <script type="text/javascript" src="https://rawcdn.githack.com/rafaelbotazini/floating-whatsapp/3d18b26d5c7d430a1ab0b664f8ca6b69014aed68/floating-wpp.min.js"></script> 
     <script type="text/javascript">
         $(function () {
         $('#WAButton').floatingWhatsApp({
@@ -110,7 +109,9 @@
     <!--End of Tawk.to Script--> 
 
     <script src="{{asset('web/js/main.js')}}"></script>
+
     <script>
+
         $("#owl2").owlCarousel({
             rtl: true,
             loop: true,
@@ -147,6 +148,7 @@
                 }
             });
         });
+
     </script>
 
     @yield('scripts')
@@ -247,42 +249,42 @@
     </script>
 
     @if(session()->has('success'))
-    <script>
-        Swal.fire({
-            title: "{{ session()->get('success')}}",
-            type: 'success',
-            timer: 2000,
-            showCancelButton: false,
-            showConfirmButton: false,
-        });
-        '{{session()->forget("success")}}';
-    </script>
+        <script>
+            Swal.fire({
+                title: "{{ session()->get('success')}}",
+                type: 'success',
+                timer: 2000,
+                showCancelButton: false,
+                showConfirmButton: false,
+            });
+            '{{session()->forget("success")}}';
+        </script>
     @endif
 
     @if(session()->has('error'))
-    <script>
-        Swal.fire({
-            title: "{{ session()->get('error')}}",
-            type: 'error',
-            timer: 2000,
-            showCancelButton: false,
-            showConfirmButton: false,
-        });
-        '{{session()->forget("error")}}';
-    </script>
+        <script>
+            Swal.fire({
+                title: "{{ session()->get('error')}}",
+                type: 'error',
+                timer: 2000,
+                showCancelButton: false,
+                showConfirmButton: false,
+            });
+            '{{session()->forget("error")}}';
+        </script>
     @endif
 
     @if(session()->has('warning'))
-    <script>
-        Swal.fire({
-            title: "{{ session()->get('warning')}}",
-            type: 'warning',
-            timer: 2000,
-            showCancelButton: false,
-            showConfirmButton: false,
-        });
-        '{{session()->forget("warning")}}';
-    </script>
+        <script>
+            Swal.fire({
+                title: "{{ session()->get('warning')}}",
+                type: 'warning',
+                timer: 2000,
+                showCancelButton: false,
+                showConfirmButton: false,
+            });
+            '{{session()->forget("warning")}}';
+        </script>
     @endif
 
     @foreach($errors->all() as $error)

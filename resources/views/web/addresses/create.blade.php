@@ -66,7 +66,7 @@
                                             </div>
             
                                             <div class="userName">
-                                                <input type="text" name="address" required="">
+                                                <input type="text" class="active" name="address" required="">
                                                 <label>
                                                     <i class="fa fa-map"></i> {{trans('web.address_details')}}
                                                 </label>
@@ -121,14 +121,14 @@
                                 </div>
 
                                 <div class="userName">
-                                    <input type="text" name="name_ar"  required>
+                                    <input type="text" class="active" name="name_ar"  required>
                                     <label>
                                         {{trans('admin.name_ar')}}
                                     </label>
                                 </div>
 
                                 <div class="userName">
-                                    <input type="text" name="name_en"  required>
+                                    <input type="text" class="active" name="name_en"  required>
                                     <label>
                                         {{trans('admin.name_en')}}
                                     </label>

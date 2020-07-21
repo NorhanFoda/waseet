@@ -87,14 +87,16 @@
                                     </label>
                                 </div>
 
-                                <div class="userName custom-file">
-                                    <a href="{{auth()->user()->document->path}}">{{trans('web.view_cv')}}</a>
-                                </div>
+                                @if(auth()->user()->document != null)
+                                    <div class="userName custom-file">
+                                        <a href="{{auth()->user()->document->path}}">{{trans('web.view_cv')}}</a>
+                                    </div>
+                                @endif
 
                             </div>
 
                             <div class="submit">
-                                <button type="submit" class="custom-btn">إرسال</button>
+                                <button type="submit" class="custom-btn">{{trans('web.send')}}</button>
                             </div>
                         </form>
                     </div>

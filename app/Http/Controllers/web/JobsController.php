@@ -19,7 +19,7 @@ class JobsController extends Controller
     public function index(){
         $title = Setting::find(1)->{'section_1_title_'.session('lang')};
         $text = Setting::find(1)->{'section_1_text_'.session('lang')};
-        $jobs = Job::all();
+        $jobs = Job::with(['city', 'country'])->get();
 
         return view('web.jobs.index', compact('title', 'text', 'jobs'));
     }

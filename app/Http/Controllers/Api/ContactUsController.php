@@ -19,7 +19,7 @@ class ContactUsController extends Controller
         $email = $set->email;
         $location = $set->{'location_'.$lang};
 
-        $socials = SocialResurce::collection(Social::with('image')->where('appear_in_footer', 1)->get());
+        $socials = SocialResurce::collection(Social::all());
 
         return response()->json([
             'phone' => $phone,

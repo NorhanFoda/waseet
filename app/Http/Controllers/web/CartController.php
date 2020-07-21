@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Cart;
 use App\Models\Setting;
 use App\Models\PaymentMethod;
+use App\Models\Country;
+use App\Models\City;
 
 class CartController extends Controller
 {
@@ -14,7 +16,11 @@ class CartController extends Controller
         $carts = Cart::with('bag')->where('user_id', auth()->user()->id)->get();
         $shipping_fees = Setting::find(1)->shipping_fees;
         $methods = PaymentMethod::with('image')->get();
-        return view('web.carts.index', compact('carts', 'shipping_fees', 'methods'));
+
+        $countries = Country::all();
+        $cities = count($countries) > 0 ? $countries[0]->cities : [];
+
+        return view('web.carts.index', compact('carts', 'shipping_fees', 'methods', 'cities', 'countries'));
     }
 
     public function store(Request $request){

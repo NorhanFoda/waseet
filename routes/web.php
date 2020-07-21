@@ -202,7 +202,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
     // Static pages
     Route::get('/pages/{page}', 'Web\StaticPagesController@aboutUs')->name('pages');
 
-    Route::group(['middleware' => ['admin', 'auth:web']], function(){
+    Route::group(['middleware' => ['auth:web']], function(){
 
         // Cart
         Route::get('carts', 'Web\CartController@index')->name('carts.index');
@@ -222,6 +222,13 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 
         // Profile
         Route::get('profile', 'Web\ProfileController@index')->name('profile.index');
+        Route::get('saved', 'Web\ProfileController@getSaved')->name('saved.index');
+        Route::get('personal_info', 'Web\ProfileController@editPersonalInfo')->name('profile.edit_personal_info');
+        Route::post('personal_info', 'Web\ProfileController@storePersonalInfo')->name('profile.store_personal_info');
+
+        Route::get('payment', function(){
+            return view('web.payment');
+        });
     });
 
 });

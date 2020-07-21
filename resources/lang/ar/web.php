@@ -80,6 +80,7 @@ return [
     'salary' => 'الراتب المتوقع',
     'added_to_cart' => 'تمت إضافة الحقيبة لعربة التسوق',
     'removed_from_cart' => 'تم حذف الحقيبة من عربة التسوق',
+    'edu_type' => 'نوع الدراسة',
 
     // Job
     'work_hours' => 'ساعات عمل',
@@ -105,6 +106,7 @@ return [
     'job_applied' => 'لقد تم تقديم طلبك بنجاح',
     'added_to_saved' => 'تمت الإضافة إلى المحفوظات',
     'deleted_from_saved' => 'تم الحذف من المحفوظات',
+    'send' => 'إرسال',
 
     // Teachers
     'contact' => 'تواصل',
@@ -135,6 +137,9 @@ return [
     'shipping_addresses' => 'عناوين الشحن',
     'cart' => 'عربة التسوق',
     'help_center' => 'مركز المساعدة',
+    'saved' => 'المحفوظات',
+    'edit_personal_info' => 'تعديل الملف الشخصى',
+    'save' => 'حفظ',
 
     // Shipping addresses
     'addresses' => 'عناوين الشحن',
@@ -145,4 +150,9 @@ return [
     'city_added' => 'تمت إضافة المدينة بنجاح',
     'address_added' => 'تمت إضافة العنوان بنجاح',
     'ps' => 'رمز بريدى',
+
+    // Saved
+    'jobs' => 'الوظائف التعليمية',
+    'save_city' => 'حفظ المدينة',
+    'saved_text' => 'هذا النص هو مثال لنص يمكن ان يستبدل فى نفس المساحة',
 ];

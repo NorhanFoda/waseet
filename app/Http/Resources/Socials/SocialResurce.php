@@ -14,9 +14,23 @@ class SocialResurce extends JsonResource
      */
     public function toArray($request)
     {
+        $key  ='';
+        if($this->icon == 'fa fa-facebook-f'){
+            $key = 'facebook';
+        }
+        else if($this->icon == 'fa fa-twitter'){
+            $key = 'twitter';
+        }
+        else if($this->icon == 'fa fa-snapchat'){
+            $key = 'snapchat';
+        }
+        else if($this->icon == 'fa fa-instagram'){
+            $key = 'instagram';
+        }
+
         return [ 
+            'key' => $key,
             'link' => $this->link,
-            'icon' => $this->image->path,
         ];
     }
 }

@@ -91,8 +91,8 @@
           @if($role_id != 5 && $role_id != 'visitor')
           {{-- age start --}}
           <div class="userName">
-            <input type="number" name="age" value="{{old('age')}}" required />
-            <label for="country">
+            <input type="number" id="age" name="age" value="{{old('age')}}" required />
+            <label for="age">
               <i class="far fa-user"></i> {{trans('web.age')}}
             </label>
           </div>
@@ -225,10 +225,19 @@
           {{-- teaching_address end --}}
           @endif
 
+        {{-- image start --}}
+          <div class="userName custom-file">
+            <input type="file" id="image" name="image"  accept="image/*" />
+            <label for="image">
+              <i class="fa fa-file"></i> <span>{{trans('web.image')}}</span> 
+            </label>
+          </div>
+        {{-- image end --}}
+
           @if($role_id == 3 || $role_id == 4)
           {{-- bio_ar start --}}
           <div class="userName">
-            <textarea name="bio_ar" class="form-control" role="6" cols="30" required> {{old('bio_ar')}}</textarea>
+            <textarea name="bio_ar" class="form-control" rows="6" cols="30" required> {{old('bio_ar')}}</textarea>
             <label for="country">
               <i class="fa fa-address-book-o"></i> {{trans('web.bio_ar')}}
             </label>
@@ -237,7 +246,7 @@
 
           {{-- bio_en start --}}
           <div class="userName">
-            <textarea name="bio_en" class="form-control" role="6" cols="30" required> {{old('bio_en')}}</textarea>
+            <textarea name="bio_en" class="form-control" rows="6" cols="30" required> {{old('bio_en')}}</textarea>
             <label for="country">
               <i class="fa fa-address-book-o"></i> {{trans('web.bio_en')}}
             </label>
@@ -281,20 +290,10 @@
               <i class="fa fa-lock"></i> {{trans('web.password_confirmation')}}  
             </label>
           </div>
-            {{-- image start --}}
-        <div class="userName custom-file">
-          <input type="file" id="image" name="image"  accept="image/*" />
-          <label for="image">
-            <i class="fa fa-file"></i> <span>{{trans('web.image')}}</span> 
-          </label>
-        </div>
-        
-        {{-- image end --}}
+
         </div>
         {{-- password confirmation end --}}
-
-      
-
+        
         <div class="submit">
           <button type="submit" class="custom-btn">{{trans('web.do_register')}}</button>
         </div>
@@ -318,19 +317,20 @@
                 });
             });
             
-$(".custom-file input").on("change", function() {
-  var fileName = $(this).val().split("\\").pop();
-  $(this).next("label").find("span").html(fileName);
-});
+            $(".custom-file input").on("change", function() {
+              var fileName = $(this).val().split("\\").pop();
+              $(this).next("label").find("span").html(fileName);
+            });
 
-$(".inputs-contain input").focusout(function(){
-    if ($(this).val() != ""){
-        $(this).addClass("active")
-    }else{
-        $(this).removeClass("active")
-    }});
+            $(".inputs-contain input").focusout(function(){
+              if ($(this).val() != ""){
+                  $(this).addClass("active")
+              }
+              else{
+                  $(this).removeClass("active")
+              }
+            });
 
-   
         });
     </script>
 @endsection
