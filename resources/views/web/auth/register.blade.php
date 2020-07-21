@@ -144,16 +144,21 @@
 
           @if($role_id == 3 || $role_id == 4)
           {{-- materials start --}}
-          <div class="userName custom-select2">
-            <select class="custom-input" name="material_ids[]" multiple>
-              <option value="{{null}}">{{trans('web.materials')}}</option>
-              @foreach($materials as $material)
-                <option value="{{$material->id}}" @if(old('level_id') == $material->id) selected @endif>{{$material->{'name_'.session('lang')} }}</option>
-              @endforeach
-            </select>
+          <div class="userName custom-menu-select">
+          <div class="title-check  text-right-dir">     
             <span class="form-icon">
               <i class="fa fa-book"></i>
             </span>
+            {{trans('web.materials')}}
+          </div>
+          <div class="all-checks">
+              @foreach($materials as $material)
+                <div class="custom-check text-right-dir">
+                  <input type="checkbox" name="{{$material->id}}" id="check-{{$material->id}}">
+                  <label for="check-{{$material->id}}"> @if(old('level_id') == $material->id) selected @endif {{$material->{'name_'.session('lang')} }}</label>
+                </div>
+              @endforeach
+            </div>
           </div>
           {{-- materials end --}}
           @endif
@@ -331,6 +336,25 @@
               }
             });
 
+        });
+        
+        $(".title-check").click(function(){
+            $(".all-checks").slideToggle().css("overflow","auto");
+        })
+        
+        $(function() {
+          var $wina = $(window); // or $box parent container
+          var $boxa = $(".custom-menu-select");
+          $wina.on("click.Bst", function(event) {
+              if (
+                  $boxa.has(event.target).length === 0 && //checks if descendants of $box was clicked
+                  !$boxa.is(event.target) //checks if the $box itself was clicked
+              ) {
+                    $(".all-checks").slideUp();
+
+
+              }
+          });
         });
     </script>
 @endsection

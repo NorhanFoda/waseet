@@ -3795,8 +3795,8 @@ iframe#st_gdpr_iframe{
   opacity: 0;
   visibility: hidden;
   z-index: -2;
-  width: 0;
-  height: 0;
+  width: 0  !important;
+  height: 0  !important;
 }
 
 .custom-check label {
@@ -3896,4 +3896,68 @@ iframe#st_gdpr_iframe{
 
 .payment-grid li span {
  color:#56ccf2
+}
+
+.cardBody  .title-check,.title-check  {
+    height: 45px;
+    background: white;
+    border-radius: 30px;
+    line-height: 40px;
+    padding: 3px 35px !important;
+    font-size: 14px;
+    color: #777;
+    border: 1px solid #dbcbf0;
+    overflow: hidden;
+    z-index: 21;
+    position: relative;
+}
+
+.cardBody .all-checks, .all-checks {
+    padding: 30px 12px 0 !important;
+    position: absolute;
+    top: calc(100% - 17px);
+    right: 0;
+    z-index: 2;
+    width: 100%;
+    max-height: 130px;
+    overflow: auto;
+    background: #fff;
+    border-radius: 10px;
+box-shadow: 0 0 7px #aaa;
+    display:none;
+}
+
+.all-checks::-webkit-scrollbar-track {
+        background-color:#eee;
+
+
+}
+
+.all-checks::-webkit-scrollbar {
+    width: 6px;
+    background-color: #fff;
+
+}
+
+.all-checks::-webkit-scrollbar-thumb {
+    background-color: #c1a5e3;
+}
+
+.all-checks .custom-check label:before {
+    top: -2px;
+}
+.all-checks label{
+        pointer-events: auto !important;
+        position:relative !important;
+            margin-bottom: 0;
+
+}
+
+.all-checks .custom-check {
+    padding: 0 20px !important;
+    margin-bottom: 10px;
+}
+
+.title-check .form-icon {
+    top: 3px;
 }
