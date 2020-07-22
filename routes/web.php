@@ -215,10 +215,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 
         // Addresses
         Route::get('addresses/index', 'Web\AddressController@index')->name('addresses.index');
-        Route::get('addresses', 'Web\AddressController@create')->name('addresses.create');
         Route::post('addresses', 'Web\AddressController@store')->name('addresses.store');
         Route::delete('addresses', 'Web\AddressController@delete')->name('addresses.delete');
-        Route::post('addresses/city', 'Web\AddressController@addCity')->name('addresses.add_city');
 
         // Profile
         Route::get('profile', 'Web\ProfileController@index')->name('profile.index');

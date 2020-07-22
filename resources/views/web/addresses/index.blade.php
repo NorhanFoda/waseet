@@ -78,7 +78,7 @@
                                     </span>
                                 </div>
 
-                                <div class="userName custom-select2">
+                                <div class="userName custom-select2 city-add-2">
                                     <div class="add-address">
                                         <select  class="custom-input" name="city_id" id="city_id" required>
                                             <option selected disabled value="{{null}}">{{trans('web.city')}}</option>
@@ -86,14 +86,44 @@
                                                 <option value="{{$city->id}}">{{$city->{'name_'.session('lang')} }}</option>
                                             @endforeach
                                         </select>
-                                        <div class="sub-add-address" data-toggle="modal" data-target="#add-city">
-                                            <i class="fas fa-plus"></i>
-                                        </div>
+
                                     </div>
                                     <span class="form-icon">
                                         <i class="fa fa-map-marker-alt"></i>
                                     </span>
                                 </div>
+                                       <div class="userName custom-select2">
+                                    <div class="add-address">
+                                        <div class="sub-add-address">
+                                            <i class="fas fa-plus"></i> 
+                                            <span class="city-text">{{trans('web.add_city')}}</span>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                
+                                {{-- Add city modal start --}}
+                                <div class="city-add">
+                                    <div class="inputs-contain">
+                                        <div class="userName">
+                                            <input type="text" name="name_ar" id="city_name_ar">
+                                            <label>
+                                                {{trans('admin.name_ar')}}
+                                            </label>
+                                        </div>
+
+                                        <div class="userName">
+                                            <input type="text" name="name_en" id="city_name_en">
+                                            <label>
+                                                {{trans('admin.name_en')}}
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                 
+
+                                </div>
+                                {{-- Add city modal end --}}
 
                                 <div class="userName">
                                     <input type="text" name="address" required="">
@@ -121,59 +151,6 @@
     </div>
     {{-- add address modal end --}}
 
-    {{-- add city modal start --}}
-    <div class="modal fade" id="add-city" tabindex="-1" role="dialog" aria-labelledby="add-city" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header text-center">
-                    <h5 class="modal-title first_color">{{trans('web.add_city')}}</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body text-right-dir">
-                    <div class="signUp gray-form aos-init aos-animate" data-aos="fade-in">
-                        <form action="{{route('addresses.add_city')}}" method="POST">
-                            @csrf
-                            <div class="inputs-contain">
-                                <div class="userName custom-select2">
-                                    <select  class="custom-input" name="country_id" required>
-                                        <option selected disabled value="{{null}}">{{trans('web.country')}}</option>
-                                        @foreach ($countries as $country)
-                                            <option value="{{$country->id}}">{{$country->{'name_'.session('lang')} }}</option>
-                                        @endforeach
-                                    </select>
-                                    <span class="form-icon">
-                                        <i class="fa fa-map-marker-alt"></i>
-                                    </span>
-                                </div>
-
-                                <div class="userName">
-                                    <input type="text" name="name_ar"  required>
-                                    <label>
-                                        {{trans('admin.name_ar')}}
-                                    </label>
-                                </div>
-
-                                <div class="userName">
-                                    <input type="text" name="name_en"  required>
-                                    <label>
-                                        {{trans('admin.name_en')}}
-                                    </label>
-                                </div>
-                            </div>
-
-                            <div class="submit">
-                                <button type="submit" class="custom-btn">{{trans('web.add')}}</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    {{-- add sity modal end --}}
-
 @endsection
 
 @section('scripts')
@@ -187,7 +164,29 @@
                     dataType: 'html',
                     data: {"_token": "{{ csrf_token() }}", id: $(this).val() },
                     success: function(data){
+
                         $('#city_id').html(data);
+
+                        // Open adding city modal
+                        $(".sub-add-address").click(function () {
+                            if($(".city-text").text() == '{{trans("web.select_city")}}'){
+                                $(".city-text").text('{{trans("web.add_city")}}');    
+                                $('#city_name_ar').prop('required',false);
+                                $('#city_name_en').prop('required',false);
+                                $('#city_name_ar').val('');
+                                $('#city_name_en').val('');
+                            }
+                            else{
+                                $(".city-text").text('{{trans("web.select_city")}}');  
+                                $('#city_id').val('');
+                                $('#city_id').prop('required',false);
+                                $('#city_name_ar').prop('required',true);
+                                $('#city_name_en').prop('required',true);
+                            }
+                            
+                            $(".city-add-2").slideToggle("fast");
+                            $(".city-add").slideToggle("fast");
+                        });
                     }
                 });
             });

@@ -18,45 +18,45 @@ class AddressController extends Controller
         return view('web.addresses.index', compact('addresses', 'countries', 'cities'));
     }
 
-    public function create(){
-        $countries = Country::all();
-        $cities = count($countries) > 0 ? $countries[0]->cities : [];
-
-        return view('web.addresses.create', compact('countries', 'cities'));
-    }
-
     public function store(Request $request){
+
         $this->validate($request, [
             'country_id' => 'required',
-            'city_id' => 'required',
             'address' => 'required',
             'postal_code' => 'required',
         ]);
 
-        $address = Address::create($request->all());
-        $address->update(['user_id' => auth()->user()->id]);
-
-        session()->flash('success', trans('web.address_added'));
-        return redirect()->route('addresses.index');
-    }
-
-    public function addCity(Request $request){
-        $this->validate($request, [
-            'country_id' => 'required',
-            'name_ar' => 'required',
-            'name_en' => 'required'
-        ]);
-
-        $city = City::create($request->all());
-
-        if($city != null){
-            session()->flash('success', trans('web.city_added'));
+        if($request->has('city_id')){
+            $address = Address::create($request->all());
+            $address->update(['user_id' => auth()->user()->id]);
+            session()->flash('success', trans('web.address_added'));
             return redirect()->back();
         }
         else{
-            session()->flash('error', trans('admin.error'));
+            $this->validate($request, [
+                'name_ar' => 'required',
+                'name_en' => 'required'
+            ]);
+
+            $city = City::create([
+                'country_id' => $request->country_id,
+                'name_ar' => $request->name_ar,
+                'name_en' => $request->name_en
+            ]);
+
+            $address = Address::create([
+                'country_id' => $request->country_id,
+                'city_id' => $city->id,
+                'address' => $request->address,
+                'postal_code' => $request->postal_code,
+                'user_id' =>  auth()->user()->id,
+            ]);
+
+            session()->flash('success', trans('web.address_added'));
             return redirect()->back();
+
         }
+
     }
 
     public function delete(Request $request){

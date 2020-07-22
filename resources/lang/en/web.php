@@ -148,10 +148,11 @@ return [
     'address_details' => 'Address in Details',
     'postal_code' => 'Postal Code',
     'add' => 'Add',
-    'add_city' => 'Add A New City',
+    'add_city' => 'Add City',
     'city_added' => 'City Added Successfully',
     'address_added' => 'Address Added Successfully',
     'ps' => 'Postal Code',
+    'select_city' => 'Select From Existing Cities',
 
     // Saved
     'jobs' => 'Educational Jobs',
