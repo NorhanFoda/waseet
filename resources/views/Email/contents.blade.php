@@ -50,7 +50,7 @@
                     </div>
 
                     <div>
-                        <h3>{{trans('web.contents')}} :</h3>
+                        <h3 style="text-align:center">{{trans('web.contents')}} :</h3>
                     </div>
 
                     <div>
