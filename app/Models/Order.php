@@ -19,7 +19,7 @@ class Order extends Model
     public function bags(){
         return $this->belongsToMany(Bag::class)
                         ->withPivot('total_price', 'quantity', 'accepted', 'shipped', 'delivered',
-                        'id', 'created_at', 'updated_at', 'bag_id', 'order_id');
+                        'id', 'created_at', 'updated_at', 'bag_id', 'order_id', 'buy_type');
     }
 
     public function address(){

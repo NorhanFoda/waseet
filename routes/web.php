@@ -221,6 +221,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
         Route::get('payment/{address_id}', 'Web\PaymentController@prepareOrder')->name('payment.prepare_order');
         Route::get('banks_data', 'Web\PaymentController@getBanksData')->name('payment.banks');
         Route::post('save_bank_receipt', 'Web\PaymentController@saveBankReceipt')->name('payment.bank_receipt');
+        Route::get('confirm_order/{id}', 'Web\PaymentController@confirmOrder')->name('order.confirm');
 
         // Addresses
         Route::get('addresses/index', 'Web\AddressController@index')->name('addresses.index');
@@ -232,6 +233,9 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
         Route::get('saved', 'Web\ProfileController@getSaved')->name('saved.index');
         Route::get('personal_info', 'Web\ProfileController@editPersonalInfo')->name('profile.edit_personal_info');
         Route::post('personal_info', 'Web\ProfileController@storePersonalInfo')->name('profile.store_personal_info');
+        Route::get('get_orders', 'Web\ProfileController@getOrders')->name('profile.orders');
+        Route::get('get_orders/{id}', 'Web\ProfileController@trackOrder')->name('profile.track_order');
+        Route::get('contents/{id}', 'Web\ProfileController@showBagContents')->name('order.bag_contents');
     });
 
 });

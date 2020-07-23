@@ -175,4 +175,21 @@ return [
     'payment_report' => 'Payment Confirmation',
     'payment_report_text' => 'This text is an example of text that can be replaced in the same space',
     'payment_status' => 'Payment is Confirmed And Your Order Status is Wainting',
+
+    // Orders
+    'orders_text' => 'This text is an example of text that can be replaced in the same space',
+    'order_date' => 'Order Date',
+    'total_price' => 'Total Price', 
+    'bag_is_ordered' => 'Order Request',
+    'order_not_confirmed' => 'Order is Not Confirmed By You',
+    'confirm_order' => 'Confirm Order Now',
+    'order_waiting' => 'Order is Accepted On ',
+    'ordered_not_shipped' => 'Order is Not Shipped Yet',
+    'order_shipped' => 'Order Shipment',
+    'order_is_shipped' => 'Order is Shipped On',
+    'order_delivered' => 'Order Delivery',
+    'order_not_delivered' => 'Order is Not delivered Yet',
+    'order_is_delivered' => 'Order is Deleivered On ',
+    'bag_contents' => 'We Offer You The Contents of The Educational Bags You Just Purchased From Waseet Al Moalm Website',
+    'bag_contents_emailed' => 'Educational Bag Contents are Sent to Your Email',
 ];

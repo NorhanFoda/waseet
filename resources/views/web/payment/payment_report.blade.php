@@ -33,7 +33,7 @@
                                         <li><span>  {{trans('web.address')}} :</span>   {{$order->address->country->{'name_'.session('lang')} }} - {{$order->address->city->{'name_'.session('lang')} }} - {{$order->address->address}}</li>
                                     </ul>
                                     <div class="text-center col-12">
-                                       <br><br>  <a href="{{route('home')}}" class="custom-btn">{{trans('web.continue')}} </a>
+                                       <br><br>  <a href="{{route('profile.orders')}}" class="custom-btn">{{trans('web.continue')}} </a>
                                     <br><br>
                                 </div>
                                 </div>

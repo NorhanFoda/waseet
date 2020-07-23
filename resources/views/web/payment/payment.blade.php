@@ -131,7 +131,7 @@
                                     </div>
 
                                     <div class="userName img-show">
-                                        <img src="#" class="file-upload-image" alt="">
+                                        <img src="" class="file-upload-image" alt="">
                                     </div>
 
                                     <button type="submit" class="custom-btn">{{trans('web.send')}}</button>

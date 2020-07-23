@@ -11,6 +11,7 @@ use App\Models\EduLevel;
 use App\Models\EduType;
 use App\Models\Country;
 use App\Models\Image;
+use App\Models\Order;
 use App\Classes\Upload;
 
 class ProfileController extends Controller
@@ -89,5 +90,18 @@ class ProfileController extends Controller
         session()->flash('success', trans('web.personal_info_updated'));
         return redirect()->route('profile.index');
 
+    }
+
+    public function getOrders(){
+        return view('web.orders.index');
+    }
+
+    public function trackOrder($id){
+        $order = Order::with('bags')->find($id);
+        return view('web.orders.track_order', compact('order'));
+    }
+
+    public function showBagContents($id){
+        dd('bag contents');
     }
 }

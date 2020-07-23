@@ -25,7 +25,8 @@ class HomeController extends Controller
         $edu_bags_title = $set->{'section_3_text_'.$lang};
         $edu_bags_image = $set->section_3_image;
 
-        $teacher_text = $set->section_2_image;
+        $teacher_text = $set->{'section_2_text_'.$lang};
+        $teacher_image = $set->section_2_image;
 
         $about_waseet_text = trans('api.about_waseet_text');
         $about_waseet_image = $set->text_after_add_image;
@@ -40,6 +41,7 @@ class HomeController extends Controller
             'edu_bags_title' => $edu_bags_title,
             'edu_bags_image' => $edu_bags_image,
             'teacher_text' => $teacher_text,
+            'teacher_image' => $teacher_image,
             'about_waseet_text' => $about_waseet_text,
             'about_waseet_image' => $about_waseet_image,
             'slider' => SliderResource::collection($slider)

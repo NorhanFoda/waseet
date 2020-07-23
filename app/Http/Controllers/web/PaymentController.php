@@ -12,6 +12,7 @@ use App\Models\Bank;
 use App\Models\BankReceipt;
 use App\Models\Image;
 use App\Classes\Upload;
+use App\Classes\SendEmail;
 
 class PaymentController extends Controller
 {
@@ -40,7 +41,9 @@ class PaymentController extends Controller
                 'total_price' => $cart->total_price,
                 'quantity' => $cart->quantity,
                 'buy_type' => $cart->buy_type
-            ]);   
+            ]);  
+            
+            $cart->delete();
         }
 
         $banks = Bank::all();
@@ -75,7 +78,22 @@ class PaymentController extends Controller
 
         $order = Order::with('address')->find($request->order_id);
         $order->update(['status' => 2]);
+
+        // If order contains buy online bags, then send email bag contents
+        if($order->bags()->where('buy_type', 1)->exists()){
+            
+            $bags = $order->bags()->where('buy_type', 1)->get();
+            SendEmail::sendBagContents($bags, auth()->user()->email);
+
+            session()->flash('success', trans('web.bag_contents_emailed'));
+            return view('web.payment.payment_report', compact('order'));
+        }
         
         return view('web.payment.payment_report', compact('order'));
+    }
+
+    public function confirmOrder($id){
+        $banks = Bank::all();
+        return view('web.payment.payment')->with(['order_id' => $id, 'banks' => $banks]);
     }
 }

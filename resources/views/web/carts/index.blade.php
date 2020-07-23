@@ -36,7 +36,10 @@
 
                                         <div class="pack-width">
                                             <div class="pack_name">
-                                                <p>{{$cart->bag->{'name_'.session('lang')} }}</p>
+                                                <p>{{$cart->bag->{'name_'.session('lang')} }} 
+                                                    @if($cart->buy_type == 1) ({{trans('web.buy_online')}}) @endif
+                                                    @if($cart->buy_type == 2) ({{trans('web.print_content')}}) @endif
+                                                </p>
                                             </div>
 
                                             <div class="pack_rate">
