@@ -307,14 +307,14 @@
               },
               "ContactUsController.php": {
                 "type": "-",
-                "size": 1267,
+                "size": 1249,
                 "lmtime": 1595330771190,
-                "modified": false
+                "modified": true
               },
               "HomeController.php": {
                 "type": "-",
-                "size": 1453,
-                "lmtime": 1595255526954,
+                "size": 1527,
+                "lmtime": 1595428546092,
                 "modified": false
               },
               "LoginController.php": {
@@ -660,6 +660,14 @@
                 "type": "-",
                 "size": 892,
                 "lmtime": 1594300247257,
+                "modified": false
+              }
+            },
+            "Slider": {
+              "SliderResource.php": {
+                "type": "-",
+                "size": 539,
+                "lmtime": 1595428514519,
                 "modified": false
               }
             }
@@ -11053,8 +11061,8 @@
             },
             "main.css": {
               "type": "-",
-              "size": 76895,
-              "lmtime": 1595344506528,
+              "size": 76920,
+              "lmtime": 1595428750901,
               "modified": false
             },
             "main.css.map": {
@@ -12058,6 +12066,26 @@
                 "type": "-",
                 "size": 8912,
                 "lmtime": 1595152227554,
+                "modified": false
+              }
+            },
+            "payment": {
+              "payment.blade.php": {
+                "type": "-",
+                "size": 5853,
+                "lmtime": 0,
+                "modified": false
+              },
+              "payment_methods.blade.php": {
+                "type": "-",
+                "size": 3348,
+                "lmtime": 0,
+                "modified": false
+              },
+              "payment_report.blade.php": {
+                "type": "-",
+                "size": 2543,
+                "lmtime": 1595428727308,
                 "modified": false
               }
             }

@@ -8,21 +8,26 @@ use App\Models\Setting;
 use App\Models\Order;
 use App\Models\BagOrder;
 use App\Models\Bag;
+use App\Models\Bank;
+use App\Models\BankReceipt;
+use App\Models\Image;
+use App\Classes\Upload;
 
 class PaymentController extends Controller
 {
     public function prepareOrder($address_id){
-        $total_price = 0;
-        $shipping_fees = Setting::find(1)->shipping_fees;
         $carts = auth()->user()->carts;
         
-        foreach($carts as $cart){
-            $total_price += $cart->total_price;
+        if(count($carts) == 0){
+            session()->flash('error', trans('web.cart_empty'));
+            return redirect()->back();
         }
+
+        $shipping_fees = Setting::find(1)->shipping_fees;
 
         $order = Order::create([
             'user_id' => auth()->user()->id,
-            'total_price' => $total_price,
+            'total_price' => $carts->sum('total_price'),
             'address_id' => $address_id,
             'status' => 1, // Not confirmed
             'shipping_fees' => $shipping_fees,
@@ -36,10 +41,41 @@ class PaymentController extends Controller
                 'quantity' => $cart->quantity,
                 'buy_type' => $cart->buy_type
             ]);   
-            
-            $cart->delete();
         }
 
-        //redirect to confirmation page
+        $banks = Bank::all();
+        return view('web.payment.payment')->with(['order_id' => $order->id, 'banks' => $banks]);
+    }
+
+    public function getBanksData(){
+        $banks = Bank::with('image')->get();
+        return view('web.payment.payment_methods', compact('banks'));
+    }
+
+    public function saveBankReceipt(Request $request){
+        $this->validate($request, [
+            'bank_id' => 'required',
+            'name' => 'required',
+            'email' => 'required',
+            'phone' => 'required',
+            'cost' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+        ]);
+
+        $receipt = BankReceipt::create($request->all());
+        $receipt->update(['user_id' => auth()->user()->id]);
+
+        $image_url = Upload::uploadImage($request->image);
+        $image = Image::create([
+            'path' => $image_url,
+            'imageRef_id' => $receipt->id,
+            'imageRef_type' => 'App\Models\BankReceipt'
+        ]);
+        $receipt->image()->save($image);
+
+        $order = Order::with('address')->find($request->order_id);
+        $order->update(['status' => 2]);
+        
+        return view('web.payment.payment_report', compact('order'));
     }
 }

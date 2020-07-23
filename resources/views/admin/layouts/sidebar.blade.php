@@ -51,7 +51,9 @@
 
             <li class=" nav-item"><a href="{{route('nationalities.index')}}"><i class="fa fa-globe"></i><span class="menu-title" data-i18n="Dashboard">{{trans('admin.nationalities')}}</span></a></li>
 
-            <li class=" nav-item"><a href="{{route('methods.index')}}"><i class="fa fa-money"></i><span class="menu-title" data-i18n="Dashboard">{{trans('admin.payment_methods')}}</span></a></li>
+            {{-- <li class=" nav-item"><a href="{{route('methods.index')}}"><i class="fa fa-money"></i><span class="menu-title" data-i18n="Dashboard">{{trans('admin.payment_methods')}}</span></a></li> --}}
+
+            <li class=" nav-item"><a href="{{route('banks.index')}}"><i class="fa fa-money"></i><span class="menu-title" data-i18n="Dashboard">{{trans('admin.banks')}}</span></a></li>
 
             <li class=" nav-item"><a href="{{route('announces.index')}}"><i class="fa fa-bullhorn"></i><span class="menu-title" data-i18n="Dashboard">{{trans('admin.announces')}}</span></a></li>
             

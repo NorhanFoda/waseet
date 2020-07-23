@@ -3881,6 +3881,7 @@ iframe#st_gdpr_iframe{
   color: #333;
   font-size: 16.22px;
   margin-top: 30px;
+  list-style-type:none;
 }
 
 .payment-grid ul li {

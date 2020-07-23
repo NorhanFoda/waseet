@@ -322,7 +322,7 @@
                             </a>
                         </div>
 
-                        <div class="col-lg-3 col-md-6 col-12">
+                        {{-- <div class="col-lg-3 col-md-6 col-12">
                             <a href="{{route('methods.index')}}">
                                 <div class="card">
                                     <div class="card-header d-flex flex-column align-items-start pb-0">
@@ -333,6 +333,22 @@
                                         </div>
                                         <h2 class="text-bold-700 mt-1 mb-25">{{$methods}}</h2>
                                         <p class="mb-0">{{trans('admin.payment_methods')}}</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div> --}}
+
+                        <div class="col-lg-3 col-md-6 col-12">
+                            <a href="{{route('banks.index')}}">
+                                <div class="card">
+                                    <div class="card-header d-flex flex-column align-items-start pb-0">
+                                        <div class="avatar bg-rgba-primary p-50 m-0">
+                                            <div class="avatar-content">
+                                                <i class="fa fa-money font-medium-5"></i>
+                                            </div>
+                                        </div>
+                                        <h2 class="text-bold-700 mt-1 mb-25">{{$banks}}</h2>
+                                        <p class="mb-0">{{trans('admin.banks')}}</p>
                                     </div>
                                 </div>
                             </a>

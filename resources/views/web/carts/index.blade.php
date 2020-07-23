@@ -20,7 +20,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <h5 class="second_title second_color text-center" data-aos="fade-in">عربة التسوق</h5>
+                    <h5 class="second_title second_color text-center" data-aos="fade-in">{{trans('web.cart')}}</h5>
 
                     <!--start edit-list-->
                     <div class="prof-edit-list order-list shipping-list">
@@ -140,13 +140,13 @@
 
                 @if(count($carts) > 0)
                     <div class="submit col-12 text-center">
-                        <button type="submit" class="custom-btn" 
+                        <button type="button" class="custom-btn" 
                             @if(count(auth()->user()->addresses) == 0)  
-                                    data-toggle="modal" data-target="#add-address"
-                                @else
-                                    data-toggle="modal" data-target="#address-choose"
-                                @endif
-                                >
+                                data-toggle="modal" data-target="#add-address"
+                            @else
+                                data-toggle="modal" data-target="#address-choose"
+                            @endif
+                            >
                             {{trans('web.continue_pay')}}
                         </button>
                     </div>
@@ -155,32 +155,6 @@
             </div>
         </div>
     </section>
-
-    {{-- Select payment method modal start --}}
-    {{-- <div class="modal fade" id="payment-choose" tabindex="-1" role="dialog" aria-labelledby="payment-choose" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header text-center">
-                    <h5 class="modal-title first_color">{{trans('web.select_payment_method')}}</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body text-right-dir">
-                    <div class="custom-checkboxes" data-aos="fade-in">
-                        @foreach($methods as $method)
-                            <div class="custom-check" data-toggle="modal" data-target="#address-choose">
-                                <img src="{{$method->image->path}}" alt="pay">
-                                <input type="radio" name="payment_method" id="check-1" @if($loop->iteration == 1) checked @endif>
-                                <label for="check-1">{{$method->{'name_'.session('lang')} }}</label>
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> --}}
-    {{-- Select payment method modal end --}}
 
     {{-- Select shipping address modal start --}}
     <div class="modal fade" id="address-choose" tabindex="-1" role="dialog" aria-labelledby="address-choose" aria-hidden="true">
@@ -196,16 +170,16 @@
                     <div class="custom-checkboxes" data-aos="fade-in">
                         @if(count(auth()->user()->addresses) > 0)
                             @foreach(auth()->user()->addresses as $address)
-                               
-                                    <div class="custom-check">
-                                        <input type="radio" name="address" id="check-{{$address->id}}" @if($loop->iteration == 1) checked @endif>
-                                        <label for="check-{{$address->id}}">{{$address->country->{'name_'.session('lang')} }} - {{$address->city->{'name_'.session('lang')} }} - {{$address->address}}</label>
-                                    </div>
-                                    <div class="text-center">
-                                          <a href="{{route('payment.prepare_order', $address->id)}}" class="custom-btn">متابعة </a>
-                                    </div>
-                                   
+                                <div class="custom-check">
+                                    <input type="radio" name="address" id="check-{{$address->id}}" @if($loop->iteration == 1) checked @endif>
+                                    <label for="check-{{$address->id}}">{{$address->country->{'name_'.session('lang')} }} - {{$address->city->{'name_'.session('lang')} }} - {{$address->address}}</label>
+                                </div>
                             @endforeach
+
+                            <div class="text-center">
+                                <a href="{{route('payment.prepare_order', $address->id)}}" class="custom-btn">{{trans('web.continue')}} </a>
+                            </div>
+                            
                         @else
                             <div class="submit col-12 text-center">
                                 <button data-toggle="modal" data-target="#add-address" class="custom-btn">{{trans('web.add_address')}}</button>

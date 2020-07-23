@@ -254,5 +254,10 @@ return [
     'online_teacher' => 'معلم إفتراضى',
     'direct_teacher' => 'معلم مباشر',
     '' => '',
+
+    // Banks
+    'banks' => 'البنوك',
+    'account_number' => 'رقم الحساب',
+    'iban' => 'الأيبان',
     
 ];

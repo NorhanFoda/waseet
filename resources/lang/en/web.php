@@ -124,6 +124,7 @@ return [
     'sub_price_total' => 'Sub Total',
     'total' => 'Total',
     'continue_pay' => 'Continue Payment',
+    'continue' => 'Continue',
     'select_payment_method' => 'Select Payment Method',
     'select_shipping_address' => 'Select Shipping Address',
     'add_address' => 'Add Shipping Address',
@@ -157,4 +158,21 @@ return [
     // Saved
     'jobs' => 'Educational Jobs',
     'save_city' => 'Save City',
+
+    // Bank
+    'bank' => 'Account Name',
+    'account_number' => 'Account Number',
+    'iban' => 'IBAN',
+    'banks' => 'Bank Payment',
+    'bank_name' => 'Bank Name',
+    'cost' => 'Cost',
+    'phone' => 'Phone',
+    'receipt' => 'Receipt',
+    'additional_details' => 'Additional Details',
+    'order_id' => 'Order No.',
+
+    // Payment report
+    'payment_report' => 'Payment Confirmation',
+    'payment_report_text' => 'This text is an example of text that can be replaced in the same space',
+    'payment_status' => 'Payment is Confirmed And Your Order Status is Wainting',
 ];

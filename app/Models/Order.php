@@ -7,6 +7,7 @@ use App\Models\Bag;
 use App\Models\Address;
 use App\Models\PaymentMethod;
 use App\User;
+use App\Models\BankReceipt;
 
 class Order extends Model
 {
@@ -32,5 +33,9 @@ class Order extends Model
 
     public function payment_method(){
         return $this->belongsTo(PaymentMethod::class);
+    }
+
+    public function receipt(){
+        return $this->hasOne(BankReceipt::class);
     }
 }

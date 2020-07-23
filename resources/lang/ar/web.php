@@ -124,6 +124,7 @@ return [
     'sub_price_total' => 'إجمالى المبلغ الفرعى',
     'total' => 'الإجمالى',
     'continue_pay' => 'متابعة الدفع',
+    'continue' => 'متابعة',
     'select_payment_method' => 'إختر طريقة الدفع',
     'select_shipping_address' => 'إختر عنوان الشحن',
     'add_address' => 'أضف عنوان',
@@ -157,4 +158,22 @@ return [
     'jobs' => 'الوظائف التعليمية',
     'save_city' => 'حفظ المدينة',
     'saved_text' => 'هذا النص هو مثال لنص يمكن ان يستبدل فى نفس المساحة',
+
+    // Bank
+    'bank' => 'عنوان الحساب',
+    'account_number' => 'رقم الحساب',
+    'iban' => 'رقم الأيبان الدولى',
+    'banks' => 'الدفع البنكى',
+    'bank_payment_text' => 'هذا النص هو مثال لنص يمكن ان يستبدل فى نفس المساحة',
+    'bank_name' => 'إسم البنك',
+    'cost' => 'المبلغ',
+    'phone' => 'الجوال',
+    'receipt' => 'صورة الإيصال',
+    'additional_details' => 'تفاصيل إضافية',
+    'order_id' => 'رقم الطلب',
+
+    // Payment report
+    'payment_report' => 'تأكيد الدفع',
+    'payment_report_text' => 'هذا النص هو مثال لنص يمكن ان يستبدل فى نفس المساحة',
+    'payment_status' => 'تم تأكيد الدفع و طلبك الآن قيد الإننتظار',
 ];

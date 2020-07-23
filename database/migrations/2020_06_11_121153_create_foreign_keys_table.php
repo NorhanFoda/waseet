@@ -180,6 +180,20 @@ class CreateForeignKeysTable extends Migration
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
         });
+
+        Schema::table('bank_receipts', function(Blueprint $table){
+            $table->foreign('user_id')->references('id')->on('users')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+
+            $table->foreign('bank_id')->references('id')->on('banks')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+
+            $table->foreign('order_id')->references('id')->on('orders')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+        });
     }
 
     /**

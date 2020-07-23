@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Setting;
 use App\Models\StaticPage;
 use App\Models\Slider;
+use App\Http\Resources\Slider\SliderResource;
 
 class HomeController extends Controller
 {
@@ -41,7 +42,7 @@ class HomeController extends Controller
             'teacher_text' => $teacher_text,
             'about_waseet_text' => $about_waseet_text,
             'about_waseet_image' => $about_waseet_image,
-            'slider' => $slider
+            'slider' => SliderResource::collection($slider)
         ], 200);
     }
 }

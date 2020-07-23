@@ -30,10 +30,12 @@ Route::get('/admin/', function () {
         return Redirect::to($url);
 });
 
-/* ADMIN */
+
 Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 {
     session(['lang' => \App::getLocale()]);
+
+    /* ADMIN */
 
     Route::group(['prefix' => 'admin/'], function(){
 
@@ -132,8 +134,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
             Route::post('delete_nationality', 'Admin\NationalityController@deleteNationality')->name('nationalities.delete');
 
             // Payment methods
-            Route::resource('methods', 'Admin\PaymentMethodsController');
-            Route::post('delete_method', 'Admin\PaymentMethodsController@deleteMethod')->name('methods.delete');
+            // Route::resource('methods', 'Admin\PaymentMethodsController');
+            // Route::post('delete_method', 'Admin\PaymentMethodsController@deleteMethod')->name('methods.delete');
 
             // Socials
             Route::resource('socials', 'Admin\SocialController');
@@ -156,6 +158,10 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
             // Announces
             Route::resource('announces', 'Admin\AnnouncController');
             Route::post('delete_announce', 'Admin\AnnouncController@deleteAnnounce')->name('announces.delete');
+
+            // Banks
+            Route::resource('banks', 'Admin\BankController');
+            Route::post('delete_bank', 'Admin\BankController@deleteBank')->name('banks.delete');
             
             // Users
             Route::resource('users', 'Admin\UserController');
@@ -165,6 +171,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
         //Get cities
         Route::post('get_cities', 'Admin\CountryController@getCities')->name('countries.getCities');
     });
+
 
     /* WEBSITE */
 
@@ -212,6 +219,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 
         // Orders
         Route::get('payment/{address_id}', 'Web\PaymentController@prepareOrder')->name('payment.prepare_order');
+        Route::get('banks_data', 'Web\PaymentController@getBanksData')->name('payment.banks');
+        Route::post('save_bank_receipt', 'Web\PaymentController@saveBankReceipt')->name('payment.bank_receipt');
 
         // Addresses
         Route::get('addresses/index', 'Web\AddressController@index')->name('addresses.index');
@@ -223,10 +232,6 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
         Route::get('saved', 'Web\ProfileController@getSaved')->name('saved.index');
         Route::get('personal_info', 'Web\ProfileController@editPersonalInfo')->name('profile.edit_personal_info');
         Route::post('personal_info', 'Web\ProfileController@storePersonalInfo')->name('profile.store_personal_info');
-
-        Route::get('payment', function(){
-            return view('web.payment');
-        });
     });
 
 });

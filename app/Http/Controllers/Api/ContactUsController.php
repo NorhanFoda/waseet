@@ -33,7 +33,7 @@ class ContactUsController extends Controller
 
         $this->validate($request, [
             'name' => 'required',
-            'email' => 'required|email|unique:contact_us',
+            'email' => 'required|email',
             'message' => 'required'
         ]);
 

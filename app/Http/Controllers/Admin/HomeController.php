@@ -18,7 +18,8 @@ use App\Models\Material;
 use App\Models\Country;
 use App\Models\City;
 use App\Models\Nationality;
-use App\Models\PaymentMethod;
+// use App\Models\PaymentMethod;
+use App\Models\Bank;
 use App\Models\Announce;
 use DB;
 
@@ -72,7 +73,9 @@ class HomeController extends Controller
 
         $nations = count(Nationality::all());
 
-        $methods = count(PaymentMethod::all());
+        // $methods = count(PaymentMethod::all());
+
+        $banks = count(Bank::all());
 
         $announces = count(Announce::all());
         
@@ -80,7 +83,7 @@ class HomeController extends Controller
         return view('admin.home.index', compact('jobs', 'organizations', 'seekers', 'cvs',
                     'applicants', 'online_teachers', 'direct_teachers', 'students', 'users', 
                     'cats', 'bags', 'edu_types', 'stages', 'edu_levels', 'materials', 'countries',
-                    'cities', 'nations', 'methods', 'announces'));
+                    'cities', 'nations', 'announces', 'banks'));
     }
 
     public function change_locale($locale){
