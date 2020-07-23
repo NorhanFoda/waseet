@@ -16,7 +16,7 @@ class SendEmail{
         Mail::to($email)->send(new ResetPasswordEmail($code, $email));
     }
 
-    static function sendBagContents($bags, $email){
+    static function sendBagContents($bags, $email){;
         Mail::to($email)->send(new BagContentEmail($bags));
     }
 }

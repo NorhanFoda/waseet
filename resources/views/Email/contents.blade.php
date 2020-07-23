@@ -32,58 +32,56 @@
             {{trans('api.wasset_website')}}
         </div>
         <div
-            style="background: #f6f6f6; z-index: 5; font-size: 14px; line-height: 24px; color: #333; position: relative; padding:  20px; text-align: right;">
-            <h3 style="margin-bottom: 10px;font-size: 17px;"> {{trans('api.dear_cient')}} </h3>
+            style="background: #f6f6f6; z-index: 5; font-size: 14px; line-height: 24px; color: #333; position: relative; padding:  20px; text-align: center;">
+            <h3 style="margin-bottom: 10px;font-size: 17px; text-align:center"> {{trans('api.dear_cient')}} </h3>
             {{trans('web.bag_contents')}}
             <div style="color:#333; margin: 30px auto 20px; text-align: center;">
-                <span style="color:#333; background:#fff; padding:10px; border:1px solid #ccc;">
-                    @foreach($bags as $bag)
+                @foreach($bags as $bag)
 
-                        <div>
-                            <h2>{{$bag->{'name_'.session('lang')} }}</h2>
-                            <img src="{{$bag->image}}" alt="">
-                            <p>{{$bag->{'description_'.session('lang')} }}</p>
-                            <video width="100%" height="290" poster="{{$bag->poster}}" controls>
-                                <source src="{{$bag->video}}" type="video/mp4">
-                                <source src="{{$bag->video}}" type="video/ogg">
-                                <source src="{{$bag->video}}" type="video/webm">
-                            </video>
-                        </div>
+                    <div>
+                        <h2  style="text-align:center">{{$bag->{'name_'.session('lang')} }}</h2>
+                        <img src="{{$bag->image}}" alt="">
+                        <p  style="text-align:center">{{$bag->{'description_'.session('lang')} }}</p>
+                        <video width="100%" height="290" poster="{{$bag->poster}}" controls>
+                            <source src="{{$bag->video}}" type="video/mp4">
+                            <source src="{{$bag->video}}" type="video/ogg">
+                            <source src="{{$bag->video}}" type="video/webm">
+                        </video>
+                    </div>
 
-                        <div>
-                            {{trans('web.contents')}} :
-                        </div>
+                    <div>
+                        <h3>{{trans('web.contents')}} :</h3>
+                    </div>
 
-                        <div>
-                            @if($bag->videos->count() > 0)
-                                <h4>
-                                    {{trans('web.videos')}} : 
-                                </h4>
-                                @foreach($bag->videos as $video)
-                                    <a href="{{$video->path}}">{{$video->path}}</a>
-                                @endforeach
-                            @endif
+                    <div>
+                        @if($bag->videos->count() > 0)
+                            <h4>
+                                {{trans('web.videos')}} : 
+                            </h4>
+                            @foreach($bag->videos as $video)
+                                <a href="{{$video->path}}">{{$video->path}}</a>
+                            @endforeach
+                        @endif
 
-                            @if($bag->images->count() > 0)
-                                <h4>
-                                    {{trans('web.images')}} : 
-                                </h4>
-                                @foreach($bag->images as $image)
-                                    <a href="{{$image->path}}">{{$image->path}}</a>
-                                @endforeach
-                            @endif
+                        @if($bag->images->count() > 0)
+                            <h4>
+                                {{trans('web.images')}} : 
+                            </h4>
+                            @foreach($bag->images as $image)
+                                <a href="{{$image->path}}">{{$image->path}}</a>
+                            @endforeach
+                        @endif
 
-                            @if($bag->documents->count() > 0)
-                                <h4>
-                                    {{trans('web.documents')}} : 
-                                </h4>
-                                @foreach($bag->documents as $pdf)
-                                    <a href="{{$pdf->path}}">{{$pdf->path}}</a>
-                                @endforeach
-                            @endif
-                        </div>
-                    @endforeach
-                </span>
+                        @if($bag->documents->count() > 0)
+                            <h4>
+                                {{trans('web.documents')}} : 
+                            </h4>
+                            @foreach($bag->documents as $pdf)
+                                <a href="{{$pdf->path}}">{{$pdf->path}}</a>
+                            @endforeach
+                        @endif
+                    </div>
+                @endforeach            
             </div>
         </div>
     </div>

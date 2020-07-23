@@ -81,8 +81,9 @@ class PaymentController extends Controller
 
         // If order contains buy online bags, then send email bag contents
         if($order->bags()->where('buy_type', 1)->exists()){
-            
+
             $bags = $order->bags()->where('buy_type', 1)->get();
+            
             SendEmail::sendBagContents($bags, auth()->user()->email);
 
             session()->flash('success', trans('web.bag_contents_emailed'));
