@@ -74,6 +74,7 @@ return [
     'online_teachers' => 'Online teachers',
     'direct_teachers' => 'Direct teachers',
     'students' => 'Students',
+    'visitor' => 'Visitor',
 
     // Materials
     'materials' => 'Subjects',
@@ -261,10 +262,21 @@ return [
     'direct_teacher' => 'Direct teacher',
     '' => '',
 
-    
     // Banks
     'banks' => 'Banks',
     'account_number' => 'Account Number',
     'iban' => 'IBAN',
+
+    // Addresses
+    'addresses' => 'Shipping Addresses',
+
+    // Orders
+    'orders' => 'Orders',
+    'order_id' => 'Order No.',
+    'total_price' => 'Total Price',
+    'status' => 'Order Status',
+    'waiting' => 'Waiting',
+    'shipping' => 'Shipping',
+    'delivered' => 'Delivered',
     
 ];

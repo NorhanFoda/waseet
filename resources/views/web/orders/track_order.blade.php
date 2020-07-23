@@ -126,7 +126,7 @@
                                     <div class="side-track">
                                         <h3>{{trans('web.bag_is_ordered')}}</h3>
                                         @if($order->status == 2 || $order->status == 3 || $order->status == 4)
-                                            {{trans('web.order_waiting')}} {{$order->receipt->created_at->toDateString()}}
+                                            {{trans('web.order_waiting')}} {{date('Y-m-d', strtotime($bag->pivot->accepted ?? ''->Fecha))}}
                                         @endif
                                         @if($order->status == 1)
                                             {{trans('web.order_not_confirmed')}} <a href="{{route('order.confirm', $order->id)}}">{{trans('web.confirm_order')}}</a>

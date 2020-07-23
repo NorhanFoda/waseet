@@ -253,11 +253,23 @@ return [
     'job_seeker' => 'باحث عن عمل',
     'online_teacher' => 'معلم إفتراضى',
     'direct_teacher' => 'معلم مباشر',
-    '' => '',
+    'visitor' => 'زائر',
 
     // Banks
     'banks' => 'البنوك',
     'account_number' => 'رقم الحساب',
     'iban' => 'الأيبان',
+
+    // Addresses
+    'addresses' => 'عناوين الشحن',
+
+    // Orders
+    'orders' => 'الطلبات',
+    'order_id' => 'رقم الطلب',
+    'total_price' => 'المبلغ الإجمالى',
+    'status' => 'حالة الطلب',
+    'waiting' => 'إنتظار',
+    'shipping' => 'جارى الشحن',
+    'delivered' => 'تم التسليم',
     
 ];

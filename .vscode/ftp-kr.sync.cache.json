@@ -71,16 +71,16 @@
       },
       "app": {
         "Classes": {
+          "SendEmail.php": {
+            "type": "-",
+            "size": 593,
+            "lmtime": 1595506302772,
+            "modified": false
+          },
           "Upload.php": {
             "type": "-",
             "size": 2709,
             "lmtime": 0,
-            "modified": false
-          },
-          "SendEmail.php": {
-            "type": "-",
-            "size": 438,
-            "lmtime": 1594042012564,
             "modified": false
           },
           "Verify.php": {
@@ -90,8 +90,22 @@
             "modified": false
           }
         },
-        "Console": {},
-        "Exceptions": {},
+        "Console": {
+          "Kernel.php": {
+            "type": "-",
+            "size": 848,
+            "lmtime": 0,
+            "modified": false
+          }
+        },
+        "Exceptions": {
+          "Handler.php": {
+            "type": "-",
+            "size": 1058,
+            "lmtime": 0,
+            "modified": false
+          }
+        },
         "Helper": {
           "helper.php": {
             "type": "-",
@@ -159,6 +173,12 @@
                 "lmtime": 1594646525797,
                 "modified": false
               },
+              "BankController.php": {
+                "type": "-",
+                "size": 4267,
+                "lmtime": 0,
+                "modified": false
+              },
               "CVController.php": {
                 "type": "-",
                 "size": 302,
@@ -197,9 +217,9 @@
               },
               "HomeController.php": {
                 "type": "-",
-                "size": 2737,
+                "size": 2800,
                 "lmtime": 0,
-                "modified": false
+                "modified": true
               },
               "JobController.php": {
                 "type": "-",
@@ -313,8 +333,8 @@
               },
               "HomeController.php": {
                 "type": "-",
-                "size": 1527,
-                "lmtime": 1595428546092,
+                "size": 1632,
+                "lmtime": 1595499950607,
                 "modified": false
               },
               "LoginController.php": {
@@ -413,9 +433,9 @@
             "Web": {
               "AddressController.php": {
                 "type": "-",
-                "size": 1891,
+                "size": 1927,
                 "lmtime": 1595251529755,
-                "modified": false
+                "modified": true
               },
               "BagCategoryController.php": {
                 "type": "-",
@@ -449,14 +469,14 @@
               },
               "PaymentController.php": {
                 "type": "-",
-                "size": 1216,
-                "lmtime": 1595249311378,
+                "size": 3181,
+                "lmtime": 1595506518939,
                 "modified": false
               },
               "ProfileController.php": {
                 "type": "-",
-                "size": 2968,
-                "lmtime": 1595342790028,
+                "size": 3306,
+                "lmtime": 1595499615030,
                 "modified": false
               },
               "RegisterController.php": {
@@ -543,6 +563,24 @@
           },
           "Requests": {
             "Bags": {
+              "BagCategoryRequest.php": {
+                "type": "-",
+                "size": 590,
+                "lmtime": 0,
+                "modified": false
+              },
+              "BagRequest.php": {
+                "type": "-",
+                "size": 1433,
+                "lmtime": 0,
+                "modified": false
+              },
+              "EditBagCategoryRequest.php": {
+                "type": "-",
+                "size": 558,
+                "lmtime": 0,
+                "modified": false
+              },
               "EditBagRequest.php": {
                 "type": "-",
                 "size": 1224,
@@ -558,9 +596,48 @@
                 "modified": false
               }
             },
-            "Organizations": {},
-            "Seekers": {},
-            "Slider": {},
+            "Organizations": {
+              "EditOrganizationRequest.php": {
+                "type": "-",
+                "size": 907,
+                "lmtime": 0,
+                "modified": false
+              },
+              "OrganizationRequest.php": {
+                "type": "-",
+                "size": 1058,
+                "lmtime": 0,
+                "modified": false
+              }
+            },
+            "Seekers": {
+              "EditSeekerRequest.php": {
+                "type": "-",
+                "size": 887,
+                "lmtime": 0,
+                "modified": false
+              },
+              "SeekerRequest.php": {
+                "type": "-",
+                "size": 1060,
+                "lmtime": 0,
+                "modified": false
+              }
+            },
+            "Slider": {
+              "EditSliderRequest.php": {
+                "type": "-",
+                "size": 632,
+                "lmtime": 0,
+                "modified": false
+              },
+              "SliderRequest.php": {
+                "type": "-",
+                "size": 706,
+                "lmtime": 0,
+                "modified": false
+              }
+            },
             "StaticPages": {
               "StaticPageRequest.php": {
                 "type": "-",
@@ -569,8 +646,46 @@
                 "modified": false
               }
             },
-            "Students": {},
-            "Teachers": {},
+            "Students": {
+              "EditStudentRequest.php": {
+                "type": "-",
+                "size": 739,
+                "lmtime": 0,
+                "modified": false
+              },
+              "StudentRequest.php": {
+                "type": "-",
+                "size": 903,
+                "lmtime": 0,
+                "modified": false
+              }
+            },
+            "Teachers": {
+              "DirectTeacherRequest.php": {
+                "type": "-",
+                "size": 1200,
+                "lmtime": 0,
+                "modified": false
+              },
+              "EditDirectTeacherRequest.php": {
+                "type": "-",
+                "size": 1036,
+                "lmtime": 0,
+                "modified": false
+              },
+              "EditOnlineTeacherRequest.php": {
+                "type": "-",
+                "size": 990,
+                "lmtime": 0,
+                "modified": false
+              },
+              "OnlineTeacherRequest.php": {
+                "type": "-",
+                "size": 1154,
+                "lmtime": 0,
+                "modified": false
+              }
+            },
             "UserRequest.php": {
               "type": "-",
               "size": 1960,
@@ -596,14 +711,6 @@
                 "type": "-",
                 "size": 471,
                 "lmtime": 1594195659785,
-                "modified": false
-              }
-            },
-            "Socials": {
-              "SocialResurce.php": {
-                "type": "-",
-                "size": 802,
-                "lmtime": 1595333975742,
                 "modified": false
               }
             },
@@ -635,31 +742,31 @@
                 "modified": false
               }
             },
-            "Payment": {
-              "PaymentMethodResource.php": {
-                "type": "-",
-                "size": 521,
-                "lmtime": 1594286929997,
-                "modified": false
-              }
-            },
             "Order": {
-              "orderBagResource.php": {
-                "type": "-",
-                "size": 770,
-                "lmtime": 1594299365062,
-                "modified": false
-              },
               "OrderResource.php": {
                 "type": "-",
                 "size": 635,
                 "lmtime": 1594298520826,
                 "modified": false
               },
+              "orderBagResource.php": {
+                "type": "-",
+                "size": 770,
+                "lmtime": 1594299365062,
+                "modified": false
+              },
               "trackOrderResource.php": {
                 "type": "-",
                 "size": 892,
                 "lmtime": 1594300247257,
+                "modified": false
+              }
+            },
+            "Payment": {
+              "PaymentMethodResource.php": {
+                "type": "-",
+                "size": 521,
+                "lmtime": 1594286929997,
                 "modified": false
               }
             },
@@ -670,6 +777,14 @@
                 "lmtime": 1595428514519,
                 "modified": false
               }
+            },
+            "Socials": {
+              "SocialResurce.php": {
+                "type": "-",
+                "size": 802,
+                "lmtime": 1595333975742,
+                "modified": false
+              }
             }
           }
         },
@@ -678,6 +793,12 @@
             "type": "-",
             "size": 645,
             "lmtime": 0,
+            "modified": false
+          },
+          "BagContentEmail.php": {
+            "type": "-",
+            "size": 625,
+            "lmtime": 1595506333650,
             "modified": false
           },
           "ForgetPasswordMail.php": {
@@ -714,8 +835,8 @@
           },
           "Bag.php": {
             "type": "-",
-            "size": 1560,
-            "lmtime": 1594907370664,
+            "size": 1572,
+            "lmtime": 1595498396216,
             "modified": false
           },
           "BagCategory.php": {
@@ -728,6 +849,18 @@
             "type": "-",
             "size": 389,
             "lmtime": 1595245083451,
+            "modified": false
+          },
+          "Bank.php": {
+            "type": "-",
+            "size": 402,
+            "lmtime": 0,
+            "modified": false
+          },
+          "BankReceipt.php": {
+            "type": "-",
+            "size": 587,
+            "lmtime": 0,
             "modified": false
           },
           "Cart.php": {
@@ -804,8 +937,8 @@
           },
           "Order.php": {
             "type": "-",
-            "size": 859,
-            "lmtime": 1595245073502,
+            "size": 987,
+            "lmtime": 1595498403564,
             "modified": false
           },
           "PaymentMethod.php": {
@@ -1021,6 +1154,20 @@
         }
       },
       "database": {
+        ".gitignore": {
+          "type": "-",
+          "size": 26,
+          "lmtime": 0,
+          "modified": false
+        },
+        "factories": {
+          "UserFactory.php": {
+            "type": "-",
+            "size": 875,
+            "lmtime": 0,
+            "modified": false
+          }
+        },
         "migrations": {
           "2014_10_12_000000_create_users_table.php": {
             "type": "-",
@@ -1082,6 +1229,12 @@
             "lmtime": 1595161387199,
             "modified": false
           },
+          "2020_06_10_100420_create_banks_table.php": {
+            "type": "-",
+            "size": 749,
+            "lmtime": 0,
+            "modified": false
+          },
           "2020_06_10_120247_create_edu_levels_table.php": {
             "type": "-",
             "size": 681,
@@ -1092,6 +1245,12 @@
             "type": "-",
             "size": 678,
             "lmtime": 1592999486771,
+            "modified": false
+          },
+          "2020_06_10_122327_create_bank_receipts_table.php": {
+            "type": "-",
+            "size": 1023,
+            "lmtime": 0,
             "modified": false
           },
           "2020_06_10_125422_create_payment_methods_table.php": {
@@ -1204,9 +1363,9 @@
           },
           "2020_06_11_121153_create_foreign_keys_table.php": {
             "type": "-",
-            "size": 6884,
+            "size": 7409,
             "lmtime": 1594824159853,
-            "modified": false
+            "modified": true
           },
           "2020_06_11_131941_create_permission_tables.php": {
             "type": "-",
@@ -11753,12 +11912,144 @@
         "modified": false
       },
       "resources": {
+        "js": {
+          "app.js": {
+            "type": "-",
+            "size": 1101,
+            "lmtime": 0,
+            "modified": false
+          },
+          "bootstrap.js": {
+            "type": "-",
+            "size": 1248,
+            "lmtime": 0,
+            "modified": false
+          },
+          "components": {
+            "ExampleComponent.vue": {
+              "type": "-",
+              "size": 552,
+              "lmtime": 0,
+              "modified": false
+            }
+          }
+        },
+        "lang": {
+          "ar": {
+            "admin.php": {
+              "type": "-",
+              "size": 11128,
+              "lmtime": 1594638400473,
+              "modified": true
+            },
+            "api.php": {
+              "type": "-",
+              "size": 2096,
+              "lmtime": 1594301121269,
+              "modified": false
+            },
+            "auth.php": {
+              "type": "-",
+              "size": 612,
+              "lmtime": 0,
+              "modified": false
+            },
+            "pagination.php": {
+              "type": "-",
+              "size": 546,
+              "lmtime": 0,
+              "modified": false
+            },
+            "passwords.php": {
+              "type": "-",
+              "size": 841,
+              "lmtime": 0,
+              "modified": false
+            },
+            "validation.php": {
+              "type": "-",
+              "size": 11725,
+              "lmtime": 0,
+              "modified": false
+            },
+            "web.php": {
+              "type": "-",
+              "size": 9558,
+              "lmtime": 1595506414728,
+              "modified": false
+            }
+          },
+          "en": {
+            "admin.php": {
+              "type": "-",
+              "size": 8127,
+              "lmtime": 1594638371784,
+              "modified": true
+            },
+            "api.php": {
+              "type": "-",
+              "size": 1574,
+              "lmtime": 1594300193765,
+              "modified": false
+            },
+            "auth.php": {
+              "type": "-",
+              "size": 617,
+              "lmtime": 0,
+              "modified": false
+            },
+            "pagination.php": {
+              "type": "-",
+              "size": 534,
+              "lmtime": 0,
+              "modified": false
+            },
+            "passwords.php": {
+              "type": "-",
+              "size": 788,
+              "lmtime": 0,
+              "modified": false
+            },
+            "validation.php": {
+              "type": "-",
+              "size": 7592,
+              "lmtime": 0,
+              "modified": false
+            },
+            "web.php": {
+              "type": "-",
+              "size": 7007,
+              "lmtime": 1595502245364,
+              "modified": false
+            }
+          }
+        },
+        "sass": {
+          "_variables.scss": {
+            "type": "-",
+            "size": 317,
+            "lmtime": 0,
+            "modified": false
+          },
+          "app.scss": {
+            "type": "-",
+            "size": 158,
+            "lmtime": 0,
+            "modified": false
+          }
+        },
         "views": {
           "Email": {
             "admin_reset_passwrod.blade.php": {
               "type": "-",
               "size": 1995,
               "lmtime": 0,
+              "modified": false
+            },
+            "contents.blade.php": {
+              "type": "-",
+              "size": 3642,
+              "lmtime": 1595508440070,
               "modified": false
             },
             "reset_password.blade.php": {
@@ -11775,70 +12066,310 @@
             }
           },
           "admin": {
-            "layouts": {
-              "app.blade.php": {
-                "type": "-",
-                "size": 10605,
-                "lmtime": 1594023243731,
-                "modified": false
-              },
-              "footer.blade.php": {
-                "type": "-",
-                "size": 849,
-                "lmtime": 1594024069810,
-                "modified": false
-              },
-              "header.blade.php": {
-                "type": "-",
-                "size": 14417,
-                "lmtime": 0,
-                "modified": false
-              },
-              "sidebar.blade.php": {
-                "type": "-",
-                "size": 5936,
-                "lmtime": 1594023847445,
-                "modified": false
-              }
-            },
-            "setting": {
-              "edit.blade.php": {
-                "type": "-",
-                "size": 57908,
-                "lmtime": 1594120214205,
-                "modified": false
-              }
-            },
-            "socials": {
+            "announces": {
               "create.blade.php": {
                 "type": "-",
-                "size": 4946,
+                "size": 5197,
                 "lmtime": 0,
                 "modified": false
               },
               "edit.blade.php": {
                 "type": "-",
-                "size": 4105,
-                "lmtime": 1594559753969,
+                "size": 5834,
+                "lmtime": 0,
                 "modified": false
               },
               "index.blade.php": {
                 "type": "-",
-                "size": 6104,
-                "lmtime": 1594559766007,
+                "size": 7927,
+                "lmtime": 0,
                 "modified": false
               }
             },
-            "static_pages": {
+            "applicants": {
+              "ajax": {
+                "cities.blade.php": {
+                  "type": "-",
+                  "size": 121,
+                  "lmtime": 0,
+                  "modified": false
+                }
+              },
+              "create.blade.php": {
+                "type": "-",
+                "size": 4716,
+                "lmtime": 0,
+                "modified": false
+              },
               "edit.blade.php": {
                 "type": "-",
-                "size": 26853,
-                "lmtime": 1594639824691,
+                "size": 4905,
+                "lmtime": 0,
                 "modified": false
               },
               "index.blade.php": {
                 "type": "-",
-                "size": 2784,
+                "size": 6688,
+                "lmtime": 0,
+                "modified": false
+              },
+              "show.blade.php": {
+                "type": "-",
+                "size": 11443,
+                "lmtime": 0,
+                "modified": false
+              }
+            },
+            "auth": {
+              "login.blade.php": {
+                "type": "-",
+                "size": 11482,
+                "lmtime": 0,
+                "modified": false
+              },
+              "passwords": {
+                "email.blade.php": {
+                  "type": "-",
+                  "size": 2251,
+                  "lmtime": 0,
+                  "modified": false
+                },
+                "reset.blade.php": {
+                  "type": "-",
+                  "size": 3366,
+                  "lmtime": 0,
+                  "modified": false
+                }
+              }
+            },
+            "bag_categories": {
+              "create.blade.php": {
+                "type": "-",
+                "size": 5038,
+                "lmtime": 0,
+                "modified": false
+              },
+              "edit.blade.php": {
+                "type": "-",
+                "size": 5659,
+                "lmtime": 0,
+                "modified": false
+              },
+              "index.blade.php": {
+                "type": "-",
+                "size": 6388,
+                "lmtime": 0,
+                "modified": false
+              },
+              "show.blade.php": {
+                "type": "-",
+                "size": 7995,
+                "lmtime": 0,
+                "modified": false
+              }
+            },
+            "bags": {
+              "create.blade.php": {
+                "type": "-",
+                "size": 23841,
+                "lmtime": 0,
+                "modified": false
+              },
+              "edit.blade.php": {
+                "type": "-",
+                "size": 35391,
+                "lmtime": 0,
+                "modified": false
+              },
+              "index.blade.php": {
+                "type": "-",
+                "size": 6475,
+                "lmtime": 0,
+                "modified": false
+              },
+              "show.blade.php": {
+                "type": "-",
+                "size": 15181,
+                "lmtime": 0,
+                "modified": false
+              }
+            },
+            "banks": {
+              "create.blade.php": {
+                "type": "-",
+                "size": 7030,
+                "lmtime": 0,
+                "modified": false
+              },
+              "edit.blade.php": {
+                "type": "-",
+                "size": 7655,
+                "lmtime": 0,
+                "modified": false
+              },
+              "index.blade.php": {
+                "type": "-",
+                "size": 6796,
+                "lmtime": 0,
+                "modified": false
+              },
+              "show.blade.php": {
+                "type": "-",
+                "size": 16743,
+                "lmtime": 0,
+                "modified": false
+              }
+            },
+            "cities": {
+              "create.blade.php": {
+                "type": "-",
+                "size": 5298,
+                "lmtime": 0,
+                "modified": false
+              },
+              "edit.blade.php": {
+                "type": "-",
+                "size": 5459,
+                "lmtime": 0,
+                "modified": false
+              },
+              "index.blade.php": {
+                "type": "-",
+                "size": 6334,
+                "lmtime": 0,
+                "modified": false
+              },
+              "show.blade.php": {
+                "type": "-",
+                "size": 14849,
+                "lmtime": 0,
+                "modified": false
+              }
+            },
+            "countries": {
+              "create.blade.php": {
+                "type": "-",
+                "size": 4037,
+                "lmtime": 0,
+                "modified": false
+              },
+              "edit.blade.php": {
+                "type": "-",
+                "size": 4158,
+                "lmtime": 0,
+                "modified": false
+              },
+              "index.blade.php": {
+                "type": "-",
+                "size": 6376,
+                "lmtime": 0,
+                "modified": false
+              },
+              "show.blade.php": {
+                "type": "-",
+                "size": 16743,
+                "lmtime": 0,
+                "modified": false
+              }
+            },
+            "cv": {
+              "index.blade.php": {
+                "type": "-",
+                "size": 2510,
+                "lmtime": 0,
+                "modified": false
+              }
+            },
+            "direct_teachers": {
+              "ajax": {
+                "cities.blade.php": {
+                  "type": "-",
+                  "size": 121,
+                  "lmtime": 0,
+                  "modified": false
+                }
+              },
+              "create.blade.php": {
+                "type": "-",
+                "size": 21997,
+                "lmtime": 0,
+                "modified": false
+              },
+              "edit.blade.php": {
+                "type": "-",
+                "size": 21274,
+                "lmtime": 0,
+                "modified": false
+              },
+              "index.blade.php": {
+                "type": "-",
+                "size": 6886,
+                "lmtime": 0,
+                "modified": false
+              },
+              "show.blade.php": {
+                "type": "-",
+                "size": 10183,
+                "lmtime": 0,
+                "modified": false
+              }
+            },
+            "edu_levels": {
+              "create.blade.php": {
+                "type": "-",
+                "size": 4038,
+                "lmtime": 0,
+                "modified": false
+              },
+              "edit.blade.php": {
+                "type": "-",
+                "size": 4148,
+                "lmtime": 0,
+                "modified": false
+              },
+              "index.blade.php": {
+                "type": "-",
+                "size": 6367,
+                "lmtime": 0,
+                "modified": false
+              },
+              "show.blade.php": {
+                "type": "-",
+                "size": 9976,
+                "lmtime": 0,
+                "modified": false
+              }
+            },
+            "edu_types": {
+              "create.blade.php": {
+                "type": "-",
+                "size": 4037,
+                "lmtime": 0,
+                "modified": false
+              },
+              "edit.blade.php": {
+                "type": "-",
+                "size": 4145,
+                "lmtime": 0,
+                "modified": false
+              },
+              "index.blade.php": {
+                "type": "-",
+                "size": 6494,
+                "lmtime": 0,
+                "modified": false
+              },
+              "show.blade.php": {
+                "type": "-",
+                "size": 7553,
+                "lmtime": 0,
+                "modified": false
+              }
+            },
+            "home": {
+              "index.blade.php": {
+                "type": "-",
+                "size": 22395,
                 "lmtime": 0,
                 "modified": false
               }
@@ -11868,26 +12399,402 @@
                 "lmtime": 0,
                 "modified": false
               }
+            },
+            "layouts": {
+              "app.blade.php": {
+                "type": "-",
+                "size": 10605,
+                "lmtime": 1594023243731,
+                "modified": false
+              },
+              "footer.blade.php": {
+                "type": "-",
+                "size": 849,
+                "lmtime": 1594024069810,
+                "modified": false
+              },
+              "header.blade.php": {
+                "type": "-",
+                "size": 14417,
+                "lmtime": 0,
+                "modified": false
+              },
+              "sidebar.blade.php": {
+                "type": "-",
+                "size": 6131,
+                "lmtime": 1594023847445,
+                "modified": true
+              }
+            },
+            "materials": {
+              "create.blade.php": {
+                "type": "-",
+                "size": 5277,
+                "lmtime": 0,
+                "modified": false
+              },
+              "edit.blade.php": {
+                "type": "-",
+                "size": 5863,
+                "lmtime": 0,
+                "modified": false
+              },
+              "index.blade.php": {
+                "type": "-",
+                "size": 6387,
+                "lmtime": 0,
+                "modified": false
+              },
+              "show.blade.php": {
+                "type": "-",
+                "size": 14336,
+                "lmtime": 0,
+                "modified": false
+              }
+            },
+            "nationalities": {
+              "create.blade.php": {
+                "type": "-",
+                "size": 4049,
+                "lmtime": 0,
+                "modified": false
+              },
+              "edit.blade.php": {
+                "type": "-",
+                "size": 4161,
+                "lmtime": 0,
+                "modified": false
+              },
+              "index.blade.php": {
+                "type": "-",
+                "size": 6402,
+                "lmtime": 0,
+                "modified": false
+              },
+              "show.blade.php": {
+                "type": "-",
+                "size": 17152,
+                "lmtime": 0,
+                "modified": false
+              }
+            },
+            "online_teachers": {
+              "ajax": {
+                "cities.blade.php": {
+                  "type": "-",
+                  "size": 121,
+                  "lmtime": 0,
+                  "modified": false
+                }
+              },
+              "create.blade.php": {
+                "type": "-",
+                "size": 20951,
+                "lmtime": 0,
+                "modified": false
+              },
+              "edit.blade.php": {
+                "type": "-",
+                "size": 20189,
+                "lmtime": 0,
+                "modified": false
+              },
+              "index.blade.php": {
+                "type": "-",
+                "size": 6886,
+                "lmtime": 0,
+                "modified": false
+              },
+              "show.blade.php": {
+                "type": "-",
+                "size": 10079,
+                "lmtime": 0,
+                "modified": false
+              }
+            },
+            "organizations": {
+              "ajax": {
+                "cities.blade.php": {
+                  "type": "-",
+                  "size": 121,
+                  "lmtime": 0,
+                  "modified": false
+                }
+              },
+              "create.blade.php": {
+                "type": "-",
+                "size": 16022,
+                "lmtime": 0,
+                "modified": false
+              },
+              "edit.blade.php": {
+                "type": "-",
+                "size": 15260,
+                "lmtime": 0,
+                "modified": false
+              },
+              "index.blade.php": {
+                "type": "-",
+                "size": 6841,
+                "lmtime": 0,
+                "modified": false
+              },
+              "show.blade.php": {
+                "type": "-",
+                "size": 10600,
+                "lmtime": 0,
+                "modified": false
+              }
+            },
+            "payment_methods": {
+              "create.blade.php": {
+                "type": "-",
+                "size": 5043,
+                "lmtime": 0,
+                "modified": false
+              },
+              "edit.blade.php": {
+                "type": "-",
+                "size": 5594,
+                "lmtime": 0,
+                "modified": false
+              },
+              "index.blade.php": {
+                "type": "-",
+                "size": 6426,
+                "lmtime": 0,
+                "modified": false
+              }
+            },
+            "seekers": {
+              "ajax": {
+                "cities.blade.php": {
+                  "type": "-",
+                  "size": 121,
+                  "lmtime": 0,
+                  "modified": false
+                }
+              },
+              "create.blade.php": {
+                "type": "-",
+                "size": 16060,
+                "lmtime": 0,
+                "modified": false
+              },
+              "edit.blade.php": {
+                "type": "-",
+                "size": 14552,
+                "lmtime": 0,
+                "modified": false
+              },
+              "index.blade.php": {
+                "type": "-",
+                "size": 6679,
+                "lmtime": 0,
+                "modified": false
+              },
+              "show.blade.php": {
+                "type": "-",
+                "size": 6592,
+                "lmtime": 0,
+                "modified": false
+              }
+            },
+            "setting": {
+              "edit.blade.php": {
+                "type": "-",
+                "size": 58128,
+                "lmtime": 1594120214205,
+                "modified": true
+              }
+            },
+            "slider": {
+              "create.blade.php": {
+                "type": "-",
+                "size": 7063,
+                "lmtime": 0,
+                "modified": false
+              },
+              "edit.blade.php": {
+                "type": "-",
+                "size": 7696,
+                "lmtime": 0,
+                "modified": false
+              },
+              "index.blade.php": {
+                "type": "-",
+                "size": 6455,
+                "lmtime": 0,
+                "modified": false
+              },
+              "show.blade.php": {
+                "type": "-",
+                "size": 5891,
+                "lmtime": 0,
+                "modified": false
+              }
+            },
+            "socials": {
+              "create.blade.php": {
+                "type": "-",
+                "size": 4946,
+                "lmtime": 0,
+                "modified": false
+              },
+              "edit.blade.php": {
+                "type": "-",
+                "size": 4105,
+                "lmtime": 1594559753969,
+                "modified": false
+              },
+              "index.blade.php": {
+                "type": "-",
+                "size": 6104,
+                "lmtime": 1594559766007,
+                "modified": false
+              }
+            },
+            "stages": {
+              "create.blade.php": {
+                "type": "-",
+                "size": 4028,
+                "lmtime": 0,
+                "modified": false
+              },
+              "edit.blade.php": {
+                "type": "-",
+                "size": 4138,
+                "lmtime": 0,
+                "modified": false
+              },
+              "index.blade.php": {
+                "type": "-",
+                "size": 6345,
+                "lmtime": 0,
+                "modified": false
+              },
+              "show.blade.php": {
+                "type": "-",
+                "size": 14314,
+                "lmtime": 0,
+                "modified": false
+              }
+            },
+            "static_pages": {
+              "edit.blade.php": {
+                "type": "-",
+                "size": 26853,
+                "lmtime": 1594639824691,
+                "modified": false
+              },
+              "index.blade.php": {
+                "type": "-",
+                "size": 2784,
+                "lmtime": 0,
+                "modified": false
+              }
+            },
+            "students": {
+              "ajax": {
+                "cities.blade.php": {
+                  "type": "-",
+                  "size": 121,
+                  "lmtime": 0,
+                  "modified": false
+                }
+              },
+              "create.blade.php": {
+                "type": "-",
+                "size": 11719,
+                "lmtime": 0,
+                "modified": false
+              },
+              "edit.blade.php": {
+                "type": "-",
+                "size": 10585,
+                "lmtime": 0,
+                "modified": false
+              },
+              "index.blade.php": {
+                "type": "-",
+                "size": 7130,
+                "lmtime": 0,
+                "modified": false
+              },
+              "show.blade.php": {
+                "type": "-",
+                "size": 5970,
+                "lmtime": 0,
+                "modified": false
+              }
+            },
+            "users": {
+              "edit.blade.php": {
+                "type": "-",
+                "size": 6182,
+                "lmtime": 0,
+                "modified": false
+              },
+              "index.blade.php": {
+                "type": "-",
+                "size": 4235,
+                "lmtime": 0,
+                "modified": false
+              }
             }
           },
-          "auth": {},
+          "auth": {
+            "login.blade.php": {
+              "type": "-",
+              "size": 3378,
+              "lmtime": 0,
+              "modified": false
+            },
+            "passwords": {
+              "email.blade.php": {
+                "type": "-",
+                "size": 1914,
+                "lmtime": 0,
+                "modified": false
+              },
+              "reset.blade.php": {
+                "type": "-",
+                "size": 3020,
+                "lmtime": 0,
+                "modified": false
+              }
+            },
+            "register.blade.php": {
+              "type": "-",
+              "size": 3672,
+              "lmtime": 0,
+              "modified": false
+            },
+            "verify.blade.php": {
+              "type": "-",
+              "size": 924,
+              "lmtime": 0,
+              "modified": false
+            }
+          },
           "home.blade.php": {
             "type": "-",
             "size": 626,
             "lmtime": 0,
             "modified": false
           },
-          "layouts": {},
+          "layouts": {
+            "app.blade.php": {
+              "type": "-",
+              "size": 3522,
+              "lmtime": 0,
+              "modified": false
+            }
+          },
           "online_payment_form.blade.php": {
             "type": "-",
             "size": 719,
             "lmtime": 1594297701945,
-            "modified": false
-          },
-          "welcome.blade.php": {
-            "type": "-",
-            "size": 2887,
-            "lmtime": 0,
             "modified": false
           },
           "web": {
@@ -11900,9 +12807,9 @@
               },
               "index.blade.php": {
                 "type": "-",
-                "size": 10394,
+                "size": 10290,
                 "lmtime": 1595322792284,
-                "modified": false
+                "modified": true
               }
             },
             "auth": {
@@ -11942,8 +12849,8 @@
             "carts": {
               "index.blade.php": {
                 "type": "-",
-                "size": 27359,
-                "lmtime": 1595327267145,
+                "size": 24172,
+                "lmtime": 1595497081295,
                 "modified": false
               }
             },
@@ -11996,9 +12903,9 @@
               },
               "navbar.blade.php": {
                 "type": "-",
-                "size": 4623,
+                "size": 4705,
                 "lmtime": 1595326279987,
-                "modified": false
+                "modified": true
               },
               "register.blade.php": {
                 "type": "-",
@@ -12013,11 +12920,45 @@
                 "modified": false
               }
             },
+            "orders": {
+              "index.blade.php": {
+                "type": "-",
+                "size": 2912,
+                "lmtime": 1595500687034,
+                "modified": false
+              },
+              "track_order.blade.php": {
+                "type": "-",
+                "size": 10996,
+                "lmtime": 1595500653891,
+                "modified": false
+              }
+            },
             "pages": {
               "index.blade.php": {
                 "type": "-",
                 "size": 3325,
                 "lmtime": 1594640453964,
+                "modified": false
+              }
+            },
+            "payment": {
+              "payment.blade.php": {
+                "type": "-",
+                "size": 8435,
+                "lmtime": 1595489565415,
+                "modified": false
+              },
+              "payment_methods.blade.php": {
+                "type": "-",
+                "size": 3348,
+                "lmtime": 0,
+                "modified": false
+              },
+              "payment_report.blade.php": {
+                "type": "-",
+                "size": 2267,
+                "lmtime": 1595493847499,
                 "modified": false
               }
             },
@@ -12042,8 +12983,8 @@
               },
               "index.blade.php": {
                 "type": "-",
-                "size": 2955,
-                "lmtime": 1595343161324,
+                "size": 2971,
+                "lmtime": 1595489634941,
                 "modified": false
               }
             },
@@ -12068,117 +13009,13 @@
                 "lmtime": 1595152227554,
                 "modified": false
               }
-            },
-            "payment": {
-              "payment.blade.php": {
-                "type": "-",
-                "size": 5853,
-                "lmtime": 0,
-                "modified": false
-              },
-              "payment_methods.blade.php": {
-                "type": "-",
-                "size": 3348,
-                "lmtime": 0,
-                "modified": false
-              },
-              "payment_report.blade.php": {
-                "type": "-",
-                "size": 2543,
-                "lmtime": 1595428727308,
-                "modified": false
-              }
-            }
-          }
-        },
-        "lang": {
-          "ar": {
-            "admin.php": {
-              "type": "-",
-              "size": 10999,
-              "lmtime": 1594638400473,
-              "modified": false
-            },
-            "api.php": {
-              "type": "-",
-              "size": 2096,
-              "lmtime": 1594301121269,
-              "modified": false
-            },
-            "auth.php": {
-              "type": "-",
-              "size": 612,
-              "lmtime": 0,
-              "modified": false
-            },
-            "pagination.php": {
-              "type": "-",
-              "size": 546,
-              "lmtime": 0,
-              "modified": false
-            },
-            "passwords.php": {
-              "type": "-",
-              "size": 841,
-              "lmtime": 0,
-              "modified": false
-            },
-            "validation.php": {
-              "type": "-",
-              "size": 11725,
-              "lmtime": 0,
-              "modified": false
-            },
-            "web.php": {
-              "type": "-",
-              "size": 7251,
-              "lmtime": 1595341883557,
-              "modified": false
             }
           },
-          "en": {
-            "admin.php": {
-              "type": "-",
-              "size": 8779,
-              "lmtime": 1594638371784,
-              "modified": false
-            },
-            "api.php": {
-              "type": "-",
-              "size": 1574,
-              "lmtime": 1594300193765,
-              "modified": false
-            },
-            "auth.php": {
-              "type": "-",
-              "size": 617,
-              "lmtime": 0,
-              "modified": false
-            },
-            "pagination.php": {
-              "type": "-",
-              "size": 534,
-              "lmtime": 0,
-              "modified": false
-            },
-            "passwords.php": {
-              "type": "-",
-              "size": 788,
-              "lmtime": 0,
-              "modified": false
-            },
-            "validation.php": {
-              "type": "-",
-              "size": 7592,
-              "lmtime": 0,
-              "modified": false
-            },
-            "web.php": {
-              "type": "-",
-              "size": 5430,
-              "lmtime": 1595341915762,
-              "modified": false
-            }
+          "welcome.blade.php": {
+            "type": "-",
+            "size": 2887,
+            "lmtime": 0,
+            "modified": false
           }
         }
       },
@@ -12203,8 +13040,8 @@
         },
         "web.php": {
           "type": "-",
-          "size": 11425,
-          "lmtime": 1595342919096,
+          "size": 11947,
+          "lmtime": 1595499548474,
           "modified": false
         }
       },

@@ -162,6 +162,14 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
             // Banks
             Route::resource('banks', 'Admin\BankController');
             Route::post('delete_bank', 'Admin\BankController@deleteBank')->name('banks.delete');
+
+            // Addresses
+            Route::get('get_addresses', 'Admin\AddressesController@index')->name('addresses.get_all');
+
+            // Orders
+            Route::get('orders', 'Admin\OrderController@index')->name('orders.index');
+            Route::get('orders/{id}', 'Admin\OrderController@show')->name('orders.show');
+            Route::post('orders', 'Admin\OrderController@update')->name('orders.update');
             
             // Users
             Route::resource('users', 'Admin\UserController');

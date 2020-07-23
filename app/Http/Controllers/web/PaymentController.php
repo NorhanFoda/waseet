@@ -13,6 +13,7 @@ use App\Models\BankReceipt;
 use App\Models\Image;
 use App\Classes\Upload;
 use App\Classes\SendEmail;
+use Carbon\Carbon;
 
 class PaymentController extends Controller
 {
@@ -78,6 +79,9 @@ class PaymentController extends Controller
 
         $order = Order::with('address')->find($request->order_id);
         $order->update(['status' => 2]);
+        $order->bags()->update([
+            'accepted' => Carbon::now()
+        ]);
 
         // If order contains buy online bags, then send email bag contents
         if($order->bags()->where('buy_type', 1)->exists()){

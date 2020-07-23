@@ -37,6 +37,8 @@
 
             <li class=" nav-item"><a href="{{route('bags.index')}}"><i class="fa fa-briefcase"></i><span class="menu-title" data-i18n="Dashboard">{{trans('admin.bags')}}</span></a></li>
 
+            <li class=" nav-item"><a href="{{route('orders.index')}}"><i class="fa fa-first-order"></i><span class="menu-title" data-i18n="Email">{{trans('admin.orders')}}</span></a></li>
+
             <li class=" nav-item"><a href="{{route('edu_types.index')}}"><i class="fa fa-th"></i><span class="menu-title" data-i18n="Dashboard">{{trans('admin.edu_types')}}</span></a></li>
 
             <li class=" nav-item"><a href="{{route('stages.index')}}"><i class="fa fa-level-up"></i><span class="menu-title" data-i18n="Dashboard">{{trans('admin.stages')}}</span></a></li>
@@ -50,6 +52,8 @@
             <li class=" nav-item"><a href="{{route('cities.index')}}"><i class="fa fa-map-marker"></i><span class="menu-title" data-i18n="Dashboard">{{trans('admin.cities')}}</span></a></li>
 
             <li class=" nav-item"><a href="{{route('nationalities.index')}}"><i class="fa fa-globe"></i><span class="menu-title" data-i18n="Dashboard">{{trans('admin.nationalities')}}</span></a></li>
+
+            <li class=" nav-item"><a href="{{route('addresses.get_all')}}"><i class="fa fa-map-marker"></i><span class="menu-title" data-i18n="Dashboard">{{trans('admin.addresses')}}</span></a></li>
 
             {{-- <li class=" nav-item"><a href="{{route('methods.index')}}"><i class="fa fa-money"></i><span class="menu-title" data-i18n="Dashboard">{{trans('admin.payment_methods')}}</span></a></li> --}}
 
