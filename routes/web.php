@@ -246,4 +246,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
         Route::get('contents/{id}', 'Web\ProfileController@showBagContents')->name('order.bag_contents');
     });
 
+    Route::get('galary', function(){
+        return view('gallery');
+    });
+
 });

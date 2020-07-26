@@ -34,4 +34,10 @@ class OrderController extends Controller
             ]);
         }
     }
+
+    public function show($id){
+        $order = Order::with(['user', 'bags', 'address', 'receipt'])->find($id);
+
+        return view('admin.orders.show', compact('order'));
+    }
 }

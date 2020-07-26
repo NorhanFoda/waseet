@@ -410,7 +410,9 @@
       .custom-check label {
         width: calc(100% - 65px)
       }
-      
+       .gallery-div  a{
+    height: 150px;
+ }
 }
 
 

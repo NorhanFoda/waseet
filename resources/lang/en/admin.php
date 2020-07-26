@@ -278,5 +278,6 @@ return [
     'waiting' => 'Waiting',
     'shipping' => 'Shipping',
     'delivered' => 'Delivered',
+    'shipping_fees' => 'Shipping Fees',
     
 ];

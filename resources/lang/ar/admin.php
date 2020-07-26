@@ -271,5 +271,6 @@ return [
     'waiting' => 'إنتظار',
     'shipping' => 'جارى الشحن',
     'delivered' => 'تم التسليم',
+    'shipping_fees' => 'ضريبة الشحن',
     
 ];

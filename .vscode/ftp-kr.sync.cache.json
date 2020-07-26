@@ -26,12 +26,6 @@
         "modified": false
       },
       ".git": {},
-      ".git.zip": {
-        "type": "-",
-        "size": 69548917,
-        "lmtime": 0,
-        "modified": false
-      },
       ".gitattributes": {
         "type": "-",
         "size": 116,
@@ -304,6 +298,18 @@
                 "size": 3844,
                 "lmtime": 0,
                 "modified": false
+              },
+              "AddressesController.php": {
+                "type": "-",
+                "size": 359,
+                "lmtime": 1595512305529,
+                "modified": false
+              },
+              "OrderController.php": {
+                "type": "-",
+                "size": 975,
+                "lmtime": 1595513963882,
+                "modified": false
               }
             },
             "Api": {
@@ -469,8 +475,8 @@
               },
               "PaymentController.php": {
                 "type": "-",
-                "size": 3181,
-                "lmtime": 1595506518939,
+                "size": 3285,
+                "lmtime": 1595513929395,
                 "modified": false
               },
               "ProfileController.php": {
@@ -11220,8 +11226,8 @@
             },
             "main.css": {
               "type": "-",
-              "size": 76920,
-              "lmtime": 1595428750901,
+              "size": 77722,
+              "lmtime": 1595514989272,
               "modified": false
             },
             "main.css.map": {
@@ -11250,8 +11256,8 @@
             },
             "responsive.css": {
               "type": "-",
-              "size": 9260,
-              "lmtime": 1595331487481,
+              "size": 9301,
+              "lmtime": 1595514989625,
               "modified": false
             }
           },
@@ -11822,11 +11828,223 @@
             }
           },
           "js": {
+            "froogaloop2.min.js": {
+              "type": "-",
+              "size": 3302,
+              "lmtime": 1595514998905,
+              "modified": false
+            },
+            "html5lightbox.js": {
+              "type": "-",
+              "size": 151421,
+              "lmtime": 1595515000098,
+              "modified": false
+            },
+            "icons": {
+              "css": {
+                "animation.css": {
+                  "type": "-",
+                  "size": 2067,
+                  "lmtime": 1595515000440,
+                  "modified": false
+                },
+                "fontello-codes.css": {
+                  "type": "-",
+                  "size": 1825,
+                  "lmtime": 1595515000791,
+                  "modified": false
+                },
+                "fontello-embedded.css": {
+                  "type": "-",
+                  "size": 40437,
+                  "lmtime": 1595515001443,
+                  "modified": false
+                },
+                "fontello-ie7-codes.css": {
+                  "type": "-",
+                  "size": 3457,
+                  "lmtime": 1595515001825,
+                  "modified": false
+                },
+                "fontello-ie7.css": {
+                  "type": "-",
+                  "size": 3725,
+                  "lmtime": 1595515002213,
+                  "modified": false
+                },
+                "fontello.css": {
+                  "type": "-",
+                  "size": 3623,
+                  "lmtime": 1595515002640,
+                  "modified": false
+                }
+              }
+            },
             "main.js": {
               "type": "-",
               "size": 3623,
               "lmtime": 1594710159254,
               "modified": false
+            },
+            "skins": {
+              "default": {
+                "Thumbs.db": {
+                  "type": "-",
+                  "size": 35840,
+                  "lmtime": 1595515003213,
+                  "modified": false
+                },
+                "html5boxplayer_fullscreen.png": {
+                  "type": "-",
+                  "size": 1889,
+                  "lmtime": 1595515003597,
+                  "modified": false
+                },
+                "html5boxplayer_hd.png": {
+                  "type": "-",
+                  "size": 1500,
+                  "lmtime": 1595515003985,
+                  "modified": false
+                },
+                "html5boxplayer_playpause.png": {
+                  "type": "-",
+                  "size": 1212,
+                  "lmtime": 1595515004323,
+                  "modified": false
+                },
+                "html5boxplayer_playvideo.png": {
+                  "type": "-",
+                  "size": 1754,
+                  "lmtime": 1595515004686,
+                  "modified": false
+                },
+                "html5boxplayer_volume.png": {
+                  "type": "-",
+                  "size": 1393,
+                  "lmtime": 1595515005029,
+                  "modified": false
+                },
+                "lightbox-close-fullscreen.png": {
+                  "type": "-",
+                  "size": 362,
+                  "lmtime": 1595515005372,
+                  "modified": false
+                },
+                "lightbox-close.png": {
+                  "type": "-",
+                  "size": 1524,
+                  "lmtime": 1595515005712,
+                  "modified": false
+                },
+                "lightbox-fullscreen-close.png": {
+                  "type": "-",
+                  "size": 329,
+                  "lmtime": 1595515006043,
+                  "modified": false
+                },
+                "lightbox-loading.gif": {
+                  "type": "-",
+                  "size": 3547,
+                  "lmtime": 1595515006393,
+                  "modified": false
+                },
+                "lightbox-navcontrol.png": {
+                  "type": "-",
+                  "size": 183,
+                  "lmtime": 1595515006747,
+                  "modified": false
+                },
+                "lightbox-navnext.png": {
+                  "type": "-",
+                  "size": 458,
+                  "lmtime": 1595515007089,
+                  "modified": false
+                },
+                "lightbox-navprev.png": {
+                  "type": "-",
+                  "size": 464,
+                  "lmtime": 1595515007435,
+                  "modified": false
+                },
+                "lightbox-next-2.png": {
+                  "type": "-",
+                  "size": 1386,
+                  "lmtime": 1595515007769,
+                  "modified": false
+                },
+                "lightbox-next-fullscreen.png": {
+                  "type": "-",
+                  "size": 328,
+                  "lmtime": 1595515008147,
+                  "modified": false
+                },
+                "lightbox-next.png": {
+                  "type": "-",
+                  "size": 1386,
+                  "lmtime": 1595515008489,
+                  "modified": false
+                },
+                "lightbox-pause-2.png": {
+                  "type": "-",
+                  "size": 1336,
+                  "lmtime": 1595515008846,
+                  "modified": false
+                },
+                "lightbox-pause.png": {
+                  "type": "-",
+                  "size": 1091,
+                  "lmtime": 1595515009184,
+                  "modified": false
+                },
+                "lightbox-play-2.png": {
+                  "type": "-",
+                  "size": 1412,
+                  "lmtime": 1595515009522,
+                  "modified": false
+                },
+                "lightbox-play.png": {
+                  "type": "-",
+                  "size": 1222,
+                  "lmtime": 1595515009942,
+                  "modified": false
+                },
+                "lightbox-playvideo.png": {
+                  "type": "-",
+                  "size": 1754,
+                  "lmtime": 1595515010282,
+                  "modified": false
+                },
+                "lightbox-prev-2.png": {
+                  "type": "-",
+                  "size": 1378,
+                  "lmtime": 1595515010649,
+                  "modified": false
+                },
+                "lightbox-prev-fullscreen.png": {
+                  "type": "-",
+                  "size": 323,
+                  "lmtime": 1595515010999,
+                  "modified": false
+                },
+                "lightbox-prev.png": {
+                  "type": "-",
+                  "size": 1378,
+                  "lmtime": 1595515011345,
+                  "modified": false
+                },
+                "nav-arrows-next.png": {
+                  "type": "-",
+                  "size": 458,
+                  "lmtime": 1595515011709,
+                  "modified": false
+                },
+                "nav-arrows-prev.png": {
+                  "type": "-",
+                  "size": 464,
+                  "lmtime": 1595515012045,
+                  "modified": false
+                }
+              }
             },
             "vendor": {
               "aos.js": {
@@ -11938,9 +12156,9 @@
           "ar": {
             "admin.php": {
               "type": "-",
-              "size": 11128,
-              "lmtime": 1594638400473,
-              "modified": true
+              "size": 11516,
+              "lmtime": 1595512901297,
+              "modified": false
             },
             "api.php": {
               "type": "-",
@@ -11982,9 +12200,9 @@
           "en": {
             "admin.php": {
               "type": "-",
-              "size": 8127,
-              "lmtime": 1594638371784,
-              "modified": true
+              "size": 8451,
+              "lmtime": 1595512882826,
+              "modified": false
             },
             "api.php": {
               "type": "-",
@@ -12066,6 +12284,14 @@
             }
           },
           "admin": {
+            "addresses": {
+              "index.blade.php": {
+                "type": "-",
+                "size": 4482,
+                "lmtime": 1595511036182,
+                "modified": false
+              }
+            },
             "announces": {
               "create.blade.php": {
                 "type": "-",
@@ -12421,9 +12647,9 @@
               },
               "sidebar.blade.php": {
                 "type": "-",
-                "size": 6131,
-                "lmtime": 1594023847445,
-                "modified": true
+                "size": 6520,
+                "lmtime": 1595512020493,
+                "modified": false
               }
             },
             "materials": {
@@ -12741,6 +12967,14 @@
                 "lmtime": 0,
                 "modified": false
               }
+            },
+            "orders": {
+              "index.blade.php": {
+                "type": "-",
+                "size": 5140,
+                "lmtime": 1595514280400,
+                "modified": false
+              }
             }
           },
           "auth": {
@@ -12776,6 +13010,12 @@
               "lmtime": 0,
               "modified": false
             }
+          },
+          "gallery.php": {
+            "type": "-",
+            "size": 9882,
+            "lmtime": 1595515077515,
+            "modified": false
           },
           "home.blade.php": {
             "type": "-",
@@ -12929,8 +13169,8 @@
               },
               "track_order.blade.php": {
                 "type": "-",
-                "size": 10996,
-                "lmtime": 1595500653891,
+                "size": 11013,
+                "lmtime": 1595514270604,
                 "modified": false
               }
             },
@@ -13040,8 +13280,8 @@
         },
         "web.php": {
           "type": "-",
-          "size": 11947,
-          "lmtime": 1595499548474,
+          "size": 12366,
+          "lmtime": 1595513289223,
           "modified": false
         }
       },
