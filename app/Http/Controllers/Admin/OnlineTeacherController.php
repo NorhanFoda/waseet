@@ -15,6 +15,8 @@ use App\Models\Image;
 use App\Http\Requests\Teachers\OnlineTeacherRequest;
 use App\Http\Requests\Teachers\EditOnlineTeacherRequest;
 use Illuminate\Support\Facades\Hash;
+use App\Classes\SendEmail;
+use App\Models\SubScriber;
 
 class OnlineTeacherController extends Controller
 {
@@ -76,6 +78,13 @@ class OnlineTeacherController extends Controller
         }
 
         if($teacher){
+
+            //Send mail to subscripers
+            $subs = SubScriber::all();
+            foreach($subs as $sub){
+                SendEmail::Subscripe($sub->email, route('teachers.show', $teacher->id), 'teacher');
+            }
+
             session()->flash('success', trans('admin.created'));
             return redirect()->route('online_teachers.index');
         }

@@ -22,17 +22,18 @@
 
       <div class="col-lg-3 col-md-6 col-11" data-aos="fade-in">
         <ul>
-          <li>النشرة البريدية</li>
+          <li>{{trans('web.mailing')}}</li>
         </ul>
 
-        <h6>قم بالاشتراك الان ليصلك كل جديد</h6>
+        <h6>{{trans('web.subscribe_now')}}</h6>
 
-        <form action="">
+        <form action="{{route('users.subscribe')}}" method="POST">
+          @csrf
           <div class="form-group row">
             <div class="col-sm-12">
               <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label"><button><img
                     src="{{asset('web/images/interface.svg')}}" alt="" /></button></label>
-              <input type="email" class="form-control form-control-sm" id="colFormLabel" placeholder="البريد الالكترونى" />
+              <input type="email" name="email" class="form-control form-control-sm" id="colFormLabel" placeholder="{{trans('web.email')}}" />
             </div>
           </div>
         </form>

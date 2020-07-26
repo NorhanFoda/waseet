@@ -23,6 +23,7 @@ use App\Models\Document;
 use Illuminate\Support\Facades\Hash;
 use DB;
 use Auth;
+use App\Models\SubScriber;
 
 class RegisterController extends Controller
 {
@@ -75,6 +76,13 @@ class RegisterController extends Controller
             foreach($request->material_ids as $id){
                 $user->materials()->attach($id);
             }
+
+            //Send mail to subscripers
+            $subs = SubScriber::all();
+            foreach($subs as $sub){
+                SendEmail::Subscripe($sub->email, route('teachers.show', $user->id), 'teacher');
+            }
+
         }
 
         if($role_id == 6){

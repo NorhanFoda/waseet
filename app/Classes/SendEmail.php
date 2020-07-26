@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\VerificationEmail;
 use App\Mail\ResetPasswordEmail;
 use App\Mail\BagContentEmail;
+use App\Mail\SubscripersMail;
 
 class SendEmail{
 
@@ -18,5 +19,9 @@ class SendEmail{
 
     static function sendBagContents($bags, $email){;
         Mail::to($email)->send(new BagContentEmail($bags));
+    }
+
+    static function Subscripe($email, $link, $type){
+        Mail::to($email)->send(new SubscripersMail($link, $type));
     }
 }

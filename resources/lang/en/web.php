@@ -19,7 +19,7 @@ return [
     'contact_us' => 'Contact Us',
     'country' => 'Country',
     'register' => 'New Account',
-    '' => '',
+    'home' => 'Home',
 
     // About us
     'vision' => 'Vision',
@@ -192,4 +192,20 @@ return [
     'order_is_delivered' => 'Order is Deleivered On ',
     'bag_contents' => 'We Offer You The Contents of The Educational Bags You Just Purchased From Waseet Al Moalm Website',
     'bag_contents_emailed' => 'Educational Bag Contents are Sent to Your Email',
+    'contents_of_bag' => 'Contents of Educational Bag',
+    'contents_text' => 'This text is an example of text that can be replaced in the same space',
+
+    // Contact us
+    'contact_us' => 'This text is an example of text that can be replaced in the same space',
+    'send_us_message' => 'Send Us Your Message',
+    'write_message_here' => 'Write Your Message Here',
+    'name' => 'Name',
+    'message_sent' => 'Your Message Is Sent Successfully',
+
+    // Mailing newsletter
+    'mailing' => 'Mailing Newsletter',
+    'subscribe_now' => 'Subscribe Now To Receive All New',
+    'subscribed' => 'Subscriped Successfully',
+
+    'more' => 'More',
 ];

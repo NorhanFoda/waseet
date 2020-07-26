@@ -10,6 +10,8 @@ use App\Models\City;
 use App\Models\Image;
 use App\Http\Requests\Job\JobRequest;
 use App\Classes\Upload;
+use App\Models\SubScriber;
+use App\Classes\SendEmail;
 
 class JobController extends Controller
 {
@@ -59,6 +61,13 @@ class JobController extends Controller
         }
 
         if($job){
+
+            //Send mail to subscripers
+            $subs = SubScriber::all();
+            foreach($subs as $sub){
+                SendEmail::Subscripe($sub->email, route('jobs.details', $job->id), 'job');
+            }
+
             session()->flash('success', trans('admin.created'));
             return redirect()->route('jobs.index');
         }

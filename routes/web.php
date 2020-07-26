@@ -170,15 +170,34 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
             Route::get('orders', 'Admin\OrderController@index')->name('orders.index');
             Route::get('orders/{id}', 'Admin\OrderController@show')->name('orders.show');
             Route::post('orders', 'Admin\OrderController@update')->name('orders.update');
+
+            // Contacts
+            Route::get('contacts', 'Admin\ContactsController@index')->name('contacts.index');
+            Route::post('delete_contacts', 'Admin\ContactsController@deleteContacts')->name('contacts.delete');
             
             // Users
             Route::resource('users', 'Admin\UserController');
             Route::get('delete_user', 'Admin\UserController@deleteUser')->name('users.delete');
+            Route::get('subscribers', 'Admin\UserController@getSubScripers')->name('users.subscripers');
+            Route::post('delete_subscribers', 'Admin\UserController@deleteSubScripers')->name('subscripers.delete');
         });
 
         //Get cities
         Route::post('get_cities', 'Admin\CountryController@getCities')->name('countries.getCities');
     });
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     /* WEBSITE */
@@ -216,6 +235,11 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 
     // Static pages
     Route::get('/pages/{page}', 'Web\StaticPagesController@getPage')->name('pages');
+    Route::post('subscribe', 'Web\StaticPagesController@subscribe')->name('users.subscribe');
+
+    // Contact us
+    Route::get('/contact_us','Web\StaticPagesController@getContactUs')->name('contact_us');
+    Route::post('/contact_us','Web\StaticPagesController@storeContactUs')->name('contact_us.store');
 
     Route::group(['middleware' => ['auth:web']], function(){
 

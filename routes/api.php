@@ -44,8 +44,8 @@ Route::group(['middleware' => 'lang'], function(){
 
     // Bag categories
     Route::get('bag_categories', 'Api\BagCategoryController@index');
-    Route::get('bags', 'Api\BagCategoryController@getCategoryBags');
-    Route::get('bag_details', 'Api\BagCategoryController@getBagDetails');
+    Route::get('bags/{id}', 'Api\BagCategoryController@getCategoryBags');
+    Route::get('bag_details/{id}', 'Api\BagCategoryController@getBagDetails');
 
     // Auth routes
     Route::group(['middleware' => 'auth:api'], function(){

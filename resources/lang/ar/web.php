@@ -19,6 +19,7 @@ return [
     'contact_us' => 'تواصل معنا',
     'country' => 'الدولة',
     'register' => 'حساب جديد',
+    'home' => 'الرئيسية',
 
     // About us
     'vision' => 'الرؤية',
@@ -197,4 +198,20 @@ return [
     'videos' => 'روابط الفيديو',
     'images' => 'روابط الصور',
     'documents' => 'روابط الملفات النصية',
+    'contents_of_bag' => 'محتوى الحقيبة التعليمية',
+    'contents_text' => 'هذا النص هو مثال لنص يمكن ان يستبدل فى نفس المساحة',
+
+    // Contact us
+    'contact_us_text' => 'هذا النص هو مثال لنص يمكن ان يستبدل فى نفس المساحة',
+    'send_us_message' => 'إرسل لنا رسالتك',
+    'write_message_here' => 'أكتب رسالتك هنا',
+    'name' => 'الإسم',
+    'message_sent' => 'تم إرسال رسالتك بنجاح',
+
+    // Mailing newsletter
+    'mailing' => 'الشنرة البريدية',
+    'subscribe_now' => 'قم بالإشتراك الآن ليصلك كل جديد',
+    'subscribed' => 'تم الإشتراك بنجاح',
+
+    'more' => 'المزيد',
 ];

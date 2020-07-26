@@ -230,6 +230,22 @@ return [
     'saved_text_ar' => 'Saved posts text in Arabic',
     'saved_text_en' => 'Saved posts text in English',
 
+    'online_teacher_image' => 'Online teacher image',
+    
+    'online_teacher_title_ar' => 'Online teacher title in Arabic',
+    'online_teacher_title_en' => 'Online teacher title in English',
+
+    'online_teacher_text_ar' => 'Online teacher text in Arabic',
+    'online_teacher_text_en' => 'Online teacher text in English',
+
+    'online_teacher_image' => 'Direct teacher image',
+
+    'direct_teacher_title_ar' => 'Direct teacher title in Arabic',
+    'direct_teacher_title_en' => 'Direct teacher title in English',
+
+    'direct_teacher_text_ar' => 'Direct teacher text in Arabic',
+    'direct_teacher_text_en' => 'Direct teacher text in English',
+
     'setting' => 'Setting',
 
     // CVs
@@ -279,5 +295,14 @@ return [
     'shipping' => 'Shipping',
     'delivered' => 'Delivered',
     'shipping_fees' => 'Shipping Fees',
-    
+
+    'website' => 'Website',
+
+    'contacts' => 'Users Messages',
+
+    'subscripers' => 'Subscripers',
+
+    'new_bag_added' => 'A New Bag is Added in Waseet Al Moalm Website, For More Details Visit The Following Link', 
+    'new_job_added' => 'A New Job is Added in Waseet Al Moalm Website, For More Details Visit The Following Link',
+    'new_teacher_added'  => 'A New Teacher Registered in Waseet Al Moalm Website, For More Details Visit The Following Link',   
 ];

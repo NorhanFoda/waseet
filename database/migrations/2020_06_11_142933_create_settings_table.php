@@ -101,6 +101,22 @@ class CreateSettingsTable extends Migration
             $table->text('saved_text_ar');
             $table->text('saved_text_en');
 
+            $table->string('online_teacher_image');
+
+            $table->string('online_teacher_title_ar');
+            $table->string('online_teacher_title_en');
+
+            $table->text('online_teacher_text_ar');
+            $table->text('online_teacher_text_en');
+
+            $table->string('direct_teacher_image');
+            
+            $table->string('direct_teacher_title_ar');
+            $table->string('direct_teacher_title_en');
+
+            $table->text('direct_teacher_text_ar');
+            $table->text('direct_teacher_text_en');
+
             $table->timestamps();
         });
     }

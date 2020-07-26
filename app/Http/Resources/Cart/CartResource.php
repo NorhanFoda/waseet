@@ -17,6 +17,7 @@ class CartResource extends JsonResource
         $lang = \App::getLocale();
         return [
             'id' => $this->id,
+            'bag_id' => $this->bag->id,
             'bag' => $this->bag->{'name_'.$lang},
             'rating' => $this->bag->ratings->count() > 0 ? ceil($this->bag->ratings->sum('rate') / $this->bag->ratings->count()).'/5' : trans('admin.no_ratings'),
             'price' => $this->bag->price.' '.trans('admin.sr'),

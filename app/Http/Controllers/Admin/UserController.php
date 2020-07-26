@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\Classes\Upload;
+use App\Models\SubScriber;
 
 class UserController extends Controller
 {
@@ -143,5 +144,18 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function getSubScripers(){
+        $subs = SubScriber::all();
+        return view('admin.subscipers.index', compact('subs'));
+    }
+
+    public function deleteSubScripers(Request $request){
+        SubScriber::find($request->id)->delete();
+
+        return response()->json([
+            'data' => 1
+        ], 200);
     }
 }

@@ -18,20 +18,18 @@ class BagCategoryController extends Controller
         ], 200);
     }
 
-    public function getCategoryBags(Request $request){
-        $this->validate($request, ['category_id' => 'required']);
+    public function getCategoryBags($id){
 
-        $cat = BagCategory::find($request->category_id);
+        $cat = BagCategory::find($id);
 
         return response()->json([
             'bags' => BagResource::collection($cat->bags),
         ], 200);
     }
 
-    public function getBagDetails(Request $request){
-        $this->validate($request, ['bag_id' => 'required']);
+    public function getBagDetails($id){
 
-        $bag = Bag::find($request->bag_id);
+        $bag = Bag::find($id);
         $cat = BagCategory::find($bag->category->id);
 
         return response()->json([

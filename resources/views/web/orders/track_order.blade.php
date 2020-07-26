@@ -40,7 +40,7 @@
                                             <div class="pack_name">
                                                 <p>{{$bag->{'name_'.session('lang')} }} 
                                                     {{-- if order is confirmed then user can show bag contents --}}
-                                                    @if($bag->pivot->buy_type == 1) (<a href="{{$order->status != 1 ? route('order.bag_contents', $order->id) : '#'}}">{{trans('web.buy_online')}}</a>) @endif
+                                                    @if($bag->pivot->buy_type == 1) (<a href="{{$order->status != 1 ? route('order.bag_contents', $bag->id) : '#'}}">{{trans('web.buy_online')}}</a>) @endif
                                                     @if($bag->pivot->buy_type == 2) ({{trans('web.print_content')}}) @endif
                                                 </p>
                                             </div>

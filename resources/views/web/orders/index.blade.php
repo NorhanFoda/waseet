@@ -29,13 +29,7 @@
                         <ul class="list-unstyled">
                             @foreach(Auth::user()->orders as $order)
                                 <li class="gray-bg" data-aos="fade-up">
-                                    <a 
-                                        @if($order->bags()->where('buy_type', 2)->exists()) 
-                                            href="{{route('profile.track_order', $order->id)}}" 
-                                        @else
-                                        {{-- route to order bags content --}}
-                                            href="{{route('order.bag_contents', $order->id)}}"
-                                        @endif>{{trans('web.order_id')}} : {{$order->id}} 
+                                    <a href="{{route('profile.track_order', $order->id)}}" >{{trans('web.order_id')}} : {{$order->id}} 
                                         <i class="fa fa-ellipsis-h left-icon"></i>
                                     </a>
                                     <ul class="circle-list first_color">

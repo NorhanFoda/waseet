@@ -13,6 +13,8 @@ use App\Classes\Upload;
 use App\Http\Requests\Bags\BagRequest;
 use App\Http\Requests\Bags\EditBagRequest;
 use Illuminate\Support\Facades\Validator;
+use App\Classes\SendEmail;
+use App\Models\SubScriber;
 
 class BagController extends Controller
 {
@@ -130,6 +132,13 @@ class BagController extends Controller
         }
 
         if($bag){
+
+            //Send mail to subscripers
+            $subs = SubScriber::all();
+            foreach($subs as $sub){
+                SendEmail::Subscripe($sub->email, route('bags.show', $bag->id), 'bag');
+            }
+
             session()->flash('success', trans('admin.created'));
             return redirect()->route('bags.index');    
         }

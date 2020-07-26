@@ -86,5 +86,21 @@ class Setting extends Model
         
         'saved_text_ar',
         'saved_text_en',
+
+        'online_teacher_image',
+
+        'online_teacher_title_ar',
+        'online_teacher_title_en',
+
+        'online_teacher_text_ar',
+        'online_teacher_text_en',
+
+        'direct_teacher_image',
+
+        'direct_teacher_title_ar',
+        'direct_teacher_title_en',
+        
+        'direct_teacher_text_ar',
+        'direct_teacher_text_en',
     ];
 }

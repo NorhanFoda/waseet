@@ -102,34 +102,22 @@
 
       <div class="row">
         <div class="teacher  col-md-4 col-sm-6" data-aos="slide-up" data-aos-offset="300">
-          <img src="{{asset('web/images/teacher-vector.png')}}" alt="" />
-          <h5>العنوان الاول</h5>
+          <img src="{{$set->online_teacher_image}}" alt="" />
+          <h5>{{$set->{'online_teacher_title_'.session('lang')} }}</h5>
           <p>
-            هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم تولي
-            هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم تولي
+            {!! $set->{'online_teacher_text_'.session('lang')} !!}
           </p>
 
-          <a href="#" class="custom-btn">المزيد</a>
+          <a href="#" class="custom-btn">{{trans('web.more')}}</a>
         </div>
 
         <div class="teacher col-md-4 col-sm-6" data-aos="slide-up" data-aos-offset="300">
-          <img src="{{asset('web/images/teacher-vector-2.png')}}" alt="" />
-          <h5>العنوان الاول</h5>
+          <img src="{{$set->direct_teacher_image}}" alt="" />
+          <h5>{{$set->{'direct_teacher_title_'.session('lang')} }}</h5>
           <p>
-            هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم تولي
-            هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم تولي
+            {!! $set->{'direct_teacher_text_'.session('lang')} !!}
           </p>
-          <a href="#" class="custom-btn">المزيد</a>
-        </div>
-
-        <div class="teacher col-md-4 col-sm-6" data-aos="slide-up" data-aos-offset="300">
-          <img src="{{asset('web/images/teacher-vector-3.png')}}" alt="" />
-          <h5>العنوان الاول</h5>
-          <p>
-            هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم تولي
-            هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم تولي
-          </p>
-          <a href="#" class="custom-btn">المزيد</a>
+          <a href="#" class="custom-btn">{{trans('web.more')}}</a>
         </div>
       </div>
     </div>

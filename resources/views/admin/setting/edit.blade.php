@@ -120,7 +120,7 @@
                                             <span>{{trans('admin.text_before_add_ar')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <textarea name="text_before_add_ar" {{trans('admin.text_before_add_ar')}} class="form-control myTextArea" cols="30" rows="6" required>{{$set->text_before_add_ar}}</textarea>
+                                            <textarea name="text_before_add_ar" placeholder="{{trans('admin.text_before_add_ar')}}" class="form-control myTextArea" cols="30" rows="6" required>{{$set->text_before_add_ar}}</textarea>
                                             <div class="invalid-feedback">
                                                 {{trans('admin.text_before_add_ar')}}
                                             </div>
@@ -136,7 +136,7 @@
                                             <span>{{trans('admin.text_after_add_ar')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <textarea name="text_after_add_ar" {{trans('admin.text_after_add_ar')}} class="form-control myTextArea" cols="30" rows="6" required>{{$set->text_after_add_ar}}</textarea>
+                                            <textarea name="text_after_add_ar" placeholder="{{trans('admin.text_after_add_ar')}}" class="form-control myTextArea" cols="30" rows="6" required>{{$set->text_after_add_ar}}</textarea>
                                             <div class="invalid-feedback">
                                                 {{trans('admin.text_after_add_ar')}}
                                             </div>
@@ -168,7 +168,7 @@
                                             <span>{{trans('admin.section_1_text_ar')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <textarea name="section_1_text_ar" {{trans('admin.section_1_text_ar')}} class="form-control myTextArea" cols="30" rows="6" required>{{$set->section_1_text_ar}}</textarea>
+                                            <textarea name="section_1_text_ar" placeholder="{{trans('admin.section_1_text_ar')}}" class="form-control myTextArea" cols="30" rows="6" required>{{$set->section_1_text_ar}}</textarea>
                                             <div class="invalid-feedback">
                                                 {{trans('admin.section_1_text_ar')}}
                                             </div>
@@ -200,7 +200,7 @@
                                             <span>{{trans('admin.step_1_text_ar')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <textarea name="step_1_text_ar" {{trans('admin.step_1_text_ar')}} class="form-control myTextArea" cols="30" rows="6" required>{{$set->step_1_text_ar}}</textarea>
+                                            <textarea name="step_1_text_ar" placeholder="{{trans('admin.step_1_text_ar')}}" class="form-control myTextArea" cols="30" rows="6" required>{{$set->step_1_text_ar}}</textarea>
                                             <div class="invalid-feedback">
                                                 {{trans('admin.step_1_text_ar')}}
                                             </div>
@@ -232,7 +232,7 @@
                                             <span>{{trans('admin.step_2_text_ar')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <textarea name="step_2_text_ar" {{trans('admin.step_2_text_ar')}} class="form-control myTextArea" cols="30" rows="6" required>{{$set->step_2_text_ar}}</textarea>
+                                            <textarea name="step_2_text_ar" placeholder="{{trans('admin.step_2_text_ar')}}" class="form-control myTextArea" cols="30" rows="6" required>{{$set->step_2_text_ar}}</textarea>
                                             <div class="invalid-feedback">
                                                 {{trans('admin.step_2_text_ar')}}
                                             </div>
@@ -264,7 +264,7 @@
                                             <span>{{trans('admin.step_3_text_ar')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <textarea name="step_3_text_ar" {{trans('admin.step_3_text_ar')}} class="form-control myTextArea" cols="30" rows="6" required>{{$set->step_3_text_ar}}</textarea>
+                                            <textarea name="step_3_text_ar" placeholder="{{trans('admin.step_3_text_ar')}}" class="form-control myTextArea" cols="30" rows="6" required>{{$set->step_3_text_ar}}</textarea>
                                             <div class="invalid-feedback">
                                                 {{trans('admin.step_3_text_ar')}}
                                             </div>
@@ -296,7 +296,7 @@
                                             <span>{{trans('admin.section_2_text_ar')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <textarea name="section_2_text_ar" {{trans('admin.section_2_text_ar')}} class="form-control myTextArea" cols="30" rows="6" required>{{$set->section_2_text_ar}}</textarea>
+                                            <textarea name="section_2_text_ar" placeholder="{{trans('admin.section_2_text_ar')}}" class="form-control myTextArea" cols="30" rows="6" required>{{$set->section_2_text_ar}}</textarea>
                                             <div class="invalid-feedback">
                                                 {{trans('admin.section_2_text_ar')}}
                                             </div>
@@ -304,6 +304,70 @@
                                     </div>
                                 </div>
                                 {{-- section_2_text_ar end --}}
+                                
+                                {{-- direct_teacher_title_ar --}}
+                                <div class="col-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-2">
+                                            <span>{{trans('admin.direct_teacher_title_ar')}}</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <input type="text" name="direct_teacher_title_ar" placeholder="{{trans('admin.direct_teacher_title_ar')}}" class="form-control" required value="{{$set->direct_teacher_title_ar}}" />
+                                            <div class="invalid-feedback">
+                                                {{trans('admin.direct_teacher_title_ar')}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- direct_teacher_title_ar end --}}
+
+                                {{-- direct_teacher_text_ar --}}
+                                <div class="col-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-2">
+                                            <span>{{trans('admin.direct_teacher_text_ar')}}</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <textarea name="direct_teacher_text_ar" placeholder="{{trans('admin.direct_teacher_text_ar')}}" class="form-control myTextArea" cols="30" rows="6" required>{{$set->direct_teacher_text_ar}}</textarea>
+                                            <div class="invalid-feedback">
+                                                {{trans('admin.direct_teacher_text_ar')}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- direct_teacher_text_ar end --}}
+
+                                {{-- online_teacher_title_ar --}}
+                                <div class="col-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-2">
+                                            <span>{{trans('admin.online_teacher_title_ar')}}</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <input type="text" name="online_teacher_title_ar" placeholder="{{trans('admin.online_teacher_title_ar')}}" class="form-control" required value="{{$set->online_teacher_title_ar}}" />
+                                            <div class="invalid-feedback">
+                                                {{trans('admin.online_teacher_title_ar')}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- online_teacher_title_ar end --}}
+
+                                {{-- online_teacher_text_ar --}}
+                                <div class="col-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-2">
+                                            <span>{{trans('admin.online_teacher_text_ar')}}</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <textarea name="online_teacher_text_ar" placeholder="{{trans('admin.online_teacher_text_ar')}}" class="form-control myTextArea" cols="30" rows="6" required>{{$set->online_teacher_text_ar}}</textarea>
+                                            <div class="invalid-feedback">
+                                                {{trans('admin.online_teacher_text_ar')}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- online_teacher_text_ar end --}}
 
                                 {{-- section_3_title_ar --}}
                                 <div class="col-12">
@@ -328,7 +392,7 @@
                                             <span>{{trans('admin.section_3_text_ar')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <textarea name="section_3_text_ar" {{trans('admin.section_3_text_ar')}} class="form-control myTextArea" cols="30" rows="6" required>{{$set->section_3_text_ar}}</textarea>
+                                            <textarea name="section_3_text_ar"placeholder="{{trans('admin.section_3_text_ar')}}" class="form-control myTextArea" cols="30" rows="6" required>{{$set->section_3_text_ar}}</textarea>
                                             <div class="invalid-feedback">
                                                 {{trans('admin.section_3_text_ar')}}
                                             </div>
@@ -376,7 +440,7 @@
                                             <span>{{trans('admin.contact_us_text_ar')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <textarea name="contact_us_text_ar" {{trans('admin.contact_us_text_ar')}} class="form-control myTextArea" cols="30" rows="6" required>{{$set->contact_us_text_ar}}</textarea>
+                                            <textarea name="contact_us_text_ar" placeholder="{{trans('admin.contact_us_text_ar')}}" class="form-control myTextArea" cols="30" rows="6" required>{{$set->contact_us_text_ar}}</textarea>
                                             <div class="invalid-feedback">
                                                 {{trans('admin.contact_us_text_ar')}}
                                             </div>
@@ -408,7 +472,7 @@
                                             <span>{{trans('admin.saved_text_ar')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <textarea name="saved_text_ar" {{trans('admin.saved_text_ar')}} class="form-control myTextArea" cols="30" rows="6" required>{{$set->saved_text_ar}}</textarea>
+                                            <textarea name="saved_text_ar" placeholder="{{trans('admin.saved_text_ar')}}" class="form-control myTextArea" cols="30" rows="6" required>{{$set->saved_text_ar}}</textarea>
                                             <div class="invalid-feedback">
                                                 {{trans('admin.saved_text_ar')}}
                                             </div>
@@ -460,7 +524,7 @@
                                             <span>{{trans('admin.text_before_add_en')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <textarea name="text_before_add_en" {{trans('admin.text_before_add_en')}} class="form-control MyTextArea" cols="30" rows="6" required>{{$set->text_before_add_en}}</textarea>
+                                            <textarea name="text_before_add_en" placeholder="{{trans('admin.text_before_add_en')}}" class="form-control MyTextArea" cols="30" rows="6" required>{{$set->text_before_add_en}}</textarea>
                                             <div class="invalid-feedback">
                                                 {{trans('admin.text_before_add_en')}}
                                             </div>
@@ -476,7 +540,7 @@
                                             <span>{{trans('admin.text_after_add_en')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <textarea name="text_after_add_en" {{trans('admin.text_after_add_en')}} class="form-control myTextArea" cols="30" rows="6" required>{{$set->text_after_add_en}}</textarea>
+                                            <textarea name="text_after_add_en" placeholder="{{trans('admin.text_after_add_en')}}" class="form-control myTextArea" cols="30" rows="6" required>{{$set->text_after_add_en}}</textarea>
                                             <div class="invalid-feedback">
                                                 {{trans('admin.text_after_add_en')}}
                                             </div>
@@ -508,7 +572,7 @@
                                             <span>{{trans('admin.section_1_text_en')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <textarea name="section_1_text_en" {{trans('admin.section_1_text_en')}} class="form-control myTextArea" cols="30" rows="6" required>{{$set->section_1_text_en}}</textarea>
+                                            <textarea name="section_1_text_en" placeholder="{{trans('admin.section_1_text_en')}}" class="form-control myTextArea" cols="30" rows="6" required>{{$set->section_1_text_en}}</textarea>
                                             <div class="invalid-feedback">
                                                 {{trans('admin.section_1_text_en')}}
                                             </div>
@@ -540,7 +604,7 @@
                                             <span>{{trans('admin.step_1_text_en')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <textarea name="step_1_text_en" {{trans('admin.step_1_text_en')}} class="form-control myTextArea" cols="30" rows="6" required>{{$set->step_1_text_en}}</textarea>
+                                            <textarea name="step_1_text_en" placeholder="{{trans('admin.step_1_text_en')}}" class="form-control myTextArea" cols="30" rows="6" required>{{$set->step_1_text_en}}</textarea>
                                             <div class="invalid-feedback">
                                                 {{trans('admin.step_1_text_en')}}
                                             </div>
@@ -572,7 +636,7 @@
                                             <span>{{trans('admin.step_2_text_en')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <textarea name="step_2_text_en" {{trans('admin.step_2_text_en')}} class="form-control myTextArea" cols="30" rows="6" required>{{$set->step_2_text_en}}</textarea>
+                                            <textarea name="step_2_text_en" placeholder="{{trans('admin.step_2_text_en')}}" class="form-control myTextArea" cols="30" rows="6" required>{{$set->step_2_text_en}}</textarea>
                                             <div class="invalid-feedback">
                                                 {{trans('admin.step_2_text_en')}}
                                             </div>
@@ -604,7 +668,7 @@
                                             <span>{{trans('admin.step_3_text_en')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <textarea name="step_3_text_en" {{trans('admin.step_3_text_en')}} class="form-control myTextArea" cols="30" rows="6" required>{{$set->step_3_text_en}}</textarea>
+                                            <textarea name="step_3_text_en" placeholder="{{trans('admin.step_3_text_en')}}" class="form-control myTextArea" cols="30" rows="6" required>{{$set->step_3_text_en}}</textarea>
                                             <div class="invalid-feedback">
                                                 {{trans('admin.step_3_text_en')}}
                                             </div>
@@ -636,7 +700,7 @@
                                             <span>{{trans('admin.section_2_text_en')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <textarea name="section_2_text_en" {{trans('admin.section_2_text_en')}} class="form-control myTextArea" cols="30" rows="6" required>{{$set->section_2_text_en}}</textarea>
+                                            <textarea name="section_2_text_en" placeholder="{{trans('admin.section_2_text_en')}}" class="form-control myTextArea" cols="30" rows="6" required>{{$set->section_2_text_en}}</textarea>
                                             <div class="invalid-feedback">
                                                 {{trans('admin.section_2_text_en')}}
                                             </div>
@@ -644,6 +708,72 @@
                                     </div>
                                 </div>
                                 {{-- section_2_text_en end --}}
+
+                                
+                                {{-- direct_teacher_title_en --}}
+                                <div class="col-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-2">
+                                            <span>{{trans('admin.direct_teacher_title_en')}}</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <input type="text" name="direct_teacher_title_en" placeholder="{{trans('admin.direct_teacher_title_en')}}" class="form-control" required value="{{$set->direct_teacher_title_en}}" />
+                                            <div class="invalid-feedback">
+                                                {{trans('admin.direct_teacher_title_en')}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- direct_teacher_title_en end --}}
+
+                                {{-- direct_teacher_text_en --}}
+                                <div class="col-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-2">
+                                            <span>{{trans('admin.direct_teacher_text_en')}}</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <textarea name="direct_teacher_text_en"placeholder="{{trans('admin.direct_teacher_text_en')}}" class="form-control myTextArea" cols="30" rows="6" required>{{$set->direct_teacher_text_en}}</textarea>
+                                            <div class="invalid-feedback">
+                                                {{trans('admin.direct_teacher_text_en')}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- direct_teacher_text_en end --}}
+
+                                {{-- online_teacher_title_en --}}
+                                <div class="col-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-2">
+                                            <span>{{trans('admin.online_teacher_title_en')}}</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <input type="text" name="online_teacher_title_en" placeholder="admin.online_teacher_title_en')}}" class="form-control" required value="{{$set->online_teacher_title_en}}" />
+                                            <div class="invalid-feedback">
+                                                {{trans('admin.online_teacher_title_en')}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- online_teacher_title_en end --}}
+
+                                {{-- online_teacher_text_en --}}
+                                <div class="col-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-2">
+                                            <span>{{trans('admin.online_teacher_text_en')}}</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <textarea name="online_teacher_text_en" placeholder="{{trans('admin.online_teacher_text_en')}}" class="form-control myTextArea" cols="30" rows="6" required>{{$set->online_teacher_text_en}}</textarea>
+                                            <div class="invalid-feedback">
+                                                {{trans('admin.online_teacher_text_en')}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- online_teacher_text_en end --}}
+
 
                                 {{-- section_3_title_en --}}
                                 <div class="col-12">
@@ -668,7 +798,7 @@
                                             <span>{{trans('admin.section_3_text_en')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <textarea name="section_3_text_en" {{trans('admin.section_3_text_en')}} class="form-control myTextArea" cols="30" rows="6" required>{{$set->section_3_text_en}}</textarea>
+                                            <textarea name="section_3_text_en" placeholder="{{trans('admin.section_3_text_en')}}" class="form-control myTextArea" cols="30" rows="6" required>{{$set->section_3_text_en}}</textarea>
                                             <div class="invalid-feedback">
                                                 {{trans('admin.section_3_text_en')}}
                                             </div>
@@ -716,7 +846,7 @@
                                             <span>{{trans('admin.contact_us_text_en')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <textarea name="contact_us_text_en" {{trans('admin.contact_us_text_en')}} class="form-control myTextArea" cols="30" rows="6" required>{{$set->contact_us_text_en}}</textarea>
+                                            <textarea name="contact_us_text_en" placeholder="{{trans('admin.contact_us_text_en')}}" class="form-control myTextArea" cols="30" rows="6" required>{{$set->contact_us_text_en}}</textarea>
                                             <div class="invalid-feedback">
                                                 {{trans('admin.contact_us_text_en')}}
                                             </div>
@@ -748,7 +878,7 @@
                                             <span>{{trans('admin.saved_text_en')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <textarea name="saved_text_en" {{trans('admin.saved_text_en')}} class="form-control myTextArea" cols="30" rows="6" required>{{$set->saved_text_en}}</textarea>
+                                            <textarea name="saved_text_en" placeholder="{{trans('admin.saved_text_en')}}" class="form-control myTextArea" cols="30" rows="6" required>{{$set->saved_text_en}}</textarea>
                                             <div class="invalid-feedback">
                                                 {{trans('admin.saved_text_en')}}
                                             </div>
@@ -878,6 +1008,55 @@
                                     </div>
                                 </div>
                                 {{-- step_2_image end --}}
+
+                                {{-- direct_teacher_image --}}
+                                <div class="col-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-2">
+                                            <span>{{trans('admin.direct_teacher_image')}}</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <input type="file" name="direct_teacher_image" class="form-control" accept="image/*" placeholder="{{trans('admin.direct_teacher_image')}}">
+                                            <div class="invalid-feedback">
+                                                {{trans('admin.direct_teacher_image')}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-10">
+                                            <img src="{{$set->direct_teacher_image}}" alt="" width="200px" height="100px">
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- direct_teacher_image end --}}
+
+
+                                {{-- online_teacher_image --}}
+                                <div class="col-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-2">
+                                            <span>{{trans('admin.online_teacher_image')}}</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <input type="file" name="online_teacher_image" class="form-control" accept="image/*" placeholder="{{trans('admin.online_teacher_image')}}">
+                                            <div class="invalid-feedback">
+                                                {{trans('admin.online_teacher_image')}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-10">
+                                            <img src="{{$set->online_teacher_image}}" alt="" width="200px" height="100px">
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- online_teacher_image end --}}
 
                                 {{-- step_3_image --}}
                                 <div class="col-12">

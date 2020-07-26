@@ -60,6 +60,14 @@ class SettingController extends Controller
             'saved_title_en' => $request->saved_title_en,
             'saved_text_ar' => $request->saved_text_ar,
             'saved_text_en' => $request->saved_text_en,
+            'online_teacher_title_ar' => $request->online_teacher_title_ar,
+            'online_teacher_title_en' => $request->online_teacher_title_en,
+            'online_text_title_ar' => $request->online_text_title_ar,
+            'online_text_title_en' => $request->online_text_title_en,
+            'direct_teacher_title_ar' => $request->direct_teacher_title_ar,
+            'direct_teacher_title_en' => $request->direct_teacher_title_en,
+            'direct_text_title_ar' => $request->direct_text_title_ar,
+            'direct_text_title_en' => $request->direct_text_title_en,
         ]);
 
         if($request->has('header_logo')){
@@ -127,6 +135,30 @@ class SettingController extends Controller
             if($removed){
                 $step_3_image = Upload::uploadImage($request->step_3_image);
                 $set->update(['step_3_image' => $step_3_image]);
+            }
+            else{
+                session()->flash('error', trans('admin.error'));
+                return back();
+            }
+        }
+
+        if($request->has('online_teacher_image')){
+            $removed = Upload::deleteImage($set->online_teacher_image);
+            if($removed){
+                $online_teacher_image = Upload::uploadImage($request->online_teacher_image);
+                $set->update(['online_teacher_image' => $online_teacher_image]);
+            }
+            else{
+                session()->flash('error', trans('admin.error'));
+                return back();
+            }
+        }
+
+        if($request->has('direct_teacher_image')){
+            $removed = Upload::deleteImage($set->direct_teacher_image);
+            if($removed){
+                $direct_teacher_image = Upload::uploadImage($request->direct_teacher_image);
+                $set->update(['direct_teacher_image' => $direct_teacher_image]);
             }
             else{
                 session()->flash('error', trans('admin.error'));

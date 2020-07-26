@@ -55,6 +55,10 @@
 
             <li class=" nav-item"><a href="{{route('addresses.get_all')}}"><i class="fa fa-map-marker"></i><span class="menu-title" data-i18n="Dashboard">{{trans('admin.addresses')}}</span></a></li>
 
+            <li class=" nav-item"><a href="{{route('contacts.index')}}"><i class="fa fa-comments"></i><span class="menu-title" data-i18n="Dashboard">{{trans('admin.contacts')}}</span></a></li>
+
+            <li class=" nav-item"><a href="{{route('users.subscripers')}}"><i class="fa fa-users"></i><span class="menu-title" data-i18n="Dashboard">{{trans('admin.subscripers')}}</span></a></li>
+
             {{-- <li class=" nav-item"><a href="{{route('methods.index')}}"><i class="fa fa-money"></i><span class="menu-title" data-i18n="Dashboard">{{trans('admin.payment_methods')}}</span></a></li> --}}
 
             <li class=" nav-item"><a href="{{route('banks.index')}}"><i class="fa fa-money"></i><span class="menu-title" data-i18n="Dashboard">{{trans('admin.banks')}}</span></a></li>

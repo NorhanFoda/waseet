@@ -111,6 +111,12 @@
         "Http": {
           "Controllers": {
             "Admin": {
+              "AddressesController.php": {
+                "type": "-",
+                "size": 359,
+                "lmtime": 1595512305529,
+                "modified": false
+              },
               "AnnouncController.php": {
                 "type": "-",
                 "size": 4077,
@@ -239,6 +245,12 @@
                 "lmtime": 1595314328212,
                 "modified": false
               },
+              "OrderController.php": {
+                "type": "-",
+                "size": 1155,
+                "lmtime": 1595747491408,
+                "modified": false
+              },
               "OrganizationController.php": {
                 "type": "-",
                 "size": 5461,
@@ -298,18 +310,6 @@
                 "size": 3844,
                 "lmtime": 0,
                 "modified": false
-              },
-              "AddressesController.php": {
-                "type": "-",
-                "size": 359,
-                "lmtime": 1595512305529,
-                "modified": false
-              },
-              "OrderController.php": {
-                "type": "-",
-                "size": 975,
-                "lmtime": 1595513963882,
-                "modified": false
               }
             },
             "Api": {
@@ -321,8 +321,8 @@
               },
               "BagCategoryController.php": {
                 "type": "-",
-                "size": 1235,
-                "lmtime": 1594201164201,
+                "size": 1051,
+                "lmtime": 1595747994962,
                 "modified": false
               },
               "CartController.php": {
@@ -387,8 +387,8 @@
               },
               "StaticPagesController.php": {
                 "type": "-",
-                "size": 1927,
-                "lmtime": 1594118928564,
+                "size": 2149,
+                "lmtime": 1595749291890,
                 "modified": false
               }
             },
@@ -791,6 +791,12 @@
                 "lmtime": 1595333975742,
                 "modified": false
               }
+            },
+            "GoalsReasource.php": {
+              "type": "-",
+              "size": 480,
+              "lmtime": 1595749261474,
+              "modified": false
             }
           }
         },
@@ -12156,8 +12162,8 @@
           "ar": {
             "admin.php": {
               "type": "-",
-              "size": 11516,
-              "lmtime": 1595512901297,
+              "size": 11565,
+              "lmtime": 1595746713818,
               "modified": false
             },
             "api.php": {
@@ -12200,8 +12206,8 @@
           "en": {
             "admin.php": {
               "type": "-",
-              "size": 8451,
-              "lmtime": 1595512882826,
+              "size": 8492,
+              "lmtime": 1595746736162,
               "modified": false
             },
             "api.php": {
@@ -12738,6 +12744,20 @@
                 "modified": false
               }
             },
+            "orders": {
+              "index.blade.php": {
+                "type": "-",
+                "size": 5140,
+                "lmtime": 1595514280400,
+                "modified": false
+              },
+              "show.blade.php": {
+                "type": "-",
+                "size": 8858,
+                "lmtime": 1595747440489,
+                "modified": false
+              }
+            },
             "organizations": {
               "ajax": {
                 "cities.blade.php": {
@@ -12965,14 +12985,6 @@
                 "type": "-",
                 "size": 4235,
                 "lmtime": 0,
-                "modified": false
-              }
-            },
-            "orders": {
-              "index.blade.php": {
-                "type": "-",
-                "size": 5140,
-                "lmtime": 1595514280400,
                 "modified": false
               }
             }
@@ -13256,14 +13268,20 @@
             "size": 2887,
             "lmtime": 0,
             "modified": false
+          },
+          "gallery.blade.php": {
+            "type": "-",
+            "size": 10325,
+            "lmtime": 1595515313802,
+            "modified": false
           }
         }
       },
       "routes": {
         "api.php": {
           "type": "-",
-          "size": 2991,
-          "lmtime": 1594299491542,
+          "size": 3001,
+          "lmtime": 1595747975387,
           "modified": false
         },
         "channels.php": {
@@ -13280,8 +13298,8 @@
         },
         "web.php": {
           "type": "-",
-          "size": 12366,
-          "lmtime": 1595513289223,
+          "size": 12444,
+          "lmtime": 1595746093862,
           "modified": false
         }
       },

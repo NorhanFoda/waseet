@@ -12,6 +12,7 @@ use App\Models\EduType;
 use App\Models\Country;
 use App\Models\Image;
 use App\Models\Order;
+use App\Models\Bag;
 use App\Classes\Upload;
 
 class ProfileController extends Controller
@@ -102,6 +103,7 @@ class ProfileController extends Controller
     }
 
     public function showBagContents($id){
-        dd('bag contents');
+        $bag = Bag::with(['images', 'videos', 'documents'])->find($id);
+        return view('web.bags.gallery', compact('bag'));
     }
 }

@@ -35,6 +35,7 @@
         @if(!Auth::check())
           <li><a href="{{route('login.form')}}">{{trans('web.login')}}</a></li>
         @endif
+        <li><a href="{{route('home')}}">{{trans('web.home')}}</a></li>
         @if(Auth::check() && auth()->user()->hasRole('admin'))
           <li><a href="{{route('admin.home')}}">{{trans('web.dashboard')}}</a></li>
         @endif
@@ -49,7 +50,7 @@
         @endif
         
         <li><a href="{{route('payment.banks')}}">{{trans('web.banks')}}</a></li>
-        <li><a href="">{{trans('web.contact_us')}}</a></li>
+        <li><a href="{{route('contact_us')}}">{{trans('web.contact_us')}}</a></li>
         @if(Auth::check())
           <li>
             <form action="{{route('logout')}}" method="POST">

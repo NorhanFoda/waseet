@@ -15,6 +15,8 @@ use App\Classes\Upload;
 use App\Http\Requests\Teachers\DirectTeacherRequest;
 use App\Http\Requests\Teachers\EditDirectTeacherRequest;
 use Illuminate\Support\Facades\Hash;
+use App\Classes\SendEmail;
+use App\Models\SubScriber;
 
 class DirectTeacherController extends Controller
 {
@@ -73,6 +75,13 @@ class DirectTeacherController extends Controller
         }
 
         if($teacher){
+
+            //Send mail to subscripers
+            $subs = SubScriber::all();
+            foreach($subs as $sub){
+                SendEmail::Subscripe($sub->email, route('teachers.show', $teacher->id), 'teacher');
+            }
+
             session()->flash('success', trans('admin.created'));
             return redirect()->route('direct_teachers.index');
         }
