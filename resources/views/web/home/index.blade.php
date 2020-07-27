@@ -1,6 +1,6 @@
 @extends('web.layouts.app')
 @section('title', trans('admin.home'))
-@section('description', 'waseet description')
+@section('description', trans('web.waseet_description'))
 @section('image', asset('/images/logo.png'))
 
 @section('content')
@@ -108,7 +108,7 @@
             {!! $set->{'online_teacher_text_'.session('lang')} !!}
           </p>
 
-          <a href="#" class="custom-btn">{{trans('web.more')}}</a>
+          <a href="{{route('teachers.get_by_type', 'online')}}" class="custom-btn">{{trans('web.more')}}</a>
         </div>
 
         <div class="teacher col-md-4 col-sm-6" data-aos="slide-up" data-aos-offset="300">
@@ -117,10 +117,11 @@
           <p>
             {!! $set->{'direct_teacher_text_'.session('lang')} !!}
           </p>
-          <a href="#" class="custom-btn">{{trans('web.more')}}</a>
+          <a href="{{route('teachers.get_by_type', 'direct')}}" class="custom-btn">{{trans('web.more')}}</a>
         </div>
       </div>
     </div>
+
   </section>
 
   <section class="packs text-center">

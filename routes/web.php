@@ -232,6 +232,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
     // Teachers
     Route::get('teachers', 'Web\TeachersController@index')->name('teachers.index');
     Route::get('teachers/{id}', 'Web\TeachersController@show')->name('teachers.show');
+    Route::get('get_teachers/{type}', 'Web\TeachersController@getTeachersByType')->name('teachers.get_by_type');
 
     // Static pages
     Route::get('/pages/{page}', 'Web\StaticPagesController@getPage')->name('pages');
@@ -268,10 +269,6 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
         Route::get('get_orders', 'Web\ProfileController@getOrders')->name('profile.orders');
         Route::get('get_orders/{id}', 'Web\ProfileController@trackOrder')->name('profile.track_order');
         Route::get('contents/{id}', 'Web\ProfileController@showBagContents')->name('order.bag_contents');
-    });
-
-    Route::get('galary', function(){
-        return view('gallery');
     });
 
 });

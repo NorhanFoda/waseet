@@ -1,6 +1,6 @@
 @extends('web.layouts.app')
 @section('title', $job->{'name_'.session('lang')} )
-@section('description', 'waseet description')
+@section('description', \App::getLocale() == 'ar' ? $job->description_ar : $job->description_en)
 @section('image', asset('/images/logo.png'))
 
 @section('content')

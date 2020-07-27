@@ -1,6 +1,6 @@
 @extends('web.layouts.app')
 @section('title', trans('web.contents_of_bag'))
-@section('description', 'waseet description')
+@section('description', \App::getLocale() == 'ar' ? $bag->description_ar : $bag->description_en)
 @section('image', asset('/images/logo.png'))
 
 @section('content')

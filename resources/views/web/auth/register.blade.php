@@ -1,6 +1,6 @@
 @extends('web.layouts.register')
 @section('title', trans('web.register'))
-@section('description', 'waseet description')
+@section('description', trans('web.waseet_description'))
 @section('image', asset('/images/logo.png'))
 
 @section('content')
@@ -19,7 +19,9 @@
         </div>
 
         <div class="login-btn">
-            <a href="{{route('login.form')}}" class="white-btn">{{trans('web.login')}}</a>
+            @if(!Auth::check())
+              <a href="{{route('login.form')}}" class="white-btn">{{trans('web.login')}}</a>
+            @endif
         </div>
     </div>
 

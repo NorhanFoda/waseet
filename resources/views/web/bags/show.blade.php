@@ -24,7 +24,7 @@
 @endsection
 
 @section('title', \App::getLocale() == 'ar' ? $bag->name_ar : $bag->name_en)
-@section('description', 'waseet description')
+@section('description', \App::getLocale() == 'ar' ? $bag->description_ar : $bag->description_en)
 @section('image', asset('/images/logo.png'))
 
 @section('content')

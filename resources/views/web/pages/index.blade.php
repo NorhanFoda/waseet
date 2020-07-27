@@ -1,6 +1,6 @@
 @extends('web.layouts.app')
-@section('title', trans('admin.home'))
-@section('description', 'waseet description')
+@section('title', \App::getLocale() == 'ar' ? $page->name_ar : $page->name_en)
+@section('description', \App::getLocale() == 'ar' ? $page->short_description_ar : $page->short_description_en)
 @section('image', asset('/images/logo.png'))
 
 @section('content')

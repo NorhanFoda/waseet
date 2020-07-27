@@ -67,8 +67,8 @@
         "Classes": {
           "SendEmail.php": {
             "type": "-",
-            "size": 593,
-            "lmtime": 1595506302772,
+            "size": 755,
+            "lmtime": 1595765788833,
             "modified": false
           },
           "Upload.php": {
@@ -169,8 +169,8 @@
               },
               "BagController.php": {
                 "type": "-",
-                "size": 13778,
-                "lmtime": 1594646525797,
+                "size": 14050,
+                "lmtime": 1595767288818,
                 "modified": false
               },
               "BankController.php": {
@@ -191,6 +191,12 @@
                 "lmtime": 0,
                 "modified": false
               },
+              "ContactsController.php": {
+                "type": "-",
+                "size": 513,
+                "lmtime": 1595760534427,
+                "modified": false
+              },
               "CountryController.php": {
                 "type": "-",
                 "size": 3724,
@@ -199,8 +205,8 @@
               },
               "DirectTeacherController.php": {
                 "type": "-",
-                "size": 5717,
-                "lmtime": 1595314431507,
+                "size": 6001,
+                "lmtime": 1595767267266,
                 "modified": false
               },
               "EduLevelController.php": {
@@ -223,8 +229,8 @@
               },
               "JobController.php": {
                 "type": "-",
-                "size": 4841,
-                "lmtime": 1594798820894,
+                "size": 5116,
+                "lmtime": 1595767244293,
                 "modified": false
               },
               "MaterialController.php": {
@@ -241,8 +247,8 @@
               },
               "OnlineTeacherController.php": {
                 "type": "-",
-                "size": 5964,
-                "lmtime": 1595314328212,
+                "size": 6248,
+                "lmtime": 1595767287083,
                 "modified": false
               },
               "OrderController.php": {
@@ -271,8 +277,8 @@
               },
               "SettingController.php": {
                 "type": "-",
-                "size": 5631,
-                "lmtime": 1594472904403,
+                "size": 7167,
+                "lmtime": 1595775557242,
                 "modified": false
               },
               "SliderController.php": {
@@ -307,8 +313,8 @@
               },
               "UserController.php": {
                 "type": "-",
-                "size": 3844,
-                "lmtime": 0,
+                "size": 4205,
+                "lmtime": 1595763344409,
                 "modified": false
               }
             },
@@ -481,20 +487,20 @@
               },
               "ProfileController.php": {
                 "type": "-",
-                "size": 3306,
-                "lmtime": 1595499615030,
+                "size": 3427,
+                "lmtime": 1595768726718,
                 "modified": false
               },
               "RegisterController.php": {
                 "type": "-",
-                "size": 4740,
-                "lmtime": 1595157877597,
+                "size": 4994,
+                "lmtime": 1595767261128,
                 "modified": false
               },
               "StaticPagesController.php": {
                 "type": "-",
-                "size": 359,
-                "lmtime": 1595342911020,
+                "size": 1613,
+                "lmtime": 1595762523120,
                 "modified": false
               },
               "TeachersController.php": {
@@ -743,10 +749,16 @@
             "Cart": {
               "CartResource.php": {
                 "type": "-",
-                "size": 914,
-                "lmtime": 1594292661710,
+                "size": 954,
+                "lmtime": 1595767559608,
                 "modified": false
               }
+            },
+            "GoalsReasource.php": {
+              "type": "-",
+              "size": 480,
+              "lmtime": 1595749261474,
+              "modified": false
             },
             "Order": {
               "OrderResource.php": {
@@ -791,12 +803,6 @@
                 "lmtime": 1595333975742,
                 "modified": false
               }
-            },
-            "GoalsReasource.php": {
-              "type": "-",
-              "size": 480,
-              "lmtime": 1595749261474,
-              "modified": false
             }
           }
         },
@@ -829,6 +835,12 @@
             "type": "-",
             "size": 714,
             "lmtime": 1594033101421,
+            "modified": false
+          },
+          "SubscripersMail.php": {
+            "type": "-",
+            "size": 703,
+            "lmtime": 1595766254236,
             "modified": false
           }
         },
@@ -973,8 +985,8 @@
           },
           "Setting.php": {
             "type": "-",
-            "size": 1590,
-            "lmtime": 1594120388945,
+            "size": 1944,
+            "lmtime": 1595772217635,
             "modified": false
           },
           "Slider.php": {
@@ -1387,8 +1399,8 @@
           },
           "2020_06_11_142933_create_settings_table.php": {
             "type": "-",
-            "size": 3137,
-            "lmtime": 1594284764498,
+            "size": 3687,
+            "lmtime": 1595772152036,
             "modified": false
           },
           "2020_06_11_144001_create_sub_scribers_table.php": {
@@ -1521,8 +1533,8 @@
           },
           "SettingSeeder.php": {
             "type": "-",
-            "size": 7851,
-            "lmtime": 1595255623457,
+            "size": 9470,
+            "lmtime": 1595772798425,
             "modified": false
           },
           "SliderSeeder.php": {
@@ -10735,6 +10747,12 @@
             "lmtime": 0,
             "modified": false
           },
+          "php6C6_1594199662.pdf": {
+            "type": "-",
+            "size": 253289,
+            "lmtime": 1594199660980,
+            "modified": false
+          },
           "php7690_1594481343.pdf": {
             "type": "-",
             "size": 23959,
@@ -10770,6 +10788,26 @@
             "size": 23959,
             "lmtime": 1594905978100,
             "modified": false
+          },
+          "php706_1594199662.pdf": {
+            "type": "-",
+            "size": 253289,
+            "lmtime": 1594199661052,
+            "modified": false
+          },
+          "seeding": {
+            "php6C6_1594199662.pdf": {
+              "type": "-",
+              "size": 253289,
+              "lmtime": 1594199660980,
+              "modified": false
+            },
+            "php706_1594199662.pdf": {
+              "type": "-",
+              "size": 253289,
+              "lmtime": 1594199661052,
+              "modified": false
+            }
           }
         },
         "favicon.ico": {
@@ -10825,6 +10863,12 @@
             "type": "-",
             "size": 7165,
             "lmtime": 1593011975726,
+            "modified": false
+          },
+          "php0lJOuU_1595506246.png": {
+            "type": "-",
+            "size": 2293,
+            "lmtime": 0,
             "modified": false
           },
           "php1DAD_1594474176.png": {
@@ -10887,10 +10931,22 @@
             "lmtime": 1594201246458,
             "modified": false
           },
+          "php39KuqW_1595504698.png": {
+            "type": "-",
+            "size": 2293,
+            "lmtime": 0,
+            "modified": false
+          },
           "php4CA3_1594730631.png": {
             "type": "-",
             "size": 925,
             "lmtime": 1594730630550,
+            "modified": false
+          },
+          "php4clBQd_1595508397.png": {
+            "type": "-",
+            "size": 2293,
+            "lmtime": 0,
             "modified": false
           },
           "php5CBD_1594474127.png": {
@@ -10903,6 +10959,12 @@
             "type": "-",
             "size": 2293,
             "lmtime": 1594905979474,
+            "modified": false
+          },
+          "php644B_1595157704.png": {
+            "type": "-",
+            "size": 925,
+            "lmtime": 1595157703873,
             "modified": false
           },
           "php6B4_1594199662.png": {
@@ -10965,6 +11027,12 @@
             "lmtime": 1594481342361,
             "modified": false
           },
+          "php7CBE_1595415594.png": {
+            "type": "-",
+            "size": 6699,
+            "lmtime": 1595415594294,
+            "modified": false
+          },
           "php998D_1594286449.png": {
             "type": "-",
             "size": 1451,
@@ -11013,10 +11081,58 @@
             "lmtime": 1594474092977,
             "modified": false
           },
+          "phpE450_1595143124.png": {
+            "type": "-",
+            "size": 925,
+            "lmtime": 1595143122135,
+            "modified": false
+          },
+          "phpI23nIq_1595505872.png": {
+            "type": "-",
+            "size": 2293,
+            "lmtime": 0,
+            "modified": false
+          },
           "phpIVJ8Dq_1594114312.png": {
             "type": "-",
             "size": 2293,
             "lmtime": 1594905979821,
+            "modified": false
+          },
+          "phpIZ5OOA_1595504973.png": {
+            "type": "-",
+            "size": 2293,
+            "lmtime": 0,
+            "modified": false
+          },
+          "phpJrBRqz_1595428296.png": {
+            "type": "-",
+            "size": 533728,
+            "lmtime": 0,
+            "modified": false
+          },
+          "phpMp7ucC_1595428336.png": {
+            "type": "-",
+            "size": 533728,
+            "lmtime": 0,
+            "modified": false
+          },
+          "phpNbG3NX_1595506325.png": {
+            "type": "-",
+            "size": 2293,
+            "lmtime": 0,
+            "modified": false
+          },
+          "phpO1KPbu_1595427883.png": {
+            "type": "-",
+            "size": 533728,
+            "lmtime": 0,
+            "modified": false
+          },
+          "phpSxY4tw_1595506288.png": {
+            "type": "-",
+            "size": 2293,
+            "lmtime": 0,
             "modified": false
           },
           "phpTUJRHg_1594114312.png": {
@@ -11025,16 +11141,100 @@
             "lmtime": 1594905980190,
             "modified": false
           },
+          "phpXZmahX_1595508623.JPG": {
+            "type": "-",
+            "size": 70348,
+            "lmtime": 0,
+            "modified": false
+          },
+          "phpYZPgLL_1595508334.png": {
+            "type": "-",
+            "size": 2293,
+            "lmtime": 0,
+            "modified": false
+          },
+          "phpcpRE6l_1595506387.png": {
+            "type": "-",
+            "size": 2293,
+            "lmtime": 0,
+            "modified": false
+          },
+          "phpdYauMy_1595506366.png": {
+            "type": "-",
+            "size": 2293,
+            "lmtime": 0,
+            "modified": false
+          },
           "phpdn764m_1594114312.png": {
             "type": "-",
             "size": 38084,
             "lmtime": 1594905980667,
             "modified": false
           },
+          "phpfJ2CLL_1595428355.png": {
+            "type": "-",
+            "size": 533728,
+            "lmtime": 0,
+            "modified": false
+          },
+          "phpgT4URe_1595428237.png": {
+            "type": "-",
+            "size": 533728,
+            "lmtime": 0,
+            "modified": false
+          },
+          "phpibdAo9_1595428107.png": {
+            "type": "-",
+            "size": 533728,
+            "lmtime": 0,
+            "modified": false
+          },
+          "phplOlXoP_1595424813.png": {
+            "type": "-",
+            "size": 8293,
+            "lmtime": 0,
+            "modified": false
+          },
+          "phpmmNoW7_1595505245.png": {
+            "type": "-",
+            "size": 2293,
+            "lmtime": 0,
+            "modified": false
+          },
+          "phpqoharP_1595428024.png": {
+            "type": "-",
+            "size": 533728,
+            "lmtime": 0,
+            "modified": false
+          },
           "phpr1WfNj_1594114312.png": {
             "type": "-",
             "size": 10439,
             "lmtime": 1594905981114,
+            "modified": false
+          },
+          "phpvYixtR_1595508724.JPG": {
+            "type": "-",
+            "size": 70348,
+            "lmtime": 0,
+            "modified": false
+          },
+          "phpxt3Jnm_1595424723.png": {
+            "type": "-",
+            "size": 6699,
+            "lmtime": 0,
+            "modified": false
+          },
+          "phpxxTgGi_1595428305.png": {
+            "type": "-",
+            "size": 533728,
+            "lmtime": 0,
+            "modified": false
+          },
+          "phpypBa59_1595427978.png": {
+            "type": "-",
+            "size": 533728,
+            "lmtime": 0,
             "modified": false
           },
           "product-avatar.png": {
@@ -11061,22 +11261,186 @@
             "lmtime": 1594022865591,
             "modified": false
           },
+          "seeding": {
+            "avatar.png": {
+              "type": "-",
+              "size": 52534,
+              "lmtime": 1593950401804,
+              "modified": false
+            },
+            "logo.png": {
+              "type": "-",
+              "size": 38084,
+              "lmtime": 1594022865591,
+              "modified": false
+            },
+            "logo2.png": {
+              "type": "-",
+              "size": 10439,
+              "lmtime": 1594112416824,
+              "modified": false
+            },
+            "logo3.png": {
+              "type": "-",
+              "size": 10439,
+              "lmtime": 1594112416824,
+              "modified": false
+            },
+            "mada.png": {
+              "type": "-",
+              "size": 1451,
+              "lmtime": 1587651895000,
+              "modified": false
+            },
+            "master.png": {
+              "type": "-",
+              "size": 7165,
+              "lmtime": 1593011975726,
+              "modified": false
+            },
+            "php1DAD_1594474176.png": {
+              "type": "-",
+              "size": 10840,
+              "lmtime": 1594474176158,
+              "modified": false
+            },
+            "php222F_1594474243.png": {
+              "type": "-",
+              "size": 8293,
+              "lmtime": 1594474242861,
+              "modified": false
+            },
+            "php260_1594472859.png": {
+              "type": "-",
+              "size": 34383,
+              "lmtime": 1594472858459,
+              "modified": false
+            },
+            "php261_1594472859.png": {
+              "type": "-",
+              "size": 27303,
+              "lmtime": 1594472858467,
+              "modified": false
+            },
+            "php272_1594472860.png": {
+              "type": "-",
+              "size": 24357,
+              "lmtime": 1594472858475,
+              "modified": false
+            },
+            "php5CBD_1594474127.png": {
+              "type": "-",
+              "size": 8698,
+              "lmtime": 1594474126765,
+              "modified": false
+            },
+            "php6F9D_1594306099.jpg": {
+              "type": "-",
+              "size": 174041,
+              "lmtime": 1594306098614,
+              "modified": false
+            },
+            "php764F_1594481343.png": {
+              "type": "-",
+              "size": 54341,
+              "lmtime": 1594481342276,
+              "modified": false
+            },
+            "php768F_1594481343.png": {
+              "type": "-",
+              "size": 51683,
+              "lmtime": 1594481342333,
+              "modified": false
+            },
+            "php76A1_1594481343.png": {
+              "type": "-",
+              "size": 51683,
+              "lmtime": 1594481342353,
+              "modified": false
+            },
+            "php76A2_1594481344.png": {
+              "type": "-",
+              "size": 54341,
+              "lmtime": 1594481342357,
+              "modified": false
+            },
+            "php76A3_1594481344.png": {
+              "type": "-",
+              "size": 37387,
+              "lmtime": 1594481342361,
+              "modified": false
+            },
+            "php7CBE_1595415594.png": {
+              "type": "-",
+              "size": 6699,
+              "lmtime": 1595415594294,
+              "modified": false
+            },
+            "php998D_1594286449.png": {
+              "type": "-",
+              "size": 1451,
+              "lmtime": 1594286448550,
+              "modified": false
+            },
+            "php9D4B_1594474274.png": {
+              "type": "-",
+              "size": 7749,
+              "lmtime": 1594474274365,
+              "modified": false
+            },
+            "phpA349_1594474210.png": {
+              "type": "-",
+              "size": 48360,
+              "lmtime": 1594474210366,
+              "modified": false
+            },
+            "phpC28C_1594474153.png": {
+              "type": "-",
+              "size": 15982,
+              "lmtime": 1594474152841,
+              "modified": false
+            },
+            "phpD8B7_1594474093.png": {
+              "type": "-",
+              "size": 13993,
+              "lmtime": 1594474092977,
+              "modified": false
+            },
+            "teacher-vector-3.png": {
+              "type": "-",
+              "size": 57678,
+              "lmtime": 1592181907573,
+              "modified": false
+            },
+            "teacher-vector.png": {
+              "type": "-",
+              "size": 46782,
+              "lmtime": 1592181907367,
+              "modified": false
+            },
+            "visa.png": {
+              "type": "-",
+              "size": 5738,
+              "lmtime": 1593011961111,
+              "modified": false
+            }
+          },
+          "teacher-vector-3.png": {
+            "type": "-",
+            "size": 57678,
+            "lmtime": 1592181907573,
+            "modified": false
+          },
           "visa.png": {
             "type": "-",
             "size": 5738,
             "lmtime": 1593011961111,
             "modified": false
           },
-          "php644B_1595157704.png": {
+          "teacher-vector.png": {
             "type": "-",
-            "size": 925,
-            "lmtime": 1595157703873,
-            "modified": false
-          },
-          "phpE450_1595143124.png": {
-            "type": "-",
-            "size": 925,
-            "lmtime": 1595143122135,
+            "size": 46782,
+            "lmtime": 1592181907367,
             "modified": false
           }
         },
@@ -11117,6 +11481,12 @@
             "type": "-",
             "size": 552999,
             "lmtime": 0,
+            "modified": false
+          },
+          "php728_1594199662.mp4": {
+            "type": "-",
+            "size": 552999,
+            "lmtime": 1594199661080,
             "modified": false
           },
           "php765F_1594481343.mp4": {
@@ -11172,6 +11542,32 @@
             "size": 552999,
             "lmtime": 1594905987419,
             "modified": false
+          },
+          "php748_1594199663.mp4": {
+            "type": "-",
+            "size": 552999,
+            "lmtime": 1594199661096,
+            "modified": false
+          },
+          "seeding": {
+            "php728_1594199662.mp4": {
+              "type": "-",
+              "size": 552999,
+              "lmtime": 1594199661080,
+              "modified": false
+            },
+            "php748_1594199663.mp4": {
+              "type": "-",
+              "size": 552999,
+              "lmtime": 1594199661096,
+              "modified": false
+            },
+            "php765F_1594481343.mp4": {
+              "type": "-",
+              "size": 552999,
+              "lmtime": 1594481342284,
+              "modified": false
+            }
           }
         },
         "web": {
@@ -12162,8 +12558,8 @@
           "ar": {
             "admin.php": {
               "type": "-",
-              "size": 11565,
-              "lmtime": 1595746713818,
+              "size": 13257,
+              "lmtime": 1595775104621,
               "modified": false
             },
             "api.php": {
@@ -12198,16 +12594,16 @@
             },
             "web.php": {
               "type": "-",
-              "size": 9558,
-              "lmtime": 1595506414728,
+              "size": 10395,
+              "lmtime": 1595775756611,
               "modified": false
             }
           },
           "en": {
             "admin.php": {
               "type": "-",
-              "size": 8492,
-              "lmtime": 1595746736162,
+              "size": 9626,
+              "lmtime": 1595773839038,
               "modified": false
             },
             "api.php": {
@@ -12242,8 +12638,8 @@
             },
             "web.php": {
               "type": "-",
-              "size": 7007,
-              "lmtime": 1595502245364,
+              "size": 7677,
+              "lmtime": 1595775788915,
               "modified": false
             }
           }
@@ -12286,6 +12682,12 @@
               "type": "-",
               "size": 1728,
               "lmtime": 1594041874641,
+              "modified": false
+            },
+            "subscripe.blade.php": {
+              "type": "-",
+              "size": 2125,
+              "lmtime": 1595766728387,
               "modified": false
             }
           },
@@ -12647,14 +13049,14 @@
               },
               "header.blade.php": {
                 "type": "-",
-                "size": 14417,
-                "lmtime": 0,
+                "size": 14589,
+                "lmtime": 1595748258786,
                 "modified": false
               },
               "sidebar.blade.php": {
                 "type": "-",
-                "size": 6520,
-                "lmtime": 1595512020493,
+                "size": 6911,
+                "lmtime": 1595762953471,
                 "modified": false
               }
             },
@@ -12849,9 +13251,9 @@
             "setting": {
               "edit.blade.php": {
                 "type": "-",
-                "size": 58128,
-                "lmtime": 1594120214205,
-                "modified": true
+                "size": 70471,
+                "lmtime": 1595774329000,
+                "modified": false
               }
             },
             "slider": {
@@ -12987,6 +13389,28 @@
                 "lmtime": 0,
                 "modified": false
               }
+            },
+            "subscipers": {
+              "index.blade.php": {
+                "type": "-",
+                "size": 5721,
+                "lmtime": 1595764745420,
+                "modified": false
+              }
+            },
+            "contacts": {
+              "index.blade.php": {
+                "type": "-",
+                "size": 5987,
+                "lmtime": 1595760573686,
+                "modified": false
+              },
+              "show.blade.php": {
+                "type": "-",
+                "size": 16743,
+                "lmtime": 1595760155828,
+                "modified": false
+              }
             }
           },
           "auth": {
@@ -13022,6 +13446,12 @@
               "lmtime": 0,
               "modified": false
             }
+          },
+          "gallery.blade.php": {
+            "type": "-",
+            "size": 10325,
+            "lmtime": 1595515313802,
+            "modified": false
           },
           "gallery.php": {
             "type": "-",
@@ -13096,6 +13526,12 @@
                 "size": 11625,
                 "lmtime": 1595161380570,
                 "modified": false
+              },
+              "gallery.blade.php": {
+                "type": "-",
+                "size": 5123,
+                "lmtime": 1595771038340,
+                "modified": false
               }
             },
             "carts": {
@@ -13109,8 +13545,8 @@
             "home": {
               "index.blade.php": {
                 "type": "-",
-                "size": 5972,
-                "lmtime": 1594898007568,
+                "size": 5070,
+                "lmtime": 1595775723670,
                 "modified": false
               }
             },
@@ -13143,8 +13579,8 @@
               },
               "footer.blade.php": {
                 "type": "-",
-                "size": 2204,
-                "lmtime": 1595330320628,
+                "size": 2233,
+                "lmtime": 1595762389806,
                 "modified": false
               },
               "login.blade.php": {
@@ -13155,9 +13591,9 @@
               },
               "navbar.blade.php": {
                 "type": "-",
-                "size": 4705,
-                "lmtime": 1595326279987,
-                "modified": true
+                "size": 4800,
+                "lmtime": 1595764585279,
+                "modified": false
               },
               "register.blade.php": {
                 "type": "-",
@@ -13175,14 +13611,14 @@
             "orders": {
               "index.blade.php": {
                 "type": "-",
-                "size": 2912,
-                "lmtime": 1595500687034,
+                "size": 2502,
+                "lmtime": 1595768563363,
                 "modified": false
               },
               "track_order.blade.php": {
                 "type": "-",
-                "size": 11013,
-                "lmtime": 1595514270604,
+                "size": 11011,
+                "lmtime": 1595768722968,
                 "modified": false
               }
             },
@@ -13261,18 +13697,20 @@
                 "lmtime": 1595152227554,
                 "modified": false
               }
+            },
+            "contact_us": {
+              "index.blade.php": {
+                "type": "-",
+                "size": 3609,
+                "lmtime": 1595759734399,
+                "modified": false
+              }
             }
           },
           "welcome.blade.php": {
             "type": "-",
             "size": 2887,
             "lmtime": 0,
-            "modified": false
-          },
-          "gallery.blade.php": {
-            "type": "-",
-            "size": 10325,
-            "lmtime": 1595515313802,
             "modified": false
           }
         }
@@ -13298,8 +13736,8 @@
         },
         "web.php": {
           "type": "-",
-          "size": 12444,
-          "lmtime": 1595746093862,
+          "size": 13216,
+          "lmtime": 1595767577231,
           "modified": false
         }
       },

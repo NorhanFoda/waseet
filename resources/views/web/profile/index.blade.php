@@ -1,6 +1,6 @@
 @extends('web.layouts.app')
 @section('title', trans('web.profile'))
-@section('description', 'waseet description')
+@section('description', trans('web.waseet_description'))
 @section('image', asset('/images/logo.png'))
 
 @section('content')
