@@ -85,6 +85,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
             // Jobs
             Route::resource('jobs', 'Admin\JobController');
             Route::post('delete_job', 'Admin\JobController@deleteJob')->name('jobs.delete');
+            Route::post('update_job_status', 'Admin\JobController@updateJobStatus')->name('jobs.update_status');
 
             // Countries
             Route::resource('countries', 'Admin\CountryController');
@@ -263,6 +264,10 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
         Route::get('addresses/index', 'Web\AddressController@index')->name('addresses.index');
         Route::post('addresses', 'Web\AddressController@store')->name('addresses.store');
         Route::delete('addresses', 'Web\AddressController@delete')->name('addresses.delete');
+
+        // Jobs
+        Route::get('add_job', 'Web\JobsController@getAddJobForm')->name('jobs.get_form');
+        Route::post('add_job', 'Web\JobsController@storeJob')->name('jobs.store_job');
 
         // Profile
         Route::get('profile', 'Web\ProfileController@index')->name('profile.index');

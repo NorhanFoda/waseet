@@ -39,7 +39,7 @@
                             {{$job->{'name_'.session('lang')} }}
                         </div>
                         <div class="card-title">
-                            {{$job->country->{'name_'.session('lang')} }} <br>
+                            {{$job->country->{'name_'.session('lang')} }} - {{$job->city->{'name_'.session('lang')} }} <br>
                             {{trans('admin.announcer')}} : {{$job->announcer->name}}
                         </div>
                     </div>
@@ -63,7 +63,7 @@
             <!-- job end -->
 
             <!-- cities start -->
-            <div class="col-12">
+            {{-- <div class="col-12">
                 <div class="card">
                     <div class="card-header border-bottom mx-2 px-0">
                         <h6 class="border-bottom py-1 mb-0 font-medium-2">
@@ -96,7 +96,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <!-- cities end -->
 
             <!-- job applicants start -->

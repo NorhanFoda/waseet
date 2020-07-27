@@ -88,6 +88,8 @@ return [
     'announced_jobs' => 'الوظائف المعلن عنها',
     'organization_name' => 'المؤسسة التعليمية',
     'location' => 'الموقع',
+    'refuse' => 'رفض',
+    'approve' => 'قبول',
 
     // Organizations
     'phone_secondary' => 'جوال إضافى',

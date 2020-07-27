@@ -20,6 +20,7 @@ return [
     'country' => 'Country',
     'register' => 'New Account',
     'home' => 'Home',
+    'add_job' => 'Announce A Job',
 
     // About us
     'vision' => 'Vision',

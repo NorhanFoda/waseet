@@ -27,6 +27,7 @@ class JobSeeder extends Seeder
                 'country_id' => 1,
                 'city_id' => 1,
                 'user_id' => 1,
+                'approved' => 1,
             ],
             [
                 'name_ar' => 'اسم الوظيفة',
@@ -43,6 +44,7 @@ class JobSeeder extends Seeder
                 'country_id' => 1,
                 'city_id' => 1,
                 'user_id' => 1,
+                'approved' => 1,
             ],
             [
                 'name_ar' => 'اسم الوظيفة',
@@ -59,6 +61,7 @@ class JobSeeder extends Seeder
                 'country_id' => 1,
                 'city_id' => 1,
                 'user_id' => 1,
+                'approved' => 1,
             ],
             [
                 'name_ar' => 'اسم الوظيفة',
@@ -75,6 +78,7 @@ class JobSeeder extends Seeder
                 'country_id' => 1,
                 'city_id' => 1,
                 'user_id' => 1,
+                'approved' => 1,
             ],
         ]);
     }

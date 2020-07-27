@@ -83,9 +83,3 @@
       </section>
 
 @endsection
-
-{{-- @section('scripts')
-    <script>
-      
-    </script>
-@endsection --}}

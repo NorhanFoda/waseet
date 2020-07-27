@@ -9,8 +9,10 @@ use App\Models\Bag;
 use App\Models\Setting;
 use App\Models\Document;
 use App\Models\Save;
+use App\Models\Country;
 use App\Classes\Upload;
 use App\Classes\SendEmail;
+use App\Http\Requests\Job\JobRequest;
 use App\User;
 
 
@@ -19,7 +21,7 @@ class JobsController extends Controller
     public function index(){
         $title = Setting::find(1)->{'section_1_title_'.session('lang')};
         $text = Setting::find(1)->{'section_1_text_'.session('lang')};
-        $jobs = Job::with(['city', 'country'])->get();
+        $jobs = Job::with(['city', 'country'])->where('approved', 1)->get();
 
         return view('web.jobs.index', compact('title', 'text', 'jobs'));
     }
@@ -172,6 +174,35 @@ class JobsController extends Controller
             return response()->json([
                 'msg' => trans("web.added_to_saved")
             ], 200);
+        }
+    }
+
+    public function getAddJobForm(){
+        $countries = Country::all();
+        return view('web.jobs.create', compact('countries'));
+    }
+
+    public function storeJob(JobRequest $request){
+        $job = Job::create($request->all());
+        $job->update(['user_id' => auth()->user()->id]);
+
+        if($request->has('image')){
+            $image_url = Upload::uploadImage($request->image);
+            $image = Image::create([
+                'path' => $image_url,
+                'imageRef_id' => $job->id,
+                'imageRef_type' => 'App\Models\Job'
+            ]);
+            $job->image()->save($image);
+        }
+
+        if($job){
+            session()->flash('success', trans('admin.created'));
+            return redirect()->route('jobs.web_index');
+        }
+        else{
+            session()->flash('error', trans('admin.error'));
+            return redirect()->back();
         }
     }
 }

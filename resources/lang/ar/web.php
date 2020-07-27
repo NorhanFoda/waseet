@@ -20,6 +20,7 @@ return [
     'country' => 'الدولة',
     'register' => 'حساب جديد',
     'home' => 'الرئيسية',
+    'add_job' => 'الإعلان عن وظيفة',
 
     // About us
     'vision' => 'الرؤية',

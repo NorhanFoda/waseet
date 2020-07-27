@@ -14,7 +14,7 @@ class Job extends Model
     protected $fillable = [
         'name_ar', 'name_en', 'work_hours',
         'exper_years', 'required_number',
-        'free_places', 'description_ar', 'description_en',
+        'free_places', 'description_ar', 'description_en', 'approved',
         'required_age', 'salary', 'country_id', 'user_id', 'city_id', 
         // 'address',
     ];

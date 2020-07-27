@@ -48,7 +48,7 @@ class JobController extends Controller
     {
         $job = Job::create($request->all());
         // $job->cities()->attach($request->city_ids);
-        $job->update(['user_id' => auth()->user()->id]);
+        $job->update(['user_id' => auth()->user()->id, 'approved' => 1]);
 
         if($request->has('image')){
             $image_url = Upload::uploadImage($request->image);
@@ -61,7 +61,6 @@ class JobController extends Controller
         }
 
         if($job){
-
             //Send mail to subscripers
             $subs = SubScriber::all();
             foreach($subs as $sub){
@@ -85,7 +84,7 @@ class JobController extends Controller
      */
     public function show($id)
     {
-        $job = Job::with(['image', 'country', 'cities', 'applicants.roles' => function($q){
+        $job = Job::with(['image', 'country', 'city', 'applicants.roles' => function($q){
                 $q->where('name', 'job_seeker')->get();
             }
         , 'announcer.roles' => function($q){
@@ -183,5 +182,18 @@ class JobController extends Controller
         return response()->json([
             'data' => 1
         ], 200);
+    }
+
+    public function updateJobStatus(Request $request){
+        $job = Job::find($request->id);
+        $job->update(['approved' => $request->approved]);
+
+        if($job->approved == 1){
+            //Send mail to subscripers
+            $subs = SubScriber::all();
+            foreach($subs as $sub){
+                SendEmail::Subscripe($sub->email, route('jobs.details', $job->id), 'job');
+            }
+        }
     }
 }

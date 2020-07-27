@@ -48,6 +48,7 @@
                                     <th>{{trans('admin.exper_years')}}</th>
                                     <th>{{trans('admin.free_places')}}</th>
                                     <th>{{trans('admin.salary')}}</th>
+                                    <th>{{trans('admin.status')}}</th>
                                     <th>{{trans('admin.action')}}</th>
                                 </tr>
                                 </thead>
@@ -59,6 +60,12 @@
                                             <td>{{$job->exper_years}}</td>
                                             <td>{{$job->free_places}}</td>
                                             <td>{{$job->salary}}</td>
+                                            <td>
+                                                <select name="approved" class="approved form-control" data-id="{{$job->id}}">
+                                                    <option value="{{0}}" @if($job->approved == 0) selected @endif>{{trans('admin.refuse')}}</option>
+                                                    <option value="{{1}}" @if($job->approved == 1) selected @endif>{{trans('admin.approve')}}</option>
+                                                </select>
+                                            </td>
                                             <td>
                                                 <a href="{{route('jobs.show', $job->id)}}" class="btn" style="color:white;"><i class="fa fa-eye"></i></a>
                                                 <a href="{{route('jobs.edit', $job->id)}}" class="btn" style="color:white;"><i class="fa fa-pencil-square-o"></i></a>
@@ -146,6 +153,28 @@
                 }
             })
         });
+
+        $(document).on('change', '.approved', function(){
+            var id = $(this).data('id');
+            var approved = $(this).val();
+
+            $.ajax({
+                url: "{{route('jobs.update_status')}}",
+                type: "POST",
+                dataType: 'html',
+                data: {"_token": "{{ csrf_token() }}", id: id, approved: approved },
+                success: function(data){
+                    Swal.fire({
+                        title: "{{trans('admin.updated')}}",
+                        type: 'success',
+                        timer: 1500,
+                        showCancelButton: false,
+                        showConfirmButton: false,
+                    });
+                }
+            });
+        });
+
     </script>
 
 @endsection

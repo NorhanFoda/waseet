@@ -32,13 +32,21 @@
       </div>
 
       <ul class="links">
+
         @if(!Auth::check())
           <li><a href="{{route('login.form')}}">{{trans('web.login')}}</a></li>
         @endif
+
         <li><a href="{{route('home')}}">{{trans('web.home')}}</a></li>
+
         @if(Auth::check() && auth()->user()->hasRole('admin'))
           <li><a href="{{route('admin.home')}}">{{trans('web.dashboard')}}</a></li>
         @endif
+
+        @if(Auth::check() && auth()->user()->hasRole('organization'))
+          <li><a href="{{route('jobs.get_form')}}">{{trans('web.add_job')}}</a></li>
+        @endif
+
         <li><a href="{{route('jobs.web_index')}}">{{trans('web.look_for_job')}}</a></li>
         <li><a href="{{route('teachers.index')}}">{{trans('web.private_teacher')}}</a></li>
         <li><a href="{{route('bags')}}">{{trans('web.bags')}}</a></li>

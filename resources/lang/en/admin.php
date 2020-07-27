@@ -89,6 +89,8 @@ return [
     'announced_jobs' => 'Announced jobs',
     'organization_name' => 'Educational institutions',
     'location' => 'Location',
+    'refuse' => 'Refuse',
+    'approve' => 'Approve',
 
     // Organizations
     'phone_secondary' => 'Additional phone',
