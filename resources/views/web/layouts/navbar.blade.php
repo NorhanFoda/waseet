@@ -47,6 +47,10 @@
           <li><a href="{{route('jobs.get_form')}}">{{trans('web.add_job')}}</a></li>
         @endif
 
+        @if(Auth::check() && auth()->user()->hasRole('organization'))
+          <li><a href="{{route('jobs.org_jobs')}}">{{trans('web.jobs')}}</a></li>
+        @endif
+
         <li><a href="{{route('jobs.web_index')}}">{{trans('web.look_for_job')}}</a></li>
         <li><a href="{{route('teachers.index')}}">{{trans('web.private_teacher')}}</a></li>
         <li><a href="{{route('bags')}}">{{trans('web.bags')}}</a></li>

@@ -119,30 +119,45 @@ class JobController extends Controller
     public function update(JobRequest $request, $id)
     {
         $job = Job::find($id);
-        $job->update($request->all());
+        $job->update([
+            'name_ar' => $request->name_ar,
+            'name_en' => $request->name_en,
+            'work_hours' => $request->work_hours,
+            'exper_years' => $request->exper_years,
+            'required_number' => $request->required_number,
+            'free_places' => $request->free_places,
+            'description_ar' => $request->description_ar,
+            'description_en' => $request->description_en,
+            'required_age' => $request->required_age,
+            'salary' => $request->salary,
+            'country_id' => $request->country_id,
+            'city_id' => $request->city_id,
+        ]);
         // $job->cities()->sync($request->city_ids);
 
-        if($job->image != null){
-            $removed = Upload::deleteImage($job->image->path);
-            if($removed){
-                $image_url = Upload::uploadImage($request->image);
-                $job->image->update([
-                    'path' => $image_url,
-                ]);
+        if($request->has('image')){
+            if($job->image != null){
+                $removed = Upload::deleteImage($job->image->path);
+                if($removed){
+                    $image_url = Upload::uploadImage($request->image);
+                    $job->image->update([
+                        'path' => $image_url,
+                    ]);
+                }
+                else{
+                    session()->flash('message', trans('admin.error'));
+                    return redirect()->route('jobs.index');        
+                }
             }
             else{
-                session()->flash('message', trans('admin.error'));
-                return redirect()->route('jobs.index');        
+                $image_url = Upload::uploadImage($request->image);
+                $image = Image::create([
+                    'path' => $image_url,
+                    'imageRef_id' => $job->id,
+                    'imageRef_type' => 'App\User'
+                ]);
+                $job->image()->save($image);
             }
-        }
-        else{
-            $image_url = Upload::uploadImage($request->image);
-            $image = Image::create([
-                'path' => $image_url,
-                'imageRef_id' => $job->id,
-                'imageRef_type' => 'App\User'
-            ]);
-            $job->image()->save($image);
         }
 
         if($job){

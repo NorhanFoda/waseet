@@ -268,6 +268,9 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
         // Jobs
         Route::get('add_job', 'Web\JobsController@getAddJobForm')->name('jobs.get_form');
         Route::post('add_job', 'Web\JobsController@storeJob')->name('jobs.store_job');
+        Route::get('org/jobs', 'Web\JobsController@getOrganizationJobs')->name('jobs.org_jobs');
+        Route::get('org/jobs/{id}/edit', 'Web\JobsController@getEditJobForm')->name('jobs.edit_job');
+        Route::put('org/jobs/{id}/update', 'Web\JobsController@updateJob')->name('jobs.update_job');
 
         // Profile
         Route::get('profile', 'Web\ProfileController@index')->name('profile.index');

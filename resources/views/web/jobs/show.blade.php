@@ -39,6 +39,15 @@
                   <span> <i class="fas fa-bookmark"></i></span>
                 </label>
               </form>
+
+              @if(auth()->user()->hasRole('organization'))
+                <form action="">
+                  <input type="checkbox" />
+                  <label for="bookmark">
+                    <a href="{{route('jobs.edit_job', $job->id)}}"><span> <i class="fas fa-edit"></i></span></a>
+                  </label>
+                </form>
+              @endif
             </div>
 
             <div class="other_info">

@@ -215,4 +215,7 @@ return [
     'create_job_seeker_account' => 'Create An Account As Job Seeker',
 
     'new_job_apply' => 'Job Apply Request',
+    'new_job_apply_text' => 'Waseet Al Moalm Website has made a request to apply for the jobs taught by you, and it is based on advanced details, please visit the following link',
+
+    'job_created' => 'Job Announce is Saved and Will Be Available For view After Admin Approvement',
 ];

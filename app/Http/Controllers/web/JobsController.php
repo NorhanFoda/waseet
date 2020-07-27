@@ -10,6 +10,7 @@ use App\Models\Setting;
 use App\Models\Document;
 use App\Models\Save;
 use App\Models\Country;
+use App\Models\City;
 use App\Classes\Upload;
 use App\Classes\SendEmail;
 use App\Http\Requests\Job\JobRequest;
@@ -33,16 +34,17 @@ class JobsController extends Controller
             return redirect()->back();
         }
 
-        if(!auth()->user()->hasRole('job_seeker')){
+        if(auth()->user()->hasRole('job_seeker') || auth()->user()->hasRole('organization')){
+            $title = Setting::find(1)->{'section_1_title_'.session('lang')};
+            $text = Setting::find(1)->{'section_1_text_'.session('lang')};
+            $job = Job::with(['country', 'city'])->find($id);
+
+            return view('web.jobs.show', compact('job', 'title', 'text'));
+        }
+        else{
             session()->flash('warning', trans('web.login_as_job_seeker'));
             return redirect()->back();
         }
-
-        $title = Setting::find(1)->{'section_1_title_'.session('lang')};
-        $text = Setting::find(1)->{'section_1_text_'.session('lang')};
-        $job = Job::with(['country', 'city'])->find($id);
-
-        return view('web.jobs.show', compact('job', 'title', 'text'));
     }
 
     public function applyToJob($job_id){
@@ -197,7 +199,79 @@ class JobsController extends Controller
         }
 
         if($job){
-            session()->flash('success', trans('admin.created'));
+            session()->flash('success', trans('web.job_created'));
+            return redirect()->route('jobs.web_index');
+        }
+        else{
+            session()->flash('error', trans('admin.error'));
+            return redirect()->back();
+        }
+    }
+
+    public function getOrganizationJobs(){
+    
+        $title = Setting::find(1)->{'section_1_title_'.session('lang')};
+        $text = Setting::find(1)->{'section_1_text_'.session('lang')};
+        $jobs = auth()->user()->job_announces()->where('approved', 1)->get();
+
+        return view('web.jobs.index', compact('title', 'text', 'jobs'));
+    }
+
+    public function getEditJobForm($id){
+
+        $job = auth()->user()->job_announces()->find($id);
+        $countries = Country::all();
+        $cities = City::where('country_id', $job->country_id)->get();
+
+        return view('web.jobs.edit', compact('job', 'countries', 'cities'));
+    }
+
+    public function updateJob(JobRequest $request, $id){
+
+        $job = Job::find($id);
+        $job->update([
+            'name_ar' => $request->name_ar,
+            'name_en' => $request->name_en,
+            'work_hours' => $request->work_hours,
+            'exper_years' => $request->exper_years,
+            'required_number' => $request->required_number,
+            'free_places' => $request->free_places,
+            'description_ar' => $request->description_ar,
+            'description_en' => $request->description_en,
+            'required_age' => $request->required_age,
+            'salary' => $request->salary,
+            'country_id' => $request->country_id,
+            'city_id' => $request->city_id,
+            'approved' => 0,
+        ]);
+
+        if($request->has('image')){
+            if($job->image != null){
+                $removed = Upload::deleteImage($job->image->path);
+                if($removed){
+                    $image_url = Upload::uploadImage($request->image);
+                    $job->image->update([
+                        'path' => $image_url,
+                    ]);
+                }
+                else{
+                    session()->flash('message', trans('admin.error'));
+                    return redirect()->back();        
+                }
+            }
+            else{
+                $image_url = Upload::uploadImage($request->image);
+                $image = Image::create([
+                    'path' => $image_url,
+                    'imageRef_id' => $job->id,
+                    'imageRef_type' => 'App\User'
+                ]);
+                $job->image()->save($image);
+            }
+        }
+
+        if($job){
+            session()->flash('success', trans('web.job_created'));
             return redirect()->route('jobs.web_index');
         }
         else{
