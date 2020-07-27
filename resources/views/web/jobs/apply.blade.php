@@ -81,7 +81,7 @@
 
                                 <div class="big-label">{{trans('web.cv')}} : </div>
                                 <div class="userName custom-file">
-                                    <input type="file" id="file-up" accept="application/pdf" name="cv" required />
+                                    <input type="file" id="file-up" accept="application/pdf" name="cv" />
                                     <label for="file-up">
                                         <i class="fa fa-upload"></i> <span></span>
                                     </label>

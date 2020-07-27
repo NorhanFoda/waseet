@@ -111,6 +111,10 @@ class JobsController extends Controller
 
         // }
 
+        $email = Job::find($request->job_id)->announcer->email;
+        $link = route('profile.show', auth()->user()->id);
+        SendEmail::sendJobApply($email, auth()->user(), $link);
+
         session()->flash('success', trans('web.job_applied'));
         return redirect()->route('jobs.web_index');
     }

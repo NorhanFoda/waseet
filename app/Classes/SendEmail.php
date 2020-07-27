@@ -6,6 +6,7 @@ use App\Mail\VerificationEmail;
 use App\Mail\ResetPasswordEmail;
 use App\Mail\BagContentEmail;
 use App\Mail\SubscripersMail;
+use App\Mail\NewJobApply;
 
 class SendEmail{
 
@@ -23,5 +24,9 @@ class SendEmail{
 
     static function Subscripe($email, $link, $type){
         Mail::to($email)->send(new SubscripersMail($link, $type));
+    }
+
+    static function sendJobApply($email, $seeker, $link){
+        Mail::to($email)->send(new NewJobApply($seeker, $link));
     }
 }

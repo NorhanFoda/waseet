@@ -35,7 +35,7 @@
                         <ul class="list-unstyled arrow-list">
                             {{-- <li><a href="{{route('profile.edit_personal_info')}}"><i class="fa fa-user"></i>{{trans('web.personal_info')}}</a></li> --}}
                             @if(auth()->user()->hasRole('job_seeker'))
-                                <li><a href="{{auth()->user()->document != null ? auth()->user()->document->path : '#'}}"><i class="fa fa-file"></i>{{trans('web.cv')}}</a></li>
+                                <li><a href="{{auth()->user()->document != null ? route('profile.show', auth()->user()->id) : '#'}}"><i class="fa fa-file"></i>{{trans('web.cv')}}</a></li>
                             @endif
                             <li><a href="{{route('saved.index')}}"><i class="fa fa-bookmark"></i>{{trans('web.saved')}}</a></li>
                             <li><a href="{{route('profile.orders')}}"><i class="fa fa-list-alt"></i>{{trans('web.orders')}}</a></li>

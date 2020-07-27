@@ -14,6 +14,7 @@ use App\Models\Image;
 use App\Models\Order;
 use App\Models\Bag;
 use App\Classes\Upload;
+use App\User;
 
 class ProfileController extends Controller
 {
@@ -105,5 +106,11 @@ class ProfileController extends Controller
     public function showBagContents($id){
         $bag = Bag::with(['images', 'videos', 'documents'])->find($id);
         return view('web.bags.gallery', compact('bag'));
+    }
+
+    public function show($id){
+        $user = User::with(['image', 'country', 'city', 'document'])->find($id);
+
+        return view('web.profile.show', compact('user'));
     }
 }

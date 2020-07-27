@@ -242,6 +242,9 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
     Route::get('/contact_us','Web\StaticPagesController@getContactUs')->name('contact_us');
     Route::post('/contact_us','Web\StaticPagesController@storeContactUs')->name('contact_us.store');
 
+    // Job seeker
+    Route::get('profile/{id}', 'Web\ProfileController@show')->name('profile.show');
+
     Route::group(['middleware' => ['auth:web']], function(){
 
         // Cart
