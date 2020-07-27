@@ -31,7 +31,7 @@ class HomeController extends Controller
         $about_waseet_text = trans('api.about_waseet_text');
         $about_waseet_image = $set->text_after_add_image;
 
-        $slider = Slider::with('image')->get();
+        $slider = Slider::with('image')->where('type', 'mobile')->get();
 
         return response()->json([
             // 'header_title' => $header_title,

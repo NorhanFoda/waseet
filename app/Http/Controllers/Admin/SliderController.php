@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Image;
 use App\Models\Slider;
 use App\Classes\Upload;
+use App\Classes\SliderImage;
 use App\Http\Requests\Slider\SliderRequest;
 use App\Http\Requests\Slider\EditSliderRequest;
 
@@ -31,7 +32,8 @@ class SliderController extends Controller
      */
     public function create()
     {
-        return view('admin.slider.create');
+        $options = SliderImage::getPossibleStatuses();
+        return view('admin.slider.create', compact('options'));
     }
 
     /**
@@ -47,7 +49,8 @@ class SliderController extends Controller
         $image = Image::create([
             'path' => $image_url,
             'imageRef_id' => $slider->id,
-            'imageRef_type' => 'App\Models\Slider'
+            'imageRef_type' => 'App\Models\Slider',
+            'type' => $request->type,
         ]);
         $slider->image()->save($image);
 
@@ -83,7 +86,8 @@ class SliderController extends Controller
     public function edit($id)
     {
         $slider = Slider::with('image')->find($id);
-        return view('admin.slider.edit', compact('slider'));
+        $options = SliderImage::getPossibleStatuses();
+        return view('admin.slider.edit', compact('slider', 'options'));
     }
 
     /**
@@ -97,6 +101,9 @@ class SliderController extends Controller
     {
         $slider = Slider::find($id);
         $slider->update($request->all());
+        $slider->image->update([
+            'type' => $request->type,
+        ]);
 
         if($request->has('image')){
             $removed = Upload::deleteImage($slider->image->path);
@@ -104,6 +111,7 @@ class SliderController extends Controller
                 $image_url = Upload::uploadImage($request->image);
                 $slider->image->update([
                     'path' => $image_url,
+                    'type' => $request->type,
                 ]);
             }
             else{

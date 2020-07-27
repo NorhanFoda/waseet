@@ -118,7 +118,7 @@
                                             <span>{{trans('admin.image')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <input type="file" name="image" class="form-control" accept="image/*" placeholder="{{trans('admin.image')}}" required>
+                                            <input type="file" name="image" class="form-control" accept="image/*" placeholder="{{trans('admin.image')}}">
                                             <div class="invalid-feedback">
                                                 {{trans('admin.image')}}
                                             </div>
@@ -134,6 +134,27 @@
                                     </div>
                                 </div>
                                 {{-- enter image end --}}
+
+                                {{-- slider appearance --}}
+                                <div class="col-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-2">
+                                            <span>{{trans('admin.slider_appearence')}}</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <select name="type" class="form-control">
+                                                <option value="{{null}}">{{trans('admin.slider_appearence')}}</option>
+                                                @foreach($options as $option)
+                                                    <option value="{{$option}}" @if($slider->type == $option) selected @endif>{{$option}}</option>
+                                                @endforeach
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                {{trans('admin.slider_appearence')}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- slider appearance end --}}
 
                                 <div class="col-12 text-center">
                                     <button type="submit" class="btn btn-primary mr-1 mb-1 waves-effect waves-light">{{trans('admin.save')}}</button>

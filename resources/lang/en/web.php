@@ -210,4 +210,6 @@ return [
     'more' => 'More',
 
     'waseet_description' => 'We will provide multiple options of educational jobs through a technology portal with international standards to be the mediator between job seekers and educational facilities to take advantage of expertise and competencies, and we provide a number of educational bags to help the teacher develop his educational skills with high efficiency.',
+
+    'create_job_seeker_account' => 'Create An Account As Job Seeker',
 ];

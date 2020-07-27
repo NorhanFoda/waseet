@@ -126,6 +126,27 @@
                                 </div>
                                 {{-- enter image end --}}
 
+                                {{-- slider appearance --}}
+                                <div class="col-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-2">
+                                            <span>{{trans('admin.slider_appearence')}}</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <select name="type" class="form-control">
+                                                <option value="{{null}}">{{trans('admin.slider_appearence')}}</option>
+                                                @foreach($options as $option)
+                                                    <option value="{{$option}}">{{$option}}</option>
+                                                @endforeach
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                {{trans('admin.slider_appearence')}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- slider appearance end --}}
+
                                 <div class="col-12 text-center">
                                     <button type="submit" class="btn btn-primary mr-1 mb-1 waves-effect waves-light">{{trans('admin.save')}}</button>
                                 </div>

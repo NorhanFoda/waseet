@@ -24,7 +24,7 @@
                     <h3 class="first_color">{{trans('web.look_for_job')}}</h3>
                 </div>
                 <div class="col-sm-5 text-left-dir">
-                    <a href="{{route('register.user', 6)}}" class="custom-btn text-center">
+                    <a href="{{route('register.user', 6)}}" id="register" class="custom-btn text-center">
                         {{trans('web.do_register')}}
                     </a>
                 </div>
@@ -81,3 +81,21 @@
     </div>
 
 @endsection
+
+{{-- @if(Auth::check() && !Auth::user()->hasRole('job_seeker'))
+    @section('scripts')
+        <script>
+            $(document).ready(function(){
+                $('#register').click(function(){
+                    Swal.fire({
+                        title: "{{trans('web.logout_first')}}",
+                        type: 'warning',
+                        timer: 2000,
+                        showCancelButton: false,
+                        showConfirmButton: false,
+                    });
+                }); 
+            });
+        </script>
+    @endsection
+@endif --}}

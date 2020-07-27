@@ -151,6 +151,7 @@ return [
     'body_ar' => 'النص بالعربية',
     'body_en' => 'النص بالإنجليزية',
     'title' => 'العنوان',
+    'slider_appearence' => 'إضافة السلايدر إلى .. ',
 
     // Setting
     'phone' => 'الجوال',

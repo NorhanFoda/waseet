@@ -152,6 +152,7 @@ return [
     'body_ar' => 'Text in Arabic',
     'body_en' => 'Text in English',
     'title' => 'Title',
+    'slider_appearence' => 'Add Slider To .. ',
 
     // Setting
     'phone' => 'Phone',
