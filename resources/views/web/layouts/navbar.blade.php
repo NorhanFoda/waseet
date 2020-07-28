@@ -61,7 +61,10 @@
           {{-- <li><a href="{{route('saved.index')}}">{{trans('web.saved')}}</a></li> --}}
         @endif
         
-        <li><a href="{{route('payment.banks')}}">{{trans('web.banks')}}</a></li>
+        @if(Auth::check())
+          <li><a href="{{route('payment.banks')}}">{{trans('web.banks')}}</a></li>
+        @endif
+        
         <li><a href="{{route('contact_us')}}">{{trans('web.contact_us')}}</a></li>
         @if(Auth::check())
           <li>
