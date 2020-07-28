@@ -43,17 +43,28 @@ class CartController extends Controller
     
             return response()->json([
                 'msg' => trans("web.added_to_cart"),
+                'id' => $cart->id
             ], 200);
         }
     }
 
     public function update(Request $request){
-        
-        $cart = Cart::findOrFail($request->cart_id);
-        $cart->update([
-                'total_price' => $request->total_price,
-                'quantity' => $request->quantity
+        // Delete old carts
+        foreach(auth()->user()->carts as $cart){
+            $cart->delete();
+        }
+
+        // Add new carts with new values from localStorage
+        $carts = $request->carts;
+        foreach($carts as $cart){
+            $user_cart = Cart::create([
+                'user_id' => auth()->user()->id,
+                'bag_id' => $cart['bag_id'],
+                'quantity' => $cart['quantity'],
+                'total_price' => $cart['total_price'],
+                'buy_type' => $cart['buy_type'],
             ]);
+        }
     }
 
     public function delete(Request $request){

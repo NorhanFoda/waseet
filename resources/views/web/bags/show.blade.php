@@ -220,6 +220,30 @@
                             total_price: '{{$bag->price}}',
                             buy_type: buy_type },
                     success: function(data){
+                        // Save carts to localStorage
+                        localStorage.setItem("carts", JSON.stringify(@json(auth()->user()->carts)));
+                        var carts = JSON.parse(localStorage.getItem("carts"));
+                        var item = {
+                            id: data['id'],
+                            user_id: '{{auth()->user()->id}}',
+                            bag_id: '{{$bag->id}}',
+                            quantity: 1,
+                            total_price: '{{$bag->price}}',
+                            buy_type: buy_type
+                        }
+
+                        if(carts == null){
+                            carts = [];
+                            carts.push(item);
+                            localStorage.setItem("carts", JSON.stringify(carts));
+                        }
+                        else{
+                            carts.push(item);
+                            localStorage.setItem("carts", JSON.stringify(carts));
+                        }
+
+                        console.log(carts);
+
                     Swal.fire({
                         title: data['msg'],
                         type: 'success',

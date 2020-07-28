@@ -180,7 +180,7 @@
                             @endforeach
 
                             <div class="text-center">
-                                <a href="{{route('payment.prepare_order', $address->id)}}" class="custom-btn">{{trans('web.continue')}} </a>
+                                <a href="{{route('payment.prepare_order', $address->id)}}" id="continue" class="custom-btn">{{trans('web.continue')}} </a>
                             </div>
                             
                         @else
@@ -301,25 +301,34 @@
     <script>
         $(document).ready(function(){
 
+            // Get carts from localStorage
+            var carts = JSON.parse(localStorage.getItem("carts"));
+            if(carts != null){
+                for(var i = 0; i < carts.length; i++){
+                    $('#sub_price_'+carts[i].id).text(carts[i].total_price+' {{trans("admin.sr")}}');
+                    $('#count_'+carts[i].id).val(carts[i].quantity);
+                }
+            }
+
             // Calculate Cart total prices on page load
             var sub_price_total = 0;
             var total = 0;
             var fees = parseFloat('{{$shipping_fees}}');
-            var carts = '{{$carts}}';
 
-            var prices = $('.prices');
-            for(var i = 0; i < prices.length; i++){
-                var single_price = parseFloat(prices[i].innerHTML.split(' ')[0]);
-                sub_price_total += single_price;
+            if(carts != null){
+                for(var i = 0; i < carts.length; i++){
+                    var single_price = parseFloat(carts[i].total_price);
+                    sub_price_total += parseFloat(single_price);
+                }
             }
             
-            total = sub_price_total + fees;
+            total = parseFloat(sub_price_total) + fees;
             $('#sub_price_total').text(sub_price_total+' {{trans("admin.sr")}}');
             $('#total').text(total+' {{trans("admin.sr")}}');
 
             // Update data on plus click
             $(".plus").click(function(){
-                var input_val = parseInt ($(this).parent().find(".cart-input").val()) + 1;
+                var input_val = parseInt($(this).parent().find(".cart-input").val()) + 1;
                 $(this).parent().find(".cart-input").val(input_val);
 
                 // Update sub price
@@ -328,14 +337,15 @@
                 price = price * input_val;
                 $('#sub_price_'+cart_id).text(price+' {{trans("admin.sr")}}');
 
-                $.ajax({
-                    url: "{{route('carts.update')}}",
-                    type: "PUT",
-                    dataType: 'json',
-                    data: {"_token": "{{ csrf_token() }}", cart_id: cart_id, total_price: price, quantity: input_val },
-                    success: function(data){
+                carts = JSON.parse(localStorage.getItem("carts"));
+                for(var i = 0; i < carts.length; i++){
+                    if(cart_id == carts[i].id){
+                        carts[i].quantity = input_val;
+                        carts[i].total_price = price;
+                        localStorage.setItem("carts", JSON.stringify(carts));
+                        break;
                     }
-                });
+                }
 
                 // Update totals
                 var diff = price / input_val;
@@ -358,14 +368,16 @@
                     price = price * input_val;
                     $('#sub_price_'+cart_id).text(price+' {{trans("admin.sr")}}');
 
-                    $.ajax({
-                        url: "{{route('carts.update')}}",
-                        type: "PUT",
-                        dataType: 'json',
-                        data: {"_token": "{{ csrf_token() }}", cart_id: cart_id, total_price: price, quantity: input_val },
-                        success: function(data){
+                    carts = JSON.parse(localStorage.getItem("carts"));
+                    for(var i = 0; i < carts.length; i++){
+                        if(cart_id == carts[i].id){
+                            console.log('in');
+                            carts[i].quantity = input_val;
+                            carts[i].total_price = price;
+                            localStorage.setItem("carts", JSON.stringify(carts));
+                            break;
                         }
-                    });
+                    }
 
                     // Update totals
                     var diff = price / input_val;
@@ -386,23 +398,45 @@
                 // Update totals
                 sub_price_total = 0;
                 total = 0;
-                var prices = $('.prices');
-                for(var i = 0; i < prices.length; i++){
-                    var single_price = parseFloat(prices[i].innerHTML.split(' ')[0]);
-                    sub_price_total += single_price;
+
+                var carts = JSON.parse(localStorage.getItem("carts"));
+                if(carts != null){
+                    for(var i = 0; i < carts.length; i++){
+                        if(carts[i].id == cart_id){
+                            carts.splice(i-1, 1);
+                            localStorage.setItem("carts", JSON.stringify(carts));
+                            break;
+                        }
+                    }
                 }
-                total = sub_price_total += fees;
+
+                for(var i = 0; i < carts.length; i++){
+                    var single_price = parseFloat(carts[i].total_price);
+                    sub_price_total += parseFloat(single_price);
+                }
+
+                total = sub_price_total + fees;
                 $('#sub_price_total').text(sub_price_total+' {{trans("admin.sr")}}');
                 $('#total').text(total+' {{trans("admin.sr")}}');
 
+            });
+
+            // Store carts to database
+            $('#continue').click(function(e){
+                e.preventDefault();
+                $link = $(this);
+                var carts = JSON.parse(localStorage.getItem("carts"));
                 $.ajax({
-                    url: "{{route('carts.delete')}}",
-                    type: "DELETE",
-                    dataType: 'json',
-                    data: {"_token": "{{ csrf_token() }}", cart_id: cart_id},
-                    success: function(data){
-                    }
-                });
+                        url: "{{route('carts.update')}}",
+                        type: "PUT",
+                        dataType: 'json',
+                        data: {"_token": "{{ csrf_token() }}", carts: carts },
+                        complete: function(data){
+                            window.location.href = $link.attr('href');
+                            localStorage.clear();
+                        }
+                    });
+
             });
 
             //  Get cities of selected country
