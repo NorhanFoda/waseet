@@ -154,6 +154,7 @@
             })
         });
 
+        // Update job status (approve - refuse)
         $(document).on('change', '.approved', function(){
             var id = $(this).data('id');
             var approved = $(this).val();

@@ -91,6 +91,7 @@ return [
     'location' => 'Location',
     'refuse' => 'Refuse',
     'approve' => 'Approve',
+    'update_job_status' => 'Approve/Refuse Announce',
 
     // Organizations
     'phone_secondary' => 'Additional phone',

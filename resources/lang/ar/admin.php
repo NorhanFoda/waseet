@@ -90,6 +90,7 @@ return [
     'location' => 'الموقع',
     'refuse' => 'رفض',
     'approve' => 'قبول',
+    'update_job_status' => 'قبول/رفض الإعلان',
 
     // Organizations
     'phone_secondary' => 'جوال إضافى',

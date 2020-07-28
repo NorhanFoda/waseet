@@ -39,6 +39,13 @@
                             {{$job->{'name_'.session('lang')} }}
                         </div>
                         <div class="card-title">
+                            {{trans('admin.update_job_status')}}
+                            <select name="approved" class="approved form-control" data-id="{{$job->id}}">
+                                <option value="{{0}}" @if($job->approved == 0) selected @endif>{{trans('admin.refuse')}}</option>
+                                <option value="{{1}}" @if($job->approved == 1) selected @endif>{{trans('admin.approve')}}</option>
+                            </select>
+                        </div>
+                        <div class="card-title">
                             {{$job->country->{'name_'.session('lang')} }} - {{$job->city->{'name_'.session('lang')} }} <br>
                             {{trans('admin.announcer')}} : {{$job->announcer->name}}
                         </div>
@@ -214,6 +221,28 @@
                     });
                 }
             })
+        });
+
+        // Update job status (approve - refuse)
+        $(document).on('change', '.approved', function(){
+            var id = $(this).data('id');
+            var approved = $(this).val();
+
+            $.ajax({
+                url: "{{route('jobs.update_status')}}",
+                type: "POST",
+                dataType: 'html',
+                data: {"_token": "{{ csrf_token() }}", id: id, approved: approved },
+                success: function(data){
+                    Swal.fire({
+                        title: "{{trans('admin.updated')}}",
+                        type: 'success',
+                        timer: 1500,
+                        showCancelButton: false,
+                        showConfirmButton: false,
+                    });
+                }
+            });
         });
     </script>
 

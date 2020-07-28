@@ -7,6 +7,7 @@ use App\Mail\ResetPasswordEmail;
 use App\Mail\BagContentEmail;
 use App\Mail\SubscripersMail;
 use App\Mail\NewJobApply;
+use App\Mail\ApprovalMail;
 
 class SendEmail{
 
@@ -28,5 +29,9 @@ class SendEmail{
 
     static function sendJobApply($email, $seeker, $link){
         Mail::to($email)->send(new NewJobApply($seeker, $link));
+    }
+
+    static function SendApprovalMail($email, $link, $status){
+        Mail::to($email)->send(new ApprovalMail($link, $status));
     }
 }

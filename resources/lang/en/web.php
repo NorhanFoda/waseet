@@ -218,4 +218,8 @@ return [
     'new_job_apply_text' => 'Waseet Al Moalm Website has made a request to apply for the jobs taught by you, and it is based on advanced details, please visit the following link',
 
     'job_created' => 'Job Announce is Saved and Will Be Available For view After Admin Approvement',
+    
+    'job_approved' => 'Job Announcement in Waseet Al Moalm Website',
+    'job_approved_text' => 'Your Job Announcement Request in Waseet Al Moalm Website Has Been Approved, Visite The Following Link To View Details..',
+    'job_refused_text' => 'Your Job Announcement Request in Waseet Al Moalm Website Has Been Refused, You can Contact With Admin Through: '
 ];

@@ -12,6 +12,7 @@ use App\Http\Requests\Job\JobRequest;
 use App\Classes\Upload;
 use App\Models\SubScriber;
 use App\Classes\SendEmail;
+use App\Models\Setting;
 
 class JobController extends Controller
 {
@@ -209,6 +210,14 @@ class JobController extends Controller
             foreach($subs as $sub){
                 SendEmail::Subscripe($sub->email, route('jobs.details', $job->id), 'job');
             }
+
+            //Send approval mail to Announcer
+            SendEmail::SendApprovalMail($job->announcer->email, route('jobs.details', $job->id), 'approved');
+        }
+        else{
+            //Send refuse mail to Announcer
+            $set = Setting::find(1);
+            SendEmail::SendApprovalMail($job->announcer->email, $set, 'refused');
         }
     }
 }
