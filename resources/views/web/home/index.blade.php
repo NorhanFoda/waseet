@@ -100,7 +100,7 @@
         </div>
       </div>
 
-      <div class="row">
+      <div class="row" style="justify-content: center">
         <div class="teacher  col-md-4 col-sm-6" data-aos="slide-up" data-aos-offset="300">
           <img src="{{$set->online_teacher_image}}" alt="" />
           <h5>{{$set->{'online_teacher_title_'.session('lang')} }}</h5>

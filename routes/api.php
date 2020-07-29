@@ -54,6 +54,9 @@ Route::group(['middleware' => 'lang'], function(){
     Route::get('bags/{id}', 'Api\BagCategoryController@getCategoryBags');
     Route::get('bag_details/{id}', 'Api\BagCategoryController@getBagDetails');
 
+    // Jobs
+    Route::get('jobs', 'Api\JobsController@index');
+
     // Auth routes
     Route::group(['middleware' => 'auth:api'], function(){
 
@@ -82,6 +85,10 @@ Route::group(['middleware' => 'lang'], function(){
         // Orders
         Route::get('orders', 'Api\OrderController@index');
         Route::get('track_order', 'Api\OrderController@trackOrder');
+
+        //Jobs
+        Route::get('jobs/{id}', 'Api\JobsController@getJobDetails');
+        Route::post('jobs/apply', 'Api\JobsController@applyJob');
 
     });
     
