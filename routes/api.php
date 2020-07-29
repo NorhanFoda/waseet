@@ -22,6 +22,8 @@ Route::group(['middleware' => 'lang'], function(){
     Route::get('about_us', 'Api\StaticPagesController@getAboutUs');
 
     // Register
+    Route::get('register_roles', 'Api\RegisterController@getRoles');
+    Route::get('register_form/{role}', 'Api\RegisterController@getFromData');
     Route::post('regiter', 'Api\RegisterController@register');
     Route::post('verify', 'Api\RegisterController@verify');
     Route::post('resend_code', 'Api\RegisterController@resendCode');
@@ -61,7 +63,7 @@ Route::group(['middleware' => 'lang'], function(){
         Route::get('carts', 'Api\CartController@index');
         Route::post('carts', 'Api\CartController@store');
         Route::put('carts', 'Api\CartController@update');
-        Route::delete('carts', 'Api\CartController@destroy');
+        // Route::delete('carts', 'Api\CartController@destroy');
 
         // Payment methods
         Route::get('methods', 'Api\PaymentMethodController@index');

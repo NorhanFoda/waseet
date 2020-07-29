@@ -77,12 +77,6 @@ class RegisterController extends Controller
                 $user->materials()->attach($id);
             }
 
-            //Send mail to subscripers
-            $subs = SubScriber::all();
-            foreach($subs as $sub){
-                SendEmail::Subscripe($sub->email, route('teachers.show', $user->id), 'teacher');
-            }
-
         }
 
         if($role_id == 6){
@@ -132,6 +126,15 @@ class RegisterController extends Controller
 
         if($verified){
             Auth::login($user);
+
+            //Send mail to subscripers
+            if($user->hasRole('online_teacher') || $user->hasRole('direct_teacher')){
+                $subs = SubScriber::all();
+                foreach($subs as $sub){
+                    SendEmail::Subscripe($sub->email, route('teachers.show', $user->id), 'teacher');
+                }
+            }
+
             session()->flash('success', trans('web.registred'));
             return redirect()->route('home');
         }

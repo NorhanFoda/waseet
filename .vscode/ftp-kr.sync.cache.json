@@ -67,8 +67,8 @@
         "Classes": {
           "SendEmail.php": {
             "type": "-",
-            "size": 916,
-            "lmtime": 1595842103851,
+            "size": 1083,
+            "lmtime": 1595928974794,
             "modified": false
           },
           "SliderImage.php": {
@@ -235,8 +235,8 @@
               },
               "JobController.php": {
                 "type": "-",
-                "size": 6291,
-                "lmtime": 1595859750804,
+                "size": 6659,
+                "lmtime": 1595929627065,
                 "modified": false
               },
               "MaterialController.php": {
@@ -339,8 +339,8 @@
               },
               "CartController.php": {
                 "type": "-",
-                "size": 4367,
-                "lmtime": 1595158002917,
+                "size": 4740,
+                "lmtime": 1595943415862,
                 "modified": false
               },
               "ContactUsController.php": {
@@ -469,8 +469,8 @@
               },
               "CartController.php": {
                 "type": "-",
-                "size": 1984,
-                "lmtime": 1595323735850,
+                "size": 2424,
+                "lmtime": 1595943024122,
                 "modified": false
               },
               "JobsController.php": {
@@ -853,6 +853,12 @@
             "type": "-",
             "size": 714,
             "lmtime": 1594033101421,
+            "modified": false
+          },
+          "ApprovalMail.php": {
+            "type": "-",
+            "size": 715,
+            "lmtime": 1595929601563,
             "modified": false
           }
         },
@@ -10829,18 +10835,6 @@
           "modified": false
         },
         "images": {
-          "Vector-Smart-Object2.png": {
-            "type": "-",
-            "size": 34508,
-            "lmtime": 1592181907303,
-            "modified": false
-          },
-          "ad.png": {
-            "type": "-",
-            "size": 3569,
-            "lmtime": 1594905978768,
-            "modified": false
-          },
           "avatar.png": {
             "type": "-",
             "size": 52534,
@@ -10877,22 +10871,10 @@
             "lmtime": 1593011975726,
             "modified": false
           },
-          "php0lJOuU_1595506246.png": {
-            "type": "-",
-            "size": 2293,
-            "lmtime": 0,
-            "modified": false
-          },
           "php1DAD_1594474176.png": {
             "type": "-",
             "size": 10840,
             "lmtime": 1594474176158,
-            "modified": false
-          },
-          "php1gUcdu_1594114312.png": {
-            "type": "-",
-            "size": 2293,
-            "lmtime": 1594905979114,
             "modified": false
           },
           "php222F_1594474243.png": {
@@ -10919,45 +10901,9 @@
             "lmtime": 1594472858475,
             "modified": false
           },
-          "php37DA_1594201247.png": {
+          "php2OWy0G_1595776506.jpg": {
             "type": "-",
-            "size": 2293,
-            "lmtime": 1594201246386,
-            "modified": false
-          },
-          "php37EC_1594201247.png": {
-            "type": "-",
-            "size": 2293,
-            "lmtime": 1594201246406,
-            "modified": false
-          },
-          "php381E_1594201247.png": {
-            "type": "-",
-            "size": 2293,
-            "lmtime": 1594201246450,
-            "modified": false
-          },
-          "php381F_1594201247.png": {
-            "type": "-",
-            "size": 2293,
-            "lmtime": 1594201246458,
-            "modified": false
-          },
-          "php39KuqW_1595504698.png": {
-            "type": "-",
-            "size": 2293,
-            "lmtime": 0,
-            "modified": false
-          },
-          "php4CA3_1594730631.png": {
-            "type": "-",
-            "size": 925,
-            "lmtime": 1594730630550,
-            "modified": false
-          },
-          "php4clBQd_1595508397.png": {
-            "type": "-",
-            "size": 2293,
+            "size": 12058,
             "lmtime": 0,
             "modified": false
           },
@@ -10967,46 +10913,10 @@
             "lmtime": 1594474126765,
             "modified": false
           },
-          "php5lChMx_1594114312.png": {
-            "type": "-",
-            "size": 2293,
-            "lmtime": 1594905979474,
-            "modified": false
-          },
-          "php644B_1595157704.png": {
-            "type": "-",
-            "size": 925,
-            "lmtime": 1595157703873,
-            "modified": false
-          },
-          "php6B4_1594199662.png": {
-            "type": "-",
-            "size": 2293,
-            "lmtime": 1594199660957,
-            "modified": false
-          },
-          "php6C5_1594199662.png": {
-            "type": "-",
-            "size": 2293,
-            "lmtime": 1594199660976,
-            "modified": false
-          },
           "php6F9D_1594306099.jpg": {
             "type": "-",
             "size": 174041,
             "lmtime": 1594306098614,
-            "modified": false
-          },
-          "php726_1594199662.png": {
-            "type": "-",
-            "size": 2293,
-            "lmtime": 1594199661068,
-            "modified": false
-          },
-          "php727_1594199662.png": {
-            "type": "-",
-            "size": 2293,
-            "lmtime": 1594199661072,
             "modified": false
           },
           "php764F_1594481343.png": {
@@ -11057,12 +10967,6 @@
             "lmtime": 1594474274365,
             "modified": false
           },
-          "phpA002_1594121231.png": {
-            "type": "-",
-            "size": 925,
-            "lmtime": 1594121230693,
-            "modified": false
-          },
           "phpA349_1594474210.png": {
             "type": "-",
             "size": 48360,
@@ -11075,202 +10979,10 @@
             "lmtime": 1594474152841,
             "modified": false
           },
-          "phpC734_1594716770.png": {
-            "type": "-",
-            "size": 925,
-            "lmtime": 1594716768300,
-            "modified": false
-          },
-          "phpD3F3_1594716837.png": {
-            "type": "-",
-            "size": 925,
-            "lmtime": 1594716837104,
-            "modified": false
-          },
           "phpD8B7_1594474093.png": {
             "type": "-",
             "size": 13993,
             "lmtime": 1594474092977,
-            "modified": false
-          },
-          "phpE450_1595143124.png": {
-            "type": "-",
-            "size": 925,
-            "lmtime": 1595143122135,
-            "modified": false
-          },
-          "phpI23nIq_1595505872.png": {
-            "type": "-",
-            "size": 2293,
-            "lmtime": 0,
-            "modified": false
-          },
-          "phpIVJ8Dq_1594114312.png": {
-            "type": "-",
-            "size": 2293,
-            "lmtime": 1594905979821,
-            "modified": false
-          },
-          "phpIZ5OOA_1595504973.png": {
-            "type": "-",
-            "size": 2293,
-            "lmtime": 0,
-            "modified": false
-          },
-          "phpJrBRqz_1595428296.png": {
-            "type": "-",
-            "size": 533728,
-            "lmtime": 0,
-            "modified": false
-          },
-          "phpMp7ucC_1595428336.png": {
-            "type": "-",
-            "size": 533728,
-            "lmtime": 0,
-            "modified": false
-          },
-          "phpNbG3NX_1595506325.png": {
-            "type": "-",
-            "size": 2293,
-            "lmtime": 0,
-            "modified": false
-          },
-          "phpO1KPbu_1595427883.png": {
-            "type": "-",
-            "size": 533728,
-            "lmtime": 0,
-            "modified": false
-          },
-          "phpSxY4tw_1595506288.png": {
-            "type": "-",
-            "size": 2293,
-            "lmtime": 0,
-            "modified": false
-          },
-          "phpTUJRHg_1594114312.png": {
-            "type": "-",
-            "size": 10439,
-            "lmtime": 1594905980190,
-            "modified": false
-          },
-          "phpXZmahX_1595508623.JPG": {
-            "type": "-",
-            "size": 70348,
-            "lmtime": 0,
-            "modified": false
-          },
-          "phpYZPgLL_1595508334.png": {
-            "type": "-",
-            "size": 2293,
-            "lmtime": 0,
-            "modified": false
-          },
-          "phpcpRE6l_1595506387.png": {
-            "type": "-",
-            "size": 2293,
-            "lmtime": 0,
-            "modified": false
-          },
-          "phpdYauMy_1595506366.png": {
-            "type": "-",
-            "size": 2293,
-            "lmtime": 0,
-            "modified": false
-          },
-          "phpdn764m_1594114312.png": {
-            "type": "-",
-            "size": 38084,
-            "lmtime": 1594905980667,
-            "modified": false
-          },
-          "phpfJ2CLL_1595428355.png": {
-            "type": "-",
-            "size": 533728,
-            "lmtime": 0,
-            "modified": false
-          },
-          "phpgT4URe_1595428237.png": {
-            "type": "-",
-            "size": 533728,
-            "lmtime": 0,
-            "modified": false
-          },
-          "phpibdAo9_1595428107.png": {
-            "type": "-",
-            "size": 533728,
-            "lmtime": 0,
-            "modified": false
-          },
-          "phplOlXoP_1595424813.png": {
-            "type": "-",
-            "size": 8293,
-            "lmtime": 0,
-            "modified": false
-          },
-          "phpmmNoW7_1595505245.png": {
-            "type": "-",
-            "size": 2293,
-            "lmtime": 0,
-            "modified": false
-          },
-          "phpqoharP_1595428024.png": {
-            "type": "-",
-            "size": 533728,
-            "lmtime": 0,
-            "modified": false
-          },
-          "phpr1WfNj_1594114312.png": {
-            "type": "-",
-            "size": 10439,
-            "lmtime": 1594905981114,
-            "modified": false
-          },
-          "phpvYixtR_1595508724.JPG": {
-            "type": "-",
-            "size": 70348,
-            "lmtime": 0,
-            "modified": false
-          },
-          "phpxt3Jnm_1595424723.png": {
-            "type": "-",
-            "size": 6699,
-            "lmtime": 0,
-            "modified": false
-          },
-          "phpxxTgGi_1595428305.png": {
-            "type": "-",
-            "size": 533728,
-            "lmtime": 0,
-            "modified": false
-          },
-          "phpypBa59_1595427978.png": {
-            "type": "-",
-            "size": 533728,
-            "lmtime": 0,
-            "modified": false
-          },
-          "product-avatar.png": {
-            "type": "-",
-            "size": 2293,
-            "lmtime": 1594905981528,
-            "modified": false
-          },
-          "section1.png": {
-            "type": "-",
-            "size": 38084,
-            "lmtime": 1594022865591,
-            "modified": false
-          },
-          "section2.png": {
-            "type": "-",
-            "size": 38084,
-            "lmtime": 1594022865591,
-            "modified": false
-          },
-          "section3.png": {
-            "type": "-",
-            "size": 38084,
-            "lmtime": 1594022865591,
             "modified": false
           },
           "seeding": {
@@ -11435,6 +11147,12 @@
               "size": 5738,
               "lmtime": 1593011961111,
               "modified": false
+            },
+            "product-avatar.png": {
+              "type": "-",
+              "size": 2293,
+              "lmtime": 1589882509285,
+              "modified": false
             }
           },
           "teacher-vector-3.png": {
@@ -11443,16 +11161,22 @@
             "lmtime": 1592181907573,
             "modified": false
           },
+          "teacher-vector.png": {
+            "type": "-",
+            "size": 46782,
+            "lmtime": 1592181907367,
+            "modified": false
+          },
           "visa.png": {
             "type": "-",
             "size": 5738,
             "lmtime": 1593011961111,
             "modified": false
           },
-          "teacher-vector.png": {
+          "product-avatar.png": {
             "type": "-",
-            "size": 46782,
-            "lmtime": 1592181907367,
+            "size": 2293,
+            "lmtime": 1589882509285,
             "modified": false
           }
         },
@@ -12570,8 +12294,8 @@
           "ar": {
             "admin.php": {
               "type": "-",
-              "size": 13384,
-              "lmtime": 1595845724051,
+              "size": 13446,
+              "lmtime": 1595928010415,
               "modified": false
             },
             "api.php": {
@@ -12606,16 +12330,16 @@
             },
             "web.php": {
               "type": "-",
-              "size": 11625,
-              "lmtime": 1595859865371,
+              "size": 12172,
+              "lmtime": 1595929687435,
               "modified": false
             }
           },
           "en": {
             "admin.php": {
               "type": "-",
-              "size": 9731,
-              "lmtime": 1595845783968,
+              "size": 9786,
+              "lmtime": 1595928036912,
               "modified": false
             },
             "api.php": {
@@ -12650,8 +12374,8 @@
             },
             "web.php": {
               "type": "-",
-              "size": 8494,
-              "lmtime": 1595860200680,
+              "size": 8862,
+              "lmtime": 1595929540059,
               "modified": false
             }
           }
@@ -12676,6 +12400,12 @@
               "type": "-",
               "size": 1995,
               "lmtime": 0,
+              "modified": false
+            },
+            "approval_mail.blade.php": {
+              "type": "-",
+              "size": 2130,
+              "lmtime": 1595929711597,
               "modified": false
             },
             "contents.blade.php": {
@@ -13055,14 +12785,14 @@
               },
               "index.blade.php": {
                 "type": "-",
-                "size": 8072,
-                "lmtime": 1595852815177,
+                "size": 8121,
+                "lmtime": 1595927875524,
                 "modified": false
               },
               "show.blade.php": {
                 "type": "-",
-                "size": 10285,
-                "lmtime": 1595846545631,
+                "size": 11662,
+                "lmtime": 1595927980059,
                 "modified": false
               }
             },
@@ -13547,16 +13277,16 @@
               },
               "show.blade.php": {
                 "type": "-",
-                "size": 11676,
-                "lmtime": 1595834027251,
+                "size": 12831,
+                "lmtime": 1595941462843,
                 "modified": false
               }
             },
             "carts": {
               "index.blade.php": {
                 "type": "-",
-                "size": 24183,
-                "lmtime": 1595834124516,
+                "size": 25611,
+                "lmtime": 1595927217016,
                 "modified": false
               }
             },
@@ -13629,8 +13359,8 @@
               },
               "navbar.blade.php": {
                 "type": "-",
-                "size": 5155,
-                "lmtime": 1595857376589,
+                "size": 5211,
+                "lmtime": 1595930598389,
                 "modified": false
               },
               "register.blade.php": {
@@ -13754,8 +13484,8 @@
       "routes": {
         "api.php": {
           "type": "-",
-          "size": 3001,
-          "lmtime": 1595747975387,
+          "size": 3004,
+          "lmtime": 1595943406866,
           "modified": false
         },
         "channels.php": {

@@ -221,11 +221,11 @@
                             buy_type: buy_type },
                     success: function(data){
                         // Save carts to localStorage
-                        localStorage.setItem("carts", JSON.stringify(@json(auth()->user()->carts)));
+                        localStorage.setItem("carts", JSON.stringify(@json(auth()->user() == null? '' : auth()->user()->carts)));
                         var carts = JSON.parse(localStorage.getItem("carts"));
                         var item = {
                             id: data['id'],
-                            user_id: '{{auth()->user()->id}}',
+                            user_id: '{{auth()->user() == null ? '' : auth()->user()->id}}',
                             bag_id: '{{$bag->id}}',
                             quantity: 1,
                             total_price: '{{$bag->price}}',

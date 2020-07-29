@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UserRequest extends FormRequest
+class ApiUserRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,6 +24,7 @@ class UserRequest extends FormRequest
     public function rules()
     {
         return [
+            'role_id' => 'required',
             'name' => 'required',
             'email' => 'required|email',
             'phone_main' => 'required_if:role_id,2|required_if:role_id,3|required_if:role_id,4|required_if:role_id,5|required_if:role_id,6',
@@ -33,7 +34,7 @@ class UserRequest extends FormRequest
             'age' => 'required_if:role_id,2|required_if:role_id,3|required_if:role_id,4|required_if:role_id,6',
             'stage_id' => 'required_if:role_id,2',
             'edu_level_id' => 'required_if:role_id,3|required_if:role_id,4',
-            'material_ids' => 'required_if:role_id,3|required_if:role_id,4',
+            'material_ids' => 'array|required_if:role_id,3|required_if:role_id,4',
             'bio_ar' => 'required_if:role_id,3|required_if:role_id,4',
             'bio_en' => 'required_if:role_id,3|required_if:role_id,4',
             'nationality_id' => 'required_if:role_id,3|required_if:role_id,4',

@@ -24,7 +24,7 @@ class CartResource extends JsonResource
             'image' => $this->bag->image,
             'quantity' => $this->quantity,
             'branch_price' => $this->total_price,
-            // 'buy_type' => $this->buy_type == 1 ? 'onlinebuy' : 'printcontent',
+            'buy_type' => $this->buy_type,
         ];
     }
 }

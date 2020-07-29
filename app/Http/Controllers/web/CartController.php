@@ -64,6 +64,8 @@ class CartController extends Controller
                 'total_price' => $cart['total_price'],
                 'buy_type' => $cart['buy_type'],
             ]);
+
+            auth()->user()->carts()->save($user_cart);
         }
     }
 

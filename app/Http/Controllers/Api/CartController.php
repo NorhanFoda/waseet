@@ -39,8 +39,8 @@ class CartController extends Controller
             $this->validate($request, [
                 'bag_id' => 'required',
                 'quantity' => 'required',
-                // 'total_price' => 'required',
-                // 'buy_type' => 'required'
+                'total_price' => 'required',
+                'buy_type' => 'required'
             ]);
 
             $bag = Bag::find($request->bag_id);
@@ -54,8 +54,8 @@ class CartController extends Controller
                 'user_id' => auth()->user()->id,
                 'bag_id' => $request->bag_id,
                 'quantity' => $request->quantity,
-                'total_price' => $bag->price * $request->quantity,
-                // 'buy_type' => $request->buy_type == 'onlinebuy' ? 1 : 2
+                'total_price' => $request->total_price,
+                'buy_type' => $request->buy_type,
             ]);
             
             auth()->user()->carts()->save($cart);
@@ -80,33 +80,44 @@ class CartController extends Controller
     public function update(Request $request){
         if(app('request')->header('Authorization') != null && Auth::guard('api')->check()){
             $this->validate($request, [
-                'id' => 'required',
-                'bag_id' => 'required',
-                'quantity' => 'required',
-                // 'total_price' => 'required',
-                // 'buy_type' => 'required'
+                'carts' => 'required|array',
+                'carts.*.id' => 'required',
+                "carts.*.bag_id" => 'required',
+                "carts.*.quantity" => 'required',
+                "carts.*.total_price" => 'required',
+                "carts.*.buy_type" => 'required',
             ]);
     
-            $cart = auth()->user()->carts()->find($request->id);
-    
-            $bag = Bag::find($request->bag_id);
-            if($bag == null){
-                return response()->json([
-                    'error' => trans('api.error'),
-                ], 400);
+            $carts = auth()->user()->carts;
+            
+            // Delete old carts
+            foreach($carts as $cart){
+                $cart->delete();
             }
 
-            $cart->update([
-                'bag_id' => $request->bag_id,
-                'quantity' => $request->quantity,
-                'total_price' => $bag->price * $request->quantity,
-                // 'buy_type' => $request->buy_type == 'onlinebuy' ? 1 : 2
-            ]);
-    
-            if(!$cart){
-                return response()->json([
-                    'error' => trans('api.error'),
-                ], 400);
+            foreach($request->carts as $cart){
+                $bag = Bag::find($cart['bag_id']);
+                if($bag == null){
+                    return response()->json([
+                        'error' => trans('api.error'),
+                    ], 400);
+                }
+
+                $user_cart = Cart::create([
+                    'user_id' => auth()->user()->id,
+                    'bag_id' => $cart['bag_id'],
+                    'quantity' => $cart['quantity'],
+                    'total_price' => $cart['total_price'],
+                    'buy_type' => $cart['buy_type'],
+                ]);
+
+                auth()->user()->carts()->save($user_cart);
+
+                if(!$user_cart){
+                    return response()->json([
+                        'error' => trans('api.error'),
+                    ], 400);
+                }
             }
     
             return response()->json([
@@ -120,27 +131,27 @@ class CartController extends Controller
         }
     }
 
-    public function destroy(Request $request){
-        if(app('request')->header('Authorization') != null && Auth::guard('api')->check()){
-            $this->validate($request, ['id' => 'required']);
+    // public function destroy(Request $request){
+    //     if(app('request')->header('Authorization') != null && Auth::guard('api')->check()){
+    //         $this->validate($request, ['id' => 'required']);
 
-            $cart = auth()->user()->carts()->find($request->id);
-            $cart->delete();
+    //         $cart = auth()->user()->carts()->find($request->id);
+    //         $cart->delete();
 
-            if(!$cart){
-                return response()->json([
-                    'error' => trans('api.error'),
-                ], 400);
-            }
+    //         if(!$cart){
+    //             return response()->json([
+    //                 'error' => trans('api.error'),
+    //             ], 400);
+    //         }
 
-            return response()->json([
-                'success' => trans('api.success'),
-            ], 400);
-        }
-        else{
-            return response()->json([
-                'error' => trans('api.unauthorized')
-            ], 400);
-        }
-    }
+    //         return response()->json([
+    //             'success' => trans('api.success'),
+    //         ], 400);
+    //     }
+    //     else{
+    //         return response()->json([
+    //             'error' => trans('api.unauthorized')
+    //         ], 400);
+    //     }
+    // }
 }
