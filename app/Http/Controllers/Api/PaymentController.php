@@ -8,165 +8,157 @@ use Auth;
 use App\Models\Order;
 use App\Models\Setting;
 use App\Models\BagOrder;
+use App\Models\Bag;
+use App\Models\Cart;
+use App\Models\Bank;
+use App\Models\Image;
+use App\Models\BankReceipt;
+use App\Http\Resources\Bank\BankResource;
+use App\Http\Resources\Order\ReportResource;
+use App\Http\Requests\Order\OrderRequest;
+use App\Classes\Upload;
+use App\Classes\SendEmail;
+use Carbon\Carbon;
 
 class PaymentController extends Controller
 {
-    public function getPaymentForm(Request $request){
-        if(app('request')->header('Authorization') != null && Auth::guard('api')->check()){
 
-            $this->validate($request, [
-                'address_id' => 'required_if:buy_type,printcontent',
-                'payment_method_id' => 'required', 
-                'buy_type' => 'required',
-            ]);
-
-            $carts = auth()->user()->carts;
-
-            if($carts->count() == 0){
-                return response()->json([
-                    'error' => trans('api.error')
-                ], 400);
-            }
-            
-            $order_total_price = 0;
-
-            foreach($carts as $cart){
-                $order_total_price += $cart->total_price;
-            }
-
-            $order = Order::create([
-                'user_id' => auth()->user()->id,
-                'total_price' => $order_total_price,
-                'address_id' => $request->buy_type == 'onlinebuy' ? null : $request->address_id,
-                'status' => 1, // not confirmed
-                'shipping_fees' =>  Setting::find(1)->shipping_fees,
-                'buy_type' => $request->buy_type == 'onlinebuy' ? 1 : 2,
-                'payment_method_id' => $request->payment_method_id
-            ]);
-
-            foreach($carts as $cart){
-                // $order->bags()->attach($cart);
-                BagOrder::create([
-                    'bag_id' => $cart->bag_id,
-                    'order_id' => $order->id,
-                    'total_price' => $cart->total_price,
-                    'quantity' => $cart->quantity
-                ]);
-                $cart->delete();
-            }
-
-            $cost = $order->total_price + $order->shipping_fees;
-            $order_id = $order->id;
-
-            return view('online_payment_form', compact('cost', 'order_id'));
-
-        }
-        else{
-            return response()->json([
-                'error' => trans('api.unauthorized'),
-            ], 401);
-        }
+    public function getBanks(){
+        return response()->json([
+            'banks' => BankResource::collection(Bank::with('image')->get()),
+        ], 200);
     }
-    
-    public function payUrlApi($order_id){
-        if(app('request')->header('Authorization') != null && Auth::guard('api')->check()){
-            $id = $_GET['id'];
-            $url = "https://test.oppwa.com/v1/checkouts/$id/payment";
-            $url .= "?entityId=8ac7a4c9706822c7017070da753b0eec";
 
-            $ch = curl_init();
-            curl_setopt($ch, CURLOPT_URL, $url);
-            curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-                'Authorization:Bearer OGFjN2E0Yzk3MDY4MjJjNzAxNzA3MGRhMjViOTBlZTh8ZnJubjhSeGJxVw=='));
-            curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
-            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);// this should be set to true in production
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-            $responseData = curl_exec($ch);
-            if(curl_errno($ch)) {
-                return curl_error($ch);
-            }
-            curl_close($ch);
 
-            $respone = json_decode($responseData, TRUE);
-            $code = $respone['result']['code'];
+    public function prepareOrder(OrderRequest $request){
 
-            $success = [
-                '000.000.000',
-                '000.000.100',
-                '000.100.110',
-                '000.100.111',
-                '000.100.112',
-                '000.300.000',
-                '000.300.100',
-                '000.300.101',
-                '000.300.102',
-                '000.310.100',
-                '000.310.101',
-                '000.310.110',
-                '000.600.000',
-            ];
+        $old_carts = auth()->user()->carts;
         
-            $waiting_for_review = [
-                '000.400.000',
-                '000.400.010',
-                '000.400.020',
-                '000.400.040',
-                '000.400.050',
-                '000.400.060',
-                '000.400.070',
-                '000.400.080',
-                '000.400.081',
-                '000.400.082',
-                '000.400.090',
-                '000.400.100',
-            ];
-        
-            $pending = [
-                '000.200.000',
-                '000.200.001',
-                '000.200.100',
-                '000.200.101',
-                '000.200.102',
-                '000.200.103',
-                '000.200.200',
-                '100.400.500',
-                '800.400.500',
-                '800.400.501',
-                '800.400.502',
-            ];
+        // Delete old carts
+        foreach($old_carts as $cart){
+            $cart->delete();
+        }
 
-            $failed = [
-                '000.400.101',
-                '000.400.102',
-                '000.400.103',
-                '000.400.104',
-                '000.400.105',
-                '000.400.106',
-                '000.400.107',
-                '000.400.108',
-                '000.400.109',
-                '000.400.200',
-            ];
-
-            $order = Order::find($order_id);
-
-            if(in_array($code, $success)){
-                $order->update(['status' => 2]); // waiting
-                return response()->json([
-                    'success' => trans('api.success')
-                ], 200);
-            }
-            else{
-                
+        // Add new carts with new values from localStorage
+        foreach($request->carts as $cart){
+            $bag = Bag::find($cart['bag_id']);
+            if($bag == null){
                 return response()->json([
                     'error' => trans('api.error'),
                 ], 400);
             }
+
+            $user_cart = Cart::create([
+                'user_id' => auth()->user()->id,
+                'bag_id' => $cart['bag_id'],
+                'quantity' => $cart['quantity'],
+                'total_price' => $cart['total_price'],
+                'buy_type' => $cart['buy_type'],
+            ]);
+
+            if(!$user_cart){
+                return response()->json([
+                    'error' => trans('api.error'),
+                ], 400);
+            }
+
+            auth()->user()->carts()->save($user_cart);
+        }
+
+        //Get updated carts and prepare order
+        $carts = auth()->user()->carts;
+        
+        if(count($carts) == 0){
+            return response()->json([
+                'error' => trans('web.cart_empty')
+            ], 404);
+        }
+
+        $shipping_fees = Setting::find(1)->shipping_fees;
+
+        $order = Order::create([
+            'user_id' => auth()->user()->id,
+            'total_price' => $carts->sum('total_price'),
+            'address_id' => $request->address_id,
+            'status' => 1, // Not confirmed
+            'shipping_fees' => $shipping_fees,
+        ]);
+
+        foreach($carts as $cart){
+            $bag = Bag::findOrFail($cart->bag_id);
+            $order->bags()->attach($bag);
+            $order->bags()->update([
+                'total_price' => $cart->total_price,
+                'quantity' => $cart->quantity,
+                'buy_type' => $cart->buy_type
+            ]);  
+            
+            $cart->delete();
+        }
+
+        return response()->json([
+            'success' => trans('api.order_created'),
+        ], 200);
+    }
+
+    public function storeBankPayment(Request $request){
+        $this->validate($request, [
+            'bank_id' => 'required',
+            'name' => 'required',
+            'email' => 'required|email',
+            'phone' => 'required',
+            'cost' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'order_id' => 'required'
+        ]);
+
+        $receipt = BankReceipt::create($request->all());
+        $receipt->update(['user_id' => auth()->user()->id]);
+
+        $image_url = Upload::uploadImage($request->image);
+        $image = Image::create([
+            'path' => $image_url,
+            'imageRef_id' => $receipt->id,
+            'imageRef_type' => 'App\Models\BankReceipt'
+        ]);
+        $receipt->image()->save($image);
+
+        $order = Order::with('address')->find($request->order_id);
+        $order->update(['status' => 2]);
+        $order->bags()->update([
+            'accepted' => Carbon::now()
+        ]);
+
+        // If order contains buy online bags, then send email bag contents
+        if($order->bags()->where('buy_type', 1)->exists()){
+
+            $bags = $order->bags()->where('buy_type', 1)->get();
+            
+            SendEmail::sendBagContents($bags, auth()->user()->email);
+
+            return response()->json([
+                'success' => trans('web.bag_contents_emailed')
+            ], 200);
         }
         else{
             return response()->json([
-                'error' => trans('api.unauthorized'),
-            ], 401);
+                'success' => trans('api.payment_saved')
+            ], 200);
         }
+    }
+
+    public function getOrderReporrt($id){
+
+        $order = Order::with('address')->find($id);
+
+        if($order == null){
+            return response()->json([
+                'error' => trans('web.error')
+            ], 200);
+        }
+
+        return response()->json([
+            'data' => new ReportResource(Order::with('address')->find($id))
+        ], 200);
     }
 }

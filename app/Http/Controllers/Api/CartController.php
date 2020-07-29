@@ -77,59 +77,59 @@ class CartController extends Controller
         }
     }
 
-    public function update(Request $request){
-        if(app('request')->header('Authorization') != null && Auth::guard('api')->check()){
-            $this->validate($request, [
-                'carts' => 'required|array',
-                'carts.*.id' => 'required',
-                "carts.*.bag_id" => 'required',
-                "carts.*.quantity" => 'required',
-                "carts.*.total_price" => 'required',
-                "carts.*.buy_type" => 'required',
-            ]);
+    // public function update(Request $request){
+    //     if(app('request')->header('Authorization') != null && Auth::guard('api')->check()){
+    //         $this->validate($request, [
+    //             'carts' => 'required|array',
+    //             'carts.*.id' => 'required',
+    //             "carts.*.bag_id" => 'required',
+    //             "carts.*.quantity" => 'required',
+    //             "carts.*.total_price" => 'required',
+    //             "carts.*.buy_type" => 'required',
+    //         ]);
     
-            $carts = auth()->user()->carts;
+    //         $carts = auth()->user()->carts;
             
-            // Delete old carts
-            foreach($carts as $cart){
-                $cart->delete();
-            }
+    //         // Delete old carts
+    //         foreach($carts as $cart){
+    //             $cart->delete();
+    //         }
 
-            foreach($request->carts as $cart){
-                $bag = Bag::find($cart['bag_id']);
-                if($bag == null){
-                    return response()->json([
-                        'error' => trans('api.error'),
-                    ], 400);
-                }
+    //         foreach($request->carts as $cart){
+    //             $bag = Bag::find($cart['bag_id']);
+    //             if($bag == null){
+    //                 return response()->json([
+    //                     'error' => trans('api.error'),
+    //                 ], 400);
+    //             }
 
-                $user_cart = Cart::create([
-                    'user_id' => auth()->user()->id,
-                    'bag_id' => $cart['bag_id'],
-                    'quantity' => $cart['quantity'],
-                    'total_price' => $cart['total_price'],
-                    'buy_type' => $cart['buy_type'],
-                ]);
+    //             $user_cart = Cart::create([
+    //                 'user_id' => auth()->user()->id,
+    //                 'bag_id' => $cart['bag_id'],
+    //                 'quantity' => $cart['quantity'],
+    //                 'total_price' => $cart['total_price'],
+    //                 'buy_type' => $cart['buy_type'],
+    //             ]);
 
-                auth()->user()->carts()->save($user_cart);
+    //             auth()->user()->carts()->save($user_cart);
 
-                if(!$user_cart){
-                    return response()->json([
-                        'error' => trans('api.error'),
-                    ], 400);
-                }
-            }
+    //             if(!$user_cart){
+    //                 return response()->json([
+    //                     'error' => trans('api.error'),
+    //                 ], 400);
+    //             }
+    //         }
     
-            return response()->json([
-                'success' => trans('api.success'),
-            ], 400);
-        }
-        else{
-            return response()->json([
-                'error' => trans('api.unauthorized')
-            ], 400);
-        }
-    }
+    //         return response()->json([
+    //             'success' => trans('api.success'),
+    //         ], 400);
+    //     }
+    //     else{
+    //         return response()->json([
+    //             'error' => trans('api.unauthorized')
+    //         ], 400);
+    //     }
+    // }
 
     // public function destroy(Request $request){
     //     if(app('request')->header('Authorization') != null && Auth::guard('api')->check()){

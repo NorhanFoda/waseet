@@ -27,8 +27,10 @@ return [
     'email_is_verified_before' => 'This email is already verified',
     'invalid_code' => 'Invalid verification code',
     'error' => 'Task can not be completed',
-    '' => '',
-    '' => '',
+
+    // Order
+    'order_created' => 'Order crated successfully',
+    'payment_saved' => 'Payment data saved successfully',
     '' => '',
     '' => '',
     '' => '',

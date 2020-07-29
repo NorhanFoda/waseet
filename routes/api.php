@@ -28,6 +28,11 @@ Route::group(['middleware' => 'lang'], function(){
     Route::post('verify', 'Api\RegisterController@verify');
     Route::post('resend_code', 'Api\RegisterController@resendCode');
 
+    // Countries
+    Route::get('countries', 'Api\CountryController@getCountries');
+    Route::get('cities', 'Api\CountryController@getCities');
+    Route::get('countries/{id}/cities', 'Api\CountryController@getCitiesOfCountry');
+
     // Login
     Route::post('login', 'Api\LoginController@login');
     Route::post('logout', 'Api\LoginController@logout');
@@ -62,15 +67,17 @@ Route::group(['middleware' => 'lang'], function(){
         // Carts
         Route::get('carts', 'Api\CartController@index');
         Route::post('carts', 'Api\CartController@store');
-        Route::put('carts', 'Api\CartController@update');
+        // Route::put('carts', 'Api\CartController@update');
         // Route::delete('carts', 'Api\CartController@destroy');
 
         // Payment methods
         Route::get('methods', 'Api\PaymentMethodController@index');
 
         // Payment
-        Route::get('get_payment_form', 'Api\PaymentController@getPaymentForm');
-        Route::get('pay_url_api/{order_id}', 'Api\PaymentController@payUrlApi')->name('payUrlApi');
+        Route::get('banks', 'Api\PaymentController@getBanks');
+        Route::post('prepare_order', 'Api\PaymentController@prepareOrder');
+        Route::post('bank_payment', 'Api\PaymentController@storeBankPayment');
+        Route::get('order/{id}/report', 'Api\PaymentController@getOrderReporrt');
 
         // Orders
         Route::get('orders', 'Api\OrderController@index');

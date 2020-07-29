@@ -60,7 +60,7 @@ class PaymentController extends Controller
         $this->validate($request, [
             'bank_id' => 'required',
             'name' => 'required',
-            'email' => 'required',
+            'email' => 'required|email',
             'phone' => 'required',
             'cost' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
