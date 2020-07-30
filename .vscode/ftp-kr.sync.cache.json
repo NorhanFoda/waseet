@@ -339,8 +339,8 @@
               },
               "CartController.php": {
                 "type": "-",
-                "size": 4740,
-                "lmtime": 1595943415862,
+                "size": 4922,
+                "lmtime": 1596021223109,
                 "modified": false
               },
               "ContactUsController.php": {
@@ -348,6 +348,12 @@
                 "size": 1249,
                 "lmtime": 1595330771190,
                 "modified": true
+              },
+              "CountryController.php": {
+                "type": "-",
+                "size": 762,
+                "lmtime": 1596013553273,
+                "modified": false
               },
               "HomeController.php": {
                 "type": "-",
@@ -369,8 +375,8 @@
               },
               "PaymentController.php": {
                 "type": "-",
-                "size": 5473,
-                "lmtime": 1594297747419,
+                "size": 5943,
+                "lmtime": 1596024388859,
                 "modified": false
               },
               "PaymentMethodController.php": {
@@ -381,8 +387,8 @@
               },
               "RegisterController.php": {
                 "type": "-",
-                "size": 4509,
-                "lmtime": 1595234340056,
+                "size": 9395,
+                "lmtime": 1596012154652,
                 "modified": false
               },
               "ResetPasswordController.php": {
@@ -401,6 +407,12 @@
                 "type": "-",
                 "size": 2149,
                 "lmtime": 1595749291890,
+                "modified": false
+              },
+              "JobsController.php": {
+                "type": "-",
+                "size": 3017,
+                "lmtime": 1596028701128,
                 "modified": false
               }
             },
@@ -487,8 +499,8 @@
               },
               "PaymentController.php": {
                 "type": "-",
-                "size": 3285,
-                "lmtime": 1595513929395,
+                "size": 3291,
+                "lmtime": 1596021992484,
                 "modified": false
               },
               "ProfileController.php": {
@@ -499,8 +511,8 @@
               },
               "RegisterController.php": {
                 "type": "-",
-                "size": 4994,
-                "lmtime": 1595767261128,
+                "size": 5111,
+                "lmtime": 1596007976163,
                 "modified": false
               },
               "StaticPagesController.php": {
@@ -580,6 +592,12 @@
             }
           },
           "Requests": {
+            "ApiUserRequest.php": {
+              "type": "-",
+              "size": 2148,
+              "lmtime": 1596011786812,
+              "modified": false
+            },
             "Bags": {
               "BagCategoryRequest.php": {
                 "type": "-",
@@ -706,9 +724,17 @@
             },
             "UserRequest.php": {
               "type": "-",
-              "size": 1960,
-              "lmtime": 1595158076379,
+              "size": 2102,
+              "lmtime": 1596011810674,
               "modified": false
+            },
+            "Order": {
+              "OrderRequest.php": {
+                "type": "-",
+                "size": 782,
+                "lmtime": 1596018281335,
+                "modified": false
+              }
             }
           },
           "Resources": {
@@ -752,11 +778,19 @@
                 "modified": false
               }
             },
+            "Bank": {
+              "BankResource.php": {
+                "type": "-",
+                "size": 656,
+                "lmtime": 1596016130691,
+                "modified": false
+              }
+            },
             "Cart": {
               "CartResource.php": {
                 "type": "-",
-                "size": 954,
-                "lmtime": 1595767559608,
+                "size": 915,
+                "lmtime": 1596011466068,
                 "modified": false
               }
             },
@@ -765,6 +799,14 @@
               "size": 480,
               "lmtime": 1595749261474,
               "modified": false
+            },
+            "Image": {
+              "ImageResource.php": {
+                "type": "-",
+                "size": 421,
+                "lmtime": 1596015675959,
+                "modified": false
+              }
             },
             "Order": {
               "OrderResource.php": {
@@ -784,6 +826,12 @@
                 "size": 892,
                 "lmtime": 1594300247257,
                 "modified": false
+              },
+              "ReportResource.php": {
+                "type": "-",
+                "size": 659,
+                "lmtime": 1596022361637,
+                "modified": false
               }
             },
             "Payment": {
@@ -791,6 +839,22 @@
                 "type": "-",
                 "size": 521,
                 "lmtime": 1594286929997,
+                "modified": false
+              }
+            },
+            "Register": {
+              "RegisterResource.php": {
+                "type": "-",
+                "size": 473,
+                "lmtime": 1596009330948,
+                "modified": false
+              }
+            },
+            "Roles": {
+              "RolesResource.php": {
+                "type": "-",
+                "size": 991,
+                "lmtime": 1596005830745,
                 "modified": false
               }
             },
@@ -807,6 +871,20 @@
                 "type": "-",
                 "size": 802,
                 "lmtime": 1595333975742,
+                "modified": false
+              }
+            },
+            "Job": {
+              "JobDetailsResource.php": {
+                "type": "-",
+                "size": 929,
+                "lmtime": 1596026452392,
+                "modified": false
+              },
+              "JobResource.php": {
+                "type": "-",
+                "size": 756,
+                "lmtime": 1596025905021,
                 "modified": false
               }
             }
@@ -12300,8 +12378,8 @@
             },
             "api.php": {
               "type": "-",
-              "size": 2096,
-              "lmtime": 1594301121269,
+              "size": 2216,
+              "lmtime": 1596022159739,
               "modified": false
             },
             "auth.php": {
@@ -12344,8 +12422,8 @@
             },
             "api.php": {
               "type": "-",
-              "size": 1574,
-              "lmtime": 1594300193765,
+              "size": 1672,
+              "lmtime": 1596022173440,
               "modified": false
             },
             "auth.php": {
@@ -13301,8 +13379,8 @@
             "home": {
               "index.blade.php": {
                 "type": "-",
-                "size": 5167,
-                "lmtime": 1595834162681,
+                "size": 5199,
+                "lmtime": 1596028096426,
                 "modified": false
               }
             },
@@ -13484,8 +13562,8 @@
       "routes": {
         "api.php": {
           "type": "-",
-          "size": 3004,
-          "lmtime": 1595943406866,
+          "size": 3721,
+          "lmtime": 1596027787729,
           "modified": false
         },
         "channels.php": {

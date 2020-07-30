@@ -65,7 +65,7 @@ class ResetPasswordController extends Controller
 
         $user = User::where('email', $request->email)->first();
         if($user == null){
-            return respone()->json([
+            return response()->json([
                 'error' => trans('api.email_not_found'),
             ], 400);
         }
