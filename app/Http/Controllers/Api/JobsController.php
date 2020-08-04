@@ -13,6 +13,7 @@ use Auth;
 
 class JobsController extends Controller
 {
+
     public function index(){
 
         return response()->json([
@@ -45,6 +46,7 @@ class JobsController extends Controller
     public function applyJob(Request $request){
         if(app('request')->header('Authorization') != null && Auth::guard('api')->check()){
     
+            // Only job seeker can apply to job
             if(!auth()->user()->hasRole('job_seeker')){
                 return response()->json([
                     'error' => trans('web.login_as_job_seeker')
@@ -90,4 +92,5 @@ class JobsController extends Controller
             ], 400);
         }
     }
+    
 }

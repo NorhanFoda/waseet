@@ -53,7 +53,7 @@
 
         <li><a href="{{route('jobs.web_index')}}">{{trans('web.look_for_job')}}</a></li>
         <li><a href="{{route('teachers.index')}}">{{trans('web.private_teacher')}}</a></li>
-        <li><a href="{{route('bags')}}">{{trans('web.bags')}}</a></li>
+        <li><a href="{{route('web_bags')}}">{{trans('web.bags')}}</a></li>
 
         @if(Auth::check())
           <li><a href="{{route('profile.index')}}">{{trans('web.profile')}}</a></li>

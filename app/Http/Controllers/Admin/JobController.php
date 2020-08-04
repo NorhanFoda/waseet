@@ -13,6 +13,7 @@ use App\Classes\Upload;
 use App\Models\SubScriber;
 use App\Classes\SendEmail;
 use App\Models\Setting;
+use App\Models\Specialization;
 
 class JobController extends Controller
 {
@@ -36,7 +37,8 @@ class JobController extends Controller
     {
         $countries = Country::all();
         $cities = City::all();
-        return view('admin.jobs.create', compact('countries', 'cities'));
+        $specializations = Specialization::all();
+        return view('admin.jobs.create', compact('countries', 'cities', 'specializations'));
     }
 
     /**

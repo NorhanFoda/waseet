@@ -309,4 +309,8 @@ return [
     'new_bag_added' => 'A New Bag is Added in Waseet Al Moalm Website, For More Details Visit The Following Link', 
     'new_job_added' => 'A New Job is Added in Waseet Al Moalm Website, For More Details Visit The Following Link',
     'new_teacher_added'  => 'A New Teacher Registered in Waseet Al Moalm Website, For More Details Visit The Following Link',   
+
+    // Specializations
+    'specializations' => 'Specializations',
+    'specialization' => 'Specialization',
 ];

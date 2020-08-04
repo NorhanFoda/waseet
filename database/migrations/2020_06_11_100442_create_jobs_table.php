@@ -29,6 +29,7 @@ class CreateJobsTable extends Migration
             $table->boolean('approved')->default(0);
             $table->unsignedBigInteger('country_id')->nullable()->index();
             $table->unsignedBigInteger('city_id')->nullable()->index();
+            $table->unsignedBigInteger('specialization_id')->nullable()->index();
             $table->unsignedBigInteger('user_id')->nullable()->index();
             $table->timestamps();
         });

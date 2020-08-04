@@ -51,6 +51,8 @@
 
             <li class=" nav-item"><a href="{{route('cities.index')}}"><i class="fa fa-map-marker"></i><span class="menu-title" data-i18n="Dashboard">{{trans('admin.cities')}}</span></a></li>
 
+            <li class=" nav-item"><a href="{{route('specializations.index')}}"><i class="fa fa-file"></i><span class="menu-title" data-i18n="Dashboard">{{trans('admin.specializations')}}</span></a></li>
+
             <li class=" nav-item"><a href="{{route('nationalities.index')}}"><i class="fa fa-globe"></i><span class="menu-title" data-i18n="Dashboard">{{trans('admin.nationalities')}}</span></a></li>
 
             <li class=" nav-item"><a href="{{route('addresses.get_all')}}"><i class="fa fa-map-marker"></i><span class="menu-title" data-i18n="Dashboard">{{trans('admin.addresses')}}</span></a></li>

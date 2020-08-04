@@ -91,6 +91,10 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
             Route::resource('countries', 'Admin\CountryController');
             Route::post('delete_country', 'Admin\CountryController@deleteCountry')->name('countries.delete');
 
+            // Specializations
+            Route::resource('specializations', 'Admin\SpecializationController');
+            Route::post('delete_specialization', 'Admin\SpecializationController@deleteSpecialization')->name('specializations.delete');
+
             // Cities
             Route::resource('cities', 'Admin\CityController');
             Route::post('delete_city', 'Admin\CityController@deleteCity')->name('cities.delete');
@@ -206,34 +210,34 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
     Auth::routes();
 
     // Register
-    Route::get('register_user/{role_id}', 'Web\RegisterController@getRegisterForm')->name('register.form');
-    Route::post('register_user/{role_id}', 'Web\RegisterController@register')->name('register.user');
+    Route::get('register/user/{role_id}', 'Web\RegisterController@getRegisterForm')->name('register.form');
+    Route::post('register/user/{role_id}', 'Web\RegisterController@register')->name('register.user');
     Route::post('verify', 'Web\RegisterController@verify')->name('register.verify');
-    Route::post('resend_code', 'Web\RegisterController@resendCode')->name('register.resend_code');
+    Route::post('resend/code', 'Web\RegisterController@resendCode')->name('register.resend_code');
 
     // Login
-    Route::get('login_user', 'Web\LoginController@getLoginForm')->name('login.form');
-    Route::post('login_user', 'Web\LoginController@loginUser')->name('login.user');
+    Route::get('login/user', 'Web\LoginController@getLoginForm')->name('login.form');
+    Route::post('login/user', 'Web\LoginController@loginUser')->name('login.user');
 
     // Home
     Route::get('/home', 'HomeController@index')->name('home');
 
     // Educational Bags
     Route::get('/categories/{id}', 'Web\BagCategoryController@show')->name('categories.bags');
-    Route::get('/bags', 'Web\BagController@index')->name('bags');
-    Route::get('/bags/{id}', 'Web\BagController@show')->name('bags.show');
+    Route::get('/web/bags', 'Web\BagController@index')->name('web_bags');
+    Route::get('/web/bags/{id}', 'Web\BagController@show')->name('web_bags.show');
 
     //Jobs
-    Route::get('web_jobs', 'Web\JobsController@index')->name('jobs.web_index');
-    Route::get('web_jobs/{id}', 'Web\JobsController@show')->name('jobs.details');
-    Route::get('web_jobs/apply/{job_id}', 'Web\JobsController@applyToJob')->name('jobs.apply');
-    Route::post('web_jobs/apply', 'Web\JobsController@updateSeekerData')->name('jobs.update_seeker');
-    Route::post('web_jobs/save', 'Web\JobsController@saveJob')->name('jobs.save');
+    Route::get('web/jobs', 'Web\JobsController@index')->name('jobs.web_index');
+    Route::get('web/jobs/{id}', 'Web\JobsController@show')->name('jobs.details');
+    Route::get('web/jobs/apply/{job_id}', 'Web\JobsController@applyToJob')->name('jobs.apply');
+    Route::post('web/jobs/apply', 'Web\JobsController@updateSeekerData')->name('jobs.update_seeker');
+    Route::post('web/jobs/save', 'Web\JobsController@saveJob')->name('jobs.save');
 
     // Teachers
     Route::get('teachers', 'Web\TeachersController@index')->name('teachers.index');
     Route::get('teachers/{id}', 'Web\TeachersController@show')->name('teachers.show');
-    Route::get('get_teachers/{type}', 'Web\TeachersController@getTeachersByType')->name('teachers.get_by_type');
+    Route::get('get/teachers/{type}', 'Web\TeachersController@getTeachersByType')->name('teachers.get_by_type');
 
     // Static pages
     Route::get('/pages/{page}', 'Web\StaticPagesController@getPage')->name('pages');
@@ -256,9 +260,9 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 
         // Orders
         Route::get('payment/{address_id}', 'Web\PaymentController@prepareOrder')->name('payment.prepare_order');
-        Route::get('banks_data', 'Web\PaymentController@getBanksData')->name('payment.banks');
-        Route::post('save_bank_receipt', 'Web\PaymentController@saveBankReceipt')->name('payment.bank_receipt');
-        Route::get('confirm_order/{id}', 'Web\PaymentController@confirmOrder')->name('order.confirm');
+        Route::get('banks/data', 'Web\PaymentController@getBanksData')->name('payment.banks');
+        Route::post('save/bank_receipt', 'Web\PaymentController@saveBankReceipt')->name('payment.bank_receipt');
+        Route::get('confirm/order/{id}', 'Web\PaymentController@confirmOrder')->name('order.confirm');
 
         // Addresses
         Route::get('addresses/index', 'Web\AddressController@index')->name('addresses.index');
@@ -266,8 +270,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
         Route::delete('addresses', 'Web\AddressController@delete')->name('addresses.delete');
 
         // Jobs
-        Route::get('add_job', 'Web\JobsController@getAddJobForm')->name('jobs.get_form');
-        Route::post('add_job', 'Web\JobsController@storeJob')->name('jobs.store_job');
+        Route::get('add/job', 'Web\JobsController@getAddJobForm')->name('jobs.get_form');
+        Route::post('add/job', 'Web\JobsController@storeJob')->name('jobs.store_job');
         Route::get('org/jobs', 'Web\JobsController@getOrganizationJobs')->name('jobs.org_jobs');
         Route::get('org/jobs/{id}/edit', 'Web\JobsController@getEditJobForm')->name('jobs.edit_job');
         Route::put('org/jobs/{id}/update', 'Web\JobsController@updateJob')->name('jobs.update_job');
@@ -275,8 +279,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
         // Profile
         Route::get('profile', 'Web\ProfileController@index')->name('profile.index');
         Route::get('saved', 'Web\ProfileController@getSaved')->name('saved.index');
-        Route::get('personal_info', 'Web\ProfileController@editPersonalInfo')->name('profile.edit_personal_info');
-        Route::post('personal_info', 'Web\ProfileController@storePersonalInfo')->name('profile.store_personal_info');
+        Route::get('personal/info', 'Web\ProfileController@editPersonalInfo')->name('profile.edit_personal_info');
+        Route::post('personal/info', 'Web\ProfileController@storePersonalInfo')->name('profile.store_personal_info');
         Route::get('get_orders', 'Web\ProfileController@getOrders')->name('profile.orders');
         Route::get('get_orders/{id}', 'Web\ProfileController@trackOrder')->name('profile.track_order');
         Route::get('contents/{id}', 'Web\ProfileController@showBagContents')->name('order.bag_contents');

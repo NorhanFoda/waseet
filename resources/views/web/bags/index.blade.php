@@ -25,7 +25,7 @@
                 <div class="item col-lg-4 col-sm-6">
                     <div class="packsWrap">
                         <div class="pack m-2">
-                            <a href="{{route('bags.show', $bag->id)}}">
+                            <a href="{{route('web_bags.show', $bag->id)}}">
                                 <div class="pack_img">
                                     <img src="{{$bag->image}}" alt="" />
                                 </div>

@@ -78,6 +78,26 @@
                                 </div>
                                 {{-- enter english name end --}}
 
+                                {{-- specialization --}}
+                                <div class="col-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-2">
+                                            <span>{{trans('admin.specialization')}}</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <select name="city_id" class="form-control" required>
+                                                @foreach($specializations as $spc)
+                                                    <option value="{{$spc->id}}">{{$spc->{'name_'.session('lang')} }}</option>
+                                                @endforeach
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                {{trans('admin.city')}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- specialozation end --}}
+
                                 {{-- enter exper_years --}}
                                 <div class="col-6">
                                     <div class="form-group row">

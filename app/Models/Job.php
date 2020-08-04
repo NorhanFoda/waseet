@@ -7,6 +7,7 @@ use App\Models\Image;
 use App\Models\Save;
 use App\Models\City;
 use App\Models\Country;
+use App\Models\Specialization;
 use App\User;
 
 class Job extends Model
@@ -45,5 +46,9 @@ class Job extends Model
 
     public function saves(){
         return $this->morphMany(Save::class, 'saveRef');
+    }
+
+    public function specialization(){
+        return $this->belongsTo(Specialization::class);
     }
 }
