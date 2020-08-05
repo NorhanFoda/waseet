@@ -19,6 +19,7 @@ use App\User;
 
 class JobsController extends Controller
 {
+    // Get all jobs
     public function index(){
         $title = Setting::find(1)->{'section_1_title_'.session('lang')};
         $text = Setting::find(1)->{'section_1_text_'.session('lang')};
@@ -27,6 +28,7 @@ class JobsController extends Controller
         return view('web.jobs.index', compact('title', 'text', 'jobs'));
     }
 
+    // Get jos details for auth user with job_seeker or organization roles
     public function show($id){
 
         if(!auth()->user()){
@@ -47,6 +49,7 @@ class JobsController extends Controller
         }
     }
 
+    // return job application form
     public function applyToJob($job_id){
         
         if(!auth()->user()){
@@ -66,6 +69,7 @@ class JobsController extends Controller
         return view('web.jobs.apply', compact('jobs', 'title', 'text', 'job_id'));
     }
 
+    // update seeker data with the applied job id
     public function updateSeekerData(Request $request){
 
         if(!auth()->user()){
@@ -124,6 +128,7 @@ class JobsController extends Controller
         return redirect()->route('jobs.web_index');
     }
 
+    // Add job to saved posts
     public function saveJob(Request $request){
         
         $save;
@@ -180,12 +185,20 @@ class JobsController extends Controller
         }
     }
 
+    // return create job form
     public function getAddJobForm(){
         $countries = Country::all();
         return view('web.jobs.create', compact('countries'));
     }
 
+    // save created job
     public function storeJob(JobRequest $request){
+
+        if(!auth()->user()->hasRole('organization')){
+            session('warning', trans('web.login_as_roganization'));
+            return redirect()->back();
+        }
+
         $job = Job::create($request->all());
         $job->update(['user_id' => auth()->user()->id]);
 
@@ -209,6 +222,7 @@ class JobsController extends Controller
         }
     }
 
+    // get all jobs of the authed user with organization role
     public function getOrganizationJobs(){
     
         $title = Setting::find(1)->{'section_1_title_'.session('lang')};
@@ -218,6 +232,7 @@ class JobsController extends Controller
         return view('web.jobs.index', compact('title', 'text', 'jobs'));
     }
 
+    // return edit job form
     public function getEditJobForm($id){
 
         $job = auth()->user()->job_announces()->find($id);
@@ -227,6 +242,7 @@ class JobsController extends Controller
         return view('web.jobs.edit', compact('job', 'countries', 'cities'));
     }
 
+    // update the edited job
     public function updateJob(JobRequest $request, $id){
 
         $job = Job::find($id);
@@ -272,7 +288,7 @@ class JobsController extends Controller
         }
 
         if($job){
-            session()->flash('success', trans('web.job_created'));
+            session()->flash('success', trans('web.job_updated'));
             return redirect()->route('jobs.web_index');
         }
         else{

@@ -108,6 +108,7 @@ return [
     'job_applied' => 'Your Request Has Been Applied Suucessfully',
     'added_to_saved' => 'Job Saved',
     'send' => 'Send',
+    'login_as_roganization' => 'Please Login as Educational Institution To Continue',
 
     // Teachers
     'contact' => 'Contact',
@@ -221,5 +222,7 @@ return [
     
     'job_approved' => 'Job Announcement in Waseet Al Moalm Website',
     'job_approved_text' => 'Your Job Announcement Request in Waseet Al Moalm Website Has Been Approved, Visite The Following Link To View Details..',
-    'job_refused_text' => 'Your Job Announcement Request in Waseet Al Moalm Website Has Been Refused, You can Contact With Admin Through: '
+    'job_refused_text' => 'Your Job Announcement Request in Waseet Al Moalm Website Has Been Refused, You can Contact With Admin Through: ',
+
+    'no_cv_uploaded' => 'There is No Uploaded CV',
 ];

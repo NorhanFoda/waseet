@@ -39,7 +39,7 @@
 
                                                 <div class="avatar-preview">
                                                     <div id="imagePreview"
-                                                        style="background-image: url({{$user->image->path}})">
+                                                        style="background-image: url({{$user->image == null ? '/images/avatar.png' : $user->image->path}})">
                                                     </div>
                                                 </div>
                                             </form>

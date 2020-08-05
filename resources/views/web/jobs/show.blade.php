@@ -34,7 +34,7 @@
 
             <div class="teacher_contact text-left-dir custom-check-box">
               <form action="">
-                <input type="checkbox" data-type="Job" data-id="{{$job->id}}" id="bookmark" @if(auth()->user()->saved_jobs->contains('saveRef_id', $job->id)) checked @endif />
+                <input type="checkbox" data-type="Job" data-id="{{$job->id}}" id="bookmark" @if(Auth::check() && auth()->user()->saved_jobs->contains('saveRef_id', $job->id)) checked @endif />
                 <label for="bookmark">
                   <span> <i class="fas fa-bookmark"></i></span>
                 </label>

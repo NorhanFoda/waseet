@@ -25,6 +25,7 @@ class BagDetailsResource extends JsonResource
             'description' => $this->{'description_'.$lang},
             'contents' => $this->{'contents_'.$lang},
             'benefits' => $this->{'benefits_'.$lang},
+            'is_saved' => auth()->user() == null ? 'unauthorized': auth()->user()->saved_bags->contains('saveRef_id', $this->id),
         ];
     }
 }

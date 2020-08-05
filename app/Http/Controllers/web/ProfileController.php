@@ -10,6 +10,7 @@ use App\Models\Nationality;
 use App\Models\EduLevel;
 use App\Models\EduType;
 use App\Models\Country;
+use App\Models\City;
 use App\Models\Image;
 use App\Models\Order;
 use App\Models\Bag;
@@ -18,14 +19,17 @@ use App\User;
 
 class ProfileController extends Controller
 {
+    // get index view for user profile
     public function index(){
         return view('web.profile.index');
     }
 
+    // get saved posts for auth user
     public function getSaved(){
         return view('web.saved.index');
     }
 
+    // get edit personal info form for auth user
     public function editPersonalInfo(){
         $stages = Stage::all();
         $materials = Material::all();
@@ -33,11 +37,12 @@ class ProfileController extends Controller
         $levels = EduLevel::all();
         $types = EduType::all();
         $countries = Country::all();
-        $cities = auth()->user()->country->cities;
+        $cities = auth()->user() == null || auth()->user()->hasRole('admin') ? City::all() : auth()->user()->country->cities;
 
         return view('web.profile.edit', compact('stages', 'materials', 'levels', 'types', 'countries', 'nationalities', 'cities'));
     }
 
+    // update auth user personal info
     public function storePersonalInfo(Request $request){
 
         $this->validate($request, [
@@ -99,20 +104,24 @@ class ProfileController extends Controller
 
     }
 
+    // get orders for auth user
     public function getOrders(){
         return view('web.orders.index');
     }
 
+    // track auth user order
     public function trackOrder($id){
         $order = Order::with('bags')->find($id);
         return view('web.orders.track_order', compact('order'));
     }
 
+    // show bag contents for online paied bags
     public function showBagContents($id){
         $bag = Bag::with(['images', 'videos', 'documents'])->find($id);
         return view('web.bags.gallery', compact('bag'));
     }
 
+    // view auth user profile
     public function show($id){
         $user = User::with(['image', 'country', 'city', 'document'])->find($id);
 

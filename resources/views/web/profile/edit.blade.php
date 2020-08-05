@@ -136,7 +136,7 @@
                                     {{-- edu level end --}}
 
                                     {{-- materials start --}}
-                                    <div class="big-label">{{trans('web.materials')}} :</div>
+                                    {{-- <div class="big-label">{{trans('web.materials')}} :</div>
                                     <div class="userName">
                                         <select class="custom-input" name="material_ids[]" multiple required>
                                             <option value="{{null}}">{{trans('web.materials')}}</option>
@@ -144,7 +144,7 @@
                                                 <option value="{{$material->id}}" @if(Auth::user()->materials->contains($material->id)) selected @endif>{{$material->{'name_'.session('lang')} }}</option>
                                             @endforeach
                                         </select>
-                                    </div>
+                                    </div> --}}
                                     {{-- materials end --}}
 
 

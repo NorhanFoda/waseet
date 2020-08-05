@@ -92,6 +92,17 @@ Route::group(['middleware' => 'lang'], function(){
         //Jobs
         Route::get('jobs/{id}', 'Api\JobsController@getJobDetails');
         Route::post('jobs/apply', 'Api\JobsController@applyJob');
+        Route::post('jobs/announce', 'Api\JobsController@anounceJob');
+        Route::put('jobs/announce/{id}/edit', 'Api\JobsController@editJob');
+        Route::post('save', 'Api\JobsController@savePost');
+
+        // Teachers
+        Route::get('teachers/{id}', 'Api\TeacherController@show');
+
+        // Profile
+        Route::get('cv', 'Api\ProfileController@getCV');
+        Route::get('saved/all', 'Api\ProfileController@getSavedPosts');
+        Route::put('profile/update', 'Api\ProfileController@updatePersonalInfo');
 
     });
     

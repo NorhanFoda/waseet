@@ -11,6 +11,7 @@ use DB;
 
 class TeachersController extends Controller
 {
+    // Get all teachers
     public function index(){
 
         $teachers = User::with(['image', 'materials', 'ratings', 'nationality'])->whereHas('roles', function($q){
@@ -24,6 +25,7 @@ class TeachersController extends Controller
         return view('web.teachers.index', compact('teachers', 'title', 'text', 'roles'));
     }
     
+    // View teacher profile only for auth users
     public function show($id){
         if(!Auth::check()){
             session()->flash('warning', trans('web.do_login_2'));
