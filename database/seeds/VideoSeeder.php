@@ -13,42 +13,42 @@ class VideoSeeder extends Seeder
     {
         DB::table('videos')->insert([
             [
-                'path' => 'http://127.0.0.1:8000/videos/php728_1594199662.mp4',
+                'path' => 'https://waset-elmo3lm.jadara.work/videos/php728_1594199662.mp4',
                 'videoRef_id' => 1,
                 'videoRef_type' => 'App\Models\Bag',
             ],
             [
-                'path' => 'http://127.0.0.1:8000/videos/php748_1594199663.mp4',
+                'path' => 'https://waset-elmo3lm.jadara.work/videos/php748_1594199663.mp4',
                 'videoRef_id' => 1,
                 'videoRef_type' => 'App\Models\Bag',
             ],
             [
-                'path' => 'http://127.0.0.1:8000/videos/php728_1594199662.mp4',
+                'path' => 'https://waset-elmo3lm.jadara.work/videos/php728_1594199662.mp4',
                 'videoRef_id' => 2,
                 'videoRef_type' => 'App\Models\Bag',
             ],
             [
-                'path' => 'http://127.0.0.1:8000/videos/php748_1594199663.mp4',
+                'path' => 'https://waset-elmo3lm.jadara.work/videos/php748_1594199663.mp4',
                 'videoRef_id' => 2,
                 'videoRef_type' => 'App\Models\Bag',
             ],
             [
-                'path' => 'http://127.0.0.1:8000/videos/php728_1594199662.mp4',
+                'path' => 'https://waset-elmo3lm.jadara.work/videos/php728_1594199662.mp4',
                 'videoRef_id' => 3,
                 'videoRef_type' => 'App\Models\Bag',
             ],
             [
-                'path' => 'http://127.0.0.1:8000/videos/php748_1594199663.mp4',
+                'path' => 'https://waset-elmo3lm.jadara.work/videos/php748_1594199663.mp4',
                 'videoRef_id' => 3,
                 'videoRef_type' => 'App\Models\Bag',
             ],
             [
-                'path' => 'http://127.0.0.1:8000/videos/php728_1594199662.mp4',
+                'path' => 'https://waset-elmo3lm.jadara.work/videos/php728_1594199662.mp4',
                 'videoRef_id' => 4,
                 'videoRef_type' => 'App\Models\Bag',
             ],
             [
-                'path' => 'http://127.0.0.1:8000/videos/php748_1594199663.mp4',
+                'path' => 'https://waset-elmo3lm.jadara.work/videos/php748_1594199663.mp4',
                 'videoRef_id' => 4,
                 'videoRef_type' => 'App\Models\Bag',
             ],

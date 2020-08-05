@@ -13,42 +13,42 @@ class DocumentSeeder extends Seeder
     {
         DB::table('documents')->insert([
             [
-                'path' => 'http://127.0.0.1:8000/documents/php6C6_1594199662.pdf',
+                'path' => 'https://waset-elmo3lm.jadara.work/documents/php6C6_1594199662.pdf',
                 'doucmentRef_id' => 1,
                 'doucmentRef_type' => 'App\Models\Bag',
             ],
             [
-                'path' => 'http://127.0.0.1:8000/documents/php706_1594199662.pdf',
+                'path' => 'https://waset-elmo3lm.jadara.work/documents/php706_1594199662.pdf',
                 'doucmentRef_id' => 1,
                 'doucmentRef_type' => 'App\Models\Bag',
             ],
             [
-                'path' => 'http://127.0.0.1:8000/documents/php6C6_1594199662.pdf',
+                'path' => 'https://waset-elmo3lm.jadara.work/documents/php6C6_1594199662.pdf',
                 'doucmentRef_id' => 2,
                 'doucmentRef_type' => 'App\Models\Bag',
             ],
             [
-                'path' => 'http://127.0.0.1:8000/documents/php706_1594199662.pdf',
+                'path' => 'https://waset-elmo3lm.jadara.work/documents/php706_1594199662.pdf',
                 'doucmentRef_id' => 2,
                 'doucmentRef_type' => 'App\Models\Bag',
             ],
             [
-                'path' => 'http://127.0.0.1:8000/documents/php6C6_1594199662.pdf',
+                'path' => 'https://waset-elmo3lm.jadara.work/documents/php6C6_1594199662.pdf',
                 'doucmentRef_id' => 3,
                 'doucmentRef_type' => 'App\Models\Bag',
             ],
             [
-                'path' => 'http://127.0.0.1:8000/documents/php706_1594199662.pdf',
+                'path' => 'https://waset-elmo3lm.jadara.work/documents/php706_1594199662.pdf',
                 'doucmentRef_id' => 3,
                 'doucmentRef_type' => 'App\Models\Bag',
             ],
             [
-                'path' => 'http://127.0.0.1:8000/documents/php6C6_1594199662.pdf',
+                'path' => 'https://waset-elmo3lm.jadara.work/documents/php6C6_1594199662.pdf',
                 'doucmentRef_id' => 4,
                 'doucmentRef_type' => 'App\Models\Bag',
             ],
             [
-                'path' => 'http://127.0.0.1:8000/documents/php706_1594199662.pdf',
+                'path' => 'https://waset-elmo3lm.jadara.work/documents/php706_1594199662.pdf',
                 'doucmentRef_id' => 4,
                 'doucmentRef_type' => 'App\Models\Bag',
             ],
