@@ -31,7 +31,7 @@ class StudentRequest extends FormRequest
             'password_confirmation' => 'required|min:9',
             'age' => 'required',
             'stage_id' => 'required',
-            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
     }
 }

@@ -104,6 +104,7 @@ class BankController extends Controller
             'name_en' => 'required',
             'account_number' => 'required',
             'iban' => 'required',
+            'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         $bank = Bank::find($id);

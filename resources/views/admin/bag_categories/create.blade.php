@@ -85,7 +85,7 @@
                                             <span>{{trans('admin.image')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <input type="file" name="image" class="form-control" placeholder="{{trans('admin.image')}}" required>
+                                            <input type="file" name="image" accept=".gif, .jpg, .png, .webp" class="form-control" placeholder="{{trans('admin.image')}}" required>
                                             <div class="invalid-feedback">
                                                 {{trans('admin.image_required')}}
                                             </div>

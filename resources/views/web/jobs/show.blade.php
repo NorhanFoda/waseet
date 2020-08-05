@@ -28,7 +28,7 @@
 
               <div class="teacher_name">
                 <p>{{$job->{'name_'.session('lang')} }}</p>
-                {{-- <h6>التخصص الوظيفي</h6> --}}
+                <h6>{{$job->specialization->{'name_'.session('lang')} }}</h6>
               </div>
             </div>
 

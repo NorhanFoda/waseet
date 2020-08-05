@@ -896,7 +896,7 @@
                                             <span>{{trans('admin.header_logo')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <input type="file" name="header_logo" class="form-control" accept="image/*" placeholder="{{trans('admin.header_logo')}}">
+                                            <input type="file" name="header_logo" class="form-control" accept=".gif, .jpg, .png, .webp" placeholder="{{trans('admin.header_logo')}}">
                                             <div class="invalid-feedback">
                                                 {{trans('admin.header_logo')}}
                                             </div>
@@ -920,7 +920,7 @@
                                             <span>{{trans('admin.footer_logo')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <input type="file" name="footer_logo" class="form-control" accept="image/*" placeholder="{{trans('admin.footer_logo')}}">
+                                            <input type="file" name="footer_logo" class="form-control" accept=".gif, .jpg, .png, .webp" placeholder="{{trans('admin.footer_logo')}}">
                                             <div class="invalid-feedback">
                                                 {{trans('admin.footer_logo')}}
                                             </div>
@@ -944,7 +944,7 @@
                                             <span>{{trans('admin.text_after_add_image')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <input type="file" name="text_after_add_image" class="form-control" accept="image/*" placeholder="{{trans('admin.text_after_add_image')}}">
+                                            <input type="file" name="text_after_add_image" class="form-control" accept=".gif, .jpg, .png, .webp" placeholder="{{trans('admin.text_after_add_image')}}">
                                             <div class="invalid-feedback">
                                                 {{trans('admin.text_after_add_image')}}
                                             </div>
@@ -968,7 +968,7 @@
                                             <span>{{trans('admin.step_1_image')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <input type="file" name="step_1_image" class="form-control" accept="image/*" placeholder="{{trans('admin.step_1_image')}}">
+                                            <input type="file" name="step_1_image" class="form-control" accept=".gif, .jpg, .png, .webp" placeholder="{{trans('admin.step_1_image')}}">
                                             <div class="invalid-feedback">
                                                 {{trans('admin.step_1_image')}}
                                             </div>
@@ -992,7 +992,8 @@
                                             <span>{{trans('admin.step_2_image')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <input type="file" name="step_2_image" class="form-control" accept="image/*" placeholder="{{trans('admin.step_2_image')}}">
+                                            <input type="file" name="step_2_image" class="form-control" accept=".gif, .jpg, .png, .webp"
+                                             placeholder="{{trans('admin.step_2_image')}}">
                                             <div class="invalid-feedback">
                                                 {{trans('admin.step_2_image')}}
                                             </div>
@@ -1016,7 +1017,7 @@
                                             <span>{{trans('admin.direct_teacher_image')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <input type="file" name="direct_teacher_image" class="form-control" accept="image/*" placeholder="{{trans('admin.direct_teacher_image')}}">
+                                            <input type="file" name="direct_teacher_image" class="form-control" accept=".gif, .jpg, .png, .webp" placeholder="{{trans('admin.direct_teacher_image')}}">
                                             <div class="invalid-feedback">
                                                 {{trans('admin.direct_teacher_image')}}
                                             </div>
@@ -1041,7 +1042,7 @@
                                             <span>{{trans('admin.online_teacher_image')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <input type="file" name="online_teacher_image" class="form-control" accept="image/*" placeholder="{{trans('admin.online_teacher_image')}}">
+                                            <input type="file" name="online_teacher_image" class="form-control" accept=".gif, .jpg, .png, .webp" placeholder="{{trans('admin.online_teacher_image')}}">
                                             <div class="invalid-feedback">
                                                 {{trans('admin.online_teacher_image')}}
                                             </div>
@@ -1065,7 +1066,7 @@
                                             <span>{{trans('admin.step_3_image')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <input type="file" name="step_3_image" class="form-control" accept="image/*" placeholder="{{trans('admin.step_3_image')}}">
+                                            <input type="file" name="step_3_image" class="form-control" accept=".gif, .jpg, .png, .webp" placeholder="{{trans('admin.step_3_image')}}">
                                             <div class="invalid-feedback">
                                                 {{trans('admin.step_3_image')}}
                                             </div>

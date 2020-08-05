@@ -101,7 +101,7 @@
 
                                 <div class="big-label">{{trans('admin.image')}} : </div>
                                 <div class="userName">
-                                    <input type="file" id="image" name="image"  accept="image/*" />
+                                    <input type="file" id="image" name="image"  accept=".gif, .jpg, .png, .webp" />
                                 </div>
 
                             </div>

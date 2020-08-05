@@ -37,7 +37,7 @@ class OnlineTeacherRequest extends FormRequest
             'country_id' => 'required',
             'city_id' => 'required',
             'address' => 'required',
-            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
     }
 }

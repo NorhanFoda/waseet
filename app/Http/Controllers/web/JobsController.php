@@ -22,7 +22,7 @@ class JobsController extends Controller
     public function index(){
         $title = Setting::find(1)->{'section_1_title_'.session('lang')};
         $text = Setting::find(1)->{'section_1_text_'.session('lang')};
-        $jobs = Job::with(['city', 'country'])->where('approved', 1)->get();
+        $jobs = Job::with(['city', 'country', 'specialization'])->where('approved', 1)->get();
 
         return view('web.jobs.index', compact('title', 'text', 'jobs'));
     }
@@ -37,7 +37,7 @@ class JobsController extends Controller
         if(auth()->user()->hasRole('job_seeker') || auth()->user()->hasRole('organization')){
             $title = Setting::find(1)->{'section_1_title_'.session('lang')};
             $text = Setting::find(1)->{'section_1_text_'.session('lang')};
-            $job = Job::with(['country', 'city'])->find($id);
+            $job = Job::with(['country', 'city', 'specialization'])->find($id);
 
             return view('web.jobs.show', compact('job', 'title', 'text'));
         }
@@ -80,7 +80,8 @@ class JobsController extends Controller
 
         $this->validate($request, [
             'job_id' => 'required',
-            'email' => 'unique:users,email,'.auth()->user()->id
+            'email' => 'unique:users,email,'.auth()->user()->id,
+            'cv' => 'sometimes|mimetypes:application/pdf|max:10000',
         ]);
 
         $cv_path = auth()->user()->document->path;

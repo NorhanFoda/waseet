@@ -1,6 +1,6 @@
 @extends('web.layouts.app')
 @section('title', $teacher->name)
-@section('description', \App::getLocale() == 'ar' : $teacher->bio_ar : $teacher->bio_en)
+@section('description', \App::getLocale() == 'ar' ? $teacher->bio_ar : $teacher->bio_en)
 @section('image', asset('/images/logo.png'))
 
 @section('content')

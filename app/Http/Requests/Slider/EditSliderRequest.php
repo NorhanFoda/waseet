@@ -28,6 +28,7 @@ class EditSliderRequest extends FormRequest
             'title_en' => 'required',
             'body_ar' => 'required',
             'body_en' => 'required',
+            'image' => 'sometimes|image||mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
     }
 }

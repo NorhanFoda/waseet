@@ -219,7 +219,7 @@
                                             <span>{{trans('admin.image')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <input type="file" name="image" class="form-control" accept="image/*" placeholder="{{trans('admin.image')}}" required>
+                                            <input type="file" name="image" class="form-control" accept=".gif, .jpg, .png, .webp" placeholder="{{trans('admin.image')}}" required>
                                             <div class="invalid-feedback">
                                                 {{trans('admin.image')}}
                                             </div>
@@ -235,7 +235,7 @@
                                             <span>{{trans('admin.video')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <input type="file" name="video" class="form-control" accept="video/*" placeholder="{{trans('admin.video')}}" required>
+                                            <input type="file" name="video" class="form-control" accept="video/mp4,video/ogg, video/webm" placeholder="{{trans('admin.video')}}" required>
                                             <div class="invalid-feedback">
                                                 {{trans('admin.video')}}
                                             </div>
@@ -251,7 +251,7 @@
                                             <span>{{trans('admin.poster')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <input type="file" name="poster" class="form-control" accept="image/*" placeholder="{{trans('admin.poster')}}" required>
+                                            <input type="file" name="poster" class="form-control" accept=".gif, .jpg, .png, .webp" placeholder="{{trans('admin.poster')}}" required>
                                             <div class="invalid-feedback">
                                                 {{trans('admin.poster_required')}}
                                             </div>
@@ -338,7 +338,7 @@
                                         </div>
                                         <div class="col-md-10">
                                             <div class="input-group control-group video_increment" >
-                                                <input type="file" name="videos[]" class="form-control" accept="video/*">
+                                                <input type="file" name="videos[]" class="form-control" accept="video/mp4,video/ogg, video/webm">
                                                 <div class="invalid-feedback">
                                                     {{trans('admin.video')}}
                                                 </div>
@@ -348,7 +348,7 @@
                                             </div>
                                             <div class="video_clone hidden">
                                                 <div class="control-group input-group" style="margin-top:10px">
-                                                    <input type="file" name="videos[]" class="form-control" accept="video/*">
+                                                    <input type="file" name="videos[]" class="form-control" accept="video/mp4,video/ogg, video/webm">
                                                     <div class="input-group-btn"> 
                                                         <button class="btn btn-danger vid-btn-danger" type="button"><i class="fa fa-minus" aria-hidden="true"></i></button>
                                                     </div>

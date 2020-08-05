@@ -63,7 +63,8 @@ class SpecializationController extends Controller
      */
     public function show($id)
     {
-        
+        $spc = Specialization::with('jobs')->find($id);
+        return view('admin.specializations.show', compact('spc'));
     }
 
     /**

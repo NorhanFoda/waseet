@@ -119,7 +119,7 @@
                                             <td>{{$job->required_number}}</td>
                                             <td>{{$job->address}}</td>
                                             <td>
-                                                <a href="{{route('jobs.show', $city->id)}}" class="btn" style="color:white;"><i class="fa fa-eye"></i></a>
+                                                <a href="{{route('jobs.show', $job->id)}}" class="btn" style="color:white;"><i class="fa fa-eye"></i></a>
                                             </td>
                                         </tr>
                                     @endforeach

@@ -17,7 +17,7 @@ class JobsController extends Controller
     public function index(){
 
         return response()->json([
-            'data' => JobResource::collection(Job::with(['city', 'country'])->where('approved', 1)->get()),
+            'data' => JobResource::collection(Job::with(['city', 'country', 'specialization'])->where('approved', 1)->get()),
         ], 200);
     }
 

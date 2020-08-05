@@ -109,7 +109,8 @@ class JobController extends Controller
         $countries = Country::all();
         $job = Job::find($id);
         $cities = City::where('country_id', $job->country_id)->get();
-        return view('admin.jobs.edit', compact('countries', 'cities', 'job'));
+        $specializations = Specialization::all();
+        return view('admin.jobs.edit', compact('countries', 'cities', 'job', 'specializations'));
     }
 
     /**

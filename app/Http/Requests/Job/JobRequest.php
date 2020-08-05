@@ -38,6 +38,7 @@ class JobRequest extends FormRequest
             'country_id' => 'required',
             // 'city_ids' => 'required',
             'city_id' => 'required',
+            'specialization_id' => 'required',
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
     }

@@ -57,6 +57,9 @@ Route::group(['middleware' => 'lang'], function(){
     // Jobs
     Route::get('jobs', 'Api\JobsController@index');
 
+    // Teachers
+    Route::get('teachers', 'Api\TeacherController@index');
+
     // Auth routes
     Route::group(['middleware' => 'auth:api'], function(){
 

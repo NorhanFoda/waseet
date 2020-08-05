@@ -42,9 +42,9 @@ class UserRequest extends FormRequest
             'address' => 'required_if:role_id,3|required_if:role_id,4|required_if:role_id,5|required_if:role_id,6',
             'teaching_address' => 'required_if:role_id,3',
             'salary' => 'required_if:role_id,6',
-            'cv' => 'required_if:role_id,6',
+            'cv' => 'required_if:role_id,6|mimetypes:application/pdf|max:10000',
             'edu_type_id' => 'required_if:role_id,5',
-            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
     }
 }

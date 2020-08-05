@@ -38,7 +38,7 @@ class DirectTeacherRequest extends FormRequest
             'city_id' => 'required',
             'address' => 'required',
             'teaching_address' => 'required',
-            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
     }
 }

@@ -17,6 +17,17 @@ class SettingController extends Controller
     }
 
     public function update(Request $request){
+        $this->validate($request, [
+            'header_logo' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'footer_logo' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'text_after_add_image' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'step_1_image' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'step_2_image' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'step_3_image' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'online_teacher_image' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'direct_teacher_image' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
         $set = Setting::find(1);
 
         $set->update([

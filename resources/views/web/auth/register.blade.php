@@ -234,7 +234,7 @@
 
         {{-- image start --}}
           <div class="userName custom-file">
-            <input type="file" id="image" name="image"  accept="image/*" />
+            <input type="file" id="image" name="image"  accept=".gif, .jpg, .png, .webp" />
             <label for="image">
               <i class="fa fa-file"></i> <span>{{trans('web.image')}}</span> 
             </label>

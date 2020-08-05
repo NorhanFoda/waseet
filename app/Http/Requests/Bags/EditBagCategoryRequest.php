@@ -26,6 +26,7 @@ class EditBagCategoryRequest extends FormRequest
         return [
             'name_ar' =>'required',
             'name_en' => 'required',
+            'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
     }
 }

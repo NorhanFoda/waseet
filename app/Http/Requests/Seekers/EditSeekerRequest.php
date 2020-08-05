@@ -33,7 +33,7 @@ class EditSeekerRequest extends FormRequest
             'city_id' => 'required',
             'address' => 'required',
             'salary_month' => 'required',
-            'cv' => 'mimetypes:application/pdf|max:10000',
+            'cv' => 'sometimes|mimetypes:application/pdf|max:10000',
         ];
     }
 }

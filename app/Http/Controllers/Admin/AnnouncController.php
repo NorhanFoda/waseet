@@ -39,7 +39,9 @@ class AnnouncController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, ['image' => 'required']);
+        $this->validate($request, [
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
 
         $announce = Announce::create([
             'url' => $request->url,
@@ -96,6 +98,10 @@ class AnnouncController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
         $announce = Announce::find($id);
 
         $announce->update([

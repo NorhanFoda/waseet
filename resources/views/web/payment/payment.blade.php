@@ -117,7 +117,7 @@
                                     </div>
 
                                     <div class="userName custom-file right-custom-file">
-                                        <input type="file" id="file-up" name="image" required>
+                                        <input type="file" id="file-up" name="image" accept=".gif, .jpg, .png, .webp" required>
                                         <label for="file-up">
                                             <i class="fa fa-upload"></i> <span>{{trans('web.receipt')}}</span>
                                         </label>

@@ -34,7 +34,7 @@ class OrganizationRequest extends FormRequest
             'address' => 'required',
             'edu_type_id' => 'required',
             'other_edu_type' => 'required_if:edu_type_id,4',
-            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
     }
 }

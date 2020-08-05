@@ -64,9 +64,9 @@ class OnlineTeacherController extends Controller
         }
 
         if($request->has('image')){
-            $this->validate($request, [
-                'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            ]);
+            // $this->validate($request, [
+            //     'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            // ]);
 
             $image_url = Upload::uploadImage($request->image);
             $image = Image::create([
@@ -138,9 +138,9 @@ class OnlineTeacherController extends Controller
         $teacher->materials()->sync($request->material_ids);
 
         if($request->has('image')){
-            $this->validate($request, [
-                'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            ]);
+            // $this->validate($request, [
+            //     'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            // ]);
 
             if($teacher->image != null){
                 $removed = Upload::deleteImage($teacher->image->path);

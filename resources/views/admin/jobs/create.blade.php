@@ -85,7 +85,7 @@
                                             <span>{{trans('admin.specialization')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <select name="city_id" class="form-control" required>
+                                            <select name="specialization_id" class="form-control" required>
                                                 @foreach($specializations as $spc)
                                                     <option value="{{$spc->id}}">{{$spc->{'name_'.session('lang')} }}</option>
                                                 @endforeach
@@ -306,7 +306,7 @@
                                             <span>{{trans('admin.image')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <input type="file" name="image" class="form-control" accept="image/*" placeholder="{{trans('admin.image')}}">
+                                            <input type="file" name="image" class="form-control" accept=".gif, .jpg, .png, .webp" placeholder="{{trans('admin.image')}}">
                                             <div class="invalid-feedback">
                                                 {{trans('admin.image_required')}}
                                             </div>

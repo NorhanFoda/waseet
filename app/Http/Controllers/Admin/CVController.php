@@ -9,7 +9,7 @@ use App\Models\Document;
 class CVController extends Controller
 {
     public function index(){
-        $cvs = Document::all();
+        $cvs = Document::where('doucmentRef_type', 'App\User')->get();
         return view('admin.cv.index', compact('cvs'));
     }
 }

@@ -235,8 +235,8 @@
               },
               "JobController.php": {
                 "type": "-",
-                "size": 6659,
-                "lmtime": 1595929627065,
+                "size": 6759,
+                "lmtime": 1596554150751,
                 "modified": false
               },
               "MaterialController.php": {
@@ -297,6 +297,12 @@
                 "type": "-",
                 "size": 3253,
                 "lmtime": 1594479236097,
+                "modified": false
+              },
+              "SpecializationController.php": {
+                "type": "-",
+                "size": 3213,
+                "lmtime": 1596554102098,
                 "modified": false
               },
               "StageController.php": {
@@ -363,8 +369,8 @@
               },
               "JobsController.php": {
                 "type": "-",
-                "size": 3017,
-                "lmtime": 1596028701128,
+                "size": 3071,
+                "lmtime": 1596525789794,
                 "modified": false
               },
               "LoginController.php": {
@@ -1039,8 +1045,8 @@
           },
           "Job.php": {
             "type": "-",
-            "size": 1125,
-            "lmtime": 1595852364737,
+            "size": 1257,
+            "lmtime": 1596552855125,
             "modified": false
           },
           "Material.php": {
@@ -1119,6 +1125,12 @@
             "type": "-",
             "size": 271,
             "lmtime": 0,
+            "modified": false
+          },
+          "Specialization.php": {
+            "type": "-",
+            "size": 258,
+            "lmtime": 1596552801662,
             "modified": false
           }
         },
@@ -1301,6 +1313,12 @@
             "lmtime": 1590913290444,
             "modified": false
           },
+          "2020_06_10_072643_create_specializations_table.php": {
+            "type": "-",
+            "size": 697,
+            "lmtime": 1596551832002,
+            "modified": false
+          },
           "2020_06_10_083046_create_nationalities_table.php": {
             "type": "-",
             "size": 691,
@@ -1447,8 +1465,8 @@
           },
           "2020_06_11_100442_create_jobs_table.php": {
             "type": "-",
-            "size": 1328,
-            "lmtime": 1595849082106,
+            "size": 1410,
+            "lmtime": 1596526840468,
             "modified": false
           },
           "2020_06_11_101346_create_sliders_table.php": {
@@ -1483,9 +1501,9 @@
           },
           "2020_06_11_121153_create_foreign_keys_table.php": {
             "type": "-",
-            "size": 7409,
-            "lmtime": 1594824159853,
-            "modified": true
+            "size": 7647,
+            "lmtime": 1596527127079,
+            "modified": false
           },
           "2020_06_11_131941_create_permission_tables.php": {
             "type": "-",
@@ -1551,8 +1569,8 @@
           },
           "DatabaseSeeder.php": {
             "type": "-",
-            "size": 1197,
-            "lmtime": 1595235248396,
+            "size": 1247,
+            "lmtime": 1596526448234,
             "modified": false
           },
           "DocumentSeeder.php": {
@@ -1587,8 +1605,8 @@
           },
           "JobSeeder.php": {
             "type": "-",
-            "size": 12943,
-            "lmtime": 1595846108902,
+            "size": 13111,
+            "lmtime": 1596551958725,
             "modified": false
           },
           "MaterialStageSeeder.php": {
@@ -1667,6 +1685,12 @@
             "type": "-",
             "size": 1823,
             "lmtime": 1594560571793,
+            "modified": false
+          },
+          "specializationSeeder.php": {
+            "type": "-",
+            "size": 489,
+            "lmtime": 1596551906471,
             "modified": false
           }
         }
@@ -12372,8 +12396,8 @@
           "ar": {
             "admin.php": {
               "type": "-",
-              "size": 13446,
-              "lmtime": 1595928010415,
+              "size": 13562,
+              "lmtime": 1596554327545,
               "modified": false
             },
             "api.php": {
@@ -12416,8 +12440,8 @@
           "en": {
             "admin.php": {
               "type": "-",
-              "size": 9786,
-              "lmtime": 1595928036912,
+              "size": 9900,
+              "lmtime": 1596554354857,
               "modified": false
             },
             "api.php": {
@@ -13349,8 +13373,8 @@
               },
               "index.blade.php": {
                 "type": "-",
-                "size": 5673,
-                "lmtime": 1595833989932,
+                "size": 5677,
+                "lmtime": 1596552295005,
                 "modified": false
               },
               "show.blade.php": {
@@ -13437,8 +13461,8 @@
               },
               "navbar.blade.php": {
                 "type": "-",
-                "size": 5211,
-                "lmtime": 1595930598389,
+                "size": 5215,
+                "lmtime": 1596552313847,
                 "modified": false
               },
               "register.blade.php": {
@@ -13580,8 +13604,8 @@
         },
         "web.php": {
           "type": "-",
-          "size": 13961,
-          "lmtime": 1595858734228,
+          "size": 14228,
+          "lmtime": 1596553173620,
           "modified": false
         }
       },

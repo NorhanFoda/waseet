@@ -40,6 +40,11 @@ class ProfileController extends Controller
 
     public function storePersonalInfo(Request $request){
 
+        $this->validate($request, [
+            'cv' => 'sometimes|mimetypes:application/pdf|max:10000',
+            'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
         auth()->user()->update($request->all());
 
         if(auth()->user()->hasRole('online_teacher') || auth()->user()->hasRole('direct_teacher')){
