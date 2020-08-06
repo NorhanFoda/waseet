@@ -225,4 +225,7 @@ return [
     'job_refused_text' => 'Your Job Announcement Request in Waseet Al Moalm Website Has Been Refused, You can Contact With Admin Through: ',
 
     'no_cv_uploaded' => 'There is No Uploaded CV',
+
+    'search' => 'Search',
+    'search_results' => 'Search Results',
 ];

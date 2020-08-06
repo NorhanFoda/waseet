@@ -8,7 +8,7 @@ use App\Models\Image;
 class Slider extends Model
 {
     protected $fillable = [
-        'title_ar', 'title_en', 'body_ar', 'body_en', 'type'
+        'title_ar', 'title_en', 'body_ar', 'body_en', 'type', 'link',
     ];
 
     public function image(){

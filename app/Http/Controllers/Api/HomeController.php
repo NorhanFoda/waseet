@@ -8,6 +8,12 @@ use App\Models\Setting;
 use App\Models\StaticPage;
 use App\Models\Slider;
 use App\Http\Resources\Slider\SliderResource;
+use App\Http\Resources\Teachers\TeacherResource;
+use App\Http\Resources\Job\JobResource;
+use App\Http\Resources\Bags\BagResource;
+use App\Models\Bag;
+use App\Models\Job;
+use App\User;
 
 class HomeController extends Controller
 {
@@ -15,9 +21,6 @@ class HomeController extends Controller
         $lang = \App::getLocale();
 
         $set = Setting::find(1);
-
-        // $header_title = $set->{'text_after_add_'.$lang};
-        // $header_image = $set->text_after_add_image;
 
         $search_for_job_title = $set->{'section_1_text_'.$lang};
         $search_for_job_image = $set->section_1_image;
@@ -34,8 +37,6 @@ class HomeController extends Controller
         $slider = Slider::with('image')->where('type', 'mobile')->get();
 
         return response()->json([
-            // 'header_title' => $header_title,
-            // 'header_image' => $header_image,
             'search_for_job_title' => $search_for_job_title,
             'search_for_job_image' => $search_for_job_image,
             'edu_bags_title' => $edu_bags_title,
@@ -46,5 +47,51 @@ class HomeController extends Controller
             'about_waseet_image' => $about_waseet_image,
             'slider' => SliderResource::collection($slider)
         ], 200);
+    }
+
+    // search
+    public function search(Request $request){
+        $this->validate($request, ['token' => 'required', 'type' => 'required|in:Bag,Job,Teacher']);
+
+        // search in bags
+        if($request->type == 'Bag'){
+            $bags = Bag::where('name_ar', 'LIKE', '%'.$request->token.'%')
+                ->orWhere('name_en', 'LIKE', '%'.$request->token.'%')
+                ->orWhere('description_ar', 'LIKE', '%'.$request->token.'%')
+                ->orWhere('description_ar', 'LIKE', '%'.$request->token.'%')
+                ->orWhere('contents_ar', 'LIKE', '%'.$request->token.'%')
+                ->orWhere('contents_en', 'LIKE', '%'.$request->token.'%')
+                ->orWhere('benefits_ar', 'LIKE', '%'.$request->token.'%')
+                ->orWhere('benefits_en', 'LIKE', '%'.$request->token.'%')
+                ->get();
+
+            return response()->json([
+                'data' => BagResource::collection($bags),
+            ], 200);
+        }
+        else if($request->type == 'Job'){
+            $jobs = Job::where('name_ar', 'LIKE', '%'.$request->token.'%')
+                ->orWhere('name_en', 'LIKE', '%'.$request->token.'%')
+                ->orWhere('description_ar', 'LIKE', '%'.$request->token.'%')
+                ->orWhere('description_ar', 'LIKE', '%'.$request->token.'%')
+                ->get();
+
+            return response()->json([
+                'data' => JobResource::collection($jobs),
+            ], 200);
+        }
+        else if($request->type == 'Teacher'){
+            $teachers = User::where('name', 'LIKE', '%'.$request->token.'%')
+                ->orWhere('email', 'LIKE', '%'.$request->token.'%')
+                ->orWhere('phone_main', 'LIKE', '%'.$request->token.'%')
+                ->orWhere('phone_secondary', 'LIKE', '%'.$request->token.'%')
+                ->orWhere('bio_ar', 'LIKE', '%'.$request->token.'%')
+                ->orWhere('bio_en', 'LIKE', '%'.$request->token.'%')
+                ->get();
+
+            return response()->json([
+                'data' => TeacherResource::collection($teachers),
+            ], 200);
+        }
     }
 }

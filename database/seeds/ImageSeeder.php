@@ -187,6 +187,15 @@ class ImageSeeder extends Seeder
                 'imageRef_type' => 'App\Models\PaymentMethod',
                 'type' => null,
             ],
+
+            // Bank
+            [
+                'path' => 'https://waset-elmo3lm.jadara.work/images/php7CBE_1595415594.png',
+                'imageRef_id' => '1',
+                'imageRef_type' => 'App\Models\Bank',
+                'type' => null,
+            ],
+
         ]);
     }
 }

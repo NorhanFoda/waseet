@@ -6,7 +6,7 @@
         </div>
 
         <div class="logo col-lg-6 col-sm-6 col-8 text-center">
-          <a href="index.html">
+          <a href="{{route('home')}}">
             <img src="{{asset('web/images/Vector-Smart-Object1.png')}}" alt="" />
             <img src="{{asset('web/images/وسيط-المعلم.png')}}" alt="" />
           </a>
@@ -14,8 +14,9 @@
 
         <div class="search col-lg-3 col-sm-3 col-2">
           <img src="{{asset('web/images/searchicon.png')}}" alt="" />
-          <form action="" method="">
-            <input type="text" id="search" placeholder="البحث" />
+          <form action="{{route('search')}}" method="POST">
+            @csrf
+            <input type="text" id="search" name="token" placeholder="{{trans('web.search')}}" />
             <button type="submit" class="search-btn"><i class="fa fa-search"></i></button>
           </form>
         </div>

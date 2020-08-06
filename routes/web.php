@@ -250,6 +250,9 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
     // Job seeker
     Route::get('profile/{id}', 'Web\ProfileController@show')->name('profile.show');
 
+    // Search
+    Route::post('search', 'HomeController@search')->name('search');
+
     Route::group(['middleware' => ['auth:web']], function(){
 
         // Cart

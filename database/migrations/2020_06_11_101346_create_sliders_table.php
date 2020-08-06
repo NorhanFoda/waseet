@@ -20,6 +20,7 @@ class CreateSlidersTable extends Migration
             $table->text('body_ar');
             $table->text('body_en');
             $table->enum('type', ['website', 'mobile'])->nullable();
+            $table->string('link')->nullable();
             $table->timestamps();
         });
     }

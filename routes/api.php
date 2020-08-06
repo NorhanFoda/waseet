@@ -53,12 +53,16 @@ Route::group(['middleware' => 'lang'], function(){
     Route::get('bag_categories', 'Api\BagCategoryController@index');
     Route::get('bags/{id}', 'Api\BagCategoryController@getCategoryBags');
     Route::get('bag_details/{id}', 'Api\BagCategoryController@getBagDetails');
+    Route::get('api_bags/all', 'Api\BagCategoryController@getAllBags');
 
     // Jobs
     Route::get('jobs', 'Api\JobsController@index');
 
     // Teachers
     Route::get('teachers', 'Api\TeacherController@index');
+
+    // Search
+    Route::post('search', 'Api\HomeController@search');
 
     // Auth routes
     Route::group(['middleware' => 'auth:api'], function(){

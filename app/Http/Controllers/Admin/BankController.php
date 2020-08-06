@@ -102,8 +102,8 @@ class BankController extends Controller
         $this->validate($request, [
             'name_ar' => 'required',
             'name_en' => 'required',
-            'account_number' => 'required',
-            'iban' => 'required',
+            'account_number' => 'required|numeric',
+            'iban' => 'required|numeric',
             'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 

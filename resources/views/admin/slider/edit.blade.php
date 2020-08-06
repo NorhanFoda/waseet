@@ -136,7 +136,7 @@
                                 {{-- enter image end --}}
 
                                 {{-- slider appearance --}}
-                                <div class="col-12">
+                                <div class="col-12" id="appear">
                                     <div class="form-group row">
                                         <div class="col-md-2">
                                             <span>{{trans('admin.slider_appearence')}}</span>
@@ -156,6 +156,22 @@
                                 </div>
                                 {{-- slider appearance end --}}
 
+                                {{-- link start --}}
+                                <div class="col-12 hidden" id="link">
+                                    <div class="form-group row">
+                                        <div class="col-md-2">
+                                            <span>{{trans('admin.link')}}</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <input type="url" value="{{$slider->link}}" name="link" class="form-control">
+                                            <div class="invalid-feedback">
+                                                {{trans('admin.link')}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- link end --}}
+
                                 <div class="col-12 text-center">
                                     <button type="submit" class="btn btn-primary mr-1 mb-1 waves-effect waves-light">{{trans('admin.save')}}</button>
                                 </div>
@@ -167,4 +183,30 @@
         </div>
     </div>
 
+@endsection
+
+@section('scripts')
+    <script>
+        $(document).ready(function(){
+            //get the selected option and hide/show link input accoring to its value
+            if($('#appear').find(':selected').val() == 'website'){
+                $('#link').removeClass('hidden');
+            }
+            else if($('#appear').find(':selected').val() == 'mobile'){
+                $('#link').addClass('hidden');
+                $('#link').val('');
+            }
+
+            // show the link input if the slider will appear in website and hide the link input if the slider will appear in mobile
+            $('#appear').change(function(){
+                if($(this).find(':selected').val() == 'website'){
+                    $('#link').removeClass('hidden');
+                }
+                else if($(this).find(':selected').val() == 'mobile'){
+                    $('#link').addClass('hidden');
+                    $('#link').val('');
+                }
+            });
+        });
+    </script>
 @endsection
