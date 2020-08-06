@@ -86,16 +86,7 @@ class RegisterController extends Controller
     //---------------------------------------------------- Get registeration form data end --------------------------------------------------------------//
 
     //--------------------------------- store user data and send verification email start ---------------------------------------------//
-    public function register(ApiUserRequest $request){
-        // $this->validateRegister($request);
-
-        // $user = $this->create($request->all());
-
-        // $code = $this->createVerificationCode();
-
-        // $user->update(['code' => $code]);
-
-        // return $this->sendEmail($request->email, $user->code);   
+    public function register(ApiUserRequest $request){  
 
         $old = User::where('email', $request->email)->first();
 
@@ -163,29 +154,6 @@ class RegisterController extends Controller
 
         return $this->sendEmail($request->email, $user->code);   
     }
-
-    // public function validateRegister(Request $request){
-    //     $this->validate($request, [
-    //         'name' => 'required',
-    //         // 'email' => 'required|unique:users|email',
-    //         'email' => 'required|email',
-    //         'phone_main' => 'required|unique:users',
-    //         'password' => 'min:9|required_with:password_confirmation|same:password_confirmation',
-    //         'password_confirmation' => 'required|min:9',
-    //     ]);
-    // }
-
-    // protected function create(array $data)
-    // {
-    //     return User::create([
-    //         'name' => $data['name'],
-    //         'email' => $data['email'],
-    //         'phone_main' => $data['phone_main'],
-    //         'is_verified' => 0,
-    //         'api_token' => Str::random(191),
-    //         'password' => Hash::make($data['password']),
-    //     ]);
-    // }
 
     //-------------------------------------------------------- store user data end ---------------------------------------------------//
 

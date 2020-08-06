@@ -181,8 +181,8 @@
               },
               "BankController.php": {
                 "type": "-",
-                "size": 4345,
-                "lmtime": 1596620418075,
+                "size": 4361,
+                "lmtime": 1596700123944,
                 "modified": false
               },
               "CVController.php": {
@@ -339,8 +339,8 @@
               },
               "BagCategoryController.php": {
                 "type": "-",
-                "size": 1051,
-                "lmtime": 1595747994962,
+                "size": 1201,
+                "lmtime": 1596706708759,
                 "modified": false
               },
               "CartController.php": {
@@ -363,8 +363,8 @@
               },
               "HomeController.php": {
                 "type": "-",
-                "size": 1657,
-                "lmtime": 1595838115634,
+                "size": 3744,
+                "lmtime": 1596707220400,
                 "modified": false
               },
               "JobsController.php": {
@@ -474,8 +474,8 @@
             },
             "HomeController.php": {
               "type": "-",
-              "size": 799,
-              "lmtime": 1595838073287,
+              "size": 2446,
+              "lmtime": 1596705992298,
               "modified": false
             },
             "Web": {
@@ -1151,8 +1151,8 @@
           },
           "Slider.php": {
             "type": "-",
-            "size": 314,
-            "lmtime": 1595837423263,
+            "size": 323,
+            "lmtime": 1596697197052,
             "modified": false
           },
           "Social.php": {
@@ -1427,8 +1427,8 @@
           },
           "2020_06_10_100420_create_banks_table.php": {
             "type": "-",
-            "size": 749,
-            "lmtime": 0,
+            "size": 757,
+            "lmtime": 1596699757302,
             "modified": false
           },
           "2020_06_10_120247_create_edu_levels_table.php": {
@@ -1529,8 +1529,8 @@
           },
           "2020_06_11_101346_create_sliders_table.php": {
             "type": "-",
-            "size": 818,
-            "lmtime": 1595837401381,
+            "size": 866,
+            "lmtime": 1596699018780,
             "modified": false
           },
           "2020_06_11_101940_create_videos_table.php": {
@@ -1613,6 +1613,12 @@
             "lmtime": 1596639435059,
             "modified": false
           },
+          "BankSeeder.php": {
+            "type": "-",
+            "size": 472,
+            "lmtime": 1596699444375,
+            "modified": false
+          },
           "CitySeeder.php": {
             "type": "-",
             "size": 528,
@@ -1627,8 +1633,8 @@
           },
           "DatabaseSeeder.php": {
             "type": "-",
-            "size": 1247,
-            "lmtime": 1596526448234,
+            "size": 1287,
+            "lmtime": 1596699678512,
             "modified": false
           },
           "DocumentSeeder.php": {
@@ -1657,8 +1663,8 @@
           },
           "ImageSeeder.php": {
             "type": "-",
-            "size": 7259,
-            "lmtime": 1595838803520,
+            "size": 7527,
+            "lmtime": 1596699520143,
             "modified": false
           },
           "JobSeeder.php": {
@@ -12490,8 +12496,8 @@
             },
             "web.php": {
               "type": "-",
-              "size": 12372,
-              "lmtime": 1596632599378,
+              "size": 12451,
+              "lmtime": 1596704615465,
               "modified": false
             }
           },
@@ -12534,8 +12540,8 @@
             },
             "web.php": {
               "type": "-",
-              "size": 9004,
-              "lmtime": 1596632687709,
+              "size": 9076,
+              "lmtime": 1596704630494,
               "modified": false
             }
           }
@@ -13181,14 +13187,14 @@
             "slider": {
               "create.blade.php": {
                 "type": "-",
-                "size": 8449,
-                "lmtime": 1596620685099,
+                "size": 10031,
+                "lmtime": 1596700841791,
                 "modified": false
               },
               "edit.blade.php": {
                 "type": "-",
-                "size": 9119,
-                "lmtime": 1596620694753,
+                "size": 11121,
+                "lmtime": 1596700832523,
                 "modified": false
               },
               "index.blade.php": {
@@ -13545,8 +13551,8 @@
               },
               "navbar.blade.php": {
                 "type": "-",
-                "size": 5215,
-                "lmtime": 1596552313847,
+                "size": 5290,
+                "lmtime": 1596703305945,
                 "modified": false
               },
               "register.blade.php": {
@@ -13657,6 +13663,14 @@
                 "lmtime": 1596616195065,
                 "modified": false
               }
+            },
+            "search": {
+              "index.blade.php": {
+                "type": "-",
+                "size": 14163,
+                "lmtime": 1596705340267,
+                "modified": false
+              }
             }
           },
           "welcome.blade.php": {
@@ -13670,8 +13684,8 @@
       "routes": {
         "api.php": {
           "type": "-",
-          "size": 4324,
-          "lmtime": 1596638113187,
+          "size": 4467,
+          "lmtime": 1596706896338,
           "modified": false
         },
         "channels.php": {
@@ -13688,8 +13702,8 @@
         },
         "web.php": {
           "type": "-",
-          "size": 14228,
-          "lmtime": 1596553173620,
+          "size": 14311,
+          "lmtime": 1596702007132,
           "modified": false
         }
       },
