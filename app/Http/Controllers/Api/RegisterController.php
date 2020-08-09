@@ -21,9 +21,11 @@ use App\Models\City;
 use App\Models\Document;
 use App\Models\Image;
 use App\Models\Stage;
+use App\Models\Address;
 use App\Classes\Upload;
 use Auth;
 use DB;
+use Carbon\Carbon;
 
 class RegisterController extends Controller
 {
@@ -90,6 +92,7 @@ class RegisterController extends Controller
 
         $old = User::where('email', $request->email)->first();
 
+        // check if this user is registred before but not verified then delete it
         if($old != null){
             if($old->is_verified == 0){
                 if($old->image != null){
@@ -115,7 +118,22 @@ class RegisterController extends Controller
         }
 
         $user = User::create($request->all());
-        $user->update(['password' => Hash::make($request->password), 'api_token' => Str::random(191)]);
+        // if($request->has('address') && $request->has('lat') && $request->has('long')){
+        //     $address = Address::create([
+        //         'lat' => $request->lat,
+        //         'long' => $request->long,
+        //         'address' => $request->address,
+        //         'user_id' => $user->id,
+        //     ]);
+        //     $user->addresses()->save($address);
+        // }
+
+        $user->update([
+            'password' => Hash::make($request->password), 
+            'api_token' => Str::random(191),
+            'api_token_create_date' => carbon::now(),
+            'api_token_expire_date' => Carbon::now()->addDays(15),
+            ]);
         if($request->role_id != 'visitor'){
             $user->assignRole(DB::table('roles')->find($request->role_id)->name);
         }

@@ -27,7 +27,7 @@ class UserRequest extends FormRequest
             'name' => 'required',
             'email' => 'required|email',
             'phone_main' => 'required_if:role_id,2|required_if:role_id,3|required_if:role_id,4|required_if:role_id,5|required_if:role_id,6',
-            'password' => 'min:9|required_with:password_confirmation|same:password_confirmation',
+            'password' => 'required|min:9|required_with:password_confirmation|same:password_confirmation',
             'password_confirmation' => 'required|min:9',
             'exper_years' => 'required_if:role_id,3|required_if:role_id,4|required_if:role_id,6',
             'age' => 'required_if:role_id,2|required_if:role_id,3|required_if:role_id,4|required_if:role_id,6',

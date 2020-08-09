@@ -35,14 +35,19 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name', 'email', 'password',
-        'phone_main', 'phone_secondary', 'country_id', 'address', 
+        'phone_main', 'phone_secondary', 'country_id', 
+        'address', 'lat', 'long',
         'exper_years', 'salary_month', 'salary_hour',
-        'stage_id', 'city_id', 'age',
+        'stage_id', 'city_id', 
+        'age',
         'edu_level_id', 'edu_type_id', 'organizayion_gender',
         'other_edu_type', 'other_edu_level', 'nationality_id',
+        'teaching_lat', 'teaching_long',
         'teaching_address', 'bio_ar', 'bio_en', 'is_verified', 'allow_notification',
-        'api_token', 'code',
+        'api_token', 'code','api_token_create_date' , 'api_token_expire_date'
     ];
+
+    protected $dates = ['api_token_create_date', 'api_token_expire_date'];
 
     /**
      * The attributes that should be hidden for arrays.

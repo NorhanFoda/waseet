@@ -9,6 +9,7 @@ use App\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Auth;
+use Carbon\Carbon;
 
 class LoginController extends Controller
 {
@@ -40,7 +41,11 @@ class LoginController extends Controller
             
             if($user->api_token == null){
                 if(Hash::check($request->password, $user->password)){ 
-                    $user->update(['api_token' => Str::random(191)]);
+                    $user->update([
+                        'api_token' => Str::random(191),
+                        'api_token_create_date' => carbon::now(),
+                        'api_token_expire_date' => Carbon::now()->addDays(15),
+                    ]);
                     return response()->json([
                         'data' => Auth::loginUsingId($user->id, true)
                     ], 200);

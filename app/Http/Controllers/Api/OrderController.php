@@ -13,10 +13,16 @@ class OrderController extends Controller
 {
     public function index(){
         if(app('request')->header('Authorization') != null && Auth::guard('api')->check()){
-
-            return response()->json([
-                'orders' => OrderResource::collection(auth()->user()->orders)
-            ], 200);
+            if(app('request')->header('Authorization') == 'Bearer '.auth()->user()->api_token){
+                return response()->json([
+                    'orders' => OrderResource::collection(auth()->user()->orders)
+                ], 200);
+            }
+            else{
+                return response()->json([
+                    'error' => trans('api.unauthorized')
+                ], 400);
+            }
         }
         else{
             return response()->json([
@@ -25,21 +31,47 @@ class OrderController extends Controller
         }
     }
 
-    public function trackOrder(Request $request){
+    public function trackOrder($order_id){
         if(app('request')->header('Authorization') != null && Auth::guard('api')->check()){
-            $this->validate($request, ['order_id' => 'required']);
+            if(app('request')->header('Authorization') == 'Bearer '.auth()->user()->api_token){
 
-            $order = Order::find($request->order_id);
+                $order = Order::find($order_id);
 
-            if($order == null){
+                if($order == null){
+                    return response()->json([
+                        'error' => trans('api.error')
+                    ], 404);
+                }
+
                 return response()->json([
-                    'error' => trans('api.error')
-                ], 40);
+                    'order' => new trackOrderResource($order)
+                ], 200);
             }
-
+            else{
+                return response()->json([
+                    'error' => trans('api.unauthorized')
+                ], 400);
+            }
+        }
+        else{
             return response()->json([
-                'order' => new trackOrderResource($order)
-            ], 200);
+                'error' => trans('api.error')
+            ], 400);
+        }
+    }
+
+    public function getBagContents($bag_id){
+        if(app('request')->header('Authorization') != null && Auth::guard('api')->check()){
+            if(app('request')->header('Authorization') == 'Bearer '.auth()->user()->api_token){
+                return response()->json([
+                    'data' => Bag::with(['images', 'videos', 'documents'])->find($id)
+                ], 200);
+            }
+            else{
+                return response()->json([
+                    'error' => trans('api.unauthorized')
+                ], 400);
+            }
         }
         else{
             return response()->json([

@@ -14,61 +14,78 @@ class CartController extends Controller
 {
 
     public function index(){
+        if(app('request')->header('Authorization') != null && Auth::guard('api')->check()){
+            if(app('request')->header('Authorization') == 'Bearer '.auth()->user()->api_token){
+                
+                $shipping_fees = Setting::find(1)->shipping_fees;
+                $total_branch_price = 0;
 
-        $shipping_fees = Setting::find(1)->shipping_fees;
-        $total_branch_price = 0;
+                $carts = auth()->user()->carts;
 
-        $carts = auth()->user()->carts;
+                foreach($carts as $cart){
+                    $total_branch_price += $cart->total_price;
+                }
 
-        foreach($carts as $cart){
-            $total_branch_price += $cart->total_price;
+                $total = $total_branch_price  +  $shipping_fees;
+
+                return response()->json([
+                    'carts' => CartResource::collection($carts),
+                    'shipping_fees' => $shipping_fees,
+                    'total_branch_price' => $total_branch_price,
+                    'total' => $total
+                ], 200);
+            }
+            else{
+                return response()->json([
+                    'error' => trans('api.unauthorized')
+                ], 400);    
+            }
         }
-
-        $total = $total_branch_price  +  $shipping_fees;
-
         return response()->json([
-            'carts' => CartResource::collection($carts),
-            'shipping_fees' => $shipping_fees,
-            'total_branch_price' => $total_branch_price,
-            'total' => $total
-        ], 200);
+            'error' => trans('api.unauthorized')
+        ], 400);
     }
 
     public function store(Request $request){
         if(app('request')->header('Authorization') != null && Auth::guard('api')->check()){
-            $this->validate($request, [
-                'bag_id' => 'required',
-                'quantity' => 'required',
-                'total_price' => 'required',
-                'buy_type' => 'required'
-            ]);
-
-            $bag = Bag::find($request->bag_id);
-            if($bag == null){
+            if(app('request')->header('Authorization') == 'Bearer '.auth()->user()->api_token){
+                $this->validate($request, [
+                    'bag_id' => 'required',
+                    'quantity' => 'required',
+                    'total_price' => 'required',
+                    'buy_type' => 'required'
+                ]);
+    
+                $bag = Bag::find($request->bag_id);
+                if($bag == null){
+                    return response()->json([
+                        'error' => trans('api.error'),
+                    ], 400);
+                }
+    
+                $cart = Cart::create([
+                    'user_id' => auth()->user()->id,
+                    'bag_id' => $request->bag_id,
+                    'quantity' => $request->quantity,
+                    'total_price' => $request->total_price,
+                    'buy_type' => $request->buy_type,
+                ]);
+                
+                auth()->user()->carts()->save($cart);
+    
+                if($cart == null){
+                    return response()->json([
+                        'error' => trans('api.error'),
+                    ], 400);
+                }
+    
                 return response()->json([
-                    'error' => trans('api.error'),
-                ], 400);
+                    'success' => trans('api.success'),
+                ], 200);
             }
-
-            $cart = Cart::create([
-                'user_id' => auth()->user()->id,
-                'bag_id' => $request->bag_id,
-                'quantity' => $request->quantity,
-                'total_price' => $request->total_price,
-                'buy_type' => $request->buy_type,
-            ]);
-            
-            auth()->user()->carts()->save($cart);
-
-            if($cart == null){
-                return response()->json([
-                    'error' => trans('api.error'),
-                ], 400);
-            }
-
             return response()->json([
-                'success' => trans('api.success'),
-            ], 200);
+                'error' => trans('api.unauthorized')
+            ], 400);
         }
         else{
             return response()->json([

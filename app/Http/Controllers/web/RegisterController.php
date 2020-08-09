@@ -44,6 +44,7 @@ class RegisterController extends Controller
 
         $old = User::where('email', $request->email)->first();
 
+        // check if this user is registered before but not verified then delete it
         if($old != null){
             if($old->is_verified == 0){
                 if($old->image != null){

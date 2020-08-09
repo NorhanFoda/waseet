@@ -10,7 +10,12 @@ use App\Models\Order;
 
 class Address extends Model
 {
-    protected $fillable = ['country_id', 'city_id', 'user_id', 'address', 'postal_code'];
+    protected $fillable = [
+        'country_id', 'city_id', 
+        'lat', 'long',
+        'user_id', 'address', 
+        'postal_code'
+    ];
 
     public function user(){
         return $this->belongsTo(User::class);

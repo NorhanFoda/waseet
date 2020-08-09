@@ -156,7 +156,8 @@
           <div class="all-checks">
               @foreach($materials as $material)
                 <div class="custom-check text-right-dir">
-                  <input type="checkbox" name="{{$material->id}}" id="check-{{$material->id}}">
+                  <input type="checkbox" name="material_ids[]" value="{{$material->id}}" id="check-{{$material->id}}">
+                  {{-- <input type="checkbox" name="{{$material->id}}" id="check-{{$material->id}}"> --}}
                   <label for="check-{{$material->id}}"> @if(old('level_id') == $material->id) selected @endif {{$material->{'name_'.session('lang')} }}</label>
                 </div>
               @endforeach

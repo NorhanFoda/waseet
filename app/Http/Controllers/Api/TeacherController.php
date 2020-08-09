@@ -25,10 +25,17 @@ class TeacherController extends Controller
     // View teacher profile only for auth users
     public function show($id){
         if(app('request')->header('Authorization') != null && Auth::guard('api')->check()){
-            $teacher = User::with('image', 'materials', 'ratings', 'nationality', 'roles', 'edu_level')->find($id);
-            return response()->json([
-                'data' => new TeacherProfileResource($teacher)
-            ], 200);
+            if(app('request')->header('Authorization') == 'Bearer '.auth()->user()->api_token){
+                $teacher = User::with('image', 'materials', 'ratings', 'nationality', 'roles', 'edu_level')->find($id);
+                return response()->json([
+                    'data' => new TeacherProfileResource($teacher)
+                ], 200);
+            }
+            else{
+                return response()->json([
+                    'error' => trans('api.unauthorized')
+                ], 400);
+            }
         }
         else{
             return response()->json([

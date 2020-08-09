@@ -333,8 +333,8 @@
             "Api": {
               "AddressController.php": {
                 "type": "-",
-                "size": 3694,
-                "lmtime": 1594280084550,
+                "size": 3882,
+                "lmtime": 1596724237836,
                 "modified": false
               },
               "BagCategoryController.php": {
@@ -381,8 +381,8 @@
               },
               "OrderController.php": {
                 "type": "-",
-                "size": 1376,
-                "lmtime": 1594299408911,
+                "size": 1294,
+                "lmtime": 1596718618443,
                 "modified": false
               },
               "PaymentController.php": {
@@ -405,8 +405,8 @@
               },
               "RegisterController.php": {
                 "type": "-",
-                "size": 9395,
-                "lmtime": 1596012154652,
+                "size": 8656,
+                "lmtime": 1596891022362,
                 "modified": false
               },
               "ResetPasswordController.php": {
@@ -529,8 +529,8 @@
               },
               "RegisterController.php": {
                 "type": "-",
-                "size": 5111,
-                "lmtime": 1596007976163,
+                "size": 5144,
+                "lmtime": 1596797610298,
                 "modified": false
               },
               "StaticPagesController.php": {
@@ -549,8 +549,8 @@
           },
           "Kernel.php": {
             "type": "-",
-            "size": 3523,
-            "lmtime": 1594029481395,
+            "size": 3624,
+            "lmtime": 1596893083163,
             "modified": false
           },
           "Middleware": {
@@ -607,13 +607,19 @@
               "size": 415,
               "lmtime": 1594029469538,
               "modified": false
+            },
+            "CheckApiTokenExpirationDate.php": {
+              "type": "-",
+              "size": 675,
+              "lmtime": 1596892661831,
+              "modified": false
             }
           },
           "Requests": {
             "ApiUserRequest.php": {
               "type": "-",
-              "size": 2194,
-              "lmtime": 1596621318303,
+              "size": 2545,
+              "lmtime": 1596799684173,
               "modified": false
             },
             "Bags": {
@@ -750,8 +756,8 @@
             },
             "UserRequest.php": {
               "type": "-",
-              "size": 2148,
-              "lmtime": 1596621326225,
+              "size": 2157,
+              "lmtime": 1596799337544,
               "modified": false
             }
           },
@@ -759,8 +765,8 @@
             "Address": {
               "AddressResource.php": {
                 "type": "-",
-                "size": 625,
-                "lmtime": 1594196223242,
+                "size": 704,
+                "lmtime": 1596724257223,
                 "modified": false
               },
               "CityResource.php": {
@@ -1007,8 +1013,8 @@
         "Models": {
           "Address.php": {
             "type": "-",
-            "size": 604,
-            "lmtime": 1594287987309,
+            "size": 665,
+            "lmtime": 1596799738496,
             "modified": false
           },
           "Announce.php": {
@@ -1226,8 +1232,8 @@
         },
         "User.php": {
           "type": "-",
-          "size": 3969,
-          "lmtime": 1595157850306,
+          "size": 4144,
+          "lmtime": 1596799661868,
           "modified": false
         }
       },
@@ -1361,8 +1367,8 @@
         "migrations": {
           "2014_10_12_000000_create_users_table.php": {
             "type": "-",
-            "size": 2292,
-            "lmtime": 1595234293219,
+            "size": 2531,
+            "lmtime": 1596887907307,
             "modified": false
           },
           "2014_10_12_100000_create_password_resets_table.php": {
@@ -1457,8 +1463,8 @@
           },
           "2020_06_10_133042_create_addresses_table.php": {
             "type": "-",
-            "size": 902,
-            "lmtime": 1594191881410,
+            "size": 1006,
+            "lmtime": 1596801031538,
             "modified": false
           },
           "2020_06_10_140152_create_documents_table.php": {
@@ -1559,8 +1565,8 @@
           },
           "2020_06_11_121153_create_foreign_keys_table.php": {
             "type": "-",
-            "size": 7647,
-            "lmtime": 1596527127079,
+            "size": 7683,
+            "lmtime": 1596725437369,
             "modified": false
           },
           "2020_06_11_131941_create_permission_tables.php": {
@@ -12466,8 +12472,8 @@
             },
             "api.php": {
               "type": "-",
-              "size": 2216,
-              "lmtime": 1596022159739,
+              "size": 2319,
+              "lmtime": 1596892706589,
               "modified": false
             },
             "auth.php": {
@@ -12510,8 +12516,8 @@
             },
             "api.php": {
               "type": "-",
-              "size": 1672,
-              "lmtime": 1596022173440,
+              "size": 1728,
+              "lmtime": 1596892727774,
               "modified": false
             },
             "auth.php": {
@@ -12540,8 +12546,8 @@
             },
             "web.php": {
               "type": "-",
-              "size": 9076,
-              "lmtime": 1596704630494,
+              "size": 9195,
+              "lmtime": 1596889451421,
               "modified": false
             }
           }
@@ -13443,8 +13449,8 @@
               },
               "register.blade.php": {
                 "type": "-",
-                "size": 13688,
-                "lmtime": 1596621180783,
+                "size": 13818,
+                "lmtime": 1596797578128,
                 "modified": false
               },
               "verify.blade.php": {
@@ -13684,8 +13690,8 @@
       "routes": {
         "api.php": {
           "type": "-",
-          "size": 4467,
-          "lmtime": 1596706896338,
+          "size": 4818,
+          "lmtime": 1596893066055,
           "modified": false
         },
         "channels.php": {

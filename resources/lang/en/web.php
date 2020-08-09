@@ -196,6 +196,10 @@ return [
     'bag_contents_emailed' => 'Educational Bag Contents are Sent to Your Email',
     'contents_of_bag' => 'Contents of Educational Bag',
     'contents_text' => 'This text is an example of text that can be replaced in the same space',
+    'contents' => 'Contents',
+    'images' => 'Images', 
+    'videos' => 'Videos',
+    'documents' => 'Documents',
 
     // Contact us
     'contact_us' => 'This text is an example of text that can be replaced in the same space',

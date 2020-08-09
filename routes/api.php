@@ -13,7 +13,8 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::group(['middleware' => 'lang'], function(){
+Route::group(['middleware' => ['lang', 'CheckApiTokenExpirationDate']], function(){
+    // Route::group(['middleware' => ['lang']], function(){
 
     // Static pages
     Route::get('rules_conditions', 'Api\StaticPagesController@getRulesAndConditions');
@@ -34,8 +35,8 @@ Route::group(['middleware' => 'lang'], function(){
     Route::get('countries/{id}/cities', 'Api\CountryController@getCitiesOfCountry');
 
     // Login
-    Route::post('login', 'Api\LoginController@login');
-    Route::post('logout', 'Api\LoginController@logout');
+    Route::post('login', 'Api\LoginController@login')->name('api_user.login');
+    Route::post('logout', 'Api\LoginController@logout')->name('api_user.logout');
 
     // Reset password
     Route::post('reset', 'Api\ResetPasswordController@reset');
@@ -91,7 +92,8 @@ Route::group(['middleware' => 'lang'], function(){
 
         // Orders
         Route::get('orders', 'Api\OrderController@index');
-        Route::get('track_order', 'Api\OrderController@trackOrder');
+        Route::get('track_order/{order_id}', 'Api\OrderController@trackOrder');
+        Route::get('order/bags/{bag_id}', 'Api\OrderController@getBagContents')->name('api_order.bag_contents');
 
         //Jobs
         Route::get('jobs/{id}', 'Api\JobsController@getJobDetails');
@@ -106,6 +108,7 @@ Route::group(['middleware' => 'lang'], function(){
         // Profile
         Route::get('cv', 'Api\ProfileController@getCV');
         Route::get('saved/all', 'Api\ProfileController@getSavedPosts');
+        Route::get('profile/edit', 'Api\ProfileController@getEditPersonalInfoData');
         Route::put('profile/update', 'Api\ProfileController@updatePersonalInfo');
 
     });

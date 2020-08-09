@@ -15,6 +15,7 @@ use App\Models\Bag;
 use App\User;
 use Auth;
 
+
 class JobsController extends Controller
 {
     // Get all jobs
@@ -28,17 +29,24 @@ class JobsController extends Controller
     // get job details only for auth user with job_seeker or organization roles
     public function getJobDetails($id){
         if(app('request')->header('Authorization') != null && Auth::guard('api')->check()){
+            if(app('request')->header('Authorization') == 'Bearer '.auth()->user()->api_token){
 
-            // Only job seeker and organozation has permission to view job details
-            if(auth()->user()->hasRole('job_seeker') || auth()->user()->hasRole('organization')){
-                return response()->json([
-                    'data' => new JobDetailsResource(Job::with(['country', 'city'])->find($id)),
-                ], 200);
+                // Only job seeker and organozation has permission to view job details
+                if(auth()->user()->hasRole('job_seeker') || auth()->user()->hasRole('organization')){
+                    return response()->json([
+                        'data' => new JobDetailsResource(Job::with(['country', 'city'])->find($id)),
+                    ], 200);
+                }
+                else{
+                    return response()->json([
+                        'error' => trans('web.login_as_job_seeker')
+                    ], 404);
+                }
             }
             else{
                 return response()->json([
-                    'error' => trans('web.login_as_job_seeker')
-                ], 404);
+                    'error' => trans('api.unauthorized')
+                ], 400);
             }
         }
         else{
@@ -51,46 +59,52 @@ class JobsController extends Controller
     // update seeker data with the applied job id
     public function applyJob(Request $request){
         if(app('request')->header('Authorization') != null && Auth::guard('api')->check()){
-    
-            // Only job seeker can apply to job
-            if(!auth()->user()->hasRole('job_seeker')){
-                return response()->json([
-                    'error' => trans('web.login_as_job_seeker')
-                ], 404);
-            }
-    
-            $this->validate($request, [
-                'job_id' => 'required',
-                'email' => 'unique:users,email,'.auth()->user()->id
-            ]);
-    
-            $cv_path = auth()->user()->document->path;
-    
-            auth()->user()->update($request->all());
-            auth()->user()->job_applications()->attach($request->job_id);
-    
-            if($request->has('cv')){
-                $removed = Upload::deletePDF($cv_path);
-                if($removed){
-                    $url = Upload::uploadImage($request->cv);
-                    auth()->user()->document->update([
-                        'path' => $url
-                    ]);
-                }
-                else{
-                    return response()->josn([
-                        'error' => trans('web.error')
+            if(app('request')->header('Authorization') == 'Bearer '.auth()->user()->api_token){
+                // Only job seeker can apply to job
+                if(!auth()->user()->hasRole('job_seeker')){
+                    return response()->json([
+                        'error' => trans('web.login_as_job_seeker')
                     ], 404);
                 }
+        
+                $this->validate($request, [
+                    'job_id' => 'required',
+                    'email' => 'unique:users,email,'.auth()->user()->id
+                ]);
+        
+                $cv_path = auth()->user()->document->path;
+        
+                auth()->user()->update($request->all());
+                auth()->user()->job_applications()->attach($request->job_id);
+        
+                if($request->has('cv')){
+                    $removed = Upload::deletePDF($cv_path);
+                    if($removed){
+                        $url = Upload::uploadImage($request->cv);
+                        auth()->user()->document->update([
+                            'path' => $url
+                        ]);
+                    }
+                    else{
+                        return response()->josn([
+                            'error' => trans('web.error')
+                        ], 404);
+                    }
+                }
+        
+                $email = Job::find($request->job_id)->announcer->email;
+                $link = route('profile.show', auth()->user()->id);
+                SendEmail::sendJobApply($email, auth()->user(), $link);
+        
+                return response()->json([
+                    'success' => trans('web.job_applied')
+                ], 200);
             }
-    
-            $email = Job::find($request->job_id)->announcer->email;
-            $link = route('profile.show', auth()->user()->id);
-            SendEmail::sendJobApply($email, auth()->user(), $link);
-    
-            return response()->json([
-                'success' => trans('web.job_applied')
-            ], 200);
+            else{
+                return response()->json([
+                    'error' => trans('api.unauthorized')
+                ], 400);
+            }
         }
         else{
             return response()->json([
@@ -102,35 +116,41 @@ class JobsController extends Controller
     // create job
     public function anounceJob(JobRequest $request){
         if(app('request')->header('Authorization') != null && Auth::guard('api')->check()){
-
-            if(!auth()->user()->hasRole('organization')){
-                return response()->json([
-                    'error' => trans('web.login_as_roganization')
-                ], 404);
-            }
-    
-            $job = Job::create($request->all());
-            $job->update(['user_id' => auth()->user()->id]);
-    
-            if($request->has('image')){
-                $image_url = Upload::uploadImage($request->image);
-                $image = Image::create([
-                    'path' => $image_url,
-                    'imageRef_id' => $job->id,
-                    'imageRef_type' => 'App\Models\Job'
-                ]);
-                $job->image()->save($image);
-            }
-    
-            if($job){
-                return response()->json([
-                    'success' => trans('admin.error')
-                ], 200);
+            if(app('request')->header('Authorization') == 'Bearer '.auth()->user()->api_token){
+                if(!auth()->user()->hasRole('organization')){
+                    return response()->json([
+                        'error' => trans('web.login_as_roganization')
+                    ], 404);
+                }
+        
+                $job = Job::create($request->all());
+                $job->update(['user_id' => auth()->user()->id]);
+        
+                if($request->has('image')){
+                    $image_url = Upload::uploadImage($request->image);
+                    $image = Image::create([
+                        'path' => $image_url,
+                        'imageRef_id' => $job->id,
+                        'imageRef_type' => 'App\Models\Job'
+                    ]);
+                    $job->image()->save($image);
+                }
+        
+                if($job){
+                    return response()->json([
+                        'success' => trans('admin.error')
+                    ], 200);
+                }
+                else{
+                    return response()->json([
+                        'error' => trans('admin.error')
+                    ], 404);
+                }
             }
             else{
                 return response()->json([
-                    'error' => trans('admin.error')
-                ], 404);
+                    'error' => trans('api.unauthorized')
+                ], 400);
             }
         }
         else{
@@ -144,65 +164,71 @@ class JobsController extends Controller
     public function editJob(JobRequest $request, $id){
 
         if(app('request')->header('Authorization') != null && Auth::guard('api')->check()){
-
-            if(!auth()->user()->hasRole('organization')){
-                return response()->json([
-                    'error' => trans('web.login_as_roganization')
-                ], 404);
-            }
-
-            $job = Job::find($id);
-            $job->update([
-                'name_ar' => $request->name_ar,
-                'name_en' => $request->name_en,
-                'work_hours' => $request->work_hours,
-                'exper_years' => $request->exper_years,
-                'required_number' => $request->required_number,
-                'free_places' => $request->free_places,
-                'description_ar' => $request->description_ar,
-                'description_en' => $request->description_en,
-                'required_age' => $request->required_age,
-                'salary' => $request->salary,
-                'country_id' => $request->country_id,
-                'city_id' => $request->city_id,
-                'approved' => 0,
-            ]);
-
-            if($request->has('image')){
-                if($job->image != null){
-                    $removed = Upload::deleteImage($job->image->path);
-                    if($removed){
-                        $image_url = Upload::uploadImage($request->image);
-                        $job->image->update([
-                            'path' => $image_url,
-                        ]);
+            if(app('request')->header('Authorization') == 'Bearer '.auth()->user()->api_token){
+                if(!auth()->user()->hasRole('organization')){
+                    return response()->json([
+                        'error' => trans('web.login_as_roganization')
+                    ], 404);
+                }
+    
+                $job = Job::find($id);
+                $job->update([
+                    'name_ar' => $request->name_ar,
+                    'name_en' => $request->name_en,
+                    'work_hours' => $request->work_hours,
+                    'exper_years' => $request->exper_years,
+                    'required_number' => $request->required_number,
+                    'free_places' => $request->free_places,
+                    'description_ar' => $request->description_ar,
+                    'description_en' => $request->description_en,
+                    'required_age' => $request->required_age,
+                    'salary' => $request->salary,
+                    'country_id' => $request->country_id,
+                    'city_id' => $request->city_id,
+                    'approved' => 0,
+                ]);
+    
+                if($request->has('image')){
+                    if($job->image != null){
+                        $removed = Upload::deleteImage($job->image->path);
+                        if($removed){
+                            $image_url = Upload::uploadImage($request->image);
+                            $job->image->update([
+                                'path' => $image_url,
+                            ]);
+                        }
+                        else{
+                            return response()->json([
+                                'error' => trans('admin.error')
+                            ], 404);
+                        }
                     }
                     else{
-                        return response()->json([
-                            'error' => trans('admin.error')
-                        ], 404);
+                        $image_url = Upload::uploadImage($request->image);
+                        $image = Image::create([
+                            'path' => $image_url,
+                            'imageRef_id' => $job->id,
+                            'imageRef_type' => 'App\User'
+                        ]);
+                        $job->image()->save($image);
                     }
                 }
-                else{
-                    $image_url = Upload::uploadImage($request->image);
-                    $image = Image::create([
-                        'path' => $image_url,
-                        'imageRef_id' => $job->id,
-                        'imageRef_type' => 'App\User'
-                    ]);
-                    $job->image()->save($image);
+    
+                if($job){
+                    return response()->json([
+                        'success' => trans('web.job_created'),
+                    ], 200);
                 }
-            }
-
-            if($job){
-                return response()->json([
-                    'success' => trans('web.job_created'),
-                ], 200);
+                else{
+                    return response()->json([
+                        'error' => trans('admin.error')
+                    ], 200);
+                }
             }
             else{
                 return response()->json([
-                    'error' => trans('admin.error')
-                ], 200);
+                    'error' => trans('api.unauthorized')
+                ], 400);
             }
         }
         else{
@@ -214,63 +240,76 @@ class JobsController extends Controller
 
     // add job to saved posts
     public function savePost(Request $request){
-
-        $this->validate($request, [
-            'type' => 'required|in:User,Bag,Job', 
-            'id' => 'required',
-        ]);
-
-        $save;
-        $saved;
-
-        if($request->type != 'User'){
-            $saved = Save::where('user_id', auth()->user()->id)->where('saveRef_id', $request->id)->where('saveRef_type', 'App\Models\\'.$request->type)->first();
-        }
-        else{
-            $saved = Save::where('user_id', auth()->user()->id)->where('saveRef_id', $request->id)->where('saveRef_type', 'App\\'.$request->type)->first();
-        }
-
-        if($saved != null){
-            $saved->delete();
-            return response()->json([
-                'success' => trans("web.deleted_from_saved")
-            ], 200);
-        }
-        else{
-            if($request->type != 'User'){
-                $save = Save::create([
-                    'user_id' => auth()->user()->id,
-                    'saveRef_id' => $request->id,
-                    'saveRef_type' => 'App\Models\\'.$request->type
+        if(app('request')->header('Authorization') != null && Auth::guard('api')->check()){
+            if(app('request')->header('Authorization') == 'Bearer '.auth()->user()->api_token){
+                $this->validate($request, [
+                    'type' => 'required|in:User,Bag,Job', 
+                    'id' => 'required',
                 ]);
+        
+                $save;
+                $saved;
+        
+                if($request->type != 'User'){
+                    $saved = Save::where('user_id', auth()->user()->id)->where('saveRef_id', $request->id)->where('saveRef_type', 'App\Models\\'.$request->type)->first();
+                }
+                else{
+                    $saved = Save::where('user_id', auth()->user()->id)->where('saveRef_id', $request->id)->where('saveRef_type', 'App\\'.$request->type)->first();
+                }
+        
+                if($saved != null){
+                    $saved->delete();
+                    return response()->json([
+                        'success' => trans("web.deleted_from_saved")
+                    ], 200);
+                }
+                else{
+                    if($request->type != 'User'){
+                        $save = Save::create([
+                            'user_id' => auth()->user()->id,
+                            'saveRef_id' => $request->id,
+                            'saveRef_type' => 'App\Models\\'.$request->type
+                        ]);
+                    }
+                    else{
+                        $save = Save::create([
+                            'user_id' => auth()->user()->id,
+                            'saveRef_id' => $request->id,
+                            'saveRef_type' => 'App\\'.$request->type
+                        ]);
+                    }
+        
+                    if($request->type == 'Job'){
+                        $job = Job::find($request->id);
+                        $job->saves()->save($save);
+                        auth()->user()->saved_jobs()->save($save);
+                    }
+                    else if($request->type == 'Bag'){
+                        $bag = Bag::find($request->id);
+                        $bag->saves()->save($save);
+                        auth()->user()->saved_bags()->save($save);
+                    }
+                    else if($request->type == 'User'){
+                        $user = User::find($request->id);
+                        $user->saves()->save($save);
+                        auth()->user()->saved_teachers()->save($save);
+                    }
+        
+                    return response()->json([
+                        'success' => trans("web.added_to_saved")
+                    ], 200);
+                }
             }
             else{
-                $save = Save::create([
-                    'user_id' => auth()->user()->id,
-                    'saveRef_id' => $request->id,
-                    'saveRef_type' => 'App\\'.$request->type
-                ]);
+                return response()->json([
+                    'error' => trans('api.unauthorized')
+                ], 400);
             }
-
-            if($request->type == 'Job'){
-                $job = Job::find($request->id);
-                $job->saves()->save($save);
-                auth()->user()->saved_jobs()->save($save);
-            }
-            else if($request->type == 'Bag'){
-                $bag = Bag::find($request->id);
-                $bag->saves()->save($save);
-                auth()->user()->saved_bags()->save($save);
-            }
-            else if($request->type == 'User'){
-                $user = User::find($request->id);
-                $user->saves()->save($save);
-                auth()->user()->saved_teachers()->save($save);
-            }
-
+        }
+        else{
             return response()->json([
-                'success' => trans("web.added_to_saved")
-            ], 200);
+                'error' => trans('api.unauthorized')
+            ], 400);
         }
     }
     
