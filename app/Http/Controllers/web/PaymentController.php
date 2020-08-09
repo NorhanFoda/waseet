@@ -34,15 +34,15 @@ class PaymentController extends Controller
             'status' => 1, // Not confirmed
             'shipping_fees' => $shipping_fees,
         ]);
-
+        
         foreach($carts as $cart){
             $bag = Bag::findOrFail($cart->bag_id);
             $order->bags()->attach($bag);
-            $order->bags()->update([
+            BagOrder::where('bag_id', $cart->bag_id)->first()->update([
                 'total_price' => $cart->total_price,
                 'quantity' => $cart->quantity,
                 'buy_type' => $cart->buy_type
-            ]);  
+            ]);
             
             $cart->delete();
         }

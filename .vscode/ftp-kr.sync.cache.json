@@ -333,8 +333,8 @@
             "Api": {
               "AddressController.php": {
                 "type": "-",
-                "size": 3882,
-                "lmtime": 1596724237836,
+                "size": 4833,
+                "lmtime": 1596895592986,
                 "modified": false
               },
               "BagCategoryController.php": {
@@ -345,8 +345,8 @@
               },
               "CartController.php": {
                 "type": "-",
-                "size": 4922,
-                "lmtime": 1596021223109,
+                "size": 5868,
+                "lmtime": 1596895624975,
                 "modified": false
               },
               "ContactUsController.php": {
@@ -369,26 +369,26 @@
               },
               "JobsController.php": {
                 "type": "-",
-                "size": 9425,
-                "lmtime": 1596632097043,
+                "size": 11994,
+                "lmtime": 1596895656957,
                 "modified": false
               },
               "LoginController.php": {
                 "type": "-",
-                "size": 3014,
-                "lmtime": 1595240524218,
+                "size": 3225,
+                "lmtime": 1596891750862,
                 "modified": false
               },
               "OrderController.php": {
                 "type": "-",
-                "size": 1294,
-                "lmtime": 1596718618443,
+                "size": 2575,
+                "lmtime": 1596895683979,
                 "modified": false
               },
               "PaymentController.php": {
                 "type": "-",
-                "size": 5943,
-                "lmtime": 1596024388859,
+                "size": 7177,
+                "lmtime": 1596895709923,
                 "modified": false
               },
               "PaymentMethodController.php": {
@@ -399,14 +399,14 @@
               },
               "ProfileController.php": {
                 "type": "-",
-                "size": 3987,
-                "lmtime": 1596638193007,
+                "size": 6972,
+                "lmtime": 1596895751185,
                 "modified": false
               },
               "RegisterController.php": {
                 "type": "-",
-                "size": 8656,
-                "lmtime": 1596891022362,
+                "size": 8945,
+                "lmtime": 1596954854192,
                 "modified": false
               },
               "ResetPasswordController.php": {
@@ -429,8 +429,8 @@
               },
               "TeacherController.php": {
                 "type": "-",
-                "size": 1239,
-                "lmtime": 1596625300533,
+                "size": 1546,
+                "lmtime": 1596955950487,
                 "modified": false
               }
             },
@@ -529,8 +529,8 @@
               },
               "RegisterController.php": {
                 "type": "-",
-                "size": 5144,
-                "lmtime": 1596797610298,
+                "size": 5194,
+                "lmtime": 1596891286628,
                 "modified": false
               },
               "StaticPagesController.php": {
@@ -541,16 +541,16 @@
               },
               "TeachersController.php": {
                 "type": "-",
-                "size": 2398,
-                "lmtime": 1596624683438,
+                "size": 2423,
+                "lmtime": 1596955902056,
                 "modified": false
               }
             }
           },
           "Kernel.php": {
             "type": "-",
-            "size": 3624,
-            "lmtime": 1596893083163,
+            "size": 3621,
+            "lmtime": 1596893185716,
             "modified": false
           },
           "Middleware": {
@@ -558,6 +558,12 @@
               "type": "-",
               "size": 469,
               "lmtime": 1595163117508,
+              "modified": false
+            },
+            "CheckApiTokenExpirationDate.php": {
+              "type": "-",
+              "size": 675,
+              "lmtime": 1596892661831,
               "modified": false
             },
             "CheckForMaintenanceMode.php": {
@@ -606,12 +612,6 @@
               "type": "-",
               "size": 415,
               "lmtime": 1594029469538,
-              "modified": false
-            },
-            "CheckApiTokenExpirationDate.php": {
-              "type": "-",
-              "size": 675,
-              "lmtime": 1596892661831,
               "modified": false
             }
           },
@@ -845,22 +845,22 @@
                 "lmtime": 1594298520826,
                 "modified": false
               },
+              "ReportResource.php": {
+                "type": "-",
+                "size": 659,
+                "lmtime": 1596022361637,
+                "modified": false
+              },
               "orderBagResource.php": {
                 "type": "-",
-                "size": 770,
-                "lmtime": 1594299365062,
+                "size": 1027,
+                "lmtime": 1596890410887,
                 "modified": false
               },
               "trackOrderResource.php": {
                 "type": "-",
                 "size": 892,
                 "lmtime": 1594300247257,
-                "modified": false
-              },
-              "ReportResource.php": {
-                "type": "-",
-                "size": 659,
-                "lmtime": 1596022361637,
                 "modified": false
               }
             },
@@ -1013,8 +1013,8 @@
         "Models": {
           "Address.php": {
             "type": "-",
-            "size": 665,
-            "lmtime": 1596799738496,
+            "size": 659,
+            "lmtime": 1596888799573,
             "modified": false
           },
           "Announce.php": {
@@ -1232,8 +1232,8 @@
         },
         "User.php": {
           "type": "-",
-          "size": 4144,
-          "lmtime": 1596799661868,
+          "size": 4167,
+          "lmtime": 1596954623498,
           "modified": false
         }
       },
@@ -1367,8 +1367,8 @@
         "migrations": {
           "2014_10_12_000000_create_users_table.php": {
             "type": "-",
-            "size": 2531,
-            "lmtime": 1596887907307,
+            "size": 2626,
+            "lmtime": 1596954634390,
             "modified": false
           },
           "2014_10_12_100000_create_password_resets_table.php": {
@@ -1463,8 +1463,8 @@
           },
           "2020_06_10_133042_create_addresses_table.php": {
             "type": "-",
-            "size": 1006,
-            "lmtime": 1596801031538,
+            "size": 997,
+            "lmtime": 1596888785983,
             "modified": false
           },
           "2020_06_10_140152_create_documents_table.php": {
@@ -1565,8 +1565,8 @@
           },
           "2020_06_11_121153_create_foreign_keys_table.php": {
             "type": "-",
-            "size": 7683,
-            "lmtime": 1596725437369,
+            "size": 7665,
+            "lmtime": 1596888821044,
             "modified": false
           },
           "2020_06_11_131941_create_permission_tables.php": {
@@ -13691,7 +13691,7 @@
         "api.php": {
           "type": "-",
           "size": 4818,
-          "lmtime": 1596893066055,
+          "lmtime": 1596893190207,
           "modified": false
         },
         "channels.php": {
