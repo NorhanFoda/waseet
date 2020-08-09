@@ -10,6 +10,7 @@ use App\Models\Job;
 use App\Classes\Upload;
 use App\Classes\SendEmail;
 use App\Http\Requests\Job\JobRequest;
+use App\Http\Resources\Job\ApplyJobFormResource;
 use App\Models\Save;
 use App\Models\Bag;
 use App\User;
@@ -236,6 +237,17 @@ class JobsController extends Controller
                 'error' => trans('api.unauthorized')
             ], 400);
         }
+    }
+
+    // Get apply to job form data
+    public function applyToJobData(){
+        $jobs = Job::with(['city', 'country', 'specialization'])->where('approved', 1)->get();
+        $user = User::with('document')->find(auth()->user()->id);
+
+        return response()->json([
+            'user' => $user,
+            'jobs' => ApplyJobFormResource::collection($jobs),
+        ], 200);
     }
 
     // add job to saved posts
