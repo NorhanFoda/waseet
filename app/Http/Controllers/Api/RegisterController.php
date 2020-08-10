@@ -23,6 +23,7 @@ use App\Models\Image;
 use App\Models\Stage;
 use App\Models\Address;
 use App\Classes\Upload;
+use App\Http\Resources\Roles\RoleResource;
 use Auth;
 use DB;
 use Carbon\Carbon;
@@ -232,7 +233,8 @@ class RegisterController extends Controller
 
         if($verified){
             return response()->json([
-                'data' => Auth::loginUsingId($user->id, true)
+                'data' => Auth::loginUsingId($user->id, true),
+                'roles' => RoleResource::collection($user->roles),
             ], 200);
         }
         

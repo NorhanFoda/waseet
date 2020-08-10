@@ -8,6 +8,7 @@ use App\User;
 use App\Classes\SendEmail;
 use App\Classes\Verify;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Resources\Roles\RoleResource;
 use Auth;
 
 class ResetPasswordController extends Controller
@@ -78,7 +79,8 @@ class ResetPasswordController extends Controller
 
         $user->update(['password' => Hash::make($request->password)]);
         return response()->json([
-            'data' => Auth::loginUsingId($user->id)
+            'data' => Auth::loginUsingId($user->id),
+            'roles' => RoleResource::collection($user->roles),
         ], 200);
     }
 

@@ -37,6 +37,7 @@ class HomeController extends Controller
         return view('web.home.index', compact('sliders', 'set', 'cats'));
     }
 
+    // Search
     public function search(Request $request){
         $this->validate($request, ['token' => 'required']);
 
