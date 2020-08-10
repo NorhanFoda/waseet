@@ -112,6 +112,7 @@ return [
     'deleted_from_saved' => 'تم الحذف من المحفوظات',
     'send' => 'إرسال',
     'login_as_roganization' => 'من فضلك قم بتسجيل الدخول كمؤسسة تعليمية للمتابعة',
+    'edit_job' => 'تعديل الإعلان',
 
     // Teachers
     'contact' => 'تواصل',

@@ -42,6 +42,16 @@
 
                                 </div>
 
+                                <div class="big-label">{{trans('admin.specialization')}} : </div>
+                                <div class="userName">
+                                    <select class="custom-input" required name="specialization_id">
+                                        <option value="{{null}}">{{trans('admin.specialization')}}</option>
+                                        @foreach($pecializations as $spc)
+                                          <option value="{{$spc->id}}" @if(old('specialization_id') == $spc->id) selected @endif>{{$spc->{'name_'.session('lang')} }}</option>
+                                        @endforeach
+                                    </select>                           
+                                </div>
+
                                 <div class="big-label">{{trans('admin.exper_years')}}</div>
                                 <div class="userName">
                                     <input type="number" id="mob" name="exper_years" required placeholder="{{trans('admin.exper_years')}}" />

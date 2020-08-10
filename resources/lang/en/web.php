@@ -111,6 +111,7 @@ return [
     'added_to_saved' => 'Job Saved',
     'send' => 'Send',
     'login_as_roganization' => 'Please Login as Educational Institution To Continue',
+    'edit_job' => 'Edit Announce',
 
     // Teachers
     'contact' => 'Contact',

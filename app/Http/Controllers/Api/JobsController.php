@@ -7,10 +7,12 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\Job\JobResource;
 use App\Http\Resources\Job\JobDetailsResource;
 use App\Models\Job;
+use App\Models\Specialization;
 use App\Classes\Upload;
 use App\Classes\SendEmail;
 use App\Http\Requests\Job\JobRequest;
 use App\Http\Resources\Job\ApplyJobFormResource;
+use App\Http\Resources\Job\SpecializationResource;
 use App\Models\Save;
 use App\Models\Bag;
 use App\User;
@@ -114,6 +116,13 @@ class JobsController extends Controller
         }
     }
 
+    // Return create job form data
+    public function announceJobFormData(){
+        return response()->json([
+            'data' => SpecializationResource::collection(Specialization::all())
+        ], 200);
+    }
+
     // create job
     public function anounceJob(JobRequest $request){
         if(app('request')->header('Authorization') != null && Auth::guard('api')->check()){
@@ -139,7 +148,7 @@ class JobsController extends Controller
         
                 if($job){
                     return response()->json([
-                        'success' => trans('admin.error')
+                        'success' => trans('web.job_created')
                     ], 200);
                 }
                 else{
@@ -159,6 +168,15 @@ class JobsController extends Controller
                 'error' => trans('api.unauthorized')
             ], 400);
         }
+    }
+
+    // return edit form data
+    public function editAnnounceJobFormData($id){
+        $job = Job::find($id);
+        return response()->json([
+            'job' => $job,
+            'specializations' => SpecializationResource::collection(Specialization::all())
+        ], 200);
     }
 
     // update job

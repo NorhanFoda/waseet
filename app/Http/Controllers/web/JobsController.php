@@ -10,6 +10,7 @@ use App\Models\Setting;
 use App\Models\Document;
 use App\Models\Country;
 use App\Models\City;
+use App\Models\Specialization;
 use App\Classes\Upload;
 use App\Classes\SendEmail;
 use App\Http\Requests\Job\JobRequest;
@@ -130,7 +131,8 @@ class JobsController extends Controller
     // return create job form
     public function getAddJobForm(){
         $countries = Country::all();
-        return view('web.jobs.create', compact('countries'));
+        $pecializations = Specialization::all();
+        return view('web.jobs.create', compact('countries', 'pecializations'));
     }
 
     // save created job
@@ -180,8 +182,9 @@ class JobsController extends Controller
         $job = auth()->user()->job_announces()->find($id);
         $countries = Country::all();
         $cities = City::where('country_id', $job->country_id)->get();
+        $pecializations = Specialization::all();
 
-        return view('web.jobs.edit', compact('job', 'countries', 'cities'));
+        return view('web.jobs.edit', compact('job', 'countries', 'cities', 'pecializations'));
     }
 
     // update the edited job
