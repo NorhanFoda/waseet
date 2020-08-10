@@ -375,8 +375,8 @@
               },
               "LoginController.php": {
                 "type": "-",
-                "size": 3225,
-                "lmtime": 1596891750862,
+                "size": 3420,
+                "lmtime": 1597043365818,
                 "modified": false
               },
               "OrderController.php": {
@@ -405,14 +405,14 @@
               },
               "RegisterController.php": {
                 "type": "-",
-                "size": 8945,
-                "lmtime": 1596954854192,
+                "size": 9056,
+                "lmtime": 1597043369271,
                 "modified": false
               },
               "ResetPasswordController.php": {
                 "type": "-",
-                "size": 2429,
-                "lmtime": 1596111532269,
+                "size": 2536,
+                "lmtime": 1597043361851,
                 "modified": false
               },
               "SearchController.php": {
@@ -859,8 +859,8 @@
               },
               "trackOrderResource.php": {
                 "type": "-",
-                "size": 892,
-                "lmtime": 1594300247257,
+                "size": 935,
+                "lmtime": 1597044206560,
                 "modified": false
               }
             },
@@ -881,6 +881,12 @@
               }
             },
             "Roles": {
+              "RoleResource.php": {
+                "type": "-",
+                "size": 421,
+                "lmtime": 1597043231163,
+                "modified": false
+              },
               "RolesResource.php": {
                 "type": "-",
                 "size": 991,

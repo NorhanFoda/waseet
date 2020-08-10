@@ -98,6 +98,7 @@ class PaymentController extends Controller
 
                 return response()->json([
                     'success' => trans('api.order_created'),
+                    'order_id' => $order->id,
                 ], 200);
             }
             else{

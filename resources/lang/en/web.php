@@ -32,7 +32,9 @@ return [
     'buy_online' => 'Buy Online',
     'share' => 'Share',
     'bag_contents' => 'Educational Bag Contents',
-    'bag_benefits' => 'What the student earns',
+    'bag_benefits' => 'What The Student Earns',
+    'rated' => 'Your Rating is Added Suucessfully',
+    'rating_updated' => 'Your Rating is Updated Successfully',
     
 
     //Login

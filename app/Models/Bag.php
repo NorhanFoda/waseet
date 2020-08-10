@@ -37,10 +37,6 @@ class Bag extends Model
         return $this->belongsTo(BagCategory::class, 'bag_category_id');
     }
 
-    public function ratings(){
-        return $this->morphMany(Rating::class, 'rateRef');
-    }
-
     public function contents(){
         return $this->hasMany(BagContent::class);
     }
@@ -57,5 +53,9 @@ class Bag extends Model
 
     public function saves(){
         return $this->morphMany(Save::class, 'saveRef');
+    }
+
+    public function ratings(){
+        return $this->morphMany(Rating::class, 'rateRef');
     }
 }

@@ -37,6 +37,7 @@ class BagCategoryController extends Controller
             'similar_bags' => BagResource::collection($cat->bags->where('id', '!=', $bag->id)),
         ], 200);
     }
+
     public function getAllBags(){
         return response()->json([
             'bags' => BagResource::collection(Bag::all()),

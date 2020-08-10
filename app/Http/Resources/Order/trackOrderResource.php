@@ -31,7 +31,8 @@ class trackOrderResource extends JsonResource
 
         return [
             'bags' => orderBagResource::collection($this->bags),
-            'status' => $status,
+            'staus' => $this->status,
+            'status_text' => $status,
         ];
     }
 }

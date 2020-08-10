@@ -232,7 +232,12 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
     Route::get('web/jobs/{id}', 'Web\JobsController@show')->name('jobs.details');
     Route::get('web/jobs/apply/{job_id}', 'Web\JobsController@applyToJob')->name('jobs.apply');
     Route::post('web/jobs/apply', 'Web\JobsController@updateSeekerData')->name('jobs.update_seeker');
-    Route::post('web/jobs/save', 'Web\JobsController@saveJob')->name('jobs.save');
+
+    // Save posts
+    Route::post('web/save', 'HomeController@save')->name('save');
+
+    // Rate posts
+    Route::post('rate', 'HomeController@rate')->name('rate');
 
     // Teachers
     Route::get('teachers', 'Web\TeachersController@index')->name('teachers.index');
@@ -287,6 +292,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
         Route::get('get_orders', 'Web\ProfileController@getOrders')->name('profile.orders');
         Route::get('get_orders/{id}', 'Web\ProfileController@trackOrder')->name('profile.track_order');
         Route::get('contents/{id}', 'Web\ProfileController@showBagContents')->name('order.bag_contents');
+
     });
 
 });

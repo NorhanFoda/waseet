@@ -95,10 +95,6 @@ class User extends Authenticatable
         return $this->morphMany(Rating::class, 'rateRef');
     }
 
-    public function saves(){
-        return $this->morphMany(Save::class, 'saveRef');
-    }
-
     public function saved_jobs(){
         return $this->hasMany(Save::class)->where('saveRef_type', 'App\Models\Job');
     }
@@ -109,6 +105,18 @@ class User extends Authenticatable
 
     public function saved_teachers(){
         return $this->hasMany(Save::class)->where('saveRef_type', 'App\User');
+    }
+
+    public function saves(){
+        return $this->morphMany(Save::class, 'saveRef');
+    }
+
+    public function rated_teachers(){
+        return $this->hasMany(Rating::class)->where('rateRef_type','App\User');
+    }
+
+    public function rated_bags(){
+        return $this->hasMany(Rating::class)->where('rateRef_type','App\Models\Bag');
     }
 
     public function document(){

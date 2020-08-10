@@ -34,6 +34,7 @@
                         </h6>
                     </div>
                     <div class="teacher_rate">
+
                         @if($teacher->ratings->count() > 0)
                             <form action="">
                                 <input type="radio" id="st5" name="teacher" @if(ceil($teacher->ratings->sum('rate') / $teacher->ratings->count()) == 5) checked @endif />
@@ -85,6 +86,7 @@
                                 </label>
                             </form>
                         @endif
+                        
                     </div>
                 </div>
                 <div class="teacher_contact custom-check-box">

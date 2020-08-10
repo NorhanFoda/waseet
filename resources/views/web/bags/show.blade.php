@@ -59,6 +59,7 @@
                             </div>
 
                             <div class="pack_rate">
+
                                 <form action="">
                                     @if($bag->ratings->count() > 0)
                                         <input type="radio" id="st5" name="pack" @if(ceil($bag->ratings->sum('rate') / $bag->ratings->count()) == 5) checked @endif />
@@ -112,6 +113,7 @@
                                         </label>
                                     @endif
                                 </form>
+
                             </div>
                             <div class="about_pack text-right-dir">
                                 <p>{!! $bag->{'description_'.session('lang')} !!}</p>

@@ -155,6 +155,7 @@
 
     <script>
         $(document).ready(function(){
+            // Save posts
             $('#bookmark').click(function(){
                 if(!'{{Auth::check()}}'){
                     Swal.fire({
@@ -167,10 +168,40 @@
                 }
                 else{
                     $.ajax({
-                        url: "{{route('jobs.save')}}",
+                        url: "{{route('save')}}",
                         type: "POST",
                         dataType: 'json',
                         data: {"_token": "{{ csrf_token() }}", id: $(this).data('id'), type: $(this).data('type') },
+                        success: function(data){
+                        Swal.fire({
+                            title: data['msg'],
+                            type: 'success',
+                            timer: 2000,
+                            showCancelButton: false,
+                            showConfirmButton: false,
+                        });
+                        }
+                    });
+                }
+            });
+
+            // Rate posts
+            $('.rate').click(function(){
+                if(!'{{Auth::check()}}'){
+                    Swal.fire({
+                        title: "{{trans('web.do_login_2')}}",
+                        type: 'warning',
+                        timer: 2000,
+                        showCancelButton: false,
+                        showConfirmButton: false,
+                    });
+                }
+                else{
+                    $.ajax({
+                        url: "{{route('rate')}}",
+                        type: "POST",
+                        dataType: 'json',
+                        data: {"_token": "{{ csrf_token() }}", id: $(this).data('id'), type: $(this).data('type'), rate: $(this).val() },
                         success: function(data){
                         Swal.fire({
                             title: data['msg'],

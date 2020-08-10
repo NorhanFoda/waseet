@@ -68,6 +68,8 @@ Route::group(['middleware' => ['lang', 'CheckApiTokenExpirationDate']], function
     // Auth routes
     Route::group(['middleware' => 'auth:api'], function(){
 
+        // Route::get('bag_details/{id}', 'Api\BagCategoryController@getBagDetails');
+
         // Addresses
         Route::get('user_addresses', 'Api\AddressController@index');
         Route::get('addresses', 'Api\AddressController@getAddressesDetails');
@@ -100,8 +102,13 @@ Route::group(['middleware' => ['lang', 'CheckApiTokenExpirationDate']], function
         Route::post('jobs/apply', 'Api\JobsController@applyJob');
         Route::post('jobs/announce', 'Api\JobsController@anounceJob');
         Route::put('jobs/announce/{id}/edit', 'Api\JobsController@editJob');
-        Route::post('save', 'Api\JobsController@savePost');
         Route::get('api_jobs/apply_data/', 'Api\JobsController@applyToJobData');
+
+        // Save
+        Route::post('save', 'Api\HomeController@save');
+
+        // Rate
+        Route::post('rate', 'Api\HomeController@rate');
 
         // Teachers
         Route::get('teachers/{id}', 'Api\TeacherController@show');

@@ -8,7 +8,6 @@ use App\Models\Job;
 use App\Models\Bag;
 use App\Models\Setting;
 use App\Models\Document;
-use App\Models\Save;
 use App\Models\Country;
 use App\Models\City;
 use App\Classes\Upload;
@@ -126,63 +125,6 @@ class JobsController extends Controller
 
         session()->flash('success', trans('web.job_applied'));
         return redirect()->route('jobs.web_index');
-    }
-
-    // Add job to saved posts
-    public function saveJob(Request $request){
-        
-        $save;
-        $saved;
-
-        if($request->type != 'User'){
-            $saved = Save::where('user_id', auth()->user()->id)->where('saveRef_id', $request->id)->where('saveRef_type', 'App\Models\\'.$request->type)->first();
-        }
-        else{
-            $saved = Save::where('user_id', auth()->user()->id)->where('saveRef_id', $request->id)->where('saveRef_type', 'App\\'.$request->type)->first();
-        }
-
-        if($saved != null){
-            $saved->delete();
-            return response()->json([
-                'msg' => trans("web.deleted_from_saved")
-            ], 200);
-        }
-        else{
-            if($request->type != 'User'){
-                $save = Save::create([
-                    'user_id' => auth()->user()->id,
-                    'saveRef_id' => $request->id,
-                    'saveRef_type' => 'App\Models\\'.$request->type
-                ]);
-            }
-            else{
-                $save = Save::create([
-                    'user_id' => auth()->user()->id,
-                    'saveRef_id' => $request->id,
-                    'saveRef_type' => 'App\\'.$request->type
-                ]);
-            }
-
-            if($request->type == 'Job'){
-                $job = Job::find($request->id);
-                $job->saves()->save($save);
-                auth()->user()->saved_jobs()->save($save);
-            }
-            else if($request->type == 'Bag'){
-                $bag = Bag::find($request->id);
-                $bag->saves()->save($save);
-                auth()->user()->saved_bags()->save($save);
-            }
-            else if($request->type == 'User'){
-                $user = User::find($request->id);
-                $user->saves()->save($save);
-                auth()->user()->saved_teachers()->save($save);
-            }
-
-            return response()->json([
-                'msg' => trans("web.added_to_saved")
-            ], 200);
-        }
     }
 
     // return create job form
