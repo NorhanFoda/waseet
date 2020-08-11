@@ -43,7 +43,7 @@ class CartController extends Controller
     
             return response()->json([
                 'msg' => trans("web.added_to_cart"),
-                'id' => $cart->id
+                'cart' => $cart,
             ], 200);
         }
     }

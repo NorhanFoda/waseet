@@ -223,16 +223,15 @@
                             buy_type: buy_type },
                     success: function(data){
                         // Save carts to localStorage
-                        localStorage.setItem("carts", JSON.stringify(@json(auth()->user() == null? '' : auth()->user()->carts)));
                         var carts = JSON.parse(localStorage.getItem("carts"));
                         var item = {
-                            id: data['id'],
-                            user_id: '{{auth()->user() == null ? '' : auth()->user()->id}}',
-                            bag_id: '{{$bag->id}}',
-                            quantity: 1,
-                            total_price: '{{$bag->price}}',
-                            buy_type: buy_type
-                        }
+                            id: data.cart.id,
+                            user_id: data.cart.user_id,
+                            bag_id: data.cart.bag_id,
+                            quantity: data.cart.quantity,
+                            total_price: data.cart.total_price,
+                            buy_type: data.cart.total_price
+                        };
 
                         if(carts == null){
                             carts = [];
@@ -244,7 +243,7 @@
                             localStorage.setItem("carts", JSON.stringify(carts));
                         }
 
-                        console.log(carts);
+                        var carts = JSON.parse(localStorage.getItem("carts"));
 
                     Swal.fire({
                         title: data['msg'],
