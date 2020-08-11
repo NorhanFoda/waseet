@@ -38,7 +38,7 @@ class PaymentController extends Controller
         foreach($carts as $cart){
             $bag = Bag::findOrFail($cart->bag_id);
             $order->bags()->attach($bag);
-            BagOrder::where('bag_id', $cart->bag_id)->first()->update([
+            $ordr_bags = BagOrder::where('bag_id', $cart->bag_id)->first()->update([
                 'total_price' => $cart->total_price,
                 'quantity' => $cart->quantity,
                 'buy_type' => $cart->buy_type
@@ -83,16 +83,16 @@ class PaymentController extends Controller
             'accepted' => Carbon::now()
         ]);
 
-        // If order contains buy online bags, then send email bag contents
-        if($order->bags()->where('buy_type', 1)->exists()){
+        // // If order contains buy online bags, then send email bag contents
+        // if($order->bags()->where('buy_type', 1)->exists()){
 
-            $bags = $order->bags()->where('buy_type', 1)->get();
+        //     $bags = $order->bags()->where('buy_type', 1)->get();
             
-            SendEmail::sendBagContents($bags, auth()->user()->email);
+        //     SendEmail::sendBagContents($bags, auth()->user()->email);
 
-            session()->flash('success', trans('web.bag_contents_emailed'));
-            return view('web.payment.payment_report', compact('order'));
-        }
+        //     session()->flash('success', trans('web.bag_contents_emailed'));
+        //     return view('web.payment.payment_report', compact('order'));
+        // }
         
         return view('web.payment.payment_report', compact('order'));
     }

@@ -400,6 +400,7 @@
                 total = 0;
 
                 var carts = JSON.parse(localStorage.getItem("carts"));
+
                 if(carts != null){
                     for(var i = 0; i < carts.length; i++){
                         if(carts[i].id == cart_id){
@@ -426,6 +427,7 @@
                 e.preventDefault();
                 $link = $(this);
                 var carts = JSON.parse(localStorage.getItem("carts"));
+                console.log(carts);
                 $.ajax({
                         url: "{{route('carts.update')}}",
                         type: "PUT",

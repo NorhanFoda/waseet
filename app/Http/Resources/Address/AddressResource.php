@@ -17,7 +17,7 @@ class AddressResource extends JsonResource
         $lang = \App::getLocale();
         return [
             'id' => $this->id,
-            'lang' => $this->lang,
+            'lat' => $this->lat,
             'long' => $this->long,
             // 'country' => $this->country->{'name_'.$lang},
             // 'city' => $this->city->{'name_'.$lang},

@@ -40,7 +40,7 @@
                                             <div class="pack_name">
                                                 <p>{{$bag->{'name_'.session('lang')} }} 
                                                     {{-- if order is confirmed then user can show bag contents --}}
-                                                    @if($bag->pivot->buy_type == 1) (<a href="{{$order->status != 1 ? route('order.bag_contents', $bag->id) : '#'}}">{{trans('web.buy_online')}}</a>) @endif
+                                                    @if($bag->pivot->buy_type == 1) (<a href="{{$order->status == 4 ? route('order.bag_contents', $bag->id) : '#'}}">{{trans('web.buy_online')}}</a>) @endif
                                                     @if($bag->pivot->buy_type == 2) ({{trans('web.print_content')}}) @endif
                                                 </p>
                                             </div>
@@ -126,7 +126,7 @@
                                     <div class="side-track">
                                         <h3>{{trans('web.bag_is_ordered')}}</h3>
                                         @if($order->status == 2 || $order->status == 3 || $order->status == 4)
-                                            {{trans('web.order_waiting')}} {{date('Y-m-d', strtotime($bag->pivot->accepted ?? ''->Fecha))}}
+                                            {{trans('web.order_waiting')}} @if($bag->pivot->accepted != null) {{date('Y-m-d', strtotime($bag->pivot->accepted ?? ''->Fecha))}} @endif
                                         @endif
                                         @if($order->status == 1)
                                             {{trans('web.order_not_confirmed')}} <a href="{{route('order.confirm', $order->id)}}">{{trans('web.confirm_order')}}</a>
@@ -139,7 +139,7 @@
                                     <div class="side-track">
                                         <h3>{{trans('web.order_shipped')}}</h3>
                                         @if($order->status == 3 || $order->status == 4)
-                                            {{trans('web.order_is_shipped')}} {{date('Y-m-d', strtotime($bag->pivot->shipped ?? ''->Fecha))}}
+                                            {{trans('web.order_is_shipped')}} @if($bag->pivot->shipped != null) {{date('Y-m-d', strtotime($bag->pivot->shipped ?? ''->Fecha))}} @endif
                                         @else
                                             {{trans('web.ordered_not_shipped')}}
                                         @endif
@@ -151,7 +151,7 @@
                                     <div class="side-track">
                                         <h3>{{trans('web.order_delivered')}}</h3>
                                         @if($order->status == 4)
-                                            {{trans('web.order_is_delivered')}} {{date('Y-m-d', strtotime($bag->pivot->delivered ?? ''->Fecha))}}
+                                            {{trans('web.order_is_delivered')}} @if($bag->pivot->delivered != null) {{date('Y-m-d', strtotime($bag->pivot->delivered ?? ''->Fecha))}} @endif
                                         @else
                                             {{trans('web.order_not_delivered')}}
                                         @endif

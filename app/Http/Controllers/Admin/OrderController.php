@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use Carbon\Carbon;
+use App\Classes\SendEmail;
 
 class OrderController extends Controller
 {
@@ -32,6 +33,17 @@ class OrderController extends Controller
             $order->bags()->update([
                 'delivered' => Carbon::now()
             ]);
+
+            // If order contains buy online bags, then send email bag contents
+            if($order->bags()->where('buy_type', 1)->exists()){
+
+                $bags = $order->bags()->where('buy_type', 1)->get();
+                
+                SendEmail::sendBagContents($bags, auth()->user()->email);
+
+                // session()->flash('success', trans('web.bag_contents_emailed'));
+                // return view('web.payment.payment_report', compact('order'));
+            }
         }
     }
 

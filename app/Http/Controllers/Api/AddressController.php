@@ -36,7 +36,7 @@ class AddressController extends Controller
                 $this->validate($request, [
                     // 'country_id' => 'required',
                     // 'city_id' => 'required',
-                    'lang' => 'required',
+                    'lat' => 'required',
                     'long' => 'required',
                     'address' => 'required',
                     // 'postal_code' => 'required',
@@ -77,7 +77,7 @@ class AddressController extends Controller
                     'id' => 'required',
                     // 'country_id' => 'required',
                     // 'city_id' => 'required',
-                    'lang' => 'required',
+                    'lat' => 'required',
                     'long' => 'required',
                     'address' => 'required',
                     // 'postal_code' => 'required',
