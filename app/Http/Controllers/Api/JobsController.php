@@ -17,6 +17,7 @@ use App\Models\Save;
 use App\Models\Bag;
 use App\User;
 use Auth;
+use App\Http\Requests\Job\ApplyToJobRequest;
 
 
 class JobsController extends Controller
@@ -60,20 +61,16 @@ class JobsController extends Controller
     }
 
     // update seeker data with the applied job id
-    public function applyJob(Request $request){
+    public function applyJob(ApplyToJobRequest $request){
         if(app('request')->header('Authorization') != null && Auth::guard('api')->check()){
             if(app('request')->header('Authorization') == 'Bearer '.auth()->user()->api_token){
+                
                 // Only job seeker can apply to job
                 if(!auth()->user()->hasRole('job_seeker')){
                     return response()->json([
                         'error' => trans('web.login_as_job_seeker')
                     ], 404);
                 }
-        
-                $this->validate($request, [
-                    'job_id' => 'required',
-                    'email' => 'unique:users,email,'.auth()->user()->id
-                ]);
         
                 $cv_path = auth()->user()->document->path;
         
@@ -260,10 +257,8 @@ class JobsController extends Controller
     // Get apply to job form data
     public function applyToJobData(){
         $jobs = Job::with(['city', 'country', 'specialization'])->where('approved', 1)->get();
-        $user = User::with('document')->find(auth()->user()->id);
 
         return response()->json([
-            'user' => $user,
             'jobs' => ApplyJobFormResource::collection($jobs),
         ], 200);
     }
