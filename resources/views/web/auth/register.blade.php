@@ -156,7 +156,7 @@
           <div class="all-checks">
               @foreach($materials as $material)
                 <div class="custom-check text-right-dir">
-                  <input type="checkbox" name="material_ids[]" value="{{$material->id}}" id="check-{{$material->id}}">
+                  <input type="checkbox" name="material_ids[]" value="{{$material->id}}" id="check-{{$material->id}}" required>
                   {{-- <input type="checkbox" name="{{$material->id}}" id="check-{{$material->id}}"> --}}
                   <label for="check-{{$material->id}}"> @if(old('level_id') == $material->id) selected @endif {{$material->{'name_'.session('lang')} }}</label>
                 </div>
@@ -182,9 +182,9 @@
           {{-- nationalities end --}}
           @endif
 
-          @if($role_id != 2 && $role_id != 'visitor')
+          {{-- @if($role_id != 2 && $role_id != 'visitor') --}}
           {{-- countries start --}}
-          <div class="userName custom-select2">
+          {{-- <div class="userName custom-select2">
             <select class="custom-input" id="country_id" name="country_id">
               <option value="{{null}}">{{trans('web.country')}}</option>
               @foreach($countries as $country)
@@ -194,44 +194,44 @@
             <span class="form-icon">
               <i class="far fa-flag"></i>
             </span>
-          </div>
+          </div> --}}
           {{-- countries end --}}
-          @endif
+          {{-- @endif --}}
 
-          @if($role_id != 2 && $role_id != 'visitor')
+          {{-- @if($role_id != 2 && $role_id != 'visitor') --}}
           {{-- cities start --}}
-          <div class="userName custom-select2">
+          {{-- <div class="userName custom-select2">
             <select class="custom-input" id="city_id" name="city_id">
               <option value="{{null}}">{{trans('web.city')}}</option>
             </select>
             <span class="form-icon">
               <i class="fa fa-map-marker"></i>
             </span>
-          </div>
+          </div> --}}
           {{-- cities end --}}
-          @endif
+          {{-- @endif --}}
 
           @if($role_id != 2 && $role_id != 'visitor')
           {{-- address start --}}
-          <div class="userName">
+          {{-- <div class="userName">
             <input type="text" name="address" value="{{old('address')}}" required />
             <label for="country">
               <i class="far fa-map"></i> {{trans('web.address')}}
             </label>
-          </div>
+          </div> --}}
           {{-- address end --}}
           @endif
 
-          @if($role_id == 3)
+          {{-- @if($role_id == 3) --}}
           {{-- teaching_address start --}}
-          <div class="userName">
+          {{-- <div class="userName">
             <input type="number" name="teaching_address" value="{{old('teaching_address')}}" required />
             <label for="country">
               <i class="fa fa-map"></i> {{trans('web.teaching_address')}}
             </label>
-          </div>
+          </div> --}}
           {{-- teaching_address end --}}
-          @endif
+          {{-- @endif --}}
 
         {{-- image start --}}
           <div class="userName custom-file">
@@ -301,6 +301,50 @@
 
         </div>
         {{-- password confirmation end --}}
+        
+        {{-- address start --}}
+        @if($role_id != 2 && $role_id != 'visitor')
+          {{-- map start --}}
+            <div class="form-group col-12">
+              <div style="display: block;width: 100%; ">
+              <span class="icon icon-map-marker"></span>
+
+              {{-- address --}}
+              {{-- <div class="userName">
+                <input id="pac-input" name="address" class="controls form-control" type="text" placeholder="{{trans('web.address')}}" value="">
+                <input type="hidden" name="lat" value="" id="location_lat">
+                <input type="hidden" name="long" value="" id="location_lng"> 
+                <label for="confirm">
+                  <i class="far fa-map"></i> {{trans('web.address')}}
+                </label>
+              </div> --}}
+
+              <input id="pac-input" name="address" class="controls form-control" type="text" placeholder="{{trans('web.address')}}" value="">
+              <input type="hidden" name="lat" value="" id="location_lat">
+              <input type="hidden" name="long" value="" id="location_lng"> 
+              
+              {{-- teaching address --}}
+              @if($role_id == 3)
+              {{-- <div class="userName">
+                <input name="teaching_address" class="controls form-control" type="text" placeholder="{{trans('web.teaching_address')}}" value="">
+                <input type="hidden" name="teaching_lat" value="" id="teaching_lat">
+                <input type="hidden" name="teaching_long" value="" id="teaching_lng"> 
+                <label for="confirm">
+                  <i class="far fa-map"></i> {{trans('web.teaching_address')}}
+                </label>
+              </div> --}}
+
+                <input name="teaching_address" class="controls form-control" type="text" placeholder="{{trans('web.teaching_address')}}" value="">
+                <input type="hidden" name="lat2" value="" id="location_lat2">
+                <input type="hidden" name="long2" value="" id="location_lng2">
+              @endif
+
+            </div>
+          </div>
+          <div id="gmap" style="width:100%;height:400px;"></div>
+          {{-- map end --}}
+        @endif
+        {{-- address end --}}
         
         <div class="submit">
           <button type="submit" class="custom-btn">{{trans('web.do_register')}}</button>

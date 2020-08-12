@@ -56,15 +56,15 @@
 
     <div class="home-pg">
 
-        <section class="welcome text-center">
-            <div class="container">
-                <div class="row">
-                <div class="col-12">
-                    <p class="typed"></p>
-                </div>
-                </div>
-            </div>
-        </section>
+        <!--<section class="welcome text-center">-->
+        <!--    <div class="container">-->
+        <!--        <div class="row">-->
+        <!--        <div class="col-12">-->
+        <!--            <p class="typed"></p>-->
+        <!--        </div>-->
+        <!--        </div>-->
+        <!--    </div>-->
+        <!--</section>-->
 
         @include('web.layouts.navbar')
 
@@ -82,7 +82,7 @@
     <script src="{{asset('web/js/vendor/owl.carousel.min.js')}}"></script>
     <script src="{{asset('web/js/vendor/scroll-out.js')}}"></script>
     <script src="{{asset('web/js/vendor/vanilla-tilt.min.js')}}"></script>
-    <script src="{{asset('web/js/vendor/typed.js')}}"></script>
+    <!--<script src="{{asset('web/js/vendor/typed.js')}}"></script>-->
     <script src="{{asset('web/js/vendor/aos.js')}}"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.all.min.js"></script>
 
@@ -132,22 +132,22 @@
         });
 
         // Welcome text
-        $(document).ready(function () {
-            console.log();
-            var typed = new Typed(".typed", {
-            strings: [" ^1500"+'{{$set->{"welcome_text_".session("lang") } }}'],
-            smartBackspace: true, // Default value
-            typeSpeed: 50,
-            backSpeed: 20,
-            loop: true,
-            });
+        // $(document).ready(function () {
+        //     console.log();
+        //     var typed = new Typed(".typed", {
+        //     strings: [" ^1500"+'{{$set->{"welcome_text_".session("lang") } }}'],
+        //     smartBackspace: true, // Default value
+        //     typeSpeed: 50,
+        //     backSpeed: 20,
+        //     loop: true,
+        //     });
 
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-        });
+        //     $.ajaxSetup({
+        //         headers: {
+        //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        //         }
+        //     });
+        // });
 
     </script>
 

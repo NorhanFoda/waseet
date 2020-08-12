@@ -42,6 +42,7 @@ class RegisterController extends Controller
 
     public function register(UserRequest $request, $role_id){
 
+        // dd($request->all());
         $old = User::where('email', $request->email)->first();
 
         // check if this user is registered before but not verified then delete it

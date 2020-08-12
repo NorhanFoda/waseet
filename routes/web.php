@@ -258,6 +258,13 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
     // Search
     Route::post('search', 'HomeController@search')->name('search');
 
+    Route::get('bag/categories', function(){
+        $cats = \App\Models\BagCategory::with('image')->get();
+        $title = 'welcom';
+        $text = 'welcom';
+        return view('web.bags.bag_categories', compact('cats', 'title', 'text'));
+    });
+
     Route::group(['middleware' => ['auth:web']], function(){
 
         // Cart

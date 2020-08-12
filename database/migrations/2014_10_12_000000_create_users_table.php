@@ -27,10 +27,11 @@ class CreateUsersTable extends Migration
             $table->date('api_token_expire_date')->nullable();
             $table->string('phone_secondary')->nullable();
             $table->string('code')->nullable();
-            $table->unsignedBigInteger('country_id')->nullable()->index();
-            $table->unsignedBigInteger('city_id')->nullable()->index();
+            // $table->unsignedBigInteger('country_id')->nullable()->index();
+            // $table->unsignedBigInteger('city_id')->nullable()->index();
             $table->unsignedBigInteger('stage_id')->nullable()->index();
             $table->unsignedBigInteger('nationality_id')->nullable()->index();
+            $table->string('other_nationality')->nullable();
             $table->string('lat')->nullable();
             $table->string('long')->nullable();
             $table->string('address')->nullable();

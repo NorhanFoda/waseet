@@ -18,6 +18,7 @@ class JobDetailsResource extends JsonResource
 
         return [
             'id' => $this->id,
+            'announcer_id' => $this->announcer->id,
             'name' => $this->{'name_'.$lang},
             'specialization' => $this->specialization->{'name_'.$lang},
             'work_hours' => $this->work_hours,

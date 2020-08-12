@@ -24,6 +24,10 @@ class EduLevelSeeder extends Seeder
                 'name_ar' => 'دكتوراه',
                 'name_en' => 'Doctorate',
             ],
+            [
+                'name_ar' => 'أخرى',
+                'name_en' => 'Other',
+            ],
         ]);
     }
 }

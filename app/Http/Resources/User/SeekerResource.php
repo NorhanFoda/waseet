@@ -24,8 +24,10 @@ class SeekerResource extends JsonResource
             'phone_secondary' => $this->phone_secondary,
             'age' => $this->age,
             'exper_years' => $this->exper_years,
-            'country' => $this->country->{'name_'.$lang},
-            'city' => $this->city->{'name_'.$lang},
+            // 'country' => $this->country->{'name_'.$lang},
+            // 'city' => $this->city->{'name_'.$lang},
+            'lat' => $this->lat,
+            'long' => $this->long,
             'address' => $this->address,
             'salary' => $this->salary_month,
             'cv' => $this->document->path

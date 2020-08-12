@@ -82,15 +82,15 @@
 
                                 </div>
 
-                                <div class="big-label">{{trans('web.country')}} : </div>
+                                {{-- <div class="big-label">{{trans('web.country')}} : </div>
                                 <div class="userName">
                                     <input type="text"  placeholder="{{$user->country->{'name_'.session('lang')} }}" disabled />                               
-                                </div>
+                                </div> --}}
 
-                                <div class="big-label">{{trans('web.city')}} : </div>
+                                {{-- <div class="big-label">{{trans('web.city')}} : </div>
                                 <div class="userName">
                                     <input type="text"  placeholder="{{$user->city->{'name_'.session('lang')} }}" disabled />                               
-                                </div>
+                                </div> --}}
 
                                 <div class="big-label">{{trans('web.address')}} :</div>
                                 <div class="userName" disabled>

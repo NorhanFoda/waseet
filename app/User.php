@@ -35,15 +35,16 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name', 'email', 'password',
-        'phone_main', 'phone_secondary', 'country_id', 
+        'phone_main', 'phone_secondary', 
+        // 'country_id', 'city_id', 
         'address', 'lat', 'long',
         'exper_years', 'salary_month', 'salary_hour',
-        'stage_id', 'city_id', 
+        'stage_id',
         'age',
         'edu_level_id', 'edu_type_id', 'organizayion_gender',
-        'other_edu_type', 'other_edu_level', 'nationality_id',
-        'teaching_lat', 'teaching_long',
-        'teaching_address', 'bio_ar', 'bio_en', 'is_verified', 'allow_notification',
+        'other_edu_type', 'other_edu_level', 'nationality_id', 'other_nationality',
+        'teaching_lat', 'teaching_long', 'teaching_address',
+        'bio_ar', 'bio_en', 'is_verified', 'allow_notification',
         'api_token', 'code','api_token_create_date' , 'api_token_expire_date'
     ];
 

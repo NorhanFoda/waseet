@@ -12,6 +12,7 @@ use App\Models\Country;
 use App\Models\City;
 use App\Models\Specialization;
 use App\Classes\Upload;
+use App\Models\Image;
 use App\Classes\SendEmail;
 use App\Http\Requests\Job\JobRequest;
 use App\User;

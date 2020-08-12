@@ -84,12 +84,13 @@ $(document).ready(function () {
   // typed js -------------------------------------------------
 
   // side bar menu
-  $(".humburger").on("click", function () {
+  $(".humburger img").on("click", function () {
     $(".menu").addClass("active");
   });
 
+
   $("#menu-close").on("click", function () {
-    $(".menu").removeClass("active");
+    $(".menu").removeClass("active active2");
   });
 
   
@@ -108,6 +109,25 @@ $(function() {
   });
 });
 
+
+        $('.humburger img').hover(
+				
+               function () {
+    $(".menu").addClass("active");
+               }
+				
+            
+            );
+                    $('.menu').hover(
+				
+               function () {
+    $(".menu").addClass("active2");
+               }, 
+				
+               function () {
+    $(".menu").removeClass("active active2");
+               }
+            );
 //nav scroll
 $(window).scroll(function() {
   var welcome_height = $(".welcome").outerHeight();

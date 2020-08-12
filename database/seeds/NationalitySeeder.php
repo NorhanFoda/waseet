@@ -20,6 +20,10 @@ class NationalitySeeder extends Seeder
                 'name_ar' => 'مصرى',
                 'name_en' => 'Egyption',
             ],
+            [
+                'name_ar' => 'أخرى',
+                'name_en' => 'Other',
+            ],
         ]);
     }
 }

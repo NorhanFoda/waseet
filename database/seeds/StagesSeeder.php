@@ -24,6 +24,10 @@ class StagesSeeder extends Seeder
                 'name_ar' => 'االثالثة',
                 'name_en' => 'Third',
             ],
+            [
+                'name_ar' => 'أخرى',
+                'name_en' => 'Other',
+            ],
         ]);
     }
 }

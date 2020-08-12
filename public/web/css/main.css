@@ -264,7 +264,7 @@ button:focus {
   display: none;
 }
 
-.menu.active {
+.menu.active,.menu.active2 {
   -webkit-transform: none;
   transform: none;
 }
@@ -895,7 +895,7 @@ nav .search.active .search-btn {
 
 
 .ad-space {
-  margin-top: 25px;
+  margin: 25px auto;
   width: 100%;
 }
 
@@ -1045,7 +1045,14 @@ nav .search.active .search-btn {
   max-height: 100px;
   overflow: hidden;
 }
+.overlay-div{
+    background-image: url(../images/packs-bg.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
 
+}
 .private-teacher {
   background-image: url(../images/teacher-bg.png);
   background-position: left;
@@ -4004,4 +4011,22 @@ box-shadow: 0 0 7px #aaa;
   border-radius: 50%;
   line-height: 40px;
   color: #fff;
+}
+
+.cat-bags .img{
+    height: 200px;
+    position:relative;
+}
+.cat-bags .item{
+    margin-bottom:30px;
+}
+.cat-bags .img img {
+    max-height: 75%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%) !important; ;
+    -webkit-transform: translateY(-50%) !important;;
+    left: 0;
+    right: 0;
+    margin: auto;
 }

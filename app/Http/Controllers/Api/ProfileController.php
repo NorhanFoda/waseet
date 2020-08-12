@@ -10,6 +10,7 @@ use App\Http\Resources\Teachers\SavedTeacherResource;
 use App\Http\Resources\Job\SavedJobResource;
 use App\Http\Resources\User\SeekerResource;
 use App\Http\Resources\Teachers\MaterialResource;
+use App\Http\Requests\User\UpdatePersonalInfoProfileRequest;
 use App\Models\Stage;
 use App\Models\EduLevel;
 use App\Models\EduType;
@@ -97,13 +98,9 @@ class ProfileController extends Controller
     }
 
     // Update auth user personal info
-    public function updatePersonalInfo(Request $request){
+    public function updatePersonalInfo(UpdatePersonalInfoProfileRequest $request){
         if(app('request')->header('Authorization') != null && Auth::guard('api')->check()){
             if(app('request')->header('Authorization') == 'Bearer '.auth()->user()->api_token){
-                $this->validate($request, [
-                    'cv' => 'sometimes|mimetypes:application/pdf|max:10000',
-                    'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-                ]);
         
                 auth()->user()->update($request->all());
         

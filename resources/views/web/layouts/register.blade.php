@@ -38,9 +38,11 @@
   <script src="{{asset('web/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js')}}"></script>
   <link rel="shortcut icon" href="{{asset('web/images/favicon.ico')}}" />
 
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBdarVlRZOccFIGWJiJ2cFY8-Sr26ibiyY&libraries=places&callback=initMap&language={{ \App::getLocale() }}" defer></script>
+
 </head>
 
-<body>
+<body onload="initGeolocation()">
   <!--[if lt IE 8]>
       <p class="browserupgrade">
         You are using an <strong>outdated</strong> browser. Please
@@ -84,6 +86,11 @@
     <script src="{{asset('web/js/vendor/aos.js')}}"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.all.min.js"></script>
     <script src="{{asset('web/js/main.js')}}"></script>
+
+    {{-- GOOGLE MAPS START --}}
+    <script src="{{asset('web/js/map/map.js')}}"></script>
+    {{-- GOOGLE MAPS END --}}
+
     <script>
         $("#owl2").owlCarousel({
         rtl: true,

@@ -114,7 +114,7 @@ class RegisterController extends Controller
             else{
                 return response()->json([
                     'error' => trans('web.email_exsit'),
-                ], 404);
+                ], 400);
             }
         }
 
