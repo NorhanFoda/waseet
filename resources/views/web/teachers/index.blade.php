@@ -24,11 +24,14 @@
                 <div class="col-sm-7 text-right-dir">
                     <h3 class="first_color">{{$title}}</h3>
                 </div>
-                <div class="col-sm-5 text-left-dir">
-                    <a href="#" data-toggle="modal" data-target="#teacher_register" class="custom-btn text-center">
-                        {{trans('web.do_register')}}
-                    </a>
-                </div>
+                @if(\Request::route()->getName() != 'teachers.get_by_type')
+                    <div class="col-sm-5 text-left-dir">
+                        {{-- <a href="#" data-toggle="modal" data-target="#teacher_register" id="register_teacher"  class="custom-btn text-center"> --}}
+                            <a href="#" @if(!Auth::check()) data-toggle="modal" data-target="#teacher_register" @endif id="register_teacher"  class="custom-btn text-center">
+                            {{trans('web.do_register')}}
+                        </a>
+                    </div>
+                @endif
             </div>
         </div>
         <div class="container text-center" data-aos="fade-in">
@@ -166,4 +169,22 @@
     </div>
     {{-- Register modal end --}}
 
+@endsection
+
+@section('scripts')
+    <script>
+        $(document).ready(function(){
+            $('#register_teacher').click(function(){
+                if('{{Auth::check()}}'){
+                    Swal.fire({
+                        title: "{{trans('web.logout_first')}}",
+                        type: 'warning',
+                        timer: 2000,
+                        showCancelButton: false,
+                        showConfirmButton: false,
+                    });
+                }
+            });
+        });
+    </script>
 @endsection

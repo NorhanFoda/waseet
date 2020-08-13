@@ -40,7 +40,7 @@ class TeachersController extends Controller
     }
 
     public function getTeachersByType($type){
-
+        
         $title = Setting::find(1)->{'section_2_title_'.session('lang')};
         $text = Setting::find(1)->{'section_2_text_'.session('lang')};
         $roles = DB::table('roles')->where('name', 'online_teacher')->orWhere('name', 'direct_teacher')->get();

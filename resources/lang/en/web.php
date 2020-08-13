@@ -120,6 +120,7 @@ return [
     'rating' => 'Rating',
     'year' => 'Years Old',
     'teacher_bio' => 'About The Teacher',
+    'logout_first' => 'Please Logout to Create New Account',
 
     // Cart
     'cart' => 'Cart',
