@@ -12,7 +12,7 @@ return [
     'look_for_job' => 'البحث عن عمل',
     'login' => 'تسجيل الدخول',
     'private_teacher' => 'المعلم الخصوصى',
-    'bags' => 'الحقائب التعليمية',
+    'bags' => 'المتجر التعليمى',
     'profile' => 'حسابى',
     'orders' => 'الطلبات',
     'saved' => 'المحفوظات',
@@ -26,6 +26,7 @@ return [
     'vision' => 'الرؤية',
     'message' => 'الرسالة',
     'goals_of_app_depts' => 'الهدف من أقسام التطبيق',
+    'goals' => 'الأهداف',
 
     // Bags
     'print_content' => 'طباعة المحتوى',

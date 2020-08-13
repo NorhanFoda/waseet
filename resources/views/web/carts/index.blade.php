@@ -427,7 +427,6 @@
                 e.preventDefault();
                 $link = $(this);
                 var carts = JSON.parse(localStorage.getItem("carts"));
-                console.log(carts);
                 $.ajax({
                         url: "{{route('carts.update')}}",
                         type: "PUT",

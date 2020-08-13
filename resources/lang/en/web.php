@@ -12,7 +12,7 @@ return [
     'look_for_job' => 'Look for Job',
     'login' => 'Login',
     'private_teacher' => 'Private Teachers',
-    'bags' => 'Educational Bags',
+    'bags' => 'Educational Store',
     'profile' => 'Profile',
     'orders' => 'Orders',
     'saved' => 'Saved',
@@ -26,6 +26,7 @@ return [
     'vision' => 'Vision',
     'message' => 'Message',
     'goals_of_app_depts' => 'Goal of Application Departements',
+    'goals' => 'Goals',
     
     // Bags
     'print_content' => 'Print Content',

@@ -224,6 +224,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 
     // Educational Bags
     Route::get('/categories/{id}', 'Web\BagCategoryController@show')->name('categories.bags');
+    Route::get('bag/categories', 'Web\BagCategoryController@getBagCategories')->name('web_bags.categories');
     Route::get('/web/bags', 'Web\BagController@index')->name('web_bags');
     Route::get('/web/bags/{id}', 'Web\BagController@show')->name('web_bags.show');
 
@@ -257,13 +258,6 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 
     // Search
     Route::post('search', 'HomeController@search')->name('search');
-
-    Route::get('bag/categories', function(){
-        $cats = \App\Models\BagCategory::with('image')->get();
-        $title = 'welcom';
-        $text = 'welcom';
-        return view('web.bags.bag_categories', compact('cats', 'title', 'text'));
-    });
 
     Route::group(['middleware' => ['auth:web']], function(){
 

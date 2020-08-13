@@ -262,5 +262,14 @@ class JobsController extends Controller
             'jobs' => ApplyJobFormResource::collection($jobs),
         ], 200);
     }
+
+    // get all jobs of the authed user with organization role
+    public function getOrganizationJobs(){
+        
+        return response()->json([
+            'data' => JobResource::collection(auth()->user()->job_announces()->where('approved', 1)->get()),
+        ], 200);
+        
+    }
     
 }

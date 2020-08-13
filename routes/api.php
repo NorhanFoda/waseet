@@ -105,6 +105,7 @@ Route::group(['middleware' => ['lang', 'CheckApiTokenExpirationDate']], function
         Route::get('api_jobs/announce/{id}', 'Api\JobsController@editAnnounceJobFormData');
         Route::put('jobs/announce/{id}/edit', 'Api\JobsController@editJob');
         Route::get('api_jobs/apply_data/', 'Api\JobsController@applyToJobData');
+        Route::get('api_organization/jobs', 'Api\JobsController@getOrganizationJobs');
 
         // Save
         Route::post('save', 'Api\HomeController@save');

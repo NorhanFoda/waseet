@@ -16,4 +16,11 @@ class BagCategoryController extends Controller
 
         return view('web.bags.index', compact('bags', 'title', 'text'));
     }
+
+    public function getBagCategories(){
+        $cats = BagCategory::with('image')->get();
+        $title = 'welcom';
+        $text = 'welcom';
+        return view('web.bags.bag_categories', compact('cats', 'title', 'text'));
+    }
 }

@@ -20,13 +20,22 @@ class trackOrderResource extends JsonResource
             $status = trans('api.not_confirmed');
         }
         else if($this->status == 2){
-            $status = trans('api.waiting');
+            $status = trans('web.order_waiting');
+            if($this->bags[0]->pivot->accepted != null){
+                $status = $status.' '.date('Y-m-d', strtotime($this->bags[0]->pivot->accepted ?? ''->Fecha));
+            } 
         }
         else if($this->status == 3){
-            $status = trans('api.shipping');
+            $status = trans('web.order_is_shipped');
+            if($this->bags[0]->pivot->shipped != null){
+                $status = $status.' '.date('Y-m-d', strtotime($this->bags[0]->pivot->shipped ?? ''->Fecha));
+            }
         }
         else if($this->status == 4){
-            $status = trans('api.delivered');
+            $status = trans('web.order_is_delivered');
+            if($this->bags[0]->pivot->delivered != null){
+                $status = $status.' '.date('Y-m-d', strtotime($this->bags[0]->pivot->delivered ?? ''->Fecha));
+            }
         }
 
         return [

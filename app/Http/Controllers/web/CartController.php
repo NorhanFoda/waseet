@@ -49,6 +49,7 @@ class CartController extends Controller
     }
 
     public function update(Request $request){
+        dd($request->all());
         // Delete old carts
         foreach(auth()->user()->carts as $cart){
             $cart->delete();
@@ -56,6 +57,7 @@ class CartController extends Controller
 
         // Add new carts with new values from localStorage
         $carts = $request->carts;
+        dd($carts);
         foreach($carts as $cart){
             $user_cart = Cart::create([
                 'user_id' => auth()->user()->id,

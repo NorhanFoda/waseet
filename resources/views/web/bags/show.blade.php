@@ -230,7 +230,7 @@
                             bag_id: data.cart.bag_id,
                             quantity: data.cart.quantity,
                             total_price: data.cart.total_price,
-                            buy_type: data.cart.total_price
+                            buy_type: data.cart.buy_type
                         };
 
                         if(carts == null){

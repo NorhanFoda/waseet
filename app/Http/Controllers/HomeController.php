@@ -8,6 +8,7 @@ use App\Models\Setting;
 use App\Models\BagCategory;
 use App\Models\Bag;
 use App\Models\Job;
+use App\Models\Page;
 use App\User;
 use App\Models\StaticPage;
 use App\Models\Social;
@@ -36,7 +37,8 @@ class HomeController extends Controller
         $sliders = Slider::with('image')->where('type', 'website')->get();
         $cats = BagCategory::with('image')->get();
         $set = Setting::find(1);
-        return view('web.home.index', compact('sliders', 'set', 'cats'));
+        $about_us = StaticPage::with('goals')->where('name_ar', 'من نحن')->where('name_en', 'About us')->first();
+        return view('web.home.index', compact('sliders', 'set', 'cats', 'about_us'));
     }
 
     // Search

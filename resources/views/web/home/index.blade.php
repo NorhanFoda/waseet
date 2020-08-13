@@ -5,56 +5,49 @@
 
 @section('content')
 @include('web.layouts.slider')
-<!--<section class="feature-text" data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-offset="200">-->
-<!--    <div class="container">-->
-<!--      <h5>-->
-<!--        {!! $set->{'text_before_add_'.session('lang')} !!}-->
-<!--        <h3 id="shadow">-->
-<!--          {!! $set->{'text_before_add_'.session('lang')} !!}-->
-<!--        </h3>-->
-<!--      </h5>-->
 
-<!--    </div>-->
-<!--  </section>-->
   <section class="search-job overlay-div">
     <div class="container">
       <div class="row">
         <div class="title" data-aos="fade-down">
           <h5 style="color:#c1a5e3">{!! $set->{'text_before_add_'.session('lang')} !!}</h5>
-
         </div>
       </div>
-
       <div class="row">
 
+        {{-- vision start --}}
         <div class="job col-md-4 col-sm-6" data-aos="slide-up" data-aos-offset="300">
-          <img src="{{$set->step_1_image}}" alt="" />
-          <h5>{{$set->{'step_1_title_'.session('lang')} }}</h5>
+          <img src="{{asset('web/images/vision.png')}}" alt="" />
+          <h5>{{trans('web.vision')}}</h5>
           <p>
-           {!! $set->{'step_1_text_'.session('lang')} !!}
+            {!! $about_us->{'vision_'.session('lang')} !!}
           </p>
         </div>
+        {{-- vision end --}}
 
+        {{-- message start --}}
         <div class="job col-md-4 col-sm-6" data-aos="slide-up" data-aos-offset="300">
-          <img src="{{$set->step_2_image}}" alt="" />
-          <h5>{{$set->{'step_2_title_'.session('lang')} }}</h5>
+          <img src="{{asset('web/images/message.png')}}" alt="" />
+          <h5>{{trans('web.message')}}</h5>
           <p>
-           {!! $set->{'step_2_text_'.session('lang')} !!}
+            {!! $about_us->{'message_'.session('lang')} !!}
           </p>
         </div>
+        {{-- message end --}}
 
+        {{-- mission start --}}
         <div class="job col-md-4 col-sm-6" data-aos="slide-up" data-aos-offset="300">
-          <img src="{{$set->step_3_image}}" alt="" />
-          <h5>{{$set->{'step_3_title_'.session('lang')} }}</h5>
+          <img src="{{asset('web/images/mission.png')}}" alt="" />
+          <h5>{{trans('web.goals')}}</h5>
           <p>
-           {!! $set->{'step_3_text_'.session('lang')} !!}
+            {!! count($about_us->goals) == 0 ? '' : $about_us->goals[0]->{'text_'.session('lang')} !!}
           </p>
         </div>
- <div class="text-center col-12" data-aos="fade-in">
-             <br><br>
-                                <a href="#" class="custom-btn">إقرا المزيد
-                                </a>
-                              </div>
+        {{-- mission end --}}
+
+        <div class="text-center col-12" data-aos="fade-in"><br><br>
+          <a href="{{route('pages', $about_us->name_en)}}" class="custom-btn">{{trans('web.more')}}</a>
+        </div>
       </div>
     </div>
   </section>
@@ -71,23 +64,6 @@
       </div>
     </div>
   </section>
-
-  <!--<section class="wrapper">-->
-  <!--  <div class="container">-->
-  <!--    <div class="row">-->
-
-  <!--      <div class="logo col-lg-3 col-sm-4" data-aos="fade-in">-->
-  <!--        <img src="{{$set->text_after_add_image}}" alt="" />-->
-  <!--        <img src="{{asset('/images/logo2.png')}}" alt="" />-->
-  <!--      </div>-->
-  <!--      <div class="text col-lg-9 col-sm-8" data-aos="fade-in">-->
-  <!--        <p>-->
-  <!--          {!! $set->{'text_after_add_'.session('lang')} !!}-->
-  <!--        </p>-->
-  <!--      </div>-->
-  <!--    </div>-->
-  <!--  </div>-->
-  <!--</section>-->
 
   <section class="search-job">
     <div class="overlay"></div>
@@ -184,7 +160,6 @@
   <div class="wrapper">
     <div class="container">
       <div class="row">
-
         <div class="logo col-lg-3 col-sm-4" data-aos="fade-in">
           <img src="{{$set->text_after_add_image}}" alt="" />
           <img src="{{asset('/images/logo2.png')}}" alt="" />
@@ -195,34 +170,13 @@
           </p>
         </div>
         
-         <div class="text-center col-12" data-aos="fade-in">
-             <br><br>
-                                <a href="#" class="custom-btn">إقرا المزيد
-                                </a>
-                              </div>
-            </div>
-
+        <div class="text-center col-12" data-aos="fade-in"><br><br>
+          <a href="{{route('web_bags.categories')}}" class="custom-btn">{{trans('web.more')}}</a>
+        </div>
+      </div>
     </div>
   </div>
 
-      <!--<div class="owl-carousel owl-theme justify-content-around" id="owl2">-->
-
-      <!--  @foreach($cats as $cat)-->
-          <!--start item-->
-      <!--    <div class="item">-->
-      <!--      <div class="pack">-->
-      <!--        <div class="img">-->
-      <!--          <img src="{{$cat->image->path}}" alt="" />-->
-      <!--        </div>-->
-      <!--        <div class="row">-->
-      <!--          <a href="{{route('categories.bags', $cat->id)}}" class="custom-btn">{{$cat->{'name_'.session('lang')} }}</a>-->
-      <!--        </div>-->
-      <!--      </div>-->
-      <!--    </div>-->
-          <!--end item-->
-      <!--  @endforeach-->
-
-      <!--</div>-->
     </div>
   </section>
 @endsection
