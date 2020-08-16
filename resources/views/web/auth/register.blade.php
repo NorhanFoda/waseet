@@ -38,7 +38,7 @@
         @if($role_id == 5)
           {{-- edu type start --}}
           <div class="userName custom-select2">
-            <select class="custom-input" name="edu_type_id" required>
+            <select class="custom-input" name="edu_type_id" id="edu_type_id" required>
               <option value="{{null}}">{{trans('web.edu_type')}}</option>
               @foreach($types as $type)
                 <option value="{{$type->id}}" @if(old('level_id') == $type->id) selected @endif>{{$type->{'name_'.session('lang')} }}</option>
@@ -49,6 +49,15 @@
             </span>
           </div>
           {{-- edu type end --}}
+
+          {{-- other_edu_type start --}}
+          <div class="userName" id="other_edu_type" hidden>
+            <input type="text" id="username" name="other_edu_type" value="{{old('other_edu_type')}}" />
+            <label for="username" id="label">
+              <i class="far fa-user"></i> {{trans('web.other_edu_type')}} 
+            </label>
+          </div>
+          {{-- other_edu_type end --}}
         @endif
 
           <div class="userName">
@@ -104,7 +113,7 @@
           @if($role_id == 2)
           {{-- stages start --}}
           <div class="userName custom-select2">
-            <select class="custom-input" name="stage_id">
+            <select class="custom-input" name="stage_id" id="stage_id">
               <option value="{{null}}">{{trans('web.stage')}}</option>
               @foreach($stages as $stage)
                 <option value="{{$stage->id}}" @if(old('stage_id') == $stage->id) selected @endif>{{$stage->{'name_'.session('lang')} }}</option>
@@ -115,6 +124,15 @@
             </span>
           </div>
           {{-- stages end --}}
+
+          {{-- other stage start --}}
+          <div class="userName" id="other_stage" hidden>
+            <input type="text" name="other_stage" value="{{old('other_stage')}}" />
+            <label for="country">
+              <i class="far fa-building"></i> {{trans('web.other_stage')}}
+            </label>
+          </div>
+          {{-- other stage end --}}
           @endif
 
           @if($role_id == 3 ||$role_id == 4 || $role_id == 6)
@@ -131,7 +149,7 @@
           @if($role_id == 3 || $role_id == 4)
           {{-- edu level start --}}
           <div class="userName custom-select2">
-            <select class="custom-input" name="edu_level_id">
+            <select class="custom-input" name="edu_level_id" id="edu_level_id">
               <option value="{{null}}">{{trans('web.edu_level')}}</option>
               @foreach($levels as $level)
                 <option value="{{$level->id}}" @if(old('level_id') == $level->id) selected @endif>{{$level->{'name_'.session('lang')} }}</option>
@@ -142,6 +160,15 @@
             </span>
           </div>
           {{-- edu level end --}}
+
+          {{-- other_edu_level start --}}
+          <div class="userName" id="other_edu_level" hidden>
+            <input type="text" name="other_edu_level" value="{{old('other_edu_level')}}" />
+            <label for="country">
+              <i class="far fa-building"></i> {{trans('web.other_edu_level')}}
+            </label>
+          </div>
+          {{-- other_edu_level end --}}
           @endif
 
           @if($role_id == 3 || $role_id == 4)
@@ -169,7 +196,7 @@
           @if($role_id == 3 || $role_id == 4)
           {{-- nationalities start --}}
           <div class="userName custom-select2">
-            <select class="custom-input" name="nationality_id">
+            <select class="custom-input" name="nationality_id" id="nationality_id">
               <option value="{{null}}">{{trans('web.nationality')}}</option>
               @foreach($nationalities as $nation)
                 <option value="{{$nation->id}}" @if(old('nationality_id') == $nation->id) selected @endif>{{$nation->{'name_'.session('lang')} }}</option>
@@ -180,6 +207,15 @@
             </span>
           </div>
           {{-- nationalities end --}}
+          
+          {{-- other nationality start --}}
+          <div class="userName" id="other_nationality" hidden>
+            <input type="text" name="other_nationality" value="{{old('other_nationality')}}" />
+            <label for="country">
+              <i class="far fa-building"></i> {{trans('web.other_nationality')}}
+            </label>
+          </div>
+          {{-- other mationality end --}}
           @endif
 
           {{-- @if($role_id != 2 && $role_id != 'visitor') --}}
@@ -232,6 +268,17 @@
           </div> --}}
           {{-- teaching_address end --}}
           {{-- @endif --}}
+
+          @if($role_id == 4)
+          {{-- teaching_method start --}}
+          <div class="userName">
+            <input type="text" name="teaching_method" value="{{old('teaching_method')}}" required />
+            <label for="country">
+              <i class="far fa-map"></i> {{trans('web.teaching_method')}}
+            </label>
+          </div>
+          {{-- teaching_method end --}}
+          @endif
 
         {{-- image start --}}
           <div class="userName custom-file">
@@ -299,49 +346,35 @@
             </label>
           </div>
 
-        </div>
         {{-- password confirmation end --}}
         
         {{-- address start --}}
         @if($role_id != 2 && $role_id != 'visitor')
           {{-- map start --}}
-            <div class="form-group col-12">
-              <div style="display: block;width: 100%; ">
-              <span class="icon icon-map-marker"></span>
-
-              {{-- address --}}
-              {{-- <div class="userName">
-                <input id="pac-input" name="address" class="controls form-control" type="text" placeholder="{{trans('web.address')}}" value="">
-                <input type="hidden" name="lat" value="" id="location_lat">
-                <input type="hidden" name="long" value="" id="location_lng"> 
-                <label for="confirm">
-                  <i class="far fa-map"></i> {{trans('web.address')}}
-                </label>
-              </div> --}}
-
+            <div class="userName">
+           <div class="text-right-dir map-label">{{trans('web.address')}}</div>
+            {{-- address --}}
+             
               <input id="pac-input" name="address" class="controls form-control" type="text" placeholder="{{trans('web.address')}}" value="">
               <input type="hidden" name="lat" value="" id="location_lat">
               <input type="hidden" name="long" value="" id="location_lng"> 
-              
+            </div>
+
+
+            <div class="userName">
               {{-- teaching address --}}
               @if($role_id == 3)
-              {{-- <div class="userName">
-                <input name="teaching_address" class="controls form-control" type="text" placeholder="{{trans('web.teaching_address')}}" value="">
-                <input type="hidden" name="teaching_lat" value="" id="teaching_lat">
-                <input type="hidden" name="teaching_long" value="" id="teaching_lng"> 
-                <label for="confirm">
-                  <i class="far fa-map"></i> {{trans('web.teaching_address')}}
-                </label>
-              </div> --}}
-
+              <div class="text-right-dir map-label">{{trans('web.teaching_address')}}</div>
                 <input name="teaching_address" class="controls form-control" type="text" placeholder="{{trans('web.teaching_address')}}" value="">
                 <input type="hidden" name="lat2" value="" id="location_lat2">
                 <input type="hidden" name="long2" value="" id="location_lng2">
               @endif
 
             </div>
-          </div>
-          <div id="gmap" style="width:100%;height:400px;"></div>
+            
+            <div class="map-div">
+              <div id="gmap" style="width:100%;height:400px;">
+            </div>
           {{-- map end --}}
         @endif
         {{-- address end --}}
@@ -349,26 +382,82 @@
         <div class="submit">
           <button type="submit" class="custom-btn">{{trans('web.do_register')}}</button>
         </div>
+    </div>
       </form>
     </div>
   </div>
+  
 @endsection
 
 @section('scripts')
     <script>
         $(document).ready(function(){
-            $('#country_id').change(function(){
-                $.ajax({
-                    url: "{{route('countries.getCities')}}",
-                    type: "POST",
-                    dataType: 'html',
-                    data: {"_token": "{{ csrf_token() }}", id: $(this).val() },
-                    success: function(data){
-                        $('#city_id').html(data);
-                    }
-                });
-            });
-            
+
+          // Get cities of selected country
+            // $('#country_id').change(function(){
+            //     $.ajax({
+            //         url: "{{route('countries.getCities')}}",
+            //         type: "POST",
+            //         dataType: 'html',
+            //         data: {"_token": "{{ csrf_token() }}", id: $(this).val() },
+            //         success: function(data){
+            //             $('#city_id').html(data);
+            //         }
+            //     });
+            // });
+
+            // Show other_stage input when user selects other option stage_id
+              $(document).on('change', '#stage_id', function(){
+                if($(this).val() == 4){
+                  $('#other_stage').attr('hidden', false);
+                  $('#other_stage').attr('required', true);
+                }
+                else{
+                  $('#other_stage').attr('hidden', true);                
+                  $('#other_stage').attr('required', false);
+                  $("input[name*='other_stage']").val('');
+                }
+              });
+
+              // Show other_nationality input when user selects other option nationality_id
+              $(document).on('change', '#nationality_id', function(){
+                if($(this).val() == 3){
+                  $('#other_nationality').attr('hidden', false);
+                  $('#other_nationality').attr('required', true);
+                }
+                else{
+                  $('#other_nationality').attr('hidden', true); 
+                  $('#other_nationality').attr('required', false);               
+                  $("input[name*='other_nationality']").val('');
+                }
+              });
+
+              // Show other_edu_level input when user selects other option edu_level_id
+              $(document).on('change', '#edu_level_id', function(){
+                if($(this).val() == 4){
+                  $('#other_edu_level').attr('hidden', false);
+                  $('#other_edu_level').attr('required', true);
+                }
+                else{
+                  $('#other_edu_level').attr('hidden', true);  
+                  $('#other_edu_level').attr('required', false);              
+                  $("input[name*='other_edu_level']").val('');
+                }
+              });
+
+              // Show other_edu_type input when user selects other option edu_type_id
+              $(document).on('change', '#edu_type_id', function(){
+                if($(this).val() == 4){
+                  $('#other_edu_type').attr('hidden', false);
+                  $('#other_edu_type').attr('required', true);
+                }
+                else{
+                  $('#other_edu_type').attr('hidden', true);                
+                  $('#other_edu_type').attr('required', false);
+                  $("input[name*='other_edu_type']").val('');
+                }
+              });
+
             $(".custom-file input").on("change", function() {
               var fileName = $(this).val().split("\\").pop();
               $(this).next("label").find("span").html(fileName);

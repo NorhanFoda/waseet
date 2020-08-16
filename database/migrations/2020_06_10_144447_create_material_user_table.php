@@ -17,6 +17,7 @@ class CreateMaterialUserTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id')->nullable()->index();
             $table->unsignedBigInteger('material_id')->nullable()->index();
+            $table->string('other_material')->nullable();
             $table->timestamps();
         });
     }

@@ -6,6 +6,7 @@ return [
     'verification_code_sent' => 'A verification code was sent to your email',
     'email_is_verified' => 'Email is verified successfully',
     'success' => 'Task completed successfully',
+    'registered' => 'Please Continue to Payment To Complete Creating Account',
 
     // Text
     'about_waseet_text' => 'About Waseet Al Moalm',

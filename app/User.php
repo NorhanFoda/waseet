@@ -23,6 +23,7 @@ use App\Models\Nationality;
 use App\Models\Address;
 use App\Models\Cart;
 use App\Models\Order;
+use App\Models\BankReceipt;
 
 class User extends Authenticatable
 {
@@ -34,18 +35,21 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
-        'phone_main', 'phone_secondary', 
-        // 'country_id', 'city_id', 
-        'address', 'lat', 'long',
-        'exper_years', 'salary_month', 'salary_hour',
-        'stage_id',
-        'age',
-        'edu_level_id', 'edu_type_id', 'organizayion_gender',
-        'other_edu_type', 'other_edu_level', 'nationality_id', 'other_nationality',
+        'name', 'email', 'phone_main', 'password',
+        'is_verified', 'allow_notification', 'api_token', 'api_token_create_date' , 'api_token_expire_date',
+        'phone_secondary', 'code',
+        'lat', 'long', 'address',
         'teaching_lat', 'teaching_long', 'teaching_address',
-        'bio_ar', 'bio_en', 'is_verified', 'allow_notification',
-        'api_token', 'code','api_token_create_date' , 'api_token_expire_date'
+        'teaching_method',
+        'exper_years', 'salary_month', 'salary_hour', 'age',
+        'bio_ar', 'bio_en', 
+        'edu_level_id', 'other_edu_level', 
+        'edu_type_id', 'other_edu_type', 
+        'stage_id', 'other_stage',
+        'nationality_id', 'other_nationality',
+        'approved',
+        // 'country_id', 'city_id',  
+        //  'organizayion_gender',
     ];
 
     protected $dates = ['api_token_create_date', 'api_token_expire_date'];
@@ -162,5 +166,9 @@ class User extends Authenticatable
 
     public function orders(){
         return $this->hasMany(Order::class)->orderBy('created_at', 'desc');
+    }
+
+    public function receipt(){
+        return $this->hasOne(BankReceipt::class);
     }
 }

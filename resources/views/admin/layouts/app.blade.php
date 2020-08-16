@@ -208,7 +208,37 @@
         })
     });
 
+    $(document).on('change', '.approved', function(){
+        $.ajax({
+            url: "{{route('users.approve_account')}}",
+            type: "POST",
+            dataType: 'html',
+            data: {"_token": "{{ csrf_token() }}", id: $(this).data('user_id'), approved: $(this).val() },
+            success: function(data){
+                data = JSON.parse(data);
+                if(data.data == 1){
+                    Swal.fire({
+                        type: 'success',
+                        title: '{{trans('admin.updated')}}',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
 
+                    window.location.reload();
+                }
+                else if(data.data == 0){
+                    Swal.fire({
+                        type: 'error',
+                        title: '{{trans('admin.error')}}',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+
+                    window.location.reload();
+                }
+            }
+        });
+    })
 
 </script>
 {{-- 

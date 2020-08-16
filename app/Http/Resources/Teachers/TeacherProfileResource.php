@@ -31,6 +31,11 @@ class TeacherProfileResource extends JsonResource
             'phone_secondary' => $this->phone_secondary,
             'email' => $this->email,
             'address' => $this->address,
+            'lat' => $this->lat,
+            'long' => $this->long,
+            'teaching_lat' => $this->teaching_lat != null ? $this->teaching_lat : null,
+            'teaching_long' => $this->teaching_long != null ? $this->teaching_long : null,
+            'teaching_address' => $this->teaching_address != null ? $this->teaching_address : null,
             'bio' => $this->{'bio_'.$lang},
             'is_saved' => auth()->user()->saved_teachers->contains('saveRef_id', $this->id) ? 1 : 0,
         ];

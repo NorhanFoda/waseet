@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\User;
 use App\Classes\Upload;
 use App\Models\SubScriber;
+use App\Classes\SendEmail;
 
 class UserController extends Controller
 {
@@ -153,6 +154,25 @@ class UserController extends Controller
 
     public function deleteSubScripers(Request $request){
         SubScriber::find($request->id)->delete();
+
+        return response()->json([
+            'data' => 1
+        ], 200);
+    }
+
+    public function approveAccount(Request $request){
+        $user = User::find($request->id);
+        $user->update(['approved' => $request->approved]);
+
+        //Send mail to subscripers
+        if($request->approved == 1){
+            if($user->hasRole('online_teacher') || $user->hasRole('direct_teacher')){
+                $subs = SubScriber::all();
+                foreach($subs as $sub){
+                    SendEmail::Subscripe($sub->email, route('teachers.show', $user->id), 'teacher');
+                }
+            }
+        }
 
         return response()->json([
             'data' => 1

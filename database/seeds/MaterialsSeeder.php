@@ -24,6 +24,10 @@ class MaterialsSeeder extends Seeder
                 'name_ar' => 'العلوم',
                 'name_en' => 'Science',
             ],
+            [
+                'name_ar' => 'أخرى',
+                'name_en' => 'Other',
+            ],
         ]);
     }
 }

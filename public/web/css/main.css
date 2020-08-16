@@ -4030,3 +4030,20 @@ box-shadow: 0 0 7px #aaa;
     right: 0;
     margin: auto;
 }
+
+.map-div{
+    width: 74%;
+    margin: 20px auto;
+    
+}
+
+
+.map-div #gmap {
+    border-radius: 20px;
+}
+
+.map-label{
+    margin-bottom:10px;
+        color: #777;
+
+}

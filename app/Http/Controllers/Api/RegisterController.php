@@ -23,6 +23,7 @@ use App\Models\Image;
 use App\Models\Stage;
 use App\Models\Address;
 use App\Classes\Upload;
+use App\Models\BankReceipt;
 use App\Http\Resources\Roles\RoleResource;
 use Auth;
 use DB;
@@ -32,7 +33,7 @@ class RegisterController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['register', 'verify', 'resendCode', 'getRoles', 'getFromData']]);
+        $this->middleware('auth:api', ['except' => ['register', 'verify', 'resendCode', 'getRoles', 'getFromData', 'StoreRegisterPayment']]);
     }
 
     //------------------------------------------------Get registeration roles --------------------------------------------------------//
@@ -133,11 +134,14 @@ class RegisterController extends Controller
             'password' => Hash::make($request->password), 
             'api_token' => Str::random(191),
             'api_token_create_date' => carbon::now(),
-            'api_token_expire_date' => Carbon::now()->addDays(15),
-            ]);
+            'api_token_expire_date' => Carbon::now()->addDays(15)
+        ]);
+
         if($request->role_id != 'visitor'){
             $user->assignRole(DB::table('roles')->find($request->role_id)->name);
         }
+
+
 
         if($request->role_id == 3 || $request->role_id == 4){
             foreach($request->material_ids as $id){
@@ -147,6 +151,7 @@ class RegisterController extends Controller
         }
 
         if($request->role_id == 6){
+            $user->update(['salary_month' => $request->salary]);
             $image_url = Upload::uploadPDF($request->cv);
             $cv = Document::create([
                 'path' => $image_url,
@@ -154,6 +159,11 @@ class RegisterController extends Controller
                 'doucmentRef_type' => 'App\User',
             ]);
             $user->document()->save($cv);
+        }
+
+        // Student, organization, and visitor accounts are approved by default because they do not pay for register
+        if($request->role_id != 3 && $request->role_id != 4 && $request->role_id != 6){
+            $user->update(['approved' => 1]);
         }
 
         if($request->has('image')){            
@@ -167,11 +177,20 @@ class RegisterController extends Controller
             $user->image()->save($image);
         }
 
-        $code = $this->createVerificationCode();
-        $user->update(['code' => $code]);
-        $email = $user->email;
+        // If the registered user is direct/online teacher or job seeker then redirect user to payment page
+        if($request->role_id == 3 || $request->role_id == 4 || $request->role_id == 6){
+            return response()->json([
+                'user_id' => $user->id,
+                'success' => trans('api.registered'),
+            ], 200);
+        }
+        else{
+            $code = $this->createVerificationCode();
+            $user->update(['code' => $code]);
+            $email = $user->email;
 
-        return $this->sendEmail($request->email, $user->code);   
+            return $this->sendEmail($request->email, $user->code);   
+        }
     }
 
     //-------------------------------------------------------- store user data end ---------------------------------------------------//
@@ -232,10 +251,17 @@ class RegisterController extends Controller
         $verified = Verify::verifyEmail($user, $request->code);
 
         if($verified){
-            return response()->json([
-                'data' => Auth::loginUsingId($user->id, true),
-                'roles' => RoleResource::collection($user->roles),
-            ], 200);
+            if(!$user->hasRole('direct_teacher') && !$user->hasRole('online_teacher') && !$user->hasRole('job_seeker')){
+                return response()->json([
+                    'data' => Auth::loginUsingId($user->id, true),
+                    'roles' => RoleResource::collection($user->roles),
+                ], 200);
+            }
+            else{
+                return response()->json([
+                    'success' => trans('web.registred')
+                ], 200);
+            }
         }
         
         return response()->json([
@@ -253,4 +279,43 @@ class RegisterController extends Controller
     public function validateEmail($email){
         return !!User::where('email', $email)->first();
     }
+
+
+    //-----------------------------------------------Store Register payment start--------------------------------------------------------//
+    // Store register payment data
+    public function StoreRegisterPayment(Request $request){
+        $this->validate($request, [
+            'user_id' => 'required',
+            'bank_id' => 'required',
+            'name' => 'required',
+            'email' => 'required|email',
+            'phone' => 'required',
+            'cost' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+        ]);
+
+        //Store receipt data
+        $receipt = BankReceipt::create($request->all());
+        $receipt->update(['user_id' => $request->user_id]);
+
+        // Upload reciept image
+        $image_url = Upload::uploadImage($request->image);
+        $image = Image::create([
+            'path' => $image_url,
+            'imageRef_id' => $receipt->id,
+            'imageRef_type' => 'App\Models\BankReceipt'
+        ]);
+        $receipt->image()->save($image);
+
+        // Send verification code
+        $code = $this->createVerificationCode();
+        $user = User::find($request->user_id);
+        $user->update(['code' => $code]);
+
+        SendEmail::sendVerificationCode($code, $user->email);
+
+        return $this->sendEmail($user->email, $user->code);   
+    }
+    //-----------------------------------------------Store Register payment end---------------------------------------------------------//
+
 }

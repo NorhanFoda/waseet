@@ -22,7 +22,8 @@ class SavedBagResource extends JsonResource
             'image' => $this->saveRef->image,
             'name' => $this->saveRef->{'name_'.$lang},
             'description' => $this->saveRef->{'description_'.$lang},
-            'rating' => $this->saveRef->ratings->count() > 0 ? ceil($this->saveRef->ratings->sum('rate') / $this->saveRef->ratings->count()).'/5' : trans('admin.no_ratings')
+            'rating' => $this->saveRef->ratings->count() > 0 ? ceil($this->saveRef->ratings->sum('rate') / $this->saveRef->ratings->count()).'/5' : trans('admin.no_ratings'),
+            'is_saved' => auth()->user() == null ? 'unauthorized': auth()->user()->saved_bags->contains('saveRef_id', $this->saveRef->id),
         ];
     }
 }

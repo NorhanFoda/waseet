@@ -185,6 +185,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
             Route::get('delete_user', 'Admin\UserController@deleteUser')->name('users.delete');
             Route::get('subscribers', 'Admin\UserController@getSubScripers')->name('users.subscripers');
             Route::post('delete_subscribers', 'Admin\UserController@deleteSubScripers')->name('subscripers.delete');
+            Route::post('users/approve', 'Admin\UserController@approveAccount')->name('users.approve_account');
         });
 
         //Get cities
@@ -214,6 +215,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
     Route::post('register/user/{role_id}', 'Web\RegisterController@register')->name('register.user');
     Route::post('verify', 'Web\RegisterController@verify')->name('register.verify');
     Route::post('resend/code', 'Web\RegisterController@resendCode')->name('register.resend_code');
+    Route::post('register/pay', 'Web\RegisterController@StoreRegisterPayment')->name('register.pay');
 
     // Login
     Route::get('login/user', 'Web\LoginController@getLoginForm')->name('login.form');

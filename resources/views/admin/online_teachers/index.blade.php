@@ -48,6 +48,8 @@
                                     <th>{{trans('admin.phone_main')}}</th>
                                     <th>{{trans('admin.email')}}</th>
                                     <th>{{trans('admin.edu_level')}}</th>
+                                    <th>{{trans('admin.account_status')}}</th>
+                                    <th>{{trans('admin.receipt')}}</th>
                                     <th>{{trans('admin.action')}}</th>
                                 </tr>
                                 </thead>
@@ -59,7 +61,16 @@
                                                 <td>{{$teacher->name}}</td>
                                                 <td>{{$teacher->phone_main}}</td>
                                                 <td>{{$teacher->email}}</td>
-                                                <td>{{$teacher->address}}</td>
+                                                <td>
+                                                    {{$teacher->edu_level_id == 4 && $teacher->other_edu_level != null ? $teacher->other_edu_level : $teacher->edu_level->{'name_'.session('lang')} }}
+                                                </td>
+                                                <td>
+                                                    <select name="approved" class="form-control approved" data-user_id="{{$teacher->id}}">
+                                                        <option value="{{0}}" @if($teacher->approved == 0) selected @endif>{{trans('admin.not_approved')}}</option>
+                                                        <option value="{{1}}" @if($teacher->approved == 1) selected @endif>{{trans('admin.approved')}}</option>
+                                                    </select>
+                                                </td> 
+                                                <td><a href="{{$teacher->receipt->image->path}}">{{trans('admin.view_receipt')}}</a></td>
                                                 <td>
                                                     <a href="{{route('online_teachers.show', $teacher->id)}}" class="btn" style="color:white;"><i class="fa fa-eye"></i></a>
                                                     <a href="{{route('online_teachers.edit', $teacher->id)}}" class="btn" style="color:white;"><i class="fa fa-pencil-square-o"></i></a>
@@ -148,6 +159,7 @@
                 }
             })
         });
+        
     </script>
 
 @endsection

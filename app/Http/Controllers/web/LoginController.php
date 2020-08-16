@@ -41,6 +41,12 @@ class LoginController extends Controller
                 session()->flash('error', trans('web.account_not_verified'));
                 return view('web.auth.verify', compact('welcome_text', 'email'));
             }
+
+            if($user->approved == 0){
+                $welcome_text = Setting::find(1)->{'welcome_text_'.session('lang')};
+                session()->flash('error', trans('web.account_not_approved'));
+                return redirect()->back();
+            }
             
             if(Hash::check($request->password, $user->password)){ 
                 Auth::login($user);

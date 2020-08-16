@@ -10,17 +10,39 @@ function initMap(){
       center: { lat: parseFloat(lat), lng: parseFloat(lng) } // Current user location or SA.
     });
 
+    // Add address marker on map
     var address_marker = new google.maps.Marker({
         position:  { lat:parseFloat(lat), lng: parseFloat(lng) },
         draggable: true,
         title:"Address Location"
     });
 
+    // add info window for address marker
+    var infowindow = new google.maps.InfoWindow();  
+    google.maps.event.addListener(address_marker, 'mouseover', (function(marker) {  
+      return function() {  
+          var content = "<div>Residence Address</div>"; 
+          infowindow.setContent(content);  
+          infowindow.open(map, marker);  
+      }  
+    })(address_marker));  
+
+    // add tesching address marker on map
     var teaching_marker = new google.maps.Marker({
         position:  { lat: parseFloat(lat) + 0.08, lng: parseFloat(lng) + 0.08 },
         draggable: true,
         title:"Teaching Address Location"
     });
+
+    // add info window for teaching address marker
+    var infowindow = new google.maps.InfoWindow();  
+    google.maps.event.addListener(teaching_marker, 'mouseover', (function(marker) {  
+      return function() {  
+          var content = "<div>Teaching Address</div>"; 
+          infowindow.setContent(content);  
+          infowindow.open(map, marker);  
+      }  
+    })(teaching_marker));  
 
     // To add the marker to the map, call setMap();
     address_marker.setMap(map);
@@ -32,8 +54,6 @@ function initMap(){
     // Add event listner to address_marker
     google.maps.event.addListener(address_marker, 'dragend', function() {
         geocodePosition(address_marker.getPosition());
-     
-        
     });
      
     // Add event listner to teaching_address_marker

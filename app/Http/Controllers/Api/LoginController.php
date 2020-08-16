@@ -36,7 +36,13 @@ class LoginController extends Controller
             if($user->is_verified == 0){
                 return response()->json([
                     'error' => trans('api.email_not_verified'),
-                    'active' => $user->is_verified == 0 ? false : true,
+                    // 'active' => $user->is_verified == 0 ? false : true,
+                ], 400);
+            }
+
+            if($user->approved == 0){
+                return response()->json([
+                    'error' => trans('web.account_not_approved'),
                 ], 400);
             }
             

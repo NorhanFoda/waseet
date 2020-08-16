@@ -117,6 +117,12 @@ return [
     'address' => 'Address',
     'bio_ar' => 'Additional information in Arabic',
     'bio_en' => 'Additional information in English',
+    'receipt' => 'Bank Receipt',
+    'view_receipt' => 'View Receipt',
+    'approve' => 'Approve Account',
+    'approved' => 'Approved',
+    'not_approved' => 'Not Approved',
+    'account_status' => 'Account Status',
 
     // Jobs
     'work_hours' => 'Work hours',

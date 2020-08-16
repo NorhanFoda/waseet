@@ -16,7 +16,7 @@ return [
     'profile' => 'حسابى',
     'orders' => 'الطلبات',
     'saved' => 'المحفوظات',
-    'contact_us' => 'تواصل معنا',
+    'contact_us_nav' => 'تواصل معنا',
     'country' => 'الدولة',
     'register' => 'حساب جديد',
     'home' => 'الرئيسية',
@@ -58,7 +58,8 @@ return [
     'password_confirmation' => 'تأكيد كلمة المرور',
     'do_register' => 'تسجيل',
     'image' => 'الصورة',
-    'registred' => 'تم إنشاء الحساب بنجاح',
+    'registred' => 'تم إنشاء الحساب بنجاح و سوف يتم تفعيله بعد مراجعة الإدارة',
+    'account_not_approved' => 'لم يتم تفعيل الحساب بعد من قبل الإدارة',
     'logout' => 'تسجيل الخروج',
     'forget_password' => 'نسيت كلمة المرور؟',
     'do_login' => 'دخول',
@@ -86,6 +87,11 @@ return [
     'added_to_cart' => 'تمت إضافة الحقيبة لعربة التسوق',
     'removed_from_cart' => 'تم حذف الحقيبة من عربة التسوق',
     'edu_type' => 'نوع الدراسة',
+    'teaching_method' => 'طريقة التعليم',
+    'other_stage' => 'صف أخر',
+    'other_nationality' => 'جنسية أخرى',
+    'other_edu_level' => 'مستوى تعليمى أخر',
+    'other_edu_type' => 'نوع دراسة آخر',
 
     // Job
     'work_hours' => 'ساعات عمل',
@@ -209,7 +215,7 @@ return [
     'contents_text' => 'هذا النص هو مثال لنص يمكن ان يستبدل فى نفس المساحة',
 
     // Contact us
-    'contact_us_text' => 'هذا النص هو مثال لنص يمكن ان يستبدل فى نفس المساحة',
+    'contact_us' => 'هذا النص هو مثال لنص يمكن ان يستبدل فى نفس المساحة',
     'send_us_message' => 'إرسل لنا رسالتك',
     'write_message_here' => 'أكتب رسالتك هنا',
     'name' => 'الإسم',

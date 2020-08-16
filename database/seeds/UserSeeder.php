@@ -19,6 +19,7 @@ class UserSeeder extends Seeder
                 'password' => bcrypt('123456789'),
                 'phone_main' => '00966563793461',
                 'is_verified' => 1,
+                'approved' => 1,
                 'stage_id' => null,
             ],
             [
@@ -27,6 +28,7 @@ class UserSeeder extends Seeder
                 'password' => bcrypt('123456789'),
                 'phone_main' => '00966563793462',
                 'is_verified' => 1,
+                'approved' => 1,
                 'stage_id' => 1,
             ],
         ]);

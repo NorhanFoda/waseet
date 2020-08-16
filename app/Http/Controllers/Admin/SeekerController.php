@@ -49,7 +49,7 @@ class SeekerController extends Controller
     public function store(SeekerRequest $request)
     {
         $seeker = User::create($request->all());
-        $seeker->update(['is_verified' => 1, 'password' => Hash::make($request->password)]);
+        $seeker->update(['is_verified' => 1, 'password' => Hash::make($request->password), 'approved' => 1]);
         $seeker->assignRole('job_seeker');
 
         $image_url = Upload::uploadPDF($request->cv);

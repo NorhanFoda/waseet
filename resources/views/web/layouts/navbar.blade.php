@@ -66,7 +66,7 @@
           <li><a href="{{route('payment.banks')}}">{{trans('web.banks')}}</a></li>
         @endif
         
-        <li><a href="{{route('contact_us')}}">{{trans('web.contact_us')}}</a></li>
+        <li><a href="{{route('contact_us')}}">{{trans('web.contact_us_nav')}}</a></li>
         @if(Auth::check())
           <li>
             <form action="{{route('logout')}}" method="POST">

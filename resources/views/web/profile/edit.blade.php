@@ -184,7 +184,7 @@
                                 @if(Auth::user()->hasRole('admin') || Auth::user()->hasRole('direct_teacher') || Auth::user()->hasRole('online_teacher') ||
                                     Auth::user()->hasRole('organization') || Auth::user()->hasRole('job_seeker'))
                                     {{-- country start --}}
-                                    <div class="big-label">{{trans('web.country')}} :</div>
+                                    {{-- <div class="big-label">{{trans('web.country')}} :</div>
                                     <div class="userName">
                                         <select class="custom-input" id="country_id" name="country_id" required>
                                             <option value="{{null}}">{{trans('web.country')}}</option>
@@ -192,11 +192,11 @@
                                             <option value="{{$country->id}}" @if(Auth::user()->country_id == $country->id) selected @endif>{{$country->{'name_'.session('lang')} }}</option>
                                             @endforeach
                                         </select>
-                                    </div>
+                                    </div> --}}
                                     {{-- country end --}}
 
                                     {{-- city start --}}
-                                    <div class="big-label">{{trans('web.city')}} :</div>
+                                    {{-- <div class="big-label">{{trans('web.city')}} :</div>
                                     <div class="userName">
                                         <select class="custom-input" id="city_id" name="city_id" required>
                                             <option value="{{null}}">{{trans('web.city')}}</option>
@@ -204,24 +204,8 @@
                                                 <option value="{{$city->id}}" @if(Auth::user()->city_id == $city->id) selected @endif>{{$city->{'name_'.session('lang')} }}</option>
                                             @endforeach
                                         </select>
-                                    </div>
+                                    </div> --}}
                                     {{-- city end --}}
-
-                                    {{-- address start --}}
-                                    <div class="big-label">{{trans('web.address')}} :</div>
-                                    <div class="userName">
-                                        <input type="text" name="address" value="{{Auth::user()->address}}" id="confirm" placeholder="الرياض ,المملكة العربية السعودية" required/>
-                                    </div>
-                                    {{-- address end --}}
-                                @endif
-
-                                @if(Auth::user()->hasRole('direct_teacher'))
-                                    {{-- teaching address start --}}
-                                    <div class="big-label">{{trans('web.teaching_address')}} :</div>
-                                    <div class="userName">
-                                        <input type="text" name="teaching_address" value="{{Auth::user()->teaching_address}}" id="confirm" placeholder="الرياض ,المملكة العربية السعودية" required/>
-                                    </div>
-                                    {{-- teaching address end --}}
                                 @endif
 
                                 @if(Auth::user()->hasRole('job_seeker'))
@@ -265,6 +249,38 @@
                                         </div>
                                     @endif
                                     {{-- cv end --}}
+                                @endif
+
+                                @if(Auth::user()->hasRole('direct_teacher') || Auth::user()->hasRole('online_teacher') ||
+                                    Auth::user()->hasRole('organization') || Auth::user()->hasRole('job_seeker'))
+
+                                    {{-- address start --}}
+                                    <div class="big-label">{{trans('web.address')}} :</div>
+                                    <div class="userName">
+                                        <input type="text" name="address" value="{{Auth::user()->address}}" id="confirm" placeholder="الرياض ,المملكة العربية السعودية" required/>
+                                        <input type="hidden" name="lat" value="" id="location_lat">
+                                        <input type="hidden" name="long" value="" id="location_lng"> 
+                                    </div>
+                                    {{-- address end --}}
+
+                                @endif
+
+                                @if(Auth::user()->hasRole('direct_teacher'))
+                                    {{-- teaching address start --}}
+                                    <div class="big-label">{{trans('web.teaching_address')}} :</div>
+                                    <div class="userName">
+                                        <input type="text" name="teaching_address" value="{{Auth::user()->teaching_address}}" id="confirm" placeholder="الرياض ,المملكة العربية السعودية" required/>
+                                        <input type="hidden" name="lat2" value="" id="location_lat2">
+                                        <input type="hidden" name="long2" value="" id="location_lng2">
+                                    </div>
+                                    {{-- teaching address end --}}
+                                @endif
+
+                                @if(Auth::user()->hasRole('direct_teacher') || Auth::user()->hasRole('online_teacher') ||
+                                    Auth::user()->hasRole('organization') || Auth::user()->hasRole('job_seeker'))
+                                    <div class="map-div">
+                                        <div id="gmap" style="width:100%;height:400px;">
+                                    </div>
                                 @endif
 
                             </div>

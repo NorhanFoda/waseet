@@ -27,7 +27,7 @@ class OnlineTeacherController extends Controller
      */
     public function index()
     {
-        $teachers = User::whereHas('roles', function($q){
+        $teachers = User::with('edu_level')->whereHas('roles', function($q){
             $q->where('name', 'online_teacher');
         })->get();
 
@@ -58,7 +58,7 @@ class OnlineTeacherController extends Controller
     {
         $teacher = User::create($request->all());
         $teacher->assignRole('online_teacher');
-        $teacher->update(['is_verified' => 1, 'password' => Hash::make($request->password)]);
+        $teacher->update(['is_verified' => 1, 'password' => Hash::make($request->password), 'approved' => 1]);
         foreach($request->material_ids as $id){
             $teacher->materials()->attach($id);
         }

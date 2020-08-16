@@ -47,6 +47,8 @@
                                     <th>{{trans('admin.name')}}</th>
                                     <th>{{trans('admin.phone_main')}}</th>
                                     <th>{{trans('admin.email')}}</th>
+                                    <th>{{trans('admin.account_status')}}</th>
+                                    <th>{{trans('admin.receipt')}}</th>
                                     <th>{{trans('admin.action')}}</th>
                                 </tr>
                                 </thead>
@@ -58,6 +60,13 @@
                                                 <td>{{$seeker->name}}</td>
                                                 <td>{{$seeker->phone_main}}</td>
                                                 <td>{{$seeker->email}}</td>
+                                                <td>
+                                                    <select name="approved" class="form-control approved" data-user_id="{{$seeker->id}}">
+                                                        <option value="{{0}}" @if($seeker->approved == 0) selected @endif>{{trans('admin.not_approved')}}</option>
+                                                        <option value="{{1}}" @if($seeker->approved == 1) selected @endif>{{trans('admin.approved')}}</option>
+                                                    </select>
+                                                </td> 
+                                                <td><a href="{{$seeker->receipt->image->path}}">{{trans('admin.view_receipt')}}</a></td>
                                                 <td>
                                                     <a href="{{route('seekers.show', $seeker->id)}}" class="btn" style="color:white;"><i class="fa fa-eye"></i></a>
                                                     <a href="{{route('seekers.edit', $seeker->id)}}" class="btn" style="color:white;"><i class="fa fa-pencil-square-o"></i></a>

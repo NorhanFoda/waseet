@@ -75,6 +75,7 @@ class JobsController extends Controller
                 $cv_path = auth()->user()->document->path;
         
                 auth()->user()->update($request->all());
+                auth()->user()->update(['salary_month' => $request->salary]);
                 auth()->user()->job_applications()->attach($request->job_id);
         
                 if($request->has('cv')){
@@ -124,6 +125,7 @@ class JobsController extends Controller
     public function anounceJob(JobRequest $request){
         if(app('request')->header('Authorization') != null && Auth::guard('api')->check()){
             if(app('request')->header('Authorization') == 'Bearer '.auth()->user()->api_token){
+
                 if(!auth()->user()->hasRole('organization')){
                     return response()->json([
                         'error' => trans('web.login_as_roganization')
@@ -169,11 +171,38 @@ class JobsController extends Controller
 
     // return edit form data
     public function editAnnounceJobFormData($id){
-        $job = Job::find($id);
-        return response()->json([
-            'job' => $job,
-            'specializations' => SpecializationResource::collection(Specialization::all())
-        ], 200);
+        if(app('request')->header('Authorization') != null && Auth::guard('api')->check()){
+            if(app('request')->header('Authorization') == 'Bearer '.auth()->user()->api_token){
+
+                if(!auth()->user()->hasRole('organization')){
+                    return response()->json([
+                        'error' => trans('web.login_as_roganization')
+                    ], 404);
+
+                    $job = Job::find($id);
+                    if($job->announcer->id != auth()->user()->id){
+                        return response()->json([
+                            'error' => trans('web.login_as_roganization')
+                        ], 404);
+                    }
+
+                    return response()->json([
+                        'job' => $job,
+                        'specializations' => SpecializationResource::collection(Specialization::all())
+                    ], 200);
+                }
+            }
+            else{
+                return response()->json([
+                    'error' => trans('admin.error')
+                ], 404);
+            }
+        }
+        else{
+            return response()->json([
+                'error' => trans('admin.error')
+            ], 404);
+        }
     }
 
     // update job
@@ -265,11 +294,31 @@ class JobsController extends Controller
 
     // get all jobs of the authed user with organization role
     public function getOrganizationJobs(){
-        
-        return response()->json([
-            'data' => JobResource::collection(auth()->user()->job_announces()->where('approved', 1)->get()),
-        ], 200);
-        
+
+        if(app('request')->header('Authorization') != null && Auth::guard('api')->check()){
+            if(app('request')->header('Authorization') == 'Bearer '.auth()->user()->api_token){
+                
+                if(!auth()->user()->hasRole('organization')){
+                    return response()->json([
+                        'error' => trans('web.login_as_roganization')
+                    ], 404);
+                }
+    
+                return response()->json([
+                    'data' => JobResource::collection(auth()->user()->job_announces()->where('approved', 1)->get()),
+                ], 200);
+            }
+            else{
+                return response()->json([
+                    'error' => trans('api.unauthorized')
+                ], 400);
+            }
+        }
+        else{
+            return response()->json([
+                'error' => trans('api.unauthorized')
+            ], 400);
+        }
     }
     
 }

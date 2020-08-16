@@ -103,6 +103,7 @@ class ProfileController extends Controller
             if(app('request')->header('Authorization') == 'Bearer '.auth()->user()->api_token){
         
                 auth()->user()->update($request->all());
+                auth()->user()->update(['salary_month' => $request->salary]);
         
                 if((auth()->user()->hasRole('online_teacher') || auth()->user()->hasRole('direct_teacher')) && $request->has('material_ids')){
                     foreach($request->material_ids as $id){

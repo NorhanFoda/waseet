@@ -26,6 +26,7 @@ class SavedTeacherResource extends JsonResource
                 'role' => $this->saveRef->hasRole('online_teacher') ? trans('web.online_teacher') : trans('web.direct_teacher'),
                 'nationality' => $this->saveRef->nationality->{'name_'.$lang},
                 'address' => $this->saveRef->address,
+                'is_saved' => auth()->user() == null ? 'unauthorized': auth()->user()->saved_teachers->contains('saveRef_id', $this->saveRef->id),
             ];
         }
         else{

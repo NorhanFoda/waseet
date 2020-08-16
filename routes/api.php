@@ -28,6 +28,7 @@ Route::group(['middleware' => ['lang', 'CheckApiTokenExpirationDate']], function
     Route::post('regiter', 'Api\RegisterController@register');
     Route::post('verify', 'Api\RegisterController@verify');
     Route::post('resend_code', 'Api\RegisterController@resendCode');
+    Route::post('api_register/pay', 'Api\RegisterController@StoreRegisterPayment');
 
     // Countries
     Route::get('countries', 'Api\CountryController@getCountries');

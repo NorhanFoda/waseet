@@ -110,6 +110,10 @@
 
     <script src="{{asset('web/js/main.js')}}"></script>
 
+    {{-- GOOGLE MAPS START --}}
+    {{-- <script src="{{asset('web/js/map/map.js')}}"></script> --}}
+    {{-- GOOGLE MAPS END --}}
+
     <script>
 
         $("#owl2").owlCarousel({

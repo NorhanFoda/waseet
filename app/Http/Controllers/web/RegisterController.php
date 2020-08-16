@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Students\WebStudentRequest;
 use App\Http\Requests\UserRequest;
 use App\Models\Stage;
+use App\Models\Bank;
+use App\Models\BankReceipt;
 use App\User;
 use App\Classes\Upload;
 use App\Classes\SendEmail;
@@ -42,7 +44,6 @@ class RegisterController extends Controller
 
     public function register(UserRequest $request, $role_id){
 
-        // dd($request->all());
         $old = User::where('email', $request->email)->first();
 
         // check if this user is registered before but not verified then delete it
@@ -91,6 +92,11 @@ class RegisterController extends Controller
             $user->document()->save($cv);
         }
 
+        // Student, organization, and visitor accounts are approved by default because they do not pay for register
+        if($role_id != 3 && $role_id != 4 && $role_id != 6){
+            $user->update(['approved' => 1]);
+        }
+
         if($request->has('image')){            
 
             $image_url = Upload::uploadImage($request->image);
@@ -102,16 +108,26 @@ class RegisterController extends Controller
             $user->image()->save($image);
         }
 
-        $code = $this->createVerificationCode();
-        $user->update(['code' => $code]);
-        $email = $user->email;
+        
+        // If the registered user is direct/online teacher or job seeker then redirect user to payment page
+        if($role_id == 3 || $role_id == 4 || $role_id == 6){
+            $banks = Bank::all();
+            $user_id = $user->id;
+            return view('web.auth.payment', compact('banks', 'user_id'));
+        }
+        // If the registred user is student or visitor or organozation then send verification code
+        else{
+            $code = $this->createVerificationCode();
+            $user->update(['code' => $code]);
+            $email = $user->email;
 
-        SendEmail::sendVerificationCode($code, $user->email);
+            SendEmail::sendVerificationCode($code, $user->email);
 
-        $welcome_text = Setting::find(1)->{'welcome_text_'.session('lang')};
+            $welcome_text = Setting::find(1)->{'welcome_text_'.session('lang')};
 
-        session()->flash('success', trans('web.verification_code_sent'));
-        return view('web.auth.verify', compact('welcome_text', 'email'));
+            session()->flash('success', trans('web.verification_code_sent'));
+            return view('web.auth.verify', compact('welcome_text', 'email'));
+        }
 
     }
 
@@ -127,14 +143,10 @@ class RegisterController extends Controller
         $verified = Verify::verifyEmail($user, $request->code);
 
         if($verified){
-            Auth::login($user);
-
-            //Send mail to subscripers
-            if($user->hasRole('online_teacher') || $user->hasRole('direct_teacher')){
-                $subs = SubScriber::all();
-                foreach($subs as $sub){
-                    SendEmail::Subscripe($sub->email, route('teachers.show', $user->id), 'teacher');
-                }
+            // login user directly after code verification if user role is 
+            //student/organozation or user is visitor because they do not need admin approve
+            if(!$user->hasRole('direct_teacher') && !$user->hasRole('online_teacher') && !$user->hasRole('job_seeker')){
+                Auth::login($user);
             }
 
             session()->flash('success', trans('web.registred'));
@@ -162,5 +174,43 @@ class RegisterController extends Controller
 
     public function validateEmail($email){
         return !!User::where('email', $email)->first();
+    }
+
+    // Store register payment data
+    public function StoreRegisterPayment(Request $request){
+        $this->validate($request, [
+            'bank_id' => 'required',
+            'name' => 'required',
+            'email' => 'required|email',
+            'phone' => 'required',
+            'cost' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+        ]);
+
+        //Store receipt data
+        $receipt = BankReceipt::create($request->all());
+        $receipt->update(['user_id' => $request->user_id]);
+
+        // Upload reciept image
+        $image_url = Upload::uploadImage($request->image);
+        $image = Image::create([
+            'path' => $image_url,
+            'imageRef_id' => $receipt->id,
+            'imageRef_type' => 'App\Models\BankReceipt'
+        ]);
+        $receipt->image()->save($image);
+
+        // Send verification code
+        $code = $this->createVerificationCode();
+        $user = User::find($request->user_id);
+        $user->update(['code' => $code]);
+        $email = $user->email;
+
+        SendEmail::sendVerificationCode($code, $user->email);
+
+        $welcome_text = Setting::find(1)->{'welcome_text_'.session('lang')};
+
+        session()->flash('success', trans('web.verification_code_sent'));
+        return view('web.auth.verify', compact('welcome_text', 'email'));
     }
 }
