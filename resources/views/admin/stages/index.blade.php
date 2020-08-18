@@ -57,9 +57,11 @@
                                             <td>{{$stage->name_en}}</td>
                                             <td>
                                                 <a href="{{route('stages.show', $stage->id)}}" class="btn" style="color:white;"><i class="fa fa-eye"></i></a>
-                                                <a href="{{route('stages.edit', $stage->id)}}" class="btn" style="color:white;"><i class="fa fa-pencil-square-o"></i></a>
-                                                <a title="delete" onclick="return true;" id="confirm-color" object_id='{{$stage->id}}'
-                                                    class="delete btn" style="color:red;"><i class="fa fa-trash-o"></i></a>
+                                                @if($stage->id != 4)
+                                                    <a href="{{route('stages.edit', $stage->id)}}" class="btn" style="color:white;"><i class="fa fa-pencil-square-o"></i></a>
+                                                    <a title="delete" onclick="return true;" id="confirm-color" object_id='{{$stage->id}}'
+                                                        class="delete btn" style="color:red;"><i class="fa fa-trash-o"></i></a>
+                                                    @endif
                                             </td>
                                         </tr>
                                     @endforeach

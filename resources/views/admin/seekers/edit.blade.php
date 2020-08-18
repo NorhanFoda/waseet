@@ -145,7 +145,7 @@
                                 {{-- enter age end --}}
 
                                 {{-- select country start --}}
-                                <div class="col-6">
+                                {{-- <div class="col-6">
                                     <div class="form-group row">
                                         <div class="col-md-4">
                                             <span>{{trans('admin.country')}}</span>
@@ -161,11 +161,11 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                                 {{-- select country end --}}
 
                                 {{-- select city --}}
-                                <div class="col-6">
+                                {{-- <div class="col-6">
                                     <div class="form-group row">
                                         <div class="col-md-2">
                                             <span>{{trans('admin.city')}}</span>
@@ -181,7 +181,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                                 {{-- select city end --}}
 
                                 {{-- enter address --}}
@@ -231,6 +231,32 @@
                                     </div>
                                 </div>
                                 {{-- enter cv end --}}
+
+                                {{-- enter location --}}
+                                <div class="col-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-2">
+                                            <span>{{trans('admin.location')}}</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <input type="text" class="form-control" value="{{$seeker->address}}" placeholder="{{trans('admin.location')}}" name="address" required>
+                                            <input type="hidden" name="lat" value="{{$seeker->lat}}" id="location_lat">
+                                            <input type="hidden" name="long" value="{{$seeker->long}}" id="location_lng"> 
+                                            <div class="invalid-feedback">
+                                                {{trans('admin.location')}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- enter location end --}}
+
+                                {{-- map start --}}
+                                <div class="col-12">
+                                    <div class="map-div">
+                                        <div id="gmap" style="width:100%;height:400px;">
+                                    </div>
+                                </div>
+                                {{-- map end --}}
 
                                 <div class="col-12 text-center">
                                     <button type="submit" class="btn btn-primary mr-1 mb-1 waves-effect waves-light">{{trans('admin.save')}}</button>

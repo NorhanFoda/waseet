@@ -137,7 +137,7 @@ class User extends Authenticatable
     }
 
     public function materials(){
-        return $this->belongsToMany(Material::class);
+        return $this->belongsToMany(Material::class)->withPivot('other_material');
     }
 
     public function city(){

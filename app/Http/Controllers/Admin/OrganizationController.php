@@ -36,9 +36,9 @@ class OrganizationController extends Controller
      */
     public function create()
     {
-        $countries = Country::all();
+        // $countries = Country::all();
         $edu_types = EduType::all();
-        return view('admin.organizations.create', compact('countries', 'edu_types'));
+        return view('admin.organizations.create', compact('edu_types'));
     }
 
     /**
@@ -98,10 +98,10 @@ class OrganizationController extends Controller
     public function edit($id)
     {
         $org = User::find($id);
-        $countries = Country::all();
-        $cities = Country::find($org->country_id)->cities;
+        // $countries = Country::all();
+        // $cities = Country::find($org->country_id)->cities;
         $edu_types = EduType::all();
-        return view('admin.organizations.edit', compact('org', 'countries', 'cities', 'edu_types'));
+        return view('admin.organizations.edit', compact('org', 'edu_types'));
     }
 
     /**

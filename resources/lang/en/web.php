@@ -93,6 +93,7 @@ return [
     'other_nationality' => 'Other Nationality',
     'other_edu_level' => 'Other Educational Level',
     'other_edu_type' => 'Other Educational Type',
+
     // Job
     'work_hours' => 'Work Hours',
     'apply' => 'Apply',
@@ -118,6 +119,7 @@ return [
     'send' => 'Send',
     'login_as_roganization' => 'Please Login as Educational Institution To Continue',
     'edit_job' => 'Edit Announce',
+    'job_updated' => 'Job Updated Successfully And Will Be Viewed in Website After Adminstration Approve',
 
     // Teachers
     'contact' => 'Contact',
@@ -166,6 +168,7 @@ return [
     'address_added' => 'Address Added Successfully',
     'ps' => 'Postal Code',
     'select_city' => 'Select From Existing Cities',
+    'shipping_not_allowed_here' => 'Shipping is Only Available Inside Al Riyadh City',
 
     // Saved
     'jobs' => 'Educational Jobs',

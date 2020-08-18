@@ -35,10 +35,10 @@ class JobController extends Controller
      */
     public function create()
     {
-        $countries = Country::all();
-        $cities = City::all();
+        // $countries = Country::all();
+        // $cities = City::all();
         $specializations = Specialization::all();
-        return view('admin.jobs.create', compact('countries', 'cities', 'specializations'));
+        return view('admin.jobs.create', compact('specializations'));
     }
 
     /**
@@ -106,11 +106,11 @@ class JobController extends Controller
      */
     public function edit($id)
     {
-        $countries = Country::all();
+        // $countries = Country::all();
         $job = Job::find($id);
-        $cities = City::where('country_id', $job->country_id)->get();
+        // $cities = City::where('country_id', $job->country_id)->get();
         $specializations = Specialization::all();
-        return view('admin.jobs.edit', compact('countries', 'cities', 'job', 'specializations'));
+        return view('admin.jobs.edit', compact('job', 'specializations'));
     }
 
     /**
@@ -123,20 +123,7 @@ class JobController extends Controller
     public function update(JobRequest $request, $id)
     {
         $job = Job::find($id);
-        $job->update([
-            'name_ar' => $request->name_ar,
-            'name_en' => $request->name_en,
-            'work_hours' => $request->work_hours,
-            'exper_years' => $request->exper_years,
-            'required_number' => $request->required_number,
-            'free_places' => $request->free_places,
-            'description_ar' => $request->description_ar,
-            'description_en' => $request->description_en,
-            'required_age' => $request->required_age,
-            'salary' => $request->salary,
-            'country_id' => $request->country_id,
-            'city_id' => $request->city_id,
-        ]);
+        $job->update($request->all());
         // $job->cities()->sync($request->city_ids);
 
         if($request->has('image')){

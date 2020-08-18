@@ -85,18 +85,34 @@
                                             <span>{{trans('admin.specialization')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <select name="specialization_id" class="form-control" required>
+                                            <select name="specialization_id" class="form-control" id="specialization_id" required>
                                                 @foreach($specializations as $spc)
                                                     <option value="{{$spc->id}}">{{$spc->{'name_'.session('lang')} }}</option>
                                                 @endforeach
                                             </select>
                                             <div class="invalid-feedback">
-                                                {{trans('admin.city')}}
+                                                {{trans('admin.specialization')}}
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 {{-- specialozation end --}}
+
+                                {{-- other specialization --}}
+                                <div class="col-12" id="other_specialization" hidden>
+                                    <div class="form-group row">
+                                        <div class="col-md-2">
+                                            <span>{{trans('admin.other_specialization')}}</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <input type="text" name="other_specialization" class="form-control">
+                                            <div class="invalid-feedback">
+                                                {{trans('admin.other_specialization')}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- other specialozation end --}}
 
                                 {{-- enter exper_years --}}
                                 <div class="col-6">
@@ -195,7 +211,7 @@
                                 {{-- salary end --}}
 
                                 {{-- select country start --}}
-                                <div class="col-12">
+                                {{-- <div class="col-12">
                                     <div class="form-group row">
                                         <div class="col-md-2">
                                             <span>{{trans('admin.country')}}</span>
@@ -211,28 +227,11 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                                 {{-- select country end --}}
 
                                 {{-- select city --}}
                                 {{-- <div class="col-12">
-                                    <div class="form-group row">
-                                        <div class="col-md-2">
-                                            <span>{{trans('admin.city')}}</span>
-                                        </div>
-                                        <div class="col-md-10">
-                                            <select name="city_ids[]" class="form-control" id="city_id" multiple required>
-                                                @foreach ($countries[0]->cities as $city)
-                                                    <option value="{{$city->id}}">{{$city->{'name_'.session('lang')} }}</option>
-                                                @endforeach
-                                            </select>
-                                            <div class="invalid-feedback">
-                                                {{trans('admin.city')}}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> --}}
-                                <div class="col-12">
                                     <div class="form-group row">
                                         <div class="col-md-2">
                                             <span>{{trans('admin.city')}}</span>
@@ -248,7 +247,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                                 {{-- select city end --}}
 
                                 {{-- enter location --}}
@@ -315,6 +314,33 @@
                                 </div>
                                 {{-- enter image end --}}
 
+                                {{-- enter address --}}
+                                <div class="col-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-2">
+                                            <span>{{trans('admin.location')}}</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <input type="text" name="address" class="form-control" placeholder="{{trans('admin.location')}}">
+                                            <input type="hidden" name="lat" value="" id="location_lat">
+                                            <input type="hidden" name="long" value="" id="location_lng"> 
+                                            <input type="hidden" name="country" value="" id="country"> 
+                                            <div class="invalid-feedback">
+                                                {{trans('admin.image_required')}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- enter address end --}}
+
+                                {{-- map start --}}
+                                <div class="col-12">
+                                    <div class="map-div">
+                                        <div id="gmap" style="width:100%;height:400px;">
+                                    </div>
+                                </div>
+                                {{-- map end --}}
+
                                 <div class="col-12 text-center">
                                     <button type="submit" class="btn btn-primary mr-1 mb-1 waves-effect waves-light">{{trans('admin.save')}}</button>
                                 </div>
@@ -330,17 +356,32 @@
 
 @section('scripts')
     <script>
+        // $(document).ready(function(){
+        //     $('#country_id').change(function(){
+        //         $.ajax({
+        //             url: "{{route('countries.getCities')}}",
+        //             type: "POST",
+        //             dataType: 'html',
+        //             data: {"_token": "{{ csrf_token() }}", id: $(this).val() },
+        //             success: function(data){
+        //                 $('#city_id').html(data);
+        //             }
+        //         });
+        //     });
+        // });
+
+        // Show other_specialization input when other specialization is selected
         $(document).ready(function(){
-            $('#country_id').change(function(){
-                $.ajax({
-                    url: "{{route('countries.getCities')}}",
-                    type: "POST",
-                    dataType: 'html',
-                    data: {"_token": "{{ csrf_token() }}", id: $(this).val() },
-                    success: function(data){
-                        $('#city_id').html(data);
-                    }
-                });
+            $('#specialization_id').change(function(){
+                if($(this).val() == 3){
+                    $('#other_specialization').attr('hidden', false);
+                    $("input[name*='other_specialization']").attr('required', true);
+                }
+                else{
+                    $('#other_specialization').attr('hidden', true);                
+                    $("input[name*='other_specialization']").attr('required', false);
+                    $("input[name*='other_specialization']").val('');
+                }
             });
         });
     </script>

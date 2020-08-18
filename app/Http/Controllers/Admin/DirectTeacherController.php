@@ -11,6 +11,7 @@ use App\Models\EduLevel;
 use App\Models\Country;
 use App\Models\City;
 use App\Models\Image;
+use App\Models\Bank;
 use App\Classes\Upload;
 use App\Http\Requests\Teachers\DirectTeacherRequest;
 use App\Http\Requests\Teachers\EditDirectTeacherRequest;
@@ -44,8 +45,8 @@ class DirectTeacherController extends Controller
         $nationalities = Nationality::all();
         $materials = Material::all();
         $levels = EduLevel::all();
-        $countries = Country::all();
-        return view('admin.direct_teachers.create', compact('nationalities', 'materials', 'levels', 'countries'));
+        // $countries = Country::all();
+        return view('admin.direct_teachers.create', compact('nationalities', 'materials', 'levels'));
     }
 
     /**
@@ -57,10 +58,13 @@ class DirectTeacherController extends Controller
     public function store(DirectTeacherRequest $request)
     {
         $teacher = User::create($request->all());
-        $teacher->update(['is_verified' => 1, 'password' => Hash::make($request->password), 'approved' => 1]);
+        $teacher->update(['is_verified' => 1, 'password' => Hash::make($request->password), 'approved' => 0]);
         $teacher->assignRole('direct_teacher');
         foreach($request->material_ids as $id){
             $teacher->materials()->attach($id);
+            if($id == 4){
+                $teacher->materials()->where('material_id', 4)->first()->pivot->update(['other_material' => $request->other_material]);
+            }
         }
 
         if($request->has('image')){            
@@ -77,13 +81,17 @@ class DirectTeacherController extends Controller
         if($teacher){
 
             //Send mail to subscripers
-            $subs = SubScriber::all();
-            foreach($subs as $sub){
-                SendEmail::Subscripe($sub->email, route('teachers.show', $teacher->id), 'teacher');
-            }
+            // $subs = SubScriber::all();
+            // foreach($subs as $sub){
+            //     SendEmail::Subscripe($sub->email, route('teachers.show', $teacher->id), 'teacher');
+            // }
 
-            session()->flash('success', trans('admin.created'));
-            return redirect()->route('direct_teachers.index');
+            // session()->flash('success', trans('admin.created'));
+            // return redirect()->route('direct_teachers.index');
+            $user_id = $teacher->id;
+            $banks = Bank::all();
+            $type = 'direct_teacher';
+            return view('admin.auth.payment', compact('banks', 'user_id', 'type'));
         }
         else{
             session()->flash('error', trans('admin.error'));
@@ -114,10 +122,10 @@ class DirectTeacherController extends Controller
         $nationalities = Nationality::all();
         $materials = Material::all();
         $levels = EduLevel::all();
-        $countries = Country::all();
+        // $countries = Country::all();
         $teacher = User::find($id);
-        $cities = City::where('country_id', $teacher->country_id)->get();
-        return view('admin.direct_teachers.edit', compact('nationalities', 'materials', 'levels', 'countries', 'teacher', 'cities'));
+        // $cities = City::where('country_id', $teacher->country_id)->get();
+        return view('admin.direct_teachers.edit', compact('nationalities', 'materials', 'levels', 'teacher'));
     }
 
     /**
@@ -132,6 +140,11 @@ class DirectTeacherController extends Controller
         $teacher = User::find($id);
         $teacher->update($request->all());
         $teacher->materials()->sync($request->material_ids);
+        foreach($request->material_ids as $id){
+            if($id == 4){
+                $teacher->materials()->where('material_id', 4)->first()->pivot->update(['other_material' => $request->other_material]);
+            }
+        }
 
         if($request->has('image')){
 

@@ -141,13 +141,13 @@ class RegisterController extends Controller
             $user->assignRole(DB::table('roles')->find($request->role_id)->name);
         }
 
-
-
         if($request->role_id == 3 || $request->role_id == 4){
             foreach($request->material_ids as $id){
                 $user->materials()->attach($id);
+                if($id == 4){
+                    $user->materials()->where('material_id', 4)->first()->pivot->update(['other_material' => $request->other_material]);
+                }
             }
-
         }
 
         if($request->role_id == 6){

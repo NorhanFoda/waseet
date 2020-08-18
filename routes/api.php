@@ -73,16 +73,17 @@ Route::group(['middleware' => ['lang', 'CheckApiTokenExpirationDate']], function
 
         // Addresses
         Route::get('user_addresses', 'Api\AddressController@index');
-        Route::get('addresses', 'Api\AddressController@getAddressesDetails');
-        Route::post('addresses', 'Api\AddressController@store');
-        Route::put('addresses', 'Api\AddressController@update');
-        Route::delete('addresses', 'Api\AddressController@destroy');
+        Route::get('addresses/get', 'Api\AddressController@getAddressesDetails');
+        Route::post('addresses/store', 'Api\AddressController@store');
+        Route::post('addresses/update', 'Api\AddressController@update');
+        Route::delete('addresses/delete', 'Api\AddressController@destroy');
 
         // Carts
         Route::get('carts', 'Api\CartController@index');
         Route::post('carts', 'Api\CartController@store');
-        // Route::put('carts', 'Api\CartController@update');
+        // Route::post('carts', 'Api\CartController@update');
         // Route::delete('carts', 'Api\CartController@destroy');
+        Route::post('carts/update', 'Api\CartController@updateCarts');
 
         // Payment methods
         Route::get('methods', 'Api\PaymentMethodController@index');
@@ -104,7 +105,7 @@ Route::group(['middleware' => ['lang', 'CheckApiTokenExpirationDate']], function
         Route::get('api_jobs/announce', 'Api\JobsController@announceJobFormData');
         Route::post('jobs/announce', 'Api\JobsController@anounceJob');
         Route::get('api_jobs/announce/{id}', 'Api\JobsController@editAnnounceJobFormData');
-        Route::put('jobs/announce/{id}/edit', 'Api\JobsController@editJob');
+        Route::post('jobs/announce/{id}/edit', 'Api\JobsController@editJob');
         Route::get('api_jobs/apply_data/', 'Api\JobsController@applyToJobData');
         Route::get('api_organization/jobs', 'Api\JobsController@getOrganizationJobs');
 
@@ -121,7 +122,8 @@ Route::group(['middleware' => ['lang', 'CheckApiTokenExpirationDate']], function
         Route::get('cv', 'Api\ProfileController@getCV');
         Route::get('saved/all', 'Api\ProfileController@getSavedPosts');
         Route::get('profile/edit', 'Api\ProfileController@getEditPersonalInfoData');
-        Route::put('profile/update', 'Api\ProfileController@updatePersonalInfo');
+        Route::post('profile/update', 'Api\ProfileController@updatePersonalInfo');
+        Route::post('cv/update', 'Api\ProfileController@updateCV');
 
     });
     

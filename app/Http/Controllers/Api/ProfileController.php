@@ -11,11 +11,13 @@ use App\Http\Resources\Job\SavedJobResource;
 use App\Http\Resources\User\SeekerResource;
 use App\Http\Resources\Teachers\MaterialResource;
 use App\Http\Requests\User\UpdatePersonalInfoProfileRequest;
+use App\Http\Resources\User\editProfileResource;
 use App\Models\Stage;
 use App\Models\EduLevel;
 use App\Models\EduType;
 use App\Models\Material;
 use App\Models\Nationality;
+use App\Classes\Upload;
 use App\User;
 
 class ProfileController extends Controller
@@ -76,7 +78,8 @@ class ProfileController extends Controller
         if(app('request')->header('Authorization') != null && Auth::guard('api')->check()){
             if(app('request')->header('Authorization') == 'Bearer '.auth()->user()->api_token){
                 return response()->json([
-                    'user' => User::with('image', 'document', 'stage', 'materials', 'edu_level', 'edu_type', 'nationality', 'addresses')->find(auth()->user()->id),
+                    // 'user' => User::with('image', 'document', 'stage', 'materials', 'edu_level', 'edu_type', 'nationality', 'addresses', 'roles')->find(auth()->user()->id),
+                    'user' => new editProfileResource(auth()->user()),
                     'stages' => MaterialResource::collection(Stage::all()),
                     'materials' => MaterialResource::collection(Material::all()),
                     'nationalities' => MaterialResource::collection(Nationality::all()),
@@ -106,8 +109,13 @@ class ProfileController extends Controller
                 auth()->user()->update(['salary_month' => $request->salary]);
         
                 if((auth()->user()->hasRole('online_teacher') || auth()->user()->hasRole('direct_teacher')) && $request->has('material_ids')){
+                    auth()->user()->materials()->sync($request->material_ids);
+
                     foreach($request->material_ids as $id){
-                        auth()->user()->materials()->sync($id);
+                        // auth()->user()->materials()->sync($id);
+                        if($id == 4){
+                            auth()->user()->materials()->where('material_id', 4)->first()->pivot->update(['other_material' => $request->other_material]);
+                        }
                     }
                 }
         
@@ -170,5 +178,29 @@ class ProfileController extends Controller
                 'error' => trans('api.unauthorized')
             ], 400);
         }
+    }
+
+    public function updateCV(Request $request){
+        $this->validate($request, [
+            'cv' => 'required|mimetypes:application/pdf|max:10000',
+        ]);
+
+        $removed = Upload::deletePDF(auth()->user()->document->path);
+        if($removed){
+            $new_cv = Upload::uploadPDF($request->cv);
+            auth()->user()->document->update([
+                'path' => $new_cv
+            ]);
+
+            return response()->json([
+                'success' => trans('admin.updated')
+            ], 200);
+        }
+        else{
+            return response()->json([
+                'error' => trans('api.error')
+            ], 404);
+        }
+
     }
 }

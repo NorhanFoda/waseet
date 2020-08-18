@@ -39,8 +39,11 @@
                             {{$org->name}}
                         </div>
                         <div class="card-title">
-                            {{$org->country->{'name_'.session('lang')} }} - 
-                            {{$org->city->{'name_'.session('lang')} }}
+                            {{-- {{$org->country->{'name_'.session('lang')} }} - 
+                            {{$org->city->{'name_'.session('lang')} }} --}}
+                            {{trans('admin.location')}}: {{$org->address}}
+                            <br>
+                            {{trans('admin.organization_type')}}: {{$org->edu_type_id == 4 && $org->other_edu_type != null ? $org->other_edu_type : $org->edu_type->{'name_'.session('lang')} }}
                         </div>
                     </div>
                     <div class="card-body">

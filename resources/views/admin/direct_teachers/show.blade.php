@@ -39,11 +39,14 @@
                             {{$teacher->name}}
                         </div>
                         <div class="card-title">
-                            {{trans('admin.address')}} : {{$teacher->country->{'name_'.session('lang')} }} - 
-                            {{$teacher->city->{'name_'.session('lang')} }}
+                            {{-- {{trans('admin.address')}} : {{$teacher->country->{'name_'.session('lang')} }} - 
+                            {{$teacher->city->{'name_'.session('lang')} }} --}}
+                            {{trans('admin.address')}}: {{$teacher->address}}
                             <br>
-                            {{trans('admin.nationality')}} : {{$teacher->nationality->{'name_'.session('lang')} }} <br>
+                            {{trans('admin.nationality')}} : {{$teacher->nationality_id == 3 && $teacher->other_nationality ? $teacher->other_nationality : $teacher->nationality->{'name_'.session('lang')} }}
                             {{trans('admin.teaching_address')}} : {{$teacher->teaching_address }}
+                            <br>
+                            {{trans('admin.edu_level')}} : {{$teacher->edu_level_id == 4 && $teacher->other_edu_level ? $teacher->other_edu_level : $teacher->edu_level->{'name_'.session('lang')} }}
                         </div>
                     </div>
                     <div class="card-body">
@@ -93,9 +96,13 @@
                                     @foreach($teacher->materials as $material)
                                         <tr>
                                             <td>{{$loop->iteration}}</td>
-                                            <td>{{$material->{'name_'.session('lang')} }}</td>
                                             <td>
-                                                <a href="{{route('materials.show', $material->id)}}" class="btn" style="color:white;"><i class="fa fa-eye"></i></a>
+                                                {{$material->id == 4 && $material->pivot->other_material != null ? $material->pivot->other_material : $material->{'name_'.session('lang')} }}
+                                            </td>
+                                            <td>
+                                                @if($material->id != 4)
+                                                    <a href="{{route('materials.show', $material->id)}}" class="btn" style="color:white;"><i class="fa fa-eye"></i></a>
+                                                @endif
                                             </td>
                                         </tr>
                                     @endforeach

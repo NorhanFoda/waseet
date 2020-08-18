@@ -12,6 +12,7 @@ use App\Classes\Upload;
 use App\Http\Requests\Seekers\SeekerRequest;
 use App\Http\Requests\Seekers\EditSeekerRequest;
 use Illuminate\Support\Facades\Hash;
+use App\Models\Bank;
 
 class SeekerController extends Controller
 {
@@ -36,8 +37,8 @@ class SeekerController extends Controller
      */
     public function create()
     {
-        $countries = Country::all();
-        return view('admin.seekers.create', compact('countries'));
+        // $countries = Country::all();
+        return view('admin.seekers.create');
     }
 
     /**
@@ -49,7 +50,7 @@ class SeekerController extends Controller
     public function store(SeekerRequest $request)
     {
         $seeker = User::create($request->all());
-        $seeker->update(['is_verified' => 1, 'password' => Hash::make($request->password), 'approved' => 1]);
+        $seeker->update(['is_verified' => 1, 'password' => Hash::make($request->password), 'approved' => 0]);
         $seeker->assignRole('job_seeker');
 
         $image_url = Upload::uploadPDF($request->cv);
@@ -61,8 +62,13 @@ class SeekerController extends Controller
         $seeker->document()->save($cv);
 
         if($seeker){
-            session()->flash('success', trans('admin.created'));
-            return redirect()->route('seekers.index');
+            // session()->flash('success', trans('admin.created'));
+            // return redirect()->route('seekers.index');
+            $user_id = $seeker->id;
+            $banks = Bank::all();
+            $type = 'seeker';
+            return view('admin.auth.payment', compact('banks', 'user_id', 'type'));
+            // return redirect()->route('register.payment', compact('user_id'));
         }
         else{
             session()->flash('error', trans('admin.error'));

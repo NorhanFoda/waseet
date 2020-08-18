@@ -50,6 +50,10 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
         Route::get('admin-password/reset/{email}', 'Admin\Auth\ResetPasswordController@showResetForm')->name('admin.password.reset');
         Route::post('admin-password/update', 'Admin\Auth\ResetPasswordController@update')->name('admin.password.update');
 
+        // Regiseration Payment
+        // Route::get('register/payment', 'Admin\HomeController@registerPayment')->name('register.payment');
+        Route::post('register/payment', 'Admin\HomeController@storeRegisterPayment')->name('register.store_receipt');
+
         // Change lang
         Route::get('change_locale/{locale}', 'Admin\HomeController@change_locale')->name('change_locale');
 

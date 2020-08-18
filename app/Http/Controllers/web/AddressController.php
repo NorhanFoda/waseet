@@ -12,50 +12,66 @@ class AddressController extends Controller
 {
     public function index(){
         $addresses = auth()->user()->addresses;
-        $countries = Country::all();
-        $cities = count($countries) > 0 ? $countries[0]->cities : [];
+        // $countries = Country::all();
+        // $cities = count($countries) > 0 ? $countries[0]->cities : [];
 
-        return view('web.addresses.index', compact('addresses', 'countries', 'cities'));
+        return view('web.addresses.index', compact('addresses'));
     }
 
     public function store(Request $request){
 
         $this->validate($request, [
-            'country_id' => 'required',
+            'lat' => 'required',
+            'long' => 'required',
             'address' => 'required',
-            'postal_code' => 'required',
         ]);
 
-        if($request->has('city_id')){
-            $address = Address::create($request->all());
-            $address->update(['user_id' => auth()->user()->id]);
-            session()->flash('success', trans('web.address_added'));
-            return redirect()->back();
-        }
-        else{
-            $this->validate($request, [
-                'name_ar' => 'required',
-                'name_en' => 'required'
-            ]);
+        // if($request->city != 'الرياض' && $request->city != 'Al Riyadh' && $request->city != 'Riyadh'){
+        //     session()->flash('error', trans('web.shipping_not_allowed_here'));
+        //     return redirect()->back();
+        // }
 
-            $city = City::create([
-                'country_id' => $request->country_id,
-                'name_ar' => $request->name_ar,
-                'name_en' => $request->name_en
-            ]);
+        $address = Address::create($request->all());
+        $address->update(['user_id' => auth()->user()->id]);
+        session()->flash('success', trans('web.address_added'));
+        return redirect()->back();
 
-            $address = Address::create([
-                'country_id' => $request->country_id,
-                'city_id' => $city->id,
-                'address' => $request->address,
-                'postal_code' => $request->postal_code,
-                'user_id' =>  auth()->user()->id,
-            ]);
+        // $this->validate($request, [
+        //     'country_id' => 'required',
+        //     'address' => 'required',
+        //     'postal_code' => 'required',
+        // ]);
 
-            session()->flash('success', trans('web.address_added'));
-            return redirect()->back();
+        // if($request->has('city_id')){
+        //     $address = Address::create($request->all());
+        //     $address->update(['user_id' => auth()->user()->id]);
+        //     session()->flash('success', trans('web.address_added'));
+        //     return redirect()->back();
+        // }
+        // else{
+        //     $this->validate($request, [
+        //         'name_ar' => 'required',
+        //         'name_en' => 'required'
+        //     ]);
 
-        }
+        //     $city = City::create([
+        //         'country_id' => $request->country_id,
+        //         'name_ar' => $request->name_ar,
+        //         'name_en' => $request->name_en
+        //     ]);
+
+        //     $address = Address::create([
+        //         'country_id' => $request->country_id,
+        //         'city_id' => $city->id,
+        //         'address' => $request->address,
+        //         'postal_code' => $request->postal_code,
+        //         'user_id' =>  auth()->user()->id,
+        //     ]);
+
+        //     session()->flash('success', trans('web.address_added'));
+        //     return redirect()->back();
+
+        // }
 
     }
 

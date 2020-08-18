@@ -49,7 +49,7 @@ class StudentController extends Controller
     public function store(StudentRequest $request)
     {
         $student = User::create($request->all());
-        $seeker->update(['is_verified' => 1, 'password' => Hash::make($request->password)]);
+        $student->update(['is_verified' => 1, 'password' => Hash::make($request->password)]);
         $student->assignRole('student');
 
         if($request->has('image')){

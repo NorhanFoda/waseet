@@ -66,7 +66,8 @@
                                 <p>{{$job->exper_years}} {{trans('web.exper_years_2')}}</p>
                             </li>
                             <li>
-                                <p>{{$job->city->{'name_'.session('lang')} }} , {{$job->country->{'name_'.session('lang')} }}</p>
+                                {{-- <p>{{$job->city->{'name_'.session('lang')} }} , {{$job->country->{'name_'.session('lang')} }}</p> --}}
+                                <p>{{$job->country}}</p>
                             </li>
                         </ul>
 

@@ -55,6 +55,13 @@
                                             @endforeach
                                         </select>
                                     </div>
+
+                                    @if(Auth::user()->edu_type_id == 4 && Auth::user()->other_edu_type != null)
+                                        <div class="big-label other_edu_type">{{trans('web.other_edu_type')}} :</div>
+                                        <div class="userName other_edu_type">
+                                            <input type="text" name="other_edu_type" id="country" placeholder="{{trans('web.other_edu_type')}}" value="{{Auth::user()->other_edu_type}}" >
+                                        </div>
+                                    @endif
                                     {{-- edu type end --}}
                                 @endif
 
@@ -103,13 +110,20 @@
                                     {{-- stage start --}}
                                     <div class="big-label">{{trans('web.stage')}} :</div>
                                     <div class="userName">
-                                        <select class="custom-input" name="stage_id" required>
+                                        <select class="custom-input" id="stage_id" name="stage_id" required>
                                             <option value="{{null}}">{{trans('web.stage')}}</option>
                                             @foreach($stages as $stage)
                                             <option value="{{$stage->id}}" @if(Auth::user()->stage_id == $stage->id) selected @endif>{{$stage->{'name_'.session('lang')} }}</option>
                                             @endforeach
                                         </select>
                                     </div>
+
+                                    @if(Auth::user()->stage_id == 4 && Auth::user()->other_stage != null)
+                                        <div class="big-label other_stage">{{trans('web.other_stage')}} :</div>
+                                        <div class="userName other_stage">
+                                            <input type="text" name="other_stage" id="country" placeholder="{{trans('web.other_stage')}}" value="{{Auth::user()->other_stage}}" >
+                                        </div>
+                                    @endif
                                     {{-- stage end --}}
                                 @endif
 
@@ -126,14 +140,30 @@
                                     {{-- edu level start --}}
                                     <div class="big-label">{{trans('web.edu_level')}} :</div>
                                     <div class="userName">
-                                        <select class="custom-input" name="edu_level_id" required>
+                                        <select class="custom-input" name="edu_level_id" id="edu_level_id" required>
                                             <option value="{{null}}">{{trans('web.edu_level')}}</option>
                                             @foreach($levels as $level)
                                             <option value="{{$level->id}}" @if(Auth::user()->edu_level_id == $level->id) selected @endif>{{$level->{'name_'.session('lang')} }}</option>
                                             @endforeach
                                         </select>
                                     </div>
+
+                                    @if(Auth::user()->edu_level_id == 4 && Auth::user()->other_edu_level != null)
+                                        <div class="big-label other_edu_level">{{trans('web.other_edu_level')}} :</div>
+                                        <div class="userName other_edu_level">
+                                            <input type="text" name="other_edu_level" id="country" placeholder="{{trans('web.other_edu_type')}}" value="{{Auth::user()->other_edu_level}}" >
+                                        </div>
+                                    @endif
                                     {{-- edu level end --}}
+
+                                    {{-- teaching_method start --}}
+                                    @if(Auth::user()->hasRole('online_teacher'))
+                                        <div class="big-label">{{trans('web.teaching_method')}} :</div>
+                                        <div class="userName">
+                                            <input type="text" name="teaching_method" id="country" placeholder="{{trans('web.teaching_method')}}" value="{{Auth::user()->teaching_method}}" required>
+                                        </div>
+                                    @endif
+                                    {{-- teaching_method end --}}
 
                                     {{-- materials start --}}
                                     {{-- <div class="big-label">{{trans('web.materials')}} :</div>
@@ -160,8 +190,8 @@
                                         <div class="all-checks">
                                             @foreach($materials as $material)
                                                 <div class="custom-check text-right-dir">
-                                                    <input type="checkbox" name="{{$material->id}}" id="check-{{$material->id}}">
-                                                    <label for="check-{{$material->id}}"> @if(old('level_id') == $material->id) selected @endif {{$material->{'name_'.session('lang')} }}</label>
+                                                    <input type="checkbox" name="material_ids[]" value="{{$material->id}}" @if(Auth::user()->materials->contains($material->id)) checked @endif  id="check-{{$material->id}}">
+                                                    <label for="check-{{$material->id}}">{{$material->{'name_'.session('lang')} }}</label>
                                                 </div>
                                             @endforeach
                                         </div>
@@ -171,13 +201,20 @@
                                     {{-- nationality start --}}
                                     <div class="big-label">{{trans('web.nationality')}} :</div>
                                     <div class="userName">
-                                        <select class="custom-input" name="nationality_id" required>
+                                        <select class="custom-input" name="nationality_id" id="nationality_id" required>
                                             <option value="{{null}}">{{trans('web.nationality')}}</option>
                                             @foreach($nationalities as $nation)
                                             <option value="{{$nation->id}}" @if(Auth::user()->nationality_id == $nation->id) selected @endif>{{$nation->{'name_'.session('lang')} }}</option>
                                             @endforeach
                                         </select>
                                     </div>
+
+                                    @if(Auth::user()->nationality_id == 3 && Auth::user()->other_nationality != null)
+                                        <div class="big-label other_nationality">{{trans('web.other_nationality')}} :</div>
+                                        <div class="userName other_nationality">
+                                            <input type="text" name="other_nationality" id="country" placeholder="{{trans('web.other_nationality')}}" value="{{Auth::user()->other_nationality}}" >
+                                        </div>
+                                    @endif
                                     {{-- nationality end --}}
                                 @endif
 
@@ -258,8 +295,8 @@
                                     <div class="big-label">{{trans('web.address')}} :</div>
                                     <div class="userName">
                                         <input type="text" name="address" value="{{Auth::user()->address}}" id="confirm" placeholder="الرياض ,المملكة العربية السعودية" required/>
-                                        <input type="hidden" name="lat" value="" id="location_lat">
-                                        <input type="hidden" name="long" value="" id="location_lng"> 
+                                        <input type="hidden" name="lat" value="{{Auth::user()->lat}}" id="location_lat">
+                                        <input type="hidden" name="long" value="{{Auth::user()->long}}" id="location_lng"> 
                                     </div>
                                     {{-- address end --}}
 
@@ -270,8 +307,8 @@
                                     <div class="big-label">{{trans('web.teaching_address')}} :</div>
                                     <div class="userName">
                                         <input type="text" name="teaching_address" value="{{Auth::user()->teaching_address}}" id="confirm" placeholder="الرياض ,المملكة العربية السعودية" required/>
-                                        <input type="hidden" name="lat2" value="" id="location_lat2">
-                                        <input type="hidden" name="long2" value="" id="location_lng2">
+                                        <input type="hidden" name="lat2" value="{{Auth::user()->teaching_lat}}" id="location_lat2">
+                                        <input type="hidden" name="long2" value="{{Auth::user()->teaching_long}}" id="location_lng2">
                                     </div>
                                     {{-- teaching address end --}}
                                 @endif
@@ -300,35 +337,93 @@
 
 @section('scripts')
     <script>
+        // get cities of selected country
         $(document).ready(function(){
-            $('#country_id').change(function(){
-                $.ajax({
-                    url: "{{route('countries.getCities')}}",
-                    type: "POST",
-                    dataType: 'html',
-                    data: {"_token": "{{ csrf_token() }}", id: $(this).val() },
-                    success: function(data){
-                        $('#city_id').html(data);
-                    }
-                });
-            });
+        //     $('#country_id').change(function(){
+        //         $.ajax({
+        //             url: "{{route('countries.getCities')}}",
+        //             type: "POST",
+        //             dataType: 'html',
+        //             data: {"_token": "{{ csrf_token() }}", id: $(this).val() },
+        //             success: function(data){
+        //                 $('#city_id').html(data);
+        //             }
+        //         });
+        //     });
+        // });
+
+        // Show other_stage input when user selects other option stage_id
+        $(document).on('change', '#stage_id', function(){
+            if($(this).val() == 4){
+                $('.other_stage').attr('hidden', false);
+                $('.other_stage').attr('required', true);
+                $("input[name*='other_stage']").val('{{Auth::user()->other_stage}}');
+            }
+            else{
+                $('.other_stage').attr('hidden', true);                
+                $('.other_stage').attr('required', false);
+                $("input[name*='other_stage']").val('');
+            }
+        });
+
+        // Show other_nationality input when user selects other option nationality_id
+        $(document).on('change', '#nationality_id', function(){
+            if($(this).val() == 3){
+                $('.other_nationality').attr('hidden', false);
+                $('.other_nationality').attr('required', true);
+                $("input[name*='other_nationality']").val('{{Auth::user()->other_nationality}}');
+            }
+            else{
+                $('.other_nationality').attr('hidden', true); 
+                $('.other_nationality').attr('required', false);               
+                $("input[name*='other_nationality']").val('');
+            }
+        });
+
+        // Show other_edu_level input when user selects other option edu_level_id
+        $(document).on('change', '#edu_level_id', function(){
+            if($(this).val() == 4){
+                $('.other_edu_level').attr('hidden', false);
+                $('.other_edu_level').attr('required', true);
+                $("input[name*='other_edu_level']").val('{{Auth::user()->other_edu_level}}');
+            }
+            else{
+                $('.other_edu_level').attr('hidden', true);  
+                $('.other_edu_level').attr('required', false);              
+                $("input[name*='other_edu_level']").val('');
+            }
+        });
+
+        // Show other_edu_type input when user selects other option edu_type_id
+        $(document).on('change', '#edu_type_id', function(){
+            if($(this).val() == 4){
+                $('.other_edu_type').attr('hidden', false);
+                $('.other_edu_type').attr('required', true);
+                $("input[name*='other_edu_type']").val('{{Auth::user()->other_edu_type}}');
+            }
+            else{
+                $('.other_edu_type').attr('hidden', true);                
+                $('.other_edu_type').attr('required', false);
+                $("input[name*='other_edu_type']").val('');
+            }
         });
 
         
-        $(".title-check").click(function(){
-            $(".all-checks").slideToggle().css("overflow","auto");
-        })
-        
-        $(function() {
-            var $wina = $(window); // or $box parent container
-            var $boxa = $(".custom-menu-select");
-            $wina.on("click.Bst", function(event) {
-                if (
-                    $boxa.has(event.target).length === 0 && //checks if descendants of $box was clicked
-                    !$boxa.is(event.target) //checks if the $box itself was clicked
-                ){
-                    $(".all-checks").slideUp();
-                }
+            $(".title-check").click(function(){
+                $(".all-checks").slideToggle().css("overflow","auto");
+            })
+            
+            $(function() {
+                var $wina = $(window); // or $box parent container
+                var $boxa = $(".custom-menu-select");
+                $wina.on("click.Bst", function(event) {
+                    if (
+                        $boxa.has(event.target).length === 0 && //checks if descendants of $box was clicked
+                        !$boxa.is(event.target) //checks if the $box itself was clicked
+                    ){
+                        $(".all-checks").slideUp();
+                    }
+                });
             });
         });
     </script>

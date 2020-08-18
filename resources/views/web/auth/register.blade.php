@@ -407,56 +407,56 @@
             // });
 
             // Show other_stage input when user selects other option stage_id
-              $(document).on('change', '#stage_id', function(){
-                if($(this).val() == 4){
-                  $('#other_stage').attr('hidden', false);
-                  $('#other_stage').attr('required', true);
-                }
-                else{
-                  $('#other_stage').attr('hidden', true);                
-                  $('#other_stage').attr('required', false);
-                  $("input[name*='other_stage']").val('');
-                }
-              });
+            $(document).on('change', '#stage_id', function(){
+              if($(this).val() == 4){
+                $('#other_stage').attr('hidden', false);
+                $('#other_stage').attr('required', true);
+              }
+              else{
+                $('#other_stage').attr('hidden', true);                
+                $('#other_stage').attr('required', false);
+                $("input[name*='other_stage']").val('');
+              }
+            });
 
-              // Show other_nationality input when user selects other option nationality_id
-              $(document).on('change', '#nationality_id', function(){
-                if($(this).val() == 3){
-                  $('#other_nationality').attr('hidden', false);
-                  $('#other_nationality').attr('required', true);
-                }
-                else{
-                  $('#other_nationality').attr('hidden', true); 
-                  $('#other_nationality').attr('required', false);               
-                  $("input[name*='other_nationality']").val('');
-                }
-              });
+            // Show other_nationality input when user selects other option nationality_id
+            $(document).on('change', '#nationality_id', function(){
+              if($(this).val() == 3){
+                $('#other_nationality').attr('hidden', false);
+                $('#other_nationality').attr('required', true);
+              }
+              else{
+                $('#other_nationality').attr('hidden', true); 
+                $('#other_nationality').attr('required', false);               
+                $("input[name*='other_nationality']").val('');
+              }
+            });
 
-              // Show other_edu_level input when user selects other option edu_level_id
-              $(document).on('change', '#edu_level_id', function(){
-                if($(this).val() == 4){
-                  $('#other_edu_level').attr('hidden', false);
-                  $('#other_edu_level').attr('required', true);
-                }
-                else{
-                  $('#other_edu_level').attr('hidden', true);  
-                  $('#other_edu_level').attr('required', false);              
-                  $("input[name*='other_edu_level']").val('');
-                }
-              });
+            // Show other_edu_level input when user selects other option edu_level_id
+            $(document).on('change', '#edu_level_id', function(){
+              if($(this).val() == 4){
+                $('#other_edu_level').attr('hidden', false);
+                $('#other_edu_level').attr('required', true);
+              }
+              else{
+                $('#other_edu_level').attr('hidden', true);  
+                $('#other_edu_level').attr('required', false);              
+                $("input[name*='other_edu_level']").val('');
+              }
+            });
 
-              // Show other_edu_type input when user selects other option edu_type_id
-              $(document).on('change', '#edu_type_id', function(){
-                if($(this).val() == 4){
-                  $('#other_edu_type').attr('hidden', false);
-                  $('#other_edu_type').attr('required', true);
-                }
-                else{
-                  $('#other_edu_type').attr('hidden', true);                
-                  $('#other_edu_type').attr('required', false);
-                  $("input[name*='other_edu_type']").val('');
-                }
-              });
+            // Show other_edu_type input when user selects other option edu_type_id
+            $(document).on('change', '#edu_type_id', function(){
+              if($(this).val() == 4){
+                $('#other_edu_type').attr('hidden', false);
+                $('#other_edu_type').attr('required', true);
+              }
+              else{
+                $('#other_edu_type').attr('hidden', true);                
+                $('#other_edu_type').attr('required', false);
+                $("input[name*='other_edu_type']").val('');
+              }
+            });
 
             $(".custom-file input").on("change", function() {
               var fileName = $(this).val().split("\\").pop();
@@ -471,7 +471,6 @@
                   $(this).removeClass("active")
               }
             });
-
         });
         
         $(".title-check").click(function(){

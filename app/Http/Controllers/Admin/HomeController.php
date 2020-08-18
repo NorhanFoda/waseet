@@ -12,6 +12,7 @@ use App\Models\Document;
 use App\Models\BagCategory;
 use App\Models\Bag;
 use App\Models\Stage;
+use App\Models\Image;
 use App\Models\EduType;
 use App\Models\EduLevel;
 use App\Models\Material;
@@ -21,6 +22,9 @@ use App\Models\Nationality;
 // use App\Models\PaymentMethod;
 use App\Models\Bank;
 use App\Models\Announce;
+use App\Models\BankReceipt;
+use App\Classes\Upload;
+use App\Models\SubScriber;
 use DB;
 
 class HomeController extends Controller
@@ -91,5 +95,59 @@ class HomeController extends Controller
         session(['lang' => $locale]);
 	    $url = \LaravelLocalization::getLocalizedURL(\App::getLocale(), \URL::previous());
 		return \Redirect::to($url);
+    }
+
+    // public function registerPayment(){
+    //     $banks = Bank::all();
+    //     return view('admin.auth.payment', compact('banks'));
+    // }
+
+    public function storeRegisterPayment(Request $request){
+        // dd($request->all());
+        $this->validate($request, [
+            'bank_id' => 'required',
+            'name' => 'required',
+            'email' => 'required|email',
+            'phone' => 'required',
+            'cost' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+        ]);
+
+        //Store receipt data
+        $receipt = BankReceipt::create($request->all());
+        $receipt->update(['user_id' => $request->user_id]);
+
+        // Upload reciept image
+        $image_url = Upload::uploadImage($request->image);
+        $image = Image::create([
+            'path' => $image_url,
+            'imageRef_id' => $receipt->id,
+            'imageRef_type' => 'App\Models\BankReceipt'
+        ]);
+        $receipt->image()->save($image);
+
+        $user = User::find($request->user_id)->update(['approved' => 1]);
+
+        session()->flash('success', trans('admin.created'));
+
+        if($request->type == 'seeker'){
+            return redirect()->route('seekers.index');
+        }
+        if($request->type == 'online_teacher'){
+            //Send mail to subscripers
+            $subs = SubScriber::all();
+            foreach($subs as $sub){
+                SendEmail::Subscripe($sub->email, route('teachers.show', $teacher->id), 'teacher');
+            }
+            return redirect()->route('online_teachers.index');
+        }
+        if($request->type == 'direct_teacher'){
+            //Send mail to subscripers
+            $subs = SubScriber::all();
+            foreach($subs as $sub){
+                SendEmail::Subscripe($sub->email, route('teachers.show', $teacher->id), 'teacher');
+            }
+            return redirect()->route('direct_teachers.index');
+        }
     }
 }

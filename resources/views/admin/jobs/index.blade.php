@@ -63,7 +63,7 @@
                                             <td>
                                                 <select name="approved" class="approved form-control" data-id="{{$job->id}}">
                                                     <option value="{{0}}" @if($job->approved == 0) selected @endif>{{trans('admin.refuse')}}</option>
-                                                    <option value="{{1}}" @if($job->approved == 1) selected @endif>{{trans('admin.approve')}}</option>
+                                                    <option value="{{1}}" @if($job->approved == 1) selected @endif>{{trans('admin.accept_job')}}</option>
                                                 </select>
                                             </td>
                                             <td>

@@ -32,6 +32,7 @@ class PaymentController extends Controller
     public function prepareOrder(OrderRequest $request){
         if(app('request')->header('Authorization') != null && Auth::guard('api')->check()){
             if(app('request')->header('Authorization') == 'Bearer '.auth()->user()->api_token){
+                
                 $old_carts = auth()->user()->carts;
         
                 // Delete old carts

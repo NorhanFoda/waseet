@@ -48,8 +48,9 @@
                             </div>
                             <div class="col-md-6">
                                 <p>
-                                    {{trans('admin.address')}} : {{$seeker->country->{'name_'.session('lang')} }} - 
-                                    {{$seeker->city->{'name_'.session('lang')} }} - {{$seeker->address}}
+                                    {{-- {{trans('admin.address')}} : {{$seeker->country->{'name_'.session('lang')} }} - 
+                                    {{$seeker->city->{'name_'.session('lang')} }} - {{$seeker->address}} --}}
+                                   {{trans('admin.address')}}: {{$seeker->address}}
                                 </p>
                                 <p>{{trans('admin.salary')}}: {{$seeker->salary_month}} {{trans('admin.sr')}}</p>
                                 <p>{{trans('admin.age')}}: {{$seeker->age}} {{trans('admin.years')}}</p>

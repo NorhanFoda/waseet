@@ -144,6 +144,12 @@
                         <p>{{trans('web.email')}} :</p>
                         <a href="mailto:{{$teacher->email}}">{{$teacher->email}}</a>
                     </div>
+
+                    <div class="phone_num">
+                        <p>{{trans('web.teaching_method')}} :</p>
+                        <a href="mailto:{{$teacher->teaching_method}}">{{$teacher->teaching_method}}</a>
+                    </div>
+
                     <div class="phone_num">
                         <p>{{trans('web.location')}} :</p>
                         <h6>{{$teacher->address}}</h6>

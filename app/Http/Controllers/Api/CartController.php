@@ -8,6 +8,7 @@ use App\Models\Cart;
 use App\Models\Setting;
 use App\Models\Bag;
 use App\Http\Resources\Cart\CartResource;
+use App\Http\Requests\Carts\CartRequest;
 use Auth;
 
 class CartController extends Controller
@@ -57,9 +58,10 @@ class CartController extends Controller
                 ]);
     
                 $bag = Bag::find($request->bag_id);
+
                 if($bag == null){
                     return response()->json([
-                        'error' => trans('api.error'),
+                        'error' => trans('api.bag_not_foung'),
                     ], 400);
                 }
     
@@ -92,6 +94,48 @@ class CartController extends Controller
                 'error' => trans('api.unauthorized')
             ], 400);
         }
+    }
+
+    public function updateCarts(CartRequest $request){
+        
+        $old_carts = auth()->user()->carts;
+        
+        // Delete old carts
+        foreach($old_carts as $cart){
+            $cart->delete();
+        }
+
+        // Add new carts with new values from localStorage
+        foreach($request->carts as $cart){
+            
+            $bag = Bag::find($cart['bag_id']);
+
+            if($bag == null){
+                return response()->json([
+                    'error' => trans('api.bag_not_foung'),
+                ], 400);
+            }
+
+            $user_cart = Cart::create([
+                'user_id' => auth()->user()->id,
+                'bag_id' => $cart['bag_id'],
+                'quantity' => $cart['quantity'],
+                'total_price' => $cart['total_price'],
+                'buy_type' => $cart['buy_type'],
+            ]);
+
+            if(!$user_cart){
+                return response()->json([
+                    'error' => trans('api.error'),
+                ], 400);
+            }
+
+            auth()->user()->carts()->save($user_cart);
+        }
+
+        return response()->json([
+            'success' => trans('admin.updated')
+        ], 200);
     }
 
     // public function update(Request $request){

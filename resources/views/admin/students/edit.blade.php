@@ -135,7 +135,7 @@
                                             <span>{{trans('admin.stage')}}</span>
                                         </div>
                                         <div class="col-md-8">
-                                            <select name="stage_id" class="form-control" required>
+                                            <select name="stage_id" id="stage_id" class="form-control" required>
                                                 @foreach($stages as $stage)
                                                     <option value="{{$stage->id}}" @if($std->stage_id == $stage->id) selected @endif>{{$stage->{'name_'.session('lang')} }}</option>
                                                 @endforeach
@@ -147,6 +147,22 @@
                                     </div>
                                 </div>
                                 {{-- select stage end --}}
+
+                                {{-- other stage --}}
+                                <div class="col-12" id="other_stage" @if($std->stage_id != 4) hidden @endif>
+                                    <div class="form-group row">
+                                        <div class="col-md-2">
+                                            <span>{{trans('admin.other_stage')}}</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <input type="text" name="other_stage" value="{{$std->other_stage}}" class="form-control">
+                                            <div class="invalid-feedback">
+                                                {{trans('admin.other_stage')}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- other stage end --}}
 
                                 {{-- enter image --}}
                                 <div class="col-12">
@@ -189,16 +205,18 @@
 @section('scripts')
     <script>
         $(document).ready(function(){
-            $('#country_id').change(function(){
-                $.ajax({
-                    url: "{{route('countries.getCities')}}",
-                    type: "POST",
-                    dataType: 'html',
-                    data: {"_token": "{{ csrf_token() }}", id: $(this).val() },
-                    success: function(data){
-                        $('#city_id').html(data);
-                    }
-                });
+             //show other edu level text input when other edu level is selected
+             $('#stage_id').change(function(){
+                if($(this).val() == 4){
+                    $('#other_stage').attr('hidden', false);
+                    $("input[name*='other_stage']").attr('required', true);
+                    $("input[name*='other_stage']").val('{{$std->other_stage}}');
+                }
+                else{
+                    $('#other_stage').attr('hidden', true);                
+                    $("input[name*='other_stage']").attr('required', false);
+                    $("input[name*='other_stage']").val('');
+                }
             });
         });
     </script>

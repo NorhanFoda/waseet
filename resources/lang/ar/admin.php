@@ -39,6 +39,10 @@ return [
     'email_not_found' => 'البريد الإلكترونى غير مسجل',
     'edit_profile' => 'تعديل الملف الشخصى',
     'logout' => 'تسجيل خروج',
+    'full_name' => 'الإسم بالكامل',
+    'cost' => 'المبلغ',
+    'receipt_image' => 'صورة الحوالة',
+    'details' => 'تفاصيل إضافية',
 
     // Bag categories
     'bag_categories' => 'أقسام الحقائب',
@@ -67,6 +71,7 @@ return [
 
     // Stages
     'stages' => 'المراحل التعليمية',
+    'other_stage' => 'مرحلة تعليمية أخرى',
     
     // Users
     'name' => 'الإسم',
@@ -89,8 +94,9 @@ return [
     'organization_name' => 'المؤسسة التعليمية',
     'location' => 'الموقع',
     'refuse' => 'رفض',
-    'approve' => 'قبول',
+    'accept_job' => 'قبول',
     'update_job_status' => 'قبول/رفض الإعلان',
+    'other_specialization' => 'تخصص أخر',
 
     // Organizations
     'phone_secondary' => 'جوال إضافى',
@@ -102,6 +108,7 @@ return [
     'salary' => 'الراتب',
     'job_applicants' => 'المتقدمون إلى الوظائف',
     'organization_type' => 'نوع الدراسة',
+    'other_edu_type' => 'نوع دراسة أخر',
 
     // EduTypes
     'edu_types' => 'أنواع الدراسة',
@@ -122,6 +129,9 @@ return [
     'approved' => 'مفعل',
     'not_approved' => 'غير مفعل',
     'account_status' => 'حالة الحساب',
+    'other_edu_level' => 'مستوى تعليمى أخر',
+    'other_material' => 'مواد تعليمية أخرى',
+    'other_nationality' => 'جنسية أخرى',
 
     // Jobs
     'work_hours' => 'عدد ساعات العمل',

@@ -16,8 +16,10 @@ class Job extends Model
         'name_ar', 'name_en', 'work_hours',
         'exper_years', 'required_number',
         'free_places', 'description_ar', 'description_en', 'approved',
-        'required_age', 'salary', 'country_id', 'user_id', 'city_id', 'specialization_id',
-        // 'address',
+        'required_age', 'salary', 
+        // 'country_id', 'city_id',
+        'lat', 'long', 'address', 'country',
+        'user_id', 'specialization_id', 'other_specialization',
     ];
 
     public function image(){

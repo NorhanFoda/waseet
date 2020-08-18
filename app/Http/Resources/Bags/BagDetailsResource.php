@@ -3,6 +3,7 @@
 namespace App\Http\Resources\Bags;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use Auth;
 
 class BagDetailsResource extends JsonResource
 {
@@ -15,6 +16,13 @@ class BagDetailsResource extends JsonResource
     public function toArray($request)
     {
         $lang = \App::getLocale();
+        $is_saved = false;
+
+        if(app('request')->header('Authorization') != null && Auth::guard('api')->check()){
+            if(app('request')->header('Authorization') == 'Bearer '.Auth::guard('api')->user()->api_token){
+                $is_saved = Auth::guard('api')->user() == null ? 'unauthorized': Auth::guard('api')->user()->saved_bags->contains('saveRef_id', $this->id);
+            }
+        }
 
         return [
             'id' => $this->id,
@@ -25,7 +33,7 @@ class BagDetailsResource extends JsonResource
             'description' => $this->{'description_'.$lang},
             'contents' => $this->{'contents_'.$lang},
             'benefits' => $this->{'benefits_'.$lang},
-            'is_saved' => auth()->user() == null ? 'unauthorized': auth()->user()->saved_bags->contains('saveRef_id', $this->id),
+            'is_saved' => $is_saved,
         ];
     }
 }

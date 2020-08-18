@@ -27,9 +27,17 @@ class CreateJobsTable extends Migration
             $table->integer('required_age');
             $table->string('salary');
             $table->boolean('approved')->default(0);
-            $table->unsignedBigInteger('country_id')->nullable()->index();
-            $table->unsignedBigInteger('city_id')->nullable()->index();
+            
+            // $table->unsignedBigInteger('country_id')->nullable()->index();
+            // $table->unsignedBigInteger('city_id')->nullable()->index();
+            $table->string('lat')->nullable();
+            $table->string('long')->nullable();
+            $table->string('address')->nullable();
+            $table->string('country')->nullable();
+
             $table->unsignedBigInteger('specialization_id')->nullable()->index();
+            $table->string('other_specialization')->nullable();
+
             $table->unsignedBigInteger('user_id')->nullable()->index();
             $table->timestamps();
         });

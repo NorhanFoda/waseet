@@ -62,7 +62,7 @@ class UserController extends Controller
         else if($user->roles[0]->name == 'online_teacher'){
             return redirect()->route('online_teachers.show', $id);
         }
-        else if($user->roles[0]->name == 'seeker'){
+        else if($user->roles[0]->name == 'job_seeker'){
             return redirect()->route('seekers.show', $id);
         }
         else if($user->roles[0]->name == 'organization'){

@@ -83,7 +83,7 @@
                                     <input type="text" id="confirm" name="salary" value="{{$job->salary}}" required placeholder="{{trans('admin.salary')}}" />
                                 </div>
 
-                                <div class="big-label">{{trans('web.country')}} : </div>
+                                {{-- <div class="big-label">{{trans('web.country')}} : </div>
                                 <div class="userName">
                                     <select class="custom-input" id="country_id" required name="country_id">
                                         <option value="{{null}}">{{trans('web.country')}}</option>
@@ -91,16 +91,16 @@
                                           <option value="{{$country->id}}" @if($job->country_id == $country->id) selected @endif>{{$country->{'name_'.session('lang')} }}</option>
                                         @endforeach
                                     </select>                           
-                                </div>
+                                </div> --}}
 
-                                <div class="big-label">{{trans('web.city')}} : </div>
+                                {{-- <div class="big-label">{{trans('web.city')}} : </div>
                                 <div class="userName">
                                     <select class="custom-input" id="city_id" required name="city_id">
                                         @foreach ($cities as $city)
                                             <option value="{{$city->id}}" @if($job->city_id == $city->id) selected @endif>{{$city->{'name_'.session('lang')} }}</option>
                                         @endforeach
                                     </select>
-                                </div>
+                                </div> --}}
 
                                 <div class="big-label">{{trans('admin.description_ar')}} : </div>
                                 <div class="userName">
@@ -123,6 +123,22 @@
                                     </div>
                                 @endif
 
+                                {{-- map start --}}
+                                {{-- address start --}}
+                                <div class="big-label">{{trans('web.location')}} :</div>
+                                <div class="userName" disabled>
+                                    <input type="text" id="confirm" value="{{$job->address}}" name="address" required placeholder="{{trans('admin.location')}}" />
+                                    <input type="hidden" name="lat" value="{{$job->lat}}" id="location_lat">
+                                    <input type="hidden" name="long" value="{{$job->long}}" id="location_lng"> 
+                                    <input type="hidden" name="country" value="{{$job->country}}" id="country"> 
+                                </div>
+                                {{-- address end --}}
+
+                                <div class="map-div">
+                                    <div id="gmap" style="width:100%;height:400px;">
+                                </div>
+                                {{-- map end --}}
+
                             </div>
 
                             <div class="submit">
@@ -140,16 +156,128 @@
 
 @section('scripts')
     <script>
-        $('#country_id').change(function(){
-            $.ajax({
-                url: "{{route('countries.getCities')}}",
-                type: "POST",
-                dataType: 'html',
-                data: {"_token": "{{ csrf_token() }}", id: $(this).val() },
-                success: function(data){
-                    $('#city_id').html(data);
+        // $('#country_id').change(function(){
+        //     $.ajax({
+        //         url: "{{route('countries.getCities')}}",
+        //         type: "POST",
+        //         dataType: 'html',
+        //         data: {"_token": "{{ csrf_token() }}", id: $(this).val() },
+        //         success: function(data){
+        //             $('#city_id').html(data);
+        //         }
+        //     });
+        // });
+
+        // MAP START
+        // Initiat google map
+        function initMap(){
+            
+            // var lat = localStorage.getItem('job_lat') ? localStorage.getItem('job_lat') : 23.885942;
+            // var lng = localStorage.getItem('job_lng') ? localStorage.getItem('job_lng') : 45.079163;
+
+            var lat = $('#location_lat').val();
+            var lng = $('#location_lng').val();
+
+            // Center the map to user current location
+            const map = new google.maps.Map(document.getElementById("gmap"), {
+                zoom: 10,
+                center: { lat: parseFloat(lat), lng: parseFloat(lng) } // Current user location or SA.
+            });
+
+            // Add address marker on map
+            var address_marker = new google.maps.Marker({
+                position:  { lat:parseFloat(lat), lng: parseFloat(lng) },
+                draggable: true,
+                title:"Job Location"
+            });
+
+            // add info window for address marker
+            var infowindow = new google.maps.InfoWindow();  
+            google.maps.event.addListener(address_marker, 'mouseover', (function(marker) {  
+                return function() {  
+                    var content = "<div>Job Location</div>"; 
+                    infowindow.setContent(content);  
+                    infowindow.open(map, marker);  
+                }  
+            })(address_marker));  
+
+            // To add the marker to the map, call setMap();
+            address_marker.setMap(map);
+
+            // Add event listner to address_marker
+            google.maps.event.addListener(address_marker, 'dragend', function() {
+                geocodePosition(address_marker.getPosition());
+            });
+        }
+
+        function geocodePosition(pos) {
+
+            // Add lat and lng values to html hidden inputs
+            $('#location_lat').val(pos.lat);
+            $('#location_lng').val(pos.lat);
+
+            // Store lat and lng values to LocalStorage
+            localStorage.setItem('job_lat', pos.lat);
+            localStorage.setItem('job_lng', pos.lng);
+
+            var geocoder = new google.maps.Geocoder;
+            geocoder.geocode({
+                latLng: pos
+            }, function(responses) {
+                if (responses && responses.length > 0) { 
+                    // console.log(responses[0].address_components[4].long_name);
+                    // updateMarkerAddress(responses[0].formatted_address);
+                    updateMarkerAddress(responses[0]);
+                } else {
+                updateMarkerAddress('Cannot determine address at this location.');
                 }
             });
-        });
+        }
+
+        // Get current location of user
+        function initGeolocation()
+        {
+            if( navigator.geolocation )
+            {
+                // Call getCurrentPosition with success and failure callbacks
+                navigator.geolocation.getCurrentPosition( success, fail );
+            }
+            else
+            {
+                alert("Sorry, your browser does not support geolocation services.");
+            }
+        }
+
+        // initGeolocation success
+        function success(position)
+        {
+            // Add lat and lng values to html hidden inputs
+            $('#location_lat').val(position.coords.latitude);
+            $('#location_lng').val(position.coords.longitude);
+
+            // Store lat and lng values to LocalStorage
+            localStorage.setItem('job_lat', position.coords.latitude);
+            localStorage.setItem('job_lng', position.coords.longitude);
+
+            // Store address lat and long in location variable
+            location.lat = position.coords.latitude;
+            location.lng = position.coords.longitude;
+
+
+            geocodePosition(location);
+        }
+
+        // initGeolocation fail
+        function fail()
+        {
+            // Could not obtain location
+            alert('Could not obtain location');
+        }
+
+        function updateMarkerAddress(address){
+            $("input[name='address']").val(address.formatted_address);    
+            $("input[name='country']").val(address.address_components[4].long_name);    
+        }
+        // MAP END
     </script>
 @endsection

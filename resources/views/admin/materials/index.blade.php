@@ -57,9 +57,11 @@
                                             <td>{{$material->name_en}}</td>
                                             <td>
                                                 <a href="{{route('materials.show', $material->id)}}" class="btn" style="color:white;"><i class="fa fa-eye"></i></a>
-                                                <a href="{{route('materials.edit', $material->id)}}" class="btn" style="color:white;"><i class="fa fa-pencil-square-o"></i></a>
-                                                <a title="delete" onclick="return true;" id="confirm-color" object_id='{{$material->id}}'
-                                                    class="delete btn" style="color:red;"><i class="fa fa-trash-o"></i></a>
+                                                @if($material->id != 4)
+                                                    <a href="{{route('materials.edit', $material->id)}}" class="btn" style="color:white;"><i class="fa fa-pencil-square-o"></i></a>
+                                                    <a title="delete" onclick="return true;" id="confirm-color" object_id='{{$material->id}}'
+                                                        class="delete btn" style="color:red;"><i class="fa fa-trash-o"></i></a>
+                                                    @endif
                                             </td>
                                         </tr>
                                     @endforeach

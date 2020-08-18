@@ -13,6 +13,7 @@ use App\Classes\SendEmail;
 use App\Http\Requests\Job\JobRequest;
 use App\Http\Resources\Job\ApplyJobFormResource;
 use App\Http\Resources\Job\SpecializationResource;
+use App\Http\resources\Job\editJobResource;
 use App\Models\Save;
 use App\Models\Bag;
 use App\User;
@@ -26,7 +27,7 @@ class JobsController extends Controller
     public function index(){
 
         return response()->json([
-            'data' => JobResource::collection(Job::with(['city', 'country', 'specialization'])->where('approved', 1)->get()),
+            'data' => JobResource::collection(Job::with(['specialization'])->where('approved', 1)->get()),
         ], 200);
     }
 
@@ -38,7 +39,7 @@ class JobsController extends Controller
                 // Only job seeker and organozation has permission to view job details
                 if(auth()->user()->hasRole('job_seeker') || auth()->user()->hasRole('organization')){
                     return response()->json([
-                        'data' => new JobDetailsResource(Job::with(['country', 'city'])->find($id)),
+                        'data' => new JobDetailsResource(Job::find($id)),
                     ], 200);
                 }
                 else{
@@ -88,7 +89,7 @@ class JobsController extends Controller
                     }
                     else{
                         return response()->josn([
-                            'error' => trans('web.error')
+                            'error' => trans('api.error')
                         ], 404);
                     }
                 }
@@ -173,24 +174,31 @@ class JobsController extends Controller
     public function editAnnounceJobFormData($id){
         if(app('request')->header('Authorization') != null && Auth::guard('api')->check()){
             if(app('request')->header('Authorization') == 'Bearer '.auth()->user()->api_token){
-
+                
                 if(!auth()->user()->hasRole('organization')){
                     return response()->json([
                         'error' => trans('web.login_as_roganization')
                     ], 404);
-
-                    $job = Job::find($id);
-                    if($job->announcer->id != auth()->user()->id){
-                        return response()->json([
-                            'error' => trans('web.login_as_roganization')
-                        ], 404);
-                    }
-
-                    return response()->json([
-                        'job' => $job,
-                        'specializations' => SpecializationResource::collection(Specialization::all())
-                    ], 200);
                 }
+
+                $job = Job::find($id);
+
+                if($job ==  null){
+                    return response()->json([
+                        'error' => trans('api.job_not_found')
+                    ], 404);
+                }
+
+                if($job->announcer->id != auth()->user()->id){
+                    return response()->json([
+                        'error' => trans('api.login_as_roganization')
+                    ], 404);
+                }
+
+                return response()->json([
+                    'job' => new editJobResource($job),
+                    'specializations' => SpecializationResource::collection(Specialization::all())
+                ], 200);
             }
             else{
                 return response()->json([
@@ -217,21 +225,34 @@ class JobsController extends Controller
                 }
     
                 $job = Job::find($id);
-                $job->update([
-                    'name_ar' => $request->name_ar,
-                    'name_en' => $request->name_en,
-                    'work_hours' => $request->work_hours,
-                    'exper_years' => $request->exper_years,
-                    'required_number' => $request->required_number,
-                    'free_places' => $request->free_places,
-                    'description_ar' => $request->description_ar,
-                    'description_en' => $request->description_en,
-                    'required_age' => $request->required_age,
-                    'salary' => $request->salary,
-                    'country_id' => $request->country_id,
-                    'city_id' => $request->city_id,
-                    'approved' => 0,
-                ]);
+
+                if($job ==  null){
+                    return response()->json([
+                        'error' => trans('api.job_not_found')
+                    ], 404);
+                }
+
+                $job->update($request->all());
+                $job->update(['approved' => 0]);
+
+                // $job->update([
+                //     'name_ar' => $request->name_ar,
+                //     'name_en' => $request->name_en,
+                //     'work_hours' => $request->work_hours,
+                //     'exper_years' => $request->exper_years,
+                //     'required_number' => $request->required_number,
+                //     'free_places' => $request->free_places,
+                //     'description_ar' => $request->description_ar,
+                //     'description_en' => $request->description_en,
+                //     'required_age' => $request->required_age,
+                //     'salary' => $request->salary,
+                //     'lat' => $request->lat,
+                //     'long' => $request->long,
+                //     'address' => $request->address,
+                //     // 'country_id' => $request->country_id,
+                //     // 'city_id' => $request->city_id,
+                //     'approved' => 0,
+                // ]);
     
                 if($request->has('image')){
                     if($job->image != null){

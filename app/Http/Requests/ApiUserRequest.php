@@ -23,7 +23,7 @@ class ApiUserRequest extends FormRequest
      */
     public function rules()
     {
-        return [
+        $rules = [
             'role_id' => 'required',
             'name' => 'required',
             'email' => 'required|email',
@@ -39,8 +39,8 @@ class ApiUserRequest extends FormRequest
             'edu_level_id' => 'required_if:role_id,3|required_if:role_id,4|required_if:other_edu_level,null',
             'other_edu_level' => 'required_if:edu_level_id,4',
 
-
             'material_ids' => 'array|required_if:role_id,3|required_if:role_id,4',
+
             'bio_ar' => 'required_if:role_id,3|required_if:role_id,4',
             'bio_en' => 'required_if:role_id,3|required_if:role_id,4',
 
@@ -66,5 +66,18 @@ class ApiUserRequest extends FormRequest
 
             'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
+
+        if(isset(request()->material_ids))
+        {
+            if(in_array('4',request()->material_ids))
+            {
+            $additionalRules = [
+                'other_material' =>  'required',
+            ];
+            $rules = $rules + $additionalRules;
+            }
+        }
+
+        return $rules;
     }
 }

@@ -108,26 +108,12 @@ $(function() {
       }
   });
 });
+$('.humburger img').hover(function() {
+        $(".menu").addClass("active");
+    });
+    
+    
 
-
-        $('.humburger img').hover(
-				
-               function () {
-    $(".menu").addClass("active");
-               }
-				
-            
-            );
-                    $('.menu').hover(
-				
-               function () {
-    $(".menu").addClass("active2");
-               }, 
-				
-               function () {
-    $(".menu").removeClass("active active2");
-               }
-            );
 //nav scroll
 $(window).scroll(function() {
   var welcome_height = $(".welcome").outerHeight();

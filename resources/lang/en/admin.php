@@ -39,6 +39,10 @@ return [
     'email_not_found' => 'Email not registered',
     'edit_profile' => 'Edit profile',
     'logout' => 'Logout',
+    'full_name' => 'Full name',
+    'cost' => 'Cost',
+    'receipt_image' => 'Receipt image',
+    'details' => 'Additional details',
 
     // Bag categories
     'bag_categories' => 'Bag categories',
@@ -67,6 +71,7 @@ return [
 
     // Stages
     'stages' => 'Stages',
+    'other_stage' => 'Other stage',
 
     // Users
     'name' => 'Name',
@@ -90,8 +95,9 @@ return [
     'organization_name' => 'Educational institutions',
     'location' => 'Location',
     'refuse' => 'Refuse',
-    'approve' => 'Approve',
+    'accept_job' => 'Approve',
     'update_job_status' => 'Approve/Refuse Announce',
+    'other_specialization' => 'Other specialization',
 
     // Organizations
     'phone_secondary' => 'Additional phone',
@@ -103,6 +109,7 @@ return [
     'salary' => 'Salary',
     'job_applicants' => 'Job applicants',
     'organization_type' => 'Type of study',
+    'other_edu_type' => 'Other Educational Type',
 
     // EduTypes
     'edu_types' => 'Education types',
@@ -123,6 +130,9 @@ return [
     'approved' => 'Approved',
     'not_approved' => 'Not Approved',
     'account_status' => 'Account Status',
+    'other_edu_level' => 'Other Educational Level',
+    'other_material' => 'Other materials',
+    'other_nationality' => 'Other nationality',
 
     // Jobs
     'work_hours' => 'Work hours',

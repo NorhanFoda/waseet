@@ -47,9 +47,9 @@
 
             <li class=" nav-item"><a href="{{route('edu_levels.index')}}"><i class="fa fa-level-up"></i><span class="menu-title" data-i18n="Dashboard">{{trans('admin.edu_levels')}}</span></a></li>
 
-            <li class=" nav-item"><a href="{{route('countries.index')}}"><i class="fa fa-flag"></i><span class="menu-title" data-i18n="Dashboard">{{trans('admin.countries')}}</span></a></li>
+            {{-- <li class=" nav-item"><a href="{{route('countries.index')}}"><i class="fa fa-flag"></i><span class="menu-title" data-i18n="Dashboard">{{trans('admin.countries')}}</span></a></li> --}}
 
-            <li class=" nav-item"><a href="{{route('cities.index')}}"><i class="fa fa-map-marker"></i><span class="menu-title" data-i18n="Dashboard">{{trans('admin.cities')}}</span></a></li>
+            {{-- <li class=" nav-item"><a href="{{route('cities.index')}}"><i class="fa fa-map-marker"></i><span class="menu-title" data-i18n="Dashboard">{{trans('admin.cities')}}</span></a></li> --}}
 
             <li class=" nav-item"><a href="{{route('specializations.index')}}"><i class="fa fa-file"></i><span class="menu-title" data-i18n="Dashboard">{{trans('admin.specializations')}}</span></a></li>
 

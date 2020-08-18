@@ -57,9 +57,11 @@
                                             <td>{{$nation->name_en}}</td>
                                             <td>
                                                 <a href="{{route('nationalities.show', $nation->id)}}" class="btn" style="color:white;"><i class="fa fa-eye"></i></a>
-                                                <a href="{{route('nationalities.edit', $nation->id)}}" class="btn" style="color:white;"><i class="fa fa-pencil-square-o"></i></a>
-                                                <a title="delete" onclick="return true;" id="confirm-color" object_id='{{$nation->id}}'
-                                                    class="delete btn" style="color:red;"><i class="fa fa-trash-o"></i></a>
+                                                @if($nation->id != 3)
+                                                    <a href="{{route('nationalities.edit', $nation->id)}}" class="btn" style="color:white;"><i class="fa fa-pencil-square-o"></i></a>
+                                                    <a title="delete" onclick="return true;" id="confirm-color" object_id='{{$nation->id}}'
+                                                        class="delete btn" style="color:red;"><i class="fa fa-trash-o"></i></a>
+                                                @endif
                                             </td>
                                         </tr>
                                     @endforeach

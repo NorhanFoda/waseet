@@ -42,12 +42,15 @@
                             {{trans('admin.update_job_status')}}
                             <select name="approved" class="approved form-control" data-id="{{$job->id}}">
                                 <option value="{{0}}" @if($job->approved == 0) selected @endif>{{trans('admin.refuse')}}</option>
-                                <option value="{{1}}" @if($job->approved == 1) selected @endif>{{trans('admin.approve')}}</option>
+                                <option value="{{1}}" @if($job->approved == 1) selected @endif>{{trans('admin.accept_job')}}</option>
                             </select>
                         </div>
                         <div class="card-title">
-                            {{$job->country->{'name_'.session('lang')} }} - {{$job->city->{'name_'.session('lang')} }} <br>
+                            {{-- {{$job->country->{'name_'.session('lang')} }} - {{$job->city->{'name_'.session('lang')} }} <br> --}}
+                            {{$job->address}} <br>
                             {{trans('admin.announcer')}} : {{$job->announcer->name}}
+                            <br>
+                            {{trans('admin.specialization')}}: {{$job->specialization_id == 3 && $job->other_specialization != null ? $job->other_specialization : $job->specialization->{'name_'.session('lang')} }}
                         </div>
                     </div>
                     <div class="card-body">

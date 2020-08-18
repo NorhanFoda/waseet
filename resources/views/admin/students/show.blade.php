@@ -47,7 +47,7 @@
                                 <p>{{trans('admin.phone_secondary')}}: {{$std->phone_secondary }}</p>
                             </div>
                             <div class="col-md-6">
-                                <p>{{trans('admin.stage')}}: {{$std->stage->{'name_'.session('lang')} }}</p>
+                                <p>{{trans('admin.stage')}}: {{$std->stage_id == 4 && $std->other_stage != null ? $std->other_stage : $std->stage->{'name_'.session('lang')} }}</p>
                                 <p>{{trans('admin.age')}}: {{$std->age}} {{trans('admin.years')}}</p>
                             </div>
                         </div>

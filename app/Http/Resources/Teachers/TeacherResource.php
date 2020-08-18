@@ -4,6 +4,7 @@ namespace App\Http\Resources\Teachers;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 use App\Http\Resources\Teachers\MaterialResource;
+use Auth;
 
 class TeacherResource extends JsonResource
 {
@@ -16,6 +17,13 @@ class TeacherResource extends JsonResource
     public function toArray($request)
     {
         $lang = \App::getLocale();
+        $is_saved = false;
+
+        if(app('request')->header('Authorization') != null && Auth::guard('api')->check()){
+            if(app('request')->header('Authorization') == 'Bearer '.Auth::guard('api')->user()->api_token){
+                $is_saved = Auth::guard('api')->user() == null ? 'unauthorized': Auth::guard('api')->user()->saved_teachers->contains('saveRef_id', $this->id);
+            }
+        }
 
         if(!$this->hasRole('admin')){
             return [
@@ -27,6 +35,7 @@ class TeacherResource extends JsonResource
                 'role' => $this->hasRole('online_teacher') ? trans('web.online_teacher') : trans('web.direct_teacher'),
                 'nationality' => $this->nationality->{'name_'.$lang},
                 'address' => $this->address,
+                'is_saved' => $is_saved,
             ];
         }
         else{

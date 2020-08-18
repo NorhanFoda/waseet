@@ -180,7 +180,7 @@
                                             <span>{{trans('admin.edu_level')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <select name="edu_level_id" class="form-control" required>
+                                            <select name="edu_level_id" id="edu_level_id" class="form-control" required>
                                                 @foreach($levels as $level)
                                                     <option value="{{$level->id}}">{{$level->{'name_'.session('lang')} }}</option>
                                                 @endforeach
@@ -193,6 +193,22 @@
                                 </div>
                                 {{-- enter edu level end --}}
 
+                                {{-- other edu_level --}}
+                                <div class="col-12" id="other_edu_level" hidden>
+                                    <div class="form-group row">
+                                        <div class="col-md-2">
+                                            <span>{{trans('admin.other_edu_level')}}</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <input type="text" name="other_edu_level" class="form-control">
+                                            <div class="invalid-feedback">
+                                                {{trans('admin.other_edu_level')}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- other edu_level end --}}
+
                                 {{-- enter material start --}}
                                 <div class="col-12">
                                     <div class="form-group row">
@@ -200,7 +216,7 @@
                                             <span>{{trans('admin.materials')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <select name="material_ids[]" class="form-control" multiple required>
+                                            <select name="material_ids[]" id="material_id" class="form-control" multiple required>
                                                 @foreach($materials as $material)
                                                     <option value="{{$material->id}}">{{$material->{'name_'.session('lang')} }}</option>
                                                 @endforeach
@@ -213,6 +229,22 @@
                                 </div>
                                 {{-- enter material end --}}
 
+                                {{-- other other_material --}}
+                                <div class="col-12" id="other_material" hidden>
+                                    <div class="form-group row">
+                                        <div class="col-md-2">
+                                            <span>{{trans('admin.other_material')}}</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <input type="text" name="other_material" class="form-control">
+                                            <div class="invalid-feedback">
+                                                {{trans('admin.other_material')}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- other other_material end --}}
+
                                 {{-- select nationality start --}}
                                 <div class="col-12">
                                     <div class="form-group row">
@@ -220,7 +252,7 @@
                                             <span>{{trans('admin.nationality')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <select name="nationality_id" class="form-control" required>
+                                            <select name="nationality_id" id="nationality_id" class="form-control" required>
                                                 @foreach($nationalities as $nation)
                                                     <option value="{{$nation->id}}">{{$nation->{'name_'.session('lang')} }}</option>
                                                 @endforeach
@@ -233,8 +265,24 @@
                                 </div>
                                 {{-- select nationality end --}}
 
+                                {{-- other other nationality --}}
+                                <div class="col-12" id="other_nationality" hidden>
+                                    <div class="form-group row">
+                                        <div class="col-md-2">
+                                            <span>{{trans('admin.other_nationality')}}</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <input type="text" name="other_nationality" class="form-control">
+                                            <div class="invalid-feedback">
+                                                {{trans('admin.other_nationality')}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- other other nationality end --}}
+
                                 {{-- select country start --}}
-                                <div class="col-6">
+                                {{-- <div class="col-6">
                                     <div class="form-group row">
                                         <div class="col-md-4">
                                             <span>{{trans('admin.country')}}</span>
@@ -250,11 +298,11 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                                 {{-- select country end --}}
 
                                 {{-- select city --}}
-                                <div class="col-6">
+                                {{-- <div class="col-6">
                                     <div class="form-group row">
                                         <div class="col-md-2">
                                             <span>{{trans('admin.city')}}</span>
@@ -270,24 +318,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                                 {{-- select city end --}}
-
-                                {{-- enter address --}}
-                                <div class="col-12">
-                                    <div class="form-group row">
-                                        <div class="col-md-2">
-                                            <span>{{trans('admin.location')}}</span>
-                                        </div>
-                                        <div class="col-md-10">
-                                            <input type="text" class="form-control" placeholder="{{trans('admin.location')}}" name="address" required>
-                                            <div class="invalid-feedback">
-                                                {{trans('admin.location')}}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                {{-- enter location end --}}
 
                                 {{-- bio_ar start --}}
                                 <div class="col-12">
@@ -337,6 +369,32 @@
                                 </div>
                                 {{-- enter image end --}}
 
+                                {{-- enter address --}}
+                                <div class="col-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-2">
+                                            <span>{{trans('admin.location')}}</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <input type="text" class="form-control" placeholder="{{trans('admin.location')}}" name="address" required>
+                                            <input type="hidden" name="lat" value="" id="location_lat">
+                                            <input type="hidden" name="long" value="" id="location_lng"> 
+                                            <div class="invalid-feedback">
+                                                {{trans('admin.location')}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- enter location end --}}
+
+                                {{-- map start --}}
+                                <div class="col-12">
+                                    <div class="map-div">
+                                        <div id="gmap" style="width:100%;height:400px;">
+                                    </div>
+                                </div>
+                                {{-- map end --}}
+
                                 <div class="col-12 text-center">
                                     <button type="submit" class="btn btn-primary mr-1 mb-1 waves-effect waves-light">{{trans('admin.save')}}</button>
                                 </div>
@@ -352,18 +410,62 @@
 
 @section('scripts')
     <script>
+        // $(document).ready(function(){
+        //     $('#country_id').change(function(){
+        //         $.ajax({
+        //             url: "{{route('countries.getCities')}}",
+        //             type: "POST",
+        //             dataType: 'html',
+        //             data: {"_token": "{{ csrf_token() }}", id: $(this).val() },
+        //             success: function(data){
+        //                 $('#city_id').html(data);
+        //             }
+        //         });
+        //     });
+        // });
+
         $(document).ready(function(){
-            $('#country_id').change(function(){
-                $.ajax({
-                    url: "{{route('countries.getCities')}}",
-                    type: "POST",
-                    dataType: 'html',
-                    data: {"_token": "{{ csrf_token() }}", id: $(this).val() },
-                    success: function(data){
-                        $('#city_id').html(data);
-                    }
-                });
+
+            //show other edu level text input when other edu level is selected
+            $('#edu_level_id').change(function(){
+                if($(this).val() == 4){
+                    $('#other_edu_level').attr('hidden', false);
+                    $("input[name*='other_edu_level']").attr('required', true);
+                }
+                else{
+                    $('#other_edu_level').attr('hidden', true);                
+                    $("input[name*='other_edu_level']").attr('required', false);
+                    $("input[name*='other_edu_level']").val('');
+                }
             });
+
+            // Show other material text input when other material is selected
+            $('#material_id').change(function(){
+                var ids = $(this).val();
+                if(ids.indexOf('4') != -1){
+                    $('#other_material').attr('hidden', false);
+                    $("input[name*='other_material']").attr('required', true);
+                }
+                else{
+                    $('#other_material').attr('hidden', true);                
+                    $("input[name*='other_material']").attr('required', false);
+                    $("input[name*='other_material']").val('');
+                }
+            });
+
+            //show other edu level text input when other edu level is selected
+            $('#nationality_id').change(function(){
+                if($(this).val() == 3){
+                    $('#other_nationality').attr('hidden', false);
+                    $("input[name*='other_nationality']").attr('required', true);
+                }
+                else{
+                    $('#other_nationality').attr('hidden', true);                
+                    $("input[name*='other_nationality']").attr('required', false);
+                    $("input[name*='other_nationality']").val('');
+                }
+            });
+            
         });
     </script>
 @endsection

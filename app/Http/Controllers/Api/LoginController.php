@@ -60,12 +60,12 @@ class LoginController extends Controller
                 }
                 else{
                     return response()->json([
-                        'error' => trans('api.unauthorized'),
+                        'error' => trans('api.invalid_password'),
                     ], 401);
                 }
             }
             else{
-                if (Hash::check($request->password, $user->password)){
+                if(Hash::check($request->password, $user->password)){
                     return response()->json([
                         'data' => Auth::loginUsingId($user->id, true),
                         'roles' => RoleResource::collection($user->roles),
@@ -73,14 +73,14 @@ class LoginController extends Controller
                 }
                 else{
                     return response()->json([
-                        'error' => trans('api.unauthorized'),
+                        'error' => trans('api.invalid_password'),
                     ], 401);
                 }
             }
         }
 
         return response()->json([
-            'error' => trans('api.unauthorized'),
+            'error' => trans('api.user_not_exsite'),
         ], 401);
     }
     //------------------------------------------------- login user end --------------------------------------------------//

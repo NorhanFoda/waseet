@@ -7,6 +7,7 @@ return [
     'email_is_verified' => 'Email is verified successfully',
     'success' => 'Task completed successfully',
     'registered' => 'Please Continue to Payment To Complete Creating Account',
+    'bags_empty' => 'No bags found',
 
     // Text
     'about_waseet_text' => 'About Waseet Al Moalm',
@@ -29,6 +30,12 @@ return [
     'invalid_code' => 'Invalid verification code',
     'error' => 'Task can not be completed',
     'login_again' => 'Please login again to continue',
+    'invalid_password' => 'Invalid password',
+    'user_not_exsite' => 'User not registered',
+    'address_not_exist' => 'Address not found',
+    'cat_not_foung' => 'Category not found',
+    'bag_not_foung' => 'Bag not found',
+    'job_not_found' => 'Job not registered',
 
     // Order
     'order_created' => 'Order crated successfully',

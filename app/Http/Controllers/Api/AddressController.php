@@ -32,7 +32,6 @@ class AddressController extends Controller
     public function store(Request $request){
         if(app('request')->header('Authorization') != null && Auth::guard('api')->check()){
             if(app('request')->header('Authorization') == 'Bearer '.auth()->user()->api_token){
-                // dd(app('request')->header('Authorization'));
                 $this->validate($request, [
                     // 'country_id' => 'required',
                     // 'city_id' => 'required',
@@ -47,7 +46,6 @@ class AddressController extends Controller
                 auth()->user()->addresses()->save($address);
 
                 if($address == null){
-                    dd('1');
                     return response()->json([
                         'error' => trans('api.error')
                     ], 400);
@@ -87,7 +85,7 @@ class AddressController extends Controller
     
                 if($address == null){
                     return response()->json([
-                        'error' => trans('api.error')
+                        'error' => trans('api.address_not_exist')
                     ], 400);
                 }
     
@@ -117,13 +115,14 @@ class AddressController extends Controller
     public function destroy(Request $request){
         if(app('request')->header('Authorization') != null && Auth::guard('api')->check()){
             if(app('request')->header('Authorization') == 'Bearer '.auth()->user()->api_token){
+
                 $this->validate($request, ['id' => 'required']);
 
                 $address = auth()->user()->addresses()->find($request->id);
 
                 if($address == null){
                     return response()->json([
-                        'error' => trans('api.error')
+                        'error' => trans('api.address_not_exist')
                     ], 400);
                 }
 

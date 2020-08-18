@@ -41,9 +41,11 @@
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <a href="{{route('edu_levels.edit', $level->id)}}" class="btn btn-primary mr-1"><i class="feather icon-edit-1"></i>{{trans('admin.edit')}}</a>
-                            <a title="delete" onclick="return true;" id="confirm-color" object_id='{{$level->id}}'
-                                class="delete btn btn-outline-danger" style="color:white;"><i class="feather icon-trash-2"></i>{{trans('admin.delete')}}</a>
+                            @if($level->id != 4)
+                                <a href="{{route('edu_levels.edit', $level->id)}}" class="btn btn-primary mr-1"><i class="feather icon-edit-1"></i>{{trans('admin.edit')}}</a>
+                                <a title="delete" onclick="return true;" id="confirm-color" object_id='{{$level->id}}'
+                                    class="delete btn btn-outline-danger" style="color:white;"><i class="feather icon-trash-2"></i>{{trans('admin.delete')}}</a>
+                            @endif
                         </div>
                     </div>
                 </div>

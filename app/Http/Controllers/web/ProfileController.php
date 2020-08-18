@@ -15,6 +15,7 @@ use App\Models\Image;
 use App\Models\Order;
 use App\Models\Bag;
 use App\Classes\Upload;
+use App\Http\Requests\User\UpdateProfileRequest;
 use App\User;
 
 class ProfileController extends Controller
@@ -36,20 +37,15 @@ class ProfileController extends Controller
         $nationalities = Nationality::all();
         $levels = EduLevel::all();
         $types = EduType::all();
-        $countries = Country::all();
-        $cities = auth()->user() == null || auth()->user()->hasRole('admin') ? City::all() : auth()->user()->country->cities;
+        // $countries = Country::all();
+        // $cities = auth()->user() == null || auth()->user()->hasRole('admin') ? City::all() : auth()->user()->country->cities;
 
-        return view('web.profile.edit', compact('stages', 'materials', 'levels', 'types', 'countries', 'nationalities', 'cities'));
+        return view('web.profile.edit', compact('stages', 'materials', 'levels', 'types', 'nationalities'));
     }
 
     // update auth user personal info
-    public function storePersonalInfo(Request $request){
-
-        $this->validate($request, [
-            'cv' => 'sometimes|mimetypes:application/pdf|max:10000',
-            'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        ]);
-
+    public function storePersonalInfo(UpdateProfileRequest $request){
+        
         auth()->user()->update($request->all());
 
         if(auth()->user()->hasRole('online_teacher') || auth()->user()->hasRole('direct_teacher')){

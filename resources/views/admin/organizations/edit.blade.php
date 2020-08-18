@@ -68,20 +68,21 @@
                                 </div>
                                 {{-- organization type end --}}
 
-                                {{-- enter other organization type start --}}
-                                <div class="col-12" id="other_organization_type" @if($org->edu_type_id != 4) hidden @endif>
+                                {{-- other edu_type --}}
+                                <div class="col-12" id="other_edu_type" @if($org->edu_type_id != 4) hidden @endif>
                                     <div class="form-group row">
                                         <div class="col-md-2">
+                                            <span>{{trans('admin.other_edu_type')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <input type="text" class="form-control" value="{{$org->other_edu_type}}" id="other_organization_type_text" name="other_edu_type" placeholder="{{trans('admin.organization_type')}}">
+                                            <input type="text" name="other_edu_type" value="{{$org->other_edu_type}}" class="form-control">
                                             <div class="invalid-feedback">
-                                                {{trans('admin.organization_type')}}
+                                                {{trans('admin.other_edu_type')}}
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                {{-- enter other organization type end --}}
+                                {{-- other edu_type end --}}
 
                                 {{-- enter name --}}
                                 <div class="col-12">
@@ -148,7 +149,7 @@
                                 {{-- enter phone secondary end --}}
 
                                 {{-- select country  --}}
-                                <div class="col-12">
+                                {{-- <div class="col-12">
                                     <div class="form-group row">
                                         <div class="col-md-2">
                                             <span>{{trans('admin.country')}}</span>
@@ -164,11 +165,11 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                                 {{-- select country end --}}
 
                                 {{-- select city --}}
-                                <div class="col-12">
+                                {{-- <div class="col-12">
                                     <div class="form-group row">
                                         <div class="col-md-2">
                                             <span>{{trans('admin.city')}}</span>
@@ -184,24 +185,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                                 {{-- select city end --}}
-
-                                {{-- enter location --}}
-                                <div class="col-12">
-                                    <div class="form-group row">
-                                        <div class="col-md-2">
-                                            <span>{{trans('admin.location')}}</span>
-                                        </div>
-                                        <div class="col-md-10">
-                                            <input type="text" class="form-control" value="{{$org->address}}" placeholder="{{trans('admin.location')}}" name="address" required>
-                                            <div class="invalid-feedback">
-                                                {{trans('admin.location')}}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                {{-- enter location end --}}
 
                                 {{-- enter image --}}
                                 <div class="col-12">
@@ -228,6 +213,32 @@
                                 </div>
                                 {{-- enter image end --}}
 
+                                {{-- enter location --}}
+                                <div class="col-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-2">
+                                            <span>{{trans('admin.location')}}</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <input type="text" class="form-control" value="{{$org->address}}" placeholder="{{trans('admin.location')}}" name="address" required>
+                                            <input type="hidden" name="lat" value="{{$org->lat}}" id="location_lat">
+                                            <input type="hidden" name="long" value="{{$org->long}}" id="location_lng"> 
+                                            <div class="invalid-feedback">
+                                                {{trans('admin.location')}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- enter location end --}}
+
+                                {{-- map start --}}
+                                <div class="col-12">
+                                    <div class="map-div">
+                                        <div id="gmap" style="width:100%;height:400px;">
+                                    </div>
+                                </div>
+                                {{-- map end --}}
+
                                 <div class="col-12 text-center">
                                     <button type="submit" class="btn btn-primary mr-1 mb-1 waves-effect waves-light">{{trans('admin.save')}}</button>
                                 </div>
@@ -244,30 +255,28 @@
 @section('scripts')
     <script>
         $(document).ready(function(){
-            $(document).on('change', '#country_id', function(){
-                $.ajax({
-                    url: "{{route('countries.getCities')}}",
-                    type: "POST",
-                    dataType: 'html',
-                    data: {"_token": "{{ csrf_token() }}", id: $(this).val() },
-                    success: function(data){
-                        $('#city_id').html(data);
-                    }
-                });
-            });
+            // $(document).on('change', '#country_id', function(){
+            //     $.ajax({
+            //         url: "{{route('countries.getCities')}}",
+            //         type: "POST",
+            //         dataType: 'html',
+            //         data: {"_token": "{{ csrf_token() }}", id: $(this).val() },
+            //         success: function(data){
+            //             $('#city_id').html(data);
+            //         }
+            //     });
+            // });
 
-            $(document).on('change', '#edu_type_id', function(){
+            $('#edu_type_id').change(function(){
                 if($(this).val() == 4){
-                    $(this).removeAttr('required');
-                    $('#other_organization_type').removeAttr('hidden');
-                    $('#other_organization_type_text').attr('required', 'required');
-                    $('#other_organization_type_text').val('{{$org->other_edu_type}}');
+                    $('#other_edu_type').attr('hidden', false);
+                    $("input[name*='other_edu_type']").attr('required', true);
+                    $("input[name*='other_edu_type']").val('{{$org->other_edu_type}}');
                 }
                 else{
-                    $('#other_organization_type_text').val('');
-                    $(this).attr('required', 'required');
-                    $('#other_organization_type').attr('hidden', 'hidden');
-                    $('#other_organization_type_text').removeAttr('required');
+                    $('#other_edu_type').attr('hidden', true);                
+                    $("input[name*='other_edu_type']").attr('required', false);
+                    $("input[name*='other_edu_type']").val('');
                 }
             });
         });

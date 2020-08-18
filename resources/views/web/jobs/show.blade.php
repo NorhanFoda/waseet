@@ -43,7 +43,7 @@
               @if(auth()->user()->hasRole('organization'))
                 <form action="">
                   <input type="checkbox" />
-                  <label for="bookmark">
+                  <label for="edit">
                     <a href="{{route('jobs.edit_job', $job->id)}}"><span> <i class="fas fa-edit"></i></span></a>
                   </label>
                 </form>
@@ -63,7 +63,8 @@
 
               <div class="phone_num">
                 <p>{{trans('web.location')}} :</p>
-                <h6>{{$job->city->{'name_'.session('lang')} }} , {{$job->country->{'name_'.session('lang')} }}</h6>
+                {{$job->address}}
+                {{-- <h6>{{$job->city->{'name_'.session('lang')} }} , {{$job->country->{'name_'.session('lang')} }}</h6> --}}
               </div>
 
               <div class="phone_num">

@@ -131,9 +131,9 @@ class JobsController extends Controller
 
     // return create job form
     public function getAddJobForm(){
-        $countries = Country::all();
+        // $countries = Country::all();
         $pecializations = Specialization::all();
-        return view('web.jobs.create', compact('countries', 'pecializations'));
+        return view('web.jobs.create', compact('pecializations'));
     }
 
     // save created job
@@ -192,21 +192,8 @@ class JobsController extends Controller
     public function updateJob(JobRequest $request, $id){
 
         $job = Job::find($id);
-        $job->update([
-            'name_ar' => $request->name_ar,
-            'name_en' => $request->name_en,
-            'work_hours' => $request->work_hours,
-            'exper_years' => $request->exper_years,
-            'required_number' => $request->required_number,
-            'free_places' => $request->free_places,
-            'description_ar' => $request->description_ar,
-            'description_en' => $request->description_en,
-            'required_age' => $request->required_age,
-            'salary' => $request->salary,
-            'country_id' => $request->country_id,
-            'city_id' => $request->city_id,
-            'approved' => 0,
-        ]);
+        $job->update($request->all());
+        $job->update(['approved' => 0]);
 
         if($request->has('image')){
             if($job->image != null){

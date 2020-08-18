@@ -14,7 +14,6 @@ class AddressResource extends JsonResource
      */
     public function toArray($request)
     {
-        $lang = \App::getLocale();
         return [
             'id' => $this->id,
             'lat' => $this->lat,

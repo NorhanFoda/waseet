@@ -63,7 +63,7 @@
                                                 <td>{{$std->phone_secondary}}</td>
                                                 <td>{{$std->email}}</td>
                                                 <td>{{$std->age}}</td>
-                                                <td>{{$std->stage->{'name_'.session('lang')} }}</td>
+                                                <td>{{$std->stage_id == 4 && $std->other_stage != null ? $std->other_stage : $std->stage->{'name_'.session('lang')} }}</td>
                                                 <td>
                                                     <a href="{{route('students.show', $std->id)}}" class="btn" style="color:white;"><i class="fa fa-eye"></i></a>
                                                     <a href="{{route('students.edit', $std->id)}}" class="btn" style="color:white;"><i class="fa fa-pencil-square-o"></i></a>

@@ -9,6 +9,7 @@ use App\Http\Resources\Bags\BagResource;
 use App\Http\Resources\Bags\BagDetailsResource;
 use App\Models\BagCategory;
 use App\Models\Bag;
+use Auth;
 
 class BagCategoryController extends Controller
 {
@@ -22,15 +23,33 @@ class BagCategoryController extends Controller
 
         $cat = BagCategory::find($id);
 
+        if($cat == null){
+            return response()->json([
+                'error' => trans('api.cat_not_foung'),
+            ], 400);    
+        }
+
         return response()->json([
             'bags' => BagResource::collection($cat->bags),
         ], 200);
     }
 
     public function getBagDetails($id){
-
+        
         $bag = Bag::find($id);
         $cat = BagCategory::find($bag->category->id);
+
+        if($bag == null){
+            return response()->json([
+                'error' => trans('api.bag_not_foung'),
+            ], 400);    
+        }
+
+        if($cat == null){
+            return response()->json([
+                'error' => trans('api.cat_not_foung'),
+            ], 400);    
+        }
 
         return response()->json([
             'details' => new BagDetailsResource($bag),
@@ -39,6 +58,12 @@ class BagCategoryController extends Controller
     }
 
     public function getAllBags(){
+        if(count(Bag::all()) == 0){
+            return response()->json([
+                'success' => trans('api.bags_empty'),
+            ], 200);    
+        }
+
         return response()->json([
             'bags' => BagResource::collection(Bag::all()),
         ], 200);

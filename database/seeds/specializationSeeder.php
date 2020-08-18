@@ -20,6 +20,10 @@ class specializationSeeder extends Seeder
                 'name_ar' => 'إدارى',
                 'name_en' => 'Administrative',
             ],
+            [
+                'name_ar' => 'أخرى',
+                'name_en' => 'Other',
+            ],
         ]);
     }
 }

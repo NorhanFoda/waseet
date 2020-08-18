@@ -11,10 +11,10 @@ use App\Models\Order;
 class Address extends Model
 {
     protected $fillable = [
-        'country_id', 'city_id', 
+        // 'country_id', 'city_id', 
         'lat', 'long',
         'user_id', 'address', 
-        'postal_code'
+        // 'postal_code'
     ];
 
     public function user(){
