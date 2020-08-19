@@ -24,6 +24,8 @@ use App\Models\Address;
 use App\Models\Cart;
 use App\Models\Order;
 use App\Models\BankReceipt;
+use App\Models\DeviceToken;
+use App\Models\Notification;
 
 class User extends Authenticatable
 {
@@ -170,5 +172,13 @@ class User extends Authenticatable
 
     public function receipt(){
         return $this->hasOne(BankReceipt::class);
+    }
+
+    public function tokens(){
+        return $this->hasMany(DeviceToken::class);
+    }
+
+    public function notifications(){
+        return $this->hasMany(Notification::class)->latest();
     }
 }

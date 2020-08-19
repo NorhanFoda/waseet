@@ -329,4 +329,12 @@ return [
     // Specializations
     'specializations' => 'Specializations',
     'specialization' => 'Specialization',
+
+    // Notifications
+    'notifications' => 'Notifications',
+    'notify' => 'Send new notification',
+    'sent_date' => 'Send date',
+    'msg_ar' => 'Message in Arabic',
+    'msg_en' => 'Message in English',
+    'send' => 'Send',
 ];

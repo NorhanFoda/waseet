@@ -65,7 +65,7 @@ Route::group(['middleware' => ['lang', 'CheckApiTokenExpirationDate']], function
 
     // Search
     Route::post('search', 'Api\HomeController@search');
-
+    
     // Auth routes
     Route::group(['middleware' => 'auth:api'], function(){
 
@@ -124,6 +124,15 @@ Route::group(['middleware' => ['lang', 'CheckApiTokenExpirationDate']], function
         Route::get('profile/edit', 'Api\ProfileController@getEditPersonalInfoData');
         Route::post('profile/update', 'Api\ProfileController@updatePersonalInfo');
         Route::post('cv/update', 'Api\ProfileController@updateCV');
+
+        // DeviceTokens
+        Route::get('tokens', 'Api\DeviceTokensController@index');
+        Route::post('tokens', 'Api\DeviceTokensController@create');
+
+        // Notificaions
+        Route::post('notification', 'Api\NotificationController@enableDisableNotification');
+        Route::get('notifications_count', 'Api\NotificationController@getNotificationsCount');
+        Route::get('user_notifications', 'Api\NotificationController@getUserNotifications');
 
     });
     

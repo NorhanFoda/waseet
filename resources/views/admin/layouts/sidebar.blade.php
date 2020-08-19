@@ -65,6 +65,8 @@
 
             <li class=" nav-item"><a href="{{route('banks.index')}}"><i class="fa fa-money"></i><span class="menu-title" data-i18n="Dashboard">{{trans('admin.banks')}}</span></a></li>
 
+            <li class=" nav-item"><a href="{{route('notifications.index')}}"><i class="fa fa-bell"></i><span class="menu-title" data-i18n="Email">{{trans('admin.notifications')}}</span></a></li>
+
             <li class=" nav-item"><a href="{{route('announces.index')}}"><i class="fa fa-bullhorn"></i><span class="menu-title" data-i18n="Dashboard">{{trans('admin.announces')}}</span></a></li>
             
             <li class=" nav-item"><a href="{{route('static_pages.index')}}"><i class="fa fa-thumb-tack"></i><span class="menu-title" data-i18n="Dashboard">{{trans('admin.static_pages')}}</span></a></li>

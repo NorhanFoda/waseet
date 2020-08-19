@@ -183,6 +183,12 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
             // Contacts
             Route::get('contacts', 'Admin\ContactsController@index')->name('contacts.index');
             Route::post('delete_contacts', 'Admin\ContactsController@deleteContacts')->name('contacts.delete');
+
+            //Broadcast notification
+            Route::get('/broadcast', 'Admin\NotificationController@create')->name('notifications.create');
+            Route::post('/broadcast', 'Admin\NotificationController@store')->name('notifications.store');
+            Route::get('/notifications', 'Admin\NotificationController@index')->name('notifications.index');
+            Route::post('/notifications_delete', 'Admin\NotificationController@delete')->name('notifications.delete');
             
             // Users
             Route::resource('users', 'Admin\UserController');

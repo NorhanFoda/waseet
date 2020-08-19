@@ -322,5 +322,12 @@ return [
     // Specialization
     'specializations' => 'التخصصات',
     'specialization' => 'التخصص',
-    
+
+    // Notifications
+    'notifications' => 'الإشعارات',
+    'notify' => 'إرسال إشعار جديد',
+    'sent_date' => 'تاريخ الإرسال',
+    'msg_ar' => 'الرسالة بالعربية',
+    'msg_en' => 'الرسالة بالإنجليزية',
+    'send' => 'إرسال',
 ];
