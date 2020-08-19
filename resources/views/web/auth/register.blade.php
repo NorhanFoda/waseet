@@ -181,7 +181,7 @@
               {{trans('web.materials')}}
             </div>
             <div class="all-checks">
-              <select name="material_ids[]" class="custom-input" id="material_id" multiple>
+              <select name="material_ids[]" class="custom-input" id="material_id" required multiple>
                 <option value="{{null}}">{{trans('web.materials')}}</option>
                 @foreach($materials as $material)
                   <option value="{{$material->id}}" @if(old('level_id') == $material->id) selected @endif>{{$material->{'name_'.session('lang')} }}</option>
