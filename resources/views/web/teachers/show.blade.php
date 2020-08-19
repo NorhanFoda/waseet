@@ -29,7 +29,7 @@
                         <p>{{$teacher->name}}</p>
                         <h6>
                             @for($i = 0; $i < count($teacher->materials); $i++)
-                                {{$teacher->materials[$i]->{'name_'.session('lang')} }} @if($i < count($teacher->materials) && $i != (count($teacher->materials) - 1)) - @endif 
+                            {{$teacher->materials[$i]->id == 4 && $teacher->materials[$i]->pivot->other_material != null ? $teacher->materials[$i]->pivot->other_material : $teacher->materials[$i]->{'name_'.session('lang')} }} @if($i < count($teacher->materials) && $i != (count($teacher->materials) - 1)) - @endif 
                             @endfor
                         </h6>
                     </div>
@@ -118,11 +118,11 @@
                 <div class="other_info">
                     <div class="phone_num">
                         <p>{{trans('web.edu_level')}} :</p>
-                        <h6>{{$teacher->edu_level->{'name_'.session('lang')} }}</h6>
+                        <h6>{{$teacher->edu_level_id == 4 && $teacher->other_edu_level != null ? $teacher->other_edu_level : $teacher->edu_level->{'name_'.session('lang')} }}</h6>
                     </div>
                     <div class="phone_num">
                         <p>{{trans('web.nationality')}} :</p>
-                        <h6>{{$teacher->nationality->{'name_'.session('lang')} }}</h6>
+                        <h6>{{$teacher->nationality_id == 3 && $teacher->other_nationality != null ? $teacher->other_nationality : $teacher->nationality->{'name_'.session('lang')} }}</h6>
                     </div>
                     <div class="phone_num">
                         <p>{{trans('web.age')}} :</p>
@@ -132,23 +132,25 @@
                         <p>{{trans('web.phone_main')}} :</p>
                         <a href="tel:{{$teacher->phone_main}}">{{$teacher->phone_main}}</a>
                     </div>
-                    <div class="phone_num">
-                        <p>{{trans('web.phone_secondary')}} :</p>
-                        @if($teacher->phone_secondary)
+
+                    @if($teacher->phone_secondary)
+                        <div class="phone_num">
+                            <p>{{trans('web.phone_secondary')}} :</p>
                             <a href="tel:{{$teacher->phone_secondary}}">{{$teacher->phone_secondary}}</a>
-                        @else
-                            -
-                        @endif
-                    </div>
+                        </div>
+                    @endif
+
                     <div class="phone_num">
                         <p>{{trans('web.email')}} :</p>
                         <a href="mailto:{{$teacher->email}}">{{$teacher->email}}</a>
                     </div>
 
-                    <div class="phone_num">
-                        <p>{{trans('web.teaching_method')}} :</p>
-                        <a href="mailto:{{$teacher->teaching_method}}">{{$teacher->teaching_method}}</a>
-                    </div>
+                    @if($teacher->hasRole('online_teacher'))
+                        <div class="phone_num">
+                            <p>{{trans('web.teaching_method')}} :</p>
+                            <a href="mailto:{{$teacher->teaching_method}}">{{$teacher->teaching_method}}</a>
+                        </div>
+                    @endif
 
                     <div class="phone_num">
                         <p>{{trans('web.location')}} :</p>

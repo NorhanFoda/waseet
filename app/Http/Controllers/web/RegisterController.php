@@ -78,6 +78,9 @@ class RegisterController extends Controller
         if($role_id == 3 || $role_id == 4){
             foreach($request->material_ids as $id){
                 $user->materials()->attach($id);
+                if($id == 4){
+                    auth()->user()->materials()->where('material_id', 4)->first()->pivot->update(['other_material' => $request->other_material]);
+                }
             }
 
         }

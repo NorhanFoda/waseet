@@ -3,6 +3,7 @@
 namespace App\Http\Resources\User;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use App\Http\Resources\Teachers\MaterialResource;
 
 class editProfileResource extends JsonResource
 {
@@ -40,6 +41,7 @@ class editProfileResource extends JsonResource
             'other_edu_level' => $this->other_edu_level,
             'edu_type_id' => $this->edu_type_id,
             'other_edu_type' => $this->other_edu_type,
+            'user_materials' => MaterialResource::collection($this->materials),
         ];
     }
 }

@@ -215,6 +215,22 @@
                                 </div>
                                 {{-- other other_material end --}}
 
+                                {{-- enter teaching_method start --}}
+                                <div class="col-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-2">
+                                            <span>{{trans('web.teaching_method')}}</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <input type="text" name="teaching_method" value="{{$teacher->teaching_method}}" class="form-control" placeholder="{{trans('web.teaching_method')}}" required>
+                                            <div class="invalid-feedback">
+                                                {{trans('web.teaching_method')}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- enter teaching_method end --}}
+
                                 {{-- select nationality start --}}
                                 <div class="col-12">
                                     <div class="form-group row">

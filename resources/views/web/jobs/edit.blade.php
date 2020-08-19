@@ -45,13 +45,22 @@
 
                                 <div class="big-label">{{trans('admin.specialization')}} : </div>
                                 <div class="userName">
-                                    <select class="custom-input" required name="specialization_id">
+                                    <select class="custom-input" id="specialization_id" required name="specialization_id">
                                         <option value="{{null}}">{{trans('admin.specialization')}}</option>
                                         @foreach($pecializations as $spc)
                                           <option value="{{$spc->id}}" @if($job->specialization_id == $spc->id) selected @endif>{{$spc->{'name_'.session('lang')} }}</option>
                                         @endforeach
                                     </select>                           
                                 </div>
+
+                                {{-- other specialization start --}}
+                                @if($job->specialization_id == 3 && $job->other_specialization != null)
+                                    <div class="big-label other_specialization">{{trans('admin.other_specialization')}} : </div>
+                                    <div class="userName other_specialization">
+                                        <input type="text" id="mob" value="{{$job->other_specialization}}" name="other_specialization" placeholder="{{trans('admin.other_specialization')}}" />                  
+                                    </div>
+                                @endif
+                                {{-- other specialization end --}}
 
                                 <div class="big-label">{{trans('admin.exper_years')}}</div>
                                 <div class="userName">
@@ -167,6 +176,19 @@
         //         }
         //     });
         // });
+
+        $(document).on('change', '#specialization_id', function(){
+            if($(this).val() == 3){
+                $('.other_specialization').attr('hidden', false);
+                $('.other_specialization').attr('required', true);
+                $("input[name*='other_specialization']").val('{{$job->other_specialization}}');
+            }
+            else{
+                $('.other_specialization').attr('hidden', true);  
+                $('.other_specialization').attr('required', false);              
+                $("input[name*='other_specialization']").val('');
+            }
+        });
 
         // MAP START
         // Initiat google map

@@ -49,8 +49,11 @@ class ProfileController extends Controller
         auth()->user()->update($request->all());
 
         if(auth()->user()->hasRole('online_teacher') || auth()->user()->hasRole('direct_teacher')){
+            auth()->user()->materials()->sync($request->material_ids);
             foreach($request->material_ids as $id){
-                auth()->user()->materials()->sync($id);
+                if($id == 4){
+                    auth()->user()->materials()->where('material_id', 4)->first()->pivot->update(['other_material' => $request->other_material]);
+                }
             }
         }
 

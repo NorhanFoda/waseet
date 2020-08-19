@@ -28,7 +28,7 @@
 
               <div class="teacher_name">
                 <p>{{$job->{'name_'.session('lang')} }}</p>
-                <h6>{{$job->specialization->{'name_'.session('lang')} }}</h6>
+                <h6>{{$job->specialization_id == 3 && $job->other_specialization ? $job->other_specialization : $job->specialization->{'name_'.session('lang')} }}</h6>
               </div>
             </div>
 
@@ -63,7 +63,7 @@
 
               <div class="phone_num">
                 <p>{{trans('web.location')}} :</p>
-                {{$job->address}}
+                <h6>{{$job->address}}</h6>
                 {{-- <h6>{{$job->city->{'name_'.session('lang')} }} , {{$job->country->{'name_'.session('lang')} }}</h6> --}}
               </div>
 

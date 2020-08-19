@@ -174,6 +174,32 @@
           @if($role_id == 3 || $role_id == 4)
           {{-- materials start --}}
           <div class="userName custom-menu-select">
+            <div class="title-check  text-right-dir">     
+              <span class="form-icon">
+                <i class="fa fa-book"></i>
+              </span>
+              {{trans('web.materials')}}
+            </div>
+            <div class="all-checks">
+              <select name="material_ids[]" class="custom-input" id="material_id" multiple>
+                <option value="{{null}}">{{trans('web.materials')}}</option>
+                @foreach($materials as $material)
+                  <option value="{{$material->id}}" @if(old('level_id') == $material->id) selected @endif>{{$material->{'name_'.session('lang')} }}</option>
+                @endforeach
+              </select>
+              </div>
+            </div>
+
+            {{-- other_material start --}}
+            <div class="userName" id="other_material" hidden>
+              <input type="text" name="other_material" value="{{old('other_material')}}" />
+              <label for="country">
+                <i class="far fa-building"></i> {{trans('admin.other_material')}}
+              </label>
+            </div>
+            {{-- other_material end --}}
+
+          {{-- <div class="userName custom-menu-select">
           <div class="title-check  text-right-dir">     
             <span class="form-icon">
               <i class="fa fa-book"></i>
@@ -184,12 +210,11 @@
               @foreach($materials as $material)
                 <div class="custom-check text-right-dir">
                   <input type="checkbox" name="material_ids[]" value="{{$material->id}}" id="check-{{$material->id}}" required>
-                  {{-- <input type="checkbox" name="{{$material->id}}" id="check-{{$material->id}}"> --}}
                   <label for="check-{{$material->id}}"> @if(old('level_id') == $material->id) selected @endif {{$material->{'name_'.session('lang')} }}</label>
                 </div>
               @endforeach
             </div>
-          </div>
+          </div> --}}
           {{-- materials end --}}
           @endif
 
@@ -456,6 +481,20 @@
                 $('#other_edu_type').attr('required', false);
                 $("input[name*='other_edu_type']").val('');
               }
+            });
+
+            // Show other material text input when other material is selected
+            $('#material_id').change(function(){
+                var ids = $(this).val();
+                if(ids.indexOf('4') != -1){
+                    $('#other_material').attr('hidden', false);
+                    $("input[name*='other_material']").attr('required', true);
+                }
+                else{
+                    $('#other_material').attr('hidden', true);                
+                    $("input[name*='other_material']").attr('required', false);
+                    $("input[name*='other_material']").val('');
+                }
             });
 
             $(".custom-file input").on("change", function() {

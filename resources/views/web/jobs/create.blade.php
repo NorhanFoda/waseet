@@ -49,7 +49,7 @@
                                 {{-- specialization start --}}
                                 <div class="big-label">{{trans('admin.specialization')}} : </div>
                                 <div class="userName">
-                                    <select class="custom-input" required name="specialization_id">
+                                    <select class="custom-input" id="specialization_id" required name="specialization_id">
                                         <option value="{{null}}">{{trans('admin.specialization')}}</option>
                                         @foreach($pecializations as $spc)
                                           <option value="{{$spc->id}}" @if(old('specialization_id') == $spc->id) selected @endif>{{$spc->{'name_'.session('lang')} }}</option>
@@ -57,6 +57,13 @@
                                     </select>                           
                                 </div>
                                 {{-- specialization end --}}
+
+                                {{-- other specialization start --}}
+                                <div class="big-label other_specialization" hidden>{{trans('admin.other_specialization')}} : </div>
+                                <div class="userName other_specialization" hidden>
+                                    <input type="text" id="mob" name="other_specialization" placeholder="{{trans('admin.other_specialization')}}" />                  
+                                </div>
+                                {{-- other specialization end --}}
 
                                 {{-- exper_years start --}}
                                 <div class="big-label">{{trans('admin.exper_years')}}</div>
@@ -184,6 +191,18 @@
         //         }
         //     });
         // });
+
+        $(document).on('change', '#specialization_id', function(){
+            if($(this).val() == 3){
+                $('.other_specialization').attr('hidden', false);
+                $('.other_specialization').attr('required', true);
+            }
+            else{
+                $('.other_specialization').attr('hidden', true);  
+                $('.other_specialization').attr('required', false);              
+                $("input[name*='other_specialization']").val('');
+            }
+        });
 
         initGeolocation();
         // MAP START

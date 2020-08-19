@@ -51,7 +51,7 @@
                                                 <p>{{$teacher->name}}</p>
                                                 <h6>
                                                     @for($i = 0; $i < count($teacher->materials); $i++)
-                                                        {{$teacher->materials[$i]->{'name_'.session('lang')} }} @if($i < count($teacher->materials) && $i != (count($teacher->materials) - 1)) - @endif 
+                                                        {{$teacher->materials[$i]->id == 4 && $teacher->materials[$i]->pivot->other_material != null ? $teacher->materials[$i]->pivot->other_material : $teacher->materials[$i]->{'name_'.session('lang')} }} @if($i < count($teacher->materials) && $i != (count($teacher->materials) - 1)) - @endif 
                                                     @endfor
                                                 </h6>
                                             </div>
@@ -115,7 +115,7 @@
                                                 <p>{{$teacher->hasRole('online_teacher') ? trans('web.online_teacher') : trans('web.direct_teacher')}}</p>
                                             </li>
                                             <li>
-                                                <p>{{$teacher->nationality->{'name_'.session('lang')} }}</p>
+                                                <p>{{$teacher->nationality_id == 3 && $teacher->other_nationality != null ? $teacher->other_nationality : $teacher->nationality->{'name_'.session('lang')} }}</p>
                                             </li>
                                             <li>
                                                 <p>{{$teacher->address}}</p>

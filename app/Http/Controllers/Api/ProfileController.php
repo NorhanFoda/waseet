@@ -12,6 +12,7 @@ use App\Http\Resources\User\SeekerResource;
 use App\Http\Resources\Teachers\MaterialResource;
 use App\Http\Requests\User\UpdatePersonalInfoProfileRequest;
 use App\Http\Resources\User\editProfileResource;
+use App\Http\Resources\Roles\RoleResource;
 use App\Models\Stage;
 use App\Models\EduLevel;
 use App\Models\EduType;
@@ -80,6 +81,7 @@ class ProfileController extends Controller
                 return response()->json([
                     // 'user' => User::with('image', 'document', 'stage', 'materials', 'edu_level', 'edu_type', 'nationality', 'addresses', 'roles')->find(auth()->user()->id),
                     'user' => new editProfileResource(auth()->user()),
+                    'roles' => RoleResource::collection(auth()->user()->roles),
                     'stages' => MaterialResource::collection(Stage::all()),
                     'materials' => MaterialResource::collection(Material::all()),
                     'nationalities' => MaterialResource::collection(Nationality::all()),

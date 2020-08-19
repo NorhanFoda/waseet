@@ -166,20 +166,32 @@
                                     {{-- teaching_method end --}}
 
                                     {{-- materials start --}}
-                                    {{-- <div class="big-label">{{trans('web.materials')}} :</div>
-                                    <div class="userName">
-                                        <select class="custom-input" name="material_ids[]" multiple required>
+                                    <div class="userName custom-menu-select">
+                                        <div class="title-check  text-right-dir">     
+                                        <span class="form-icon">
+                                            <i class="fa fa-book"></i>
+                                        </span>
+                                        {{trans('web.materials')}}
+                                        </div>
+                                        <div class="all-checks">
+                                        <select name="material_ids[]" class="custom-input" id="material_id" multiple>
                                             <option value="{{null}}">{{trans('web.materials')}}</option>
                                             @foreach($materials as $material)
-                                                <option value="{{$material->id}}" @if(Auth::user()->materials->contains($material->id)) selected @endif>{{$material->{'name_'.session('lang')} }}</option>
+                                            <option value="{{$material->id}}" @if(Auth::user()->materials->contains($material->id)) selected @endif>{{$material->{'name_'.session('lang')} }}</option>
                                             @endforeach
                                         </select>
-                                    </div> --}}
-                                    {{-- materials end --}}
+                                        </div>
+                                        </div>
 
-
-                                    {{-- materials start --}}
-                                    <div class="big-label">{{trans('web.materials')}} :</div>
+                                        {{-- other_material start --}}
+                                        <div class="userName" id="other_material" @if(!Auth::user()->materials->contains(4)) hidden @endif>
+                                            <input type="text" name="other_material" value="{{Auth::user()->materials()->where('material_id', 4)->first()->pivot->other_material}}" />
+                                            <label for="country">
+                                                <i class="far fa-building"></i> {{trans('admin.other_material')}}
+                                            </label>
+                                        </div>
+                                        {{-- other_material end --}}
+                                    {{-- <div class="big-label">{{trans('web.materials')}} :</div>
                                     <div class="userName custom-menu-select">
                                         <div class="title-check  text-right-dir">     
                                             <span class="form-icon">
@@ -195,7 +207,7 @@
                                                 </div>
                                             @endforeach
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     {{-- materials end --}}
 
                                     {{-- nationality start --}}
