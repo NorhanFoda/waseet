@@ -72,7 +72,7 @@
                                                 </td> 
                                                 <td>
                                                     @if($teacher->receipt != null)
-                                                        <a href="{{$teacher->receipt->image->path}}">{{trans('admin.view_receipt')}}</a>
+                                                        <a href="@if($teacher->receipt != null){{$teacher->receipt->image->path}}@endif">{{trans('admin.view_receipt')}}</a>
                                                     @else
                                                         -
                                                     @endif

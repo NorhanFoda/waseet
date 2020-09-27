@@ -43,7 +43,12 @@
                             {{$teacher->city->{'name_'.session('lang')} }} --}}
                             {{trans('admin.address')}}: {{$teacher->address}}
                             <br>
-                            {{trans('admin.nationality')}} : {{$teacher->nationality_id == 3 && $teacher->other_nationality ? $teacher->other_nationality : $teacher->nationality->{'name_'.session('lang')} }}
+                            {{trans('admin.nationality')}} : 
+                            @if($teacher->nationality_id == 3 && $teacher->other_nationality)
+                                {{ $teacher->other_nationality }}
+                            @else
+                                {{ $teacher->nationality_id != null ? $teacher->nationality->{'name_'.session('lang')} : ''}}
+                            @endif
                             <br>
                             {{trans('admin.edu_level')}} : {{$teacher->edu_level_id == 4 && $teacher->other_edu_level ? $teacher->other_edu_level : $teacher->edu_level->{'name_'.session('lang')} }}
                         </div>

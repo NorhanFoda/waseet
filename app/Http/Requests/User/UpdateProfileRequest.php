@@ -26,7 +26,8 @@ class UpdateProfileRequest extends FormRequest
         return [
             'name' => 'required',
             'email' => 'required|email',
-            'phone_main' => 'required_if:role_id,2|required_if:role_id,3|required_if:role_id,4|required_if:role_id,5|required_if:role_id,6|unique:users,phone_main,'.auth()->user()->id,
+            'phone_main' => 'required_if:role_id,2|required_if:role_id,3|required_if:role_id,4|required_if:role_id,5|required_if:role_id,6|min:9|max:14|unique:users,phone_main,'.auth()->user()->id,
+            // 'phone_secondary' => 'sometimes|min:9|max:14',
             'exper_years' => 'required_if:role_id,3|required_if:role_id,4|required_if:role_id,6',
             // 'age' => 'required_if:role_id,2|required_if:role_id,3|required_if:role_id,4|required_if:role_id,6',
 
