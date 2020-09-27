@@ -45,11 +45,11 @@ return [
     'details' => 'Additional details',
 
     // Bag categories
-    'bag_categories' => 'Bag categories',
+    'bag_categories' => 'Educational Store categories',
     'bag_category' => 'Category',
 
     // Bags
-    'bags' => 'Educational bags',
+    'bags' => 'Educational Store',
     'price' => 'Price',
     'sr' => 'SR',
     'description_ar' => 'Description in Arabic',
@@ -80,6 +80,7 @@ return [
     'direct_teachers' => 'Direct teachers',
     'students' => 'Students',
     'visitor' => 'Visitor',
+    'bank_receipt' => 'Bank Receipt',
 
     // Materials
     'materials' => 'Subjects',

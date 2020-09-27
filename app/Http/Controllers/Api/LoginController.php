@@ -36,12 +36,13 @@ class LoginController extends Controller
             if($user->is_verified == 0){
                 return response()->json([
                     'error' => trans('api.email_not_verified'),
-                    // 'active' => $user->is_verified == 0 ? false : true,
+                    'is_active' => $user->is_verified,
                 ], 400);
             }
 
             if($user->approved == 0){
                 return response()->json([
+                    'approved' => $user->approved,
                     'error' => trans('web.account_not_approved'),
                 ], 400);
             }
@@ -55,6 +56,7 @@ class LoginController extends Controller
                     ]);
                     return response()->json([
                         'data' => Auth::loginUsingId($user->id, true),
+                        'image' => $user->image != null ? $user->image->path : 'http://waset-elmo3lm.jadara.work/web/images/man.png',
                         'roles' => RoleResource::collection($user->roles),
                     ], 200);
                 }
@@ -68,6 +70,7 @@ class LoginController extends Controller
                 if(Hash::check($request->password, $user->password)){
                     return response()->json([
                         'data' => Auth::loginUsingId($user->id, true),
+                        'image' => $user->image != null ? $user->image->path : 'http://waset-elmo3lm.jadara.work/web/images/man.png',
                         'roles' => RoleResource::collection($user->roles),
                     ], 200);
                 }

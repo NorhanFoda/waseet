@@ -118,6 +118,7 @@
                     <!--end edit-->
 
                     <!--start track-order-->
+                    
                     @if($order->bags()->where('buy_type', 2)->exists())
                         <div class="track-order margin-div"  data-aos="fade-up">
                             <ul class="list-unstyled">

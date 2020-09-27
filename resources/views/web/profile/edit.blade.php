@@ -37,7 +37,7 @@
                                             </div>
 
                                             <div class="avatar-preview">
-                                                <div id="imagePreview" style="background-image: url({{auth()->user()->image ? auth()->user()->image->path : 'web/images/user2.png'}})">
+                                                <div id="imagePreview" style="background-image: url('{{auth()->user()->image ? auth()->user()->image->path : asset("web/images/user2.png") }}')">
                                                 </div>
                                             </div>
                                         </div>
@@ -166,6 +166,7 @@
                                     {{-- teaching_method end --}}
 
                                     {{-- materials start --}}
+                                    <div class="big-label"> {{trans('web.materials')}} :</div>
                                     <div class="userName custom-menu-select">
                                         <div class="title-check  text-right-dir">     
                                         <span class="form-icon">
@@ -174,41 +175,27 @@
                                         {{trans('web.materials')}}
                                         </div>
                                         <div class="all-checks">
-                                        <select name="material_ids[]" class="custom-input" required id="material_id" multiple>
-                                            <option value="{{null}}">{{trans('web.materials')}}</option>
-                                            @foreach($materials as $material)
-                                            <option value="{{$material->id}}" @if(Auth::user()->materials->contains($material->id)) selected @endif>{{$material->{'name_'.session('lang')} }}</option>
-                                            @endforeach
-                                        </select>
+                                            <select name="material_ids[]" class="custom-input" required id="material_id" multiple>
+                                                <option value="{{null}}">{{trans('web.materials')}}</option>
+                                                @foreach($materials as $material)
+                                                <option value="{{$material->id}}" @if(Auth::user()->materials->contains($material->id)) selected @endif>{{$material->{'name_'.session('lang')} }}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
-                                        </div>
+                                    </div>
 
-                                        {{-- other_material start --}}
-                                        <div class="userName" id="other_material" @if(!Auth::user()->materials->contains(4)) hidden @endif>
-                                            <input type="text" name="other_material" value="{{Auth::user()->materials()->where('material_id', 4)->first()->pivot->other_material}}" />
-                                            <label for="country">
-                                                <i class="far fa-building"></i> {{trans('admin.other_material')}}
-                                            </label>
-                                        </div>
-                                        {{-- other_material end --}}
-                                    {{-- <div class="big-label">{{trans('web.materials')}} :</div>
-                                    <div class="userName custom-menu-select">
-                                        <div class="title-check  text-right-dir">     
-                                            <span class="form-icon">
-                                                <i class="fa fa-book"></i>
-                                           </span>
-                                           {{trans('web.materials')}}
-                                        </div>
-                                        <div class="all-checks">
-                                            @foreach($materials as $material)
-                                                <div class="custom-check text-right-dir">
-                                                    <input type="checkbox" name="material_ids[]" value="{{$material->id}}" @if(Auth::user()->materials->contains($material->id)) checked @endif  id="check-{{$material->id}}">
-                                                    <label for="check-{{$material->id}}">{{$material->{'name_'.session('lang')} }}</label>
-                                                </div>
-                                            @endforeach
-                                        </div>
-                                    </div> --}}
-                                    {{-- materials end --}}
+                                    {{-- other_material start --}}
+                                    <div class="big-label other_material" @if(!Auth::user()->materials->contains(4)) hidden @endif>{{trans('admin.other_material')}} :</div>
+                                    <div class="userName other_material" @if(!Auth::user()->materials->contains(4)) hidden @endif>
+                                        <input type="text" name="other_material" value="
+                                            @if(Auth::user()->materials()->where('material_id', 4)->first() != null)
+                                                {{Auth::user()->materials()->where('material_id', 4)->first()->pivot->other_material}}
+                                            @endif" />
+                                        <label for="country">
+                                            <i class="far fa-building"></i> {{trans('admin.other_material')}}
+                                        </label>
+                                    </div>
+                                    {{-- other_material end --}}
 
                                     {{-- nationality start --}}
                                     <div class="big-label">{{trans('web.nationality')}} :</div>
@@ -290,13 +277,16 @@
                                         <label for="file-up">
                                             <i class="fa fa-upload"></i> <span></span>
                                         </label>
+                                        
                                     </div>
-
-                                    @if(auth()->user()->document != null)
+<div class="col-12">
+     @if(auth()->user()->document != null)
                                         <div class="userName custom-file">
-                                            <a href="{{auth()->user()->document->path}}">{{trans('web.view_cv')}}</a>
+                                            <a href="{{auth()->user()->document->path}}" class="first_color">{{trans('web.view_cv')}}</a>
                                         </div>
                                     @endif
+</div>
+                                  
                                     {{-- cv end --}}
                                 @endif
 
@@ -417,6 +407,20 @@
                 $('.other_edu_type').attr('hidden', true);                
                 $('.other_edu_type').attr('required', false);
                 $("input[name*='other_edu_type']").val('');
+            }
+        });
+
+        $(document).on('change', '#material_id', function(){
+            var ids = $(this).val();
+            if(ids.indexOf('4') != -1){
+                $('.other_material').attr('hidden', false);
+                $("input[name*='other_material']").attr('required', true);
+                $("input[name*='other_material']").val('{{Auth::user()->materials()->where('material_id', 4)->first() == null ? : Auth::user()->materials()->where('material_id', 4)->first()->pivot->other_material}}');
+            }
+            else{
+                $('.other_material').attr('hidden', true);                
+                $("input[name*='other_material']").attr('required', false);
+                $("input[name*='other_material']").val('');
             }
         });
 

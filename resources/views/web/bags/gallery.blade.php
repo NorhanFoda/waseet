@@ -62,7 +62,7 @@
 
                                 <!--start gallery-div-->
                                 @foreach($bag->videos as $video)
-                                    s<div class="col-lg-3 col-md-4 col-6" data-ao="fade-in">
+                                    <div class="col-lg-3 col-md-4 col-6" data-ao="fade-in">
                                         <div class="gallery-div">
                                             <a href="{{$video->path}}" class="html5lightbox" data-group="set-2">
                                                 <img src="{{$bag->poster}}" alt="img">

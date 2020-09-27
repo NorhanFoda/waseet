@@ -102,7 +102,7 @@
           @if($role_id != 5 && $role_id != 'visitor')
           {{-- age start --}}
           <div class="userName">
-            <input type="number" id="age" name="age" value="{{old('age')}}" required />
+            <input type="number" id="age" name="age" value="{{old('age')}}" />
             <label for="age">
               <i class="far fa-user"></i> {{trans('web.age')}}
             </label>

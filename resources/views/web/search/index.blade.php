@@ -20,6 +20,9 @@
 
     <div class="container" data-aos="fade-in">
         <div class="row teachersWrap main-items">
+            @if(count($bags) == 0 && count($jobs) == 0 && count($teachers) == 0)
+                <div class="col-12 text-center">{{trans('web.no_search_results')}}</div>
+            @endif
             @foreach($bags as $bag)
                 <!--start item--> 
                 <div class="item col-lg-4 col-sm-6">
@@ -136,7 +139,8 @@
                                 <p>{{$job->exper_years}} {{trans('web.exper_years_2')}}</p>
                             </li>
                             <li>
-                                <p>{{$job->city->{'name_'.session('lang')} }} , {{$job->country->{'name_'.session('lang')} }}</p>
+                                {{-- <p>{{$job->city->{'name_'.session('lang')} }} , {{$job->country->{'name_'.session('lang')} }}</p> --}}
+                                <p>{{$job->address}}</p>
                             </li>
                         </ul>
 

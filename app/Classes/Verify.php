@@ -6,7 +6,7 @@ class Verify{
     
     static function verifyEmail($user, $code){
         if($user == null){
-            return response()->josn([
+            return response()->json([
                 'error' => trans('web.error')
             ],404);
         }

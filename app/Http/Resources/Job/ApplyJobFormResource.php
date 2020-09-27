@@ -18,7 +18,10 @@ class ApplyJobFormResource extends JsonResource
 
         return [
             'id' => $this->id,
-            'name' => $this->{'name_'.$lang}
+            'name' => $this->{'name_'.$lang},
+            'lat' => $this->lat,
+            'long' => $this->long,
+            'address' => $this->address
         ];
     }
 }

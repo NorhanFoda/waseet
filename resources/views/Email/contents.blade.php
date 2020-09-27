@@ -59,7 +59,7 @@
                                 {{trans('web.videos')}} : 
                             </h4>
                             @foreach($bag->videos as $video)
-                                <a href="{{$video->path}}">{{$video->path}}</a>
+                                <a href="{{$video->path}}">{{trans('web.click_here')}}</a>
                             @endforeach
                         @endif
 
@@ -68,7 +68,7 @@
                                 {{trans('web.images')}} : 
                             </h4>
                             @foreach($bag->images as $image)
-                                <a href="{{$image->path}}">{{$image->path}}</a>
+                                <a href="{{$image->path}}">{{trans('web.click_here')}}</a>
                             @endforeach
                         @endif
 
@@ -77,7 +77,7 @@
                                 {{trans('web.documents')}} : 
                             </h4>
                             @foreach($bag->documents as $pdf)
-                                <a href="{{$pdf->path}}">{{$pdf->path}}</a>
+                                <a href="{{$pdf->path}}">{{trans('web.click_here')}}</a>
                             @endforeach
                         @endif
                     </div>

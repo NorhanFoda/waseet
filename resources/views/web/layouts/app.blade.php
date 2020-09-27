@@ -41,7 +41,7 @@
   <script src="{{asset('web/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js')}}"></script>
   <link rel="shortcut icon" href="{{asset('web/images/favicon.ico')}}" />
 
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDJZeYDmZKwcHVaO9APCWP_04lYzaNK0o4&libraries=places&callback=initMap&language={{ \App::getLocale() }}" defer></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDJZeYDmZKwcHVaO9APCWP_04lYzaNK0o4&libraries=places,geometry&sensor=false&callback=initMap&language={{ \App::getLocale() }}" defer></script>
 
   <script src="//platform-api.sharethis.com/js/sharethis.js#property=58b550fc949fce00118ce697&product=inline-share-buttons"></script>
 

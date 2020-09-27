@@ -38,8 +38,8 @@ class TeacherResource extends JsonResource
                 'is_saved' => $is_saved,
             ];
         }
-        else{
-            return [];
-        }
+        // else{
+        //     return [];
+        // }
     }
 }

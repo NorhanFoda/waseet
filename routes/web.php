@@ -297,6 +297,9 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
         Route::get('org/jobs/{id}/edit', 'Web\JobsController@getEditJobForm')->name('jobs.edit_job');
         Route::put('org/jobs/{id}/update', 'Web\JobsController@updateJob')->name('jobs.update_job');
 
+        // Seekers
+        Route::get('web/seekers', 'Web\SeekerController@index')->name('web_seekers.index');
+
         // Profile
         Route::get('profile', 'Web\ProfileController@index')->name('profile.index');
         Route::get('saved', 'Web\ProfileController@getSaved')->name('saved.index');

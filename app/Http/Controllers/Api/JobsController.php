@@ -13,22 +13,41 @@ use App\Classes\SendEmail;
 use App\Http\Requests\Job\JobRequest;
 use App\Http\Resources\Job\ApplyJobFormResource;
 use App\Http\Resources\Job\SpecializationResource;
-use App\Http\resources\Job\editJobResource;
+use App\Http\Resources\Job\editJobResource;
 use App\Models\Save;
 use App\Models\Bag;
 use App\User;
 use Auth;
 use App\Http\Requests\Job\ApplyToJobRequest;
+use App\Jobs\SendEmailJob;
 
 
 class JobsController extends Controller
 {
     // Get all jobs
     public function index(){
+        if(app('request')->header('Authorization') != null && Auth::guard('api')->check()){
 
-        return response()->json([
-            'data' => JobResource::collection(Job::with(['specialization'])->where('approved', 1)->get()),
-        ], 200);
+            // only job seekers, teachers and organizations can view list of jobs
+            if(auth()->user()->hasRole('job_seeker') || auth()->user()->hasRole('direct_teacher') || 
+                auth()->user()->hasRole('online_teacher') || auth()->user()->hasRole('organization')){
+
+                return response()->json([
+                    'data' => JobResource::collection(Job::with(['specialization'])->where('approved', 1)->get()),
+                ], 200);
+
+            }
+            else{
+                return response()->json([
+                    'data' => trans('web.login_as_seeker_or_teacher')
+                ], 200);
+            }
+        }
+        else{
+            return response()->json([
+                'error' => trans('api.unauthorized')
+            ], 400);
+        }
     }
 
     // get job details only for auth user with job_seeker or organization roles
@@ -44,7 +63,7 @@ class JobsController extends Controller
                 }
                 else{
                     return response()->json([
-                        'error' => trans('web.login_as_job_seeker')
+                        'error' => trans('web.login_as_job_seeker_or_org')
                     ], 404);
                 }
             }
@@ -65,7 +84,6 @@ class JobsController extends Controller
     public function applyJob(ApplyToJobRequest $request){
         if(app('request')->header('Authorization') != null && Auth::guard('api')->check()){
             if(app('request')->header('Authorization') == 'Bearer '.auth()->user()->api_token){
-                
                 // Only job seeker can apply to job
                 if(!auth()->user()->hasRole('job_seeker')){
                     return response()->json([
@@ -93,10 +111,12 @@ class JobsController extends Controller
                         ], 404);
                     }
                 }
-        
-                $email = Job::find($request->job_id)->announcer->email;
-                $link = route('profile.show', auth()->user()->id);
-                SendEmail::sendJobApply($email, auth()->user(), $link);
+
+                $details['email'] = Job::find($request->job_id)->announcer->email;
+                $details['link'] = route('profile.show', auth()->user()->id);
+                $details['seeker'] = auth()->user();
+                $details['type'] = 'apply_to_job';
+                dispatch(new SendEmailJob($details));
         
                 return response()->json([
                     'success' => trans('web.job_applied')
@@ -117,16 +137,30 @@ class JobsController extends Controller
 
     // Return create job form data
     public function announceJobFormData(){
-        return response()->json([
-            'data' => SpecializationResource::collection(Specialization::all())
-        ], 200);
+        if(app('request')->header('Authorization') != null && Auth::guard('api')->check()){
+            // only organization can announce job
+            if(!auth()->user()->hasRole('organization')){
+                return response()->json([
+                    'error' => trans('web.login_as_roganization')
+                ], 404);
+            }
+            return response()->json([
+                'data' => SpecializationResource::collection(Specialization::all())
+            ], 200);
+
+        }
+        else{
+            return response()->json([
+                'error' => trans('api.unauthorized')
+            ], 400);
+        }
     }
 
     // create job
     public function anounceJob(JobRequest $request){
         if(app('request')->header('Authorization') != null && Auth::guard('api')->check()){
             if(app('request')->header('Authorization') == 'Bearer '.auth()->user()->api_token){
-
+                //only organization can announce job
                 if(!auth()->user()->hasRole('organization')){
                     return response()->json([
                         'error' => trans('web.login_as_roganization')
@@ -174,7 +208,7 @@ class JobsController extends Controller
     public function editAnnounceJobFormData($id){
         if(app('request')->header('Authorization') != null && Auth::guard('api')->check()){
             if(app('request')->header('Authorization') == 'Bearer '.auth()->user()->api_token){
-                
+                //only organization can edit job announce
                 if(!auth()->user()->hasRole('organization')){
                     return response()->json([
                         'error' => trans('web.login_as_roganization')
@@ -218,6 +252,7 @@ class JobsController extends Controller
 
         if(app('request')->header('Authorization') != null && Auth::guard('api')->check()){
             if(app('request')->header('Authorization') == 'Bearer '.auth()->user()->api_token){
+                //only organization can edit job announce
                 if(!auth()->user()->hasRole('organization')){
                     return response()->json([
                         'error' => trans('web.login_as_roganization')
@@ -306,11 +341,25 @@ class JobsController extends Controller
 
     // Get apply to job form data
     public function applyToJobData(){
-        $jobs = Job::with(['city', 'country', 'specialization'])->where('approved', 1)->get();
+        if(app('request')->header('Authorization') != null && Auth::guard('api')->check()){
+            // Only job seeker can apply to job
+            if(!auth()->user()->hasRole('job_seeker')){
+                return response()->json([
+                    'error' => trans('web.login_as_job_seeker')
+                ], 404);
+            }
 
-        return response()->json([
-            'jobs' => ApplyJobFormResource::collection($jobs),
-        ], 200);
+            $jobs = Job::with(['specialization'])->where('approved', 1)->get();
+
+            return response()->json([
+                'jobs' => ApplyJobFormResource::collection($jobs),
+            ], 200);
+        }
+        else{
+            return response()->json([
+                'error' => trans('api.unauthorized')
+            ], 400);
+        }
     }
 
     // get all jobs of the authed user with organization role
@@ -318,7 +367,7 @@ class JobsController extends Controller
 
         if(app('request')->header('Authorization') != null && Auth::guard('api')->check()){
             if(app('request')->header('Authorization') == 'Bearer '.auth()->user()->api_token){
-                
+                // only organization can view her jobs
                 if(!auth()->user()->hasRole('organization')){
                     return response()->json([
                         'error' => trans('web.login_as_roganization')

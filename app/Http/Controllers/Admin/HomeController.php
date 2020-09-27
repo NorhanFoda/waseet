@@ -26,6 +26,9 @@ use App\Models\BankReceipt;
 use App\Classes\Upload;
 use App\Models\SubScriber;
 use DB;
+use App\Jobs\SendEmailJob;
+use App\Classes\SendEmail;
+use Carbon\Carbon;
 
 class HomeController extends Controller
 {
@@ -126,27 +129,33 @@ class HomeController extends Controller
         ]);
         $receipt->image()->save($image);
 
-        $user = User::find($request->user_id)->update(['approved' => 1]);
+        $user = User::find($request->user_id);
+        $user->update(['approved' => 1]);
 
         session()->flash('success', trans('admin.created'));
 
         if($request->type == 'seeker'){
             return redirect()->route('seekers.index');
         }
-        if($request->type == 'online_teacher'){
+
+        if($request->type == 'online_teacher' || $request->type == 'direct_teacher'){
+            
             //Send mail to subscripers
-            $subs = SubScriber::all();
+            $subs = SubScriber::get(['email']);
+            // SendEmail::Subscripe($subs[2]->email,route('teachers.show', $user->id), 'teacher');
             foreach($subs as $sub){
-                SendEmail::Subscripe($sub->email, route('teachers.show', $teacher->id), 'teacher');
+                $details['emails'] = $sub->email;
+                $details['link'] = route('teachers.show', $user->id);
+                $details['type2'] = 'subscripe';
+                $details['type'] = 'teacher';
+                dispatch(new SendEmailJob($details));
             }
+        }
+
+        if($request->type == 'online_teacher'){
             return redirect()->route('online_teachers.index');
         }
         if($request->type == 'direct_teacher'){
-            //Send mail to subscripers
-            $subs = SubScriber::all();
-            foreach($subs as $sub){
-                SendEmail::Subscripe($sub->email, route('teachers.show', $teacher->id), 'teacher');
-            }
             return redirect()->route('direct_teachers.index');
         }
     }

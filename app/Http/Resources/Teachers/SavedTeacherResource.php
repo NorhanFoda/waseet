@@ -29,8 +29,8 @@ class SavedTeacherResource extends JsonResource
                 'is_saved' => auth()->user() == null ? 'unauthorized': auth()->user()->saved_teachers->contains('saveRef_id', $this->saveRef->id),
             ];
         }
-        else{
-            return [];
-        }
+        // else{
+        //     return [];
+        // }
     }
 }

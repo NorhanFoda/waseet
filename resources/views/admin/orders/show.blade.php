@@ -51,11 +51,12 @@
                                     </tr>
                                     <tr>
                                         <td class="font-weight-bold">{{trans('admin.address')}}</td>
-                                        <td style='margin: 5px; padding: 15px;'>
+                                        {{--<td style='margin: 5px; padding: 15px;'>
                                             {{$order->address->country->{'name_'.session('lang')} }} - 
                                             {{$order->address->city->{'name_'.session('lang')} }} -
                                             {{$order->address->address}} - {{trans('web.ps')}} : {{$order->address->postal_code}}
-                                        </td>
+                                        </td>--}}
+                                        <td>{{$order->address->address}}</td>
                                     </tr>
                                     <tr>
                                         <td class="font-weight-bold">{{trans('admin.status')}}</td>

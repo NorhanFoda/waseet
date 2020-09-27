@@ -38,7 +38,7 @@
                 {{trans('web.job_approved_text')}}
                 <div style="color:#333; margin: 30px auto 20px; text-align: center;">
                     <div>
-                        <a href="{{$link}}">{{$link}}</a>
+                        <a href="{{$link}}">{{trans('web.click_here')}}</a>
                     </div>        
                 </div>
             @endif

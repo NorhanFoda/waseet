@@ -249,6 +249,16 @@
                 if (responses && responses.length > 0) { 
                     // console.log(responses[0].address_components[4].long_name);
                     // updateMarkerAddress(responses[0].formatted_address);
+
+                    //get country start
+                    var filtered_array = responses[0].address_components.filter(function(address_component){
+                        return address_component.types.includes("country");
+                    }); 
+                    var country = filtered_array.length ? filtered_array[0].long_name: "";
+                    $("input[name='country']").val(country);    
+                    // console.log(country);
+                    // get country end
+
                     updateMarkerAddress(responses[0]);
                 } else {
                 updateMarkerAddress('Cannot determine address at this location.');
@@ -298,7 +308,7 @@
 
         function updateMarkerAddress(address){
             $("input[name='address']").val(address.formatted_address);    
-            $("input[name='country']").val(address.address_components[4].long_name);    
+            // $("input[name='country']").val(address.address_components[4].long_name);    
         }
         // MAP END
     </script>

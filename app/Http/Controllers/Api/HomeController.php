@@ -73,28 +73,54 @@ class HomeController extends Controller
             ], 200);
         }
         else if($request->type == 'Job'){
-            $jobs = Job::where('name_ar', 'LIKE', '%'.$request->token.'%')
-                ->orWhere('name_en', 'LIKE', '%'.$request->token.'%')
-                ->orWhere('description_ar', 'LIKE', '%'.$request->token.'%')
-                ->orWhere('description_ar', 'LIKE', '%'.$request->token.'%')
-                ->get();
+            if(app('request')->header('Authorization') != null && Auth::guard('api')->check()){
+                if(Auth::guard('api')->user()->hasRole('job_seeker') || Auth::guard('api')->user()->hasRole('organization')){
 
-            return response()->json([
-                'data' => JobResource::collection($jobs),
-            ], 200);
+                    $jobs = Job::where('name_ar', 'LIKE', '%'.$request->token.'%')
+                        ->orWhere('name_en', 'LIKE', '%'.$request->token.'%')
+                        ->orWhere('description_ar', 'LIKE', '%'.$request->token.'%')
+                        ->orWhere('description_ar', 'LIKE', '%'.$request->token.'%')
+                        ->get();
+
+                    return response()->json([
+                        'data' => JobResource::collection($jobs),
+                    ], 200);
+                }
+            }
+            else{
+                return response()->json([
+                    'data' => [],
+                ], 200);
+            }
         }
         else if($request->type == 'Teacher'){
-            $teachers = User::where('name', 'LIKE', '%'.$request->token.'%')
-                ->orWhere('email', 'LIKE', '%'.$request->token.'%')
-                ->orWhere('phone_main', 'LIKE', '%'.$request->token.'%')
-                ->orWhere('phone_secondary', 'LIKE', '%'.$request->token.'%')
-                ->orWhere('bio_ar', 'LIKE', '%'.$request->token.'%')
-                ->orWhere('bio_en', 'LIKE', '%'.$request->token.'%')
-                ->get();
+            if(app('request')->header('Authorization') != null && Auth::guard('api')->check()){
+                if(Auth::guard('api')->user()->hasRole('online_teacher') || Auth::guard('api')->user()->hasRole('organization') ||
+                    Auth::guard('api')->user()->hasRole('direct_teacher') || Auth::guard('api')->user()->hasRole('student')){
 
-            return response()->json([
-                'data' => TeacherResource::collection($teachers),
-            ], 200);
+                        $teachers = User::whereHas('roles', function($q) use ($request){
+                            $q->where('name', 'online_teacher')->orWhere('name', 'direct_teacher');
+                        })
+                        ->where(function($query) use ($request){
+                            $query->where('name', 'LIKE', '%'.$request->token.'%')
+                            ->orWhere('email', 'LIKE', '%'.$request->token.'%')
+                            ->orWhere('phone_main', 'LIKE', '%'.$request->token.'%')
+                            ->orWhere('phone_secondary', 'LIKE', '%'.$request->token.'%')
+                            ->orWhere('bio_ar', 'LIKE', '%'.$request->token.'%')
+                            ->orWhere('bio_en', 'LIKE', '%'.$request->token.'%');
+                        })
+                        ->get();
+
+                        return response()->json([
+                            'data' => TeacherResource::collection($teachers),
+                        ], 200);
+                }
+            }
+            else{
+                return response()->json([
+                    'data' => [],
+                ], 200);
+            }
         }
     }
 
@@ -132,6 +158,12 @@ class HomeController extends Controller
                         ]);
                     }
                     else{
+                        if($request->id == 1){
+                            return response()->json([
+                                'error' => trans('api.wrong_item')
+                            ], 400);
+                        }
+                        
                         $save = Save::create([
                             'user_id' => auth()->user()->id,
                             'saveRef_id' => $request->id,

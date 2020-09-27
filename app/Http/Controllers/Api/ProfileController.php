@@ -13,12 +13,14 @@ use App\Http\Resources\Teachers\MaterialResource;
 use App\Http\Requests\User\UpdatePersonalInfoProfileRequest;
 use App\Http\Resources\User\editProfileResource;
 use App\Http\Resources\Roles\RoleResource;
+use Illuminate\Support\Facades\Hash;
 use App\Models\Stage;
 use App\Models\EduLevel;
 use App\Models\EduType;
 use App\Models\Material;
 use App\Models\Nationality;
 use App\Classes\Upload;
+use App\Models\Image;
 use App\User;
 
 class ProfileController extends Controller
@@ -141,17 +143,17 @@ class ProfileController extends Controller
                 if($request->has('image')){  
                     if(auth()->user()->image != null)          {
                         $removed = Upload::deleteImage(auth()->user()->image->path);
-                        if($removed){
+                        // if($removed){
                             $new_image = Upload::uploadImage($request->image);
                             auth()->user()->image->update([
                                 'path' => $new_image
                             ]);
-                        }
-                        else{
-                            return response()->json([
-                                'error' => trans('admin.error')
-                            ], 404);
-                        }
+                        // }
+                        // else{
+                        //     return response()->json([
+                        //         'error' => trans('admin.error')
+                        //     ], 404);
+                        // }
                     }
                     else{
                         $image_url = Upload::uploadImage($request->image);
@@ -165,7 +167,8 @@ class ProfileController extends Controller
                 }
         
                 return response()->json([
-                    'success' => trans('web.personal_info_updated')
+                    'success' => trans('web.personal_info_updated'),
+                    'image' => auth()->user()->image != null ? auth()->user()->image->path : 'http://waset-elmo3lm.jadara.work/web/images/man.png'
                 ], 200);
             }
             else{
@@ -201,8 +204,48 @@ class ProfileController extends Controller
         else{
             return response()->json([
                 'error' => trans('api.error')
-            ], 404);
+            ], 400);
         }
 
+    }
+
+    public function changePassword(Request $request){
+        if(app('request')->header('Authorization') != null && Auth::guard('api')->check()){
+            if(app('request')->header('Authorization') == 'Bearer '.auth()->user()->api_token){
+
+                $this->validate($request, [
+                    'password' => 'required|min:9|required_with:password_confirmation|same:password_confirmation',
+                    'password_confirmation' => 'required|min:9',
+                ]);
+        
+                $user = auth()->user();
+                if($user == null){
+                    return response()->json([
+                        'error' => trans('api.email_not_found'),
+                    ], 400);
+                }
+        
+                if($user->is_verified == 0){
+                    return response()->json([
+                        'error' => trans('api.email_not_verified'),
+                    ], 400);
+                }
+        
+                $user->update(['password' => Hash::make($request->password)]);
+                return response()->json([
+                    'data' => trans('api.password_changed'),
+                ], 200);
+            }
+            else{
+                return response()->json([
+                    'error' => trans('api.unauthorized')
+                ], 400);
+            }
+        }
+        else{
+            return response()->json([
+                'error' => trans('api.unauthorized')
+            ], 400);
+        }
     }
 }

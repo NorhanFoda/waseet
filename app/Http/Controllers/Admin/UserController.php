@@ -8,6 +8,7 @@ use App\User;
 use App\Classes\Upload;
 use App\Models\SubScriber;
 use App\Classes\SendEmail;
+use App\Jobs\SendEmailJob;
 
 class UserController extends Controller
 {
@@ -163,14 +164,17 @@ class UserController extends Controller
     public function approveAccount(Request $request){
         $user = User::find($request->id);
         $user->update(['approved' => $request->approved]);
+        SendEmail::Subscripe($user->email, route('login.form'), 'notify_user');
 
         //Send mail to subscripers
         if($request->approved == 1){
             if($user->hasRole('online_teacher') || $user->hasRole('direct_teacher')){
-                $subs = SubScriber::all();
-                foreach($subs as $sub){
-                    SendEmail::Subscripe($sub->email, route('teachers.show', $user->id), 'teacher');
-                }
+                $subs = SubScriber::get(['email']);
+                $details['emails'] = $subs;
+                $details['link'] = route('teachers.show', $user->id);
+                $details['type2'] = 'subscripe';
+                $details['type'] = 'teacher';
+                dispatch(new SendEmailJob($details));
             }
         }
 

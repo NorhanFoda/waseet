@@ -40,11 +40,12 @@ class AnnouncController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
+            'link' => 'nullable|regex:/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         $announce = Announce::create([
-            'url' => $request->url,
+            'link' => $request->link,
             'appear_in_home' => $request->appear_in_home == 'on' ? 1 : 0,
         ]);
 
@@ -99,6 +100,7 @@ class AnnouncController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
+            'link' => 'nullable|regex:/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/',
             'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
@@ -106,10 +108,10 @@ class AnnouncController extends Controller
 
         $announce->update([
             'appear_in_home' => $request->appear_in_home == 'on' ? 1 : 0,
-            'url' => $request->url,
+            'link' => $request->link,
         ]);
         
-        if($removed->has('iamge')){
+        if($request->has('iamge')){
             $removed = Upload::deleteImage($announce->image->path);
             if($removed){
                 $image_url = Upload::uploadImage($request->image);

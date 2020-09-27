@@ -29,6 +29,7 @@ class BagResource extends JsonResource
             'category_name' => $this->category->{'name_'.$lang},
             'image' => $this->image,
             'name' => $this->{'name_'.$lang},
+            'price' => $this->price.' '.trans('admin.sr'),
             'description' => $this->{'description_'.$lang},
             'rating' => $this->ratings->count() > 0 ? ceil($this->ratings->sum('rate') / $this->ratings->count()).'/5' : trans('admin.no_ratings'),
             'is_saved' => $is_saved,

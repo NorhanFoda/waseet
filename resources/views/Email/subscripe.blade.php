@@ -20,6 +20,9 @@
         @if($type == 'teacher')
             {{trans('web.teachers')}}
         @endif
+        @if($type == 'notify_user')
+            {{trans('web.account_approved_notify')}}
+        @endif
         
     </title>
     <!--
@@ -58,9 +61,12 @@
             @if($type == 'teacher')
                 {{trans('admin.new_teacher_added')}}
             @endif
+            @if($type == 'notify_user')
+                {{trans('web.account_approved')}}
+            @endif
             <div style="color:#333; margin: 30px auto 20px; text-align: center;">
                 <div>
-                    <a href="{{$link}}">{{$link}}</a>
+                    <a href="{{$link}}">{{trans('web.click_here')}}</a>
                 </div>        
             </div>
         </div>

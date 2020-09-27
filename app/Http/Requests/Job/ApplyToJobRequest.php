@@ -25,8 +25,8 @@ class ApplyToJobRequest extends FormRequest
     {
         return [
             'name' => 'required', 
-            'email' => 'required|unique:users,email,'.auth()->user()->id,
-            'phone_main' => 'required',
+            'email' => 'required|email|unique:users,email,'.auth()->user()->id,
+            'phone_main' => 'required|unique:users,phone_main,'.auth()->user()->id,
             'phone_secondary' => 'sometimes',
             'lat' => 'required',
             'long' => 'required',

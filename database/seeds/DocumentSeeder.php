@@ -15,6 +15,11 @@ class DocumentSeeder extends Seeder
             [
                 'path' => 'https://waset-elmo3lm.jadara.work/documents/php6C6_1594199662.pdf',
                 'doucmentRef_id' => 1,
+                'doucmentRef_type' => 'App\User',
+            ],
+            [
+                'path' => 'https://waset-elmo3lm.jadara.work/documents/php6C6_1594199662.pdf',
+                'doucmentRef_id' => 1,
                 'doucmentRef_type' => 'App\Models\Bag',
             ],
             [

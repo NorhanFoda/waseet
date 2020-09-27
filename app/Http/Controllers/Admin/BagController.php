@@ -15,6 +15,7 @@ use App\Http\Requests\Bags\EditBagRequest;
 use Illuminate\Support\Facades\Validator;
 use App\Classes\SendEmail;
 use App\Models\SubScriber;
+use App\Jobs\SendEmailJob;
 
 class BagController extends Controller
 {
@@ -132,13 +133,16 @@ class BagController extends Controller
         }
 
         if($bag){
-
-            //Send mail to subscripers
-            $subs = SubScriber::all();
+            
+            $subs = SubScriber::get(['email']);
             foreach($subs as $sub){
-                SendEmail::Subscripe($sub->email, route('bags.show', $bag->id), 'bag');
+                $details['emails'] = $sub->email;
+                $details['link'] = route('bags.show', $bag->id);
+                $details['type2'] = 'subscripe';
+                $details['type'] = 'bag';
+                dispatch(new SendEmailJob($details));
             }
-
+            
             session()->flash('success', trans('admin.created'));
             return redirect()->route('bags.index');    
         }

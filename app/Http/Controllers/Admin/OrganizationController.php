@@ -51,7 +51,7 @@ class OrganizationController extends Controller
     {
         $org = User::create($request->all());
 
-        $org->update(['password' => Hash::make($request->password)]);
+        $org->update(['password' => Hash::make($request->password), 'is_verified' => 1, 'approved' => 1]);
 
         $org->assignRole('organization');
 

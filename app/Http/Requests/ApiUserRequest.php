@@ -31,7 +31,7 @@ class ApiUserRequest extends FormRequest
             'password' => 'required|min:9|required_with:password_confirmation|same:password_confirmation',
             'password_confirmation' => 'required|min:9',
             'exper_years' => 'required_if:role_id,3|required_if:role_id,4|required_if:role_id,6',
-            'age' => 'required_if:role_id,2|required_if:role_id,3|required_if:role_id,4|required_if:role_id,6',
+            // 'age' => 'required_if:role_id,2|required_if:role_id,3|required_if:role_id,4|required_if:role_id,6',
 
             'stage_id' => 'required_if:role_id,2',
             'other_stage' => 'required_if:stage_id,4',
@@ -44,7 +44,7 @@ class ApiUserRequest extends FormRequest
             'bio_ar' => 'required_if:role_id,3|required_if:role_id,4',
             'bio_en' => 'required_if:role_id,3|required_if:role_id,4',
 
-            'nationality_id' => 'required_if:role_id,3|required_if:role_id,4|required_if:other_nationality,null',
+            // 'nationality_id' => 'required_if:role_id,3|required_if:role_id,4|required_if:other_nationality,null',
             'other_nationality' => 'required_if:nationality_id,3',
 
             // 'country_id' => 'required_if:role_id,3|required_if:role_id,4|required_if:role_id,5|required_if:role_id,6',

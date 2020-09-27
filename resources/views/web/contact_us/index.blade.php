@@ -11,8 +11,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12">
-                        <h5 data-aos="fade-down">{{trans('web.contact_us')}}</h5>
-                        <p data-aos="fade-up">{{trans('web.contact_us_text')}}</p>
+                        <h5 data-aos="fade-down">{{trans('web.contact_us_nav')}}</h5>
+                        <p data-aos="fade-up">{{trans('web.contact_us')}}</p>
                     </div>
                 </div>
             </div>

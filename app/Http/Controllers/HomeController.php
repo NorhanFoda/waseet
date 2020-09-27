@@ -14,6 +14,7 @@ use App\Models\StaticPage;
 use App\Models\Social;
 use App\Models\Save;
 use App\Models\Rating;
+use App\Models\Announce;
 
 class HomeController extends Controller
 {
@@ -38,7 +39,8 @@ class HomeController extends Controller
         $cats = BagCategory::with('image')->get();
         $set = Setting::find(1);
         $about_us = StaticPage::with('goals')->where('name_ar', 'من نحن')->where('name_en', 'About us')->first();
-        return view('web.home.index', compact('sliders', 'set', 'cats', 'about_us'));
+        $announce = Announce::with('image')->where('appear_in_home', 1)->orderBy('created_at', 'desc')->first();
+        return view('web.home.index', compact('sliders', 'set', 'cats', 'about_us', 'announce'));
     }
 
     // Search
@@ -57,20 +59,36 @@ class HomeController extends Controller
             ->get();
 
         // search in jobs
-        $jobs = Job::where('name_ar', 'LIKE', '%'.$request->token.'%')
+        if(auth()->user() != null && (auth()->user()->hasRole('job_seeker') || auth()->user()->hasRole('organization'))){
+            $jobs = Job::where('name_ar', 'LIKE', '%'.$request->token.'%')
             ->orWhere('name_en', 'LIKE', '%'.$request->token.'%')
             ->orWhere('description_ar', 'LIKE', '%'.$request->token.'%')
             ->orWhere('description_ar', 'LIKE', '%'.$request->token.'%')
             ->get();
+        }
+        else{
+            $jobs = [];
+        }
 
-        // search in users
-        $teachers = User::where('name', 'LIKE', '%'.$request->token.'%')
-            ->orWhere('email', 'LIKE', '%'.$request->token.'%')
-            ->orWhere('phone_main', 'LIKE', '%'.$request->token.'%')
-            ->orWhere('phone_secondary', 'LIKE', '%'.$request->token.'%')
-            ->orWhere('bio_ar', 'LIKE', '%'.$request->token.'%')
-            ->orWhere('bio_en', 'LIKE', '%'.$request->token.'%')
-            ->get();
+        if(auth()->user() != null && (auth()->user()->hasRole('online_teacher') || auth()->user()->hasRole('direct_teacher') ||
+            auth()->user()->hasRole('student') || auth()->user()->hasRole('organization'))){
+                // search in users
+                $teachers = User::whereHas('roles', function($q) use ($request){
+                    $q->where('name', 'online_teacher')->orWhere('name', 'direct_teacher');
+                })
+                ->where(function($query) use ($request){
+                    $query->where('name', 'LIKE', '%'.$request->token.'%')
+                    ->orWhere('email', 'LIKE', '%'.$request->token.'%')
+                    ->orWhere('phone_main', 'LIKE', '%'.$request->token.'%')
+                    ->orWhere('phone_secondary', 'LIKE', '%'.$request->token.'%')
+                    ->orWhere('bio_ar', 'LIKE', '%'.$request->token.'%')
+                    ->orWhere('bio_en', 'LIKE', '%'.$request->token.'%');
+                })
+                ->get();
+            }
+            else{
+                $teachers = [];
+            }
 
         return view('web.search.index', compact('bags', 'jobs', 'teachers'));
     }

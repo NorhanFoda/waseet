@@ -57,8 +57,13 @@
       <div class="row">
         <div class="col-12">
           <div class="ad">
-
-          <img src="{{asset('/images/ad.png')}}" alt="" />
+            @if($announce != null)
+              <a href="{{$announce->link}}">
+                <img src="{{$announce->image->path}}" alt="">
+              </a>
+            @else
+              <img src="{{asset('/images/ad.png')}}" alt="" />
+            @endif
           </div>
         </div>
       </div>

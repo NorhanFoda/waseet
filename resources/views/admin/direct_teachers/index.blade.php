@@ -70,7 +70,13 @@
                                                         <option value="{{1}}" @if($teacher->approved == 1) selected @endif>{{trans('admin.approved')}}</option>
                                                     </select>
                                                 </td> 
-                                                <td><a href="{{$teacher->receipt->image->path}}">{{trans('admin.view_receipt')}}</a></td>
+                                                <td>
+                                                    @if($teacher->receipt != null)
+                                                        <a href="{{$teacher->receipt->image->path}}">{{trans('admin.view_receipt')}}</a>
+                                                    @else
+                                                        -
+                                                    @endif
+                                                </td>
                                                 <td>
                                                     <a href="{{route('direct_teachers.show', $teacher->id)}}" class="btn" style="color:white;"><i class="fa fa-eye"></i></a>
                                                     <a href="{{route('direct_teachers.edit', $teacher->id)}}" class="btn" style="color:white;"><i class="fa fa-pencil-square-o"></i></a>

@@ -66,7 +66,7 @@
                                                         <option value="{{1}}" @if($seeker->approved == 1) selected @endif>{{trans('admin.approved')}}</option>
                                                     </select>
                                                 </td> 
-                                                <td><a href="{{$seeker->receipt->image->path}}">{{trans('admin.view_receipt')}}</a></td>
+                                                <td><a href="@if($seeker->receipt != null){{ $seeker->receipt->image->path }}@endif">{{trans('admin.view_receipt')}}</a></td>
                                                 <td>
                                                     <a href="{{route('seekers.show', $seeker->id)}}" class="btn" style="color:white;"><i class="fa fa-eye"></i></a>
                                                     <a href="{{route('seekers.edit', $seeker->id)}}" class="btn" style="color:white;"><i class="fa fa-pencil-square-o"></i></a>

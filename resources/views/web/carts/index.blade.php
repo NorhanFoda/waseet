@@ -539,6 +539,16 @@
                     // "Al Riyadh"
                     // $('#city').val(responses[0].address_components[4].long_name);
 
+                    //get city start
+                    var filtered_array = responses[0].address_components.filter(function(address_component){
+                        return address_component.types.includes("administrative_area_level_2");
+                    }); 
+                    var city = filtered_array.length ? filtered_array[0].long_name: "";
+                    $('#city').val(city);
+                    // console.log(responses[0].address_components);
+                    // console.log(city);
+                    // get city end
+
                     updateMarkerAddress(responses[0].formatted_address);
                 } else {
                 updateMarkerAddress('Cannot determine address at this location.');

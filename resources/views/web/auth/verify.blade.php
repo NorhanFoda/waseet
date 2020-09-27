@@ -19,7 +19,11 @@
             </div>
 
             <div class="login-btn">
-                <a href="#" id="resend_code" class="white-btn">{{trans('web.resend_code')}}</a>
+                <form action="{{route('register.resend_code')}}" method="POST">
+                    @csrf
+                    <input type="hidden" name="email" value="{{$email}}" />
+                    <button type="submit" id="resend_code" class="white-btn">{{trans('web.resend_code')}}</button>
+                </form>
             </div>
 
         </div>

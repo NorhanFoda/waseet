@@ -8,6 +8,8 @@ return [
     'success' => 'Task completed successfully',
     'registered' => 'Please Continue to Payment To Complete Creating Account',
     'bags_empty' => 'No bags found',
+    'password_changed' => 'Password changed successfully',
+    'wait_for_approve' => 'Registeration Completed Successfully, Please Wait For Adminstration Approvement',
 
     // Text
     'about_waseet_text' => 'About Waseet Al Moalm',
@@ -36,6 +38,8 @@ return [
     'cat_not_foung' => 'Category not found',
     'bag_not_foung' => 'Bag not found',
     'job_not_found' => 'Job not registered',
+    'wrong_item' => 'Item can not be added to saved posts',
+    'invalid_seeker' => 'This user is not job seeker',
 
     // Order
     'order_created' => 'Order crated successfully',

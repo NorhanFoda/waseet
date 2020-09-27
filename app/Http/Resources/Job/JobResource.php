@@ -27,7 +27,7 @@ class JobResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->{'name_'.$lang},
-            'specialization' => $this->specialization_id == 3 && $this->other_specialization != null ? $this->other_specialization: $this->specialization->{'name_'.$lang},
+            'specialization' => $this->specialization_id == 3 && $this->other_specialization != null ? $this->other_specialization : $this->specialization->{'name_'.$lang},
             'work_hours' => $this->work_hours,
             'exper_years' => $this->exper_years.' '.trans('web.years'),
             // 'location' => $this->country->{'name_'.$lang}.' - '.$this->city->{'name_'.$lang},

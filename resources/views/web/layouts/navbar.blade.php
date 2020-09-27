@@ -8,7 +8,7 @@
         <div class="logo col-lg-6 col-sm-6 col-8 text-center">
           <a href="{{route('home')}}">
             <img src="{{asset('web/images/Vector-Smart-Object1.png')}}" alt="" />
-            <img src="{{asset('web/images/وسيط-المعلم.png')}}" alt="" />
+            <img src="{{asset('web/images/logo_text.png')}}" alt="" />
           </a>
         </div>
 
@@ -50,10 +50,18 @@
 
         @if(Auth::check() && auth()->user()->hasRole('organization'))
           <li><a href="{{route('jobs.org_jobs')}}">{{trans('web.jobs')}}</a></li>
+          <li><a href="{{route('web_seekers.index')}}">{{trans('web.job_seekers')}}</a></li>
         @endif
 
-        <li><a href="{{route('jobs.web_index')}}">{{trans('web.look_for_job')}}</a></li>
-        <li><a href="{{route('teachers.index')}}">{{trans('web.private_teacher')}}</a></li>
+        @if(Auth::check() && (auth()->user()->hasRole('organization') || auth()->user()->hasRole('job_seeker') || 
+          auth()->user()->hasRole('direct_teacher') || auth()->user()->hasRole('online_teacher')))
+            <li><a href="{{route('jobs.web_index')}}">{{trans('web.look_for_job')}}</a></li>
+        @endif
+
+        @if(Auth::check() && (auth()->user()->hasRole('organization') || auth()->user()->hasRole('student') || 
+          auth()->user()->hasRole('direct_teacher') || auth()->user()->hasRole('online_teacher')))
+            <li><a href="{{route('teachers.index')}}">{{trans('web.private_teacher')}}</a></li>
+        @endif
         <li><a href="{{route('web_bags')}}">{{trans('web.bags')}}</a></li>
 
         @if(Auth::check())

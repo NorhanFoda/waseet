@@ -28,6 +28,7 @@ use App\Http\Resources\Roles\RoleResource;
 use Auth;
 use DB;
 use Carbon\Carbon;
+use App\Jobs\SendEmailJob;
 
 class RegisterController extends Controller
 {
@@ -99,18 +100,21 @@ class RegisterController extends Controller
             if($old->is_verified == 0){
                 if($old->image != null){
                     $removed = Upload::deleteImage($old->image->path);
-                    if($removed){
-                        $old->delete();
-                    }
-                    else{
-                        return response()->json([
-                            'error' => trans('web.error')
-                        ], 404);
-                    }
                 }
-                else{
-                    $old->delete();
-                }
+
+                $old->delete();
+                //     if($removed){
+                //         $old->delete();
+                //     }
+                //     else{
+                //         return response()->json([
+                //             'error' => trans('web.error')
+                //         ], 404);
+                //     }
+                // }
+                // else{
+                    // $old->delete();
+                // }
             }
             else{
                 return response()->json([
@@ -120,15 +124,6 @@ class RegisterController extends Controller
         }
 
         $user = User::create($request->all());
-        // if($request->has('address') && $request->has('lat') && $request->has('long')){
-        //     $address = Address::create([
-        //         'lat' => $request->lat,
-        //         'long' => $request->long,
-        //         'address' => $request->address,
-        //         'user_id' => $user->id,
-        //     ]);
-        //     $user->addresses()->save($address);
-        // }
 
         $user->update([
             'password' => Hash::make($request->password), 
@@ -178,19 +173,19 @@ class RegisterController extends Controller
         }
 
         // If the registered user is direct/online teacher or job seeker then redirect user to payment page
-        if($request->role_id == 3 || $request->role_id == 4 || $request->role_id == 6){
-            return response()->json([
-                'user_id' => $user->id,
-                'success' => trans('api.registered'),
-            ], 200);
-        }
-        else{
+        // if($request->role_id == 3 || $request->role_id == 4 || $request->role_id == 6){
+        //     return response()->json([
+        //         'user_id' => $user->id,
+        //         'success' => trans('api.registered'),
+        //     ], 200);
+        // }
+        // else{
             $code = $this->createVerificationCode();
             $user->update(['code' => $code]);
             $email = $user->email;
 
             return $this->sendEmail($request->email, $user->code);   
-        }
+        // }
     }
 
     //-------------------------------------------------------- store user data end ---------------------------------------------------//
@@ -204,6 +199,10 @@ class RegisterController extends Controller
             ], 404);
         }
 
+        // $details['code'] = $code;
+        // $details['email'] = $email;
+        // $details['type'] = 'send_verification_code';
+        // dispatch(new SendEmailJob($details));
         SendEmail::sendVerificationCode($code, $email);
 
         return response()->json([
@@ -254,13 +253,18 @@ class RegisterController extends Controller
             if(!$user->hasRole('direct_teacher') && !$user->hasRole('online_teacher') && !$user->hasRole('job_seeker')){
                 return response()->json([
                     'data' => Auth::loginUsingId($user->id, true),
+                    'image' => $user->image != null ? $user->image->path : 'http://waset-elmo3lm.jadara.work/web/images/man.png',
                     'roles' => RoleResource::collection($user->roles),
                 ], 200);
             }
             else{
-                return response()->json([
-                    'success' => trans('web.registred')
+                    return response()->json([
+                    'user_id' => $user->id,
+                    'success' => trans('api.registered'),
                 ], 200);
+                // return response()->json([
+                //     'success' => trans('web.registred')
+                // ], 200);
             }
         }
         
@@ -285,7 +289,8 @@ class RegisterController extends Controller
     // Store register payment data
     public function StoreRegisterPayment(Request $request){
         $this->validate($request, [
-            'user_id' => 'required',
+            'user_id' => 'required_without:user_email',
+            'user_email' => 'required_without:user_id',
             'bank_id' => 'required',
             'name' => 'required',
             'email' => 'required|email',
@@ -296,7 +301,19 @@ class RegisterController extends Controller
 
         //Store receipt data
         $receipt = BankReceipt::create($request->all());
-        $receipt->update(['user_id' => $request->user_id]);
+        if($request->has('user_id')){
+            $user = User::find($request->user_id);
+            $receipt->update(['user_id' => $request->user_id]);
+        }
+        else if($request->has('user_email')){
+            $user = User::where('email', $request->user_email)->first();
+            if($user == null){
+                return response()->json([
+                    'error' => trans('api.email_not_found'),
+                ], 400);
+            }
+            $receipt->update(['user_id' => $user->id]);
+        }
 
         // Upload reciept image
         $image_url = Upload::uploadImage($request->image);
@@ -306,15 +323,16 @@ class RegisterController extends Controller
             'imageRef_type' => 'App\Models\BankReceipt'
         ]);
         $receipt->image()->save($image);
+        
+        return response()->json([
+            'success' => trans('api.wait_for_approve')
+        ], 200);
 
         // Send verification code
-        $code = $this->createVerificationCode();
-        $user = User::find($request->user_id);
-        $user->update(['code' => $code]);
+        // $code = $this->createVerificationCode();
+        // $user->update(['code' => $code]);
 
-        SendEmail::sendVerificationCode($code, $user->email);
-
-        return $this->sendEmail($user->email, $user->code);   
+        // return $this->sendEmail($user->email, $user->code);   
     }
     //-----------------------------------------------Store Register payment end---------------------------------------------------------//
 

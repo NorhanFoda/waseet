@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Order;
 use Carbon\Carbon;
 use App\Classes\SendEmail;
+use App\Jobs\SendEmailJob;
 
 class OrderController extends Controller
 {
@@ -36,13 +37,10 @@ class OrderController extends Controller
 
             // If order contains buy online bags, then send email bag contents
             if($order->bags()->where('buy_type', 1)->exists()){
-
-                $bags = $order->bags()->where('buy_type', 1)->get();
-                
-                SendEmail::sendBagContents($bags, auth()->user()->email);
-
-                // session()->flash('success', trans('web.bag_contents_emailed'));
-                // return view('web.payment.payment_report', compact('order'));
+                $details['email'] = auth()->user()->email;
+                $details['bags'] = $order->bags()->where('buy_type', 1)->get();
+                $details['type'] = 'send_bag_contents';
+                dispatch(new SendEmailJob($details));
             }
         }
     }

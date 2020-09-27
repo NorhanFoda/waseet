@@ -17,20 +17,25 @@ class UserSeeder extends Seeder
                 'name' => 'Jaadara',
                 'email' => 'admin@jaadara.com',
                 'password' => bcrypt('123456789'),
-                'phone_main' => '00966563793461',
-                'is_verified' => 1,
-                'approved' => 1,
-                'stage_id' => null,
-            ],
-            [
-                'name' => 'test',
-                'email' => 'test@jaadara.com',
-                'password' => bcrypt('123456789'),
-                'phone_main' => '00966563793462',
+                'phone_main' => '+966563793461',
                 'is_verified' => 1,
                 'approved' => 1,
                 'stage_id' => 1,
-            ],
+                'nationality_id' => 1,
+                'lat' => '52.36',
+                'long' => '52.36',
+                'address' => 'الرياض - المملكة العربية السعودية',
+                'teaching_lat' => '52.36',
+                'teaching_long' => '52.36',
+                'teaching_address' => 'الرياض - المملكة العربية السعودية',
+                'exper_years' => 5,
+                'salary_month' => 5000,
+                'age' => 35,
+                'bio_ar' => 'معلم خصوصى',
+                'bio_en' => 'Provate Teacher',
+                'edu_level_id' => 1,
+                
+            ]
         ]);
     }
 }

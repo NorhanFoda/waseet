@@ -34,6 +34,7 @@ class BagDetailsResource extends JsonResource
             'contents' => $this->{'contents_'.$lang},
             'benefits' => $this->{'benefits_'.$lang},
             'is_saved' => $is_saved,
+            'link' => route('web_bags.show', $this->id),
         ];
     }
 }

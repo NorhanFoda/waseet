@@ -14,6 +14,7 @@ use App\Models\SubScriber;
 use App\Classes\SendEmail;
 use App\Models\Setting;
 use App\Models\Specialization;
+use App\Jobs\SendEmailJob;
 
 class JobController extends Controller
 {
@@ -65,10 +66,12 @@ class JobController extends Controller
 
         if($job){
             //Send mail to subscripers
-            $subs = SubScriber::all();
-            foreach($subs as $sub){
-                SendEmail::Subscripe($sub->email, route('jobs.details', $job->id), 'job');
-            }
+            $subs = SubScriber::get(['email']);
+            $details['emails'] = $subs;
+            $details['link'] = route('jobs.details', $job->id);
+            $details['type2'] = 'subscripe';
+            $details['type'] = 'job';
+            dispatch(new SendEmailJob($details));
 
             session()->flash('success', trans('admin.created'));
             return redirect()->route('jobs.index');
@@ -195,19 +198,29 @@ class JobController extends Controller
         $job->update(['approved' => $request->approved]);
 
         if($job->approved == 1){
-            //Send mail to subscripers
-            $subs = SubScriber::all();
-            foreach($subs as $sub){
-                SendEmail::Subscripe($sub->email, route('jobs.details', $job->id), 'job');
-            }
+
+            $subs = SubScriber::get(['email']);
+            $details['emails'] = $subs;
+            $details['link'] = route('jobs.details', $job->id);
+            $details['type2'] = 'subscripe';
+            $details['type'] = 'job';
+            dispatch(new SendEmailJob($details));
 
             //Send approval mail to Announcer
-            SendEmail::SendApprovalMail($job->announcer->email, route('jobs.details', $job->id), 'approved');
+            $details['email'] = $job->announcer->email;
+            $details['link'] = route('jobs.details', $job->id);
+            $details['type2'] = 'approve_job';
+            $details['type'] = 'approved';
+            dispatch(new SendEmailJob($details));
         }
         else{
             //Send refuse mail to Announcer
             $set = Setting::find(1);
-            SendEmail::SendApprovalMail($job->announcer->email, $set, 'refused');
+            $details['email'] = $job->announcer->email;
+            $details['link'] = route('jobs.details', $job->id);
+            $details['type2'] = 'approve_job';
+            $details['type'] = 'refused';
+            dispatch(new SendEmailJob($details));
         }
     }
 }

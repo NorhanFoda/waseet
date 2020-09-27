@@ -32,13 +32,9 @@ class PaymentController extends Controller
     public function prepareOrder(OrderRequest $request){
         if(app('request')->header('Authorization') != null && Auth::guard('api')->check()){
             if(app('request')->header('Authorization') == 'Bearer '.auth()->user()->api_token){
-                
-                $old_carts = auth()->user()->carts;
-        
-                // Delete old carts
-                foreach($old_carts as $cart){
-                    $cart->delete();
-                }
+
+                // delete old carts
+                auth()->user()->carts()->delete();
 
                 // Add new carts with new values from localStorage
                 foreach($request->carts as $cart){
@@ -88,13 +84,14 @@ class PaymentController extends Controller
                 foreach($carts as $cart){
                     $bag = Bag::findOrFail($cart->bag_id);
                     $order->bags()->attach($bag);
-                    BagOrder::where('bag_id', $cart->bag_id)->first()->update([
+                    $ordr_bags = BagOrder::where('bag_id', $cart->bag_id)->where('order_id', $order->id)->first()->update([
                         'total_price' => $cart->total_price,
                         'quantity' => $cart->quantity,
                         'buy_type' => $cart->buy_type
                     ]);
-                    
+
                     $cart->delete();
+                    
                 }
 
                 return response()->json([
@@ -145,22 +142,9 @@ class PaymentController extends Controller
                     'accepted' => Carbon::now()
                 ]);
         
-                // If order contains buy online bags, then send email bag contents
-                if($order->bags()->where('buy_type', 1)->exists()){
-        
-                    $bags = $order->bags()->where('buy_type', 1)->get();
-                    
-                    SendEmail::sendBagContents($bags, auth()->user()->email);
-        
-                    return response()->json([
-                        'success' => trans('web.bag_contents_emailed')
-                    ], 200);
-                }
-                else{
-                    return response()->json([
-                        'success' => trans('api.payment_saved')
-                    ], 200);
-                }
+                return response()->json([
+                    'success' => trans('api.payment_saved')
+                ], 200);
             }
             else{
                 return response()->json([

@@ -61,20 +61,7 @@
                                                 <td>
                                                     {{$announce->appear_in_home == 0 ? trans('admin.no') : trans('admin.yes')}}
                                                 </td>
-                                                <td>
-                                                    @if($announce->location == 1)
-                                                        {{trans('admin.up_makeup')}}
-                                                    @endif
-                                                    @if($announce->location == 2)
-                                                        {{trans('admin.up_perfum')}}
-                                                    @endif
-                                                    @if($announce->location == 3)
-                                                        {{trans('admin.up_care')}}
-                                                    @endif
-                                                    @if($announce->location == 4)
-                                                        {{trans('admin.up_lenses')}}
-                                                    @endif
-                                                </td>
+                                                <td><a href="{{$announce->link}}">{{$announce->link}}</a></td>
                                                 <td>
                                                     <a href="{{route('announces.edit', $announce->id)}}" class="btn" style="color:white;"><i class="fa fa-pencil-square-o"></i></a>
                                                     <a title="delete" onclick="return true;" id="confirm-color" object_id='{{$announce->id}}'

@@ -81,7 +81,7 @@
                                             <span>{{trans('admin.link')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <input type="url" name="link" value="{{$announce->url}}" class="form-control" placeholder="{{trans('admin.link')}}">
+                                            <input type="url" name="link" value="{{$announce->link}}" class="form-control" placeholder="{{trans('admin.link')}}">
                                             <div class="invalid-feedback">
                                                 {{trans('admin.link')}}
                                             </div>

@@ -10,6 +10,7 @@ use App\Classes\Verify;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Resources\Roles\RoleResource;
 use Auth;
+use App\Jobs\SendEmailJob;
 
 class ResetPasswordController extends Controller
 {
@@ -26,8 +27,12 @@ class ResetPasswordController extends Controller
         }
 
         $code = $this->createVerificationCode();
-        $user->update(['code' => $code, 'is_verified' => 0]);
+        // $user->update(['code' => $code, 'is_verified' => 0]);
 
+        // $details['code'] = $code;
+        // $details['email'] = $user->email;
+        // $details['type'] = 'reset_password';
+        // dispatch(new SendEmailJob($details));
         SendEmail::sendResetPasswordEmail($code, $user->email);
 
         return response()->json([
@@ -60,7 +65,7 @@ class ResetPasswordController extends Controller
     public function setNewPassword(Request $request){
         $this->validate($request, [
             'email' => 'required',
-            'password' => 'min:9|required_with:password_confirmation|same:password_confirmation',
+            'password' => 'required|min:9|required_with:password_confirmation|same:password_confirmation',
             'password_confirmation' => 'required|min:9',
         ]);
 
@@ -80,6 +85,7 @@ class ResetPasswordController extends Controller
         $user->update(['password' => Hash::make($request->password)]);
         return response()->json([
             'data' => Auth::loginUsingId($user->id),
+            'image' => $user->image != null ? $user->image->path : 'http://waset-elmo3lm.jadara.work/web/images/man.png',
             'roles' => RoleResource::collection($user->roles),
         ], 200);
     }

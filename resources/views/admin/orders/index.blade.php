@@ -57,11 +57,15 @@
                                             <td>{{$order->id}}</td>
                                             <td>{{$order->user->email}}</td>
                                             <td>{{$order->total_price + $order->shipping_fees}} {{trans('admin.sr')}}</td>
-                                            <td>{{$order->address->country->{'name_'.session('lang')} }} - 
+                                            {{--<td>{{$order->address->country->{'name_'.session('lang')} }} - 
                                                 {{$order->address->city->{'name_'.session('lang')} }} - 
                                                 {{$order->address->address}} - 
                                                 {{trans('web.ps')}} : {{$order->address->postal_code}}
-                                            </td>
+                                            </td>--}}
+                                            @if($order->address == null)
+                                                {{dd($order->id)}}
+                                            @endif
+                                            <td>{{$order->address->address}}</td>
                                             <td>
                                                 <select name="status" class="form-control status" data-id="{{$order->id}}">
                                                     <option value="{{2}}" @if($order->status == 2) selected @endif>{{trans('admin.waiting')}}</option>

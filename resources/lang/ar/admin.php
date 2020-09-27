@@ -45,11 +45,11 @@ return [
     'details' => 'تفاصيل إضافية',
 
     // Bag categories
-    'bag_categories' => 'أقسام الحقائب',
+    'bag_categories' => 'أقسام المتجر التعليمى',
     'bag_category' => 'القسم',
 
     // Bags
-    'bags' => 'الحقائب التعليمية',
+    'bags' => 'المتجر التعليمى',
     'price' => 'السعر',
     'sr' => 'ر.س',
     'description_ar' => 'الوصف بالعربية',
@@ -79,6 +79,7 @@ return [
     'online_teachers' => 'المعلمون الإفتراضيون',
     'direct_teachers' => 'المعلمون المباشرون',
     'students' => 'الطلاب',
+    'bank_receipt' => 'التحويل البنكى',
 
     // Materials
     'materials' => 'المواد الدراسية',

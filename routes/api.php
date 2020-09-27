@@ -13,8 +13,8 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::group(['middleware' => ['lang', 'CheckApiTokenExpirationDate']], function(){
-    // Route::group(['middleware' => ['lang']], function(){
+// Route::group(['middleware' => ['lang', 'CheckApiTokenExpirationDate']], function(){
+    Route::group(['middleware' => ['lang', 'CheckAPI']], function(){
 
     // Static pages
     Route::get('rules_conditions', 'Api\StaticPagesController@getRulesAndConditions');
@@ -57,14 +57,11 @@ Route::group(['middleware' => ['lang', 'CheckApiTokenExpirationDate']], function
     Route::get('bag_details/{id}', 'Api\BagCategoryController@getBagDetails');
     Route::get('api_bags/all', 'Api\BagCategoryController@getAllBags');
 
-    // Jobs
-    Route::get('jobs', 'Api\JobsController@index');
-
-    // Teachers
-    Route::get('teachers', 'Api\TeacherController@index');
-
     // Search
     Route::post('search', 'Api\HomeController@search');
+
+    // Banks
+    Route::get('banks', 'Api\PaymentController@getBanks');
     
     // Auth routes
     Route::group(['middleware' => 'auth:api'], function(){
@@ -89,7 +86,6 @@ Route::group(['middleware' => ['lang', 'CheckApiTokenExpirationDate']], function
         Route::get('methods', 'Api\PaymentMethodController@index');
 
         // Payment
-        Route::get('banks', 'Api\PaymentController@getBanks');
         Route::post('prepare_order', 'Api\PaymentController@prepareOrder');
         Route::post('bank_payment', 'Api\PaymentController@storeBankPayment');
         Route::get('order/{id}/report', 'Api\PaymentController@getOrderReporrt');
@@ -100,6 +96,7 @@ Route::group(['middleware' => ['lang', 'CheckApiTokenExpirationDate']], function
         Route::get('order/bags/{bag_id}', 'Api\OrderController@getBagContents')->name('api_order.bag_contents');
 
         //Jobs
+        Route::get('jobs', 'Api\JobsController@index');
         Route::get('jobs/{id}', 'Api\JobsController@getJobDetails');
         Route::post('jobs/apply', 'Api\JobsController@applyJob');
         Route::get('api_jobs/announce', 'Api\JobsController@announceJobFormData');
@@ -116,7 +113,12 @@ Route::group(['middleware' => ['lang', 'CheckApiTokenExpirationDate']], function
         Route::post('rate', 'Api\HomeController@rate');
 
         // Teachers
+        Route::get('teachers', 'Api\TeacherController@index');
         Route::get('teachers/{id}', 'Api\TeacherController@show');
+
+        // Seekers
+        Route::get('api_seekers', 'Api\SeekerController@index');
+        Route::get('seekers/{id}', 'Api\SeekerController@getSeekerData');
 
         // Profile
         Route::get('cv', 'Api\ProfileController@getCV');
@@ -124,6 +126,7 @@ Route::group(['middleware' => ['lang', 'CheckApiTokenExpirationDate']], function
         Route::get('profile/edit', 'Api\ProfileController@getEditPersonalInfoData');
         Route::post('profile/update', 'Api\ProfileController@updatePersonalInfo');
         Route::post('cv/update', 'Api\ProfileController@updateCV');
+        Route::post('password/change', 'Api\ProfileController@changePassword');
 
         // DeviceTokens
         Route::get('tokens', 'Api\DeviceTokensController@index');

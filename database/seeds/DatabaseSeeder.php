@@ -13,9 +13,8 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(NationalitySeeder::class);
         $this->call(StagesSeeder::class);
-        $this->call(UserSeeder::class);
         $this->call(BagCategorySeeder::class);
-        $this->call(BagSeeder::class);
+        // $this->call(BagSeeder::class);
         $this->call(RoleSeeder::class);
         $this->call(ModelHasRoleSeeder::class);
         $this->call(MaterialsSeeder::class);
@@ -28,13 +27,16 @@ class DatabaseSeeder extends Seeder
         $this->call(SliderSeeder::class);
         $this->call(StaticPagesSeeder::class);
         $this->call(SocialSeeder::class);
-        $this->call(PaymentMethodsSeeder::class);
+        // $this->call(PaymentMethodsSeeder::class);
         $this->call(BankSeeder::class);
         $this->call(ImageSeeder::class);
         $this->call(VideoSeeder::class);
         $this->call(DocumentSeeder::class);
         $this->call(GoalSeeder::class);
         $this->call(specializationSeeder::class);
-        $this->call(JobSeeder::class);
+        $this->call(UserSeeder::class);
+        $this->call(BankReceiptSeeder::class);
+        $this->call(MaterialUserSeeder::class);
+        // $this->call(JobSeeder::class);
     }
 }

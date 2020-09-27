@@ -21,6 +21,8 @@ return [
     'register' => 'New Account',
     'home' => 'Home',
     'add_job' => 'Announce A Job',
+    'complete_payment' => 'Please Finish Registeration',
+    'account_verified' => 'Account Verified Successfully',
 
     // About us
     'vision' => 'Vision',
@@ -59,11 +61,14 @@ return [
     'password_confirmation' => 'Confirm Password',
     'do_register' => 'Register',
     'image' => 'Image',
-    'registred' => "Account Registered Successfully And Will Be Activated After The Administration's Review",
+    'registred' => "Account Registered Successfully",
     'account_not_approved' => 'Account is Not Activated By Administration Yet',
     'logout' => 'Logout',
     'forget_password' => 'Forget Password?',
     'do_login' => 'Login',
+    'click_here' => 'Click Here',
+    'account_approved_notify' => 'Waseet Al Moalm - Account Approvement',
+    'account_approved' => 'Your account has been activated on the Waseet Al Moallem site, you can now log in and take advantage of the site’s services',
     'account_not_verified' => 'This Account is Not Verified',
     'email_or_password_wrong' => 'Email or Password is Wrong',
     'verify_code' => 'Please Enter Four Numbers of Verification Code',
@@ -95,6 +100,7 @@ return [
     'other_edu_type' => 'Other Educational Type',
 
     // Job
+    'login_as_seeker_or_teacher' => 'Please Login As Job Seeker Or Teacer',
     'work_hours' => 'Work Hours',
     'apply' => 'Apply',
     'work_hours_count' => 'Work Hours',
@@ -103,6 +109,7 @@ return [
     'free_places' => 'Free Places',
     'job_description' => 'About The Job',
     'apply_to_job' => 'Apply for This Job',
+    'login_as_job_seeker_or_org' => 'Please Loign As Job Seeker Or Organization',
     'teachers' => 'Teachers',
     'place' => 'Place',
     'years' => 'Years',
@@ -128,6 +135,13 @@ return [
     'year' => 'Years Old',
     'teacher_bio' => 'About The Teacher',
     'logout_first' => 'Please Logout to Create New Account',
+    'login_as_teacher_org_std' => 'Please Login As Teacher, Student, Or Organization',
+
+    // Seekers
+    'login_as_org' => 'Please Login As Organization',
+    'job_seekers' => 'Job Seekers',
+    'job_seekers_text' => 'This text is an example of text that can be replaced in the same space',
+    'view' => 'View',
 
     // Cart
     'cart' => 'Cart',
@@ -142,6 +156,7 @@ return [
     'select_payment_method' => 'Select Payment Method',
     'select_shipping_address' => 'Select Shipping Address',
     'add_address' => 'Add Shipping Address',
+    'cart_empty' => 'Cart is Empty',
 
 
     // Profile
@@ -171,7 +186,7 @@ return [
     'shipping_not_allowed_here' => 'Shipping is Only Available Inside Al Riyadh City',
 
     // Saved
-    'jobs' => 'Educational Jobs',
+    'jobs' => 'My Announces',
     'save_city' => 'Save City',
 
     // Bank
@@ -245,4 +260,5 @@ return [
 
     'search' => 'Search',
     'search_results' => 'Search Results',
+    'no_search_results' => 'No Search Results',
 ];
