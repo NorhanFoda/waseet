@@ -115,7 +115,13 @@
                                                 <p>{{$teacher->hasRole('online_teacher') ? trans('web.online_teacher') : trans('web.direct_teacher')}}</p>
                                             </li>
                                             <li>
-                                                <p>{{$teacher->nationality_id == 3 && $teacher->other_nationality != null ? $teacher->other_nationality : $teacher->nationality->{'name_'.session('lang')} }}</p>
+                                                <p>
+                                                    @if($teacher->nationality_id != null)
+                                                        {{ $teacher->nationality->{'name_'.session('lang')} }}
+                                                    @else
+                                                        {{ $teacher->nationality_id == 3 && $teacher->other_nationality != null ? $teacher->other_nationality : ''}}
+                                                    @endif
+                                                </p>
                                             </li>
                                             <li>
                                                 <p>{{$teacher->address}}</p>

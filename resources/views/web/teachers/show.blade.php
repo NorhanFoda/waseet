@@ -122,21 +122,44 @@
                     </div>
                     <div class="phone_num">
                         <p>{{trans('web.nationality')}} :</p>
-                        <h6>{{$teacher->nationality_id == 3 && $teacher->other_nationality != null ? $teacher->other_nationality : $teacher->nationality->{'name_'.session('lang')} }}</h6>
+                        <h6>
+                            @if($teacher->nationality_id != null)
+                                {{ $teacher->nationality->{'name_'.session('lang')} }}
+                            @else
+                                {{$teacher->nationality_id == 3 && $teacher->other_nationality != null ? $teacher->other_nationality : '' }}
+                            @endif
+                        </h6>
                     </div>
                     <div class="phone_num">
                         <p>{{trans('web.age')}} :</p>
                         <h6>{{$teacher->age}} {{trans('web.year')}}</h6>
                     </div>
+
+                    @php
+                        if(strpos($teacher->phone_main, ',') !== false){
+                            $arr = explode(',' , $teacher->phone_main);
+                            $phone_main = $arr[1];
+                        }
+                        else{
+                            $phone_main = $teacher->phone_main;
+                        }
+                        if(strpos($teacher->phone_secondary, ',') !== false){
+                            $arr2 = explode(',' , $teacher->phone_secondary);
+                            $phone_secondary = $arr2[1];
+                        }
+                        else{
+                            $phone_secondary = $teacher->phone_main;
+                        }
+                    @endphp
                     <div class="phone_num">
                         <p>{{trans('web.phone_main')}} :</p>
-                        <a href="tel:{{$teacher->phone_main}}">{{$teacher->phone_main}}</a>
+                        <a href="tel:{{$phone_main}}">{{$phone_main}}</a>
                     </div>
 
                     @if($teacher->phone_secondary)
                         <div class="phone_num">
                             <p>{{trans('web.phone_secondary')}} :</p>
-                            <a href="tel:{{$teacher->phone_secondary}}">{{$teacher->phone_secondary}}</a>
+                            <a href="tel:{{$phone_secondary}}">{{$phone_secondary}}</a>
                         </div>
                     @endif
 

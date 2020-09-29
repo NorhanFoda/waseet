@@ -81,17 +81,33 @@
 
                                 @if(Auth::user()->hasRole('admin') || Auth::user()->hasRole('student') || Auth::user()->hasRole('direct_teacher') ||
                                     Auth::user()->hasRole('online_teacher') || Auth::user()->hasRole('organization') || Auth::user()->hasRole('job_seeker'))
+                                    @php
+                                        if(strpos(Auth::user()->phone_main, ',') !== false){
+                                            $arr = explode(',' , Auth::user()->phone_main);
+                                            $phone_main = $arr[1];
+                                        }
+                                        else{
+                                            $phone_main = Auth::user()->phone_main;
+                                        }
+                                        if(strpos(Auth::user()->phone_secondary, ',') !== false){
+                                            $arr2 = explode(',' , Auth::user()->phone_secondary);
+                                            $phone_secondary = $arr2[1];
+                                        }
+                                        else{
+                                            $phone_secondary = Auth::user()->phone_main;
+                                        }
+                                    @endphp
                                     {{-- phone main start --}}
                                     <div class="big-label">{{trans('web.phone_main')}} :</div>
                                     <div class="userName">
-                                        <input type="tel" id="mob" name="phone_main" value="{{Auth::user()->phone_main}}" placeholder="+966563793461" required/>
+                                        <input type="tel" id="mob" name="phone_main" value="{{$phone_main}}" placeholder="+966563793461" required/>
                                     </div>
                                     {{-- phone main end --}}
 
                                     {{-- phone secondary start --}}
                                     <div class="big-label">{{trans('web.phone_secondary')}} :</div>
                                     <div class="userName">
-                                        <input type="tel" id="mob" name="phone_secondary" name="{{Auth::user()->phone_secondary}}" placeholder="+966563793461" />
+                                        <input type="tel" id="mob" name="phone_secondary" name="{{$phone_secondary}}" placeholder="+966563793461" />
                                     </div>
                                     {{-- phone secondary end --}}
                                 @endif

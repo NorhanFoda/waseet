@@ -17,6 +17,10 @@ class TeacherProfileResource extends JsonResource
     {
         $lang = \App::getLocale(); 
         $is_saved = false;
+        $nationality = '';
+        if($this->nationality_id != null){
+            $nationality = $this->nationality_id == 3 ? $this->other_nationality : $this->nationality->{'name_'.$lang};
+        }
 
         if(app('request')->header('Authorization') != null && Auth::guard('api')->check()){
             if(app('request')->header('Authorization') == 'Bearer '.Auth::guard('api')->user()->api_token){
@@ -33,7 +37,7 @@ class TeacherProfileResource extends JsonResource
             'role' => $this->hasRole('online_teacher') ? trans('web.online_teacher') : trans('web.direct_teacher'),
             'exper_years' => $this->exper_years.' '.trans('web.years'),
             'educational_level' => $this->edu_level_id == 4 ? $this->other_edu_level : $this->edu_level->{'name_'.$lang},
-            'nationality' => $this->nationality_id == 3 ? $this->other_nationality : $this->nationality->{'name_'.$lang},
+            'nationality' => $nationality,
             'age' => $this->age.' '.trans('web.years'),
             'phone_main' => $this->phone_main,
             'phone_secondary' => $this->phone_secondary,

@@ -47,6 +47,10 @@ class ProfileController extends Controller
     public function storePersonalInfo(UpdateProfileRequest $request){
         
         auth()->user()->update($request->all());
+        auth()->user()->update([
+            'teaching_lat' => $request->lat2,
+            'teaching_long' => $request->long2,
+        ]);
 
         if(auth()->user()->hasRole('online_teacher') || auth()->user()->hasRole('direct_teacher')){
             auth()->user()->materials()->sync($request->material_ids);

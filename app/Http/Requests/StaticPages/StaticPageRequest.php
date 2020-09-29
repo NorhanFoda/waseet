@@ -26,8 +26,8 @@ class StaticPageRequest extends FormRequest
         return [
             'name_ar' => 'required',
             'name_en' => 'required',
-            'short_description_ar' => 'required',
-            'short_description_en' => 'required',
+            'short_description_ar' => 'required|max:190',
+            'short_description_en' => 'required|max:190',
             'full_description_ar' => 'required',
             'full_description_en' => 'required',
 

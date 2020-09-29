@@ -415,6 +415,8 @@
 @endsection
 
 @section('scripts')
+<script src="{{asset('web/js/telinput.min.js')}}"></script>
+
     <script>
         $(document).ready(function(){
 
@@ -530,5 +532,21 @@
               }
           });
         });
+
+
+    //phone
+    var input = document.querySelector("#mob");
+            window.intlTelInput(input, {
+                preferredCountries: ["sa", "kw", "om", "bh", "jo", "iq", "ae"],
+                utilsScript: "{{asset('web/js/utils.js')}}"
+            });
+
+
+            var input2 = document.querySelector("#secondary_mob");
+            window.intlTelInput(input2 ,{
+                preferredCountries: ["sa", "kw", "om", "bh", "jo", "iq", "ae"],
+                utilsScript: "{{asset('web/js/utils.js')}}"
+            });
+
     </script>
 @endsection

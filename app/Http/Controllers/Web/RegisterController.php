@@ -73,7 +73,13 @@ class RegisterController extends Controller
         }
 
         $user = User::create($request->all());
-        $user->update(['password' => Hash::make($request->password)]);
+        $user->update([
+            'password' => Hash::make($request->password),
+            'teaching_lat' => $request->lat2,
+            'teaching_long' => $request->long2,
+        ]);
+    
+        
         if($role_id != 'visitor'){
             $user->assignRole(DB::table('roles')->find($role_id)->name);
         }

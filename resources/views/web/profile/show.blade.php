@@ -58,15 +58,31 @@
                                     <input type="email" id="mail" placeholder="{{$user->email}}" disabled />
 
                                 </div>
+                                @php
+                                    if(strpos($user->phone_main, ',') !== false){
+                                        $arr = explode(',' , $user->phone_main);
+                                        $phone_main = $arr[1];
+                                    }
+                                    else{
+                                        $phone_main = $user->phone_main;
+                                    }
+                                    if(strpos($user->phone_secondary, ',') !== false){
+                                        $arr2 = explode(',' , $user->phone_secondary);
+                                        $phone_secondary = $arr2[1];
+                                    }
+                                    else{
+                                        $phone_secondary = $user->phone_main;
+                                    }
+                                @endphp
                                 <div class="big-label">{{trans('web.phone_main')}}</div>
                                 <div class="userName">
-                                    <input type="tel" id="mob" placeholder="{{$user->phone_main}}" disabled />
+                                    <input type="tel" id="mob" placeholder="{{$phone_main}}" disabled />
                                 </div>
 
-                                @if($user->phone_secondary != null)
+                                @if($phone_secondary != null)
                                     <div class="big-label">{{trans('web.phone_secondary')}}</div>
                                     <div class="userName">
-                                        <input type="tel" id="mob" placeholder="{{$user->phone_secondary}}" disabled />
+                                        <input type="tel" id="mob" placeholder="{{$phone_secondary}}" disabled />
                                     </div>
                                 @endif
 
