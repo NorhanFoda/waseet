@@ -4054,3 +4054,20 @@ box-shadow: 0 0 7px #aaa;
     margin: auto auto 20px;
 }
 
+.iti {
+    display: block;
+}
+.iti--allow-dropdown .iti__flag-container:hover .iti__selected-flag{
+    background:none;
+}
+
+
+
+.iti.iti--allow-dropdown.iti--separate-dial-code {
+    position: absolute;
+    top: 22px;
+}
+
+.iti--separate-dial-code .iti__selected-dial-code {
+    font-size: 13px;
+}

@@ -6,8 +6,32 @@ body,
 html {
     direction: rtl !important;
 }
+.iti__country-list {
+    left: 0;
+    text-align: right;
+}
 
+.iti__arrow {
+    margin-left: 0;
+    margin-right: 6px;
 
+}
+
+.iti.iti--allow-dropdown.iti--separate-dial-code {
+    left: 10px;
+}
+
+.phone-input-style{
+    padding-left: 90px !important;
+}
+.iti--separate-dial-code .iti__selected-dial-code {
+    margin-left: 0;
+        margin-right: 4px;
+}
+
+.iti__selected-dial-code,.iti__country{
+    direction:ltr !important;
+}
 .humburger,
 .footer-social,
 .footer-logo,

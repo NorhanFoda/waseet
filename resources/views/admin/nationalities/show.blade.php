@@ -76,11 +76,16 @@
                                 <tbody>
                                     @foreach($nation->users as $user)
                                         @if($user->hasrole('online_teacher'))
+                                            @php
+                                                $arr = explode(',' , $user->phone_main);
+                                                $key = $arr[0];
+                                                $phone_main = $arr[1];
+                                            @endphp
                                             <tr>
                                                 <td>{{$loop->iteration}}</td>
                                                 <td>{{$user->name}}</td>
                                                 <td>{{$user->email}}</td>
-                                                <td>{{$user->phone_main}}</td>
+                                                <td>{{$key}} {{$phone_main}}</td>
                                                 <td>
                                                     <a href="{{route('online_teachers.show', $user->id)}}" class="btn" style="color:white;"><i class="fa fa-eye"></i></a>
                                                 </td>
@@ -119,11 +124,16 @@
                                 <tbody>
                                     @foreach($nation->users as $user)
                                         @if($user->hasrole('direct_teacher'))
+                                            @php
+                                                $arr = explode(',' , $user->phone_main);
+                                                $key = $arr[0];
+                                                $phone_main = $arr[1];
+                                            @endphp
                                             <tr>
                                                 <td>{{$loop->iteration}}</td>
                                                 <td>{{$user->name}}</td>
                                                 <td>{{$user->email}}</td>
-                                                <td>{{$user->phone_main}}</td>
+                                                <td>{{$key}} {{$phone_main}}</td>
                                                 <td>
                                                     <a href="{{route('direct_teachers.show', $user->id)}}" class="btn" style="color:white;"><i class="fa fa-eye"></i></a>
                                                 </td>
@@ -162,11 +172,16 @@
                                 <tbody>
                                     @foreach($nation->users as $user)
                                         @if($user->hasrole('student'))
+                                            @php
+                                                $arr = explode(',' , $user->phone_main);
+                                                $key = $arr[0];
+                                                $phone_main = $arr[1];
+                                            @endphp
                                             <tr>
                                                 <td>{{$loop->iteration}}</td>
                                                 <td>{{$user->name}}</td>
                                                 <td>{{$user->email}}</td>
-                                                <td>{{$user->phone_main}}</td>
+                                                <td>{{$key}} {{$phone_main}}</td>
                                                 <td>
                                                     <a href="{{route('students.show', $user->id)}}" class="btn" style="color:white;"><i class="fa fa-eye"></i></a>
                                                 </td>
@@ -205,11 +220,16 @@
                                 <tbody>
                                     @foreach($nation->users as $user)
                                         @if($user->hasrole('organization'))
+                                            @php
+                                                $arr = explode(',' , $user->phone_main);
+                                                $key = $arr[0];
+                                                $phone_main = $arr[1];
+                                            @endphp
                                             <tr>
                                                 <td>{{$loop->iteration}}</td>
                                                 <td>{{$user->name}}</td>
                                                 <td>{{$user->email}}</td>
-                                                <td>{{$user->phone_main}}</td>
+                                                <td>{{$key}} {{$phone_main}}</td>
                                                 <td>
                                                     <a href="{{route('organizations.show', $user->id)}}" class="btn" style="color:white;"><i class="fa fa-eye"></i></a>
                                                 </td>
@@ -248,11 +268,16 @@
                                 <tbody>
                                     @foreach($nation->users as $user)
                                         @if($user->hasrole('job_seeker'))
+                                            @php
+                                                $arr = explode(',' , $user->phone_main);
+                                                $key = $arr[0];
+                                                $phone_main = $arr[1];
+                                            @endphp
                                             <tr>
                                                 <td>{{$loop->iteration}}</td>
                                                 <td>{{$user->name}}</td>
                                                 <td>{{$user->email}}</td>
-                                                <td>{{$user->phone_main}}</td>
+                                                <td>{{$key}} {{$phone_main}}</td>
                                                 <td>
                                                     <a href="{{route('seekers.show', $user->id)}}" class="btn" style="color:white;"><i class="fa fa-eye"></i></a>
                                                 </td>

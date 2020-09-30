@@ -136,30 +136,28 @@
                     </div>
 
                     @php
-                        if(strpos($teacher->phone_main, ',') !== false){
-                            $arr = explode(',' , $teacher->phone_main);
-                            $phone_main = $arr[1];
-                        }
-                        else{
-                            $phone_main = $teacher->phone_main;
-                        }
-                        if(strpos($teacher->phone_secondary, ',') !== false){
+                        $arr = explode(',' , $teacher->phone_main);
+                        $key = $arr[0];
+                        $phone_main = $arr[1];
+                        
+                        $phone_secondary = null;
+                        $sec_key = null;
+                        if($teacher->phone_secondary != null){
                             $arr2 = explode(',' , $teacher->phone_secondary);
-                            $phone_secondary = $arr2[1];
-                        }
-                        else{
-                            $phone_secondary = $teacher->phone_main;
+                            $sec_key = $arr2[0];
+                            $phone_secondary = $arr2[1];   
                         }
                     @endphp
+
                     <div class="phone_num">
                         <p>{{trans('web.phone_main')}} :</p>
-                        <a href="tel:{{$phone_main}}">{{$phone_main}}</a>
+                        <a href="tel:{{$key}}{{$phone_main}}">{{$key}} {{$phone_main}}</a>
                     </div>
 
                     @if($teacher->phone_secondary)
                         <div class="phone_num">
                             <p>{{trans('web.phone_secondary')}} :</p>
-                            <a href="tel:{{$phone_secondary}}">{{$phone_secondary}}</a>
+                            <a href="tel:{{$sec_key}}{{$phone_secondary}}">{{$sec_key}} {{$phone_secondary}}</a>
                         </div>
                     @endif
 

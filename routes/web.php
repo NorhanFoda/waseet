@@ -196,6 +196,9 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
             Route::get('subscribers', 'Admin\UserController@getSubScripers')->name('users.subscripers');
             Route::post('delete_subscribers', 'Admin\UserController@deleteSubScripers')->name('subscripers.delete');
             Route::post('users/approve', 'Admin\UserController@approveAccount')->name('users.approve_account');
+
+            // Pay for register
+            Route::get('pay_for_register/{user_id}/{type}', 'Admin\DirectTeacherController@payForRegister')->name('pay_for_register');
         });
 
         //Get cities

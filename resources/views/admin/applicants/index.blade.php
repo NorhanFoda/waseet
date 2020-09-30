@@ -53,10 +53,15 @@
                                 <tbody>
                                     @foreach($applicants as $app)
                                         @if($app->job_applications_count > 0)
+                                            @php
+                                                $arr = explode(',' , $app->phone_main);
+                                                $key = $arr[0];
+                                                $phone_main = $arr[1];
+                                            @endphp
                                             <tr align="center">
                                                 <td>{{$loop->iteration}}</td>
                                                 <td>{{$app->name}}</td>
-                                                <td>{{$app->phone_main}}</td>
+                                                <td>{{$key}} {{$phone_main}}</td>
                                                 <td>{{$app->email}}</td>
                                                 <td>
                                                     <a href="{{route('applicants.show', $app->id)}}" class="btn" style="color:white;"><i class="fa fa-eye"></i></a>

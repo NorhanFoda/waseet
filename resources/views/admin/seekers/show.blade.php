@@ -39,12 +39,26 @@
                             {{$seeker->name}}
                         </div>
                     </div>
+                    @php
+                        $arr = explode(',' , $seeker->phone_main);
+                        $key = $arr[0];
+                        $phone_main = $arr[1];
+                        
+                        $phone_secondary = null;
+                        $sec_key = null;
+                        if($seeker->phone_secondary != null){
+                            $arr2 = explode(',' , $seeker->phone_secondary);
+                            $sec_key = $arr2[0];
+                            $phone_secondary = $arr2[1];
+                        }
+                        
+                    @endphp
                     <div class="card-body">
                         <div class="row">
                             <div class="users-view-image col-md-4">
                                 <p>{{trans('admin.email')}}: {{$seeker->email }}</p>
-                                <p>{{trans('admin.phone_main')}}: {{$seeker->phone_main }}</p>
-                                <p>{{trans('admin.phone_secondary')}}: {{$seeker->phone_secondary }}</p>
+                                <p>{{trans('admin.phone_main')}}: {{$key}} {{$phone_main }}</p>
+                                <p>{{trans('admin.phone_secondary')}}: {{$sec_key}} {{$phone_secondary }}</p>
                             </div>
                             <div class="col-md-6">
                                 <p>

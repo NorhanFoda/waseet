@@ -58,7 +58,7 @@
                     <div class="card-header border-bottom mx-2 px-0">
                         <h6 class="border-bottom py-1 mb-0 font-medium-2">
                             <i class="fa fa-map-marker"></i>
-                            {{trans('admin.organizations')}}
+                            {{trans('admin.edu_types')}}
                         </h6>
                     </div>
                     <div class="card-body px-75">
@@ -76,11 +76,16 @@
                                 </thead>
                                 <tbody>
                                     @foreach($type->users as $user)
+                                        @php
+                                            $arr = explode(',' , $user->phone_main);
+                                            $key = $arr[0];
+                                            $phone_main = $arr[1];
+                                        @endphp
                                         <tr>
                                             <td>{{$loop->iteration}}</td>
                                             <td>{{$user->name}}</td>
                                             <td>{{$user->email}}</td>
-                                            <td>{{$user->phone_main}}</td>
+                                            <td>{{$key}} {{$phone_main}}</td>
                                             <td>{{$user->address}}</td>
                                             <td>
                                                 <a href="{{route('organizations.show', $user->id)}}" class="btn" style="color:white;"><i class="fa fa-eye"></i></a>

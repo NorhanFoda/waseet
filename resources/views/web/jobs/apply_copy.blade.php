@@ -38,15 +38,34 @@
 
                                 </div>
 
+                                @php
+                                    $arr = explode(',' , auth()->user()->phone_main);
+                                    $key = $arr[0];
+                                    $phone_main = $arr[1];
+                                    
+                                    $phone_secondary = null;
+                                    $sec_key = null;
+                                    if(auth()->user()->phone_secondary != null){
+                                        $arr2 = explode(',' , auth()->user()->phone_secondary);
+                                        $sec_key = $arr2[0];
+                                        $phone_secondary = $arr2[1];   
+                                    }
+                                    
+                                @endphp
+
                                 <div class="big-label">{{trans('web.phone_main')}}</div>
                                 <div class="userName">
-                                    <input type="tel" id="mob" name="phone_main" value="{{auth()->user()->phone_main}}" required />
+                                    <input type="hidden" id="mob" value="{{$key}} {{$phone_main}}" />
+                                    <input type="hidden"  class="hidden-in" name="full"/>
+                                    <input type="tel" class="phone-input-style" name="phone_main" minlength="9" maxlength="11" value="{{$phone_main}}" required />
 
                                 </div>
 
                                 <div class="big-label">{{trans('web.phone_secondary')}}</div>
                                 <div class="userName">
-                                    <input type="tel" id="mob" name="phone_secondary" value="{{auth()->user()->phone_secondary}}" />
+                                    <input type="hidden" id="sec_mob" value="{{$sec_key}} {{$phone_secondary}}" />
+                                    <input type="hidden"  class="sec_hidden-in" name="sec_full"/>
+                                    <input type="tel" class="active phone-input-style" minlength="9" maxlength="11" name="phone_secondary" value="{{$phone_secondary}}" />
 
                                 </div>
 
@@ -255,6 +274,36 @@
 
             }
         });
+
+        /**
+       * 
+       * Handling country key for phones input according to stupids opinion
+       * **/
+      $(".no-val-input").val('');
+      $(".iti__selected-dial-code").val();
+
+      var phone_number = window.intlTelInput(document.querySelector("#mob"), {
+        separateDialCode: true,
+        preferredCountries: ["sa", "kw", "om", "bh", "jo", "iq", "ae", "eg"],
+        hiddenInput: "full",
+        utilsScript: "{{asset('web/js/vendor/utils.js')}}"
+      });
+      
+      var sec_phone_number = window.intlTelInput(document.querySelector("#sec_mob"), {
+        separateDialCode: true,
+        preferredCountries: ["sa", "kw", "om", "bh", "jo", "iq", "ae", "eg"],
+        hiddenInput: "sec_full",
+        utilsScript: "{{asset('web/js/vendor/utils.js')}}"
+      });
+
+
+      $("form").submit(function() {
+          var phone_val = $(".iti__selected-dial-code:eq(0)").text();
+          var sec_phone_val = $(".iti__selected-dial-code:eq(1)").text();
+          $(".phone-input-style").prev(".hidden-in").val(phone_val);
+          $(".phone-input-style").prev(".sec_hidden-in").val(sec_phone_val);
+      });
+
     </script>
     
 @endsection

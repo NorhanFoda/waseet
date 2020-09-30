@@ -86,7 +86,9 @@
                                             <span>{{trans('admin.phone_main')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <input type="tel" class="form-control" placeholder="{{trans('admin.phone_main')}}" name="phone_main" required>
+                                            <input type="hidden" id="mob" class="no-val-input"/>
+                                            <input type="hidden"  class="hidden-in" name="full"/>
+                                            <input type="tel" class="form-control phone-input-style" minlength="9" maxlength="11" placeholder="{{trans('admin.phone_main')}}" name="phone_main" required>
                                             <div class="invalid-feedback">
                                                 {{trans('admin.phone_main')}}
                                             </div>
@@ -102,7 +104,9 @@
                                             <span>{{trans('admin.phone_secondary')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <input type="tel" class="form-control" placeholder="{{trans('admin.phone_secondary')}}" name="phone_secondary">
+                                            <input type="hidden" id="sec_mob" class="sec-no-val-input"/>
+                                            <input type="hidden"  class="sec_hidden-in" name="sec_full"/>
+                                            <input type="tel" class="form-control phone-input-style" minlength="9" maxlength="11" placeholder="{{trans('admin.phone_secondary')}}" name="phone_secondary">
                                             <div class="invalid-feedback">
                                                 {{trans('admin.phone_secondary')}}
                                             </div>

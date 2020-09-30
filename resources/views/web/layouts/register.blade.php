@@ -85,6 +85,7 @@
     <script src="{{asset('web/js/vendor/vanilla-tilt.min.js')}}"></script>
     <script src="{{asset('web/js/vendor/typed.js')}}"></script>
     <script src="{{asset('web/js/vendor/aos.js')}}"></script>
+    <script src="{{asset('web/js/vendor/intlTelInput.min.js')}}"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.all.min.js"></script>
     <script src="{{asset('web/js/main.js')}}"></script>
 

@@ -108,7 +108,16 @@ class JobsController extends Controller
 
         $cv_path = auth()->user()->document->path;
 
-        auth()->user()->update($request->all());
+        $data = $request->except(['_token'. '_method', 'full', 'sec_full']);
+
+        // handling phone according to stupids opinion
+        $data['phone_main'] = $request->full.','.$request->phone_main;
+        if($request->has('phone_secondary')){
+            $data['phone_secondary'] = $request->sec_full.','.$request->phone_secondary;
+        }
+
+        auth()->user()->update($data);
+
         auth()->user()->job_applications()->attach($request->job_id);
 
         if($request->has('cv')){

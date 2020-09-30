@@ -35,6 +35,7 @@
   <link href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.css" type="text/css" />
   <link href="https://fonts.googleapis.com/css?family=Cairo" rel="stylesheet" />
+  <link rel="stylesheet" href="{{asset('web/css/intlTelInput.min.css')}}" />
   <link rel="stylesheet" href="{{asset('web/css/main.css')}}" />
   <link rel="stylesheet" href="{{asset('web/css/ar.css')}}" />
   <link rel="stylesheet" href="{{asset('web/css/responsive.css')}}" />
@@ -86,6 +87,7 @@
     <script src="{{asset('web/js/vendor/vanilla-tilt.min.js')}}"></script>
     <!--<script src="{{asset('web/js/vendor/typed.js')}}"></script>-->
     <script src="{{asset('web/js/vendor/aos.js')}}"></script>
+    <script src="{{asset('web/js/vendor/intlTelInput.min.js')}}"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.all.min.js"></script>
 
     <!--Floating WhatsApp css-->
@@ -455,6 +457,7 @@
                 }
             })
         });
+        
     </script>
 
     @if(session()->has('success'))

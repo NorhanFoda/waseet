@@ -39,12 +39,26 @@
                             {{$std->name}}
                         </div>
                     </div>
+                    @php
+                        $arr = explode(',' , $std->phone_main);
+                        $key = $arr[0];
+                        $phone_main = $arr[1];
+                        
+                        $phone_secondary = null;
+                        $sec_key = null;
+                        if($std->phone_secondary != null){
+                            $arr2 = explode(',' , $std->phone_secondary);
+                            $sec_key = $arr2[0];
+                            $phone_secondary = $arr2[1];
+                        }
+                        
+                    @endphp
                     <div class="card-body">
                         <div class="row">
                             <div class="users-view-image col-md-4">
                                 <p>{{trans('admin.email')}}: {{$std->email }}</p>
-                                <p>{{trans('admin.phone_main')}}: {{$std->phone_main }}</p>
-                                <p>{{trans('admin.phone_secondary')}}: {{$std->phone_secondary }}</p>
+                                <p>{{trans('admin.phone_main')}}: {{$key}} {{$phone_main }}</p>
+                                <p>{{trans('admin.phone_secondary')}}: {{$sec_key}} {{$phone_secondary }}</p>
                             </div>
                             <div class="col-md-6">
                                 <p>{{trans('admin.stage')}}: {{$std->stage_id == 4 && $std->other_stage != null ? $std->other_stage : $std->stage->{'name_'.session('lang')} }}</p>

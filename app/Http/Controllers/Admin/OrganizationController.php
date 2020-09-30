@@ -49,7 +49,15 @@ class OrganizationController extends Controller
      */
     public function store(OrganizationRequest $request)
     {
-        $org = User::create($request->all());
+        // handling phone
+        $data = $request->except(['_token'. '_method', 'full', 'sec_full']);
+
+        $data['phone_main'] = $request->full.','.$request->phone_main;
+        if($request->has('phone_secondary')){
+            $data['phone_secondary'] = $request->sec_full.','.$request->phone_secondary;
+        }
+
+        $org = User::create($data);
 
         $org->update(['password' => Hash::make($request->password), 'is_verified' => 1, 'approved' => 1]);
 
@@ -114,9 +122,16 @@ class OrganizationController extends Controller
     public function update(Request $request, $id)
     {
         $org = User::find($id);
-        $org->update($request->all());
+        
+        $data = $request->except(['_token'. '_method', 'full', 'sec_full']);
 
-        $org->assignRole('organization');
+        // handling phone
+        $data['phone_main'] = $request->full.','.$request->phone_main;
+        if($request->has('phone_secondary')){
+            $data['phone_secondary'] = $request->sec_full.','.$request->phone_secondary;
+        }
+
+        $org->update($data);
 
         if($request->has('image')){
             if($org->image != null){

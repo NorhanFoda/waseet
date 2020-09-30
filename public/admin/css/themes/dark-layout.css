@@ -1438,3 +1438,8 @@ body.dark-layout.horizontal-layout.vertical-overlay-menu .main-menu ul li {
 body.dark-layout.horizontal-layout.vertical-overlay-menu .main-menu ul li a {
   color : #ebebeb !important;
 }
+
+.iti__country-name, .iti__dial-code, .iti__flag-box {
+  vertical-align: middle;
+  color: #888 !important;
+}

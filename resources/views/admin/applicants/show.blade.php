@@ -40,17 +40,30 @@
                             {{$applicant->name}}
                         </div>
                     </div>
+                    @php
+                        $arr = explode(',' , $applicant->phone_main);
+                        $key = $arr[0];
+                        $phone_main = $arr[1];
+                        
+                        $phone_secondary = null;
+                        $sec_key = null;
+                        if($applicant->phone_secondary != null){
+                            $arr2 = explode(',' , $applicant->phone_secondary);
+                            $sec_key = $arr2[0];
+                            $phone_secondary = $arr2[1];
+                        }
+                    @endphp
+
                     <div class="card-body">
                         <div class="row">
                             <div class="users-view-image col-md-4">
                                 <p>{{trans('admin.email')}}: {{$applicant->email }}</p>
-                                <p>{{trans('admin.phone_main')}}: {{$applicant->phone_main }}</p>
-                                <p>{{trans('admin.phone_secondary')}}: {{$applicant->phone_secondary }}</p>
+                                <p>{{trans('admin.phone_main')}}: {{$key}} {{$phone_main }}</p>
+                                <p>{{trans('admin.phone_secondary')}}: {{$sec_key}} {{$phone_secondary }}</p>
                             </div>
                             <div class="col-md-6">
                                 <p>
-                                    {{trans('admin.address')}} : {{$applicant->country->{'name_'.session('lang')} }} - 
-                                    {{$applicant->city->{'name_'.session('lang')} }} - {{$applicant->address}}
+                                    {{trans('admin.address')}} : {{$applicant->address}}
                                 </p>
                                 <p>{{trans('admin.salary')}}: {{$applicant->salary_month}} {{trans('admin.sr')}}</p>
                                 <p>{{trans('admin.age')}}: {{$applicant->age}} {{trans('admin.years')}}</p>
@@ -99,7 +112,7 @@
                                         <tr>
                                             <td>{{$loop->iteration}}</td>
                                             <td>{{$job->{'name_'.session('lang')} }}</td>
-                                            <td>{{$job->country->{'name_'.session('lang')} }}</td>
+                                            <td>{{$job->address}}</td>
                                             <td>{{$job->announcer->name}}</td>
                                             <td>
                                                 <a href="{{route('jobs.show', $job->id)}}" class="btn" style="color:white;"><i class="fa fa-eye"></i></a>

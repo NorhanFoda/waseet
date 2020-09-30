@@ -56,10 +56,21 @@
                                 <tbody>
                                     @foreach($teachers as $teacher)
                                         @if(!$teacher->hasRole('admin'))
+                                            @php
+                                                if(strpos($teacher->phone_main, ',') !== false){
+                                                    $arr = explode(',' , $teacher->phone_main);
+                                                    $key = $arr[0];
+                                                    $phone_main = $arr[1];
+                                                }
+                                                else{
+                                                    $key = '';
+                                                    $phone_main = $teacher->phone_main;
+                                                }
+                                            @endphp
                                             <tr align="center">
                                                 <td>{{$loop->iteration}}</td>
                                                 <td>{{$teacher->name}}</td>
-                                                <td>{{$teacher->phone_main}}</td>
+                                                <td>{{$key}} {{$phone_main}}</td>
                                                 <td>{{$teacher->email}}</td>
                                                 <td>
                                                     {{$teacher->edu_level_id == 4 && $teacher->other_edu_level != null ? $teacher->other_edu_level : $teacher->edu_level->{'name_'.session('lang')} }}
@@ -70,7 +81,9 @@
                                                         <option value="{{1}}" @if($teacher->approved == 1) selected @endif>{{trans('admin.approved')}}</option>
                                                     </select>
                                                 </td> 
-                                                <td><a href="@if($teacher->receipt != null){{$teacher->receipt->image->path}}@endif">{{trans('admin.view_receipt')}}</a></td>
+                                                <td>
+                                                    <a href="@if($teacher->receipt != null) {{$teacher->receipt->image->path}} @else {{route('pay_for_register', ['user_id' => $teacher->id, 'type' => 'online_teacher'])}} @endif">{{trans('admin.view_receipt')}}</a>
+                                                </td>
                                                 <td>
                                                     <a href="{{route('online_teachers.show', $teacher->id)}}" class="btn" style="color:white;"><i class="fa fa-eye"></i></a>
                                                     <a href="{{route('online_teachers.edit', $teacher->id)}}" class="btn" style="color:white;"><i class="fa fa-pencil-square-o"></i></a>

@@ -34,7 +34,7 @@
 
         {{-- name start --}}
         <div class="inputs-contain">
-          
+
         @if($role_id == 5)
           {{-- edu type start --}}
           <div class="userName custom-select2">
@@ -54,7 +54,7 @@
           <div class="userName" id="other_edu_type" hidden>
             <input type="text" id="username" name="other_edu_type" value="{{old('other_edu_type')}}" />
             <label for="username" id="label">
-              <i class="far fa-user"></i> {{trans('web.other_edu_type')}} 
+              <i class="far fa-user"></i> {{trans('web.other_edu_type')}}
             </label>
           </div>
           {{-- other_edu_type end --}}
@@ -63,7 +63,7 @@
           <div class="userName">
             <input type="text" id="username" name="name" value="{{old('name')}}" required />
             <label for="username" id="label">
-              <i class="far fa-user"></i> {{trans('web.user_name')}} 
+              <i class="far fa-user"></i> {{trans('web.user_name')}}
             </label>
           </div>
           {{-- name end --}}
@@ -72,7 +72,7 @@
           <div class="userName">
             <input type="email" id="mail" name="email" value="{{old('email')}}" required />
             <label for="mail">
-              <i class="far fa-envelope"></i> {{trans('web.email')}} 
+              <i class="far fa-envelope"></i> {{trans('web.email')}}
             </label>
           </div>
           {{-- email end --}}
@@ -80,9 +80,12 @@
           @if($role_id != 'visitor')
             {{-- phone main start --}}
             <div class="userName">
-              <input type="tel" id="mob" name="phone_main" value="{{old('phone_main')}}" required />
+              <input type="hidden" id="mob" class="no-val-input"/>
+              <input type="hidden"  class="hidden-in" name="full"/>
+              <input type="tel" class="phone-input-style" name="phone_main" minlength="9" maxlength="11"  required />
+
               <label for="mob">
-                <i class="fa fa-mobile-alt"></i> {{trans('web.phone_main')}} 
+                <i class="fa fa-mobile-alt"></i> {{trans('web.phone_main')}}
               </label>
             </div>
             {{-- phone main end --}}
@@ -91,9 +94,12 @@
           @if($role_id != 'visitor')
             {{-- phone secondary start --}}
             <div class="userName">
-              <input type="tel" id="secondary_mob" value="{{old('phone_secondary')}}" name="phone_secondary" />
-              <label for="secondary_mob">
-                <i class="fa fa-mobile-alt"></i> {{trans('web.phone_secondary')}} 
+              <input type="hidden" id="sec_mob" class="sec-no-val-input"/>
+              <input type="hidden"  class="sec_hidden-in" name="sec_full"/>
+              <input type="tel" class="phone-input-style" name="phone_secondary" minlength="9" maxlength="11"  required />
+
+              <label for="sec_mob">
+                <i class="fa fa-mobile-alt"></i> {{trans('web.phone_secondary')}}
               </label>
             </div>
             {{-- phone secondary end --}}
@@ -174,7 +180,7 @@
           @if($role_id == 3 || $role_id == 4)
           {{-- materials start --}}
           <div class="userName custom-menu-select">
-            <div class="title-check  text-right-dir">     
+            <div class="title-check  text-right-dir">
               <span class="form-icon">
                 <i class="fa fa-book"></i>
               </span>
@@ -200,7 +206,7 @@
             {{-- other_material end --}}
 
           {{-- <div class="userName custom-menu-select">
-          <div class="title-check  text-right-dir">     
+          <div class="title-check  text-right-dir">
             <span class="form-icon">
               <i class="fa fa-book"></i>
             </span>
@@ -232,7 +238,7 @@
             </span>
           </div>
           {{-- nationalities end --}}
-          
+
           {{-- other nationality start --}}
           <div class="userName" id="other_nationality" hidden>
             <input type="text" name="other_nationality" value="{{old('other_nationality')}}" />
@@ -309,7 +315,7 @@
           <div class="userName custom-file">
             <input type="file" id="image" name="image"  accept=".gif, .jpg, .png, .webp" />
             <label for="image">
-              <i class="fa fa-file"></i> <span>{{trans('web.image')}}</span> 
+              <i class="fa fa-file"></i> <span>{{trans('web.image')}}</span>
             </label>
           </div>
         {{-- image end --}}
@@ -353,12 +359,12 @@
           </div>
         {{-- cv end --}}
           @endif
-          
+
           {{-- password start --}}
           <div class="userName">
             <input type="password" name="password" value="{{old('password')}}" id="pass" required />
             <label for="pass">
-              <i class="fa fa-lock"></i> {{trans('web.password')}} 
+              <i class="fa fa-lock"></i> {{trans('web.password')}}
             </label>
           </div>
           {{-- password end --}}
@@ -367,22 +373,22 @@
           <div class="userName">
             <input type="password" name="password_confirmation" value="{{old('password_confirmation')}}" id="confirm" required />
             <label for="confirm">
-              <i class="fa fa-lock"></i> {{trans('web.password_confirmation')}}  
+              <i class="fa fa-lock"></i> {{trans('web.password_confirmation')}}
             </label>
           </div>
 
         {{-- password confirmation end --}}
-        
+
         {{-- address start --}}
         @if($role_id != 2 && $role_id != 'visitor')
           {{-- map start --}}
             <div class="userName">
            <div class="text-right-dir map-label">{{trans('web.address')}}</div>
             {{-- address --}}
-             
+
               <input id="pac-input" name="address" class="controls form-control" type="text" placeholder="{{trans('web.address')}}" value="">
               <input type="hidden" name="lat" value="" id="location_lat">
-              <input type="hidden" name="long" value="" id="location_lng"> 
+              <input type="hidden" name="long" value="" id="location_lng">
             </div>
 
 
@@ -396,14 +402,14 @@
               @endif
 
             </div>
-            
+
             <div class="map-div">
               <div id="gmap" style="width:100%;height:400px;">
             </div>
           {{-- map end --}}
         @endif
         {{-- address end --}}
-        
+
         <div class="submit">
           <button type="submit" class="custom-btn">{{trans('web.do_register')}}</button>
         </div>
@@ -411,11 +417,11 @@
       </form>
     </div>
   </div>
-  
+
 @endsection
 
 @section('scripts')
-<script src="{{asset('web/js/telinput.min.js')}}"></script>
+<script src="{{asset('web/js/vendor/intlTelInput.min.js')}}"></script>
 
     <script>
         $(document).ready(function(){
@@ -440,7 +446,7 @@
                 $('#other_stage').attr('required', true);
               }
               else{
-                $('#other_stage').attr('hidden', true);                
+                $('#other_stage').attr('hidden', true);
                 $('#other_stage').attr('required', false);
                 $("input[name*='other_stage']").val('');
               }
@@ -453,8 +459,8 @@
                 $('#other_nationality').attr('required', true);
               }
               else{
-                $('#other_nationality').attr('hidden', true); 
-                $('#other_nationality').attr('required', false);               
+                $('#other_nationality').attr('hidden', true);
+                $('#other_nationality').attr('required', false);
                 $("input[name*='other_nationality']").val('');
               }
             });
@@ -466,8 +472,8 @@
                 $('#other_edu_level').attr('required', true);
               }
               else{
-                $('#other_edu_level').attr('hidden', true);  
-                $('#other_edu_level').attr('required', false);              
+                $('#other_edu_level').attr('hidden', true);
+                $('#other_edu_level').attr('required', false);
                 $("input[name*='other_edu_level']").val('');
               }
             });
@@ -479,7 +485,7 @@
                 $('#other_edu_type').attr('required', true);
               }
               else{
-                $('#other_edu_type').attr('hidden', true);                
+                $('#other_edu_type').attr('hidden', true);
                 $('#other_edu_type').attr('required', false);
                 $("input[name*='other_edu_type']").val('');
               }
@@ -493,7 +499,7 @@
                     $("input[name*='other_material']").attr('required', true);
                 }
                 else{
-                    $('#other_material').attr('hidden', true);                
+                    $('#other_material').attr('hidden', true);
                     $("input[name*='other_material']").attr('required', false);
                     $("input[name*='other_material']").val('');
                 }
@@ -513,11 +519,11 @@
               }
             });
         });
-        
+
         $(".title-check").click(function(){
             $(".all-checks").slideToggle().css("overflow","auto");
         })
-        
+
         $(function() {
           var $wina = $(window); // or $box parent container
           var $boxa = $(".custom-menu-select");
@@ -534,19 +540,35 @@
         });
 
 
-    //phone
-    var input = document.querySelector("#mob");
-            window.intlTelInput(input, {
-                preferredCountries: ["sa", "kw", "om", "bh", "jo", "iq", "ae"],
-                utilsScript: "{{asset('web/js/utils.js')}}"
-            });
+      
+      /**
+       * 
+       * Handling country key for phones input according to stupids opinion
+       * **/
+      $(".no-val-input").val('');
+      $(".iti__selected-dial-code").val();
+
+      var phone_number = window.intlTelInput(document.querySelector("#mob"), {
+        separateDialCode: true,
+        preferredCountries: ["sa", "kw", "om", "bh", "jo", "iq", "ae", "eg"],
+        hiddenInput: "full",
+        utilsScript: "{{asset('web/js/vendor/utils.js')}}"
+      });
+
+      var sec_phone_number = window.intlTelInput(document.querySelector("#sec_mob"), {
+        separateDialCode: true,
+        preferredCountries: ["sa", "kw", "om", "bh", "jo", "iq", "ae", "eg"],
+        hiddenInput: "sec_full",
+        utilsScript: "{{asset('web/js/vendor/utils.js')}}"
+      });
 
 
-            var input2 = document.querySelector("#secondary_mob");
-            window.intlTelInput(input2 ,{
-                preferredCountries: ["sa", "kw", "om", "bh", "jo", "iq", "ae"],
-                utilsScript: "{{asset('web/js/utils.js')}}"
-            });
+      $("form").submit(function() {
+          var phone_val = $(".iti__selected-dial-code:eq(0)").text();
+          var sec_phone_val = $(".iti__selected-dial-code:eq(1)").text();
+          $(".phone-input-style").prev(".hidden-in").val(phone_val);
+          $(".phone-input-style").prev(".sec_hidden-in").val(sec_phone_val);
+      });
 
     </script>
 @endsection

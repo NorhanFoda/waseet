@@ -59,30 +59,32 @@
 
                                 </div>
                                 @php
-                                    if(strpos($user->phone_main, ',') !== false){
-                                        $arr = explode(',' , $user->phone_main);
-                                        $phone_main = $arr[1];
-                                    }
-                                    else{
-                                        $phone_main = $user->phone_main;
-                                    }
-                                    if(strpos($user->phone_secondary, ',') !== false){
+                                    $arr = explode(',' , $user->phone_main);
+                                    $key = $arr[0];
+                                    $phone_main = $arr[1];
+                                    
+                                    $phone_secondary = null;
+                                    $sec_key = null;
+                                    if($user->phone_secondary != null){
                                         $arr2 = explode(',' , $user->phone_secondary);
-                                        $phone_secondary = $arr2[1];
-                                    }
-                                    else{
-                                        $phone_secondary = $user->phone_main;
+                                        $sec_key = $arr2[0];
+                                        $phone_secondary = $arr2[1];   
                                     }
                                 @endphp
+
                                 <div class="big-label">{{trans('web.phone_main')}}</div>
                                 <div class="userName">
-                                    <input type="tel" id="mob" placeholder="{{$phone_main}}" disabled />
+                                    <input type="hidden" id="mob" value="{{$key}} {{$phone_main}}" />
+                                    <input type="hidden"  class="hidden-in" name="full"/>
+                                    <input type="tel" class="phone-input-style" minlength="9" maxlength="11" placeholder="{{$phone_main}}" disabled />
                                 </div>
 
                                 @if($phone_secondary != null)
                                     <div class="big-label">{{trans('web.phone_secondary')}}</div>
                                     <div class="userName">
-                                        <input type="tel" id="mob" placeholder="{{$phone_secondary}}" disabled />
+                                        <input type="hidden" id="sec_mob" value="{{$sec_key}} {{$phone_secondary}}" />
+                                        <input type="hidden"  class="sec_hidden-in" name="sec_full"/>
+                                        <input type="tel" class="phone-input-style" minlength="9" maxlength="11"placeholder="{{$phone_secondary}}" disabled />
                                     </div>
                                 @endif
 
@@ -132,4 +134,37 @@
         </div>
     </section>
 
+@endsection
+
+@section('scripts')
+    <script>
+            /**
+       * 
+       * Handling country key for phones input according to stupids opinion
+       * **/
+      $(".no-val-input").val('');
+      $(".iti__selected-dial-code").val();
+
+      var phone_number = window.intlTelInput(document.querySelector("#mob"), {
+        separateDialCode: true,
+        preferredCountries: ["sa", "kw", "om", "bh", "jo", "iq", "ae", "eg"],
+        hiddenInput: "full",
+        utilsScript: "{{asset('web/js/vendor/utils.js')}}"
+      });
+      
+      var sec_phone_number = window.intlTelInput(document.querySelector("#sec_mob"), {
+        separateDialCode: true,
+        preferredCountries: ["sa", "kw", "om", "bh", "jo", "iq", "ae", "eg"],
+        hiddenInput: "sec_full",
+        utilsScript: "{{asset('web/js/vendor/utils.js')}}"
+      });
+
+
+      $("form").submit(function() {
+          var phone_val = $(".iti__selected-dial-code:eq(0)").text();
+          var sec_phone_val = $(".iti__selected-dial-code:eq(1)").text();
+          $(".phone-input-style").prev(".hidden-in").val(phone_val);
+          $(".phone-input-style").prev(".sec_hidden-in").val(sec_phone_val);
+      });
+    </script>
 @endsection

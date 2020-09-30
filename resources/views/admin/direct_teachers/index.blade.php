@@ -56,10 +56,15 @@
                                 <tbody>
                                     @foreach($teachers as $teacher)
                                         @if(!$teacher->hasRole('admin'))
+                                            @php
+                                                $arr = explode(',' , $teacher->phone_main);
+                                                $key = $arr[0];
+                                                $phone_main = $arr[1];
+                                            @endphp
                                             <tr align="center">
                                                 <td>{{$loop->iteration}}</td>
                                                 <td>{{$teacher->name}}</td>
-                                                <td>{{$teacher->phone_main}}</td>
+                                                <td>{{$key}} {{$phone_main}}</td>
                                                 <td>{{$teacher->email}}</td>
                                                 <td>
                                                     {{$teacher->edu_level_id == 4 && $teacher->other_edu_level != null ? $teacher->other_edu_level : $teacher->edu_level->{'name_'.session('lang')} }}
@@ -71,11 +76,7 @@
                                                     </select>
                                                 </td> 
                                                 <td>
-                                                    @if($teacher->receipt != null)
-                                                        <a href="@if($teacher->receipt != null){{$teacher->receipt->image->path}}@endif">{{trans('admin.view_receipt')}}</a>
-                                                    @else
-                                                        -
-                                                    @endif
+                                                    <a href="@if($teacher->receipt != null) {{$teacher->receipt->image->path}} @else {{route('pay_for_register', ['user_id' => $teacher->id, 'type' => 'direct_teacher'])}} @endif">{{trans('admin.view_receipt')}}</a>
                                                 </td>
                                                 <td>
                                                     <a href="{{route('direct_teachers.show', $teacher->id)}}" class="btn" style="color:white;"><i class="fa fa-eye"></i></a>

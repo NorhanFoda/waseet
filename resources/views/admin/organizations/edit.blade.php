@@ -115,7 +115,20 @@
                                     </div>
                                 </div>
                                 {{-- enter email end --}}
-
+                                @php
+                                    $arr = explode(',' , $org->phone_main);
+                                    $key = $arr[0];
+                                    $phone_main = $arr[1];
+                                    
+                                    $phone_secondary = null;
+                                    $sec_key = null;
+                                    if($org->phone_secondary != null){
+                                        $arr2 = explode(',' , $org->phone_secondary);
+                                        $sec_key = $arr2[0];
+                                        $phone_secondary = $arr2[1];
+                                    }
+                                    
+                                @endphp
                                 {{-- enter phone main --}}
                                 <div class="col-12">
                                     <div class="form-group row">
@@ -123,7 +136,9 @@
                                             <span>{{trans('admin.phone_main')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <input type="tel" class="form-control" value="{{$org->phone_main}}" placeholder="{{trans('admin.phone_main')}}" name="phone_main" required>
+                                            <input type="hidden" id="mob" value="{{$key}} {{$phone_main}}" />
+                                            <input type="hidden"  class="hidden-in" name="full"/>
+                                            <input type="tel" class="form-control phone-input-style" minlength="9" maxlength="11" value="{{$phone_main}}" placeholder="{{trans('admin.phone_main')}}" name="phone_main" required>
                                             <div class="invalid-feedback">
                                                 {{trans('admin.phone_main')}}
                                             </div>
@@ -139,7 +154,9 @@
                                             <span>{{trans('admin.phone_secondary')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <input type="tel" class="form-control" value="{{$org->phone_secondary}}" placeholder="{{trans('admin.phone_secondary')}}" name="phone_secondary">
+                                            <input type="hidden" id="sec_mob" value="{{$sec_key}} {{$phone_secondary}}" />
+                                            <input type="hidden"  class="sec_hidden-in" name="sec_full"/>
+                                            <input type="tel" class="form-control phone-input-style" minlength="9" maxlength="11" value="{{$phone_secondary}}" placeholder="{{trans('admin.phone_secondary')}}" name="phone_secondary">
                                             <div class="invalid-feedback">
                                                 {{trans('admin.phone_secondary')}}
                                             </div>

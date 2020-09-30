@@ -57,7 +57,16 @@ class DirectTeacherController extends Controller
      */
     public function store(DirectTeacherRequest $request)
     {
-        $teacher = User::create($request->all());
+        $data = $request->except(['_token'. '_method', 'full', 'sec_full']);
+
+        // handling phone according to stupids opinion
+        $data['phone_main'] = $request->full.','.$request->phone_main;
+        if($request->has('phone_secondary')){
+            $data['phone_secondary'] = $request->sec_full.','.$request->phone_secondary;
+        }
+
+        $teacher = User::create($data);
+
         $teacher->update(['is_verified' => 1, 'password' => Hash::make($request->password), 'approved' => 0]);
         $teacher->assignRole('direct_teacher');
         foreach($request->material_ids as $id){
@@ -80,23 +89,20 @@ class DirectTeacherController extends Controller
 
         if($teacher){
 
-            //Send mail to subscripers
-            // $subs = SubScriber::all();
-            // foreach($subs as $sub){
-            //     SendEmail::Subscripe($sub->email, route('teachers.show', $teacher->id), 'teacher');
-            // }
-
-            // session()->flash('success', trans('admin.created'));
-            // return redirect()->route('direct_teachers.index');
             $user_id = $teacher->id;
-            $banks = Bank::all();
             $type = 'direct_teacher';
-            return view('admin.auth.payment', compact('banks', 'user_id', 'type'));
+            return $this->payForRegister($user_id, $type);
+            // return view('admin.auth.payment', compact('banks', 'user_id', 'type'));
         }
         else{
             session()->flash('error', trans('admin.error'));
             return redirect()->back();
         }
+    }
+
+    public function payForRegister($user_id, $type){
+            $banks = Bank::all();
+            return view('admin.auth.payment', compact('banks', 'user_id', 'type'));
     }
 
     /**
@@ -138,7 +144,17 @@ class DirectTeacherController extends Controller
     public function update(EditDirectTeacherRequest $request, $id)
     {
         $teacher = User::find($id);
-        $teacher->update($request->all());
+
+        $data = $request->except(['_token'. '_method', 'full', 'sec_full']);
+
+        // handling phone according to stupids opinion
+        $data['phone_main'] = $request->full.','.$request->phone_main;
+        if($request->has('phone_secondary')){
+            $data['phone_secondary'] = $request->sec_full.','.$request->phone_secondary;
+        }
+
+        $teacher->update($data);
+
         $teacher->materials()->sync($request->material_ids);
         foreach($request->material_ids as $id){
             if($id == 4){

@@ -54,10 +54,21 @@
                                 <tbody>
                                     @foreach($organizations as $org)
                                         @if(!$org->hasRole('admin'))
+                                            @php
+                                                if(strpos($org->phone_main, ',') !== false){
+                                                    $arr = explode(',' , $org->phone_main);
+                                                    $key = $arr[0];
+                                                    $phone_main = $arr[1];
+                                                }
+                                                else{
+                                                    $key = '';
+                                                    $phone_main = $org->phone_main;
+                                                }
+                                            @endphp
                                             <tr align="center">
                                                 <td>{{$loop->iteration}}</td>
                                                 <td>{{$org->name}}</td>
-                                                <td>{{$org->phone_main}}</td>
+                                                <td>{{$key}} {{$phone_main}}</td>
                                                 <td>{{$org->email}}</td>
                                                 <td>{{$org->address}}</td>
                                                 <td>

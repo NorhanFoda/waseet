@@ -46,7 +46,6 @@
                                     <th>#</th>
                                     <th>{{trans('admin.name')}}</th>
                                     <th>{{trans('admin.phone_main')}}</th>
-                                    <th>{{trans('admin.phone_secondary')}}</th>
                                     <th>{{trans('admin.email')}}</th>
                                     <th>{{trans('admin.age')}}</th>
                                     <th>{{trans('admin.stage')}}</th>
@@ -57,10 +56,20 @@
                                     @foreach($students as $std)
                                         <tr align="center">
                                             @if(!$std->hasRole('admin'))
+                                            @php
+                                                if(strpos($std->phone_main, ',') !== false){
+                                                    $arr = explode(',' , $std->phone_main);
+                                                    $key = $arr[0];
+                                                    $phone_main = $arr[1];
+                                                }
+                                                else{
+                                                    $key = '';
+                                                    $phone_main = $std->phone_main;
+                                                }
+                                            @endphp
                                                 <td>{{$loop->iteration}}</td>
                                                 <td>{{$std->name}}</td>
-                                                <td>{{$std->phone_main}}</td>
-                                                <td>{{$std->phone_secondary}}</td>
+                                                <td>{{$key}} {{$phone_main}}</td>
                                                 <td>{{$std->email}}</td>
                                                 <td>{{$std->age}}</td>
                                                 <td>{{$std->stage_id == 4 && $std->other_stage != null ? $std->other_stage : $std->stage->{'name_'.session('lang')} }}</td>

@@ -57,7 +57,16 @@ class OnlineTeacherController extends Controller
      */
     public function store(OnlineTeacherRequest $request)
     {
-        $teacher = User::create($request->all());
+        // handling phone
+        $data = $request->except(['_token'. '_method', 'full', 'sec_full']);
+
+        $data['phone_main'] = $request->full.','.$request->phone_main;
+        if($request->has('phone_secondary')){
+            $data['phone_secondary'] = $request->sec_full.','.$request->phone_secondary;
+        }
+
+        $teacher = User::create($data);
+
         $teacher->assignRole('online_teacher');
         $teacher->update(['is_verified' => 1, 'password' => Hash::make($request->password), 'approved' => 0]);
 
@@ -83,19 +92,7 @@ class OnlineTeacherController extends Controller
         }
 
         if($teacher){
-
-            //Send mail to subscripers
-            // $subs = SubScriber::all();
-            // foreach($subs as $sub){
-            //     SendEmail::Subscripe($sub->email, route('teachers.show', $teacher->id), 'teacher');
-            // }
-
-            // session()->flash('success', trans('admin.created'));
-            // return redirect()->route('online_teachers.index');
-            $user_id = $teacher->id;
-            $banks = Bank::all();
-            $type = 'online_teacher';
-            return view('admin.auth.payment', compact('banks', 'user_id', 'type'));
+            return redirect(route('pay_for_register', ['user_id' => $teacher->id, 'type' => 'online_teacher']));
         }
         else{
             session()->flash('error', trans('admin.error'));
@@ -143,7 +140,17 @@ class OnlineTeacherController extends Controller
     public function update(EditOnlineTeacherRequest $request, $id)
     {
         $teacher = User::find($id);
-        $teacher->update($request->all());
+
+        $data = $request->except(['_token'. '_method', 'full', 'sec_full']);
+
+        // handling phone
+        $data['phone_main'] = $request->full.','.$request->phone_main;
+        if($request->has('phone_secondary')){
+            $data['phone_secondary'] = $request->sec_full.','.$request->phone_secondary;
+        }
+
+        $teacher->update($data);
+
         $teacher->materials()->sync($request->material_ids);
         foreach($request->material_ids as $id){
             if($id == 4){
@@ -153,9 +160,6 @@ class OnlineTeacherController extends Controller
 
 
         if($request->has('image')){
-            // $this->validate($request, [
-            //     'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            // ]);
 
             if($teacher->image != null){
                 $removed = Upload::deleteImage($teacher->image->path);

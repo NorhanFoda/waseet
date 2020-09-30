@@ -32,7 +32,7 @@
                                     <div class="profile-img">
                                         <div class="avatar-upload">
                                             <div class="avatar-edit">
-                                                <input type="file" id="imageUpload" name="image" value="" accept=".png, .jpg, .jpeg">
+                                                <input type="file" class="active" id="imageUpload" name="image" value="" accept=".png, .jpg, .jpeg">
                                                 <label for="imageUpload"></label>
                                             </div>
 
@@ -59,7 +59,7 @@
                                     @if(Auth::user()->edu_type_id == 4 && Auth::user()->other_edu_type != null)
                                         <div class="big-label other_edu_type">{{trans('web.other_edu_type')}} :</div>
                                         <div class="userName other_edu_type">
-                                            <input type="text" name="other_edu_type" id="country" placeholder="{{trans('web.other_edu_type')}}" value="{{Auth::user()->other_edu_type}}" >
+                                            <input type="text" class="active" name="other_edu_type" id="country" placeholder="{{trans('web.other_edu_type')}}" value="{{Auth::user()->other_edu_type}}" >
                                         </div>
                                     @endif
                                     {{-- edu type end --}}
@@ -68,46 +68,48 @@
                                 {{-- name start --}}
                                 <div class="big-label">{{trans('web.full_name')}} :</div>
                                 <div class="userName">
-                                    <input type="text" name="name" value="{{Auth::user()->name}}" id="username" placeholder="جدارة" required />
+                                    <input type="text" name="name" class="active" value="{{Auth::user()->name}}" id="username" placeholder="جدارة" required />
                                 </div>
                                 {{-- name end --}}
 
                                 {{-- email start --}}
                                 <div class="big-label">{{trans('web.email')}} :</div>
                                 <div class="userName">
-                                    <input type="email" name="email" value="{{Auth::user()->email}}" id="mail" placeholder="sales@jaadara.com" required/>
+                                    <input type="email" name="email" class="active" value="{{Auth::user()->email}}" id="mail" placeholder="sales@jaadara.com" required/>
                                 </div>
                                 {{-- email end --}}
 
                                 @if(Auth::user()->hasRole('admin') || Auth::user()->hasRole('student') || Auth::user()->hasRole('direct_teacher') ||
                                     Auth::user()->hasRole('online_teacher') || Auth::user()->hasRole('organization') || Auth::user()->hasRole('job_seeker'))
                                     @php
-                                        if(strpos(Auth::user()->phone_main, ',') !== false){
-                                            $arr = explode(',' , Auth::user()->phone_main);
-                                            $phone_main = $arr[1];
-                                        }
-                                        else{
-                                            $phone_main = Auth::user()->phone_main;
-                                        }
-                                        if(strpos(Auth::user()->phone_secondary, ',') !== false){
+                                        $arr = explode(',' , Auth::user()->phone_main);
+                                        $key = $arr[0];
+                                        $phone_main = $arr[1];
+                                        
+                                        $phone_secondary = null;
+                                        $sec_key = null;
+                                        if(auth()->user()->phone_secondary != null){
                                             $arr2 = explode(',' , Auth::user()->phone_secondary);
-                                            $phone_secondary = $arr2[1];
+                                            $sec_key = $arr2[0];
+                                            $phone_secondary = $arr2[1];   
                                         }
-                                        else{
-                                            $phone_secondary = Auth::user()->phone_main;
-                                        }
+                                        
                                     @endphp
                                     {{-- phone main start --}}
                                     <div class="big-label">{{trans('web.phone_main')}} :</div>
                                     <div class="userName">
-                                        <input type="tel" id="mob" name="phone_main" value="{{$phone_main}}" placeholder="+966563793461" required/>
+                                        <input type="hidden" id="mob" value="{{$key}} {{$phone_main}}" />
+                                        <input type="hidden"  class="hidden-in" name="full"/>
+                                        <input type="tel" class="active phone-input-style" name="phone_main" value="{{$phone_main}}" minlength="9" maxlength="11" placeholder="+966563793461" required/>
                                     </div>
                                     {{-- phone main end --}}
 
                                     {{-- phone secondary start --}}
                                     <div class="big-label">{{trans('web.phone_secondary')}} :</div>
                                     <div class="userName">
-                                        <input type="tel" id="mob" name="phone_secondary" name="{{$phone_secondary}}" placeholder="+966563793461" />
+                                        <input type="hidden" id="sec_mob" value="{{$sec_key}} {{$phone_secondary}}" />
+                                        <input type="hidden"  class="sec_hidden-in" name="sec_full"/>
+                                        <input type="tel" class="active phone-input-style" name="phone_secondary" value="{{$phone_secondary}}" minlength="9" maxlength="11" placeholder="+966563793461" />
                                     </div>
                                     {{-- phone secondary end --}}
                                 @endif
@@ -117,7 +119,7 @@
                                     {{-- age start --}}
                                     <div class="big-label">{{trans('web.age')}} :</div>
                                     <div class="userName">
-                                        <input type="number" name="age" id="country" value="{{Auth::user()->age}}" placeholder="32" required/>
+                                        <input type="number" class="active" name="age" id="country" value="{{Auth::user()->age}}" placeholder="32" required/>
                                     </div>
                                     {{-- age end --}}
                                 @endif
@@ -137,7 +139,7 @@
                                     @if(Auth::user()->stage_id == 4 && Auth::user()->other_stage != null)
                                         <div class="big-label other_stage">{{trans('web.other_stage')}} :</div>
                                         <div class="userName other_stage">
-                                            <input type="text" name="other_stage" id="country" placeholder="{{trans('web.other_stage')}}" value="{{Auth::user()->other_stage}}" >
+                                            <input type="text" class="active" name="other_stage" id="country" placeholder="{{trans('web.other_stage')}}" value="{{Auth::user()->other_stage}}" >
                                         </div>
                                     @endif
                                     {{-- stage end --}}
@@ -147,7 +149,7 @@
                                     {{-- exper years start --}}
                                     <div class="big-label">{{trans('web.exper_years')}} :</div>
                                     <div class="userName">
-                                        <input type="number" name="exper_years" id="country" value="{{Auth::user()->exper_years}}" placeholder="5" required/>
+                                        <input type="number" class="active" name="exper_years" id="country" value="{{Auth::user()->exper_years}}" placeholder="5" required/>
                                     </div>
                                     {{-- exper years end --}}
                                 @endif
@@ -167,7 +169,7 @@
                                     @if(Auth::user()->edu_level_id == 4 && Auth::user()->other_edu_level != null)
                                         <div class="big-label other_edu_level">{{trans('web.other_edu_level')}} :</div>
                                         <div class="userName other_edu_level">
-                                            <input type="text" name="other_edu_level" id="country" placeholder="{{trans('web.other_edu_type')}}" value="{{Auth::user()->other_edu_level}}" >
+                                            <input type="text" class="active" name="other_edu_level" id="country" placeholder="{{trans('web.other_edu_type')}}" value="{{Auth::user()->other_edu_level}}" >
                                         </div>
                                     @endif
                                     {{-- edu level end --}}
@@ -176,7 +178,7 @@
                                     @if(Auth::user()->hasRole('online_teacher'))
                                         <div class="big-label">{{trans('web.teaching_method')}} :</div>
                                         <div class="userName">
-                                            <input type="text" name="teaching_method" id="country" placeholder="{{trans('web.teaching_method')}}" value="{{Auth::user()->teaching_method}}" required>
+                                            <input type="text" class="active" name="teaching_method" id="country" placeholder="{{trans('web.teaching_method')}}" value="{{Auth::user()->teaching_method}}" required>
                                         </div>
                                     @endif
                                     {{-- teaching_method end --}}
@@ -203,7 +205,7 @@
                                     {{-- other_material start --}}
                                     <div class="big-label other_material" @if(!Auth::user()->materials->contains(4)) hidden @endif>{{trans('admin.other_material')}} :</div>
                                     <div class="userName other_material" @if(!Auth::user()->materials->contains(4)) hidden @endif>
-                                        <input type="text" name="other_material" value="
+                                        <input type="text" class="active" name="other_material" value="
                                             @if(Auth::user()->materials()->where('material_id', 4)->first() != null)
                                                 {{Auth::user()->materials()->where('material_id', 4)->first()->pivot->other_material}}
                                             @endif" />
@@ -227,7 +229,7 @@
                                     @if(Auth::user()->nationality_id == 3 && Auth::user()->other_nationality != null)
                                         <div class="big-label other_nationality">{{trans('web.other_nationality')}} :</div>
                                         <div class="userName other_nationality">
-                                            <input type="text" name="other_nationality" id="country" placeholder="{{trans('web.other_nationality')}}" value="{{Auth::user()->other_nationality}}" >
+                                            <input type="text" class="active" name="other_nationality" id="country" placeholder="{{trans('web.other_nationality')}}" value="{{Auth::user()->other_nationality}}" >
                                         </div>
                                     @endif
                                     {{-- nationality end --}}
@@ -264,7 +266,7 @@
                                     {{-- salary start --}}
                                     <div class="big-label">{{trans('web.salary')}} :</div>
                                     <div class="userName">
-                                        <input type="number" name="salary_month" value="{{Auth::user()->salary_month}}" id="confirm" placeholder="4000.00" required/>
+                                        <input type="number" class="active" name="salary_month" value="{{Auth::user()->salary_month}}" id="confirm" placeholder="4000.00" required/>
                                     </div>
                                     {{-- salary end --}}
                                 @endif
@@ -273,14 +275,14 @@
                                     {{-- bio_ar start --}}
                                     <div class="big-label">{{trans('web.bio_ar')}} :</div>
                                     <div class="userName">
-                                        <textarea name="bio_ar" class="form-control" rows="6" cols="30" required> {{Auth::user()->bio_ar}}</textarea>
+                                        <textarea name="bio_ar" class="form-control active" rows="6" cols="30" required> {{Auth::user()->bio_ar}}</textarea>
                                     </div>
                                     {{-- bio_ar end --}}
 
                                     {{-- bio_en start --}}
                                     <div class="big-label">{{trans('web.bio_en')}} :</div>
                                     <div class="userName">
-                                        <textarea name="bio_en" class="form-control" rows="6" cols="30" required> {{Auth::user()->bio_en}}</textarea>
+                                        <textarea name="bio_en" class="form-control active" rows="6" cols="30" required> {{Auth::user()->bio_en}}</textarea>
                                     </div>
                                     {{-- bio_en end --}}
                                 @endif
@@ -289,19 +291,19 @@
                                     {{-- cv start --}}
                                     <div class="big-label">{{trans('web.cv')}} : </div>
                                     <div class="userName custom-file">
-                                        <input type="file" id="file-up" accept="application/pdf" name="cv" required/>
+                                        <input type="file" class="active" id="file-up" accept="application/pdf" name="cv"/>
                                         <label for="file-up">
                                             <i class="fa fa-upload"></i> <span></span>
                                         </label>
                                         
                                     </div>
-<div class="col-12">
-     @if(auth()->user()->document != null)
-                                        <div class="userName custom-file">
-                                            <a href="{{auth()->user()->document->path}}" class="first_color">{{trans('web.view_cv')}}</a>
-                                        </div>
-                                    @endif
-</div>
+                                    <div class="col-12">
+                                        @if(auth()->user()->document != null)
+                                            <div class="userName custom-file">
+                                                <a href="{{auth()->user()->document->path}}" class="first_color">{{trans('web.view_cv')}}</a>
+                                            </div>
+                                        @endif
+                                    </div>
                                   
                                     {{-- cv end --}}
                                 @endif
@@ -312,7 +314,7 @@
                                     {{-- address start --}}
                                     <div class="big-label">{{trans('web.address')}} :</div>
                                     <div class="userName">
-                                        <input type="text" name="address" value="{{Auth::user()->address}}" id="confirm" placeholder="الرياض ,المملكة العربية السعودية" required/>
+                                        <input type="text" class="active" name="address" value="{{Auth::user()->address}}" id="confirm" placeholder="الرياض ,المملكة العربية السعودية" required/>
                                         <input type="hidden" name="lat" value="{{Auth::user()->lat}}" id="location_lat">
                                         <input type="hidden" name="long" value="{{Auth::user()->long}}" id="location_lng"> 
                                     </div>
@@ -324,7 +326,7 @@
                                     {{-- teaching address start --}}
                                     <div class="big-label">{{trans('web.teaching_address')}} :</div>
                                     <div class="userName">
-                                        <input type="text" name="teaching_address" value="{{Auth::user()->teaching_address}}" id="confirm" placeholder="الرياض ,المملكة العربية السعودية" required/>
+                                        <input type="text" class="active" name="teaching_address" value="{{Auth::user()->teaching_address}}" id="confirm" placeholder="الرياض ,المملكة العربية السعودية" required/>
                                         <input type="hidden" name="lat2" value="{{Auth::user()->teaching_lat}}" id="location_lat2">
                                         <input type="hidden" name="long2" value="{{Auth::user()->teaching_long}}" id="location_lng2">
                                     </div>
@@ -458,5 +460,35 @@
                 });
             });
         });
+
+        /**
+       * 
+       * Handling country key for phones input according to stupids opinion
+       * **/
+      $(".no-val-input").val('');
+      $(".iti__selected-dial-code").val();
+
+      var phone_number = window.intlTelInput(document.querySelector("#mob"), {
+        separateDialCode: true,
+        preferredCountries: ["sa", "kw", "om", "bh", "jo", "iq", "ae", "eg"],
+        hiddenInput: "full",
+        utilsScript: "{{asset('web/js/vendor/utils.js')}}"
+      });
+      
+      var sec_phone_number = window.intlTelInput(document.querySelector("#sec_mob"), {
+        separateDialCode: true,
+        preferredCountries: ["sa", "kw", "om", "bh", "jo", "iq", "ae", "eg"],
+        hiddenInput: "sec_full",
+        utilsScript: "{{asset('web/js/vendor/utils.js')}}"
+      });
+
+
+      $("form").submit(function() {
+          var phone_val = $(".iti__selected-dial-code:eq(0)").text();
+          var sec_phone_val = $(".iti__selected-dial-code:eq(1)").text();
+          $(".phone-input-style").prev(".hidden-in").val(phone_val);
+          $(".phone-input-style").prev(".sec_hidden-in").val(sec_phone_val);
+      });
+
     </script>
 @endsection

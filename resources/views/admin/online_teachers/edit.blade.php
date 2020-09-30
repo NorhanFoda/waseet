@@ -78,6 +78,20 @@
                                     </div>
                                 </div>
                                 {{-- enter email end --}}
+                                @php
+                                    $arr = explode(',' , $teacher->phone_main);
+                                    $key = $arr[0];
+                                    $phone_main = $arr[1];
+                                    
+                                    $phone_secondary = null;
+                                    $sec_key = null;
+                                    if($teacher->phone_secondary != null){
+                                        $arr2 = explode(',' , $teacher->phone_secondary);
+                                        $sec_key = $arr2[0];
+                                        $phone_secondary = $arr2[1];
+                                    }
+                                    
+                                @endphp
 
                                 {{-- enter phone main --}}
                                 <div class="col-12">
@@ -86,7 +100,9 @@
                                             <span>{{trans('admin.phone_main')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <input type="tel" class="form-control" value="{{$teacher->phone_main}}" placeholder="{{trans('admin.phone_main')}}" name="phone_main" required>
+                                            <input type="hidden" id="mob" value="{{$key}} {{$phone_main}}" />
+                                            <input type="hidden"  class="hidden-in" name="full"/>
+                                            <input type="tel" class="form-control phone-input-style" value="{{$phone_main}}" placeholder="{{trans('admin.phone_main')}}" name="phone_main" minlength="9" maxlength="11" required>
                                             <div class="invalid-feedback">
                                                 {{trans('admin.phone_main')}}
                                             </div>
@@ -102,7 +118,9 @@
                                             <span>{{trans('admin.phone_secondary')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <input type="tel" class="form-control" value="{{$teacher->phone_secondary}}" placeholder="{{trans('admin.phone_secondary')}}" name="phone_secondary">
+                                            <input type="hidden" id="sec_mob" value="{{$sec_key}} {{$phone_secondary}}" />
+                                            <input type="hidden"  class="sec_hidden-in" name="sec_full"/>
+                                            <input type="tel" class="form-control phone-input-style" value="{{$phone_secondary}}" placeholder="{{trans('admin.phone_secondary')}}" minlength="9" maxlength="11" name="phone_secondary">
                                             <div class="invalid-feedback">
                                                 {{trans('admin.phone_secondary')}}
                                             </div>
@@ -206,7 +224,7 @@
                                             <span>{{trans('admin.other_material')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <input type="text" name="other_material" value="{{$teacher->materials()->where('material_id', 4)->first()->pivot->other_material}}" class="form-control">
+                                            <input type="text" name="other_material" value="{{$teacher->materials()->where('material_id', 4)->first() != null ? $teacher->materials()->where('material_id', 4)->first()->pivot->other_material : ''}}" class="form-control">
                                             <div class="invalid-feedback">
                                                 {{trans('admin.other_material')}}
                                             </div>
@@ -437,7 +455,7 @@
                 if(ids.indexOf('4') != -1){
                     $('#other_material').attr('hidden', false);
                     $("input[name*='other_material']").attr('required', true);
-                    $("input[name*='other_material']").val('{{$teacher->materials()->where('material_id', 4)->first()->pivot->other_material}}');
+                    $("input[name*='other_material']").val('{{$teacher->materials()->where('material_id', 4)->first() != null ? $teacher->materials()->where('material_id', 4)->first()->pivot->other_material : ""}}');
                 }
                 else{
                     $('#other_material').attr('hidden', true);                

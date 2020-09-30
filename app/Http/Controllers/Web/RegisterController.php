@@ -46,7 +46,7 @@ class RegisterController extends Controller
 
 
     public function register(UserRequest $request, $role_id){
-
+        
         $old = User::where('email', $request->email)->first();
 
         // check if this user is registered before but not verified then delete it
@@ -72,7 +72,15 @@ class RegisterController extends Controller
             }
         }
 
-        $user = User::create($request->all());
+        $data = $request->except(['_token'. '_method', 'full', 'sec_full']);
+
+        // handling phone according to stupids opinion
+        $data['phone_main'] = $request->full.','.$request->phone_main;
+        if($request->has('phone_secondary')){
+            $data['phone_secondary'] = $request->sec_full.','.$request->phone_secondary;
+        }
+        $user = User::create($data);
+        
         $user->update([
             'password' => Hash::make($request->password),
             'teaching_lat' => $request->lat2,

@@ -133,11 +133,16 @@
                                 <tbody>
                                     @foreach($job->applicants as $app)
                                         @if($app->hasrole('job_seeker'))
+                                            @php
+                                                $arr = explode(',' , $app->phone_main);
+                                                $key = $arr[0];
+                                                $phone_main = $arr[1];
+                                            @endphp
                                             <tr>
                                                 <td>{{$loop->iteration}}</td>
                                                 <td>{{$app->name}}</td>
                                                 <td>{{$app->email}}</td>
-                                                <td>{{$app->phone_main}}</td>
+                                                <td>{{$key}} {{$phone_main}}</td>
                                                 <td>
                                                     <a href="{{route('applicants.show', $app->id)}}" class="btn" style="color:white;"><i class="fa fa-eye"></i></a>
                                                 </td>

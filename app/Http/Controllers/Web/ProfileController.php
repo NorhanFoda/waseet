@@ -45,8 +45,17 @@ class ProfileController extends Controller
 
     // update auth user personal info
     public function storePersonalInfo(UpdateProfileRequest $request){
+
+        $data = $request->except(['_token'. '_method', 'full', 'sec_full']);
+
+        // handling phone according to stupids opinion
+        $data['phone_main'] = $request->full.','.$request->phone_main;
+        if($request->has('phone_secondary')){
+            $data['phone_secondary'] = $request->sec_full.','.$request->phone_secondary;
+        }
+
+        auth()->user()->update($data);
         
-        auth()->user()->update($request->all());
         auth()->user()->update([
             'teaching_lat' => $request->lat2,
             'teaching_long' => $request->long2,

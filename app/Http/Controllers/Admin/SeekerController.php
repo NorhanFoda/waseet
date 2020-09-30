@@ -49,7 +49,16 @@ class SeekerController extends Controller
      */
     public function store(SeekerRequest $request)
     {
-        $seeker = User::create($request->all());
+        // handling phone
+        $data = $request->except(['_token'. '_method', 'full', 'sec_full']);
+
+        $data['phone_main'] = $request->full.','.$request->phone_main;
+        if($request->has('phone_secondary')){
+            $data['phone_secondary'] = $request->sec_full.','.$request->phone_secondary;
+        }
+
+        $seeker = User::create($data);
+
         $seeker->update(['is_verified' => 1, 'password' => Hash::make($request->password), 'approved' => 1]);
         $seeker->assignRole('job_seeker');
 
@@ -62,13 +71,7 @@ class SeekerController extends Controller
         $seeker->document()->save($cv);
 
         if($seeker){
-            // session()->flash('success', trans('admin.created'));
-            // return redirect()->route('seekers.index');
-            $user_id = $seeker->id;
-            $banks = Bank::all();
-            $type = 'seeker';
-            return view('admin.auth.payment', compact('banks', 'user_id', 'type'));
-            // return redirect()->route('register.payment', compact('user_id'));
+            return redirect()->route('pay_for_register', ['user_id' => $seeker->id, 'type' => 'seeker']);
         }
         else{
             session()->flash('error', trans('admin.error'));
@@ -113,7 +116,16 @@ class SeekerController extends Controller
     public function update(EditSeekerRequest $request, $id)
     {
         $seeker = User::find($id);
-        $seeker->update($request->all());
+        
+        $data = $request->except(['_token'. '_method', 'full', 'sec_full']);
+
+        // handling phone
+        $data['phone_main'] = $request->full.','.$request->phone_main;
+        if($request->has('phone_secondary')){
+            $data['phone_secondary'] = $request->sec_full.','.$request->phone_secondary;
+        }
+
+        $seeker->update($data);
 
         if($request->has('cv')){
             if($seeker->document != null){

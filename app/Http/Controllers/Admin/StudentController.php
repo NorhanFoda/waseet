@@ -48,7 +48,16 @@ class StudentController extends Controller
      */
     public function store(StudentRequest $request)
     {
-        $student = User::create($request->all());
+        // handling phone
+        $data = $request->except(['_token'. '_method', 'full', 'sec_full']);
+
+        $data['phone_main'] = $request->full.','.$request->phone_main;
+        if($request->has('phone_secondary')){
+            $data['phone_secondary'] = $request->sec_full.','.$request->phone_secondary;
+        }
+
+        $student = User::create($data);
+
         $student->update(['is_verified' => 1, 'password' => Hash::make($request->password)]);
         $student->assignRole('student');
 
@@ -110,7 +119,16 @@ class StudentController extends Controller
     public function update(EditStudentRequest $request, $id)
     {
         $std = User::find($id);
-        $std->update($request->all());
+        
+        // handling phone
+        $data = $request->except(['_token'. '_method', 'full', 'sec_full']);
+
+        $data['phone_main'] = $request->full.','.$request->phone_main;
+        if($request->has('phone_secondary')){
+            $data['phone_secondary'] = $request->sec_full.','.$request->phone_secondary;
+        }
+
+        $std->update($data);
 
         if($request->has('image')){
 

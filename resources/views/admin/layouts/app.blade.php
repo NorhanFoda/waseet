@@ -51,6 +51,7 @@
 
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="{{asset('admin/css'.$locale.'/style.css')}}">
+    <link rel="stylesheet" href="{{asset('web/css/intlTelInput.min.css')}}" />
     @if($locale=='ar')
     <link rel="stylesheet" type="text/css" href="{{asset('admin/css/style-rtl.css')}}">
     @endif
@@ -611,6 +612,7 @@
 <!-- BEGIN: Page JS-->
 {{-- <script src="{{asset('admin/js/scripts/pages/dashboard-analytics.js')}}"></script> --}}
 <script src="{{asset('admin/js/scripts/extensions/sweet-alerts.js')}}"></script>
+<script src="{{asset('web/js/vendor/intlTelInput.min.js')}}"></script>
 <!-- END: Page JS-->
 
 <!-- BEGIN: Main JS-->
@@ -734,6 +736,37 @@
         });
     })
 
+</script>
+
+<script>
+      /**
+       * 
+       * Handling country key for phones input according to stupids opinion
+       * **/
+       $(".no-val-input").val('');
+      $(".iti__selected-dial-code").val();
+
+      var phone_number = window.intlTelInput(document.querySelector("#mob"), {
+        separateDialCode: true,
+        preferredCountries: ["sa", "kw", "om", "bh", "jo", "iq", "ae", "eg"],
+        hiddenInput: "full",
+        utilsScript: "{{asset('web/js/vendor/utils.js')}}"
+      });
+
+      var sec_phone_number = window.intlTelInput(document.querySelector("#sec_mob"), {
+        separateDialCode: true,
+        preferredCountries: ["sa", "kw", "om", "bh", "jo", "iq", "ae", "eg"],
+        hiddenInput: "sec_full",
+        utilsScript: "{{asset('web/js/vendor/utils.js')}}"
+      });
+
+
+      $("form").submit(function() {
+          var phone_val = $(".iti__selected-dial-code:eq(0)").text();
+          var sec_phone_val = $(".iti__selected-dial-code:eq(1)").text();
+          $(".phone-input-style").prev(".hidden-in").val(phone_val);
+          $(".phone-input-style").prev(".sec_hidden-in").val(sec_phone_val);
+      });
 </script>
 {{-- 
 @if(session()->has('message'))
