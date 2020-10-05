@@ -121,10 +121,15 @@
                                     @foreach($city->users as $user)
                                         @if($user->hasrole('online_teacher'))
                                             @php
-                                                $arr = explode(',' , $user->phone_main);
-                                                $key = $arr[0];
-                                                $phone_main = $arr[1];
-                                                
+                                                if(strpos($user->phone_main, ',') !== false){
+                                                    $arr = explode(',' , $user->phone_main);
+                                                    $key = $arr[0];
+                                                    $phone_main = $arr[1];
+                                                }
+                                                else{
+                                                    $key = '';
+                                                    $phone_main = $user->$phone_main;
+                                                }
                                             @endphp
                                             <tr>
                                                 <td>{{$loop->iteration}}</td>
@@ -170,9 +175,15 @@
                                     @foreach($city->users as $user)
                                         @if($user->hasrole('direct_teacher'))
                                             @php
-                                                $arr = explode(',' , $user->phone_main);
-                                                $key = $arr[0];
-                                                $phone_main = $arr[1];
+                                                if(strpos($user->phone_main, ',') !== false){
+                                                    $arr = explode(',' , $user->phone_main);
+                                                    $key = $arr[0];
+                                                    $phone_main = $arr[1];
+                                                }
+                                                else{
+                                                    $key = '';
+                                                    $phone_main = $user->$phone_main;
+                                                }
                                                 
                                             @endphp
                                             <tr>
@@ -219,9 +230,15 @@
                                     @foreach($city->users as $user)
                                         @if($user->hasrole('student'))
                                             @php
-                                                $arr = explode(',' , $user->phone_main);
-                                                $key = $arr[0];
-                                                $phone_main = $arr[1];
+                                                if(strpos($user->phone_main, ',') !== false){
+                                                    $arr = explode(',' , $user->phone_main);
+                                                    $key = $arr[0];
+                                                    $phone_main = $arr[1];
+                                                }
+                                                else{
+                                                    $key = '';
+                                                    $phone_main = $user->$phone_main;
+                                                }
                                             @endphp
                                             <tr>
                                                 <td>{{$loop->iteration}}</td>

@@ -79,16 +79,26 @@
                                 </div>
                                 {{-- enter email end --}}
                                 @php
-                                    $arr = explode(',' , $teacher->phone_main);
-                                    $key = $arr[0];
-                                    $phone_main = $arr[1];
+                                    if(strpos($teacher->phone_main, ',') !== false){
+                                        $arr = explode(',' , $teacher->phone_main);
+                                        $key = $arr[0];
+                                        $phone_main = $arr[1];
+                                    }
+                                    else{
+                                        $key = '';
+                                        $phone_main = $teacher->$phone_main;
+                                    }
                                     
                                     $phone_secondary = null;
                                     $sec_key = null;
-                                    if($teacher->phone_secondary != null){
+                                    if($teacher->phone_secondary != null && strpos($teacher->phone_secondary, ',') !== false){
                                         $arr2 = explode(',' , $teacher->phone_secondary);
                                         $sec_key = $arr2[0];
                                         $phone_secondary = $arr2[1];
+                                    }
+                                    else{
+                                        $sec_key = '';
+                                        $phone_secondary = $teacher->$phone_secondary;
                                     }
                                     
                                 @endphp

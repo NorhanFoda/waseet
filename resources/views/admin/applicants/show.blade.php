@@ -41,16 +41,26 @@
                         </div>
                     </div>
                     @php
-                        $arr = explode(',' , $applicant->phone_main);
-                        $key = $arr[0];
-                        $phone_main = $arr[1];
+                        if(strpos($applicant->phone_main, ',') !== false){
+                            $arr = explode(',' , $applicant->phone_main);
+                            $key = $arr[0];
+                            $phone_main = $arr[1];
+                        }
+                        else{
+                            $key = '';
+                            $phone_main = $applicant->$phone_main;
+                        }
                         
                         $phone_secondary = null;
                         $sec_key = null;
-                        if($applicant->phone_secondary != null){
+                        if($applicant->phone_secondary != null && strpos($applicant->phone_secondary, ',') !== false){
                             $arr2 = explode(',' , $applicant->phone_secondary);
                             $sec_key = $arr2[0];
                             $phone_secondary = $arr2[1];
+                        }
+                        else{
+                            $sec_key = '';
+                            $phone_secondary = $applicant->$phone_secondary;
                         }
                     @endphp
 

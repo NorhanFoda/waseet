@@ -64,7 +64,19 @@
                                                 }
                                                 else{
                                                     $key = '';
-                                                    $phone_main = $teacher->phone_main;
+                                                    $phone_main = $teacher->$phone_main;
+                                                }
+                                                
+                                                $phone_secondary = null;
+                                                $sec_key = null;
+                                                if($teacher->phone_secondary != null && strpos($teacher->phone_secondary, ',') !== false){
+                                                    $arr2 = explode(',' , $teacher->phone_secondary);
+                                                    $sec_key = $arr2[0];
+                                                    $phone_secondary = $arr2[1];
+                                                }
+                                                else{
+                                                    $sec_key = '';
+                                                    $phone_secondary = $teacher->$phone_secondary;
                                                 }
                                             @endphp
                                             <tr align="center">

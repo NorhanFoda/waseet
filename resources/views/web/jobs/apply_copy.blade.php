@@ -39,16 +39,26 @@
                                 </div>
 
                                 @php
-                                    $arr = explode(',' , auth()->user()->phone_main);
-                                    $key = $arr[0];
-                                    $phone_main = $arr[1];
+                                    if(strpos(auth()->user()->phone_main, ',') !== false){
+                                        $arr = explode(',' , auth()->user()->phone_main);
+                                        $key = $arr[0];
+                                        $phone_main = $arr[1];
+                                    }
+                                    else{
+                                        $key = '';
+                                        $phone_main = auth()->user()->$phone_main;
+                                    }
                                     
                                     $phone_secondary = null;
                                     $sec_key = null;
-                                    if(auth()->user()->phone_secondary != null){
+                                    if(auth()->user()->phone_secondary != null && strpos(auth()->user()->phone_secondary, ',') !== false){
                                         $arr2 = explode(',' , auth()->user()->phone_secondary);
                                         $sec_key = $arr2[0];
-                                        $phone_secondary = $arr2[1];   
+                                        $phone_secondary = $arr2[1];
+                                    }
+                                    else{
+                                        $sec_key = '';
+                                        $phone_secondary = auth()->user()->$phone_secondary;
                                     }
                                     
                                 @endphp

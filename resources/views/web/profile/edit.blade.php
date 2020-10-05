@@ -82,16 +82,26 @@
                                 @if(Auth::user()->hasRole('admin') || Auth::user()->hasRole('student') || Auth::user()->hasRole('direct_teacher') ||
                                     Auth::user()->hasRole('online_teacher') || Auth::user()->hasRole('organization') || Auth::user()->hasRole('job_seeker'))
                                     @php
-                                        $arr = explode(',' , Auth::user()->phone_main);
-                                        $key = $arr[0];
-                                        $phone_main = $arr[1];
+                                        if(strpos(Auth::user()->phone_main, ',') !== false){
+                                            $arr = explode(',' , Auth::user()->phone_main);
+                                            $key = $arr[0];
+                                            $phone_main = $arr[1];
+                                        }
+                                        else{
+                                            $key = '';
+                                            $phone_main = Auth::user()->$phone_main;
+                                        }
                                         
                                         $phone_secondary = null;
                                         $sec_key = null;
-                                        if(auth()->user()->phone_secondary != null){
+                                        if(Auth::user()->phone_secondary != null && strpos(Auth::user()->phone_secondary, ',') !== false){
                                             $arr2 = explode(',' , Auth::user()->phone_secondary);
                                             $sec_key = $arr2[0];
-                                            $phone_secondary = $arr2[1];   
+                                            $phone_secondary = $arr2[1];
+                                        }
+                                        else{
+                                            $sec_key = '';
+                                            $phone_secondary = Auth::user()->$phone_secondary;
                                         }
                                         
                                     @endphp

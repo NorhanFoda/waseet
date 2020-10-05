@@ -57,9 +57,15 @@
                                     @foreach($teachers as $teacher)
                                         @if(!$teacher->hasRole('admin'))
                                             @php
-                                                $arr = explode(',' , $teacher->phone_main);
-                                                $key = $arr[0];
-                                                $phone_main = $arr[1];
+                                                if(strpos($teacher->phone_main, ',') !== false){
+                                                    $arr = explode(',' , $teacher->phone_main);
+                                                    $key = $arr[0];
+                                                    $phone_main = $arr[1];
+                                                }
+                                                else{
+                                                    $key = '';
+                                                    $phone_main = $teacher->$phone_main;
+                                                }
                                             @endphp
                                             <tr align="center">
                                                 <td>{{$loop->iteration}}</td>

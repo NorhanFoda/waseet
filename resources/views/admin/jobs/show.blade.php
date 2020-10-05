@@ -134,9 +134,27 @@
                                     @foreach($job->applicants as $app)
                                         @if($app->hasrole('job_seeker'))
                                             @php
-                                                $arr = explode(',' , $app->phone_main);
-                                                $key = $arr[0];
-                                                $phone_main = $arr[1];
+                                                if(strpos($app->phone_main, ',') !== false){
+                                                    $arr = explode(',' , $app->phone_main);
+                                                    $key = $arr[0];
+                                                    $phone_main = $arr[1];
+                                                }
+                                                else{
+                                                    $key = '';
+                                                    $phone_main = $app->$phone_main;
+                                                }
+                                                
+                                                $phone_secondary = null;
+                                                $sec_key = null;
+                                                if($app->phone_secondary != null && strpos($app->phone_secondary, ',') !== false){
+                                                    $arr2 = explode(',' , $app->phone_secondary);
+                                                    $sec_key = $arr2[0];
+                                                    $phone_secondary = $arr2[1];
+                                                }
+                                                else{
+                                                    $sec_key = '';
+                                                    $phone_secondary = $app->$phone_secondary;
+                                                }
                                             @endphp
                                             <tr>
                                                 <td>{{$loop->iteration}}</td>

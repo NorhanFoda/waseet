@@ -77,9 +77,27 @@
                                     @foreach($nation->users as $user)
                                         @if($user->hasrole('online_teacher'))
                                             @php
-                                                $arr = explode(',' , $user->phone_main);
-                                                $key = $arr[0];
-                                                $phone_main = $arr[1];
+                                                if(strpos($user->phone_main, ',') !== false){
+                                                    $arr = explode(',' , $user->phone_main);
+                                                    $key = $arr[0];
+                                                    $phone_main = $arr[1];
+                                                }
+                                                else{
+                                                    $key = '';
+                                                    $phone_main = $user->$phone_main;
+                                                }
+                                                
+                                                $phone_secondary = null;
+                                                $sec_key = null;
+                                                if($user->phone_secondary != null && strpos($user->phone_secondary, ',') !== false){
+                                                    $arr2 = explode(',' , $user->phone_secondary);
+                                                    $sec_key = $arr2[0];
+                                                    $phone_secondary = $arr2[1];
+                                                }
+                                                else{
+                                                    $sec_key = '';
+                                                    $phone_secondary = $user->$phone_secondary;
+                                                }
                                             @endphp
                                             <tr>
                                                 <td>{{$loop->iteration}}</td>
@@ -125,9 +143,27 @@
                                     @foreach($nation->users as $user)
                                         @if($user->hasrole('direct_teacher'))
                                             @php
-                                                $arr = explode(',' , $user->phone_main);
-                                                $key = $arr[0];
-                                                $phone_main = $arr[1];
+                                                if(strpos($user->phone_main, ',') !== false){
+                                                    $arr = explode(',' , $user->phone_main);
+                                                    $key = $arr[0];
+                                                    $phone_main = $arr[1];
+                                                }
+                                                else{
+                                                    $key = '';
+                                                    $phone_main = $user->$phone_main;
+                                                }
+                                                
+                                                $phone_secondary = null;
+                                                $sec_key = null;
+                                                if($user->phone_secondary != null && strpos($user->phone_secondary, ',') !== false){
+                                                    $arr2 = explode(',' , $user->phone_secondary);
+                                                    $sec_key = $arr2[0];
+                                                    $phone_secondary = $arr2[1];
+                                                }
+                                                else{
+                                                    $sec_key = '';
+                                                    $phone_secondary = $user->$phone_secondary;
+                                                }
                                             @endphp
                                             <tr>
                                                 <td>{{$loop->iteration}}</td>
@@ -173,9 +209,27 @@
                                     @foreach($nation->users as $user)
                                         @if($user->hasrole('student'))
                                             @php
-                                                $arr = explode(',' , $user->phone_main);
-                                                $key = $arr[0];
-                                                $phone_main = $arr[1];
+                                                if(strpos($user->phone_main, ',') !== false){
+                                                    $arr = explode(',' , $user->phone_main);
+                                                    $key = $arr[0];
+                                                    $phone_main = $arr[1];
+                                                }
+                                                else{
+                                                    $key = '';
+                                                    $phone_main = $user->$phone_main;
+                                                }
+                                                
+                                                $phone_secondary = null;
+                                                $sec_key = null;
+                                                if($user->phone_secondary != null && strpos($user->phone_secondary, ',') !== false){
+                                                    $arr2 = explode(',' , $user->phone_secondary);
+                                                    $sec_key = $arr2[0];
+                                                    $phone_secondary = $arr2[1];
+                                                }
+                                                else{
+                                                    $sec_key = '';
+                                                    $phone_secondary = $user->$phone_secondary;
+                                                }
                                             @endphp
                                             <tr>
                                                 <td>{{$loop->iteration}}</td>
@@ -221,9 +275,27 @@
                                     @foreach($nation->users as $user)
                                         @if($user->hasrole('organization'))
                                             @php
-                                                $arr = explode(',' , $user->phone_main);
-                                                $key = $arr[0];
-                                                $phone_main = $arr[1];
+                                                if(strpos($user->phone_main, ',') !== false){
+                                                    $arr = explode(',' , $user->phone_main);
+                                                    $key = $arr[0];
+                                                    $phone_main = $arr[1];
+                                                }
+                                                else{
+                                                    $key = '';
+                                                    $phone_main = $user->$phone_main;
+                                                }
+                                                
+                                                $phone_secondary = null;
+                                                $sec_key = null;
+                                                if($user->phone_secondary != null && strpos($user->phone_secondary, ',') !== false){
+                                                    $arr2 = explode(',' , $user->phone_secondary);
+                                                    $sec_key = $arr2[0];
+                                                    $phone_secondary = $arr2[1];
+                                                }
+                                                else{
+                                                    $sec_key = '';
+                                                    $phone_secondary = $user->$phone_secondary;
+                                                }
                                             @endphp
                                             <tr>
                                                 <td>{{$loop->iteration}}</td>
@@ -269,9 +341,27 @@
                                     @foreach($nation->users as $user)
                                         @if($user->hasrole('job_seeker'))
                                             @php
-                                                $arr = explode(',' , $user->phone_main);
-                                                $key = $arr[0];
-                                                $phone_main = $arr[1];
+                                                if(strpos($user->phone_main, ',') !== false){
+                                                    $arr = explode(',' , $user->phone_main);
+                                                    $key = $arr[0];
+                                                    $phone_main = $arr[1];
+                                                }
+                                                else{
+                                                    $key = '';
+                                                    $phone_main = $user->$phone_main;
+                                                }
+                                                
+                                                $phone_secondary = null;
+                                                $sec_key = null;
+                                                if($user->phone_secondary != null && strpos($user->phone_secondary, ',') !== false){
+                                                    $arr2 = explode(',' , $user->phone_secondary);
+                                                    $sec_key = $arr2[0];
+                                                    $phone_secondary = $arr2[1];
+                                                }
+                                                else{
+                                                    $sec_key = '';
+                                                    $phone_secondary = $user->$phone_secondary;
+                                                }
                                             @endphp
                                             <tr>
                                                 <td>{{$loop->iteration}}</td>

@@ -116,16 +116,26 @@
                                 </div>
                                 {{-- enter email end --}}
                                 @php
-                                    $arr = explode(',' , $org->phone_main);
-                                    $key = $arr[0];
-                                    $phone_main = $arr[1];
+                                    if(strpos($org->phone_main, ',') !== false){
+                                        $arr = explode(',' , $org->phone_main);
+                                        $key = $arr[0];
+                                        $phone_main = $arr[1];
+                                    }
+                                    else{
+                                        $key = '';
+                                        $phone_main = $org->$phone_main;
+                                    }
                                     
                                     $phone_secondary = null;
                                     $sec_key = null;
-                                    if($org->phone_secondary != null){
+                                    if($org->phone_secondary != null && strpos($org->phone_secondary, ',') !== false){
                                         $arr2 = explode(',' , $org->phone_secondary);
                                         $sec_key = $arr2[0];
                                         $phone_secondary = $arr2[1];
+                                    }
+                                    else{
+                                        $sec_key = '';
+                                        $phone_secondary = $org->$phone_secondary;
                                     }
                                     
                                 @endphp

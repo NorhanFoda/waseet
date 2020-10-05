@@ -54,9 +54,15 @@
                                     @foreach($applicants as $app)
                                         @if($app->job_applications_count > 0)
                                             @php
-                                                $arr = explode(',' , $app->phone_main);
-                                                $key = $arr[0];
-                                                $phone_main = $arr[1];
+                                                if(strpos($app->phone_main, ',') !== false){
+                                                    $arr = explode(',' , $app->phone_main);
+                                                    $key = $arr[0];
+                                                    $phone_main = $arr[1];
+                                                }
+                                                else{
+                                                    $key = '';
+                                                    $phone_main = $app->$phone_main;
+                                                }
                                             @endphp
                                             <tr align="center">
                                                 <td>{{$loop->iteration}}</td>
