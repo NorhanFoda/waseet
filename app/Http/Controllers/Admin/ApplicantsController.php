@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\Models\Job;
+use App\Models\Notification;
+use App\Classes\Notify;
 
 class ApplicantsController extends Controller
 {
@@ -57,6 +59,21 @@ class ApplicantsController extends Controller
         foreach($request->job_ids as $job_id){
             $org = Job::find($job_id)->announcer;
             $org->org_applicants()->sync($applicant->id);   
+
+            // Send job applicant notification to organization
+            $not = Notification::create([
+                'msg_ar' => 'لقد قام أحد الباحثين عن عمل بالتقدم لوظيفة لديك',
+                'msg_en' => 'A Job Seeker Has Applied To Your Job Announce',
+                // 'image' => 'http://beta.bestlook.sa/images/logo1.png',
+                'user_id' => $org->id,
+                'read' => 0
+            ]);
+            if(\App::getLocale() == 'ar'){
+                Notify::NotifyUser($org->tokens, $not->msg_ar, 'job_apply', $org->id);
+            }
+            else{
+                Notify::NotifyUser($org->tokens, $not->msg_en, 'job_apply', $org->id);
+            }
         }
 
         session()->flash('success', trans('admin.created'));

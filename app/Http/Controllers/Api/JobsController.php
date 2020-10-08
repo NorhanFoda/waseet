@@ -20,6 +20,9 @@ use App\User;
 use Auth;
 use App\Http\Requests\Job\ApplyToJobRequest;
 use App\Jobs\SendEmailJob;
+use App\Models\Notification;
+use App\Models\DeviceToken;
+use App\Classes\Notify;
 
 
 class JobsController extends Controller
@@ -110,6 +113,21 @@ class JobsController extends Controller
                             'error' => trans('api.error')
                         ], 404);
                     }
+                }
+
+                // Send job applicant notification to organization
+                $not = Notification::create([
+                    'msg_ar' => 'لقد قام أحد الباحثين عن عمل بالتقدم لوظيفة لديك',
+                    'msg_en' => 'A Job Seeker Has Applied To Your Job Announce',
+                    // 'image' => 'http://beta.bestlook.sa/images/logo1.png',
+                    'user_id' => Job::find($request->job_id)->announcer->id,
+                    'read' => 0
+                ]);
+                if(\App::getLocale() == 'ar'){
+                    Notify::NotifyUser(Job::find($request->job_id)->announcer->tokens, $not->msg_ar, 'job_apply', Job::find($request->job_id)->announcer->id);
+                }
+                else{
+                    Notify::NotifyUser(Job::find($request->job_id)->announcer->tokens, $not->msg_en, 'job_apply', Job::find($request->job_id)->announcer->id);
                 }
 
                 $details['email'] = Job::find($request->job_id)->announcer->email;

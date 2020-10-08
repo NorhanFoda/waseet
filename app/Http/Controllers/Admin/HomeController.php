@@ -29,6 +29,9 @@ use DB;
 use App\Jobs\SendEmailJob;
 use App\Classes\SendEmail;
 use Carbon\Carbon;
+use App\Classes\Notify;
+use App\Models\Notification;
+use App\Models\DeviceToken;
 
 class HomeController extends Controller
 {
@@ -100,13 +103,7 @@ class HomeController extends Controller
 		return \Redirect::to($url);
     }
 
-    // public function registerPayment(){
-    //     $banks = Bank::all();
-    //     return view('admin.auth.payment', compact('banks'));
-    // }
-
     public function storeRegisterPayment(Request $request){
-        // dd($request->all());
         $this->validate($request, [
             'bank_id' => 'required',
             'name' => 'required',
@@ -129,8 +126,24 @@ class HomeController extends Controller
         ]);
         $receipt->image()->save($image);
 
-        $user = User::find($request->user_id);
+        $user = User::with(['tokens'])->find($request->user_id);
         $user->update(['approved' => 1]);
+
+        // Send account approved notification to user
+        $not = Notification::create([
+            'msg_ar' => ' لقد تم تسجيل و تفعيل حسابك من قبل إدارة وسيط المعلم',
+            'msg_en' => 'Your account as was registered and approved by Waset Elmo3lm adminstration',
+            // 'image' => 'http://beta.bestlook.sa/images/logo1.png',
+            'user_id' => $user->id,
+            'read' => 0
+        ]);
+        if(\App::getLocale() == 'ar'){
+            Notify::NotifyUser($user->tokens, $not->msg_ar, 'approve_account', $user->id);
+        }
+        else{
+            Notify::NotifyUser($user->tokens, $not->msg_en, 'approve_account', $user->id);
+        }
+
 
         session()->flash('success', trans('admin.created'));
 
@@ -140,6 +153,23 @@ class HomeController extends Controller
 
         if($request->type == 'online_teacher' || $request->type == 'direct_teacher'){
             
+            // Send teacher registered notification to all users
+            $users = User::with(['tokens'])->get();
+            if(count($users) > 0){
+                foreach($users as $user){
+                    $notifications = Notification::create([
+                        'msg_ar' => 'لقد تم تسجيل معلم جديد',
+                        'msg_en' => 'A New Teacher is Registered',
+                        // 'image' => $url,
+                        'user_id' => $user->id,
+                        'read' => 0
+                    ]);
+                }
+            }
+            $notification = DeviceToken::pluck('token');
+            Notify::NotifyAll($notification, $request, 'teacher_registered', $user->id);
+
+
             //Send mail to subscripers
             $subs = SubScriber::get(['email']);
             // SendEmail::Subscripe($subs[2]->email,route('teachers.show', $user->id), 'teacher');

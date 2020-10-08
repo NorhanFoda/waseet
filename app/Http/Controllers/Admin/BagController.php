@@ -16,6 +16,10 @@ use Illuminate\Support\Facades\Validator;
 use App\Classes\SendEmail;
 use App\Models\SubScriber;
 use App\Jobs\SendEmailJob;
+use App\Classes\Notify;
+use App\User;
+use App\Models\DeviceToken;
+use App\Models\Notification;
 
 class BagController extends Controller
 {
@@ -134,6 +138,22 @@ class BagController extends Controller
 
         if($bag){
             
+            // Send bag created notification to all users
+            $users = User::all();
+            if(count($users) > 0){
+                foreach($users as $user){
+                    $notifications = Notification::create([
+                        'msg_ar' => 'لقد تم إضافة حقيبة تعليمية جديدة',
+                        'msg_en' => 'A New Education Bag Added',
+                        // 'image' => $url,
+                        'user_id' => $user->id,
+                        'read' => 0
+                    ]);
+                }
+            }
+            $notification = DeviceToken::pluck('token');
+            Notify::NotifyAll($notification, $request, 'bag_created', $bag->id);
+
             $subs = SubScriber::get(['email']);
             foreach($subs as $sub){
                 $details['emails'] = $sub->email;

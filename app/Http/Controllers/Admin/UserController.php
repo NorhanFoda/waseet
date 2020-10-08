@@ -6,9 +6,12 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\Classes\Upload;
+use App\Classes\Notify;
 use App\Models\SubScriber;
+use App\Models\Notification;
 use App\Classes\SendEmail;
 use App\Jobs\SendEmailJob;
+use App\Models\DeviceToken;
 
 class UserController extends Controller
 {
@@ -162,13 +165,45 @@ class UserController extends Controller
     }
 
     public function approveAccount(Request $request){
-        $user = User::find($request->id);
+        $user = User::with(['tokens'])->find($request->id);
         $user->update(['approved' => $request->approved]);
         SendEmail::Subscripe($user->email, route('login.form'), 'notify_user');
+
+        // Send account approved notification to user
+        $not = Notification::create([
+            'msg_ar' => ' لقد تم تفعيل حسابك من قبل إدارة وسيط المعلم',
+            'msg_en' => 'Your account was approved by Waset Elmo3lm adminstration',
+            // 'image' => 'http://beta.bestlook.sa/images/logo1.png',
+            'user_id' => $user->id,
+            'read' => 0
+        ]);
+        if(\App::getLocale() == 'ar'){
+            Notify::NotifyUser($user->tokens, $not->msg_ar, 'approve_account', $user->id);
+        }
+        else{
+            Notify::NotifyUser($user->tokens, $not->msg_en, 'approve_account', $user->id);
+        }
 
         //Send mail to subscripers
         if($request->approved == 1){
             if($user->hasRole('online_teacher') || $user->hasRole('direct_teacher')){
+
+                // Send teacher registered notification to all users
+                $users = User::with(['tokens'])->get();
+                if(count($users) > 0){
+                    foreach($users as $user_2){
+                        $notifications = Notification::create([
+                            'msg_ar' => 'لقد تم تسجيل معلم جديد',
+                            'msg_en' => 'A New Teacher is Registered',
+                            // 'image' => $url,
+                            'user_id' => $user_2->id,
+                            'read' => 0
+                        ]);
+                    }
+                }
+                $notification = DeviceToken::pluck('token');
+                Notify::NotifyAll($notification, $request, 'teacher_registered', $user->id);
+                
                 $subs = SubScriber::get(['email']);
                 $details['emails'] = $subs;
                 $details['link'] = route('teachers.show', $user->id);

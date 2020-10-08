@@ -15,6 +15,10 @@ use App\Classes\SendEmail;
 use App\Models\Setting;
 use App\Models\Specialization;
 use App\Jobs\SendEmailJob;
+use App\Classes\Notify;
+use App\User;
+use App\Models\DeviceToken;
+use App\Models\Notification;
 
 class JobController extends Controller
 {
@@ -65,6 +69,25 @@ class JobController extends Controller
         }
 
         if($job){
+
+            // Send job created notification to all job seekers
+            $users = User::whereHas('roles', function($q){
+                $q->where('name', 'job_seeker');
+            })->get();
+            if(count($users) > 0){
+                foreach($users as $user){
+                    $notifications = Notification::create([
+                        'msg_ar' => 'لقد تم إضافة وظيفة جديدة',
+                        'msg_en' => 'A New Job Added',
+                        // 'image' => $url,
+                        'user_id' => $user->id,
+                        'read' => 0
+                    ]);
+                }
+            }
+            $notification = DeviceToken::pluck('token');
+            Notify::NotifyAll($notification, $request, 'job_created', $job->id);
+
             //Send mail to subscripers
             $subs = SubScriber::get(['email']);
             $details['emails'] = $subs;
@@ -194,10 +217,45 @@ class JobController extends Controller
     }
 
     public function updateJobStatus(Request $request){
-        $job = Job::find($request->id);
+        $job = Job::with(['announcer'])->find($request->id);
         $job->update(['approved' => $request->approved]);
 
         if($job->approved == 1){
+
+            // Send job created notification to all job seekers
+            $users = User::whereHas('roles', function($q){
+                $q->where('name', 'job_seeker');
+            })->get();
+            if(count($users) > 0){
+                foreach($users as $user){
+                    $notifications = Notification::create([
+                        'msg_ar' => 'لقد تم إضافة وظيفة جديدة',
+                        'msg_en' => 'A New Job Added',
+                        // 'image' => $url,
+                        'user_id' => $user->id,
+                        'read' => 0
+                    ]);
+                }
+            }
+            $notification = DeviceToken::pluck('token');
+            Notify::NotifyAll($notification, $request, 'job_created', $job->id);
+
+
+            // Send job approved notification to announcer
+            $not = Notification::create([
+                'msg_ar' => ' لقد تم تفعيل الوظيفة من قبل إدراة وسيط المعلم',
+                'msg_en' => 'Jon was approved by Waset Elmo3lm adminstration',
+                // 'image' => 'http://beta.bestlook.sa/images/logo1.png',
+                'user_id' => $job->announcer->id,
+                'read' => 0
+            ]);
+            if(\App::getLocale() == 'ar'){
+                Notify::NotifyUser($job->announcer->tokens, $not->msg_ar, 'job_approved', $job->id);
+            }
+            else{
+                Notify::NotifyUser($job->announcer->tokens, $not->msg_en, 'job_approved', $job->id);
+            }
+
 
             $subs = SubScriber::get(['email']);
             $details['emails'] = $subs;
@@ -205,6 +263,7 @@ class JobController extends Controller
             $details['type2'] = 'subscripe';
             $details['type'] = 'job';
             dispatch(new SendEmailJob($details));
+            
 
             //Send approval mail to Announcer
             $details['email'] = $job->announcer->email;

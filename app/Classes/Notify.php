@@ -3,16 +3,18 @@
 namespace App\Classes;
 
 class Notify{
-    static function NotifyAll($tokenList, $request){
+
+    static function NotifyAll($tokenList, $request, $type = 'admin-message', $id = null){
 
         $fcmUrl = 'https://fcm.googleapis.com/fcm/send';
 
         // $token=$token;
         
         $notification = [
-            'body' => $request->msg_ar,
+            'body' => \App::getLocale() == 'ar' ? $request->msg_ar : $request->msg_en,
+            'id' => $id,
             'sound' => true,
-            'image' => 'http://beta.bestlook.sa/images/php5E35_1586248655.png'
+            // 'image' => 'http://beta.bestlook.sa/images/php5E35_1586248655.png'
         ];
 
         $extraNotificationData = ["message" => $notification,"moredata" =>'dd', 'type' => 'admin-message'];
@@ -40,17 +42,27 @@ class Notify{
         curl_close($ch);
     }
 
-    static function NotifyUser($user_tokens, $msg){
+    /**
+     * Send notifications to single users
+     * $user_tokens is a token specified token
+     * $msg id the message to be send to user
+     * $type is the type of the message (new teacher, new job, ...)
+     * id is the id of the new teacher, new job, ...
+    */
+    static function NotifyUser($user_tokens, $msg, $type, $id){
 
         $fcmUrl = 'https://fcm.googleapis.com/fcm/send';
         
         $notification = [
             'body' => $msg,
+            'id' => $id,
             'sound' => true,
         ];
 
-        $extraNotificationData = ["message" => $notification,"moredata" =>'dd', 'type' => 'admin-message'];
+        $extraNotificationData = ["message" => $notification,"moredata" =>'dd', 'type' => $type];
 
+        $fcmNotification = [];
+        
         if(count($user_tokens) > 0){
             foreach($user_tokens as $token){
                 $fcmNotification = [

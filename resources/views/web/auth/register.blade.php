@@ -96,7 +96,7 @@
             <div class="userName">
               <input type="hidden" id="sec_mob" class="sec-no-val-input"/>
               <input type="hidden"  class="sec_hidden-in" name="sec_full"/>
-              <input type="tel" class="phone-input-style" name="phone_secondary" minlength="9" maxlength="11"  required />
+              <input type="tel" class="phone-input-style" name="phone_secondary" minlength="9" maxlength="11" />
 
               <label for="sec_mob">
                 <i class="fa fa-mobile-alt"></i> {{trans('web.phone_secondary')}}
