@@ -62,6 +62,10 @@ use Illuminate\Http\Request;
 
     // Banks
     Route::get('banks', 'Api\PaymentController@getBanks');
+
+    // DeviceTokens
+    Route::get('tokens', 'Api\DeviceTokensController@index');
+    Route::post('tokens', 'Api\DeviceTokensController@create');
     
     // Auth routes
     Route::group(['middleware' => 'auth:api'], function(){
@@ -127,10 +131,6 @@ use Illuminate\Http\Request;
         Route::post('profile/update', 'Api\ProfileController@updatePersonalInfo');
         Route::post('cv/update', 'Api\ProfileController@updateCV');
         Route::post('password/change', 'Api\ProfileController@changePassword');
-
-        // DeviceTokens
-        Route::get('tokens', 'Api\DeviceTokensController@index');
-        Route::post('tokens', 'Api\DeviceTokensController@create');
 
         // Notificaions
         Route::post('notification', 'Api\NotificationController@enableDisableNotification');

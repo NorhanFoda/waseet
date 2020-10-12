@@ -42,7 +42,7 @@ class DeviceTokensController extends Controller
                                 
         if(!$user_token){
             $token = DeviceToken::create([
-                        'user_id' => $user->id,
+                        'user_id' => $request->user_id,
                         'token' => $request->token,
                         'device_id' => $request->device_id,
                         'platform_type' => $request->platform_type
@@ -55,7 +55,19 @@ class DeviceTokensController extends Controller
             } 
         }
         else{
-            return response()->json(['error' => 'Token is repeated for this user'], 400);
+            $token = $user_token->update([
+                'user_id' => $request->user_id,
+                'token' => $request->token,
+                'device_id' => $request->device_id,
+                'platform_type' => $request->platform_type
+            ]);
+            
+            if($token){
+                return response()->json(['data' => $token], 200);
+            }
+            else{
+                return response()->json(['error' => 'Creation failed'], 400);
+            } 
         }        
 
         // $this->validate($request, [
