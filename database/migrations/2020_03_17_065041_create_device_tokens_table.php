@@ -17,6 +17,8 @@ class CreateDeviceTokensTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id')->index();
             $table->string('token')->nullable();
+            $table->string('device_id')->nullable();
+            $table->string('platform_type')->nullable();
             $table->timestamps();
         });
     }
