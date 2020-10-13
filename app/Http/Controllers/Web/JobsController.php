@@ -146,10 +146,10 @@ class JobsController extends Controller
             'read' => 0
         ]);
         if(\App::getLocale() == 'ar'){
-            Notify::NotifyUser(Job::find($request->job_id)->announcer->tokens, $not->msg_ar, 'job_apply', Job::find($request->job_id)->announcer->id);
+            Notify::NotifyUser(Job::find($request->job_id)->announcer->tokens, $not->msg_ar, 'تقدم لوظيفة', 'job_apply', Job::find($request->job_id)->announcer->id);
         }
         else{
-            Notify::NotifyUser(Job::find($request->job_id)->announcer->tokens, $not->msg_en, 'job_apply', Job::find($request->job_id)->announcer->id);
+            Notify::NotifyUser(Job::find($request->job_id)->announcer->tokens, $not->msg_en, 'Job apply', 'job_apply', Job::find($request->job_id)->announcer->id);
         }
 
         $details['email'] = Job::find($request->job_id)->announcer->email;

@@ -76,17 +76,16 @@ class JobController extends Controller
             })->get();
             if(count($users) > 0){
                 foreach($users as $user){
-                    $notifications = Notification::create([
+                    $notification = Notification::create([
                         'msg_ar' => 'لقد تم إضافة وظيفة جديدة',
                         'msg_en' => 'A New Job Added',
-                        // 'image' => $url,
                         'user_id' => $user->id,
                         'read' => 0
                     ]);
                 }
             }
-            $notification = DeviceToken::pluck('token');
-            Notify::NotifyAll($notification, $request, 'job_created', $job->id);
+            $tokens = DeviceToken::pluck('token');
+            Notify::NotifyAll($tokens, $notification, \App::getLocale() == 'ar' ? 'وظيفة جديدة' : 'New job',  'job_created', $job->id);
 
             //Send mail to subscripers
             $subs = SubScriber::get(['email']);
@@ -228,17 +227,16 @@ class JobController extends Controller
             })->get();
             if(count($users) > 0){
                 foreach($users as $user){
-                    $notifications = Notification::create([
+                    $notification = Notification::create([
                         'msg_ar' => 'لقد تم إضافة وظيفة جديدة',
                         'msg_en' => 'A New Job Added',
-                        // 'image' => $url,
                         'user_id' => $user->id,
                         'read' => 0
                     ]);
                 }
             }
-            $notification = DeviceToken::pluck('token');
-            Notify::NotifyAll($notification, $request, 'job_created', $job->id);
+            $tokens = DeviceToken::pluck('token');
+            Notify::NotifyAll($tokens, $notification, \App::getLocale() == 'ar' ? 'وظيفة جديدة' : 'New job',  'job_created', $job->id);
 
 
             // Send job approved notification to announcer
@@ -250,10 +248,10 @@ class JobController extends Controller
                 'read' => 0
             ]);
             if(\App::getLocale() == 'ar'){
-                Notify::NotifyUser($job->announcer->tokens, $not->msg_ar, 'job_approved', $job->id);
+                Notify::NotifyUser($job->announcer->tokens, $not->msg_ar, 'تفعيل الوظيفة', 'job_approved', $job->id);
             }
             else{
-                Notify::NotifyUser($job->announcer->tokens, $not->msg_en, 'job_approved', $job->id);
+                Notify::NotifyUser($job->announcer->tokens, $not->msg_en, 'job approved', 'job_approved', $job->id);
             }
 
 

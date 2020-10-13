@@ -48,7 +48,7 @@ class NotificationController extends Controller
 
         if(count($users) > 0){
             foreach($users as $user){
-                $notifications = Notification::create([
+                $notification = Notification::create([
                     'msg_ar' => $request->msg_ar,
                     'msg_en' => $request->msg_en,
                     // 'image' => $url,
@@ -58,10 +58,9 @@ class NotificationController extends Controller
             }
         }
 
-        $notification = DeviceToken::pluck('token');
+        $tokens = DeviceToken::pluck('token');
 
-        Notify::NotifyAll($notification, $request);
-        // $this->notification($notification, $request);
+        Notify::NotifyAll($tokens, $notification, \App::getLocale() == 'ar' ? 'الإدارة' : 'Adminstration',  'admin-message', $job->id);
 
         session()->flash('message', trans('admin.notification_created'));
         return redirect()->route('notifications.index');

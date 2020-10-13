@@ -173,15 +173,14 @@ class UserController extends Controller
         $not = Notification::create([
             'msg_ar' => ' لقد تم تفعيل حسابك من قبل إدارة وسيط المعلم',
             'msg_en' => 'Your account was approved by Waset Elmo3lm adminstration',
-            // 'image' => 'http://beta.bestlook.sa/images/logo1.png',
             'user_id' => $user->id,
             'read' => 0
         ]);
         if(\App::getLocale() == 'ar'){
-            Notify::NotifyUser($user->tokens, $not->msg_ar, 'approve_account', $user->id);
+            Notify::NotifyUser($user->tokens, $not->msg_ar, 'تفعيل الحساب', 'approve_account', $user->id);
         }
         else{
-            Notify::NotifyUser($user->tokens, $not->msg_en, 'approve_account', $user->id);
+            Notify::NotifyUser($user->tokens, $not->msg_en, 'Account approve', 'approve_account', $user->id);
         }
 
         //Send mail to subscripers
@@ -192,17 +191,16 @@ class UserController extends Controller
                 $users = User::with(['tokens'])->get();
                 if(count($users) > 0){
                     foreach($users as $user_2){
-                        $notifications = Notification::create([
+                        $notification = Notification::create([
                             'msg_ar' => 'لقد تم تسجيل معلم جديد',
                             'msg_en' => 'A New Teacher is Registered',
-                            // 'image' => $url,
                             'user_id' => $user_2->id,
                             'read' => 0
                         ]);
                     }
                 }
-                $notification = DeviceToken::pluck('token');
-                Notify::NotifyAll($notification, $request, 'teacher_registered', $user->id);
+                $tokens = DeviceToken::pluck('token');
+                Notify::NotifyAll($tokens, $notification, \App::getLocale() == 'ar' ? 'معلم جديد' : 'New Teacher',  'teacher_registered', $user->id);
                 
                 $subs = SubScriber::get(['email']);
                 $details['emails'] = $subs;
