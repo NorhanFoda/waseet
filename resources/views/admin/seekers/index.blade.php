@@ -78,7 +78,7 @@
                                                     </select>
                                                 </td> 
                                                 <td>
-                                                    <a href="@if($seeker->receipt != null) {{$seeker->receipt->image->path}} @else {{route('pay_for_register', ['user_id' => $seeker->id, 'type' => 'seeker'])}} @endif">{{trans('admin.view_receipt')}}</a>
+                                                    <a href="@if($seeker->receipt != null && $seeker->receipt->image != null) {{$seeker->receipt->image->path}} @else {{route('pay_for_register', ['user_id' => $seeker->id, 'type' => 'seeker'])}} @endif">{{trans('admin.view_receipt')}}</a>
                                                 </td>
                                                 <td>
                                                     <a href="{{route('seekers.show', $seeker->id)}}" class="btn" style="color:white;"><i class="fa fa-eye"></i></a>
