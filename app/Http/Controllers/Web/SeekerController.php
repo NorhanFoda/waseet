@@ -10,7 +10,7 @@ use App\User;
 class SeekerController extends Controller
 {
     public function index(){
-        //only organization cat view list of seekers
+        //only organization can view list of seekers
         if(Auth::check() && auth()->user()->hasRole('organization')){
             $seekers = User::with(['image', 'document'])->whereHas('roles', function($q){
                 $q->where('name', 'job_seeker');

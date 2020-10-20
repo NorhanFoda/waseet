@@ -108,7 +108,7 @@ class JobsController extends Controller
             'cv' => 'sometimes|mimetypes:application/pdf|max:10000',
         ]);
 
-        $cv_path = auth()->user()->document->path;
+        $cv_path = auth()->user()->document != null ? auth()->user()->document->path : '';
 
         $data = $request->except(['_token'. '_method', 'full', 'sec_full']);
 
@@ -146,10 +146,10 @@ class JobsController extends Controller
             'read' => 0
         ]);
         if(\App::getLocale() == 'ar'){
-            Notify::NotifyUser(Job::find($request->job_id)->announcer->tokens, $not->msg_ar, 'تقدم لوظيفة', 'job_apply', Job::find($request->job_id)->announcer->id);
+            Notify::NotifyUser(Job::find($request->job_id)->announcer->tokens, $not->msg_ar, 'تقدم لوظيفة', 'job_apply', auth()->user()->id);
         }
         else{
-            Notify::NotifyUser(Job::find($request->job_id)->announcer->tokens, $not->msg_en, 'Job apply', 'job_apply', Job::find($request->job_id)->announcer->id);
+            Notify::NotifyUser(Job::find($request->job_id)->announcer->tokens, $not->msg_en, 'Job apply', 'job_apply', auth()->user()->id);
         }
 
         $details['email'] = Job::find($request->job_id)->announcer->email;

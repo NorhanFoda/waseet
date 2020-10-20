@@ -35,12 +35,12 @@
                                     <div class="teacher">
                                         <div class="teacher_info">
                                             <div class="teacher_img">
-                                                <img src="{{$seeker->image ? $seeker->image->path : asset('web/images/man.png')}}" alt="teacher image" />
+                                                <img src="{{$seeker->image!= null ? $seeker->image->path : asset('web/images/man.png')}}" alt="teacher image" />
                                             </div>
                                             <div class="teacher_name">
                                                 <p>{{$seeker->name}}</p>
                                                 <h6>
-                                                    <a href="{{$seeker->document->path}}">{{trans('web.cv')}}</a>
+                                                    <a href="{{$seeker->document != null ? $seeker->document->path : asset('web/images/man.png')}}">{{trans('web.cv')}}</a>
                                                 </h6>
                                             </div>
                                         </div>
