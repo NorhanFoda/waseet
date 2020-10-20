@@ -136,11 +136,22 @@ class HomeController extends Controller
             'user_id' => $user->id,
             'read' => 0
         ]);
-        if(\App::getLocale() == 'ar'){
-            Notify::NotifyUser($user->tokens, $not->msg_ar, 'تفعيل الحساب', 'approve_account', $user->id);
+
+        if($user->hasRole('online_teacher') || $user->hasRole('direct_teacher')){
+            if(\App::getLocale() == 'ar'){
+                Notify::NotifyUser($user->tokens, $not->msg_ar, 'تفعيل الحساب', 'teacher_approve_account', $user->id);
+            }
+            else{
+                Notify::NotifyUser($user->tokens, $not->msg_en, 'Account approve', 'teacher_approve_account', $user->id);
+            }
         }
-        else{
-            Notify::NotifyUser($user->tokens, $not->msg_en, 'Account approve', 'approve_account', $user->id);
+        else if($user->hasRole('job_seeker')){
+            if(\App::getLocale() == 'ar'){
+                Notify::NotifyUser($user->tokens, $not->msg_ar, 'تفعيل الحساب', 'seeker_approve_account', $user->id);
+            }
+            else{
+                Notify::NotifyUser($user->tokens, $not->msg_en, 'Account approve', 'seeker_approve_account', $user->id);
+            }
         }
 
 
@@ -167,7 +178,6 @@ class HomeController extends Controller
             }
             $tokens = DeviceToken::pluck('token');
             Notify::NotifyAll($tokens, $notification, \App::getLocale() == 'ar' ? 'معلم جديد' : 'New teacher',  'teacher_registered', $user->id);
-
 
             //Send mail to subscripers
             $subs = SubScriber::get(['email']);

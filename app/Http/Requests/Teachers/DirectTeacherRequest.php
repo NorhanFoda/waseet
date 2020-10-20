@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Teachers;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Request;
 
 class DirectTeacherRequest extends FormRequest
 {
@@ -21,12 +22,12 @@ class DirectTeacherRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(Request $request)
     {
         return [
             'name' => 'required',
             'email' => 'required|email|unique:users',
-            'phone_main' => 'required|min:9|max:11|unique:users',
+            'phone_main' => 'required|min:9|max:11|unique:users,phone_main',
             'password' => 'min:9|required_with:password_confirmation|same:password_confirmation',
             'password_confirmation' => 'required|min:9',
             'exper_years' => 'required',
