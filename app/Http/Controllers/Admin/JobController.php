@@ -248,10 +248,12 @@ class JobController extends Controller
                 'read' => 0
             ]);
             if(\App::getLocale() == 'ar'){
-                Notify::NotifyUser($job->announcer->tokens, $not->msg_ar, 'تفعيل الوظيفة', 'job_approved', $job->id);
+                // Notify::NotifyUser($job->announcer->tokens, $not->msg_ar, 'تفعيل الوظيفة', 'job_approved', $job->id);
+                Notify::NotifyAll($job->announcer->tokens->pluck('token'), $not->msg_ar, 'تفعيل الوظيفة', 'job_approved', $job->id);
             }
             else{
-                Notify::NotifyUser($job->announcer->tokens, $not->msg_en, 'job approved', 'job_approved', $job->id);
+                // Notify::NotifyUser($job->announcer->tokens, $not->msg_en, 'job approved', 'job_approved', $job->id);
+                Notify::NotifyAll($job->announcer->tokens->pluck('token'), $not->msg_en, 'job approved', 'job_approved', $job->id);
             }
 
 

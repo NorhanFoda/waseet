@@ -179,18 +179,22 @@ class UserController extends Controller
 
         if($user->hasRole('online_teacher') || $user->hasRole('direct_teacher')){
             if(\App::getLocale() == 'ar'){
-                Notify::NotifyUser($user->tokens, $not->msg_ar, 'تفعيل الحساب', 'teacher_approve_account', $user->id);
+                // Notify::NotifyUser($user->tokens, $not->msg_ar, 'تفعيل الحساب', 'teacher_approve_account', $user->id);
+                Notify::NotifyAll($user->tokens->pluck('token'), $not->msg_ar, 'تفعيل الحساب', 'teacher_approve_account', $user->id);
             }
             else{
-                Notify::NotifyUser($user->tokens, $not->msg_en, 'Account approve', 'teacher_approve_account', $user->id);
+                // Notify::NotifyUser($user->tokens, $not->msg_en, 'Account approve', 'teacher_approve_account', $user->id);
+                Notify::NotifyAll($user->tokens->pluck('token'), $not->msg_en, 'Account approve', 'teacher_approve_account', $user->id);
             }
         }
         else if($user->hasRole('job_seeker')){
             if(\App::getLocale() == 'ar'){
-                Notify::NotifyUser($user->tokens, $not->msg_ar, 'تفعيل الحساب', 'seeker_approve_account', $user->id);
+                // Notify::NotifyUser($user->tokens, $not->msg_ar, 'تفعيل الحساب', 'seeker_approve_account', $user->id);
+                Notify::NotifyAll($user->tokens->pluck('token'), $not->msg_ar, 'تفعيل الحساب', 'seeker_approve_account', $user->id);
             }
             else{
-                Notify::NotifyUser($user->tokens, $not->msg_en, 'Account approve', 'seeker_approve_account', $user->id);
+                // Notify::NotifyUser($user->tokens, $not->msg_en, 'Account approve', 'seeker_approve_account', $user->id);
+                Notify::NotifyAll($user->tokens->pluck('token'), $not->msg_en, 'Account approve', 'seeker_approve_account', $user->id);
             }
         }
 

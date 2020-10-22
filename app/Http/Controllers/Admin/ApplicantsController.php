@@ -69,10 +69,12 @@ class ApplicantsController extends Controller
                 'read' => 0
             ]);
             if(\App::getLocale() == 'ar'){
-                Notify::NotifyUser($org->tokens, $not->msg_ar, 'تقدم لوظيفة', 'job_apply', $request->user_id);
+                // Notify::NotifyUser($org->tokens, $not->msg_ar, 'تقدم لوظيفة', 'job_apply', $request->user_id);
+                Notify::NotifyAll($org->tokens->pluck('token'), $not->msg_ar, 'تقدم لوظيفة', 'job_apply', $request->user_id);
             }
             else{
-                Notify::NotifyUser($org->tokens, $not->msg_en, 'Job apply', 'job_apply', $request->user_id);
+                // Notify::NotifyUser($org->tokens, $not->msg_en, 'Job apply', 'job_apply', $request->user_id);
+                Notify::NotifyAll($org->tokens->pluck('token'), $not->msg_en, 'Job apply', 'job_apply', $request->user_id);
             }
         }
 
