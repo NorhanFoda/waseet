@@ -128,6 +128,7 @@ class HomeController extends Controller
 
         $user = User::with(['tokens'])->find($request->user_id);
         $user->update(['approved' => 1]);
+        SendEmail::Subscripe($user->email, route('login.form'), 'notify_user');
 
         // Send account approved notification to user
         $not = Notification::create([
