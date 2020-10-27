@@ -31,7 +31,8 @@ class DeviceTokensController extends Controller
     public function create(Request $request){
 
         $this->validate($request, [
-            'user_id' => 'required|exists:users,id',
+            // 'user_id' => 'required|exists:users,id',
+            'user_id' => 'required',
             'token' => 'required',
             'device_id' => 'required',
             'platform_type' => 'required',

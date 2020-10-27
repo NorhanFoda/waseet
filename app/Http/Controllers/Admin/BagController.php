@@ -146,7 +146,8 @@ class BagController extends Controller
                         'msg_ar' => 'لقد تم إضافة حقيبة تعليمية جديدة',
                         'msg_en' => 'A New Education Bag Added',
                         'user_id' => $user->id,
-                        'read' => 0
+                        'read' => 0,
+                        'type' => 'bag_created'
                     ]);
                 }
             }

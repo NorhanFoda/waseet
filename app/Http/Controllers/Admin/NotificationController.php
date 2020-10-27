@@ -53,7 +53,8 @@ class NotificationController extends Controller
                     'msg_en' => $request->msg_en,
                     // 'image' => $url,
                     'user_id' => $user->id,
-                    'read' => 0
+                    'read' => 0,
+                    'type' => 'admin-message',
                 ]);
             }
         }

@@ -143,15 +143,16 @@ class JobsController extends Controller
             'msg_en' => 'A Job Seeker Has Applied To Your Job Announce',
             // 'image' => 'http://beta.bestlook.sa/images/logo1.png',
             'user_id' => Job::find($request->job_id)->announcer->id,
-            'read' => 0
+            'read' => 0,
+            'type' => 'job_apply',
         ]);
         if(\App::getLocale() == 'ar'){
             // Notify::NotifyUser(Job::find($request->job_id)->announcer->tokens, $not->msg_ar, 'تقدم لوظيفة', 'job_apply', auth()->user()->id);
-            Notify::NotifyAll(Job::find($request->job_id)->announcer->tokens->pluck('token'), $not->msg_ar, 'تقدم لوظيفة', 'job_apply', auth()->user()->id);
+            Notify::NotifyAll(Job::find($request->job_id)->announcer->tokens->pluck('token'), $not, 'تقدم لوظيفة', 'job_apply', auth()->user()->id);
         }
         else{
             // Notify::NotifyUser(Job::find($request->job_id)->announcer->tokens, $not->msg_en, 'Job apply', 'job_apply', auth()->user()->id);
-            Notify::NotifyAll(Job::find($request->job_id)->announcer->tokens->pluck('token'), $not->msg_en, 'Job apply', 'job_apply', auth()->user()->id);
+            Notify::NotifyAll(Job::find($request->job_id)->announcer->tokens->pluck('token'), $not, 'Job apply', 'job_apply', auth()->user()->id);
         }
 
         $details['email'] = Job::find($request->job_id)->announcer->email;

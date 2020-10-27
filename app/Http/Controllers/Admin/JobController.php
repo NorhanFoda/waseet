@@ -80,7 +80,8 @@ class JobController extends Controller
                         'msg_ar' => 'لقد تم إضافة وظيفة جديدة',
                         'msg_en' => 'A New Job Added',
                         'user_id' => $user->id,
-                        'read' => 0
+                        'read' => 0,
+                        'type' => 'job_created'
                     ]);
                 }
             }
@@ -231,7 +232,8 @@ class JobController extends Controller
                         'msg_ar' => 'لقد تم إضافة وظيفة جديدة',
                         'msg_en' => 'A New Job Added',
                         'user_id' => $user->id,
-                        'read' => 0
+                        'read' => 0,
+                        'type' => 'job_created',
                     ]);
                 }
             }
@@ -245,15 +247,16 @@ class JobController extends Controller
                 'msg_en' => 'Jon was approved by Waset Elmo3lm adminstration',
                 // 'image' => 'http://beta.bestlook.sa/images/logo1.png',
                 'user_id' => $job->announcer->id,
-                'read' => 0
+                'read' => 0,
+                'type' => 'job_approved',
             ]);
             if(\App::getLocale() == 'ar'){
                 // Notify::NotifyUser($job->announcer->tokens, $not->msg_ar, 'تفعيل الوظيفة', 'job_approved', $job->id);
-                Notify::NotifyAll($job->announcer->tokens->pluck('token'), $not->msg_ar, 'تفعيل الوظيفة', 'job_approved', $job->id);
+                Notify::NotifyAll($job->announcer->tokens->pluck('token'), $not, 'تفعيل الوظيفة', 'job_approved', $job->id);
             }
             else{
                 // Notify::NotifyUser($job->announcer->tokens, $not->msg_en, 'job approved', 'job_approved', $job->id);
-                Notify::NotifyAll($job->announcer->tokens->pluck('token'), $not->msg_en, 'job approved', 'job_approved', $job->id);
+                Notify::NotifyAll($job->announcer->tokens->pluck('token'), $not, 'job approved', 'job_approved', $job->id);
             }
 
 

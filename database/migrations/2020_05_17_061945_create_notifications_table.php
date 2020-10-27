@@ -20,6 +20,7 @@ class CreateNotificationsTable extends Migration
             $table->string('image')->nullable();
             $table->unsignedBigInteger('user_id')->nullable()->index();
             $table->boolean('read')->default(0); // default is unread
+            $table->string('type')->nullable()->default('admin-message');
             $table->timestamps();
         });
     }

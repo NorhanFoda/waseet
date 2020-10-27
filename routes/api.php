@@ -136,6 +136,9 @@ use Illuminate\Http\Request;
         Route::post('notification', 'Api\NotificationController@enableDisableNotification');
         Route::get('notifications_count', 'Api\NotificationController@getNotificationsCount');
         Route::get('user_notifications', 'Api\NotificationController@getUserNotifications');
+        Route::post('delete_all_notifications', 'Api\NotificationController@deleteAllNotifications');
+        Route::post('delete_one_notifications', 'Api\NotificationController@deleteOneNotifications');
+        Route::post('change_notification_status', 'Api\NotificationController@changeNotificationStatus');
 
     });
     

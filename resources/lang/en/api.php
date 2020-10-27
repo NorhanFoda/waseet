@@ -10,6 +10,9 @@ return [
     'bags_empty' => 'No bags found',
     'password_changed' => 'Password changed successfully',
     'wait_for_approve' => 'Registeration Completed Successfully, Please Wait For Adminstration Approvement',
+    'notifications_deleted' => 'Notifications deleted successfully',
+    'notifications_deleted' => 'Notification deleted successfully',
+    'notification_updated' => 'Notification updated successfully',
 
     // Text
     'about_waseet_text' => 'About Waseet Al Moalm',

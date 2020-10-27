@@ -167,56 +167,63 @@ class UserController extends Controller
     public function approveAccount(Request $request){
         $user = User::with(['tokens'])->find($request->id);
         $user->update(['approved' => $request->approved]);
-        SendEmail::Subscripe($user->email, route('login.form'), 'notify_user');
 
-        // Send account approved notification to user
-        $not = Notification::create([
-            'msg_ar' => ' لقد تم تفعيل حسابك من قبل إدارة وسيط المعلم',
-            'msg_en' => 'Your account was approved by Waset Elmo3lm adminstration',
-            'user_id' => $user->id,
-            'read' => 0
-        ]);
+        if( $request->approved == 1){
+            SendEmail::Subscripe($user->email, route('login.form'), 'notify_user');
 
-        if($user->hasRole('online_teacher') || $user->hasRole('direct_teacher')){
-            if(\App::getLocale() == 'ar'){
-                // Notify::NotifyUser($user->tokens, $not->msg_ar, 'تفعيل الحساب', 'teacher_approve_account', $user->id);
-                Notify::NotifyAll($user->tokens->pluck('token'), $not->msg_ar, 'تفعيل الحساب', 'teacher_approve_account', $user->id);
+            // Send account approved notification to user
+            $not = Notification::create([
+                'msg_ar' => ' لقد تم تفعيل حسابك من قبل إدارة وسيط المعلم',
+                'msg_en' => 'Your account was approved by Waset Elmo3lm adminstration',
+                'user_id' => $user->id,
+                'read' => 0,
+                'type' => 'teacher_approve_account',
+            ]);
+
+            if($user->hasRole('online_teacher') || $user->hasRole('direct_teacher')){
+                if(\App::getLocale() == 'ar'){
+                    // Notify::NotifyUser($user->tokens, $not->msg_ar, 'تفعيل الحساب', 'teacher_approve_account', $user->id);
+                    Notify::NotifyAll($user->tokens->pluck('token'), $not, 'تفعيل الحساب', 'teacher_approve_account', $user->id);
+                }
+                else{
+                    // Notify::NotifyUser($user->tokens, $not->msg_en, 'Account approve', 'teacher_approve_account', $user->id);
+                    Notify::NotifyAll($user->tokens->pluck('token'), $not, 'Account approve', 'teacher_approve_account', $user->id);
+                }
             }
-            else{
-                // Notify::NotifyUser($user->tokens, $not->msg_en, 'Account approve', 'teacher_approve_account', $user->id);
-                Notify::NotifyAll($user->tokens->pluck('token'), $not->msg_en, 'Account approve', 'teacher_approve_account', $user->id);
+            else if($user->hasRole('job_seeker')){
+                if(\App::getLocale() == 'ar'){
+                    // Notify::NotifyUser($user->tokens, $not->msg_ar, 'تفعيل الحساب', 'seeker_approve_account', $user->id);
+                    Notify::NotifyAll($user->tokens->pluck('token'), $not, 'تفعيل الحساب', 'seeker_approve_account', $user->id);
+                }
+                else{
+                    // Notify::NotifyUser($user->tokens, $not->msg_en, 'Account approve', 'seeker_approve_account', $user->id);
+                    Notify::NotifyAll($user->tokens->pluck('token'), $not, 'Account approve', 'seeker_approve_account', $user->id);
+                }
             }
+
         }
-        else if($user->hasRole('job_seeker')){
-            if(\App::getLocale() == 'ar'){
-                // Notify::NotifyUser($user->tokens, $not->msg_ar, 'تفعيل الحساب', 'seeker_approve_account', $user->id);
-                Notify::NotifyAll($user->tokens->pluck('token'), $not->msg_ar, 'تفعيل الحساب', 'seeker_approve_account', $user->id);
-            }
-            else{
-                // Notify::NotifyUser($user->tokens, $not->msg_en, 'Account approve', 'seeker_approve_account', $user->id);
-                Notify::NotifyAll($user->tokens->pluck('token'), $not->msg_en, 'Account approve', 'seeker_approve_account', $user->id);
-            }
-        }
-
+        
         //Send mail to subscripers
         if($request->approved == 1){
             if($user->hasRole('online_teacher') || $user->hasRole('direct_teacher')){
 
                 // Send teacher registered notification to all users
-                $users = User::with(['tokens'])->get();
+                $users = User::with(['tokens'])->where('id', '!=', $user->id)->get();
                 if(count($users) > 0){
                     foreach($users as $user_2){
                         $notification = Notification::create([
                             'msg_ar' => 'لقد تم تسجيل معلم جديد',
                             'msg_en' => 'A New Teacher is Registered',
                             'user_id' => $user_2->id,
-                            'read' => 0
+                            'read' => 0,
+                            'type' => 'teacher_registered',
                         ]);
                     }
                 }
-                $tokens = DeviceToken::pluck('token');
-                Notify::NotifyAll($tokens, $notification, \App::getLocale() == 'ar' ? 'معلم جديد' : 'New Teacher',  'teacher_registered', $user->id);
                 
+                $tokens = DeviceToken::where('user_id', '!=', $user->id)->pluck('token');
+                Notify::NotifyAll($tokens, $notification, \App::getLocale() == 'ar' ? 'معلم جديد' : 'New Teacher',  'teacher_registered', $user->id);
+
                 $subs = SubScriber::get(['email']);
                 $details['emails'] = $subs;
                 $details['link'] = route('teachers.show', $user->id);

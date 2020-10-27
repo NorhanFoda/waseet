@@ -10,6 +10,9 @@ return [
     'bags_empty' => 'لا يوجد حقائب مسجلة',
     'password_changed' => 'تم تغيير كلمة المرور بنجاح',
     'wait_for_approve' => 'تمت عملية التسجيل بنجاح، برجاء انتظار مراجعة الاداره ',
+    'notifications_deleted' => 'تم حذف الاشعارات بنجاح',
+    'notifications_deleted' => 'تم حذف الاشعار بنجاح',
+    'notification_updated' => 'تم تعديل الإشعار بنجاح',
 
     // Text
     'about_waseet_text' => 'عن وسيط المعلم',

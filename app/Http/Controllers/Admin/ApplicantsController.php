@@ -66,15 +66,16 @@ class ApplicantsController extends Controller
                 'msg_en' => 'A Job Seeker Has Applied To Your Job Announce',
                 // 'image' => 'http://beta.bestlook.sa/images/logo1.png',
                 'user_id' => $org->id,
-                'read' => 0
+                'read' => 0,
+                'type' => 'job_apply',
             ]);
             if(\App::getLocale() == 'ar'){
                 // Notify::NotifyUser($org->tokens, $not->msg_ar, 'تقدم لوظيفة', 'job_apply', $request->user_id);
-                Notify::NotifyAll($org->tokens->pluck('token'), $not->msg_ar, 'تقدم لوظيفة', 'job_apply', $request->user_id);
+                Notify::NotifyAll($org->tokens->pluck('token'), $not, 'تقدم لوظيفة', 'job_apply', $request->user_id);
             }
             else{
                 // Notify::NotifyUser($org->tokens, $not->msg_en, 'Job apply', 'job_apply', $request->user_id);
-                Notify::NotifyAll($org->tokens->pluck('token'), $not->msg_en, 'Job apply', 'job_apply', $request->user_id);
+                Notify::NotifyAll($org->tokens->pluck('token'), $not, 'Job apply', 'job_apply', $request->user_id);
             }
         }
 

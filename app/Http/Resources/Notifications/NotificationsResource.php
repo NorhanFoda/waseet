@@ -17,8 +17,10 @@ class NotificationsResource extends JsonResource
     {
         $lang = \App::getLocale();
 
-        $this->update(['read' => 1]);
+        // $this->update(['read' => 1]);
+        
         return [
+            'id' => $this->id,
             'message' => $this->{'msg_'.$lang},
             // 'image' => $this->image,
             'seen' => $this->read == 0 ? false : true,

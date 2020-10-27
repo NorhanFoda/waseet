@@ -7,9 +7,9 @@ class Notify{
     static function NotifyAll($tokenList, $request, $title, $type = 'admin-message', $id = null){
 
         $fcmUrl = 'https://fcm.googleapis.com/fcm/send';
-        
+
         $notification = [
-            'title' => $title, 
+            'title' => $title,
             'body' => \App::getLocale() == 'ar' ? $request->msg_ar : $request->msg_en,
             'id' => $id,
             'sound' => true,
@@ -57,7 +57,7 @@ class Notify{
     static function NotifyUser($user_tokens, $msg, $title, $type, $id){
 
         $fcmUrl = 'https://fcm.googleapis.com/fcm/send';
-        
+
         $notification = [
             'title' => $title,
             'body' => $msg,
@@ -76,7 +76,7 @@ class Notify{
         ];
 
         $fcmNotification = [];
-        
+
         if(count($user_tokens) > 0){
             foreach($user_tokens as $token){
                 $fcmNotification = [

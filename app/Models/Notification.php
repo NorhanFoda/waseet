@@ -8,7 +8,7 @@ use App\User;
 class Notification extends Model
 {
     protected $fillable = [
-        'msg_ar', 'user_id', 'read', 'msg_en', 
+        'msg_ar', 'user_id', 'read', 'msg_en', 'type'
         // 'image'
     ];
 

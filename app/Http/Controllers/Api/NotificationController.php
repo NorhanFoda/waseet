@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Auth;
 use App\Http\Resources\Notifications\NotificationsResource;
+use App\Models\Notification;
 
 class NotificationController extends Controller
 {
@@ -51,5 +52,36 @@ class NotificationController extends Controller
         // else{
         //     return response()->json(['error' => 'Unauthorized'], 401);
         // } 
+    }
+
+    public function deleteAllNotifications(){
+        Auth::guard('api')->user()->notifications()->delete();
+        return response()->json([
+            'data' => trans('api.notifications_deleted')
+        ], 200);
+    }
+
+    public function deleteOneNotifications(Request $request){
+
+        $this->validate($request, ['notification_id' => 'required']);
+
+        Notification::find($request->notification_id)->delete();
+
+        return response()->json([
+            'data' => trans('api.notification_deleted')
+        ], 200);
+    }
+
+    public function changeNotificationStatus(Request $request){
+        $this->validate($request, [
+            'notification_id' => 'required',
+            'read' => 'required'
+        ]);
+
+        Notification::find($request->notification_id)->update(['read' => $request->read]);
+
+        return response()->json([
+            'data' => trans('api.notification_updated')
+        ], 200);
     }
 }
