@@ -10,7 +10,7 @@ use App\Classes\Verify;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Resources\Roles\RoleResource;
 use Auth;
-use App\Jobs\SendEmailJob;
+// use App\Jobs\SendEmailJob;
 
 class ResetPasswordController extends Controller
 {

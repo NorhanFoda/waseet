@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Order;
 use Carbon\Carbon;
 use App\Classes\SendEmail;
-use App\Jobs\SendEmailJob;
+// use App\Jobs\SendEmailJob;
 
 class OrderController extends Controller
 {
@@ -37,10 +37,11 @@ class OrderController extends Controller
 
             // If order contains buy online bags, then send email bag contents
             if($order->bags()->where('buy_type', 1)->exists()){
-                $details['email'] = auth()->user()->email;
-                $details['bags'] = $order->bags()->where('buy_type', 1)->get();
-                $details['type'] = 'send_bag_contents';
-                dispatch(new SendEmailJob($details));
+                // $details['email'] = auth()->user()->email;
+                // $details['bags'] = $order->bags()->where('buy_type', 1)->get();
+                // $details['type'] = 'send_bag_contents';
+                // dispatch(new SendEmailJob($details));
+                SendEmail::sendBagContents($order->bags()->where('buy_type', 1)->get(), auth()->user()->email);
             }
         }
     }

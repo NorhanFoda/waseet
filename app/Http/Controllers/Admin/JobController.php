@@ -14,7 +14,7 @@ use App\Models\SubScriber;
 use App\Classes\SendEmail;
 use App\Models\Setting;
 use App\Models\Specialization;
-use App\Jobs\SendEmailJob;
+// use App\Jobs\SendEmailJob;
 use App\Classes\Notify;
 use App\User;
 use App\Models\DeviceToken;
@@ -89,12 +89,12 @@ class JobController extends Controller
             Notify::NotifyAll($tokens, $notification, \App::getLocale() == 'ar' ? 'وظيفة جديدة' : 'New job',  'job_created', $job->id);
 
             //Send mail to subscripers
-            $subs = SubScriber::get(['email']);
-            $details['emails'] = $subs;
-            $details['link'] = route('jobs.details', $job->id);
-            $details['type2'] = 'subscripe';
-            $details['type'] = 'job';
-            dispatch(new SendEmailJob($details));
+            // $subs = SubScriber::get(['email']);
+            // $details['emails'] = $subs;
+            // $details['link'] = route('jobs.details', $job->id);
+            // $details['type2'] = 'subscripe';
+            // $details['type'] = 'job';
+            // dispatch(new SendEmailJob($details));
 
             session()->flash('success', trans('admin.created'));
             return redirect()->route('jobs.index');
@@ -260,29 +260,31 @@ class JobController extends Controller
             }
 
 
-            $subs = SubScriber::get(['email']);
-            $details['emails'] = $subs;
-            $details['link'] = route('jobs.details', $job->id);
-            $details['type2'] = 'subscripe';
-            $details['type'] = 'job';
-            dispatch(new SendEmailJob($details));
+            // $subs = SubScriber::get(['email']);
+            // $details['emails'] = $subs;
+            // $details['link'] = route('jobs.details', $job->id);
+            // $details['type2'] = 'subscripe';
+            // $details['type'] = 'job';
+            // dispatch(new SendEmailJob($details));
             
 
             //Send approval mail to Announcer
-            $details['email'] = $job->announcer->email;
-            $details['link'] = route('jobs.details', $job->id);
-            $details['type2'] = 'approve_job';
-            $details['type'] = 'approved';
-            dispatch(new SendEmailJob($details));
+            // $details['email'] = $job->announcer->email;
+            // $details['link'] = route('jobs.details', $job->id);
+            // $details['type2'] = 'approve_job';
+            // $details['type'] = 'approved';
+            // dispatch(new SendEmailJob($details));
+            SendEmail::SendApprovalMail($job->announcer->email, route('jobs.details', $job->id), 'approved');
         }
         else{
             //Send refuse mail to Announcer
-            $set = Setting::find(1);
-            $details['email'] = $job->announcer->email;
-            $details['link'] = route('jobs.details', $job->id);
-            $details['type2'] = 'approve_job';
-            $details['type'] = 'refused';
-            dispatch(new SendEmailJob($details));
+            // $set = Setting::find(1);
+            // $details['email'] = $job->announcer->email;
+            // $details['link'] = route('jobs.details', $job->id);
+            // $details['type2'] = 'approve_job';
+            // $details['type'] = 'refused';
+            // dispatch(new SendEmailJob($details));
+            SendEmail::SendApprovalMail($job->announcer->email, route('jobs.details', $job->id), 'refused');
         }
     }
 }

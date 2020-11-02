@@ -10,7 +10,7 @@ use App\Classes\Notify;
 use App\Models\SubScriber;
 use App\Models\Notification;
 use App\Classes\SendEmail;
-use App\Jobs\SendEmailJob;
+// use App\Jobs\SendEmailJob;
 use App\Models\DeviceToken;
 
 class UserController extends Controller
@@ -224,12 +224,12 @@ class UserController extends Controller
                 $tokens = DeviceToken::where('user_id', '!=', $user->id)->pluck('token');
                 Notify::NotifyAll($tokens, $notification, \App::getLocale() == 'ar' ? 'معلم جديد' : 'New Teacher',  'teacher_registered', $user->id);
 
-                $subs = SubScriber::get(['email']);
-                $details['emails'] = $subs;
-                $details['link'] = route('teachers.show', $user->id);
-                $details['type2'] = 'subscripe';
-                $details['type'] = 'teacher';
-                dispatch(new SendEmailJob($details));
+                // $subs = SubScriber::get(['email']);
+                // $details['emails'] = $subs;
+                // $details['link'] = route('teachers.show', $user->id);
+                // $details['type2'] = 'subscripe';
+                // $details['type'] = 'teacher';
+                // dispatch(new SendEmailJob($details));
             }
         }
 

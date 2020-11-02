@@ -17,7 +17,6 @@ use App\Http\Resources\Bank\BankResource;
 use App\Http\Resources\Order\ReportResource;
 use App\Http\Requests\Order\OrderRequest;
 use App\Classes\Upload;
-use App\Classes\SendEmail;
 use Carbon\Carbon;
 
 class PaymentController extends Controller

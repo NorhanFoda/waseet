@@ -16,7 +16,6 @@ use App\Classes\Upload;
 use App\Http\Requests\Teachers\DirectTeacherRequest;
 use App\Http\Requests\Teachers\EditDirectTeacherRequest;
 use Illuminate\Support\Facades\Hash;
-use App\Classes\SendEmail;
 use App\Models\SubScriber;
 
 class DirectTeacherController extends Controller

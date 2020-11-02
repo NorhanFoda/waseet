@@ -16,7 +16,6 @@ use App\Models\Bank;
 use App\Http\Requests\Teachers\OnlineTeacherRequest;
 use App\Http\Requests\Teachers\EditOnlineTeacherRequest;
 use Illuminate\Support\Facades\Hash;
-use App\Classes\SendEmail;
 use App\Models\SubScriber;
 
 class OnlineTeacherController extends Controller

@@ -15,7 +15,7 @@ use App\Http\Requests\Bags\EditBagRequest;
 use Illuminate\Support\Facades\Validator;
 use App\Classes\SendEmail;
 use App\Models\SubScriber;
-use App\Jobs\SendEmailJob;
+// use App\Jobs\SendEmailJob;
 use App\Classes\Notify;
 use App\User;
 use App\Models\DeviceToken;
@@ -155,14 +155,14 @@ class BagController extends Controller
             $tokens = DeviceToken::pluck('token');
             Notify::NotifyAll($tokens, $notification, \App::getLocale() == 'ar' ? 'حقيبة جديدة' : 'New bag',  'bag_created', $bag->id);
 
-            $subs = SubScriber::get(['email']);
-            foreach($subs as $sub){
-                $details['emails'] = $sub->email;
-                $details['link'] = route('bags.show', $bag->id);
-                $details['type2'] = 'subscripe';
-                $details['type'] = 'bag';
-                dispatch(new SendEmailJob($details));
-            }
+            // $subs = SubScriber::get(['email']);
+            // foreach($subs as $sub){
+            //     $details['emails'] = $sub->email;
+            //     $details['link'] = route('bags.show', $bag->id);
+            //     $details['type2'] = 'subscripe';
+            //     $details['type'] = 'bag';
+            //     dispatch(new SendEmailJob($details));
+            // }
             
             session()->flash('success', trans('admin.created'));
             return redirect()->route('bags.index');    

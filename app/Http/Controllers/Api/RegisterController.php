@@ -28,7 +28,7 @@ use App\Http\Resources\Roles\RoleResource;
 use Auth;
 use DB;
 use Carbon\Carbon;
-use App\Jobs\SendEmailJob;
+// use App\Jobs\SendEmailJob;
 
 class RegisterController extends Controller
 {

@@ -26,7 +26,7 @@ use App\Models\BankReceipt;
 use App\Classes\Upload;
 use App\Models\SubScriber;
 use DB;
-use App\Jobs\SendEmailJob;
+// use App\Jobs\SendEmailJob;
 use App\Classes\SendEmail;
 use Carbon\Carbon;
 use App\Classes\Notify;
@@ -187,15 +187,14 @@ class HomeController extends Controller
             Notify::NotifyAll($tokens, $notification, \App::getLocale() == 'ar' ? 'معلم جديد' : 'New teacher',  'teacher_registered', $user->id);
 
             //Send mail to subscripers
-            $subs = SubScriber::get(['email']);
-            // SendEmail::Subscripe($subs[2]->email,route('teachers.show', $user->id), 'teacher');
-            foreach($subs as $sub){
-                $details['emails'] = $sub->email;
-                $details['link'] = route('teachers.show', $user->id);
-                $details['type2'] = 'subscripe';
-                $details['type'] = 'teacher';
-                dispatch(new SendEmailJob($details));
-            }
+            // $subs = SubScriber::get(['email']);
+            // foreach($subs as $sub){
+            //     $details['emails'] = $sub->email;
+            //     $details['link'] = route('teachers.show', $user->id);
+            //     $details['type2'] = 'subscripe';
+            //     $details['type'] = 'teacher';
+            //     dispatch(new SendEmailJob($details));
+            // }
         }
 
         if($request->type == 'online_teacher'){

@@ -26,7 +26,7 @@ use Illuminate\Support\Facades\Hash;
 use DB;
 use Auth;
 use App\Models\SubScriber;
-use App\Jobs\SendEmailJob;
+// use App\Jobs\SendEmailJob;
 use Mail;
 use App\Mail\VerificationEmail;
 

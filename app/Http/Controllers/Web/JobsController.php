@@ -16,7 +16,7 @@ use App\Models\Image;
 use App\Classes\SendEmail;
 use App\Http\Requests\Job\JobRequest;
 use App\User;
-use App\Jobs\SendEmailJob;
+// use App\Jobs\SendEmailJob;
 use Auth;
 use App\Models\Notification;
 use App\Classes\Notify;
@@ -155,11 +155,12 @@ class JobsController extends Controller
             Notify::NotifyAll(Job::find($request->job_id)->announcer->tokens->pluck('token'), $not, 'Job apply', 'job_apply', auth()->user()->id);
         }
 
-        $details['email'] = Job::find($request->job_id)->announcer->email;
-        $details['link'] = route('profile.show', auth()->user()->id);
-        $details['seeker'] = auth()->user();
-        $details['type'] = 'apply_to_job';
-        dispatch(new SendEmailJob($details));
+        // $details['email'] = Job::find($request->job_id)->announcer->email;
+        // $details['link'] = route('profile.show', auth()->user()->id);
+        // $details['seeker'] = auth()->user();
+        // $details['type'] = 'apply_to_job';
+        // dispatch(new SendEmailJob($details));
+        SendEmail::sendJobApply(Job::find($request->job_id)->announcer->email, auth()->user(), route('profile.show', auth()->user()->id));
 
         session()->flash('success', trans('web.job_applied'));
         return redirect()->route('jobs.web_index');

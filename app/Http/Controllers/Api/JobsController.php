@@ -19,7 +19,7 @@ use App\Models\Bag;
 use App\User;
 use Auth;
 use App\Http\Requests\Job\ApplyToJobRequest;
-use App\Jobs\SendEmailJob;
+// use App\Jobs\SendEmailJob;
 use App\Models\Notification;
 use App\Models\DeviceToken;
 use App\Classes\Notify;
@@ -133,11 +133,12 @@ class JobsController extends Controller
                     Notify::NotifyAll(Job::find($request->job_id)->announcer->tokens->pluck('token'), $not, 'Jop apply', 'job_apply', auth()->user()->api);
                 }
 
-                $details['email'] = Job::find($request->job_id)->announcer->email;
-                $details['link'] = route('profile.show', auth()->user()->id);
-                $details['seeker'] = auth()->user();
-                $details['type'] = 'apply_to_job';
-                dispatch(new SendEmailJob($details));
+                // $details['email'] = Job::find($request->job_id)->announcer->email;
+                // $details['link'] = route('profile.show', auth()->user()->id);
+                // $details['seeker'] = auth()->user();
+                // $details['type'] = 'apply_to_job';
+                // dispatch(new SendEmailJob($details));
+                SendEmail::sendJobApply(Job::find($request->job_id)->announcer->email, auth()->user(), route('profile.show', auth()->user()->id));
         
                 return response()->json([
                     'success' => trans('web.job_applied')
