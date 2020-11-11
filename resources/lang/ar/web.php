@@ -211,7 +211,7 @@ return [
     // Orders
     'orders_text' => 'هذا النص هو مثال لنص يمكن ان يستبدل فى نفس المساحة',
     'order_date' => 'تاريخ الطلب',
-    'total_price' => 'المبلغ الإجمالى', 
+    'total_price' => 'المبلغ الإجمالى',
     'bag_is_ordered' => 'طلب الحقيبة',
     'order_not_confirmed' => 'لم يتم تأكيد الطلب من طرفكم',
     'confirm_order' => 'تأكيد الطلب الآن',
@@ -239,7 +239,7 @@ return [
     'message_sent' => 'تم إرسال رسالتك بنجاح',
 
     // Mailing newsletter
-    'mailing' => 'الشنرة البريدية',
+    'mailing' => 'النشرة البريدية',
     'subscribe_now' => 'قم بالإشتراك الآن ليصلك كل جديد',
     'subscribed' => 'تم الإشتراك بنجاح',
 

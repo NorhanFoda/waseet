@@ -68,6 +68,7 @@ class ApplicantsController extends Controller
                 'user_id' => $org->id,
                 'read' => 0,
                 'type' => 'job_apply',
+                'extra_data' => $request->user_id,
             ]);
             if(\App::getLocale() == 'ar'){
                 // Notify::NotifyUser($org->tokens, $not->msg_ar, 'تقدم لوظيفة', 'job_apply', $request->user_id);

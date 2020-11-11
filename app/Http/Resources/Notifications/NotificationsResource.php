@@ -24,6 +24,8 @@ class NotificationsResource extends JsonResource
             'message' => $this->{'msg_'.$lang},
             // 'image' => $this->image,
             'seen' => $this->read == 0 ? false : true,
+            'type' => $this->type,
+            'extra_data' => $this->extra_data,
             'sent_since' => $this->created_at->diffForHumans(Carbon::now())
         ];
     }

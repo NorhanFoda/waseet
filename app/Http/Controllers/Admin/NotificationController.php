@@ -55,6 +55,7 @@ class NotificationController extends Controller
                     'user_id' => $user->id,
                     'read' => 0,
                     'type' => 'admin-message',
+                    'extra_data' => $job->id,
                 ]);
             }
         }

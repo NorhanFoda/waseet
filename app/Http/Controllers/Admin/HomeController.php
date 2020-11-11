@@ -136,7 +136,8 @@ class HomeController extends Controller
             'msg_en' => 'Your account as was registered and approved by Waset Elmo3lm adminstration',
             'user_id' => $user->id,
             'read' => 0,
-            'type' => 'teacher_approve_account'
+            'type' => 'teacher_approve_account',
+            'extra_data' => $user->id,
         ]);
 
         if($user->hasRole('online_teacher') || $user->hasRole('direct_teacher')){
@@ -179,11 +180,13 @@ class HomeController extends Controller
                         // 'image' => $url,
                         'user_id' => $user->id,
                         'read' => 0,
-                        'type' => 'teacher_registered'
+                        'type' => 'teacher_registered',
+                        'extra_data' => $use->id,
                     ]);
                 }
             }
-            $tokens = DeviceToken::pluck('token');
+            
+            $tokens = DeviceToken::where('user_id', '!=', $user->id)->pluck('token');
             Notify::NotifyAll($tokens, $notification, \App::getLocale() == 'ar' ? 'معلم جديد' : 'New teacher',  'teacher_registered', $user->id);
 
             //Send mail to subscripers

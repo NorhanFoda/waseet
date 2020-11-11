@@ -81,7 +81,8 @@ class JobController extends Controller
                         'msg_en' => 'A New Job Added',
                         'user_id' => $user->id,
                         'read' => 0,
-                        'type' => 'job_created'
+                        'type' => 'job_created',
+                        'extra_data' => $job->id,
                     ]);
                 }
             }
@@ -226,6 +227,11 @@ class JobController extends Controller
             $users = User::whereHas('roles', function($q){
                 $q->where('name', 'job_seeker');
             })->get();
+
+            $seekers_ids = User::whereHas('roles', function($q){
+                $q->where('name', 'job_seeker');
+            })->pluck('id');
+
             if(count($users) > 0){
                 foreach($users as $user){
                     $notification = Notification::create([
@@ -234,10 +240,12 @@ class JobController extends Controller
                         'user_id' => $user->id,
                         'read' => 0,
                         'type' => 'job_created',
+                        'extra_data' => $job->id,
                     ]);
                 }
             }
-            $tokens = DeviceToken::pluck('token');
+
+            $tokens = DeviceToken::whereIn('user_id', $seekers_ids)->pluck('token');
             Notify::NotifyAll($tokens, $notification, \App::getLocale() == 'ar' ? 'وظيفة جديدة' : 'New job',  'job_created', $job->id);
 
 
@@ -249,6 +257,7 @@ class JobController extends Controller
                 'user_id' => $job->announcer->id,
                 'read' => 0,
                 'type' => 'job_approved',
+                'extra_data' => $job->id,
             ]);
             if(\App::getLocale() == 'ar'){
                 // Notify::NotifyUser($job->announcer->tokens, $not->msg_ar, 'تفعيل الوظيفة', 'job_approved', $job->id);

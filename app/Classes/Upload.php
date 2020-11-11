@@ -49,9 +49,8 @@ Class Upload{
         $file_path = 'images/'.$full_name;
         if(\File::exists($file_path)){
             \File::delete($file_path);
-            return true;
         }
-        return false;
+        return true;
     }
 
     static function deletePDF($path){
@@ -61,9 +60,8 @@ Class Upload{
         $file_path = 'documents/'.$full_name;
         if(\File::exists($file_path)){
             \File::delete($file_path);
-            return true;
         }
-        return false;
+        return true;
     }
 
     static function deleteVideo($path){
@@ -73,9 +71,8 @@ Class Upload{
         $file_path = 'videos/'.$full_name;
         if(\File::exists($file_path)){
             \File::delete($file_path);
-            return true;
         }
-        return false;
+        return true;
     }
 
 }

@@ -147,7 +147,8 @@ class BagController extends Controller
                         'msg_en' => 'A New Education Bag Added',
                         'user_id' => $user->id,
                         'read' => 0,
-                        'type' => 'bag_created'
+                        'type' => 'bag_created',
+                        'extra_data' => $bag->id,
                     ]);
                 }
             }

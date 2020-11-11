@@ -123,12 +123,29 @@ class JobsController extends Controller
         auth()->user()->job_applications()->attach($request->job_id);
 
         if($request->has('cv')){
-            $removed = Upload::deletePDF($cv_path);
+            
+            $removed = true;
+            
+            if($cv_path != ""){
+                $removed = Upload::deletePDF($cv_path);
+            }
+
             if($removed){
                 $url = Upload::uploadImage($request->cv);
-                auth()->user()->document->update([
-                    'path' => $url
-                ]);
+                
+                if(auth()->user()->document != null){
+                    auth()->user()->document->update([
+                        'path' => $url
+                    ]);    
+                }
+                else{
+                    $doc = Document::create([
+                        'path' => $url,
+                        'doucmentRef_id' => auth()->user()->id,
+                        'doucmentRef_type' => 'App\User'
+                    ]);
+                }
+                
             }
             else{
                 session()->flash('error', trans('web.error'));
@@ -145,6 +162,7 @@ class JobsController extends Controller
             'user_id' => Job::find($request->job_id)->announcer->id,
             'read' => 0,
             'type' => 'job_apply',
+            'extra_data' => auth()->user()->id,
         ]);
         if(\App::getLocale() == 'ar'){
             // Notify::NotifyUser(Job::find($request->job_id)->announcer->tokens, $not->msg_ar, 'تقدم لوظيفة', 'job_apply', auth()->user()->id);

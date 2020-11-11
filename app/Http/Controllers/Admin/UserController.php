@@ -178,6 +178,7 @@ class UserController extends Controller
                 'user_id' => $user->id,
                 'read' => 0,
                 'type' => 'teacher_approve_account',
+                'extra_data' => $user->id,
             ]);
 
             if($user->hasRole('online_teacher') || $user->hasRole('direct_teacher')){
@@ -217,6 +218,7 @@ class UserController extends Controller
                             'user_id' => $user_2->id,
                             'read' => 0,
                             'type' => 'teacher_registered',
+                            'extra_data' => $user->id,
                         ]);
                     }
                 }
