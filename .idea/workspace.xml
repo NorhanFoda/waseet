@@ -2,35 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cd15da47-63c2-41ed-b1ce-7bae5fd08688" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/webServers.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webServers.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/DirectTeacherController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/DirectTeacherController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/NotificationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/NotificationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/OnlineTeacherController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/OnlineTeacherController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/C:\xampp\htdocs\jadara\waseet\storage\logs/laravel-2020-08-23.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin/css/custom-style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin/css/custom-style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/web/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/web/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/direct_teachers/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/direct_teachers/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/direct_teachers/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/direct_teachers/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/jobs/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/jobs/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/jobs/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/jobs/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/online_teachers/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/online_teachers/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/online_teachers/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/online_teachers/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/organizations/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/organizations/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/organizations/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/organizations/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/seekers/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/seekers/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/seekers/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/seekers/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/addresses/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/addresses/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/auth/register.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/carts/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/carts/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/jobs/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/jobs/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/jobs/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/jobs/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/layouts/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/layouts/register.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/profile/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/profile/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/ar/validation.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ar/validation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/en/validation.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/validation.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -202,6 +176,7 @@
       <workItem from="1605173597383" duration="606000" />
       <workItem from="1606036443004" duration="233000" />
       <workItem from="1606036689984" duration="504000" />
+      <workItem from="1606037768968" duration="680000" />
     </task>
     <servers />
   </component>
