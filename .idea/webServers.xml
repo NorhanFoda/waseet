@@ -2,10 +2,10 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="206041d4-97fe-4b31-9a12-920db0584783" name="waset-elmo3lm.jadara.work" url="http://waset-elmo3lm.jadara.work">
-        <fileTransfer host="waset-elmo3lm.jadara.work" port="21">
+      <webServer id="faf861d6-943a-44cf-b0f8-4eb0afc77a4a" name="alwasete.com" url="http://alwasete.com">
+        <fileTransfer host="alwasete.com" port="21">
           <advancedOptions>
-            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+            <advancedOptions compatibilityMode="true" dataProtectionLevel="Private" forceListCommand="true" passiveMode="true" shareSSLContext="true" showHiddenFiles="true" />
           </advancedOptions>
         </fileTransfer>
       </webServer>

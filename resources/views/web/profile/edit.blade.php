@@ -322,9 +322,9 @@
                                     Auth::user()->hasRole('organization') || Auth::user()->hasRole('job_seeker'))
 
                                     {{-- address start --}}
-                                    <div class="big-label">{{trans('web.address')}} :</div>
+                                    {{-- <div class="big-label">{{trans('web.address')}} :</div> --}}
                                     <div class="userName">
-                                        <input type="text" class="active" name="address" value="{{Auth::user()->address}}" id="confirm" placeholder="الرياض ,المملكة العربية السعودية" required/>
+                                        <input type="text" id="pac-input"  class="form-control active" name="address" value="{{Auth::user()->address}}" id="confirm" placeholder="الرياض ,المملكة العربية السعودية" required/>
                                         <input type="hidden" name="lat" value="{{Auth::user()->lat}}" id="location_lat">
                                         <input type="hidden" name="long" value="{{Auth::user()->long}}" id="location_lng"> 
                                     </div>
@@ -334,9 +334,9 @@
 
                                 @if(Auth::user()->hasRole('direct_teacher'))
                                     {{-- teaching address start --}}
-                                    <div class="big-label">{{trans('web.teaching_address')}} :</div>
+                                    {{-- <div class="big-label">{{trans('web.teaching_address')}} :</div> --}}
                                     <div class="userName">
-                                        <input type="text" class="active" name="teaching_address" value="{{Auth::user()->teaching_address}}" id="confirm" placeholder="الرياض ,المملكة العربية السعودية" required/>
+                                        <input type="text" id="teaching-pac-input"  class="form-control active" name="teaching_address" value="{{Auth::user()->teaching_address}}" id="confirm" placeholder="الرياض ,المملكة العربية السعودية" required/>
                                         <input type="hidden" name="lat2" value="{{Auth::user()->teaching_lat}}" id="location_lat2">
                                         <input type="hidden" name="long2" value="{{Auth::user()->teaching_long}}" id="location_lng2">
                                     </div>

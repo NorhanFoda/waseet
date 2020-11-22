@@ -56,6 +56,7 @@ class OnlineTeacherController extends Controller
      */
     public function store(OnlineTeacherRequest $request)
     {
+        // dd($request->all());
         // handling phone
         $data = $request->except(['_token'. '_method', 'full', 'sec_full']);
 

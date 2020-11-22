@@ -11,3 +11,19 @@
     display: inline-block;
     margin: 0px 10px;
 }
+
+
+
+input#pac-input ,input#teaching-pac-input{
+    top: 30px !important;
+    max-width: 460px;
+    width: 90%;
+    left: 0 !important;
+    right: 0 !important;
+    margin: auto;
+  }
+
+
+  input#teaching-pac-input {
+    top: 80px !important;
+}

@@ -376,11 +376,11 @@
                                 {{-- enter address --}}
                                 <div class="col-6">
                                     <div class="form-group row">
-                                        <div class="col-md-4">
+                                        {{-- <div class="col-md-4">
                                             <span>{{trans('admin.location')}}</span>
-                                        </div>
+                                        </div> --}}
                                         <div class="col-md-8">
-                                            <input type="text" class="form-control" placeholder="{{trans('admin.location')}}" name="address" required>
+                                            <input type="text" class="form-control" placeholder="{{trans('admin.location')}}" id="pac-input" name="address" required>
                                             <input type="hidden" name="lat" value="" id="location_lat">
                                             <input type="hidden" name="long" value="" id="location_lng"> 
                                             <div class="invalid-feedback">
@@ -394,11 +394,11 @@
                                 {{-- enter teaching address start --}}
                                 <div class="col-6">
                                     <div class="form-group row">
-                                        <div class="col-md-2">
+                                        {{-- <div class="col-md-4">
                                             <span>{{trans('admin.teaching_address')}}</span>
-                                        </div>
-                                        <div class="col-md-10">
-                                            <input type="text" class="form-control" placeholder="{{trans('admin.teaching_address')}}" name="teaching_address" required>
+                                        </div> --}}
+                                        <div class="col-md-8">
+                                            <input type="text" class="form-control" placeholder="{{trans('admin.teaching_address')}}" id="teaching-pac-input" name="teaching_address" required>
                                             <input type="hidden" name="teaching_lat" value="" id="location_lat2">
                                             <input type="hidden" name="teaching_long" value="" id="location_lng2">
                                             <div class="invalid-feedback">
@@ -411,7 +411,7 @@
 
                                 {{-- map start --}}
                                 <div class="col-12">
-                                    <div class="map-div">
+                                    <div class="map-div form-group">
                                         <div id="gmap" style="width:100%;height:400px;">
                                     </div>
                                 </div>

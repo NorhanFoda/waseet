@@ -56,6 +56,7 @@ class DirectTeacherController extends Controller
      */
     public function store(DirectTeacherRequest $request)
     {
+        // dd($request->all());
         $data = $request->except(['_token'. '_method', 'full', 'sec_full']);
 
         // handling phone according to stupids opinion

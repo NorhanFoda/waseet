@@ -330,7 +330,7 @@
                                             <span>{{trans('admin.location')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <input type="text" name="address" class="form-control" value="{{$job->address}}" placeholder="{{trans('admin.location')}}">
+                                            <input type="text" name="address" id="pac-input" class="form-control" value="{{$job->address}}" placeholder="{{trans('admin.location')}}">
                                             <input type="hidden" name="lat" value="{{$job->lat}}" id="location_lat">
                                             <input type="hidden" name="long" value="{{$job->long}}" id="location_lng"> 
                                             <input type="hidden" name="country" value="{{$job->country}}" id="country"> 

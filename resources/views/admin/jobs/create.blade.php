@@ -321,7 +321,7 @@
                                             <span>{{trans('admin.location')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <input type="text" name="address" class="form-control" placeholder="{{trans('admin.location')}}">
+                                            <input type="text" name="address" id="pac-input" class="form-control" placeholder="{{trans('admin.location')}}">
                                             <input type="hidden" name="lat" value="" id="location_lat">
                                             <input type="hidden" name="long" value="" id="location_lng"> 
                                             <input type="hidden" name="country" value="" id="country"> 
@@ -335,7 +335,7 @@
 
                                 {{-- map start --}}
                                 <div class="col-12">
-                                    <div class="map-div">
+                                    <div class="map-div form-group">
                                         <div id="gmap" style="width:100%;height:400px;">
                                     </div>
                                 </div>

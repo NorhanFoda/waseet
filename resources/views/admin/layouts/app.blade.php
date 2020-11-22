@@ -100,7 +100,7 @@
 {{-- MAP START --}}
 @if(\Request::route()->getName() == 'direct_teachers.create')
     <script>
-        initGeolocation();
+        // initGeolocation();
        // Initiat google map
       function initMap(){
           
@@ -114,6 +114,125 @@
             zoom: 10,
             center: { lat: parseFloat(lat), lng: parseFloat(lng) } // Current user location or SA.
           });
+
+        // Create the search box and link it to the UI element.
+        const input = document.getElementById("pac-input");
+        const searchBox = new google.maps.places.SearchBox(input);
+        map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+        const teaching_input = document.getElementById("teaching-pac-input");
+        const teaching_searchBox = new google.maps.places.SearchBox(teaching_input);
+        map.controls[google.maps.ControlPosition.TOP_LEFT].push(teaching_input);
+
+        // Bias the SearchBox results towards current map's viewport.
+        map.addListener("bounds_changed", () => {
+            searchBox.setBounds(map.getBounds());
+        });
+
+        map.addListener("bounds_changed", () => {
+            teaching_searchBox.setBounds(map.getBounds());
+        });
+
+        let markers = [];
+        // Listen for the event fired when the user selects a prediction and retrieve
+        // more details for that place.
+        searchBox.addListener("places_changed", () => {
+            const places = searchBox.getPlaces();
+
+            if (places.length == 0) {
+            return;
+            }
+            // Clear out the old markers.
+            markers.forEach((marker) => {
+            marker.setMap(null);
+            });
+            markers = [];
+            // For each place, get the icon, name and location.
+            const bounds = new google.maps.LatLngBounds();
+            places.forEach((place) => {
+            if (!place.geometry) {
+                console.log("Returned place contains no geometry");
+                return;
+            }
+            const icon = {
+                url: place.icon,
+                size: new google.maps.Size(71, 71),
+                origin: new google.maps.Point(0, 0),
+                anchor: new google.maps.Point(17, 34),
+                scaledSize: new google.maps.Size(25, 25),
+            };
+            // Create a marker for each place.
+            markers.push(
+                new google.maps.Marker({
+                map,
+                icon,
+                title: place.name,
+                position: place.geometry.location,
+                })
+            );
+
+            $(document).find('#location_lat').val(place.geometry.location.lat());
+            $(document).find('#location_lng').val(place.geometry.location.lng());
+
+            if (place.geometry.viewport) {
+                // Only geocodes have viewport.
+                bounds.union(place.geometry.viewport);
+            } else {
+                bounds.extend(place.geometry.location);
+            }
+            });
+            map.fitBounds(bounds);
+
+        });
+
+        teaching_searchBox.addListener("places_changed", () => {
+            const places = teaching_searchBox.getPlaces();
+
+            if (places.length == 0) {
+            return;
+            }
+            // Clear out the old markers.
+            markers.forEach((marker) => {
+            marker.setMap(null);
+            });
+            markers = [];
+            // For each place, get the icon, name and location.
+            const teaching_bounds = new google.maps.LatLngBounds();
+            places.forEach((place) => {
+            if (!place.geometry) {
+                console.log("Returned place contains no geometry");
+                return;
+            }
+            const icon = {
+                url: place.icon,
+                size: new google.maps.Size(71, 71),
+                origin: new google.maps.Point(0, 0),
+                anchor: new google.maps.Point(17, 34),
+                scaledSize: new google.maps.Size(25, 25),
+            };
+            // Create a marker for each place.
+            markers.push(
+                new google.maps.Marker({
+                map,
+                icon,
+                title: place.name,
+                position: place.geometry.location,
+                })
+            );
+
+            $(document).find('#location_lat2').val(place.geometry.location.lat());
+            $(document).find('#location_lng2').val(place.geometry.location.lng());
+
+            if (place.geometry.viewport) {
+                // Only geocodes have viewport.
+                teaching_bounds.union(place.geometry.viewport);
+            } else {
+                teaching_bounds.extend(place.geometry.location);
+            }
+            });
+            map.fitBounds(teaching_bounds);
+
+        });
 
           // Add address marker on map
           var address_marker = new google.maps.Marker({
@@ -252,7 +371,7 @@
           geocodePosition2(location);
       }
 
-      // initGeolocation fail
+      //initGeolocation fail
       function fail()
       {
           // Could not obtain location
@@ -287,6 +406,125 @@
             zoom: 10,
             center: { lat: parseFloat(lat), lng: parseFloat(lng) } // Current user location or SA.
           });
+
+        // Create the search box and link it to the UI element.
+        const input = document.getElementById("pac-input");
+        const searchBox = new google.maps.places.SearchBox(input);
+        map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+        const teaching_input = document.getElementById("teaching-pac-input");
+        const teaching_searchBox = new google.maps.places.SearchBox(teaching_input);
+        map.controls[google.maps.ControlPosition.TOP_LEFT].push(teaching_input);
+
+        // Bias the SearchBox results towards current map's viewport.
+        map.addListener("bounds_changed", () => {
+            searchBox.setBounds(map.getBounds());
+        });
+
+        map.addListener("bounds_changed", () => {
+            teaching_searchBox.setBounds(map.getBounds());
+        });
+
+        let markers = [];
+        // Listen for the event fired when the user selects a prediction and retrieve
+        // more details for that place.
+        searchBox.addListener("places_changed", () => {
+            const places = searchBox.getPlaces();
+
+            if (places.length == 0) {
+            return;
+            }
+            // Clear out the old markers.
+            markers.forEach((marker) => {
+            marker.setMap(null);
+            });
+            markers = [];
+            // For each place, get the icon, name and location.
+            const bounds = new google.maps.LatLngBounds();
+            places.forEach((place) => {
+            if (!place.geometry) {
+                console.log("Returned place contains no geometry");
+                return;
+            }
+            const icon = {
+                url: place.icon,
+                size: new google.maps.Size(71, 71),
+                origin: new google.maps.Point(0, 0),
+                anchor: new google.maps.Point(17, 34),
+                scaledSize: new google.maps.Size(25, 25),
+            };
+            // Create a marker for each place.
+            markers.push(
+                new google.maps.Marker({
+                map,
+                icon,
+                title: place.name,
+                position: place.geometry.location,
+                })
+            );
+
+            $(document).find('#location_lat').val(place.geometry.location.lat());
+            $(document).find('#location_lng').val(place.geometry.location.lng());
+
+            if (place.geometry.viewport) {
+                // Only geocodes have viewport.
+                bounds.union(place.geometry.viewport);
+            } else {
+                bounds.extend(place.geometry.location);
+            }
+            });
+            map.fitBounds(bounds);
+
+        });
+
+        teaching_searchBox.addListener("places_changed", () => {
+            const places = teaching_searchBox.getPlaces();
+
+            if (places.length == 0) {
+            return;
+            }
+            // Clear out the old markers.
+            markers.forEach((marker) => {
+            marker.setMap(null);
+            });
+            markers = [];
+            // For each place, get the icon, name and location.
+            const teaching_bounds = new google.maps.LatLngBounds();
+            places.forEach((place) => {
+            if (!place.geometry) {
+                console.log("Returned place contains no geometry");
+                return;
+            }
+            const icon = {
+                url: place.icon,
+                size: new google.maps.Size(71, 71),
+                origin: new google.maps.Point(0, 0),
+                anchor: new google.maps.Point(17, 34),
+                scaledSize: new google.maps.Size(25, 25),
+            };
+            // Create a marker for each place.
+            markers.push(
+                new google.maps.Marker({
+                map,
+                icon,
+                title: place.name,
+                position: place.geometry.location,
+                })
+            );
+
+            $(document).find('#location_lat2').val(place.geometry.location.lat());
+            $(document).find('#location_lng2').val(place.geometry.location.lng());
+
+            if (place.geometry.viewport) {
+                // Only geocodes have viewport.
+                teaching_bounds.union(place.geometry.viewport);
+            } else {
+                teaching_bounds.extend(place.geometry.location);
+            }
+            });
+            map.fitBounds(teaching_bounds);
+
+        });
 
           // Add address marker on map
           var address_marker = new google.maps.Marker({
@@ -457,8 +695,8 @@
                 if('{{\Request::route()->getName()}}' == 'jobs.create' || '{{\Request::route()->getName()}}' == 'organizations.create' ||
                     '{{\Request::route()->getName()}}' == 'seekers.create' || '{{\Request::route()->getName()}}' == 'online_teachers.create'){
 
-                    lat = localStorage.getItem('job_lat') ? localStorage.getItem('job_lat') : 23.885942;
-                    lng = localStorage.getItem('job_lng') ? localStorage.getItem('job_lng') : 45.079163;
+                    lat = localStorage.getItem('location_lat') ? localStorage.getItem('location_lat') : 23.885942;
+                    lng = localStorage.getItem('location_lng') ? localStorage.getItem('location_lng') : 45.079163;
                 }
                 else if('{{\Request::route()->getName()}}' == 'jobs.edit' || '{{\Request::route()->getName()}}' == 'organizations.edit' || 
                         '{{\Request::route()->getName()}}' == 'seekers.edit' || '{{\Request::route()->getName()}}' == 'online_teachers.edit'){
@@ -471,6 +709,68 @@
                 const map = new google.maps.Map(document.getElementById("gmap"), {
                     zoom: 10,
                     center: { lat: parseFloat(lat), lng: parseFloat(lng) } // Current user location or SA.
+                });
+
+                // Create the search box and link it to the UI element.
+                const input = document.getElementById("pac-input");
+                const searchBox = new google.maps.places.SearchBox(input);
+                map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+                // Bias the SearchBox results towards current map's viewport.
+                map.addListener("bounds_changed", () => {
+                    searchBox.setBounds(map.getBounds());
+                });
+
+                let markers = [];
+                // Listen for the event fired when the user selects a prediction and retrieve
+                // more details for that place.
+                searchBox.addListener("places_changed", () => {
+                    const places = searchBox.getPlaces();
+
+                    if (places.length == 0) {
+                    return;
+                    }
+                    // Clear out the old markers.
+                    markers.forEach((marker) => {
+                    marker.setMap(null);
+                    });
+                    markers = [];
+                    // For each place, get the icon, name and location.
+                    const bounds = new google.maps.LatLngBounds();
+                    places.forEach((place) => {
+                    if (!place.geometry) {
+                        console.log("Returned place contains no geometry");
+                        return;
+                    }
+                    const icon = {
+                        url: place.icon,
+                        size: new google.maps.Size(71, 71),
+                        origin: new google.maps.Point(0, 0),
+                        anchor: new google.maps.Point(17, 34),
+                        scaledSize: new google.maps.Size(25, 25),
+                    };
+                    // Create a marker for each place.
+                    markers.push(
+                        new google.maps.Marker({
+                        map,
+                        icon,
+                        title: place.name,
+                        position: place.geometry.location,
+                        })
+                    );
+
+                    $(document).find('#location_lat').val(place.geometry.location.lat());
+                    $(document).find('#location_lng').val(place.geometry.location.lng());
+
+                    if (place.geometry.viewport) {
+                        // Only geocodes have viewport.
+                        bounds.union(place.geometry.viewport);
+                    } else {
+                        bounds.extend(place.geometry.location);
+                    }
+                    });
+                    map.fitBounds(bounds);
+
                 });
 
                 // Add address marker on map
@@ -506,8 +806,8 @@
                 $('#location_lng').val(pos.lat);
 
                 // Store lat and lng values to LocalStorage
-                localStorage.setItem('job_lat', pos.lat);
-                localStorage.setItem('job_lng', pos.lng);
+                localStorage.setItem('location_lat', pos.lat);
+                localStorage.setItem('location_lng', pos.lng);
 
                 var geocoder = new google.maps.Geocoder;
                 geocoder.geocode({
@@ -557,8 +857,8 @@
                 $('#location_lng').val(position.coords.longitude);
 
                 // Store lat and lng values to LocalStorage
-                localStorage.setItem('job_lat', position.coords.latitude);
-                localStorage.setItem('job_lng', position.coords.longitude);
+                localStorage.setItem('location_lat', position.coords.latitude);
+                localStorage.setItem('location_lng', position.coords.longitude);
 
                 // Store address lat and long in location variable
                 location.lat = position.coords.latitude;

@@ -31,14 +31,14 @@
 
                 <div class="inputs-contain">
                     <div class="userName">
-                        <input type="email" id="mail" name="email" required />
+                        <input type="email" class="active" id="mail" name="email" required />
                         <label for="mail">
                             <img src="{{asset('web/images/email.png')}}" alt="" /> {{trans('web.email')}} 
                         </label>
                     </div>
 
                     <div class="userName">
-                        <input type="password" id="pass" name="password" required />
+                        <input type="password" class="active" id="pass" name="password" required />
                         <label for="pass">
                             <img src="{{asset('web/images/padlock.png')}}" alt="" /> {{trans('web.password')}} 
                         </label>

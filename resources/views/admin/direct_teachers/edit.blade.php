@@ -378,13 +378,13 @@
                                 {{-- enter address --}}
                                 <div class="col-6">
                                     <div class="form-group row">
-                                        <div class="col-md-4">
+                                        {{-- <div class="col-md-4">
                                             <span>{{trans('admin.location')}}</span>
-                                        </div>
+                                        </div> --}}
                                         <div class="col-md-8">
-                                            <input type="text" class="form-control" value="{{$teacher->address}}" placeholder="{{trans('admin.location')}}" name="address" required>
-                                            <input type="text" name="lat" value="{{$teacher->lat}}" id="location_lat">
-                                            <input type="text" name="long" value="{{$teacher->long}}" id="location_lng"> 
+                                            <input type="text" id="pac-input" class="form-control" value="{{$teacher->address}}" placeholder="{{trans('admin.location')}}" name="address" required>
+                                            <input type="hidden" name="lat" value="{{$teacher->lat}}" id="location_lat">
+                                            <input type="hidden" name="long" value="{{$teacher->long}}" id="location_lng"> 
                                             <div class="invalid-feedback">
                                                 {{trans('admin.location')}}
                                             </div>
@@ -396,13 +396,13 @@
                                 {{-- enter teaching address start --}}
                                 <div class="col-6">
                                     <div class="form-group row">
-                                        <div class="col-md-2">
+                                        {{-- <div class="col-md-2">
                                             <span>{{trans('admin.teaching_address')}}</span>
-                                        </div>
+                                        </div> --}}
                                         <div class="col-md-10">
-                                            <input type="text" class="form-control" value="{{$teacher->teaching_address}}" placeholder="{{trans('admin.teaching_address')}}" name="teaching_address" required>
-                                            <input type="text" name="teaching_lat" value="{{$teacher->teaching_lat}}" id="location_lat2">
-                                            <input type="text" name="teaching_long" value="{{$teacher->teaching_long}}" id="location_lng2">
+                                            <input type="text" id="teaching-pac-input" class="form-control" value="{{$teacher->teaching_address}}" placeholder="{{trans('admin.teaching_address')}}" name="teaching_address" required>
+                                            <input type="hidden" name="teaching_lat" value="{{$teacher->teaching_lat}}" id="location_lat2">
+                                            <input type="hidden" name="teaching_long" value="{{$teacher->teaching_long}}" id="location_lng2">
                                             <div class="invalid-feedback">
                                                 {{trans('admin.teaching_address')}}
                                             </div>
@@ -413,7 +413,7 @@
 
                                 {{-- map start --}}
                                 <div class="col-12">
-                                    <div class="map-div">
+                                    <div class="map-div form-group">
                                         <div id="gmap" style="width:100%;height:400px;">
                                     </div>
                                 </div>

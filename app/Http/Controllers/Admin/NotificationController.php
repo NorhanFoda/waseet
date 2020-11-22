@@ -18,7 +18,7 @@ class NotificationController extends Controller
     }
 
     public function index(){
-        $all_data = Notification::orderBy('created_at', 'desc')->get(['id', 'msg_ar', 'msg_en', 'created_at']);
+        $all_data = Notification::where('type','admin-message')->orderBy('created_at', 'desc')->get(['id', 'msg_ar', 'msg_en', 'created_at']);
         $notifications = $all_data->unique('msg_ar'); 
         return view('admin.notifications.index', compact('notifications'));
     }

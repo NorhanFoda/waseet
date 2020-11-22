@@ -181,7 +181,7 @@ class HomeController extends Controller
                         'user_id' => $user->id,
                         'read' => 0,
                         'type' => 'teacher_registered',
-                        'extra_data' => $use->id,
+                        'extra_data' => $user->id,
                     ]);
                 }
             }

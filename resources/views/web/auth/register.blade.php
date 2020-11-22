@@ -383,7 +383,7 @@
         @if($role_id != 2 && $role_id != 'visitor')
           {{-- map start --}}
             <div class="userName">
-           <div class="text-right-dir map-label">{{trans('web.address')}}</div>
+           {{-- <div class="text-right-dir map-label">{{trans('web.address')}}</div> --}}
             {{-- address --}}
 
               <input id="pac-input" name="address" class="controls form-control" type="text" placeholder="{{trans('web.address')}}" value="">
@@ -395,8 +395,8 @@
             <div class="userName">
               {{-- teaching address --}}
               @if($role_id == 3)
-              <div class="text-right-dir map-label">{{trans('web.teaching_address')}}</div>
-                <input name="teaching_address" class="controls form-control" type="text" placeholder="{{trans('web.teaching_address')}}" value="">
+              {{-- <div class="text-right-dir map-label">{{trans('web.teaching_address')}}</div> --}}
+                <input name="teaching_address" id="teaching-pac-input" class="controls form-control" type="text" placeholder="{{trans('web.teaching_address')}}" value="">
                 <input type="hidden" name="lat2" value="" id="location_lat2">
                 <input type="hidden" name="long2" value="" id="location_lng2">
               @endif

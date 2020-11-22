@@ -398,7 +398,7 @@
                                             <span>{{trans('admin.location')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <input type="text" class="form-control" value="{{$teacher->address}}" placeholder="{{trans('admin.location')}}" name="address" required>
+                                            <input type="text" class="form-control" value="{{$teacher->address}}" id="pac-input" placeholder="{{trans('admin.location')}}" name="address" required>
                                             <input type="hidden" name="lat" value="{{$teacher->lat}}" id="location_lat">
                                             <input type="hidden" name="long" value="{{$teacher->long}}" id="location_lng"> 
                                             <div class="invalid-feedback">
