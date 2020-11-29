@@ -96,14 +96,24 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // dd($request->all());
         $this->validate($request, [
             'name' => 'required',
-            'email' => 'required'
+            'email' => 'required',
+            'password' => 'nullable|confirmed|min:9'
         ]);
 
         $user = User::find($id);
 
-        $user->update($request->all());
+        $data = $request->except(['password']);
+
+        $user->update($data);
+
+        if($request->password != null){
+            $user->update([
+                'password' => bcrypt($request->password)
+            ]);
+        }
 
         if($request->has('image')){
             if($user->image != null){

@@ -80,6 +80,36 @@
                                 </div>
                                 {{-- enter email end --}}
 
+                                {{-- enter password --}}
+                                <div class="col-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-2">
+                                            <span>{{trans('admin.password')}}</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <input type="password" class="form-control" placeholder="{{trans('admin.password')}}" name="password">
+                                            <div class="invalid-feedback">
+                                                {{trans('admin.password')}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-2">
+                                            <span>{{trans('admin.password_confirmation')}}</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <input type="password" class="form-control" placeholder="{{trans('admin.password_confirmation')}}" name="password_confirmation">
+                                            <div class="invalid-feedback">
+                                                {{trans('admin.password_confirmation')}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- enter password end --}}
+
                                 {{-- enter image --}}
                                 <div class="col-12">
                                     <div class="form-group row">
