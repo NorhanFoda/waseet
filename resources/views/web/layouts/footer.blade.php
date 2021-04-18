@@ -52,7 +52,7 @@
 
   <div class="copyright text-center">
     <p class="text-center">
-        {{trans('web.designed')}} <a href="jaadara.com">{{trans('web.jadara')}} </a> . {{trans('web.all_rights')}}
+        {{trans('web.designed')}} <a href="https://jaadara.com/">{{trans('web.jadara')}} </a> . {{trans('web.all_rights')}}
       <i class="far fa-copyright"></i> {{trans('web.reserved_for')}}  <span> {{trans('admin.waseet')}}</span>
     </p>
   </div>

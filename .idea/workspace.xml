@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cd15da47-63c2-41ed-b1ce-7bae5fd08688" name="Default Changelist" comment="" />
+    <list default="true" id="cd15da47-63c2-41ed-b1ce-7bae5fd08688" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/ar/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ar/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/en/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/web/bags/bag_categories.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/bags/bag_categories.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/web/layouts/footer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/layouts/footer.blade.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -118,7 +124,8 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Mrsal" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager">
@@ -175,6 +182,7 @@
       <workItem from="1606037768968" duration="1292000" />
       <workItem from="1606128868604" duration="610000" />
       <workItem from="1606639492047" duration="369000" />
+      <workItem from="1618732868195" duration="328000" />
     </task>
     <servers />
   </component>
@@ -182,21 +190,9 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="353" y="107" width="800" height="684" key="#Deployment" timestamp="1606036868942">
+    <state x="431" y="125" width="800" height="684" key="#Deployment" timestamp="1618732888606">
       <screen x="72" y="27" width="1528" height="873" />
     </state>
-    <state x="353" y="107" width="800" height="684" key="#Deployment/72.27.1528.873@72.27.1528.873" timestamp="1606036868942" />
-    <state x="619" y="221" width="424" height="491" key="FileChooserDialogImpl" timestamp="1606639858995">
-      <screen x="72" y="27" width="1528" height="873" />
-    </state>
-    <state x="619" y="221" width="424" height="491" key="FileChooserDialogImpl/72.27.1528.873@72.27.1528.873" timestamp="1606639858995" />
-    <state x="732" y="180" width="197" height="580" key="ftp.server.browser" timestamp="1606036844822">
-      <screen x="72" y="27" width="1528" height="873" />
-    </state>
-    <state x="732" y="180" width="197" height="580" key="ftp.server.browser/72.27.1528.873@72.27.1528.873" timestamp="1606036844822" />
-    <state x="701" y="357" width="260" height="219" key="publish.login" timestamp="1603633787187">
-      <screen x="72" y="27" width="1528" height="873" />
-    </state>
-    <state x="701" y="357" width="260" height="219" key="publish.login/72.27.1528.873@72.27.1528.873" timestamp="1603633787187" />
+    <state x="431" y="125" width="800" height="684" key="#Deployment/72.27.1528.873@72.27.1528.873" timestamp="1618732888606" />
   </component>
 </project>

@@ -264,4 +264,5 @@ return [
     'search' => 'بحث',
     'search_results' => 'نتائج البحث',
     'no_search_results' => 'لا يوجد نتائج للبحث',
+    'no_image' => 'لا يوجد صورة مرفقة',
 ];

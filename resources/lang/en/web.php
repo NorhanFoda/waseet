@@ -261,4 +261,5 @@ return [
     'search' => 'Search',
     'search_results' => 'Search Results',
     'no_search_results' => 'No Search Results',
+    'no_image' => 'No Image Attached',
 ];

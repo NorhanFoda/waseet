@@ -25,7 +25,7 @@
                 <div class="item col-lg-4 col-sm-6">
             <div class="pack">
               <div class="img">
-                <img src="{{$cat->image->path}}" alt="" />
+                <img src="{{$cat->image ? $cat->image->path : ''}}" alt="{{$cat->image ? $cat->image->path : trans('web.no_image')}}" />
               </div>
               <div class="row">
                 <a href="{{route('categories.bags', $cat->id)}}" class="custom-btn">{{$cat->{'name_'.session('lang')} }}</a>
