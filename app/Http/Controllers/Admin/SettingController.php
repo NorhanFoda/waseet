@@ -71,14 +71,18 @@ class SettingController extends Controller
             'saved_title_en' => $request->saved_title_en,
             'saved_text_ar' => $request->saved_text_ar,
             'saved_text_en' => $request->saved_text_en,
+
+            'online_teacher_text_ar' => $request->online_teacher_text_ar,
+            'online_teacher_text_en' => $request->online_teacher_text_en,
+
             'online_teacher_title_ar' => $request->online_teacher_title_ar,
             'online_teacher_title_en' => $request->online_teacher_title_en,
-            'online_text_title_ar' => $request->online_text_title_ar,
-            'online_text_title_en' => $request->online_text_title_en,
+
             'direct_teacher_title_ar' => $request->direct_teacher_title_ar,
             'direct_teacher_title_en' => $request->direct_teacher_title_en,
-            'direct_text_title_ar' => $request->direct_text_title_ar,
-            'direct_text_title_en' => $request->direct_text_title_en,
+
+            'direct_teacher_text_ar' => $request->direct_teacher_text_ar,
+            'direct_teacher_text_en' => $request->direct_teacher_text_en,
         ]);
 
         if($request->has('header_logo')){

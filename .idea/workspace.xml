@@ -3,10 +3,17 @@
   <component name="ChangeListManager">
     <list default="true" id="cd15da47-63c2-41ed-b1ce-7bae5fd08688" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/ar/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ar/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/en/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/bags/bag_categories.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/bags/bag_categories.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/layouts/footer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/layouts/footer.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/SettingController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/SettingController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/documents/php706_1594199662.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/documents/phpXtbs1I_1600872127.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/php76A2_1594481344.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/php76A3_1594481344.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/phpIdtTrh_1600872127.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/videos/php728_1594199662.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/videos/php748_1594199663.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/videos/phpbi1m52_1600872127.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/bags/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/bags/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/web/layouts/slider.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/layouts/slider.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -182,7 +189,8 @@
       <workItem from="1606037768968" duration="1292000" />
       <workItem from="1606128868604" duration="610000" />
       <workItem from="1606639492047" duration="369000" />
-      <workItem from="1618732868195" duration="328000" />
+      <workItem from="1618732868195" duration="935000" />
+      <workItem from="1618830438995" duration="681000" />
     </task>
     <servers />
   </component>
@@ -194,5 +202,9 @@
       <screen x="72" y="27" width="1528" height="873" />
     </state>
     <state x="431" y="125" width="800" height="684" key="#Deployment/72.27.1528.873@72.27.1528.873" timestamp="1618732888606" />
+    <state x="619" y="221" width="424" height="491" key="FileChooserDialogImpl" timestamp="1618736304565">
+      <screen x="72" y="27" width="1528" height="873" />
+    </state>
+    <state x="619" y="221" width="424" height="491" key="FileChooserDialogImpl/72.27.1528.873@72.27.1528.873" timestamp="1618736304565" />
   </component>
 </project>

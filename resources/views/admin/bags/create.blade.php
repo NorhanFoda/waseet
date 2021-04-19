@@ -235,7 +235,7 @@
                                             <span>{{trans('admin.video')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <input type="file" name="video" class="form-control" accept="video/mp4,video/ogg, video/webm" placeholder="{{trans('admin.video')}}" required>
+                                            <input type="file" name="video" class="form-control" accept="video/mp4,video/ogg, video/webm" placeholder="{{trans('admin.video')}}">
                                             <div class="invalid-feedback">
                                                 {{trans('admin.video')}}
                                             </div>
