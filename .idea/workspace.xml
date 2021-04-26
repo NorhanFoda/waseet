@@ -1,20 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cd15da47-63c2-41ed-b1ce-7bae5fd08688" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/SettingController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/SettingController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/documents/php706_1594199662.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/documents/phpXtbs1I_1600872127.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/php76A2_1594481344.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/php76A3_1594481344.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/phpIdtTrh_1600872127.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/videos/php728_1594199662.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/videos/php748_1594199663.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/videos/phpbi1m52_1600872127.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/bags/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/bags/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/layouts/slider.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/layouts/slider.blade.php" afterDir="false" />
-    </list>
+    <list default="true" id="cd15da47-63c2-41ed-b1ce-7bae5fd08688" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

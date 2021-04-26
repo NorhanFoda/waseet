@@ -59,7 +59,7 @@ class BagController extends Controller
 
         $image_url = Upload::uploadImage($request->image);
         $poster_url = Upload::uploadImage($request->poster);
-        $video_url = Upload::uploadVideo($request->video);
+        $video_url = $request->has('video') ? Upload::uploadVideo($request->video) : null;
         $bag->update([
             'image' => $image_url,
             'video' => $video_url,
