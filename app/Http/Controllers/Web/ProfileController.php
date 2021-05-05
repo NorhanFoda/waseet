@@ -130,6 +130,11 @@ class ProfileController extends Controller
     // show bag contents for online paied bags
     public function showBagContents($id){
         $bag = Bag::with(['images', 'videos', 'documents'])->find($id);
+
+        if(!$bag){
+
+            return redirect()->route('profile.index');
+        }
         return view('web.bags.gallery', compact('bag'));
     }
 
