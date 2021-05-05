@@ -145,7 +145,7 @@ textarea:focus {
 }
 
 .second_color {
-  color: #000;
+  color: #56ccf2;
 }
 
 .list-unstyled {
@@ -205,7 +205,7 @@ textarea:focus {
 
 .custom-btn:hover,
 .white-btn:hover {
-  background: #000;
+  background: #56ccf2;
   box-shadow: 0 7px 15px #333;
   color: #fff;
   text-decoration: none;
@@ -789,7 +789,7 @@ nav .search.active .search-btn {
 }
 
 .slider .item h4 {
-  color: #000;
+  color: #56ccf2;
   font-family: cairoRegular;
   z-index: 1;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
@@ -1038,7 +1038,7 @@ nav .search.active .search-btn {
 }
 
 .search-job .job p {
-  color: #fff;
+  color: #56ccf2;
   font-family: cairoRegular;
   font-size: 14px;
   padding: 0 10px;
@@ -1079,7 +1079,7 @@ nav .search.active .search-btn {
 }
 
 .private-teacher .title h5:last-child {
-  color: #000;
+  color: #56ccf2;
   font-size: 18px;
   word-spacing: 2px;
   font-weight: cairoRegular;
@@ -1098,7 +1098,7 @@ nav .search.active .search-btn {
 }
 
 .private-teacher .teacher p {
-  color: #000;
+  color: #56ccf2;
   font-family: cairoRegular;
   font-size: 15px;
   margin-bottom: 2rem;
@@ -1140,7 +1140,7 @@ nav .search.active .search-btn {
 
 .packs .title h5:last-child {
   font-family: cairoRegular;
-  color: #000;
+  color: #56ccf2;
   font-size: 18px;
   word-spacing: 2px;
 }
@@ -1239,7 +1239,7 @@ footer ul li:hover::before {
 }
 
 footer ul li a:hover {
-  color: #000;
+  color: #56ccf2;
   text-decoration: none;
 }
 
@@ -1255,7 +1255,7 @@ footer ul li::before {
 }
 
 footer h6 {
-  color: #000;
+  color: #56ccf2;
   font-family: cairoRegular;
   font-size: 14px;
   text-align: right;
@@ -1382,7 +1382,7 @@ footer form input {
 }
 
 .footer-social a:hover,.st-custom-button:hover {
-  color: #000;
+  color: #56ccf2;
 
 }
 
@@ -1761,7 +1761,7 @@ footer .copyright p a:hover {
 }
 
 .helpCenter p {
-  color: #000;
+  color: #56ccf2;
   font-family: cairoRegular;
   text-align: center;
 }
@@ -1877,7 +1877,7 @@ footer .copyright p a:hover {
 .contactUs_form .contactInfo .info .mail span {
   border: 2px solid #fff;
   border-radius: 50%;
-  color: #fff;
+  color: #56ccf2;
 }
 
 .contactUs_form .contactInfo .info .phone span i,
@@ -2145,7 +2145,7 @@ footer .copyright p a:hover {
 .teachersWrap .teacher .teacher_info .teacher_name h6 {
   margin: auto;
   font-family: cairoRegular;
-  color: #000;
+  color: #56ccf2;
   text-align: justify;
   margin: 5px auto;
   width: 100%;
@@ -2223,7 +2223,7 @@ footer .copyright p a:hover {
 }
 
 .teachersWrap .teacher ul li p {
-  color: #000;
+  color: #56ccf2;
   font-family: cairoRegular;
   font-size: 15px;
 }
@@ -2363,7 +2363,7 @@ footer .copyright p a:hover {
 .teacher_info .info .img_name_rate .teacher_name h6 {
   margin: auto;
   font-family: cairoRegular;
-  color: #000;
+  color: #56ccf2;
   text-align: justify;
   margin: 5px auto;
   width: 100%;
@@ -2662,7 +2662,7 @@ footer .copyright p a:hover {
 
 
 .teacher_info .info .other_info .phone_num h6,.teacher_info .info .other_info .phone_num a {
-  color: #000;
+  color: #56ccf2;
   font-family: cairoRegular;
   margin: auto 5px;
   text-align: justify;
@@ -2718,7 +2718,7 @@ footer .copyright p a:hover {
   margin: 15px auto;
   text-align: justify;
   width: 100%;
-  color: #000;
+  color: #56ccf2;
   font-family: cairoRegular;
   font-size: 14px;
   line-height: 25px;
@@ -2819,7 +2819,7 @@ footer .copyright p a:hover {
 }
 
 .packsWrap .pack_name p {
-  color: #000;
+  color: #56ccf2;
   font-family: cairoRegular;
   margin: 10px auto;
   text-align: center;
@@ -2891,7 +2891,7 @@ footer .copyright p a:hover {
 }
 
 .aboutus_wrapper h5 {
-  color: #000;
+  color: #56ccf2;
   font-family: cairoRegular;
   margin: 20px auto;
 }
@@ -2904,7 +2904,7 @@ footer .copyright p a:hover {
 
 
 .aboutus_wrapper h5 {
-  color: #000;
+  color: #56ccf2;
   font-family: cairoRegular;
   margin: 20px auto;
 }
@@ -2945,7 +2945,7 @@ footer .copyright p a:hover {
 
 .tabs-div .nav-item.show .nav-link,
 .tabs-div .nav-tabs .nav-link.active {
-  color: #000;
+  color: #56ccf2;
 }
 
 .bookmark {
@@ -3153,7 +3153,7 @@ footer .copyright p a:hover {
 }
 
 .about-prg {
-  color: #000
+  color: #09779a
 }
 
 .about-div {
@@ -3213,7 +3213,7 @@ footer .copyright p a:hover {
 }
 
 .packsWrap.book-details .about_pack p {
-  color: #000;
+  color: #56ccf2;
   margin-top: 20px;
   height: auto;
 }
@@ -3403,12 +3403,12 @@ iframe#st_gdpr_iframe{
 }
 
 .prof-edit-list>ul>li>a:not([href]):not([tabindex]):hover {
-  background: #000;
+  background: #56ccf2;
   color: #fff;
 }
 
 .prof-edit-list>ul>li>a:hover {
-  background: #000;
+  background: #56ccf2;
   color: #fff;
 }
 
@@ -3475,7 +3475,7 @@ iframe#st_gdpr_iframe{
 }
 
 .avatar-upload .avatar-edit label:hover {
-  background: #000;
+  background: #56ccf2;
 }
 
 .avatar-upload .avatar-edit label:after {
@@ -3592,7 +3592,7 @@ iframe#st_gdpr_iframe{
 
 .track-order li.active {
   opacity: 1;
-  color: #000
+  color: #56ccf2
 }
 
 .track-order li h3 {
@@ -3719,7 +3719,7 @@ iframe#st_gdpr_iframe{
 }
 
 .counter span:hover {
-  background: #000;
+  background: #56ccf2;
   color: #fff
 }
 
@@ -3904,7 +3904,7 @@ iframe#st_gdpr_iframe{
 
 
 .payment-grid li span {
- color:#000
+ color:#56ccf2
 }
 
 .cardBody  .title-check,.title-check  {

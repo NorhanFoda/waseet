@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cd15da47-63c2-41ed-b1ce-7bae5fd08688" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/BagController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/BagController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Bags/BagRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Bags/BagRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Bags/EditBagRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Bags/EditBagRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/web/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/web/css/main.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,7 +123,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ajar" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -182,6 +185,7 @@
       <workItem from="1618830438995" duration="681000" />
       <workItem from="1619445050041" duration="250000" />
       <workItem from="1619524692279" duration="21000" />
+      <workItem from="1620214578700" duration="709000" />
     </task>
     <servers />
   </component>
