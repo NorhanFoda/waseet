@@ -69,6 +69,8 @@
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDJZeYDmZKwcHVaO9APCWP_04lYzaNK0o4&libraries=places&callback=initMap&language={{ \App::getLocale() }}" defer></script>
 
+    <script src="https://cdn.tiny.cloud/1/quudzb7u9c0boyucs94y01a4tfcajtjtghdyi7z53p2bb62u/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
 </head>
 <!-- END: Head-->
 

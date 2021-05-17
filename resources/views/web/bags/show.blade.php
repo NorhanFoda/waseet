@@ -4,8 +4,8 @@
     {{-- Faceboon meta tages start --}}
     <meta property="og:title" content="{{$bag->{'name_'.session('lang')} }}" />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="{{$bag->image}}" />
-    <meta property="og:image:url"  content="{{$bag->image}}" />
+    <meta property="og:image" content="{{$bag->images()->where('image_type', 'slider')->first() ? $bag->images()->where('image_type', 'slider')->first()->path : 'images/product-avatar.png'}}" />
+    <meta property="og:image:url"  content="{{$bag->images()->where('image_type', 'slider')->first() ? $bag->images()->where('image_type', 'slider')->first()->path : 'images/product-avatar.png'}}" />
     <meta property="og:image:width"  content="500" />
     <meta property="og:image:height"  content="314" />
     <meta property="og:description" content="<?=strip_tags($bag->{'description_'.session('lang')} )?>" />
@@ -16,7 +16,7 @@
     {{-- Twitter meta tags start --}}
     <meta name="twitter:title" content="{{$bag->{'name_'.session('lang')} }}">
     <meta name="twitter:description" content="{{$bag->{'description_'.session('lang')} }}">
-    <meta name="twitter:image" content="{{$bag->image}}">
+    <meta name="twitter:image" content="{{$bag->images()->where('image_type', 'slider')->first() ? $bag->images()->where('image_type', 'slider')->first()->path : 'images/product-avatar.png'}}">
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="{{trans('admin.waseet')}}" />
     <meta name="twitter:creator" content="www.jaadara.com" />
@@ -48,7 +48,7 @@
 
                 <div class="row">
                     <div class="pack_img col-lg-3 md-center">
-                        <img src="{{$bag->image}}" alt="" />
+                        <img src="{{$bag->images()->where('image_type', 'slider')->first() ? $bag->images()->where('image_type', 'slider')->first()->path : 'images/product-avatar.png'}}" alt="" />
                     </div>
 
                     <div class="col-lg-7 col-sm-10">
@@ -119,8 +119,9 @@
                                 <p>{!! $bag->{'description_'.session('lang')} !!}</p>
                             </div>
                             <div class="two-btns text-center">
-                                <a href="#" onclick="addToCart(2)" class="custom-btn"><i class="fa fa-undo"></i>{{trans('web.print_content')}}</a>
-                                <a href="#" onclick="addToCart(1)" class="custom-btn"><i class="fa fa-cart-plus"></i>{{trans('web.buy_online')}}</a>
+                                <a href="#" onclick="addToCart(1)" class="custom-btn"><i class="fa fa-cart-plus"></i>{{trans('admin.add_to_cart')}}</a>
+                                {{-- <a href="#" onclick="addToCart(2)" class="custom-btn"><i class="fa fa-undo"></i>{{trans('web.print_content')}}</a>
+                                <a href="#" onclick="addToCart(1)" class="custom-btn"><i class="fa fa-cart-plus"></i>{{trans('web.buy_online')}}</a> --}}
                             </div>
                         </div>
                     </div>
@@ -222,28 +223,9 @@
                             total_price: '{{$bag->price}}',
                             buy_type: buy_type },
                     success: function(data){
-                        // Save carts to localStorage
-                        var carts = JSON.parse(localStorage.getItem("carts"));
-                        var item = {
-                            id: data.cart.id,
-                            user_id: data.cart.user_id,
-                            bag_id: data.cart.bag_id,
-                            quantity: data.cart.quantity,
-                            total_price: data.cart.total_price,
-                            buy_type: data.cart.buy_type
-                        };
+                        
+                        $('#cart_count').text(parseInt($('#cart_count').text()) + 1);
 
-                        if(carts == null){
-                            carts = [];
-                            carts.push(item);
-                            localStorage.setItem("carts", JSON.stringify(carts));
-                        }
-                        else{
-                            carts.push(item);
-                            localStorage.setItem("carts", JSON.stringify(carts));
-                        }
-
-                        var carts = JSON.parse(localStorage.getItem("carts"));
 
                     Swal.fire({
                         title: data['msg'],

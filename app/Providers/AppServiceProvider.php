@@ -8,6 +8,7 @@ use App\Models\Setting;
 use App\Models\StaticPage;
 use App\Models\Social;
 use App\Models\Country;
+use App\Models\Cart;
 use DB;
 
 class AppServiceProvider extends ServiceProvider
@@ -40,8 +41,9 @@ class AppServiceProvider extends ServiceProvider
             $pages = StaticPage::where('appear_in_footer', 1)->get();
             $socials = Social::all();
             $countries = Country::all();
+            $carts = auth()->check() ? count(Cart::where('user_id', auth()->user()->id)->get()) : 0;
             $view->with(['set' => $set, 'pages' => $pages, 'socials' => $socials, 
-                        'countries' => $countries]);
+                        'countries' => $countries, 'carts' => $carts]);
 
         });
     }

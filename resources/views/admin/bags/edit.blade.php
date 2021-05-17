@@ -214,7 +214,7 @@
                                 {{-- proce end --}}
 
                                 {{-- enter image --}}
-                                <div class="col-12">
+                                {{-- <div class="col-12">
                                     <div class="form-group row">
                                         <div class="col-md-2">
                                             <span>{{trans('admin.image')}}</span>
@@ -232,6 +232,56 @@
                                         <div class="col-md-12">
                                             <img src="{{$bag->image}}" alt="{{$bag->{'name_'.session('lang')} }}"
                                             width="100px" height="100px" style="border-radius: 5px;">
+                                        </div>
+                                    </div>
+                                </div> --}}
+                                <div class="col-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-2">
+                                            <span>{{trans('admin.image')}}</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <div class="input-group control-group slider_image_increment" >
+                                                <input type="file" name="slider_images[]" class="form-control" accept=".gif, .jpg, .png, .webp">
+                                                <div class="invalid-feedback">
+                                                    {{trans('admin.image')}}
+                                                </div>
+                                                <div class="input-group-btn"> 
+                                                    <button class="btn btn-success slider-img-btn-success" type="button"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                                                </div>
+                                            </div>
+                                            <div class="slider_image_clone hidden">
+                                                <div class="control-group input-group" style="margin-top:10px">
+                                                    <input type="file" name="slider_images[]" class="form-control" accept=".gif, .jpg, .png, .webp">
+                                                    <div class="input-group-btn"> 
+                                                        <button class="btn btn-danger slider-img-btn-danger" type="button"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-10 offset-md-2">
+                                            @foreach ($bag->images as $image)
+                                                @if($image->image_type == 'slider')
+                                                    <div class="delete_image_clone delete_files">
+                                                        <div class="control-group input-group" style="margin-top:10px">
+                                                            <img src="{{$image->path}}" width="100px" height="100px" style="border-radius: 5px" alt="{{$bag->{'name_'.session('lang')} }}">
+                                                            @php
+                                                                $image_arr = explode('/', $image->path);
+                                                                $image_name = $image_arr[count($image_arr)-1];
+                                                            @endphp
+                                                            <p>{{$image_name}}</p>
+                                                            <div class="input-group-btn"> 
+                                                                <button class="btn btn-danger delete-image-btn-danger" onClick="deleteImage({{$image->id}})" type="button"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                            @endforeach
                                         </div>
                                     </div>
                                 </div>
@@ -385,19 +435,21 @@
                                     <div class="form-group row">
                                         <div class="col-md-10 offset-md-2">
                                             @foreach ($bag->images as $image)
-                                                <div class="delete_image_clone delete_files">
-                                                    <div class="control-group input-group" style="margin-top:10px">
-                                                        <img src="{{$image->path}}" width="100px" height="100px" style="border-radius: 5px" alt="{{$bag->{'name_'.session('lang')} }}">
-                                                        @php
-                                                            $image_arr = explode('/', $image->path);
-                                                            $image_name = $image_arr[count($image_arr)-1];
-                                                        @endphp
-                                                        <p>{{$image_name}}</p>
-                                                        <div class="input-group-btn"> 
-                                                            <button class="btn btn-danger delete-image-btn-danger" onClick="deleteImage({{$image->id}})" type="button"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                                                @if($image->image_type == 'content')
+                                                    <div class="delete_image_clone delete_files">
+                                                        <div class="control-group input-group" style="margin-top:10px">
+                                                            <img src="{{$image->path}}" width="100px" height="100px" style="border-radius: 5px" alt="{{$bag->{'name_'.session('lang')} }}">
+                                                            @php
+                                                                $image_arr = explode('/', $image->path);
+                                                                $image_name = $image_arr[count($image_arr)-1];
+                                                            @endphp
+                                                            <p>{{$image_name}}</p>
+                                                            <div class="input-group-btn"> 
+                                                                <button class="btn btn-danger delete-image-btn-danger" onClick="deleteImage({{$image->id}})" type="button"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                @endif
                                             @endforeach
                                         </div>
                                     </div>
@@ -476,6 +528,16 @@
     <script>
         $(document).ready(function(){
             //add multi images
+            $(".slider-img-btn-success").click(function(){ 
+                var html = $(".slider_image_clone").html();
+                $(".slider_image_increment").after(html);
+            });
+
+            $("body").on("click",".slider-img-btn-danger",function(){ 
+                $(this).parents(".control-group").remove();
+            });
+
+
             $(".img-btn-success").click(function(){ 
                 var html = $(".image_clone").html();
                 $(".image_increment").after(html);

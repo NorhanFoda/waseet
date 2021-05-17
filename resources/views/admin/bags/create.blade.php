@@ -212,8 +212,8 @@
                                 </div>
                                 {{-- proce end --}}
 
-                                {{-- enter document --}}
-                                <div class="col-12">
+                                {{-- enter slider images --}}
+                                {{-- <div class="col-12">
                                     <div class="form-group row">
                                         <div class="col-md-2">
                                             <span>{{trans('admin.image')}}</span>
@@ -225,8 +225,36 @@
                                             </div>
                                         </div>
                                     </div>
+                                </div> --}}
+                                {{-- images start --}}
+                                <div class="col-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-2">
+                                            <span>{{trans('admin.image')}}</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <div class="input-group control-group slider_image_increment" >
+                                                <input type="file" name="slider_images[]" class="form-control" accept=".gif, .jpg, .png, .webp">
+                                                <div class="invalid-feedback">
+                                                    {{trans('admin.image')}}
+                                                </div>
+                                                <div class="input-group-btn"> 
+                                                    <button class="btn btn-success slider-img-btn-success" type="button"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                                                </div>
+                                            </div>
+                                            <div class="slider_image_clone hidden">
+                                                <div class="control-group input-group" style="margin-top:10px">
+                                                    <input type="file" name="slider_images[]" class="form-control" accept=".gif, .jpg, .png, .webp">
+                                                    <div class="input-group-btn"> 
+                                                        <button class="btn btn-danger slider-img-btn-danger" type="button"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                {{-- enter image end --}}
+                                {{-- images end --}}
+                                {{-- enter slider images end --}}
 
                                 {{-- video start --}}
                                 <div class="col-12">
@@ -251,7 +279,7 @@
                                             <span>{{trans('admin.poster')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <input type="file" name="poster" class="form-control" accept=".gif, .jpg, .png, .webp" placeholder="{{trans('admin.poster')}}" required>
+                                            <input type="file" name="poster" class="form-control" accept=".gif, .jpg, .png, .webp" placeholder="{{trans('admin.poster')}}">
                                             <div class="invalid-feedback">
                                                 {{trans('admin.poster_required')}}
                                             </div>
@@ -376,6 +404,16 @@
     <script>
         $(document).ready(function(){
             //add multi images
+            $(".slider-img-btn-success").click(function(){ 
+                var html = $(".slider_image_clone").html();
+                $(".slider_image_increment").after(html);
+            });
+
+            $("body").on("click",".slider-img-btn-danger",function(){ 
+                $(this).parents(".control-group").remove();
+            });
+
+
             $(".img-btn-success").click(function(){ 
                 var html = $(".image_clone").html();
                 $(".image_increment").after(html);

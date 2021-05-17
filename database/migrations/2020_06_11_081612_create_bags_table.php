@@ -24,9 +24,8 @@ class CreateBagsTable extends Migration
             $table->text('contents_en');
             $table->text('benefits_ar');
             $table->text('benefits_en');
-            $table->string('image');
             $table->string('video')->nullable();
-            $table->string('poster');
+            $table->string('poster')->nullable();
             $table->unsignedBigInteger('bag_category_id')->nullable()->index(); // bags category id
             $table->timestamps();
         });

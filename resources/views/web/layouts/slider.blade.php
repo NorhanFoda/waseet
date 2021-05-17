@@ -10,7 +10,7 @@
                 <p>
                   {{$slider->{'body_'.session('lang')} }}
                 </p>
-                <a href="#"> اكتشف المزيد </a>
+                <a href="#"> {{trans('admin.load_more')}} </a>
               </div>
             </div>
           @endforeach

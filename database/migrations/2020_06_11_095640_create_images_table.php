@@ -19,6 +19,7 @@ class CreateImagesTable extends Migration
             $table->unsignedBigInteger('imageRef_id')->nullable()->index();
             $table->string('imageRef_type');
             $table->enum('type', ['website', 'mobile'])->nullable();
+            $table->enum('image_type', ['content', 'slider'])->nullable();
             $table->timestamps();
         });
     }

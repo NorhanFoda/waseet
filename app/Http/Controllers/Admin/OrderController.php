@@ -36,12 +36,12 @@ class OrderController extends Controller
             ]);
 
             // If order contains buy online bags, then send email bag contents
-            if($order->bags()->where('buy_type', 1)->exists()){
+            if($order->buy_type == 1){
                 // $details['email'] = auth()->user()->email;
                 // $details['bags'] = $order->bags()->where('buy_type', 1)->get();
                 // $details['type'] = 'send_bag_contents';
                 // dispatch(new SendEmailJob($details));
-                SendEmail::sendBagContents($order->bags()->where('buy_type', 1)->get(), auth()->user()->email);
+                SendEmail::sendBagContents($order->bags, auth()->user()->email);
             }
         }
     }

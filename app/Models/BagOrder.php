@@ -10,7 +10,7 @@ class BagOrder extends Model
     protected $fillable = [
         'bag_id', 'order_id',
         'total_price', 'quantity',
-        'accepted', 'shipped', 'delivered', 'buy_type'
+        'accepted', 'shipped', 'delivered'
     ];
     
     protected $dates = ['accepted', 'shipped', 'delivered', 'created_at', 'updated_at'];

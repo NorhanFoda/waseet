@@ -13,13 +13,13 @@ class Order extends Model
 {
     protected $fillable = [
         'user_id', 'total_price', 'address_id',
-        'status', 'shipping_fees', 'payment_method_id'
+        'status', 'shipping_fees', 'payment_method_id', 'buy_type'
     ];
 
     public function bags(){
         return $this->belongsToMany(Bag::class)
                         ->withPivot('total_price', 'quantity', 'accepted', 'shipped', 'delivered',
-                        'id', 'created_at', 'updated_at', 'bag_id', 'order_id', 'buy_type');
+                        'id', 'created_at', 'updated_at', 'bag_id', 'order_id');
     }
 
     public function address(){

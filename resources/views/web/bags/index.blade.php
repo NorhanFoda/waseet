@@ -27,7 +27,7 @@
                         <div class="pack m-2">
                             <a href="{{route('web_bags.show', $bag->id)}}">
                                 <div class="pack_img">
-                                    <img src="{{$bag->image}}" alt="" />
+                                    <img src="{{$bag->images()->where('image_type', 'slider')->first() ? $bag->images()->where('image_type', 'slider')->first()->path : '' }}" alt="" />
                                 </div>
 
                                 <div class="pack_name">

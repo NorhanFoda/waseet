@@ -18,7 +18,7 @@ class Bag extends Model
         'name_ar', 'name_en', 'description_ar',
         'description_en', 'price', 'contents_ar',
         'contents_en', 'benefits_ar', 'benefits_en',
-        'bag_category_id', 'image', 'video', 'poster',
+        'bag_category_id', 'video', 'poster',
     ];
 
     public function images(){

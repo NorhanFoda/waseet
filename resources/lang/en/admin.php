@@ -338,4 +338,10 @@ return [
     'msg_ar' => 'Message in Arabic',
     'msg_en' => 'Message in English',
     'send' => 'Send',
+
+    'load_more' => 'More',
+    'add_to_cart' => 'Add to Cart',
+    'cart_updated' => 'Cart Updated',
+    'payment_error' => 'The Entered Cost is Less Than Total Order Price',
+    'poster_required' => 'Vidoe Poster is Required',
 ];

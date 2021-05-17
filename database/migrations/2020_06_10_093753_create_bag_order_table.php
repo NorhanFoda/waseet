@@ -22,7 +22,7 @@ class CreateBagOrderTable extends Migration
             $table->datetime('accepted')->nullable();
             $table->datetime('shipped')->nullable();
             $table->datetime('delivered')->nullable();
-            $table->integer('buy_type')->nullable();  // 1 -> onlinebuy, 2 -> printcontent
+            // $table->integer('buy_type')->nullable();  // 1 -> onlinebuy, 2 -> printcontent
             $table->timestamps();
         });
     }

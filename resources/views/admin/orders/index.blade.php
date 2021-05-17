@@ -47,6 +47,7 @@
                                     <th>{{trans('admin.email')}}</th>
                                     <th>{{trans('admin.total_price')}}</th>
                                     <th>{{trans('admin.address')}}</th>
+                                    <th>{{trans('admin.buy_type')}}</th>
                                     <th>{{trans('admin.status')}}</th>
                                 </tr>
                                 </thead>
@@ -57,6 +58,7 @@
                                             <td>{{$order->id}}</td>
                                             <td>{{$order->user->email}}</td>
                                             <td>{{$order->total_price + $order->shipping_fees}} {{trans('admin.sr')}}</td>
+                                            <td>{{$order->buy_type == 1 ? trans('web.buy_online') : trans('web.print_content')}}</td>
                                             {{--<td>{{$order->address->country->{'name_'.session('lang')} }} - 
                                                 {{$order->address->city->{'name_'.session('lang')} }} - 
                                                 {{$order->address->address}} - 

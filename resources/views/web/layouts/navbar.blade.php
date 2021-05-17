@@ -1,36 +1,48 @@
 <section class="navBar">
-    <div class="container">
-      <nav class="row">
-        <div class="humburger col-lg-3 col-sm-3 col-2">
-          <img src="{{asset('web/images/menuicon.png')}}" alt="" />
-        </div>
+  <div class="container">
+    <nav class="row">
+      <div class="humburger col-lg-3 col-sm-3 col-2">
+        <img src="{{asset('web/images/menuicon.png')}}" alt="" />
+      </div>
+      
+      <div class="logo col-lg-6 col-sm-6 col-8 text-center">
+        <a href="{{route('home')}}">
+          <img src="{{asset('web/images/Vector-Smart-Object1.png')}}" alt="" />
+          <img src="{{asset('web/images/logo_text.png')}}" alt="" />
+        </a>
+      </div>
+      
+      <div class="search col-lg-3 col-sm-3 col-2">
+        <img src="{{asset('web/images/searchicon.png')}}" alt="" />
+        <form action="{{route('search')}}" method="POST">
+          @csrf
+          <input type="text" id="search" name="token" placeholder="{{trans('web.search')}}" />
+          <button type="submit" class="search-btn"><i class="fa fa-search"></i></button>
+        </form>
+      </div>
+    </nav>
+  </div>
+  
+  <div>
 
-        <div class="logo col-lg-6 col-sm-6 col-8 text-center">
-          <a href="{{route('home')}}">
-            <img src="{{asset('web/images/Vector-Smart-Object1.png')}}" alt="" />
-            <img src="{{asset('web/images/logo_text.png')}}" alt="" />
-          </a>
-        </div>
+    <a href="{{route('carts.index')}}">
 
-        <div class="search col-lg-3 col-sm-3 col-2">
-          <img src="{{asset('web/images/searchicon.png')}}" alt="" />
-          <form action="{{route('search')}}" method="POST">
-            @csrf
-            <input type="text" id="search" name="token" placeholder="{{trans('web.search')}}" />
-            <button type="submit" class="search-btn"><i class="fa fa-search"></i></button>
-          </form>
-        </div>
-      </nav>
+      <i class="fa fa-cart-plus"></i><span id="cart_count">{{$carts}}</span>
+
+    </a>
+
+  </div>
+
+  <div class="menu">
+    
+
+    <div style="width: 100%;">
+      <span id="menu-close"><img src="{{asset('web/images/close.png')}}" alt="" /></span>
+    </div>
+    <div class="logo text-center">
+      <img src="{{asset('web/images/Vector-Smart-Object2.png')}}" alt="" />
     </div>
 
-
-    <div class="menu">
-      <div style="width: 100%;">
-        <span id="menu-close"><img src="{{asset('web/images/close.png')}}" alt="" /></span>
-      </div>
-      <div class="logo text-center">
-        <img src="{{asset('web/images/Vector-Smart-Object2.png')}}" alt="" />
-      </div>
 
       <ul class="links">
 

@@ -44,13 +44,15 @@
 
                                 <!--start gallery-div-->
                                 @foreach($bag->images as $image)
-                                    <div class="col-lg-3 col-md-4 col-6" data-aos="fade-in">
-                                        <div class="gallery-div">
-                                            <a href="{{$image->path}}" class="html5lightbox" data-group="set-1">
-                                                <img src="{{$image->path}}" alt="img">
-                                            </a>
+                                    @if($image->image_type == 'content')
+                                        <div class="col-lg-3 col-md-4 col-6" data-aos="fade-in">
+                                            <div class="gallery-div">
+                                                <a href="{{$image->path}}" class="html5lightbox" data-group="set-1">
+                                                    <img src="{{$image->path}}" alt="img">
+                                                </a>
+                                            </div>
                                         </div>
-                                    </div>
+                                    @endif
                                 @endforeach
                                 <!--end gallery-div-->
 

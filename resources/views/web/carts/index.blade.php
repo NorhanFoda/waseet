@@ -31,7 +31,7 @@
                                     <div class="packsWrap book-details">
                                         <i class="fa fa-times left-icon remove-icon" data-id="{{$cart->id}}"></i>
                                         <div class="pack_img md-center">
-                                            <img src="{{$cart->bag->image}}" alt="" />
+                                            <img src="{{$cart->bag->images()->where('image_type', 'slider')->first() ? $cart->bag->images()->where('image_type', 'slider')->first()->path : 'images/product-avatar.png'}}" alt="" />
                                         </div>
 
                                         <div class="pack-width">
@@ -40,6 +40,7 @@
                                                     @if($cart->buy_type == 1) ({{trans('web.buy_online')}}) @endif
                                                     @if($cart->buy_type == 2) ({{trans('web.print_content')}}) @endif
                                                 </p>
+
                                             </div>
 
                                             <div class="pack_rate">
@@ -132,11 +133,11 @@
                         </li>
 
                         <li>
-                            {{trans('web.sub_price_total')}} : <span id="sub_price_total"></span>
+                            {{trans('web.sub_price_total')}} : <span id="sub_price_total">{{$sub_total}}</span>
                         </li>
 
                         <li>
-                            {{trans('web.total')}} : <span id="total"></span>
+                            {{trans('web.total')}} : <span id="total">{{$total}}</span>
                         </li>
                     </ul>
                 </div>
@@ -181,7 +182,10 @@
                             @endforeach
 
                             <div class="text-center">
-                                <a href="{{route('payment.prepare_order', $address->id)}}" id="continue" class="custom-btn">{{trans('web.continue')}} </a>
+                                {{-- <a href="{{route('payment.prepare_order', $address->id)}}" id="continue" class="custom-btn">{{trans('web.continue')}} </a> --}}
+
+                                <a href="{{route('payment.prepare_order', ['address_id' => $address->id, 'buy_type' => 2])}}" class="custom-btn edit_cart"><i class="fa fa-undo"></i>{{trans('web.print_content')}}</a>
+                                <a href="{{route('payment.prepare_order', ['address_id' => $address->id, 'buy_type' => 1])}}" class="custom-btn edit_cart"><i class="fa fa-cart-plus"></i>{{trans('web.buy_online')}}</a>
                             </div>
                             
                         @else
@@ -303,32 +307,33 @@
 
 @section('scripts')
     <script>
+// localStorage.clear();
         $(document).ready(function(){
 
-            // Get carts from localStorage
-            var carts = JSON.parse(localStorage.getItem("carts"));
-            if(carts != null){
-                for(var i = 0; i < carts.length; i++){
-                    $('#sub_price_'+carts[i].id).text(carts[i].total_price+' {{trans("admin.sr")}}');
-                    $('#count_'+carts[i].id).val(carts[i].quantity);
-                }
-            }
+            $('.edit_cart').click(function(){
+                $.ajax({
+                    url: '{{route("carts.edit_buy_type")}}',
+                    type: "PUT",
+                    dataType: 'json',
+                    data: {"_token": "{{ csrf_token() }}", 
+                            bag_id: $(this).data('bag_id'),
+                            user_id: $(this).data('user_id'),
+                            buy_type: $(this).data('buy_type') 
+                        },
+                    success: function(data){
+                        
 
-            // Calculate Cart total prices on page load
-            var sub_price_total = 0;
-            var total = 0;
-            var fees = parseFloat('{{$shipping_fees}}');
 
-            if(carts != null){
-                for(var i = 0; i < carts.length; i++){
-                    var single_price = parseFloat(carts[i].total_price);
-                    sub_price_total += parseFloat(single_price);
-                }
-            }
-            
-            total = parseFloat(sub_price_total) + fees;
-            $('#sub_price_total').text(sub_price_total+' {{trans("admin.sr")}}');
-            $('#total').text(total+' {{trans("admin.sr")}}');
+                        Swal.fire({
+                            title: data['msg'],
+                            type: 'success',
+                            timer: 2000,
+                            showCancelButton: false,
+                            showConfirmButton: false,
+                        });
+                    }
+                });
+            });
 
             // Update data on plus click
             $(".plus").click(function(){
@@ -337,27 +342,22 @@
 
                 // Update sub price
                 var cart_id = $(this).data('id');
-                var price = parseFloat($(this).data('price'));
-                price = price * input_val;
-                $('#sub_price_'+cart_id).text(price+' {{trans("admin.sr")}}');
 
-                carts = JSON.parse(localStorage.getItem("carts"));
-                for(var i = 0; i < carts.length; i++){
-                    if(cart_id == carts[i].id){
-                        carts[i].quantity = input_val;
-                        carts[i].total_price = price;
-                        localStorage.setItem("carts", JSON.stringify(carts));
-                        break;
+                $.ajax({
+                    url: '{{route("carts.update_quantity")}}',
+                    type: "PUT",
+                    dataType: 'json',
+                    data: {"_token": "{{ csrf_token() }}", 
+                            quantity: input_val,
+                            id: cart_id
+                        },
+                    success: function(data){
+                        $('#sub_price_'+cart_id).text(data['single_price']);
+                        $('#sub_price_total').text(data['sub_total']+' {{trans("admin.sr")}}');
+                        $('#total').text(data['total']+' {{trans("admin.sr")}}');
                     }
-                }
+                });
 
-                // Update totals
-                var diff = price / input_val;
-                sub_price_total += diff;
-                total += diff;
-
-                $('#sub_price_total').text(sub_price_total+' {{trans("admin.sr")}}');
-                $('#total').text(total+' {{trans("admin.sr")}}');
             });
 
             // Update data on minus click
@@ -368,28 +368,21 @@
 
                     // Update sub price
                     var cart_id = $(this).data('id');
-                    var price = parseFloat($(this).data('price'));
-                    price = price * input_val;
-                    $('#sub_price_'+cart_id).text(price+' {{trans("admin.sr")}}');
 
-                    carts = JSON.parse(localStorage.getItem("carts"));
-                    for(var i = 0; i < carts.length; i++){
-                        if(cart_id == carts[i].id){
-                            console.log('in');
-                            carts[i].quantity = input_val;
-                            carts[i].total_price = price;
-                            localStorage.setItem("carts", JSON.stringify(carts));
-                            break;
+                    $.ajax({
+                        url: '{{route("carts.update_quantity")}}',
+                        type: "PUT",
+                        dataType: 'json',
+                        data: {"_token": "{{ csrf_token() }}", 
+                                quantity: input_val,
+                                id: cart_id
+                            },
+                        success: function(data){
+                            $('#sub_price_'+cart_id).text(data['single_price']);
+                            $('#sub_price_total').text(data['sub_total']+' {{trans("admin.sr")}}');
+                            $('#total').text(data['total']+' {{trans("admin.sr")}}');
                         }
-                    }
-
-                    // Update totals
-                    var diff = price / input_val;
-                    sub_price_total -= diff;
-                    total -= diff;
-
-                    $('#sub_price_total').text(sub_price_total+' {{trans("admin.sr")}}');
-                    $('#total').text(total+' {{trans("admin.sr")}}');
+                    });
                 }
                 else{}
             });
@@ -399,50 +392,39 @@
                 var cart_id = $(this).data('id');
                 $(this).parent().parent().remove();
 
-                // Update totals
-                sub_price_total = 0;
-                total = 0;
-
-                var carts = JSON.parse(localStorage.getItem("carts"));
-
-                if(carts != null){
-                    for(var i = 0; i < carts.length; i++){
-                        if(carts[i].id == cart_id){
-                            carts.splice(i-1, 1);
-                            localStorage.setItem("carts", JSON.stringify(carts));
-                            break;
-                        }
+                $.ajax({
+                    url: '{{route("carts.delete")}}',
+                    type: "DELETE",
+                    dataType: 'json',
+                    data: {"_token": "{{ csrf_token() }}", 
+                            id: cart_id
+                        },
+                    success: function(data){
+                        $('#sub_price_'+cart_id).text(data['single_price']);
+                        $('#sub_price_total').text(data['sub_total']+' {{trans("admin.sr")}}');
+                        $('#total').text(data['total']+' {{trans("admin.sr")}}');
                     }
-                }
-
-                for(var i = 0; i < carts.length; i++){
-                    var single_price = parseFloat(carts[i].total_price);
-                    sub_price_total += parseFloat(single_price);
-                }
-
-                total = sub_price_total + fees;
-                $('#sub_price_total').text(sub_price_total+' {{trans("admin.sr")}}');
-                $('#total').text(total+' {{trans("admin.sr")}}');
+                });
 
             });
 
             // Store carts to database
-            $('#continue').click(function(e){
-                e.preventDefault();
-                $link = $(this);
-                var carts = JSON.parse(localStorage.getItem("carts"));
-                $.ajax({
-                        url: "{{route('carts.update')}}",
-                        type: "PUT",
-                        dataType: 'json',
-                        data: {"_token": "{{ csrf_token() }}", carts: carts },
-                        complete: function(data){
-                            window.location.href = $link.attr('href');
-                            localStorage.clear();
-                        }
-                    });
+            // $('#continue').click(function(e){
+                // e.preventDefault();
+                // $link = $(this);
+                // var carts = JSON.parse(localStorage.getItem("carts"));
+                // $.ajax({
+                //         url: "{{route('carts.update')}}",
+                //         type: "PUT",
+                //         dataType: 'json',
+                //         data: {"_token": "{{ csrf_token() }}", carts: carts },
+                //         complete: function(data){
+                //             window.location.href = $link.attr('href');
+                //             localStorage.clear();
+                //         }
+                //     });
 
-            });
+            // });
 
             //  Get cities of selected country
             // $('#country_id').change(function(){
@@ -496,6 +478,10 @@
 
             // Create the search box and link it to the UI element.
             const input = document.getElementById("pac-input");
+
+            // prevent form submit on click (enter btn)
+            google.maps.event.addDomListener(input, 'keydown', function(event) { if (event.keyCode === 13) { event.preventDefault(); } }); 
+            
             const searchBox = new google.maps.places.SearchBox(input);
             map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 

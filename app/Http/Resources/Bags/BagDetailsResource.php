@@ -4,6 +4,7 @@ namespace App\Http\Resources\Bags;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 use Auth;
+use App\Http\Resources\Image\ImageResource;
 
 class BagDetailsResource extends JsonResource
 {
@@ -26,7 +27,7 @@ class BagDetailsResource extends JsonResource
 
         return [
             'id' => $this->id,
-            'image' => $this->image,
+            'slider_images' => ImageResource::collection($this->images()->where('image_type', 'slider')->get()),
             'name' => $this->{'name_'.$lang},
             'rating' => $this->ratings->count() > 0 ? ceil($this->ratings->sum('rate') / $this->ratings->count()).'/5' : trans('admin.no_ratings'),
             'price' => $this->price.' '.trans('admin.sr'),

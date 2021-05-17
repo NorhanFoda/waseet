@@ -33,15 +33,15 @@
                                 @foreach($order->bags as $bag)
                                     <div class="packsWrap book-details">
                                         <div class="pack_img md-center">
-                                            <img src="{{$bag->image}}" alt="" />
+                                            <img src="{{$bag->images()->where('image_type', 'slider')->first() ? $bag->images()->where('image_type', 'slider')->first()->path : '' }}" alt="" />
                                         </div>
 
                                         <div class="pack-width">
                                             <div class="pack_name">
                                                 <p>{{$bag->{'name_'.session('lang')} }} 
                                                     {{-- if order is confirmed then user can show bag contents --}}
-                                                    @if($bag->pivot->buy_type == 1) (<a href="{{$order->status == 4 ? route('order.bag_contents', $bag->id) : '#'}}">{{trans('web.buy_online')}}</a>) @endif
-                                                    @if($bag->pivot->buy_type == 2) ({{trans('web.print_content')}}) @endif
+                                                    @if($order->buy_type == 1) (<a href="{{$order->status == 4 ? route('order.bag_contents', $bag->id) : '#'}}">{{trans('web.buy_online')}}</a>) @endif
+                                                    @if($order->buy_type == 2) ({{trans('web.print_content')}}) @endif
                                                 </p>
                                             </div>
 
@@ -119,7 +119,7 @@
 
                     <!--start track-order-->
                     
-                    @if($order->bags()->where('buy_type', 2)->exists())
+                    {{-- @if($order->buy_type == 2) --}}
                         <div class="track-order margin-div"  data-aos="fade-up">
                             <ul class="list-unstyled">
                                 <li @if($order->status == 2 || $order->status == 3 || $order->status == 4) class="active" @endif>
@@ -160,7 +160,7 @@
                                 </li>
                             </ul>
                         </div>
-                    @endif
+                    {{-- @endif --}}
                     <!--end track-order-->
 
                 </div>

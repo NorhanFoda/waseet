@@ -17,7 +17,8 @@ use Carbon\Carbon;
 
 class PaymentController extends Controller
 {
-    public function prepareOrder($address_id){
+    public function prepareOrder($address_id, $buy_type){
+
         $carts = auth()->user()->carts;
         
         if(count($carts) == 0){
@@ -33,6 +34,7 @@ class PaymentController extends Controller
             'address_id' => $address_id,
             'status' => 1, // Not confirmed
             'shipping_fees' => $shipping_fees,
+            'buy_type' => $buy_type
         ]);
         
         foreach($carts as $cart){
@@ -42,9 +44,9 @@ class PaymentController extends Controller
             $ordr_bags->update([
                 'total_price' => $cart->total_price,
                 'quantity' => $cart->quantity,
-                'buy_type' => $cart->buy_type
+                'buy_type' => $buy_type
             ]);
-            $cart->delete();
+            // $cart->delete();
         }
 
         $banks = Bank::all();
@@ -57,6 +59,8 @@ class PaymentController extends Controller
     }
 
     public function saveBankReceipt(Request $request){
+
+        // dd($request->all());
         $this->validate($request, [
             'bank_id' => 'required',
             'name' => 'required',
@@ -66,8 +70,21 @@ class PaymentController extends Controller
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
 
+        $order = Order::with('address')->find($request->order_id);
+        $shipping_fees = Setting::find(1)->shipping_fees;
+
+        if($request->cost < ($order->total_price + $shipping_fees)){
+
+            session()->flash('error', trans('admin.payment_error'));
+
+            return redirect()->route('carts.index');
+        }
+
         $receipt = BankReceipt::create($request->all());
-        $receipt->update(['user_id' => auth()->user()->id]);
+        $receipt->update([
+            'user_id' => auth()->user()->id,
+            'order_id' => $request->order_id
+            ]);
 
         $image_url = Upload::uploadImage($request->image);
         $image = Image::create([
@@ -77,11 +94,12 @@ class PaymentController extends Controller
         ]);
         $receipt->image()->save($image);
 
-        $order = Order::with('address')->find($request->order_id);
         $order->update(['status' => 2]);
         $order->bags()->update([
             'accepted' => Carbon::now()
         ]);
+
+        auth()->user()->carts()->delete();
 
         // // If order contains buy online bags, then send email bag contents
         // if($order->bags()->where('buy_type', 1)->exists()){

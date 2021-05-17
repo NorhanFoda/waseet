@@ -30,7 +30,7 @@ class BagController extends Controller
      */
     public function index()
     {
-        $bags = Bag::all();
+        $bags = Bag::OrderBy('id', 'desc')->get();
         return view('admin.bags.index', compact('bags'));
     }
 
@@ -57,14 +57,40 @@ class BagController extends Controller
         // Store basic data of the bag
         $bag = Bag::create($request->all());
 
-        $image_url = Upload::uploadImage($request->image);
-        $poster_url = Upload::uploadImage($request->poster);
+        // $image_url = Upload::uploadImage($request->image);
+        $poster_url = $request->has('poster') ? Upload::uploadImage($request->poster) : null;
         $video_url = $request->has('video') ? Upload::uploadVideo($request->video) : null;
         $bag->update([
-            'image' => $image_url,
+            // 'image' => $image_url,
             'video' => $video_url,
             'poster' => $poster_url
         ]);
+
+        if($request->has('slider_images')){
+
+            $imageRules = array(
+                'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            );
+
+            foreach($request->slider_images as $image){
+                //Validate image
+                $image_to_validate = array('image' => $image);
+                $imageValidator = Validator::make($image_to_validate, $imageRules);
+                if ($imageValidator->fails()) {
+                    return $imageValidator->messages();
+                }
+
+                $content_image_url = Upload::uploadImage($image);
+                $content_image = Image::create([
+                    'path' => $content_image_url,
+                    'imageRef_id' => $bag->id,
+                    'imageRef_type' => 'App\Models\Bag',
+                    'image_type' => 'slider',
+                ]);
+
+                $bag->images()->save($content_image);
+            }
+        }
 
         // Store bag contents
         if($request->has('documents')){
@@ -107,7 +133,8 @@ class BagController extends Controller
                 $content_image = Image::create([
                     'path' => $content_image_url,
                     'imageRef_id' => $bag->id,
-                    'imageRef_type' => 'App\Models\Bag'
+                    'imageRef_type' => 'App\Models\Bag',
+                    'image_type' => 'content',
                 ]);
                 $bag->images()->save($content_image);
             }
@@ -226,19 +253,45 @@ class BagController extends Controller
             'bag_category_id' => $request->bag_category_id,
         ]);
 
-        if($request->has('image')){
-            $removed = Upload::deleteImage($bag->image);
-            if($removed){
-                $image_url = Upload::uploadImage($request->image);
-                $bag->update([
-                    'image' => $image_url,
+        if($request->has('slider_images')){
+
+            $imageRules = array(
+                'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            );
+
+            foreach($request->slider_images as $image){
+                //Validate image
+                $image_to_validate = array('image' => $image);
+                $imageValidator = Validator::make($image_to_validate, $imageRules);
+                if ($imageValidator->fails()) {
+                    return $imageValidator->messages();
+                }
+
+                $content_image_url = Upload::uploadImage($image);
+                $content_image = Image::create([
+                    'path' => $content_image_url,
+                    'imageRef_id' => $bag->id,
+                    'imageRef_type' => 'App\Models\Bag',
+                    'image_type' => 'slider',
                 ]);
-            }
-            else{
-                session()->flash('message', trans('admin.error'));
-                return redirect()->route('bags.index');        
+
+                $bag->images()->save($content_image);
             }
         }
+
+        // if($request->has('image')){
+        //     $removed = Upload::deleteImage($bag->image);
+        //     if($removed){
+        //         $image_url = Upload::uploadImage($request->image);
+        //         $bag->update([
+        //             'image' => $image_url,
+        //         ]);
+        //     }
+        //     else{
+        //         session()->flash('message', trans('admin.error'));
+        //         return redirect()->route('bags.index');        
+        //     }
+        // }
 
         if($request->has('video')){
             $video_removed = Upload::deleteVideo($bag->video);
@@ -309,7 +362,8 @@ class BagController extends Controller
                 $content_image = Image::create([
                     'path' => $content_image_url,
                     'imageRef_id' => $bag->id,
-                    'imageRef_type' => 'App\Models\Bag'
+                    'imageRef_type' => 'App\Models\Bag',
+                    'image_type' => 'content',
                 ]);
                 $bag->images()->save($content_image);
             }
@@ -363,7 +417,7 @@ class BagController extends Controller
         $bag = Bag::find($request->id);
 
         // Delete basic data of the bag
-        $image_removed = Upload::deleteImage($bag->image);
+        // $image_removed = Upload::deleteImage($bag->image);
         $video_removed = Upload::deleteVideo($bag->video);
         $poster_removed = Upload::deleteImage($bag->poster);
         $docs_removed = false;
@@ -412,7 +466,7 @@ class BagController extends Controller
             $videos_removed = true;
         }
         
-        if($image_removed && $video_removed && $poster_removed && $videos_removed && $images_removed && $docs_removed){
+        if($video_removed && $poster_removed && $videos_removed && $images_removed && $docs_removed){
             $bag->delete();
             return response()->json([
                 'data' => 1

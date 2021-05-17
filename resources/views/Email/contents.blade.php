@@ -40,7 +40,7 @@
 
                     <div>
                         <h2  style="text-align:center">{{$bag->{'name_'.session('lang')} }}</h2>
-                        <img src="{{$bag->image}}" alt="">
+                        <img src="{{$bag->images()->where('image_type', 'slider')->first() ? $bag->images()->where('image_type', 'slider')->first()->path : 'images/product-avatar.png' }}" alt="">
                         <p  style="text-align:center">{{$bag->{'description_'.session('lang')} }}</p>
                         <video width="100%" height="290" poster="{{$bag->poster}}" controls>
                             <source src="{{$bag->video}}" type="video/mp4">
@@ -68,7 +68,9 @@
                                 {{trans('web.images')}} : 
                             </h4>
                             @foreach($bag->images as $image)
-                                <a href="{{$image->path}}">{{trans('web.click_here')}}</a>
+                                @if($image->image_type == 'content')
+                                    <a href="{{$image->path}}">{{trans('web.click_here')}}</a>
+                                @endif
                             @endforeach
                         @endif
 

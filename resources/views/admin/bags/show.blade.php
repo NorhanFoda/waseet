@@ -42,8 +42,13 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="users-view-image">
-                                <img src="{{$bag->image ? $bag->image : 'images/product-avatar.png'}}" class="users-avatar-shadow rounded mb-2 pr-2 ml-1" 
+                                @php
+                                    $slider_images = $bag->images()->where('image_type', 'slider')->get();
+                                @endphp
+                                @foreach ($slider_images as $image)
+                                    <img src="{{$image->path}}" class="users-avatar-shadow rounded mb-2 pr-2 ml-1" 
                                     alt="avatar" style="width:150px; height:150px;">
+                                @endforeach
                             </div>
                             {{trans('admin.rate')}}: {{$bag->ratings->count() > 0 ? ceil($bag->ratings->sum('rate') / $bag->ratings->count()).'/5' : trans('admin.no_ratings')}}
                         </div>
@@ -195,7 +200,9 @@
                     </div>
                     <div class="card-body px-75" style="text-align: center;">
                         @foreach($bag->images as $image)
-                            <img src="{{$image->path}}" alt="{{$bag->{'name_'.session('lang')} }}" width="100px" height="100px" style="border-radius: 5px">
+                            @if($image->image_type == 'content')
+                                <img src="{{$image->path}}" alt="{{$bag->{'name_'.session('lang')} }}" width="100px" height="100px" style="border-radius: 5px">
+                            @endif
                         @endforeach
                     </div>
                 </div>

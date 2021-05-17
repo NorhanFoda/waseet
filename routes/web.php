@@ -280,10 +280,12 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
         Route::get('carts', 'Web\CartController@index')->name('carts.index');
         Route::post('carts', 'Web\CartController@store')->name('carts.store');
         Route::put('carts/update', 'Web\CartController@update')->name('carts.update');
+        Route::put('carts/edit_buy_type', 'Web\CartController@editBuyType')->name('carts.edit_buy_type');
+        Route::put('carts/update_quantity', 'Web\CartController@updateQuantity')->name('carts.update_quantity');
         Route::delete('cart/delete', 'Web\CartController@delete')->name('carts.delete');
 
         // Orders
-        Route::get('payment/{address_id}', 'Web\PaymentController@prepareOrder')->name('payment.prepare_order');
+        Route::get('payment/{address_id}/{buy_type}', 'Web\PaymentController@prepareOrder')->name('payment.prepare_order');
         Route::get('banks/data', 'Web\PaymentController@getBanksData')->name('payment.banks');
         Route::post('save/bank_receipt', 'Web\PaymentController@saveBankReceipt')->name('payment.bank_receipt');
         Route::get('confirm/order/{id}', 'Web\PaymentController@confirmOrder')->name('order.confirm');
