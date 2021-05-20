@@ -3,41 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="cd15da47-63c2-41ed-b1ce-7bae5fd08688" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/BagController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/BagController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/OrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/OrderController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Web/CartController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Web/CartController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Web/PaymentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Web/PaymentController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Bags/BagRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Bags/BagRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Resources/Bags/BagDetailsResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/Bags/BagDetailsResource.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Bag.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Bag.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/BagOrder.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/BagOrder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Image.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Image.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Order.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Order.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_06_10_093331_create_orders_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_06_10_093331_create_orders_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_06_10_093753_create_bag_order_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_06_10_093753_create_bag_order_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_06_10_100259_create_carts_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_06_10_100259_create_carts_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_06_11_081612_create_bags_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_06_11_081612_create_bags_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_06_11_095640_create_images_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_06_11_095640_create_images_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/ar/admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ar/admin.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/en/admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/admin.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Email/contents.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Email/contents.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/bags/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/bags/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/bags/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/bags/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/bags/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/bags/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/layouts/footer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/layouts/footer.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/orders/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/orders/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/bags/gallery.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/bags/gallery.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/bags/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/bags/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/web/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/web/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/web/css/responsive.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/web/css/responsive.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/web/bags/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/bags/show.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/web/carts/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/carts/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/web/home/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/home/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/web/layouts/navbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/layouts/navbar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/layouts/slider.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/layouts/slider.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/orders/track_order.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/orders/track_order.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/search/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/search/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/web/saved/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/saved/index.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,7 +127,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ajar" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -220,7 +192,10 @@
       <workItem from="1620214578700" duration="806000" />
       <workItem from="1620558249435" duration="335000" />
       <workItem from="1620559387250" duration="13000" />
-      <workItem from="1621249039253" duration="2957000" />
+      <workItem from="1621249039253" duration="4947000" />
+      <workItem from="1621318569895" duration="659000" />
+      <workItem from="1621331358676" duration="1244000" />
+      <workItem from="1621414811754" duration="27000" />
     </task>
     <servers />
   </component>
@@ -232,9 +207,9 @@
       <screen x="72" y="27" width="1528" height="873" />
     </state>
     <state x="431" y="125" width="800" height="684" key="#Deployment/72.27.1528.873@72.27.1528.873" timestamp="1618732888606" />
-    <state x="619" y="221" width="424" height="491" key="FileChooserDialogImpl" timestamp="1620559399842">
+    <state x="619" y="221" width="424" height="491" key="FileChooserDialogImpl" timestamp="1621414836752">
       <screen x="72" y="27" width="1528" height="873" />
     </state>
-    <state x="619" y="221" width="424" height="491" key="FileChooserDialogImpl/72.27.1528.873@72.27.1528.873" timestamp="1620559399842" />
+    <state x="619" y="221" width="424" height="491" key="FileChooserDialogImpl/72.27.1528.873@72.27.1528.873" timestamp="1621414836752" />
   </component>
 </project>

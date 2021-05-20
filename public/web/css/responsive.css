@@ -3,12 +3,34 @@
     .navBar nav .logo img:first-child {
         max-width: 65px;
     }
+    .navBar.scrolling .search {
+        margin-top: 5px;
+        margin-bottom: 10px;
+    }
+
 
     .navBar nav .logo img:last-child {
         max-width: 160px;
     }
 
 
+    .navBar nav .search.active input {
+        opacity: 1;
+        visibility: visible;
+        width: 290px;
+        z-index: 12;
+    }
+    .navBar nav .search input {
+        top:-2px;
+    }
+    .search-btn {
+      top: 4px;
+    }
+    .cart-icon {
+            font-size: 20px;
+        margin-right: 3px;
+        margin-top: 7px;;
+    }
     .search {
         margin-top: 6px;
     }
@@ -97,7 +119,7 @@
 
 
     .navBar nav .logo img:last-child {
-        max-width: 150px;
+        max-width: 136px;
     }
 
 
@@ -269,6 +291,13 @@
     .feature-text #shadow {
         display: none;
     }
+    
+    .book-share .social-icons div{
+        display:inline-block;
+    }
+    .main-slide-item {
+    height: 300px;
+    }
 
     .slider .item {
         height: 300px;
@@ -419,13 +448,18 @@
 @media screen and (max-width:410px) {
 
     .navBar nav .logo img:first-child {
-        max-width: 45px;
+        max-width: 43px;
     }
 
     .navBar nav .logo img:last-child {
-        max-width: 133px;
+        max-width: 138px;
     }
-
+.navBar nav .logo  {
+    padding:5px 0 0;
+}
+.cart-icon {
+    margin-top: 2px;
+}
     .navBar nav .humburger img {
         margin-top: 11px;
         max-width: 28px;

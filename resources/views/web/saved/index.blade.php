@@ -193,9 +193,9 @@
                             <div class="item col-lg-4 col-sm-6">
                                 <div class="packsWrap">
                                     <div class="pack m-2">
-                                        <a href="{{route('bags.show', $bag->saveRef->id)}}">
+                                        <a href="{{route('web_bags.show', $bag->saveRef->id)}}">
                                             <div class="pack_img">
-                                                <img src="{{$bag->saveRef->image}}" alt="" />
+                                                <img src="{{$bag->saveRef->images()->where('image_type', 'slider')->first() ? $bag->saveRef->images()->where('image_type', 'slider')->first()->path : 'images/product-avatar.png'}}" alt="" />
                                             </div>
 
                                             <div class="pack_name">

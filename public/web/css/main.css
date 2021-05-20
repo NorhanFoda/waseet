@@ -602,12 +602,8 @@ button:focus {
 }
 
 .navBar.scrolling .search {
-  margin-top: 5px;
-  margin-bottom: 15px;
-}
-
-.navBar.scrolling .search img {
-  margin-top: 10px;
+    margin-top: 12px;
+    margin-bottom: 10px;
 }
 
 .navBar.scrolling nav .logo {
@@ -658,7 +654,7 @@ button:focus {
   z-index: 11;
 }
 
-.navBar nav .search span {
+.navBar nav .search form span {
   cursor: url(../images/pointer.png), pointer !important;
   color: #c1a5e3;
 }
@@ -674,8 +670,8 @@ button:focus {
   z-index: 10;
   position: absolute;
   width: 0;
-  top: 0;
-  left: 0;
+  top: -6px;
+  left:50px;
   border-radius: 15px;
   border: 1px solid #e8e0ee;
   font-family: cairoSemiBold;
@@ -687,21 +683,22 @@ button:focus {
   -webkit-box-shadow: 1px 1px 3px #c1a5e3, -1px -1px 3px #c1a5e3;
   box-shadow: 1px 1px 3px #c1a5e3, -1px -1px 3px #c1a5e3;
   opacity: 0;
-  visibility: hidden
+  visibility: hidden;
+  padding-left:40px;
 }
 
 .navBar nav .search.active input {
   opacity: 1;
   visibility: visible;
-  width: 340px;
+  width: 290px;
   z-index: 12;
 }
 
 .search-btn {
   color: #af8adc;
   position: absolute;
-  left: 9px;
-  top: 4px;
+  left: 59px;
+  top: -1px;
   border: none;
   font-size: 26px;
   background: none;
@@ -716,6 +713,33 @@ nav .search.active .search-btn {
   opacity: 1;
   z-index: 13;
 
+}
+
+.cart-icon {
+    color: #B79BD3;
+    position: relative;
+    font-size: 24px;
+    vertical-align: text-top;
+    margin-right: 5px;
+    display:inline-block;
+}
+
+.cart-icon:hover{
+    color:#000;
+}
+
+.cart-icon span {
+    position: absolute;
+    top: -4px;
+    height: 18px;
+    min-width: 18px;
+    border-radius: 50%;
+    background: #d3c2e5;
+    line-height: 18px;
+    text-align: center;
+    font-size: 11px;
+    color: #fff;
+    left: -4px;
 }
 
 .slider {

@@ -211,7 +211,7 @@
                     </button>
                 </div>
                 <div class="modal-body text-right-dir">
-                    <div class="signUp gray-form aos-init aos-animate" data-aos="fade-in">
+                    <div class="signUpp gray-form aos-init aos-animate" data-aos="fade-in">
                         <form action="{{route('addresses.store')}}" method="POST">
                             @csrf
                             <div class="inputs-contain">
@@ -271,7 +271,7 @@
                                 {{-- Add city modal end --}}
 
                                 <div class="userName">
-                                    <input type="text" name="address" id="pac-input" required="">
+                                    <input type="text" name="address" id="pac-input" class="form-control" required="">
                                     <input type="hidden" name="lat" value="" id="location_lat">
                                     <input type="hidden" name="long" value="" id="location_lng">
                                     <input type="hidden" name="city" value="" id="city">
@@ -280,7 +280,7 @@
                                     </label>
                                 </div>
 
-                                <div class="map-div">
+                                <div class="map" style="margin-bottom:20px">
                                     <div id="gmap" style="width:100%;height:400px;">
                                 </div>
                                 
@@ -292,7 +292,7 @@
                                 </div> --}}
 
                             </div>
-                            <div class="submit">
+                            <div class="submit text-center">
                                 <button type="submit" class="custom-btn">{{trans('web.add')}}</button>
                             </div>
                         </form>

@@ -50,6 +50,7 @@ class CartController extends Controller
     public function store(Request $request){
         if(app('request')->header('Authorization') != null && Auth::guard('api')->check()){
             if(app('request')->header('Authorization') == 'Bearer '.auth()->user()->api_token){
+                
                 $this->validate($request, [
                     'bag_id' => 'required',
                     'quantity' => 'required',

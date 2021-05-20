@@ -70,7 +70,7 @@
     </div>
   </section>
 
-  <section class="search-job">
+  <section class="search-job white-prg">
     <div class="overlay"></div>
     <div class="container">
       <div class="row">

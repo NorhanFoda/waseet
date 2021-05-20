@@ -47,12 +47,29 @@
             <div class=" m-2">
 
                 <div class="row">
-                    <div class="pack_img col-lg-3 md-center">
-                        <img src="{{$bag->images()->where('image_type', 'slider')->first() ? $bag->images()->where('image_type', 'slider')->first()->path : 'images/product-avatar.png'}}" alt="" />
+                    <div class="pack_img col-sm-12">
+                            <div id="main-owl" class="owl-carousel owl-theme main-slider-owl">
+                                <!--start item-->
+                                @php
+                                    $sliders = $bag->images()->where('image_type', 'slider')->get();
+                                @endphp
+
+                                @foreach($sliders as $image)
+                                    <div class="item">
+                                        <div class="main-slide-item"
+                                            style="background-image:url({{$image->path}})">
+                                        </div>
+                                    </div>  
+                                @endforeach
+                                
+                                <!--end item-->
+
+                            </div>
+                        {{-- <img src="{{$bag->images()->where('image_type', 'slider')->first() ? $bag->images()->where('image_type', 'slider')->first()->path : 'images/product-avatar.png'}}" alt="" /> --}}
                     </div>
 
-                    <div class="col-lg-7 col-sm-10">
-                        <div class="pack-width">
+                    <div class="col-sm-10">
+                 
                             <div class="pack_name">
                                 <p>{{$bag->{'name_'.session('lang')} }}</p>
                                 <span class="pack_price">{{$bag->price}} {{trans('admin.sr')}}</span>
@@ -123,7 +140,7 @@
                                 {{-- <a href="#" onclick="addToCart(2)" class="custom-btn"><i class="fa fa-undo"></i>{{trans('web.print_content')}}</a>
                                 <a href="#" onclick="addToCart(1)" class="custom-btn"><i class="fa fa-cart-plus"></i>{{trans('web.buy_online')}}</a> --}}
                             </div>
-                        </div>
+                        
                     </div>
 
                     <div class="book-share col-sm-2 text-left-dir">
@@ -238,5 +255,21 @@
                 });
             }
         }
+        </script>
+        
+        <script>
+        //owl-carousel
+        $("#main-owl").owlCarousel({
+            loop: true,
+            items: 1,
+            nav: false,
+            dots: true,
+            autoplay: true,
+            mouseDrag: true,
+            touchDrag: true,
+            rtl:true,
+            autoplayTimeout: 8000
+        });
+
     </script>
 @endsection

@@ -78,6 +78,7 @@ class PaymentController extends Controller
                     'address_id' => $request->address_id,
                     'status' => 1, // Not confirmed
                     'shipping_fees' => $shipping_fees,
+                    'buy_type' => $carts[0]->buy_type
                 ]);
 
                 foreach($carts as $cart){
