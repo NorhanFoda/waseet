@@ -56,7 +56,11 @@
                                             {{$order->address->city->{'name_'.session('lang')} }} -
                                             {{$order->address->address}} - {{trans('web.ps')}} : {{$order->address->postal_code}}
                                         </td>--}}
-                                        <td>{{$order->address->address}}</td>
+                                        <td>{{$order->address && $order->buy_type == 2 ? $order->address->address : trans('web.buy_online')}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="font-weight-bold">{{trans('admin.payment_way')}}</td>
+                                        <td>{{$order->payment_method ? $order->payment_method->{'name_'.session('lang')} : '' }}</td>
                                     </tr>
                                     <tr>
                                         <td class="font-weight-bold">{{trans('admin.status')}}</td>
@@ -95,9 +99,11 @@
                             </div>
 
                             <div class="col-12 col-sm-9 col-md-6 col-lg-4">
-                                <a href="{{$order->receipt->image->path}}">
-                                    <img src="{{$order->receipt->image->path}}" alt="{{$order->id}}" width="200px" height="200px">
-                                </a>
+                                @if($order->payment_method_id == 2)
+                                    <a href="{{$order->receipt->image->path}}">
+                                        <img src="{{$order->receipt->image->path}}" alt="{{$order->id}}" width="200px" height="200px">
+                                    </a>
+                                @endif
                             </div>
 
                         </div>

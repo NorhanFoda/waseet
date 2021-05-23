@@ -30,7 +30,7 @@
                                     <ul>
                                         <li><span> {{trans('web.order_id')}} :</span> {{$order->id}}</li>
                                         <li><span>  {{trans('web.cost')}} :</span>  {{$order->total_price + $order->shipping_fees}} {{trans('admin.sr')}}</li>
-                                        <li><span>  {{trans('web.address')}} :</span>   {{$order->address->address}}</li>
+                                        <li><span>  {{trans('web.address')}} :</span>   {{$order->address && $order->buy_type == 2 ? $order->address->address : trans('web.buy_online')}}</li>
                                     </ul>
                                     <div class="text-center col-12">
                                        <br><br>  <a href="{{route('profile.orders')}}" class="custom-btn">{{trans('web.continue')}} </a>

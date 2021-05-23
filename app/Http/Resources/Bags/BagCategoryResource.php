@@ -18,7 +18,8 @@ class BagCategoryResource extends JsonResource
         
         return [
             'id' => $this->id,
-            'image' => $this->image ? $this->image->path : 'no image',
+            // 'image' => $this->image ? $this->image->path : 'no image',
+            'image' => $this->image ? $this->image->path : null,
             'name' => $this->{'name_'.$lang}
         ];
     }

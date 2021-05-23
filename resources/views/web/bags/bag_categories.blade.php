@@ -25,7 +25,7 @@
                 <div class="item col-lg-4 col-sm-6">
             <div class="pack">
               <div class="img">
-                <img src="{{$cat->image ? $cat->image->path : ''}}" alt="{{$cat->image ? $cat->image->path : trans('web.no_image')}}" />
+                <img src="{{$cat->image ? $cat->image->path : asset('images/seeding/avatar.png')}}" alt="{{$cat->image ? $cat->image->path : $cat->{'name_'.session('lang')} }}" />
               </div>
               <div class="row">
                 <a href="{{route('categories.bags', $cat->id)}}" class="custom-btn">{{$cat->{'name_'.session('lang')} }}</a>

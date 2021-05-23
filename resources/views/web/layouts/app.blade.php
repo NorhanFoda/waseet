@@ -563,7 +563,7 @@
                             swalWithBootstrapButtons.fire({
                                 title: '{{trans('sweet_alert.deleted_successfully')}}',
                                 showConfirmButton: false,
-                                timer: 1000
+                                timer: 2000
                             });
                         }
                     });
@@ -574,7 +574,7 @@
                     swalWithBootstrapButtons.fire({
                         title: '{{trans('sweet_alert.cancelled')}}',
                         showConfirmButton: false,
-                        timer: 1000
+                        timer: 2000
                     });
 
                 }
@@ -627,7 +627,7 @@
             Swal.fire({
                 title: "{{ $error }}",
                 type: 'error',
-                timer: 1500,
+                timer: 2000,
                 showCancelButton: false,
                 showConfirmButton: false,
             });

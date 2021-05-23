@@ -344,4 +344,5 @@ return [
     'cart_updated' => 'Cart Updated',
     'payment_error' => 'The Entered Cost is Less Than Total Order Price',
     'poster_required' => 'Vidoe Poster is Required',
+    'payment_way' => 'Payment Method',
 ];

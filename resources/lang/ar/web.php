@@ -38,6 +38,7 @@ return [
     'bag_benefits' => 'ما يكسبه الطالب',
     'rated' => 'تمت إضافة التقييم بنجاح',
     'rating_updated' => 'تم تعديل التقييم بنجاح',
+    'buy_type' => 'نوع الشحن',
 
     // Login
     'login_as' => ' حساب جديد كـ',
@@ -149,15 +150,17 @@ return [
     'cart_text' => 'هذا النص هو مثال لنص يمكن ان يستبدل فى نفس المساحة',
     'count' => 'العدد',
     'sub_price' => 'المبلغ الفرعى',
-    'shipping_fees' => 'ضريبة الشحن',
+    'shipping_fees' => 'قيمة الشحن',
     'sub_price_total' => 'إجمالى المبلغ الفرعى',
-    'total' => 'الإجمالى',
+    'total' => 'الإجمالى بعد إضافة قيمة الشحن',
     'continue_pay' => 'متابعة الدفع',
     'continue' => 'متابعة',
     'select_payment_method' => 'إختر طريقة الدفع',
     'select_shipping_address' => 'إختر عنوان الشحن',
     'add_address' => 'أضف عنوان',
     'cart_empty' => 'سلة التسوق فارغة',
+    'payment_method' => 'طريقة الشحن',
+    'payment_methods' => 'وسائل الدفع',
 
     // Profile
     'profile' => 'حسابى',

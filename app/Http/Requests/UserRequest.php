@@ -28,8 +28,8 @@ class UserRequest extends FormRequest
             'email' => 'required|email',
             'phone_main' => 'required_if:role_id,2|required_if:role_id,3|required_if:role_id,4|required_if:role_id,5|required_if:role_id,6|min:9|unique:users,phone_main',
             // 'phone_secondary' => 'sometimes|min:9',
-            'password' => 'required|min:9|required_with:password_confirmation|same:password_confirmation',
-            'password_confirmation' => 'required|min:9',
+            'password' => 'required|min:6|required_with:password_confirmation|same:password_confirmation',
+            'password_confirmation' => 'required|min:6',
             'exper_years' => 'required_if:role_id,3|required_if:role_id,4|required_if:role_id,6',
             // 'age' => 'required_if:role_id,2|required_if:role_id,3|required_if:role_id,4|required_if:role_id,6',
 

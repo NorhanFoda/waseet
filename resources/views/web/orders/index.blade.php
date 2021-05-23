@@ -40,6 +40,9 @@
                                             <span class="second_color">{{$order->bags->count()}}</span>
                                         </li>
                                         <li> {{trans('web.total_price')}} : <span class="second_color"> {{$order->total_price +$order->shipping_fees }} {{trans('admin.sr')}} </span></li>
+                                        <li> {{trans('admin.payment_way')}} : <span class="second_color"> {{$order->payment_method ? $order->payment_method->{'name_'.session('lang')} : ''}}</span></li>
+                                        <li> {{trans('web.payment_method')}} : <span class="second_color"> {{$order->buy_type == 1 ? trans('web.buy_online') : trans('web.print_content')}}</span></li>
+                                        
                                     </ul>
                                 </li>
                             @endforeach

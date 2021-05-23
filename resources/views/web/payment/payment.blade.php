@@ -76,6 +76,8 @@
                                 <div class="inputs-contain">
 
                                     <input type="hidden" name="order_id" value="{{$order_id}}">
+                                    <input type="hidden" name="payment_method_id" value="{{$payment_method_id}}">
+                                    
                                     <div class="userName">
                                         <input type="text" name="name" required>
                                         <label>

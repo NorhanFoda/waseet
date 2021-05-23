@@ -1062,12 +1062,15 @@ nav .search.active .search-btn {
 }
 
 .search-job .job p {
-  color: #fff;
+  color: #000;
   font-family: cairoRegular;
   font-size: 14px;
   padding: 0 10px;
-  max-height: 100px;
+  max-height: 104px;
   overflow: hidden;
+}
+.white-prg .job p {
+  color: #fff;
 }
 .overlay-div{
     background-image: url(../images/packs-bg.png);
@@ -4108,4 +4111,10 @@ input#pac-input ,input#teaching-pac-input{
 
 input#teaching-pac-input {
   top: 110px !important;
+}
+
+.main-slide-item{
+    height:400px;
+    background-position:top center;
+    background-size:cover;
 }

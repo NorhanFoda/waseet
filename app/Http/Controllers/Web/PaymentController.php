@@ -10,6 +10,7 @@ use App\Models\BagOrder;
 use App\Models\Bag;
 use App\Models\Bank;
 use App\Models\BankReceipt;
+use App\Models\PaymentMethod;
 use App\Models\Image;
 use App\Classes\Upload;
 use App\Classes\SendEmail;
@@ -17,7 +18,7 @@ use Carbon\Carbon;
 
 class PaymentController extends Controller
 {
-    public function prepareOrder($address_id, $buy_type){
+    public function prepareOrder($buy_type, $address_id = null){
 
         $carts = auth()->user()->carts;
         
@@ -50,7 +51,41 @@ class PaymentController extends Controller
         }
 
         $banks = Bank::all();
-        return view('web.payment.payment')->with(['order_id' => $order->id, 'banks' => $banks]);
+
+        // online pay
+        if($order->buy_type == 1){
+
+            $payment_method_id = 2; // bank transfere 
+            return view('web.payment.payment')->with(['order_id' => $order->id, 'banks' => $banks, 'payment_method_id' => $payment_method_id]);
+        }
+        else{
+            
+            $payment_methods = PaymentMethod::all();
+
+            return view('web.payment.payment_methods_2')->with(['order_id' => $order->id, 'payment_methods' => $payment_methods, 'banks' => $banks]);
+        }
+    }
+
+    public function continuePay($order_id, $method_id){
+
+        $order = Order::find($order_id);
+
+        if($method_id == 1){
+
+            auth()->user()->carts()->delete();
+
+            $order->update(['status' => 2, 'payment_method_id' => $method_id]);
+
+            return view('web.payment.payment_report', compact('order'));
+        }
+        else if($method_id == 2){
+
+            $banks = Bank::all();
+
+            $payment_method_id = $method_id;
+
+            return view('web.payment.payment')->with(['order_id' => $order->id, 'banks' => $banks, 'payment_method_id' => $payment_method_id]);
+        }
     }
 
     public function getBanksData(){
@@ -60,7 +95,6 @@ class PaymentController extends Controller
 
     public function saveBankReceipt(Request $request){
 
-        // dd($request->all());
         $this->validate($request, [
             'bank_id' => 'required',
             'name' => 'required',
@@ -94,7 +128,8 @@ class PaymentController extends Controller
         ]);
         $receipt->image()->save($image);
 
-        $order->update(['status' => 2]);
+        $order->update(['status' => 2, 'payment_method_id' => $request->payment_method_id]);
+
         $order->bags()->update([
             'accepted' => Carbon::now()
         ]);

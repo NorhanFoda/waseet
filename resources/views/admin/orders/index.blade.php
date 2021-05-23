@@ -46,8 +46,8 @@
                                     <th>{{trans('admin.order_id')}}</th>
                                     <th>{{trans('admin.email')}}</th>
                                     <th>{{trans('admin.total_price')}}</th>
+                                    <th>{{trans('web.buy_type')}}</th>
                                     <th>{{trans('admin.address')}}</th>
-                                    <th>{{trans('admin.buy_type')}}</th>
                                     <th>{{trans('admin.status')}}</th>
                                 </tr>
                                 </thead>
@@ -64,10 +64,10 @@
                                                 {{$order->address->address}} - 
                                                 {{trans('web.ps')}} : {{$order->address->postal_code}}
                                             </td>--}}
-                                            @if($order->address == null)
+                                            {{-- @if($order->address == null)
                                                 {{dd($order->id)}}
-                                            @endif
-                                            <td>{{$order->address->address}}</td>
+                                            @endif --}}
+                                            <td>{{$order->address && $order->buy_type == 2 ? $order->address->address : trans('web.buy_online')}}</td>
                                             <td>
                                                 <select name="status" class="form-control status" data-id="{{$order->id}}">
                                                     <option value="{{2}}" @if($order->status == 2) selected @endif>{{trans('admin.waiting')}}</option>

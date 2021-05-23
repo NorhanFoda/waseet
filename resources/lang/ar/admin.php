@@ -336,4 +336,5 @@ return [
     'cart_updated' => 'تم التعديل',
     'payment_error' => 'المبلغ المدخل أقل من التكلفة الإجمالية',
     'poster_required' => 'صورة الفيديو مطلوبة',
+    'payment_way' => 'طريقة الدفع',
 ];

@@ -13,10 +13,13 @@ class OrderController extends Controller
 {
     public function index(){
         $orders = Order::where('status', '!=', 1)->orderBy('created_at', 'desc')->get();
+
+        // dd($orders); 
         return view('admin.orders.index', compact('orders'));
     }
 
     public function update(Request $request){
+
         $order = Order::find($request->id);
         $order->update(['status' => $request->status]);
 

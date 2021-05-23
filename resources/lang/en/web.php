@@ -150,13 +150,16 @@ return [
     'sub_price' => 'Sub Price',
     'shipping_fees' => 'Shipping Fees',
     'sub_price_total' => 'Sub Total',
-    'total' => 'Total',
+    'total' => 'Total after Adding Shipping Fees',
     'continue_pay' => 'Continue Payment',
     'continue' => 'Continue',
     'select_payment_method' => 'Select Payment Method',
     'select_shipping_address' => 'Select Shipping Address',
     'add_address' => 'Add Shipping Address',
     'cart_empty' => 'Cart is Empty',
+    'payment_method' => 'Shipment Method',
+    'payment_methods' => 'Payment Methods',
+    'buy_type' => 'Shippment Type',
 
 
     // Profile
