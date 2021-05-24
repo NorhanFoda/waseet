@@ -207,7 +207,7 @@ return [
     // Payment report
     'payment_report' => 'Payment Confirmation',
     'payment_report_text' => 'This text is an example of text that can be replaced in the same space',
-    'payment_status' => 'Payment is Confirmed And Your Order Status is Wainting',
+    'payment_status' => 'Confirmed And Your Order Status is Wainting',
 
     // Orders
     'orders_text' => 'This text is an example of text that can be replaced in the same space',

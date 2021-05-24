@@ -180,7 +180,7 @@
                     <div class="signUpp gray-form aos-init aos-animate" id="address_form" data-aos="fade-in" hidden>
 
                         @if(count(auth()->user()->addresses) == 0)
-                            <form action="{{route('addresses.store')}}" method="POST">
+                            <form action="{{route('addresses.store', 'order')}}" method="POST">
                                 @csrf
                                 <div class="inputs-contain">
                                     

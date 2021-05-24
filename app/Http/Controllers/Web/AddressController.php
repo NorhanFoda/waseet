@@ -18,7 +18,7 @@ class AddressController extends Controller
         return view('web.addresses.index', compact('addresses'));
     }
 
-    public function store(Request $request){
+    public function store(Request $request, $order = null){
 
         $this->validate($request, [
             'lat' => 'required',
@@ -34,7 +34,15 @@ class AddressController extends Controller
         $address = Address::create($request->all());
         $address->update(['user_id' => auth()->user()->id]);
         session()->flash('success', trans('web.address_added'));
-        return redirect()->back();
+
+        if($order == null){
+
+            return redirect()->back();
+        }
+        else{
+
+            return redirect()->route('payment.prepare_order', 2);
+        }
 
         // $this->validate($request, [
         //     'country_id' => 'required',
@@ -78,5 +86,10 @@ class AddressController extends Controller
     public function delete(Request $request){
         $address = Address::findOrFail($request->address_id);
         $address->delete();
+
+        return response()->json([
+            'data' => 'success',
+            'msg' => trans('admin.deleted')
+        ], 200);
     }
 }

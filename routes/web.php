@@ -293,7 +293,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 
         // Addresses
         Route::get('addresses/index', 'Web\AddressController@index')->name('addresses.index');
-        Route::post('addresses', 'Web\AddressController@store')->name('addresses.store');
+        Route::post('addresses/{order?}', 'Web\AddressController@store')->name('addresses.store');
         Route::delete('addresses', 'Web\AddressController@delete')->name('addresses.delete');
 
         // Jobs

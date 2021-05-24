@@ -34,7 +34,7 @@
                                             <i class="fa fa-user"></i>
                                             {{-- {{$address->country->{'name_'.session('lang')} }} - {{$address->city->{'name_'.session('lang')} }} - {{trans('web.ps')}}: {{$address->postal_code}} --}}
                                             {{$address->address}}
-                                            <i class="fa fa-times left-icon" data-id="{{$address->id}}"></i>
+                                            <i class="fa fa-times left-icon delete-address" data-id="{{$address->id}}"></i>
                                         </a>
                                     </li>
                                 @endforeach
@@ -199,7 +199,7 @@
             });
 
             // Delete address
-            $('.left-icon').click(function(){
+            $('.delete-address').click(function(){
                 var address_id = $(this).data('id');
                 $(this).parent().parent().remove();
                 $.ajax({
@@ -208,6 +208,16 @@
                     dataType: 'json',
                     data: {"_token": "{{ csrf_token() }}", address_id: address_id},
                     success: function(data){
+
+                        if(data.data == 'success'){
+                            Swal.fire({
+                            title: data.msg,
+                            type: 'success',
+                            timer: 2000,
+                            showCancelButton: false,
+                            showConfirmButton: false,
+                        });
+                        }
                     }
                 });
 
@@ -228,15 +238,12 @@
                 center: { lat: parseFloat(lat), lng: parseFloat(lng) } // Current user location or SA.
             });
 
-            // Add address marker on map
-            var address_marker = new google.maps.Marker({
-                position:  { lat:parseFloat(lat), lng: parseFloat(lng) },
-                draggable: true,
-                title:"Address Location"
-            });
-
             // Create the search box and link it to the UI element.
             const input = document.getElementById("pac-input");
+
+            // prevent form submit on click (enter btn)
+            google.maps.event.addDomListener(input, 'keydown', function(event) { if (event.keyCode === 13) { event.preventDefault(); } }); 
+            
             const searchBox = new google.maps.places.SearchBox(input);
             map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
@@ -297,6 +304,13 @@
 
             });
 
+            // Add address marker on map
+            var address_marker = new google.maps.Marker({
+                position:  { lat:parseFloat(lat), lng: parseFloat(lng) },
+                draggable: true,
+                title:"Address Location"
+            });
+
             // add info window for address marker
             var infowindow = new google.maps.InfoWindow();  
             google.maps.event.addListener(address_marker, 'mouseover', (function(marker) {  
@@ -314,6 +328,16 @@
             google.maps.event.addListener(address_marker, 'dragend', function() {
                 geocodePosition(address_marker.getPosition());
             });
+            
+            google.maps.event.addListener(map, 'click', function(event) {
+            placeMarker(event.latLng);
+        });
+
+        function placeMarker(location) {
+            address_marker.setPosition(location);
+            map.setCenter(location);
+            geocodePosition(address_marker.getPosition());
+        }
         }
 
         function geocodePosition(pos) {
@@ -335,14 +359,6 @@
                     // "Al Riyadh"
                     // $('#city').val(responses[0].address_components[4].long_name);
 
-                    //get country start
-                    // var filtered_array = responses[0].address_components.filter(function(address_component){
-                    //     return address_component.types.includes("country");
-                    // }); 
-                    // var country = filtered_array.length ? filtered_array[0].long_name: "";
-                    // console.log(country);
-                    // get country end
-
                     //get city start
                     var filtered_array = responses[0].address_components.filter(function(address_component){
                         return address_component.types.includes("administrative_area_level_2");
@@ -352,7 +368,6 @@
                     // console.log(responses[0].address_components);
                     // console.log(city);
                     // get city end
-
 
                     updateMarkerAddress(responses[0].formatted_address);
                 } else {
