@@ -58,7 +58,7 @@ use Illuminate\Http\Request;
     Route::get('api_bags/all', 'Api\BagCategoryController@getAllBags');
 
     // Search
-    Route::post('search', 'Api\HomeController@search');
+    Route::post('search', 'Api\HomcartseController@search');
 
     // Banks
     Route::get('banks', 'Api\PaymentController@getBanks');
