@@ -66,7 +66,10 @@ use Illuminate\Http\Request;
     // DeviceTokens
     Route::get('tokens', 'Api\DeviceTokensController@index');
     Route::post('tokens', 'Api\DeviceTokensController@create');
-    
+
+    // Payment methods
+    Route::get('methods', 'Api\PaymentMethodController@index');
+
     // Auth routes
     Route::group(['middleware' => 'auth:api'], function(){
 
@@ -85,9 +88,6 @@ use Illuminate\Http\Request;
         // Route::post('carts', 'Api\CartController@update');
         // Route::delete('carts', 'Api\CartController@destroy');
         Route::post('carts/update', 'Api\CartController@updateCarts');
-
-        // Payment methods
-        Route::get('methods', 'Api\PaymentMethodController@index');
 
         // Payment
         Route::post('prepare_order', 'Api\PaymentController@prepareOrder');
@@ -141,6 +141,6 @@ use Illuminate\Http\Request;
         Route::post('change_notification_status', 'Api\NotificationController@changeNotificationStatus');
 
     });
-    
+
 });
 

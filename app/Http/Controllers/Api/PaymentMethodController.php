@@ -11,15 +11,18 @@ use Auth;
 class PaymentMethodController extends Controller
 {
     public function index(){
-        if(app('request')->header('Authorization') != null && Auth::guard('api')->check()){
-            return response()->json([
-                'methods' => PaymentMethodResource::collection(PaymentMethod::all())
-            ], 200);
-        }
-        else{
-            return response()->json([
-                'error' => trans('api.unauthorized'),
-            ], 401);
-        }
+        return response()->json([
+            'methods' => PaymentMethodResource::collection(PaymentMethod::all())
+        ], 200);
+//        if(app('request')->header('Authorization') != null && Auth::guard('api')->check()){
+//            return response()->json([
+//                'methods' => PaymentMethodResource::collection(PaymentMethod::all())
+//            ], 200);
+//        }
+//        else{
+//            return response()->json([
+//                'error' => trans('api.unauthorized'),
+//            ], 401);
+//        }
     }
 }

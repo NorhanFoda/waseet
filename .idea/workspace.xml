@@ -2,10 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cd15da47-63c2-41ed-b1ce-7bae5fd08688" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/images/phpVeF2ok_1621782458.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/ar/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ar/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/en/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/BankController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/BankController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/PaymentMethodController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/PaymentMethodController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Resources/Cart/CartResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/Cart/CartResource.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Resources/Payment/PaymentMethodResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/Payment/PaymentMethodResource.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/banks/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/banks/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/banks/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/banks/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/web/payment/payment_report.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/payment/payment_report.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -196,6 +201,9 @@
       <workItem from="1621510815762" duration="992000" />
       <workItem from="1621761708396" duration="91000" />
       <workItem from="1621763881605" duration="6274000" />
+      <workItem from="1621837414175" duration="6164000" />
+      <workItem from="1621924965259" duration="40000" />
+      <workItem from="1621925443961" duration="302000" />
     </task>
     <servers />
   </component>

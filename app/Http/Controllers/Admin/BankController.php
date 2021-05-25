@@ -86,7 +86,7 @@ class BankController extends Controller
      */
     public function edit($id)
     {
-        $bank = Bank::with('image')->find(1);
+        $bank = Bank::with('image')->find($id);
         return view('admin.banks.edit', compact('bank'));
     }
 

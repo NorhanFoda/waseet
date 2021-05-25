@@ -129,7 +129,7 @@
                                 <div class="col-12">
                                     <div class="form-group row">
                                         <div class="col-md-10">
-                                            <img src="{{$bank->image->path}}" alt="{{$bank->{'name_'.session('lang')} }}" width="220" height="150">
+                                            <img src="{{$bank->image ? $bank->image->path : asset('images/seeding/avatar.png')}}" alt="{{$bank->{'name_'.session('lang')} }}" width="220" height="150">
                                         </div>
                                     </div>
                                 </div>

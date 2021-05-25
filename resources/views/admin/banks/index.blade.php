@@ -58,7 +58,7 @@
                                             <td>{{$bank->name_ar}}</td>
                                             <td>{{$bank->name_en}}</td>
                                             <td>
-                                                <img src="{{$bank->image->path}}" alt="{{$bank->{'name_'.session('lang')} }}" width="150px" height="100px">
+                                                <img src="{{$bank->image ? $bank->image->path : asset('images/seeding/avatar.png')}}" alt="{{$bank->{'name_'.session('lang')} }}" width="150px" height="100px">
                                             </td>
                                             <td>{{$bank->account_number}}</td>
                                             <td>{{$bank->iban}}</td>
