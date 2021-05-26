@@ -29,8 +29,10 @@ class OrderRequest extends FormRequest
             "carts.*.bag_id" => 'required',
             "carts.*.quantity" => 'required',
             "carts.*.total_price" => 'required',
-            "carts.*.buy_type" => 'required',
-            'address_id' => 'required',
+            // "carts.*.buy_type" => 'required',
+            'buy_type' => 'required',
+            'address_id' => 'required_if:buy_type,2',
+            'payment_method_id' => 'required'
         ];
     }
 }

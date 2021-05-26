@@ -49,7 +49,7 @@ class PaymentController extends Controller
                         'bag_id' => $cart['bag_id'],
                         'quantity' => $cart['quantity'],
                         'total_price' => $cart['total_price'],
-                        // 'buy_type' => $cart['buy_type'],
+                        'buy_type' => $cart['buy_type'],
                     ]);
 
                     if(!$user_cart){
@@ -60,10 +60,6 @@ class PaymentController extends Controller
 
                     auth()->user()->carts()->save($user_cart);
                 }
-
-                auth()->user()->carts()->update([
-                    'buy_type' => $request->buy_type
-                ]);
 
                 //Get updated carts and prepare order
                 $carts = auth()->user()->carts;
@@ -82,18 +78,16 @@ class PaymentController extends Controller
                     'address_id' => $request->address_id,
                     'status' => 1, // Not confirmed
                     'shipping_fees' => $shipping_fees,
-                    'buy_type' => $request->buy_type,
-                    'payment_method_id' => $request->payment_method_id,
+                    'buy_type' => $carts[0]->buy_type
                 ]);
 
                 foreach($carts as $cart){
                     $bag = Bag::findOrFail($cart->bag_id);
                     $order->bags()->attach($bag);
-                    $ordr_bags = BagOrder::where('bag_id', $cart->bag_id)->where('order_id', $order->id)->first();
-                    $ordr_bags->update([
+                    $ordr_bags = BagOrder::where('bag_id', $cart->bag_id)->where('order_id', $order->id)->first()->update([
                         'total_price' => $cart->total_price,
                         'quantity' => $cart->quantity,
-                        'buy_type' => $request->buy_type
+                        'buy_type' => $cart->buy_type
                     ]);
 
                     $cart->delete();

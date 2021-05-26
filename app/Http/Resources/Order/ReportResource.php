@@ -19,7 +19,9 @@ class ReportResource extends JsonResource
         return [
             'id' => $this->id,
             'cost' => $this->total_price + $this->shipping_fees.' '.trans('admin.sr'),
-            'address' => $this->address->address
+            'address' => $this->buy_type == 2 && $this->address ? $this->address->address : null,
+            'payment_method' => $this->payment_method ? $this->payment_method->{'name_'.$lang} : null,
+            'buy_type' => $this->buy_type == 1 ? trans('web.buy_online') : trans('web.print_content'),
         ];
     }
 }
