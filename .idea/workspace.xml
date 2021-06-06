@@ -1,7 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cd15da47-63c2-41ed-b1ce-7bae5fd08688" name="Default Changelist" comment="" />
+    <list default="true" id="cd15da47-63c2-41ed-b1ce-7bae5fd08688" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/SliderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/SliderController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Resources/Bags/BagCategoryResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/Bags/BagCategoryResource.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Resources/Slider/SliderResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/Slider/SliderResource.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/web/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/web/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/banks/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/banks/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/layouts/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/layouts/sidebar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/payment_methods/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/payment_methods/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/payment_methods/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/payment_methods/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/slider/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/slider/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/slider/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/slider/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/slider/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/slider/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/web/bags/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/bags/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -197,6 +212,12 @@
       <workItem from="1621935483066" duration="696000" />
       <workItem from="1621941537909" duration="15000" />
       <workItem from="1621942283449" duration="219000" />
+      <workItem from="1622012337209" duration="1935000" />
+      <workItem from="1622036250227" duration="642000" />
+      <workItem from="1622099146119" duration="30000" />
+      <workItem from="1622363517386" duration="1315000" />
+      <workItem from="1622534698710" duration="3225000" />
+      <workItem from="1622622095906" duration="84000" />
     </task>
     <servers />
   </component>

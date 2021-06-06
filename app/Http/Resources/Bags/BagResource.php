@@ -27,7 +27,7 @@ class BagResource extends JsonResource
         return [
             'id' => $this->id,
             'category_name' => $this->category->{'name_'.$lang},
-            'image' => $this->image,
+            'image' => $this->images()->where('image_type', 'slider')->first() ? $this->images()->where('image_type', 'slider')->first()->path : null,
             'name' => $this->{'name_'.$lang},
             'price' => $this->price.' '.trans('admin.sr'),
             'description' => $this->{'description_'.$lang},

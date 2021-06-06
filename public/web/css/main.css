@@ -4107,14 +4107,15 @@ input#pac-input ,input#teaching-pac-input{
   right: 0 !important;
   margin: auto;
 }
-
+.pac-container{
+    z-index:9999 !important;
+}
 
 input#teaching-pac-input {
   top: 110px !important;
 }
 
-.main-slide-item{
-    height:400px;
-    background-position:top center;
-    background-size:cover;
+.main-slide-item img{
+    transform:none !important;
+    max-height:inherit !important;
 }

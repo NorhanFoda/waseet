@@ -129,7 +129,7 @@
                                 <div class="col-12">
                                     <div class="form-group row">
                                         <div class="col-md-10">
-                                            <img src="{{$slider->image->path}}" alt="{{$slider->{'title_'.session('lang')} }}" width="200px" height="100px">
+                                            <img src="{{$slider->image ? $slider->image->path : asset('images/seeding/avatar.png')}}" alt="{{$slider->{'title_'.session('lang')} }}" width="200px" height="100px">
                                         </div>
                                     </div>
                                 </div>

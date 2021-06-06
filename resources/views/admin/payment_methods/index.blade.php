@@ -5,7 +5,7 @@
 {{trans('admin.waseet')}}
 @endsection
 
-@section('pageSubTitle') 
+@section('pageSubTitle')
 {{trans('admin.payment_methods')}}
 @endsection
 
@@ -56,11 +56,14 @@
                                             <td>{{$loop->iteration}}</td>
                                             <td>{{$method->name_ar}}</td>
                                             <td>{{$method->name_en}}</td>
-                                            <td><img src="{{$method->image->path}}" alt="{{$method->{'name_'.session('lang')} }}"></td>
-                                            <td> 
+                                            <td><img src="{{$method->image? $method->image->path : asset('images/seeding/avatar.png')}}" alt="{{$method->{'name_'.session('lang')} }}"></td>
+                                            <td>
+
                                                 <a href="{{route('methods.edit', $method->id)}}" class="btn" style="color:white;"><i class="fa fa-pencil-square-o"></i></a>
-                                                <a title="delete" onclick="return true;" id="confirm-color" object_id='{{$method->id}}'
-                                                    class="delete btn" style="color:red;"><i class="fa fa-trash-o"></i></a>
+                                                @if($method->id != 1 && $method->id != 2)
+                                                    <a title="delete" onclick="return true;" id="confirm-color" object_id='{{$method->id}}'
+                                                       class="delete btn" style="color:red;"><i class="fa fa-trash-o"></i></a>
+                                                @endif
                                             </td>
                                         </tr>
                                     @endforeach

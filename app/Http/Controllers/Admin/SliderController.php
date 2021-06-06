@@ -101,23 +101,36 @@ class SliderController extends Controller
     {
         $slider = Slider::find($id);
         $slider->update($request->all());
-        $slider->image->update([
-            'type' => $request->type,
-        ]);
+
+        if($slider->image){
+            $slider->image->update([
+                'type' => $request->type,
+            ]);
+        }
+
 
         if($request->has('image')){
-            $removed = Upload::deleteImage($slider->image->path);
-            if($removed){
-                $image_url = Upload::uploadImage($request->image);
+
+            $image_url = Upload::uploadImage($request->image);
+
+            if($slider->image){
+                $removed = Upload::deleteImage($slider->image->path);
+
                 $slider->image->update([
                     'path' => $image_url,
                     'type' => $request->type,
                 ]);
             }
             else{
-                session()->flash('error', trans('admin.error'));
-                return redirect()->route('sliders.index');        
+                $image = Image::create([
+                    'path' => $image_url,
+                    'imageRef_id' => $slider->id,
+                    'imageRef_type' => 'App\Models\Slider',
+                    'type' => $request->type,
+                ]);
+                $slider->image()->save($image);
             }
+
         }
 
         if($slider){
@@ -144,7 +157,7 @@ class SliderController extends Controller
     public function deleteSlider(Request $request){
         $slider = Slider::find($request->id);
         $removed = false;
-        
+
         if($slider->image != null){
             $removed = Upload::deleteImage($slider->image->path);
         }
@@ -152,7 +165,7 @@ class SliderController extends Controller
         if($removed){
             Image::where('imageRef_id', $slider->id)->first()->delete();
         }
-        
+
         $slider->delete();
         return response()->json([
             'data' => 1

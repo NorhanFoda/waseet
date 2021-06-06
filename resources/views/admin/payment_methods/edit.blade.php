@@ -97,7 +97,7 @@
                                 <div class="col-12">
                                     <div class="form-group row">
                                         <div class="col-md-10">
-                                            <img src="{{$method->image->path}}" alt="{{$method->{'name_'.session('lang')} }}">
+                                            <img src="{{$method->image? $method->image->path : asset('images/seeding/avatar.png')}}" alt="{{$method->{'name_'.session('lang')} }}">
                                         </div>
                                     </div>
                                 </div>

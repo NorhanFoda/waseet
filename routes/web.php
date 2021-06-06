@@ -137,14 +137,14 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
             // EduLevels
             Route::resource('edu_levels', 'Admin\EduLevelController');
             Route::post('delete_edu_level', 'Admin\EduLevelController@deleteEduLevel')->name('eduLevels.delete');
-            
+
             // Nationalities
             Route::resource('nationalities', 'Admin\NationalityController');
             Route::post('delete_nationality', 'Admin\NationalityController@deleteNationality')->name('nationalities.delete');
 
             // Payment methods
-            // Route::resource('methods', 'Admin\PaymentMethodsController');
-            // Route::post('delete_method', 'Admin\PaymentMethodsController@deleteMethod')->name('methods.delete');
+             Route::resource('methods', 'Admin\PaymentMethodsController');
+             Route::post('delete_method', 'Admin\PaymentMethodsController@deleteMethod')->name('methods.delete');
 
             // Socials
             Route::resource('socials', 'Admin\SocialController');
@@ -189,7 +189,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
             Route::post('/broadcast', 'Admin\NotificationController@store')->name('notifications.store');
             Route::get('/notifications', 'Admin\NotificationController@index')->name('notifications.index');
             Route::post('/notifications_delete', 'Admin\NotificationController@delete')->name('notifications.delete');
-            
+
             // Users
             Route::resource('users', 'Admin\UserController');
             Route::get('delete_user', 'Admin\UserController@deleteUser')->name('users.delete');

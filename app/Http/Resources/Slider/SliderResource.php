@@ -15,9 +15,9 @@ class SliderResource extends JsonResource
     public function toArray($request)
     {
         $lang = \App::getLocale();
-        
+
         return [
-            'image' => $this->image->path,
+            'image' => $this->image ? $this->image->path : asset('images/seeding/avatar.png'),
             'title' => $this->{'title_'.$lang},
             'body' => $this->{'title_'.$lang}
         ];

@@ -15,11 +15,11 @@ class BagCategoryResource extends JsonResource
     public function toArray($request)
     {
         $lang = \App::getLocale();
-        
+
         return [
             'id' => $this->id,
             // 'image' => $this->image ? $this->image->path : 'no image',
-            'image' => $this->image ? $this->image->path : null,
+            'image' => $this->image ? $this->image->path : asset('images/seeding/avatar.png'),
             'name' => $this->{'name_'.$lang}
         ];
     }

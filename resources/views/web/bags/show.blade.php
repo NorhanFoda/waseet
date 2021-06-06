@@ -56,8 +56,8 @@
 
                                 @foreach($sliders as $image)
                                     <div class="item">
-                                        <div class="main-slide-item"
-                                            style="background-image:url({{$image->path}})">
+                                        <div class="main-slide-item">
+                                            <img src="{{$image->path}}" alt="img"/>
                                         </div>
                                     </div>  
                                 @endforeach

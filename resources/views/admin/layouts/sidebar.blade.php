@@ -61,20 +61,20 @@
 
             <li class=" nav-item"><a href="{{route('users.subscripers')}}"><i class="fa fa-users"></i><span class="menu-title" data-i18n="Dashboard">{{trans('admin.subscripers')}}</span></a></li>
 
-            {{-- <li class=" nav-item"><a href="{{route('methods.index')}}"><i class="fa fa-money"></i><span class="menu-title" data-i18n="Dashboard">{{trans('admin.payment_methods')}}</span></a></li> --}}
+             <li class=" nav-item"><a href="{{route('methods.index')}}"><i class="fa fa-money"></i><span class="menu-title" data-i18n="Dashboard">{{trans('admin.payment_methods')}}</span></a></li>
 
             <li class=" nav-item"><a href="{{route('banks.index')}}"><i class="fa fa-money"></i><span class="menu-title" data-i18n="Dashboard">{{trans('admin.banks')}}</span></a></li>
 
             <li class=" nav-item"><a href="{{route('notifications.index')}}"><i class="fa fa-bell"></i><span class="menu-title" data-i18n="Email">{{trans('admin.notifications')}}</span></a></li>
 
             <li class=" nav-item"><a href="{{route('announces.index')}}"><i class="fa fa-bullhorn"></i><span class="menu-title" data-i18n="Dashboard">{{trans('admin.announces')}}</span></a></li>
-            
+
             <li class=" nav-item"><a href="{{route('static_pages.index')}}"><i class="fa fa-thumb-tack"></i><span class="menu-title" data-i18n="Dashboard">{{trans('admin.static_pages')}}</span></a></li>
 
             <li class=" nav-item"><a href="{{route('socials.index')}}"><i class="fa fa-link"></i><span class="menu-title" data-i18n="Dashboard">{{trans('admin.socials')}}</span></a></li>
-            
+
             <li class=" nav-item"><a href="{{route('sliders.index')}}"><i class="fa fa-sliders"></i><span class="menu-title" data-i18n="Dashboard">{{trans('admin.slider')}}</span></a></li>
-            
+
             <li class=" nav-item"><a href="{{route('setting.edit')}}"><i class="fa fa-gear"></i><span class="menu-title" data-i18n="Dashboard">{{trans('admin.setting')}}</span></a></li>
 
         </ul>

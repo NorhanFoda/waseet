@@ -5,7 +5,7 @@
 {{trans('admin.waseet')}}
 @endsection
 
-@section('pageSubTitle') 
+@section('pageSubTitle')
 {{trans('admin.slider')}}
 @endsection
 
@@ -54,8 +54,8 @@
                                         <tr align="center">
                                             <td>{{$loop->iteration}}</td>
                                             <td>{{$slider->{'title_'.session('lang')} }}</td>
-                                            <td><img src="{{$slider->image->path}}" alt="{{$slider->{'name_'.session('lang')} }}" width="200" height="100"></td>
-                                            <td> 
+                                            <td><img src="{{$slider->image ? $slider->image->path : asset('images/seeding/avatar.png')}}" alt="{{$slider->{'name_'.session('lang')} }}" width="200" height="100"></td>
+                                            <td>
                                                 <a href="{{route('sliders.show', $slider->id)}}" class="btn" style="color:white;"><i class="fa fa-eye"></i></a>
                                                 <a href="{{route('sliders.edit', $slider->id)}}" class="btn" style="color:white;"><i class="fa fa-pencil-square-o"></i></a>
                                                 <a title="delete" onclick="return true;" id="confirm-color" object_id='{{$slider->id}}'
