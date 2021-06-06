@@ -112,17 +112,28 @@ class AnnouncController extends Controller
         ]);
         
         if($request->has('iamge')){
-            $removed = Upload::deleteImage($announce->image->path);
-            if($removed){
+
+            if($announce->image){
+
+                Upload::deleteImage($announce->image->path);
+
                 $image_url = Upload::uploadImage($request->image);
                 $announce->image->update([
                     'path' => $image_url
                 ]);
             }
             else{
-                session()->flash('error', trans('admin.error'));
-                return redirect()->back();
+
+                $image_url = Upload::uploadImage($request->image);
+                $image = Image::create([
+                    'path' => $image_url,
+                    'imageRef_id' => $announce->id,
+                    'imageRef_type' => 'App\Models\Announce'
+                ]);
+                $announce->image()->save($image);
+
             }
+            
         }
 
         session()->flash('success', trans('admin.created'));

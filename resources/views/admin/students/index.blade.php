@@ -5,7 +5,7 @@
 {{trans('admin.waseet')}}
 @endsection
 
-@section('pageSubTitle') 
+@section('pageSubTitle')
 {{trans('admin.students')}}
 @endsection
 
@@ -72,7 +72,18 @@
                                                 <td>{{$key}} {{$phone_main}}</td>
                                                 <td>{{$std->email}}</td>
                                                 <td>{{$std->age}}</td>
-                                                <td>{{$std->stage_id == 4 && $std->other_stage != null ? $std->other_stage : $std->stage->{'name_'.session('lang')} }}</td>
+                                                <td>
+                                                    @if($std->stage_id == 4 && $std->other_stage != null)
+                                                        {{$std->other_stage}}
+                                                    @else
+                                                        @if($std->stage)
+                                                            {{$std->stage->{'name_'.session('lang')} }}
+                                                        @else
+                                                            {{'-'}}
+                                                        @endif
+
+                                                    @endif
+                                                </td>
                                                 <td>
                                                     <a href="{{route('students.show', $std->id)}}" class="btn" style="color:white;"><i class="fa fa-eye"></i></a>
                                                     <a href="{{route('students.edit', $std->id)}}" class="btn" style="color:white;"><i class="fa fa-pencil-square-o"></i></a>

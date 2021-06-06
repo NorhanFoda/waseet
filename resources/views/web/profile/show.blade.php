@@ -39,7 +39,7 @@
 
                                                 <div class="avatar-preview">
                                                     <div id="imagePreview"
-                                                        style="background-image: url({{$user->image == null ? '/images/avatar.png' : $user->image->path}})">
+                                                        style="background-image: url({{$user->image == null ? asset('images/seeding/avatar.png') : $user->image->path}})">
                                                     </div>
                                                 </div>
                                             </form>
@@ -130,10 +130,12 @@
                                     <input type="text" id="confirm" placeholder="{{$user->salary_month}}" disabled />
                                 </div>
 
-                                <div class="big-label">{{trans('web.cv')}} :</div>
-                                <div class="userName" disabled>
-                                    <a href="{{$user->document->path}}">{{trans('web.cv')}}</a>
-                                </div>
+                                @if($user->document)
+                                    <div class="big-label">{{trans('web.cv')}} :</div>
+                                    <div class="userName" disabled>
+                                        <a href="{{$user->document->path}}">{{trans('web.cv')}}</a>
+                                    </div>
+                                @endif
 
                             </div>
 

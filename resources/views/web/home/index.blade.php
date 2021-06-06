@@ -59,7 +59,7 @@
           <div class="ad">
             @if($announce != null)
               <a href="{{$announce->link}}">
-                <img src="{{$announce->image->path}}" alt="">
+                <img src="{{$announce->image ? $announce->image->path : asset('images/seeding/avatar.png')}}" alt="">
               </a>
             @else
               <img src="{{asset('/images/ad.png')}}" alt="" />

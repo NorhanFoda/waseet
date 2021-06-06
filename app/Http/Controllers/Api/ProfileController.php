@@ -125,18 +125,16 @@ class ProfileController extends Controller
         
                 if(auth()->user()->hasRole('job_seeker')){
                     if($request->has('cv')){
-                        $removed = Upload::deletePDF(auth()->user()->document->path);
-                        if($removed){
-                            $new_cv = Upload::uploadPDF($request->cv);
-                            auth()->user()->document->update([
-                                'path' => $new_cv
-                            ]);
+
+                        if(auth()->user()->document){
+
+                            $removed = Upload::deletePDF(auth()->user()->document->path);
                         }
-                        else{
-                            return response()->json([
-                                'error' => trans('admin.error')
-                            ], 404);
-                        }
+                        
+                        $new_cv = Upload::uploadPDF($request->cv);
+                        auth()->user()->document->update([
+                            'path' => $new_cv
+                        ]);
                     }
                 }
         
@@ -190,22 +188,19 @@ class ProfileController extends Controller
             'cv' => 'required|mimetypes:application/pdf|max:10000',
         ]);
 
-        $removed = Upload::deletePDF(auth()->user()->document->path);
-        if($removed){
-            $new_cv = Upload::uploadPDF($request->cv);
-            auth()->user()->document->update([
-                'path' => $new_cv
-            ]);
+        if(auth()->user()->document){
 
-            return response()->json([
-                'success' => trans('admin.updated')
-            ], 200);
+            $removed = Upload::deletePDF(auth()->user()->document->path);
         }
-        else{
-            return response()->json([
-                'error' => trans('api.error')
-            ], 400);
-        }
+        
+        $new_cv = Upload::uploadPDF($request->cv);
+        auth()->user()->document->update([
+            'path' => $new_cv
+        ]);
+
+        return response()->json([
+            'success' => trans('admin.updated')
+        ], 200);
 
     }
 

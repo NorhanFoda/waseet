@@ -33,7 +33,7 @@ class JobResource extends JsonResource
             // 'location' => $this->country->{'name_'.$lang}.' - '.$this->city->{'name_'.$lang},
             'country' => $this->country,
             'location' => $this->address,
-            'image' => $this->image == null ? 'no image' : $this->image->path,
+            'image' => $this->image == null ? asset('images/seeding/avatar.png') : $this->image->path,
             'is_saved' => $is_saved,
         ];
     }

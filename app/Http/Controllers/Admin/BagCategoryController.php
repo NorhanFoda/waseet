@@ -42,7 +42,7 @@ class BagCategoryController extends Controller
     public function store(BagCategoryRequest $request)
     {
         $category = BagCategory::create($request->all());
-        
+
         if($request->has('image')){
             $url = Upload::uploadImage($request->image);
             $image = Image::create([
@@ -55,7 +55,7 @@ class BagCategoryController extends Controller
 
         if($category){
             session()->flash('success', trans('admin.created'));
-            return redirect()->route('bag_categories.index');    
+            return redirect()->route('bag_categories.index');
         }
         else{
             session()->flash('error', trans('admin.error'));
@@ -73,7 +73,7 @@ class BagCategoryController extends Controller
     public function show($id)
     {
         $cat = BagCategory::with('bags', 'image')->find($id);
-        
+
         return view('admin.bag_categories.show', compact('cat'));
     }
 
@@ -102,22 +102,32 @@ class BagCategoryController extends Controller
         $category->update($request->all());
 
         if($request->has('image')){
-            $removed = Upload::deleteImage($category->image->path);
-            if($removed){
-                $url = Upload::uploadImage($request->image);
+
+            if($category->image){
+                $removed = Upload::deleteImage($category->image->path);
+            }
+
+            $url = Upload::uploadImage($request->image);
+
+            if($category->image){
                 $category->image->update([
                     'path' => $url,
                 ]);
             }
             else{
-                session()->flash('message', trans('admin.error'));
-                return redirect()->route('bag_categories.index');     
+                $image = Image::create([
+                    'path' => $url,
+                    'imageRef_id' => $category->id,
+                    'imageRef_type' => 'App\Models\BagCategory'
+                ]);
+                $category->image()->save($image);
             }
+
         }
 
         if($category){
             session()->flash('success', trans('admin.updated'));
-            return redirect()->route('bag_categories.index');    
+            return redirect()->route('bag_categories.index');
         }
         else{
             session()->flash('error', trans('admin.error'));
@@ -139,22 +149,19 @@ class BagCategoryController extends Controller
     public function deleteBagCategory(Request $request){
         $category = BagCategory::find($request->id);
 
-        $removed = Upload::deleteImage($category->image->path);
-        if($removed){
-            Image::where('imageRef_id', $category->id)->first()->delete();
-            foreach($category->bags as $bag){
-                Image::where('imageRef_id', $bag->id)->first()->delete();
-                Video::where('bag_id', $bag->id)->first()->delete();
-            }
-            $category->delete();
-            return response()->json([
-                'data' => 1
-            ], 200);
+        if($category->image){
+
+            Upload::deleteImage($category->image->path);
         }
-        else{
-            return response()->json([
-                'data' => 0
-            ], 200);
+
+        Image::where('imageRef_id', $category->id)->first()->delete();
+        foreach($category->bags as $bag){
+            Image::where('imageRef_id', $bag->id)->first()->delete();
+            Video::where('bag_id', $bag->id)->first()->delete();
         }
+        $category->delete();
+        return response()->json([
+            'data' => 1
+        ], 200);
     }
 }

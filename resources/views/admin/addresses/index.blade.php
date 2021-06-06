@@ -5,7 +5,7 @@
 {{trans('admin.waseet')}}
 @endsection
 
-@section('pageSubTitle') 
+@section('pageSubTitle')
 {{trans('admin.addresses')}}
 @endsection
 
@@ -69,9 +69,9 @@
                                                         {{trans('admin.visitor')}}
                                                     @endif
                                                 </td>
-                                                <td>{{$address->country->{'name_'.session('lang')} }} - 
-                                                        {{$address->city->{'name_'.session('lang')} }} - 
-                                                        {{$address->address}} - 
+                                                <td>{{$address->country ? $address->country->{'name_'.session('lang')} : '-' }} -
+                                                        {{$address->city ? $address->city->{'name_'.session('lang')} : '-' }} -
+                                                        {{$address->address}} -
                                                         {{trans('web.ps')}} : {{$address->postal_code}}
                                                 </td>
                                             </tr>

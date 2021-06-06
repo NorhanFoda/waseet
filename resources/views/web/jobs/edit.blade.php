@@ -128,7 +128,7 @@
 
                                 @if($job->image != null)
                                     <div class="userName">
-                                        <img src="{{$job->image->path}}" alt="{{$job->{'name_'.session('lang')} }}" width="100px" height="100px">
+                                        <img src="{{$job->image ? $job->image->path : asset('images/seeding/avatar.png')}}" alt="{{$job->{'name_'.session('lang')} }}" width="100px" height="100px">
                                     </div>
                                 @endif
 

@@ -30,7 +30,7 @@ class SeekerResource extends JsonResource
             'long' => $this->long,
             'address' => $this->address,
             'salary' => $this->salary_month,
-            'cv' => $this->document->path
+            'cv' => $this->document ? $this->document->path : null
         ];
     }
 }

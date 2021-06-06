@@ -18,7 +18,7 @@ class PaymentMethodResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->{'name_'.$lang},
-            'image' => $this->image ? $this->image->path : null,
+            'image' => $this->image ? $this->image->path : asset('images/seeding/avatar.png'),
         ];
     }
 }

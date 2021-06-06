@@ -71,18 +71,18 @@ class ProfileController extends Controller
         }
 
         if(auth()->user()->hasRole('job_seeker')){
+            
             if($request->has('cv')){
-                $removed = Upload::deletePDF(auth()->user()->document->path);
-                if($removed){
-                    $new_cv = Upload::uploadPDF($request->cv);
-                    auth()->user()->document->update([
-                        'path' => $new_cv
-                    ]);
+
+                if(auth()->user()->document){
+
+                    $removed = Upload::deletePDF(auth()->user()->document->path);
                 }
-                else{
-                    session()->flash('error', trans('admin.error'));
-                    return redirect()->back();
-                }
+                
+                $new_cv = Upload::uploadPDF($request->cv);
+                auth()->user()->document->update([
+                    'path' => $new_cv
+                ]);
             }
         }
 

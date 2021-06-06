@@ -22,7 +22,7 @@ class SavedTeacherResource extends JsonResource
                 'name' => $this->saveRef->name,
                 'materials' => MaterialResource::collection($this->saveRef->materials),
                 'rating' => $this->saveRef->ratings->count() > 0 ? ceil($this->saveRef->ratings->sum('rate') / $this->saveRef->ratings->count()).'/5' : trans('admin.no_ratings'),
-                'image' => $this->saveRef->image == null ? 'no image' : $this->saveRef->image->path,
+                'image' => $this->saveRef->image == null ? asset('images/seeding/avatar.png') : $this->saveRef->image->path,
                 'role' => $this->saveRef->hasRole('online_teacher') ? trans('web.online_teacher') : trans('web.direct_teacher'),
                 'nationality' => $this->nationality_id != null ? $this->saveRef->nationality->{'name_'.$lang} : '',
                 'address' => $this->saveRef->address,

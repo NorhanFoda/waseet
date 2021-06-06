@@ -79,7 +79,7 @@
                                 <p>{{trans('admin.age')}}: {{$applicant->age}} {{trans('admin.years')}}</p>
                             </div>
                             <div class="col-md-2">
-                                <a href="{{$applicant->document->path}}">
+                                <a href="{{$applicant->document ? $applicant->document->path : '#'}}">
                                     <img src="{{asset('admin/images/logo/cv.png')}}" alt="">
                                 </a>
                             </div>

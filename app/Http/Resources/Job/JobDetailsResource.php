@@ -37,7 +37,7 @@ class JobDetailsResource extends JsonResource
             'required_number' => $this->required_number,
             'free_places' => $this->free_places,
             'description' => $this->{'description_'.$lang},
-            'image' => $this->image == null ? 'no image' : $this->image->path,
+            'image' => $this->image == null ? asset('images/seeding/avatar.png') : $this->image->path,
             'is_saved' => $is_saved,
         ];
     }

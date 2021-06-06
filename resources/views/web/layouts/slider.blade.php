@@ -4,7 +4,7 @@
         <div class="owl-carousel owl-theme">
 
           @foreach($sliders as $slider)
-            <div class="item" style="background-image: url({{$slider->image ? $slider->image->path : ''}});">
+            <div class="item" style="background-image: url({{$slider->image ? $slider->image->path : asset('images/seeding/avatar.png')}});">
               <div class="overlay">
                 <h4>{{$slider->{'title_'.session('lang')} }}</h4>
                 <p>

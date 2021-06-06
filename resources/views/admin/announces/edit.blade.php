@@ -35,7 +35,7 @@
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
-        </div>    
+        </div>
     @endforeach
 
     <div class="col-12">
@@ -68,7 +68,7 @@
                                 <div class="col-12">
                                     <div class="form-group row">
                                         <div class="col-md-10">
-                                            <img src="{{$announce->image->path}}" alt="Announce" width="100px" height="100px" style="border-radius: 5px">
+                                            <img src="{{$announce->image ? $announce->image->path : asset('images/seeding/avatar.png')}}" alt="Announce" width="100px" height="100px" style="border-radius: 5px">
                                         </div>
                                     </div>
                                 </div>

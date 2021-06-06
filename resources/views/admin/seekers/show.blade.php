@@ -49,7 +49,7 @@
                             $key = '';
                             $phone_main = $seeker->$phone_main;
                         }
-                        
+
                         $phone_secondary = null;
                         $sec_key = null;
                         if($seeker->phone_secondary != null && strpos($seeker->phone_secondary, ',') !== false){
@@ -61,7 +61,7 @@
                             $sec_key = '';
                             $phone_secondary = $seeker->$phone_secondary;
                         }
-                        
+
                     @endphp
                     <div class="card-body">
                         <div class="row">
@@ -72,7 +72,7 @@
                             </div>
                             <div class="col-md-6">
                                 <p>
-                                    {{-- {{trans('admin.address')}} : {{$seeker->country->{'name_'.session('lang')} }} - 
+                                    {{-- {{trans('admin.address')}} : {{$seeker->country->{'name_'.session('lang')} }} -
                                     {{$seeker->city->{'name_'.session('lang')} }} - {{$seeker->address}} --}}
                                    {{trans('admin.address')}}: {{$seeker->address}}
                                 </p>
@@ -80,7 +80,7 @@
                                 <p>{{trans('admin.age')}}: {{$seeker->age}} {{trans('admin.years')}}</p>
                             </div>
                             <div class="col-md-2">
-                                <a href="{{$seeker->document->path}}">
+                                <a href="{{$seeker->document ? $seeker->document->path : ''}}">
                                     <img src="{{asset('admin/images/logo/cv.png')}}" alt="">
                                 </a>
                             </div>

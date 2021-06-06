@@ -31,7 +31,7 @@ class TeacherResource extends JsonResource
                 'name' => $this->name,
                 'materials' => MaterialResource::collection($this->materials),
                 'rating' => $this->ratings->count() > 0 ? ceil($this->ratings->sum('rate') / $this->ratings->count()).'/5' : trans('admin.no_ratings'),
-                'image' => $this->image == null ? 'no image' : $this->image->path,
+                'image' => $this->image == null ? asset('images/seeding/avatar.png') : $this->image->path,
                 'role' => $this->hasRole('online_teacher') ? trans('web.online_teacher') : trans('web.direct_teacher'),
                 'nationality' => $this->nationality_id != null ? $this->nationality->{'name_'.$lang} : '',
                 'address' => $this->address,

@@ -111,16 +111,25 @@ class BankController extends Controller
         $bank->update($request->all());
 
         if($request->has('image')){
-            $removed = Upload::deleteImage($bank->image->path);
-            if($removed){
+
+            if($bank->image){
+
+                Upload::deleteImage($bank->image->path);
+
                 $image_url = Upload::uploadImage($request->image);
                 $bank->image->update([
                     'path' => $image_url
                 ]);
             }
             else{
-                session()->flash('error', trans('admin.error'));
-                return redirect()->back();
+
+                $image_url = Upload::uploadImage($request->image);
+                $image = Image::create([
+                    'path' => $image_url,
+                    'imageRef_id' => $bank->id,
+                    'imageRef_type' => 'App\Models\Bank'
+                ]);
+                $bank->image()->save($image);
             }
         }
 
@@ -149,21 +158,17 @@ class BankController extends Controller
 
         $bank = Bank::with('image')->find($request->id);
 
-        $removed = upload::deleteImage($bank->image->path);
+        if($bank->image){
+
+            upload::deleteImage($bank->image->path);
+        }
         
-        if($removed){
-            Image::where('imageRef_id', $bank->id)->where('imageRef_type', 'App\Models\Bank')->first()->delete();
+        Image::where('imageRef_id', $bank->id)->where('imageRef_type', 'App\Models\Bank')->first()->delete();
 
-            $bank->delete();
+        $bank->delete();
 
-            return response()->json([
-                'data' => 1
-            ], 200);
-        }
-        else{
-            return response()->json([
-                'data' => 0
-            ], 200);
-        }
+        return response()->json([
+            'data' => 1
+        ], 200);
     }
 }

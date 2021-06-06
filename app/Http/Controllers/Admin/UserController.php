@@ -57,20 +57,26 @@ class UserController extends Controller
     {
         $user = User::with('roles')->find($id);
 
-        if($user->roles[0]->name == 'student'){
-            return redirect()->route('students.show', $id);
+        if(count($user->roles) > 0){
+            if($user->roles[0]->name == 'student'){
+                return redirect()->route('students.show', $id);
+            }
+            else if($user->roles[0]->name == 'direct_teacher'){
+                return redirect()->route('direct_teachers.show', $id);
+            }
+            else if($user->roles[0]->name == 'online_teacher'){
+                return redirect()->route('online_teachers.show', $id);
+            }
+            else if($user->roles[0]->name == 'job_seeker'){
+                return redirect()->route('seekers.show', $id);
+            }
+            else if($user->roles[0]->name == 'organization'){
+                return redirect()->route('organizations.show', $id);
+            }
         }
-        else if($user->roles[0]->name == 'direct_teacher'){
-            return redirect()->route('direct_teachers.show', $id);
-        }
-        else if($user->roles[0]->name == 'online_teacher'){
-            return redirect()->route('online_teachers.show', $id);
-        }
-        else if($user->roles[0]->name == 'job_seeker'){
-            return redirect()->route('seekers.show', $id);
-        }
-        else if($user->roles[0]->name == 'organization'){
-            return redirect()->route('organizations.show', $id);
+        else{
+
+            return redirect()->back();
         }
     }
 
@@ -213,7 +219,7 @@ class UserController extends Controller
             }
 
         }
-        
+
         //Send mail to subscripers
         if($request->approved == 1){
             if($user->hasRole('online_teacher') || $user->hasRole('direct_teacher')){
@@ -232,7 +238,7 @@ class UserController extends Controller
                         ]);
                     }
                 }
-                
+
                 $tokens = DeviceToken::where('user_id', '!=', $user->id)->pluck('token');
                 Notify::NotifyAll($tokens, $notification, \App::getLocale() == 'ar' ? 'معلم جديد' : 'New Teacher',  'teacher_registered', $user->id);
 

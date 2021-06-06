@@ -5,7 +5,7 @@
 {{trans('admin.waseet')}}
 @endsection
 
-@section('pageSubTitle') 
+@section('pageSubTitle')
 {{trans('admin.announces')}}
 @endsection
 
@@ -56,7 +56,7 @@
                                             <tr align="center">
                                                 <td>{{$loop->iteration}}</td>
                                                 <td>
-                                                    <img src="{{$announce->image->path}}" width="150px" height="150px" style="border-radius: 5px" alt="announce">
+                                                    <img src="{{$announce->image ? $announce->image->path : asset('images/seeding/avatar.png')}}" width="150px" height="150px" style="border-radius: 5px" alt="announce">
                                                 </td>
                                                 <td>
                                                     {{$announce->appear_in_home == 0 ? trans('admin.no') : trans('admin.yes')}}
@@ -124,7 +124,7 @@
                                         showConfirmButton: false,
                                         timer: 1500
                                     });
-                                    window.location.reload(); 
+                                    window.location.reload();
                                 }
                                 else{
                                     Swal.fire({
@@ -133,7 +133,7 @@
                                         showConfirmButton: false,
                                         timer: 1500
                                     });
-                                    window.location.reload(); 
+                                    window.location.reload();
                                 }
                             }
                         });

@@ -23,6 +23,7 @@
                         <a href="{{route('admin.home')}}">{{trans('admin.home')}}</a>
                     </li>
                     <li class="breadcrumb-item active">{{trans('admin.edit')}}
+                    <li class="breadcrumb-item active">{{trans('admin.edit')}}
                     </li>
                 </ol>
             </div>
@@ -89,7 +90,7 @@
                                         $key = '';
                                         $phone_main = $std->$phone_main;
                                     }
-                                    
+
                                     $phone_secondary = null;
                                     $sec_key = null;
                                     if($std->phone_secondary != null && strpos($std->phone_secondary, ',') !== false){
@@ -101,7 +102,7 @@
                                         $sec_key = '';
                                         $phone_secondary = $std->$phone_secondary;
                                     }
-                                    
+
                                 @endphp
                                 {{-- enter phone main --}}
                                 <div class="col-12">
@@ -209,7 +210,7 @@
                                 <div class="col-12">
                                     <div class="form-group row">
                                         <div class="col-md-10">
-                                            <img src="{{$std->image ? $std->image->path : '/images/avatar.png'}}" alt="{{$std->name}}"
+                                            <img src="{{$std->image ? $std->image->path : asset('/images/seeding/avatar.png')}}" alt="{{$std->name}}"
                                             width="100px" height="100px" style="border-radius: 5px">
                                         </div>
                                     </div>
@@ -240,7 +241,7 @@
                     $("input[name*='other_stage']").val('{{$std->other_stage}}');
                 }
                 else{
-                    $('#other_stage').attr('hidden', true);                
+                    $('#other_stage').attr('hidden', true);
                     $("input[name*='other_stage']").attr('required', false);
                     $("input[name*='other_stage']").val('');
                 }

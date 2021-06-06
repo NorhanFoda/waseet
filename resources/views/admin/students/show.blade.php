@@ -49,7 +49,7 @@
                             $key = '';
                             $phone_main = $std->$phone_main;
                         }
-                        
+
                         $phone_secondary = null;
                         $sec_key = null;
                         if($std->phone_secondary != null && strpos($std->phone_secondary, ',') !== false){
@@ -61,7 +61,7 @@
                             $sec_key = '';
                             $phone_secondary = $std->$phone_secondary;
                         }
-                        
+
                     @endphp
                     <div class="card-body">
                         <div class="row">
@@ -71,7 +71,18 @@
                                 <p>{{trans('admin.phone_secondary')}}: {{$sec_key}} {{$phone_secondary }}</p>
                             </div>
                             <div class="col-md-6">
-                                <p>{{trans('admin.stage')}}: {{$std->stage_id == 4 && $std->other_stage != null ? $std->other_stage : $std->stage->{'name_'.session('lang')} }}</p>
+                                <p>
+                                    @if($std->stage_id == 4 && $std->other_stage != null)
+                                        {{$std->other_stage}}
+                                    @else
+                                        @if($std->stage)
+                                            {{$std->stage->{'name_'.session('lang')} }}
+                                        @else
+                                            {{'-'}}
+                                        @endif
+
+                                    @endif
+                                </p>
                                 <p>{{trans('admin.age')}}: {{$std->age}} {{trans('admin.years')}}</p>
                             </div>
                         </div>

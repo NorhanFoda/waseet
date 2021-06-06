@@ -56,7 +56,7 @@
                                             <td>{{$loop->iteration}}</td>
                                             <td>{{$method->name_ar}}</td>
                                             <td>{{$method->name_en}}</td>
-                                            <td><img src="{{$method->image? $method->image->path : asset('images/seeding/avatar.png')}}" alt="{{$method->{'name_'.session('lang')} }}"></td>
+                                            <td><img src="{{$method->image ? $method->image->path : asset('images/seeding/avatar.png')}}" alt="{{$method->{'name_'.session('lang')} }}"></td>
                                             <td>
 
                                                 <a href="{{route('methods.edit', $method->id)}}" class="btn" style="color:white;"><i class="fa fa-pencil-square-o"></i></a>

@@ -368,7 +368,7 @@
                                 <div class="col-12">
                                     <div class="form-group row">
                                         <div class="col-md-10">
-                                            <img src="{{$teacher->image ? $teacher->image->path : '/images/avatar.png'}}" 
+                                            <img src="{{$teacher->image ? $teacher->image->path : asset('images/seeding/avatar.png')}}" 
                                                 width="100px" height="100px" style="border-radius: 5px" alt="{{$teacher->name}}">
                                         </div>
                                     </div>

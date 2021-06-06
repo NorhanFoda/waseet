@@ -233,7 +233,7 @@
                                     <div class="form-group row">
                                         <div class="col-md-12">
                                             @if($org->image != null)
-                                                <img src="{{$org->image->path}}" alt="{{$org->name}}" width="100px" height="100px" style="border-radius: :5px">
+                                                <img src="{{$org->image ? $org->image->path : asset('images/seeding/avatar.png')}}" alt="{{$org->name}}" width="100px" height="100px" style="border-radius: :5px">
                                             @endif
                                         </div>
                                     </div>

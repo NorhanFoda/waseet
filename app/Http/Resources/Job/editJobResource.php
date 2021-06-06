@@ -33,7 +33,7 @@ class editJobResource extends JsonResource
             'long' => $this->long,
             'location' => $this->address,
             'country' => $this->country,
-            'image' => $this->image == null ? 'no image' : $this->image->path,
+            'image' => $this->image == null ? asset('images/seeding/avatar.png') : $this->image->path,
             'announcer_id' => $this->announcer->id,
         ];
     }

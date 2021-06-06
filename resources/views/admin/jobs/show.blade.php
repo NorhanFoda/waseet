@@ -56,7 +56,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="users-view-image">
-                                <img src="{{$job->image ? $job->image->path : '/images/product-avatar.png'}}" class="users-avatar-shadow rounded mb-2 pr-2 ml-1" 
+                                <img src="{{$job->image ? $job->image->path : asset('images/seeding/avatar.png')}}" class="users-avatar-shadow rounded mb-2 pr-2 ml-1" 
                                 alt="{{$job->{'name_'.session('lang')} }}" style="width:150px; height:150px;">
                             </div>
                         </div>

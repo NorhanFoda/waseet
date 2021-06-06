@@ -42,7 +42,7 @@ class editProfileResource extends JsonResource
             'other_edu_level' => $this->other_edu_level,
             'edu_type_id' => $this->edu_type_id,
             'other_edu_type' => $this->other_edu_type,
-            'image' => $this->image != null ? $this->image->path : 'http://waset-elmo3lm.jadara.work/web/images/man.png',
+            'image' => $this->image != null ? $this->image->path : asset('images/seeding/avatar.png'),
             'cv' => $this->document != null ? $this->document->path : 'no cv',
             'user_materials' => UserMaterialResource::collection($this->materials),
             'other_material' => $this->materials()->where('material_id', 4)->first() ? $this->materials()->where('material_id', 4)->first()->pivot->other_material : '',

@@ -116,7 +116,7 @@ class SeekerController extends Controller
     public function update(EditSeekerRequest $request, $id)
     {
         $seeker = User::find($id);
-        
+
         $data = $request->except(['_token'. '_method', 'full', 'sec_full']);
 
         // handling phone
@@ -130,16 +130,10 @@ class SeekerController extends Controller
         if($request->has('cv')){
             if($seeker->document != null){
                 $removed = Upload::deletePDF($seeker->document->path);
-                if($removed){
-                    $pdf_url = Upload::uploadPDF($request->cv);
-                    $seeker->document->update([
-                        'path' => $pdf_url,
-                    ]);
-                }
-                else{
-                    session()->flash('error', trans('admin.error'));
-                    return redirect()->route('seekers.index');        
-                }
+                $pdf_url = Upload::uploadPDF($request->cv);
+                $seeker->document->update([
+                    'path' => $pdf_url,
+                ]);
             }
             else{
                 $pdf_url = Upload::uploadPDF($request->cv);
@@ -175,19 +169,17 @@ class SeekerController extends Controller
 
     public function deleteSeeker(Request $request){
         $seeker = User::find($request->id);
-        $removed = Upload::deletePDF($seeker->document->path);
-        if($removed){
-            Document::where('documentRef_id', $seeker->id)->first()->delete();
-            $seeker->delete();
-            return response()->json([
-                'data' => 1
-            ], 200);
+
+        if($seeker->document){
+
+            $removed = Upload::deletePDF($seeker->document->path);
         }
-        else{
-            return response()->json([
-                'data' => 0
-            ], 200);
-        }
+        
+        Document::where('documentRef_id', $seeker->id)->first()->delete();
+        $seeker->delete();
+        return response()->json([
+            'data' => 1
+        ], 200);
     }
 
 }

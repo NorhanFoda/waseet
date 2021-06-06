@@ -89,7 +89,7 @@
                                         $key = '';
                                         $phone_main = $seeker->$phone_main;
                                     }
-                                    
+
                                     $phone_secondary = null;
                                     $sec_key = null;
                                     if($seeker->phone_secondary != null && strpos($seeker->phone_secondary, ',') !== false){
@@ -101,7 +101,7 @@
                                         $sec_key = '';
                                         $phone_secondary = $seeker->$phone_secondary;
                                     }
-                                    
+
                                 @endphp
                                 {{-- enter phone main --}}
                                 <div class="col-12">
@@ -250,7 +250,7 @@
                                             <span>{{trans('admin.cv')}}</span>
                                         </div>
                                         <div class="col-md-10">
-                                            <input type="file" name="cv" value="{{$seeker->document->path}}" class="form-control" accept="application/pdf" placeholder="{{trans('admin.cv')}}">
+                                            <input type="file" name="cv" value="{{$seeker->document ? $seeker->document->path : ''}}" class="form-control" accept="application/pdf" placeholder="{{trans('admin.cv')}}">
                                             <div class="invalid-feedback">
                                                 {{trans('admin.cv')}}
                                             </div>
@@ -268,7 +268,7 @@
                                         <div class="col-md-10">
                                             <input type="text" class="form-control" id="pac-input" value="{{$seeker->address}}" placeholder="{{trans('admin.location')}}" name="address" required>
                                             <input type="hidden" name="lat" value="{{$seeker->lat}}" id="location_lat">
-                                            <input type="hidden" name="long" value="{{$seeker->long}}" id="location_lng"> 
+                                            <input type="hidden" name="long" value="{{$seeker->long}}" id="location_lng">
                                             <div class="invalid-feedback">
                                                 {{trans('admin.location')}}
                                             </div>

@@ -316,7 +316,7 @@
                                 <div class="col-12">
                                     <div class="form-group row">
                                         <div class="col-md-10">
-                                            <img src="{{$job->image ? $job->image->path : '/images/product-avatar.png'}}" alt="{{$job->{'name_'.session('lang')} }}"
+                                            <img src="{{$job->image ? $job->image->path : asset('images/seeding/avatar.png')}}" alt="{{$job->{'name_'.session('lang')} }}"
                                             width="100px" height="100px" style="border-radius: 5px">
                                         </div>
                                     </div>

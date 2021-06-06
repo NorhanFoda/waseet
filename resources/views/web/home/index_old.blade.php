@@ -143,7 +143,7 @@
           <div class="item">
             <div class="pack">
               <div class="img">
-                <img src="{{$cat->image->path}}" alt="" />
+                <img src="{{$cat->image ? $cat->image->path : asset('images/seeding/avatar.png')}}" alt="" />
               </div>
               <div class="row">
                 <a href="{{route('categories.bags', $cat->id)}}" class="custom-btn">{{$cat->{'name_'.session('lang')} }}</a>

@@ -94,25 +94,22 @@ class JobsController extends Controller
                     ], 404);
                 }
         
-                $cv_path = auth()->user()->document->path;
+                $cv_path = auth()->user()->document ? auth()->user()->document->path : null;
         
                 auth()->user()->update($request->all());
                 auth()->user()->update(['salary_month' => $request->salary]);
                 auth()->user()->job_applications()->attach($request->job_id);
         
                 if($request->has('cv')){
-                    $removed = Upload::deletePDF($cv_path);
-                    if($removed){
-                        $url = Upload::uploadImage($request->cv);
-                        auth()->user()->document->update([
-                            'path' => $url
-                        ]);
+                    if($cv_path != null){
+
+                        $removed = Upload::deletePDF($cv_path);
                     }
-                    else{
-                        return response()->josn([
-                            'error' => trans('api.error')
-                        ], 404);
-                    }
+                    
+                    $url = Upload::uploadImage($request->cv);
+                    auth()->user()->document->update([
+                        'path' => $url
+                    ]);
                 }
 
                 // Send job applicant notification to organization

@@ -20,7 +20,7 @@ class SeekerResource extends JsonResource
             return [
                 'id' => $this->id,
                 'name' => $this->name,
-                'image' => $this->image != null ? $this->image->path : 'no image',
+                'image' => $this->image != null ? $this->image->path : asset('images/seeding/avatar.png'),
                 'cv' => $this->document != null ? $this->document->path : 'no cv',
                 'email' => $this->email,
                 'phone_main' => $this->phone_main,

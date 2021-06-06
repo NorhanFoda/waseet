@@ -104,16 +104,25 @@ class PaymentMethodsController extends Controller
         $method->update($request->all());
 
         if($request->has('image')){
-            $removed = Upload::deleteImage($method->image->path);
-            if($removed){
+            
+            if($method->image){
+
+                Upload::deleteImage($method->image->path);
+
                 $image_url = Upload::uploadImage($request->image);
                 $method->image->update([
                     'path' => $image_url,
                 ]);
             }
             else{
-                session()->flash('error', trans('admin.error'));
-                return redirect()->route('methods.index');        
+
+                $image_url = Upload::uploadImage($request->image);
+                $image = Image::create([
+                    'path' => $image_url,
+                    'imageRef_id' => $method->id,
+                    'imageRef_type' => 'App\Models\PaymentMethod'
+                ]);
+                $method->image()->save($image);
             }
         }
 

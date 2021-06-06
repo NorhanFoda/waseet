@@ -97,7 +97,7 @@
                                 <div class="col-12">
                                     <div class="form-group row">
                                         <div class="col-md-12">
-                                            <img src="{{$category->image->path}}" alt='{{$category->{'name_'.session('lang')} }}' width="100px" height="100px" style="border-radius: 5px;">
+                                            <img src="{{$category->image ? $category->image->path : asset('images/seeding/avatar.png')}}" alt='{{$category->{'name_'.session('lang')} }}' width="100px" height="100px" style="border-radius: 5px;">
                                         </div>
                                     </div>
                                 </div>

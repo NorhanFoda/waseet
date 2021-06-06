@@ -5,7 +5,7 @@
 {{trans('admin.waseet')}}
 @endsection
 
-@section('pageSubTitle') 
+@section('pageSubTitle')
 {{trans('admin.users')}}
 @endsection
 
@@ -57,21 +57,24 @@
                                                 <td>{{$user->name}}</td>
                                                 <td>{{$user->email}}</td>
                                                 <td>
-                                                    @if($user->roles[0]->name == 'student')
-                                                        {{trans('admin.student')}}
+                                                    @if(count($user->roles) > 0)
+                                                        @if($user->roles[0]->name == 'student')
+                                                            {{trans('admin.student')}}
+                                                        @endif
+                                                        @if($user->roles[0]->name == 'organization')
+                                                            {{trans('admin.organization')}}
+                                                        @endif
+                                                        @if($user->roles[0]->name == 'job_seeker')
+                                                            {{trans('admin.job_seeker')}}
+                                                        @endif
+                                                        @if($user->roles[0]->name == 'online_teacher')
+                                                            {{trans('admin.online_teacher')}}
+                                                        @endif
+                                                        @if($user->roles[0]->name == 'direct_teacher')
+                                                            {{trans('admin.direct_teacher')}}
+                                                        @endif
                                                     @endif
-                                                    @if($user->roles[0]->name == 'organization')
-                                                        {{trans('admin.organization')}}
-                                                    @endif
-                                                    @if($user->roles[0]->name == 'job_seeker')
-                                                        {{trans('admin.job_seeker')}}
-                                                    @endif
-                                                    @if($user->roles[0]->name == 'online_teacher')
-                                                        {{trans('admin.online_teacher')}}
-                                                    @endif
-                                                    @if($user->roles[0]->name == 'direct_teacher')
-                                                        {{trans('admin.direct_teacher')}}
-                                                    @endif
+
                                                 </td>
                                                 <td>
                                                     <a href="{{route('users.show', $user->id)}}" class="btn" style="color:white;"><i class="fa fa-eye"></i></a>

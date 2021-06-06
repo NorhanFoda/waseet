@@ -100,8 +100,8 @@
 
                             <div class="col-12 col-sm-9 col-md-6 col-lg-4">
                                 @if($order->payment_method_id == 2)
-                                    <a href="{{$order->receipt->image->path}}">
-                                        <img src="{{$order->receipt->image->path}}" alt="{{$order->id}}" width="200px" height="200px">
+                                    <a href="{{$order->receipt && $order->receipt->image ? $order->receipt->image->path : '#'}}">
+                                        <img src="{{$order->receipt && $order->receipt->image ? $order->receipt->image->path : asset('images/seeding/avatar.png')}}" alt="{{$order->id}}" width="200px" height="200px">
                                     </a>
                                 @endif
                             </div>
