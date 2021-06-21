@@ -29,6 +29,7 @@ return [
     'message' => 'الرسالة',
     'goals_of_app_depts' => 'الهدف من أقسام التطبيق',
     'goals' => 'الأهداف',
+    'download_from' => 'حمل التطبيق من خلال',
 
     // Bags
     'print_content' => 'طباعة المحتوى',

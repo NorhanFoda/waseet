@@ -23,6 +23,7 @@ return [
     'add_job' => 'Announce A Job',
     'complete_payment' => 'Please Finish Registeration',
     'account_verified' => 'Account Verified Successfully',
+    'download_from' => 'Download App From',
 
     // About us
     'vision' => 'Vision',

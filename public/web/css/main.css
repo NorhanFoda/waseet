@@ -4119,3 +4119,17 @@ input#teaching-pac-input {
     transform:none !important;
     max-height:inherit !important;
 }
+
+.download-applications h4 {
+    font-size: 15px;
+    margin-bottom: 15px;
+}
+
+.download-applications img {
+    max-height: 50px;
+    margin: 0 5px 5px;
+}
+
+.download-applications {
+    margin-top: 20px;
+}

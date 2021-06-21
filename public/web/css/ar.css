@@ -253,6 +253,9 @@ footer form input {
   footer form .form-group label button{
       margin-left: 10px;
   }
+  .download-applications{
+      text-align:right;
+  }
 
   @media screen and (max-width:767px) {
     

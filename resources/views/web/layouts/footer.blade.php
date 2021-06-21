@@ -10,6 +10,12 @@
         <p>
           {!! $set->{'footer_text_'.session('lang')} !!}
         </p>
+        
+        <div class="download-applications">
+<h4> {{trans('web.download_from')}} : ‎</h4>
+<a href="https://play.google.com/store/apps/details?id=com.jadara.waseetalmoalem" target="_blank"><img src="{{asset('web/images/app1.png')}}" alt="google play"></a>
+             <a href="https://apps.apple.com/app/id1529079030" target="_blank"><img src="{{asset('web/images/app2.png')}}" alt="app store"></a>
+        </div>
       </div>
 
       <div class="col-lg-2 col-md-6 col-11" data-aos="fade-in">
