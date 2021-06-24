@@ -33,6 +33,7 @@ class VerificationEmail extends Mailable
     public function build()
     {
 
+        // dd($this->code);
         return $this->markdown('Email.verification')->with(['code' => $this->code, 'email' => $this->email]);
     }
 }

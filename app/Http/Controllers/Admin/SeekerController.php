@@ -175,7 +175,8 @@ class SeekerController extends Controller
             $removed = Upload::deletePDF($seeker->document->path);
         }
         
-        Document::where('documentRef_id', $seeker->id)->first()->delete();
+        Document::where('doucmentRef_id', $seeker->id)->first()->delete();
+                        
         $seeker->delete();
         return response()->json([
             'data' => 1

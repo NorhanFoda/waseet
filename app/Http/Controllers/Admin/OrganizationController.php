@@ -192,17 +192,12 @@ class OrganizationController extends Controller
         else{
             if($org->image != null){
                 $remove = Upload::deleteImage($org->image->path);
-                if($remove){
-                    $org->delete();
-                    return response()->json([
-                        'data' => 1
-                    ], 200);
-                }
-                else{
-                    return response()->json([
-                        'data' => 0
-                    ], 200);
-                }
+
+                $org->delete();
+                
+                return response()->json([
+                    'data' => 1
+                ], 200);
             }
         }
     }

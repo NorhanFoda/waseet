@@ -22,7 +22,7 @@ class BankResource extends JsonResource
             'name' => $this->{'name_'.$lang},
             'account_number' => $this->account_number,
             'iban' => $this->iban,
-            'image' => new ImageResource($this->image)
+            'image' => $this->image ? new ImageResource($this->image) : asset('images/seeding/avatar.png')
         ];
     }
 }
