@@ -33,9 +33,10 @@ class AppServiceProvider extends ServiceProvider
         Schema::defaultStringLength(191);
 
         \App::setLocale('ar');
+        \LaravelLocalization::setLocale('ar');
         session(['lang' => \App::getLocale()]);
 
-        view()->composer('web.layouts.app', function($view){
+        view()->composer(['web.layouts.app', 'web.landing'], function($view){
 
             $set = Setting::find(1);
             $pages = StaticPage::where('appear_in_footer', 1)->get();

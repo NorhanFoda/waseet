@@ -1,0 +1,386 @@
+ @media only screen and (min-width: 1600px) {
+
+    .header {
+        height: 1111px;
+    }
+    
+    .advantages {
+        height: 1386px;
+    }
+    .img_advantages {
+        margin: -37px auto;
+
+    }
+
+} 
+   
+@media only screen and (max-width: 1200px) {
+
+    .img_advantages {
+        margin: -24px auto;      
+    }
+    
+    .sub_advantages {
+        margin: 100px 0px;
+    }
+    
+    .img_screen_apps {
+        height: 426px;
+    }
+    
+    .screen_apps {
+        margin: 29px 0px;
+    } 
+}
+
+
+
+@media only screen and (max-width: 992px) {
+    
+.element ul li {
+    margin: 0px 10px;
+}
+
+.logo {
+    max-width: 90%;
+}
+
+
+.title_advantages {
+    max-width: 76%;
+    margin: 114px auto 0px;
+}
+
+
+.circle_percent {
+    font-size: 74px;
+    width: 74px;
+    height: 74px;
+    margin: 20px 0px;
+}
+
+.contenr_number {
+    display: inline-block;
+    width: 25%;
+    vertical-align: middle;
+}
+
+.text_contenr_number p {
+    font-size: 13px;
+}
+
+.text_contenr_number h2 {
+    font-size: 18px;
+}
+
+
+.text_contenr_number {
+    width: 73%;
+}
+
+.text_advantages p {
+
+    font-size: 13px;
+}
+
+.text_advantages {
+    margin-top: 138px;
+}
+.img_advantages {
+    margin: 58px auto 0px;
+}
+.sub_advantages {
+    margin: 53px 0px;
+}
+.img_advantages {
+    margin: 130px auto 0px;
+}
+.text_advantages {
+    margin-top: 90px;
+}
+
+.advantages {
+    margin-top: 14PX;
+}
+
+.text_download_app {
+    padding: 10px 0px;
+}
+
+.links_download_app img {
+    max-width: 46%;
+}
+
+.text_download_app p {
+    font-size: 14px;
+}
+
+.text_download_app h2 {
+    font-size: 13px;
+}
+
+}
+@media only screen and (max-width: 768px) {
+
+    .element {
+        position: fixed;
+        margin-top: 0px;
+        width: 250px;
+        display: inline-block;
+        height: 100%;
+        z-index: 999;
+        overflow: auto;
+        background: #fff;
+        background-image: linear-gradient( to bottom , #430175b6 , #b296d3,#430175b6);
+        text-align: right;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        padding-top: 0px;
+        top: 0px;
+        transition: all 0.5s ease-in-out;
+      }
+      .element ul li {
+        text-align: right;
+        padding: 5px 25px 10px;
+        display: block;
+        margin-top: 20px;
+        position: relative;
+        color:#fff;
+        border: 1px solid #fff;
+        text-align: center;
+        border-radius: 20px;
+    
+    
+      }
+      .element.active {
+        transform: translateX(0);
+      }
+      .times {
+        display: block;
+      }
+      .element ul li a {
+        color: #fff !important;
+      }
+    
+    
+      .logo-mune {
+        display: block;
+        text-align: right;
+        margin: 20px 0px;
+        width: 67%;
+        margin: 30px auto 65px;
+    }
+    
+    .img_header {
+        display: inline-block;
+        width: 153px;
+    }
+
+    .logo {
+        max-width: 25%;
+    }
+    div#times-ican {
+        display: block;
+        top: 30px;
+    }
+    .header .container {
+        position: relative;
+    }
+        
+    .link_wep {
+        display: none;
+    }
+        
+    .sub-about_us {
+        margin: 20px 0px;
+    }
+    
+    .about_us {
+        margin: 0px 0px;
+    }
+        
+    .header {
+        height: 579px;
+
+    }
+
+        
+    .center_header {
+        text-align: center;
+        margin: 44px 0px 0px;
+    }
+
+    .text_advantages {
+        margin-top: 51px;
+    }
+    
+    .img-download {
+        max-width: 70%;
+        margin: 20px auto;
+    }
+    .img_screen_apps {
+        height: 310px;
+    }
+    .screen_apps {
+        margin: 13px 0px;
+    }
+    .footer {
+        margin-top: 0px;
+  
+        height: auto;
+        padding-top: 0px;
+        padding-bottom: 20px;
+    }
+    .sub-footer {
+        margin-top: 250px;
+
+    }
+    
+    .logo-footer {
+        width: 31%;
+        margin: auto;
+    }
+    
+    .sub-footer p {
+        max-width: 73%;
+        margin: 20px auto;
+    }
+    
+    .end_page {
+        text-align: center;
+    }
+    .end_page a{
+        margin: 10px 0px 0px;
+    }
+        
+    .title_header h2 {
+        font-size: 20px;
+
+    }
+    
+   
+.svg_looding  {
+    position: absolute;
+    left: 0px;
+    top: 50%;
+    width: 100%;
+    right: 0px;
+    text-align: center;
+    margin: auto;
+    transform: translateY(-50%);
+}
+.svg_looding object {
+    width: 60%;
+    margin: auto;
+
+}
+}
+
+
+
+@media only screen and (max-width: 575px) {
+    .sub-about_us {
+        margin: 20px 0px;
+        max-width: 64%;
+        margin: 20px auto;
+    }
+    .title_header p {
+        font-size: 20px;
+        margin-top: 0px;
+     
+    }
+    .img_screen_apps {
+        height: auto;
+        max-width: 60%;
+        margin: auto;
+    }
+   
+    .sub-footer p {
+        font-size: 12px;
+    }
+    
+.media ul li {
+    width: 35px;
+    height: 35px;
+    font-size: 16px;
+    padding: 5px 0px;
+}
+.end_page {
+    text-align: center;
+    font-size: 12px;
+}
+.footer {
+
+    padding-top: 50px;
+    background-position: center;
+}
+
+.sub-footer {
+    margin-top: 115px;
+}
+.title_advantages {
+    margin: 44px auto 0px;
+}
+}
+
+@media only screen and (max-width: 450px) {
+    .img_header {
+        display: block;
+        width: 89px;
+        margin: auto;
+    }
+    .logo {
+        max-width: 100px;
+    }
+    div#times-ican {
+        top: 20px;
+    }
+    .header {
+        height: 470px;
+    }
+    .center_header {
+        text-align: center;
+        margin: 7px 0px 0px;
+    }
+    .sub-about_us {
+        max-width: 90%;
+    }
+    .title_advantages {
+        max-width: 96%;
+        font-size: 13px;
+        margin: 67px auto 0px;
+    }
+
+  
+    .sub_advantages {
+        margin: 10px 0px 0px;
+    }
+
+    .img_advantages {
+        margin: 15px auto 0px;
+    }
+
+    .advantages {
+        height: auto;
+        background-size: contain;
+        padding: 120px 0px 0px;
+    }
+    .img_advantages {
+        margin: -40px auto 0px;
+    }
+    .text_contenr_number p {
+        font-size: 11px;
+        line-height: 20px;
+    }
+    .text_contenr_number h2 {
+        font-size: 14px;
+    }
+    .title_header p {
+        font-size: 16px;
+        margin-top: 0px;
+    }
+    .sub-about_us {
+        margin: 11px auto;
+    }
+}

@@ -221,6 +221,13 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 
     /* WEBSITE */
 
+    // Langing
+    Route::get('/landing', function (){
+
+        return view('web.landing');
+        
+    })->name('landing');
+
     Auth::routes();
 
     // Register

@@ -1,0 +1,48 @@
+body {
+    text-align: right;
+    direction: rtl;
+}
+
+
+
+.end_page a {
+    text-align: left;
+}
+
+div#times-ican {
+    left: 0px;
+}
+
+.text_download_app h2::after {
+    right: 0px;
+}
+
+.text_advantages p::after {
+    right: 0px;
+}
+
+.bg_img_about_us {
+    right: 0px;
+}
+
+
+
+
+
+@media only screen and (max-width: 768px) {
+
+
+div#times-ican {
+    left: 15px;
+}
+.element {
+right: 0px;
+transform: translateX(100%);
+}
+.end_page a {
+text-align: center;
+margin: 10px 0px 0px;
+}
+
+}
+
