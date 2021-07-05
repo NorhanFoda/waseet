@@ -182,9 +182,11 @@ class OrganizationController extends Controller
     }
 
     public function deleteOrganization(Request $request){
+
         $org = User::find($request->id);
 
         if(count($org->org_applicants) > 0){
+            
             return response()->json([
                 'data' => 0
             ], 200);
@@ -192,13 +194,13 @@ class OrganizationController extends Controller
         else{
             if($org->image != null){
                 $remove = Upload::deleteImage($org->image->path);
-
-                $org->delete();
-                
-                return response()->json([
-                    'data' => 1
-                ], 200);
             }
         }
+
+        $org->delete();
+                
+        return response()->json([
+            'data' => 1
+        ], 200);
     }
 }

@@ -5,7 +5,7 @@
 {{trans('admin.waseet')}}
 @endsection
 
-@section('pageSubTitle') 
+@section('pageSubTitle')
 {{trans('admin.cvs')}}
 @endsection
 
@@ -51,7 +51,7 @@
                                     @foreach($cvs as $cv)
                                         <tr align="center">
                                             <td>{{$loop->iteration}}</td>
-                                            <td>{{$cv->doucmentRef->name}}</td>
+                                            <td>{{$cv->doucmentRef ? $cv->doucmentRef->name : ''}}</td>
                                             <td>
                                                 <a href="{{$cv->path}}"><img src="{{asset('admin/images/logo/cv.png')}}" alt="cv"></a>
                                             </td>

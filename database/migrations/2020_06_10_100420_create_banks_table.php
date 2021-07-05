@@ -18,7 +18,7 @@ class CreateBanksTable extends Migration
             $table->string('name_ar');
             $table->string('name_en');
             $table->bigInteger('account_number');
-            $table->bigInteger('iban');
+            $table->string('iban');
             $table->timestamps();
         });
     }

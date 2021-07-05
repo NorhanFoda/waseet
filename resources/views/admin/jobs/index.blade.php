@@ -61,7 +61,7 @@
                                             <td>{{$job->free_places}}</td>
                                             <td>{{$job->salary}}</td>
                                             <td>
-                                                <select name="approved" class="approved form-control" data-id="{{$job->id}}">
+                                                <select name="approved" class="approved-job form-control" data-id="{{$job->id}}">
                                                     <option value="{{0}}" @if($job->approved == 0) selected @endif>{{trans('admin.refuse')}}</option>
                                                     <option value="{{1}}" @if($job->approved == 1) selected @endif>{{trans('admin.accept_job')}}</option>
                                                 </select>
@@ -155,7 +155,7 @@
         });
 
         // Update job status (approve - refuse)
-        $(document).on('change', '.approved', function(){
+        $(document).on('change', '.approved-job', function(){
             var id = $(this).data('id');
             var approved = $(this).val();
 
@@ -165,13 +165,28 @@
                 dataType: 'html',
                 data: {"_token": "{{ csrf_token() }}", id: id, approved: approved },
                 success: function(data){
-                    Swal.fire({
-                        title: "{{trans('admin.updated')}}",
-                        type: 'success',
-                        timer: 1500,
-                        showCancelButton: false,
-                        showConfirmButton: false,
-                    });
+
+                    data = JSON.parse(data);
+
+                    if(data.data == 'error'){
+                        Swal.fire({
+                            title: "{{trans('admin.error')}}",
+                            type: 'errpr',
+                            timer: 1500,
+                            showCancelButton: false,
+                            showConfirmButton: false,
+                        });
+                    }
+                    else{
+                        Swal.fire({
+                            title: "{{trans('admin.updated')}}",
+                            type: 'success',
+                            timer: 1500,
+                            showCancelButton: false,
+                            showConfirmButton: false,
+                        });
+                    }
+                    
                 }
             });
         });

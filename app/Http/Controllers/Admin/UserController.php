@@ -182,7 +182,10 @@ class UserController extends Controller
 
     public function approveAccount(Request $request){
         $user = User::with(['tokens'])->find($request->id);
-        $user->update(['approved' => $request->approved]);
+        if($user){
+
+            $user->update(['approved' => $request->approved]);
+        }
 
         if( $request->approved == 1){
             SendEmail::Subscripe($user->email, route('login.form'), 'notify_user');

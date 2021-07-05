@@ -218,82 +218,102 @@ class JobController extends Controller
     }
 
     public function updateJobStatus(Request $request){
+
         $job = Job::with(['announcer'])->find($request->id);
-        $job->update(['approved' => $request->approved]);
 
-        if($job->approved == 1){
+        if($job){
 
-            // Send job created notification to all job seekers
-            $users = User::whereHas('roles', function($q){
-                $q->where('name', 'job_seeker');
-            })->get();
+            $updated = $job->update(['approved' => $request->approved]);
 
-            $seekers_ids = User::whereHas('roles', function($q){
-                $q->where('name', 'job_seeker');
-            })->pluck('id');
+            if($job->approved == 1){
 
-            if(count($users) > 0){
-                foreach($users as $user){
-                    $notification = Notification::create([
-                        'msg_ar' => 'لقد تم إضافة وظيفة جديدة',
-                        'msg_en' => 'A New Job Added',
-                        'user_id' => $user->id,
-                        'read' => 0,
-                        'type' => 'job_created',
-                        'extra_data' => $job->id,
-                    ]);
+                // Send job created notification to all job seekers
+                $users = User::whereHas('roles', function($q){
+                    $q->where('name', 'job_seeker');
+                })->get();
+    
+                $seekers_ids = User::whereHas('roles', function($q){
+                    $q->where('name', 'job_seeker');
+                })->pluck('id');
+    
+                if(count($users) > 0){
+                    foreach($users as $user){
+                        $notification = Notification::create([
+                            'msg_ar' => 'لقد تم إضافة وظيفة جديدة',
+                            'msg_en' => 'A New Job Added',
+                            'user_id' => $user->id,
+                            'read' => 0,
+                            'type' => 'job_created',
+                            'extra_data' => $job->id,
+                        ]);
+                    }
+                }
+    
+                $tokens = DeviceToken::whereIn('user_id', $seekers_ids)->pluck('token');
+                Notify::NotifyAll($tokens, $notification, \App::getLocale() == 'ar' ? 'وظيفة جديدة' : 'New job',  'job_created', $job->id);
+    
+    
+                // Send job approved notification to announcer
+                $not = Notification::create([
+                    'msg_ar' => ' لقد تم تفعيل الوظيفة من قبل إدراة وسيط المعلم',
+                    'msg_en' => 'Jon was approved by Waset Elmo3lm adminstration',
+                    // 'image' => 'http://beta.bestlook.sa/images/logo1.png',
+                    'user_id' => $job->announcer->id,
+                    'read' => 0,
+                    'type' => 'job_approved',
+                    'extra_data' => $job->id,
+                ]);
+                if(\App::getLocale() == 'ar'){
+                    // Notify::NotifyUser($job->announcer->tokens, $not->msg_ar, 'تفعيل الوظيفة', 'job_approved', $job->id);
+                    Notify::NotifyAll($job->announcer->tokens->pluck('token'), $not, 'تفعيل الوظيفة', 'job_approved', $job->id);
+                }
+                else{
+                    // Notify::NotifyUser($job->announcer->tokens, $not->msg_en, 'job approved', 'job_approved', $job->id);
+                    Notify::NotifyAll($job->announcer->tokens->pluck('token'), $not, 'job approved', 'job_approved', $job->id);
+                }
+    
+    
+                // $subs = SubScriber::get(['email']);
+                // $details['emails'] = $subs;
+                // $details['link'] = route('jobs.details', $job->id);
+                // $details['type2'] = 'subscripe';
+                // $details['type'] = 'job';
+                // dispatch(new SendEmailJob($details));
+                
+    
+                //Send approval mail to Announcer
+                // $details['email'] = $job->announcer->email;
+                // $details['link'] = route('jobs.details', $job->id);
+                // $details['type2'] = 'approve_job';
+                // $details['type'] = 'approved';
+                // dispatch(new SendEmailJob($details));
+                if($job && $job->announcer){
+
+                    SendEmail::SendApprovalMail($job->announcer->email, route('jobs.details', $job->id), 'approved');
+                }
+            }
+            else{
+                //Send refuse mail to Announcer
+                // $set = Setting::find(1);
+                // $details['email'] = $job->announcer->email;
+                // $details['link'] = route('jobs.details', $job->id);
+                // $details['type2'] = 'approve_job';
+                // $details['type'] = 'refused';
+                // dispatch(new SendEmailJob($details));
+                if($job && $job->announcer){
+                    SendEmail::SendApprovalMail($job->announcer->email, route('jobs.details', $job->id), 'refused');
                 }
             }
 
-            $tokens = DeviceToken::whereIn('user_id', $seekers_ids)->pluck('token');
-            Notify::NotifyAll($tokens, $notification, \App::getLocale() == 'ar' ? 'وظيفة جديدة' : 'New job',  'job_created', $job->id);
-
-
-            // Send job approved notification to announcer
-            $not = Notification::create([
-                'msg_ar' => ' لقد تم تفعيل الوظيفة من قبل إدراة وسيط المعلم',
-                'msg_en' => 'Jon was approved by Waset Elmo3lm adminstration',
-                // 'image' => 'http://beta.bestlook.sa/images/logo1.png',
-                'user_id' => $job->announcer->id,
-                'read' => 0,
-                'type' => 'job_approved',
-                'extra_data' => $job->id,
-            ]);
-            if(\App::getLocale() == 'ar'){
-                // Notify::NotifyUser($job->announcer->tokens, $not->msg_ar, 'تفعيل الوظيفة', 'job_approved', $job->id);
-                Notify::NotifyAll($job->announcer->tokens->pluck('token'), $not, 'تفعيل الوظيفة', 'job_approved', $job->id);
-            }
-            else{
-                // Notify::NotifyUser($job->announcer->tokens, $not->msg_en, 'job approved', 'job_approved', $job->id);
-                Notify::NotifyAll($job->announcer->tokens->pluck('token'), $not, 'job approved', 'job_approved', $job->id);
-            }
-
-
-            // $subs = SubScriber::get(['email']);
-            // $details['emails'] = $subs;
-            // $details['link'] = route('jobs.details', $job->id);
-            // $details['type2'] = 'subscripe';
-            // $details['type'] = 'job';
-            // dispatch(new SendEmailJob($details));
-            
-
-            //Send approval mail to Announcer
-            // $details['email'] = $job->announcer->email;
-            // $details['link'] = route('jobs.details', $job->id);
-            // $details['type2'] = 'approve_job';
-            // $details['type'] = 'approved';
-            // dispatch(new SendEmailJob($details));
-            SendEmail::SendApprovalMail($job->announcer->email, route('jobs.details', $job->id), 'approved');
+            return response()->json([
+                'data' => 'success'
+            ], 200);
         }
         else{
-            //Send refuse mail to Announcer
-            // $set = Setting::find(1);
-            // $details['email'] = $job->announcer->email;
-            // $details['link'] = route('jobs.details', $job->id);
-            // $details['type2'] = 'approve_job';
-            // $details['type'] = 'refused';
-            // dispatch(new SendEmailJob($details));
-            SendEmail::SendApprovalMail($job->announcer->email, route('jobs.details', $job->id), 'refused');
+
+            return response()->json([
+                'data' => 'error'
+            ], 200);
         }
     }
 }

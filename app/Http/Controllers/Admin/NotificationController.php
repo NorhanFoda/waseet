@@ -55,14 +55,14 @@ class NotificationController extends Controller
                     'user_id' => $user->id,
                     'read' => 0,
                     'type' => 'admin-message',
-                    'extra_data' => $job->id,
+                    'extra_data' => $user->id,
                 ]);
             }
         }
 
         $tokens = DeviceToken::pluck('token');
 
-        Notify::NotifyAll($tokens, $notification, \App::getLocale() == 'ar' ? 'الإدارة' : 'Adminstration',  'admin-message', $job->id);
+        Notify::NotifyAll($tokens, $notification, \App::getLocale() == 'ar' ? 'الإدارة' : 'Adminstration',  'admin-message', $user->id);
 
         session()->flash('message', trans('admin.notification_created'));
         return redirect()->route('notifications.index');

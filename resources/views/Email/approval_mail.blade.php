@@ -47,8 +47,13 @@
                 {{trans('web.job_refused_text')}}
                 <div style="color:#333; margin: 30px auto 20px; text-align: center;">
                     <div>
-                        {{trans('web.phone')}}: {{$link->phone}}<br>
-                        {{trans('web.email')}}: {{$link->email}}
+                        @if(is_object($link))
+                            {{trans('web.phone')}}: {{isset($link) && $link != null ? $link->phone : ''}}<br>
+                            {{trans('web.email')}}: {{isset($link) && $link != null ? $link->email : ''}}
+                        @else
+                            {{$link}}
+                        @endif
+                        
                     </div>        
                 </div>
             @endif
