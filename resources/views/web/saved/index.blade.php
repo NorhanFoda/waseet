@@ -48,7 +48,8 @@
                         @foreach(auth()->user()->saved_jobs as $job)
                             <!--start item-->
                             <div class="item col-lg-4 col-sm-6">
-                                <div class="teacher">
+                                @if($job->saveRef)
+                                    <div class="teacher">
                                     <div class="teacher_info">
                                         <div class="teacher_img">
                                             <img src="{{asset('web/images/job.png')}}" alt="teacher image" />
@@ -71,7 +72,8 @@
                                             <p>{{$job->saveRef->exper_years}} {{trans('web.exper_years_2')}}</p>
                                         </li>
                                         <li>
-                                            <p>{{$job->saveRef->city->{'name_'.session('lang')} }} , {{$job->saveRef->country->{'name_'.session('lang')} }}</p>
+                                            {{--<p>{{$job->saveRef->city->{'name_'.session('lang')} }} , {{$job->saveRef->country->{'name_'.session('lang')} }}</p>--}}
+                                            <p>{{$job->saveRef->address }}</p>
                                         </li>
                                     </ul>
             
@@ -79,6 +81,7 @@
                                         <a href="{{route('jobs.apply', $job->saveRef->id)}}">{{trans('web.apply')}}</a>
                                     </div>
                                 </div>
+                                @endif
                             </div>
                             <!--end item-->
                         @endforeach
@@ -90,7 +93,7 @@
                 <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                     <div class="row teachersWrap">
                         @foreach (auth()->user()->saved_teachers as $teacher)
-                            @if(!$teacher->saveRef->hasRole('admin'))
+                            @if($teacher->saveRef && !$teacher->saveRef->hasRole('admin'))
                                 <!--start item-->  
                                 <div class="item col-lg-4  col-sm-6">
                                     <div class="teacher">
@@ -192,10 +195,13 @@
                             <!--start item--> 
                             <div class="item col-lg-4 col-sm-6">
                                 <div class="packsWrap">
-                                    <div class="pack m-2">
-                                        <a href="{{route('web_bags.show', $bag->saveRef->id)}}">
+                                    @if($bag->saveRef)
+                                        <div class="pack m-2">
+                                        <a href="{{$bag->saveRef ? route('web_bags.show', $bag->saveRef->id) : '#'}}">
                                             <div class="pack_img">
-                                                <img src="{{$bag->saveRef->images()->where('image_type', 'slider')->first() ? $bag->saveRef->images()->where('image_type', 'slider')->first()->path : 'images/product-avatar.png'}}" alt="" />
+                                                @if($bag->saveRef)
+                                                    <img src="{{$bag->saveRef->images()->where('image_type', 'slider')->first() ? $bag->saveRef->images()->where('image_type', 'slider')->first()->path : 'images/product-avatar.png'}}" alt="" />
+                                                @endif
                                             </div>
 
                                             <div class="pack_name">
@@ -210,7 +216,7 @@
 
                                             <div class="pack_rate">
                                                 <form action="">
-                                                    @if($bag->saveRef->ratings->count() > 0)
+                                                    @if($bag->saveRef && $bag->saveRef->ratings->count() > 0)
                                                         <input type="radio" id="st5" name="pack" @if(ceil($bag->saveRef->ratings->sum('rate') / $bag->saveRef->ratings->count()) == 5) checked @endif />
                                                         <label for="st5">
                                                             <i class="active fa fa-star" aria-hidden="true"></i>
@@ -265,6 +271,7 @@
                                             </div>
                                         </a>
                                     </div>
+                                    @endif
                                 </div>
                             </div>
                             <!--end item--> 

@@ -45,10 +45,18 @@
         </form>
 
         <div class="social-icons footer-social">
-            <a href="{{$socials[0]->link}}" class="fc"><i class="fab fa-facebook-f"></i></a>
-            <a href="{{$socials[1]->link}}" class="tw"><i class="fab fa-twitter"></i></a>
-            <a href="{{$socials[2]->link}}" class="sn"><i class="fab fa-snapchat"></i></a>
-            <a href="{{$socials[3]->link}}" class="nst"><i class="fab fa-instagram"></i></a>
+            @if(isset($socials[0]) && $socials[0]->appear_in_footer == 1)
+                <a href="{{$socials[0]->link}}" class="fc"><i class="fab fa-facebook-f"></i></a>
+            @endif
+            @if(isset($socials[1]) && $socials[1]->appear_in_footer == 1)
+                <a href="{{$socials[1]->link}}" class="tw"><i class="fab fa-twitter"></i></a>
+            @endif
+            @if(isset($socials[2]) && $socials[2]->appear_in_footer == 1)
+                <a href="{{$socials[2]->link}}" class="sn"><i class="fab fa-snapchat"></i></a>
+            @endif
+            @if(isset($socials[3]) && $socials[3]->appear_in_footer == 1)
+                <a href="{{$socials[3]->link}}" class="nst"><i class="fab fa-instagram"></i></a>
+            @endif
         </div>
 
       </div>

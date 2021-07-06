@@ -79,6 +79,8 @@ class RegisterController extends Controller
         if($request->has('phone_secondary')){
             $data['phone_secondary'] = $request->sec_full.','.$request->phone_secondary;
         }
+        
+        // dd($data);
         $user = User::create($data);
         
         $user->update([
@@ -145,7 +147,16 @@ class RegisterController extends Controller
             // $details['email'] = $user->email;
             // $details['type'] = 'send_verification_code';
             // dispatch(new SendEmailJob($details));
-            SendEmail::sendVerificationCode($code, $user->email);
+            
+            try{
+                
+                SendEmail::sendVerificationCode($code, $user->email);
+            }
+            catch(Throwable $e){
+                
+                session()->flash('error', trans('web.email_error'));
+                return redirect()->back();
+            }
 
             $welcome_text = Setting::find(1)->{'welcome_text_'.session('lang')};
 
@@ -194,8 +205,16 @@ class RegisterController extends Controller
         $user = User::where('email', $request->email)->first();
         $user->update(['code' => $code]);
         $email = $user->email;
-
-        SendEmail::sendVerificationCode($code, $user->email);
+        
+        try{
+                
+            SendEmail::sendVerificationCode($code, $user->email);
+        }
+        catch(Throwable $e){
+            
+            session()->flash('error', trans('web.email_error'));
+            return redirect()->back();
+        }
 
         $welcome_text = Setting::find(1)->{'welcome_text_'.session('lang')};
 

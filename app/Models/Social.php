@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Social extends Model
 {
-    protected $fillable = ['link'];
+    protected $fillable = ['link', 'appear_in_footer'];
 }

@@ -17,6 +17,7 @@ class CreateSocialsTable extends Migration
             $table->bigIncrements('id');
             $table->string('link');
             $table->string('icon');
+            $table->boolean('appear_in_footer')->default(1);
             $table->timestamps();
         });
     }

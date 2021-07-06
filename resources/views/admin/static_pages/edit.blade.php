@@ -217,7 +217,8 @@
                                             <div class="col-md-10">
                                                 <div class="input-group control-group goal_increment">
                                                     <div class="col-md-12">
-                                                        <input type="text" name="title_ars[]" class="form-control" placeholder="{{trans('admin.title_ar')}}" @if($page->id == 1) required @endif>
+                                                        <!--<input type="text" name="title_ars[]" class="form-control" placeholder="{{trans('admin.title_ar')}}" @if($page->id == 1) required @endif>-->
+                                                        <input type="text" name="title_ars[]" class="form-control" placeholder="{{trans('admin.title_ar')}}">
                                                         <div class="invalid-feedback">
                                                             {{trans('admin.title_ar')}}
                                                         </div>
@@ -226,7 +227,8 @@
                                                     <br>
                                                     <br>
                                                     <div class="col-md-12">
-                                                        <textarea name="text_ars[]" cols="30" rows="6" class="form-control MyTextArea" placeholder="{{trans('admin.text_ar')}}" @if($page->id == 1) required @endif></textarea>
+                                                        <!--<textarea name="text_ars[]" cols="30" rows="6" class="form-control MyTextArea" placeholder="{{trans('admin.text_ar')}}" @if($page->id == 1) required @endif></textarea>-->
+                                                        <textarea name="text_ars[]" cols="30" rows="6" class="form-control MyTextArea" placeholder="{{trans('admin.text_ar')}}"></textarea>
                                                         <div class="invalid-feedback">
                                                             {{trans('admin.text_ar')}}
                                                         </div>
@@ -290,7 +292,8 @@
                                             <div class="col-md-10">
                                                 <div class="input-group control-group goal_increment">
                                                     <div class="col-md-12">
-                                                        <input type="text" name="title_ens[]" class="form-control" placeholder="{{trans('admin.title_en')}}" @if($page->id == 1) required @endif>
+                                                        <!--<input type="text" name="title_ens[]" class="form-control" placeholder="{{trans('admin.title_en')}}" @if($page->id == 1) required @endif>-->
+                                                        <input type="text" name="title_ens[]" class="form-control" placeholder="{{trans('admin.title_en')}}">
                                                         <div class="invalid-feedback">
                                                             {{trans('admin.title_en')}}
                                                         </div>
@@ -299,7 +302,8 @@
                                                     <br>
                                                     <br>
                                                     <div class="col-md-12">
-                                                        <textarea name="text_ens[]" cols="30" rows="6" class="form-control MyTextArea" placeholder="{{trans('admin.text_en')}}" @if($page->id == 1) required @endif></textarea>
+                                                        <!--<textarea name="text_ens[]" cols="30" rows="6" class="form-control MyTextArea" placeholder="{{trans('admin.text_en')}}" @if($page->id == 1) required @endif></textarea>-->
+                                                        <textarea name="text_ens[]" cols="30" rows="6" class="form-control MyTextArea" placeholder="{{trans('admin.text_en')}}"></textarea>
                                                         <div class="invalid-feedback">
                                                             {{trans('admin.text_en')}}
                                                         </div>

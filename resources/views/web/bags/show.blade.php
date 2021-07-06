@@ -178,13 +178,15 @@
                         </ul>
                     </div>
 
-                    <div class="col-lg-6">
-                        <video width="100%" height="290" poster="{{$bag->poster}}" controls>
-                            <source src="{{$bag->video}}" type="video/mp4">
-                            <source src="{{$bag->video}}" type="video/ogg">
-                            <source src="{{$bag->video}}" type="video/webm">
-                        </video>
-                    </div>
+                    @if($bag->video != null)
+                        <div class="col-lg-6">
+                            <video width="100%" height="290" poster="{{$bag->poster}}" controls>
+                                <source src="{{$bag->video}}" type="video/mp4">
+                                <source src="{{$bag->video}}" type="video/ogg">
+                                <source src="{{$bag->video}}" type="video/webm">
+                            </video>
+                        </div>
+                    @endif
 
                 </div>
             </div>

@@ -27,8 +27,10 @@
                 @if(\Request::route()->getName() != 'teachers.get_by_type')
                     <div class="col-sm-5 text-left-dir">
                         {{-- <a href="#" data-toggle="modal" data-target="#teacher_register" id="register_teacher"  class="custom-btn text-center"> --}}
-                            <a href="#" @if(!Auth::check()) data-toggle="modal" data-target="#teacher_register" @endif id="register_teacher"  class="custom-btn text-center">
-                            {{trans('web.do_register')}}
+                            @if(!auth()->check())
+                                <a href="#" @if(!Auth::check()) data-toggle="modal" data-target="#teacher_register" @endif id="register_teacher"  class="custom-btn text-center">
+                                {{trans('web.do_register')}}
+                            @endif
                         </a>
                     </div>
                 @endif

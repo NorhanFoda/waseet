@@ -42,13 +42,13 @@ class SocialController extends Controller
     {
         $this->validate($request, [
             'link' => 'required',
-            'icon' => 'required'
+            // 'icon' => 'required'
         ]);
 
         $social = Social::create([
             'link' => $request->link,
             'appear_in_footer' => $request->has('appear_in_footer') ? 1 : 0,
-            'icon' => $request->icon
+            'icon' => $request->has('icon') ? $request->icon : null
         ]);
 
         if($social){
@@ -95,14 +95,14 @@ class SocialController extends Controller
     {
         $this->validate($request, [
             'link' => 'required',
-            'icon' => 'required',
+            // 'icon' => 'required',
         ]);
         
         $social = Social::find($id);
         $social->update([
             'link' => $request->link,
             'appear_in_footer' => $request->has('appear_in_footer') ? 1 : 0,
-            'icon' => $request->icon
+            'icon' => $request->has('icon') ? $request->icon : null
         ]);
 
         if($social){

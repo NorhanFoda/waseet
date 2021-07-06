@@ -23,11 +23,13 @@
                 <div class="col-sm-7 text-right-dir">
                     <h3 class="first_color">{{trans('web.look_for_job')}}</h3>
                 </div>
-                <div class="col-sm-5 text-left-dir">
-                    <a href="{{route('register.user', 6)}}" id="register" class="custom-btn text-center">
-                        {{trans('web.do_register')}}
-                    </a>
-                </div>
+                @if(!auth()->check())
+                    <div class="col-sm-5 text-left-dir">
+                        <a href="{{route('register.user', 6)}}" id="register" class="custom-btn text-center">
+                            {{trans('web.do_register')}}
+                        </a>
+                    </div>
+                @endif
             </div>
         </div>
 
