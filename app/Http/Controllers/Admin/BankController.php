@@ -48,7 +48,7 @@ class BankController extends Controller
         ]);
 
         $bank = Bank::create($request->all());
-        
+
         $image_url = Upload::uploadImage($request->image);
         $image = Image::create([
             'path' => $image_url,
@@ -103,7 +103,7 @@ class BankController extends Controller
             'name_ar' => 'required',
             'name_en' => 'required',
             'account_number' => 'required|numeric',
-            'iban' => 'required|numeric',
+            'iban' => 'required',
             'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
@@ -162,7 +162,7 @@ class BankController extends Controller
 
             upload::deleteImage($bank->image->path);
         }
-        
+
         Image::where('imageRef_id', $bank->id)->where('imageRef_type', 'App\Models\Bank')->first()->delete();
 
         $bank->delete();

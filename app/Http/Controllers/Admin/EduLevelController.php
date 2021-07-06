@@ -104,8 +104,20 @@ class EduLevelController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function deleteEduLevel(Request $request)
     {
-        //
+        $level = EduLevel::with('users')->find($request->id);
+
+        if(count($level->users) > 0){
+            return response()->json([
+                'data' => 0
+            ], 200);
+        }
+        else{
+            $level->delete();
+            return response()->json([
+                'data' => 1
+            ], 200);
+        }
     }
 }
