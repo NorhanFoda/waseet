@@ -47,23 +47,26 @@ class HomeController extends Controller
     public function search(Request $request){
         $this->validate($request, ['token' => 'required']);
 
+        $token = htmlspecialchars($request->token);
+        $token = strip_tags($token);
+
         // search in bags
-        $bags = Bag::where('name_ar', 'LIKE', '%'.$request->token.'%')
-            ->orWhere('name_en', 'LIKE', '%'.$request->token.'%')
-            ->orWhere('description_ar', 'LIKE', '%'.$request->token.'%')
-            ->orWhere('description_ar', 'LIKE', '%'.$request->token.'%')
-            ->orWhere('contents_ar', 'LIKE', '%'.$request->token.'%')
-            ->orWhere('contents_en', 'LIKE', '%'.$request->token.'%')
-            ->orWhere('benefits_ar', 'LIKE', '%'.$request->token.'%')
-            ->orWhere('benefits_en', 'LIKE', '%'.$request->token.'%')
+        $bags = Bag::where('name_ar', 'LIKE', '%'.$token.'%')
+            ->orWhere('name_en', 'LIKE', '%'.$token.'%')
+            ->orWhere('description_ar', 'LIKE', '%'.$token.'%')
+            ->orWhere('description_ar', 'LIKE', '%'.$token.'%')
+            ->orWhere('contents_ar', 'LIKE', '%'.$token.'%')
+            ->orWhere('contents_en', 'LIKE', '%'.$token.'%')
+            ->orWhere('benefits_ar', 'LIKE', '%'.$token.'%')
+            ->orWhere('benefits_en', 'LIKE', '%'.$token.'%')
             ->get();
 
         // search in jobs
         if(auth()->user() != null && (auth()->user()->hasRole('job_seeker') || auth()->user()->hasRole('organization'))){
-            $jobs = Job::where('name_ar', 'LIKE', '%'.$request->token.'%')
-            ->orWhere('name_en', 'LIKE', '%'.$request->token.'%')
-            ->orWhere('description_ar', 'LIKE', '%'.$request->token.'%')
-            ->orWhere('description_ar', 'LIKE', '%'.$request->token.'%')
+            $jobs = Job::where('name_ar', 'LIKE', '%'.$token.'%')
+            ->orWhere('name_en', 'LIKE', '%'.$token.'%')
+            ->orWhere('description_ar', 'LIKE', '%'.$token.'%')
+            ->orWhere('description_ar', 'LIKE', '%'.$token.'%')
             ->get();
         }
         else{
@@ -77,12 +80,12 @@ class HomeController extends Controller
                     $q->where('name', 'online_teacher')->orWhere('name', 'direct_teacher');
                 })
                 ->where(function($query) use ($request){
-                    $query->where('name', 'LIKE', '%'.$request->token.'%')
-                    ->orWhere('email', 'LIKE', '%'.$request->token.'%')
-                    ->orWhere('phone_main', 'LIKE', '%'.$request->token.'%')
-                    ->orWhere('phone_secondary', 'LIKE', '%'.$request->token.'%')
-                    ->orWhere('bio_ar', 'LIKE', '%'.$request->token.'%')
-                    ->orWhere('bio_en', 'LIKE', '%'.$request->token.'%');
+                    $query->where('name', 'LIKE', '%'.$token.'%')
+                    ->orWhere('email', 'LIKE', '%'.$token.'%')
+                    ->orWhere('phone_main', 'LIKE', '%'.$token.'%')
+                    ->orWhere('phone_secondary', 'LIKE', '%'.$token.'%')
+                    ->orWhere('bio_ar', 'LIKE', '%'.$token.'%')
+                    ->orWhere('bio_en', 'LIKE', '%'.$token.'%');
                 })
                 ->get();
             }

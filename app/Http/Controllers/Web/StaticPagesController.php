@@ -31,7 +31,18 @@ class StaticPagesController extends Controller
             'message' => 'required',
         ]);
 
-        $contact = ContactUs::create($request->all());
+        $data = $request->except(['_token', '_method', 'name', 'message']);
+
+        $name = htmlspecialchars($request->name);
+        $name = strip_tags($name);
+
+        $message = htmlspecialchars($request->message);
+        $message = strip_tags($message);
+
+        $data['name'] = $name;
+        $data['message'] = $message;
+
+        $contact = ContactUs::create($data);
 
         if($contact){
             session()->flash('success', trans('web.message_sent'));
@@ -44,7 +55,7 @@ class StaticPagesController extends Controller
     }
 
     public function subscribe(Request $request){
-        $this->validate($request, ['email' => 'required']);
+        $this->validate($request, ['email' => 'required|email']);
 
         $sub = SubScriber::create($request->all());
 

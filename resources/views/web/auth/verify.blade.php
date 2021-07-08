@@ -35,7 +35,7 @@
 
                 <div class="inputs-contain">
                     <div class="userName">
-                        <input type="text" id="mail" name="code" required />
+                        <input type="number" id="mail" name="code" required />
                         <label for="mail">
                             {{trans('web.code')}} 
                         </label>

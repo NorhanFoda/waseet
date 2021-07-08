@@ -206,7 +206,34 @@ class JobsController extends Controller
             return redirect()->back();
         }
 
-        $job = Job::create($request->all());
+        $data = $request->except(['_method', '_token']);
+
+        $name_ar = htmlspecialchars($request->name_ar);
+        $name_ar = strip_tags($name_ar);
+        $data['name_ar'] = $name_ar;
+
+        $name_en = htmlspecialchars($request->name_en);
+        $name_en = strip_tags($name_en);
+        $data['name_en'] = $name_en;
+
+        $description_ar = htmlspecialchars($request->description_ar);
+        $description_ar = strip_tags($description_ar);
+        $data['description_ar'] = $description_ar;
+
+        $description_en = htmlspecialchars($request->description_en);
+        $description_en = strip_tags($description_en);
+        $data['description_en'] = $description_en;
+
+        $address = htmlspecialchars($request->address);
+        $address = strip_tags($address);
+        $data['address'] = $address;
+
+        $other_specialization = htmlspecialchars($request->other_specialization);
+        $other_specialization = strip_tags($other_specialization);
+        $data['other_specialization'] = $other_specialization;
+        
+
+        $job = Job::create($data);
         $job->update(['user_id' => auth()->user()->id]);
 
         if($request->has('image')){

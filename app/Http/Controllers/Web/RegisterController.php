@@ -72,9 +72,100 @@ class RegisterController extends Controller
             }
         }
 
+        if($request->has('age')){
+            $this->validate($request, ['age' => 'numeric']);
+        }
+
         $data = $request->except(['_token'. '_method', 'full', 'sec_full']);
 
-        // handling phone according to stupids opinion
+        $name = htmlspecialchars($request->name);
+        $name = strip_tags($name);
+
+        $data['name'] = $name;
+    
+
+        if($request->has('other_stage')){
+
+            $other_stage = htmlspecialchars($request->other_stage);
+            $other_stage = strip_tags($other_stage);
+
+            $data['other_stage'] = $other_stage;
+
+        }
+
+        if($request->has('other_edu_level')){
+
+            $other_edu_level = htmlspecialchars($request->other_edu_level);
+            $other_edu_level = strip_tags($other_edu_level);
+
+            $data['other_edu_level'] = $other_edu_level;
+
+        }
+
+        if($request->has('bio_ar')){
+
+            $bio_ar = htmlspecialchars($request->bio_ar);
+            $bio_ar = strip_tags($bio_ar);
+
+            $data['bio_ar'] = $bio_ar;
+
+        }
+
+        if($request->has('bio_en')){
+
+            $bio_en = htmlspecialchars($request->bio_en);
+            $bio_en = strip_tags($bio_en);
+
+            $data['bio_en'] = $bio_en;
+
+        }
+
+        if($request->has('other_nationality')){
+
+            $other_nationality = htmlspecialchars($request->other_nationality);
+            $other_nationality = strip_tags($other_nationality);
+
+            $data['other_nationality'] = $other_nationality;
+
+        }
+
+        if($request->has('address')){
+
+            $address = htmlspecialchars($request->address);
+            $address = strip_tags($address);
+
+            $data['address'] = $address;
+
+        }
+
+        if($request->has('teaching_address')){
+
+            $teaching_address = htmlspecialchars($request->teaching_address);
+            $teaching_address = strip_tags($teaching_address);
+
+            $data['teaching_address'] = $teaching_address;
+
+        }
+
+        if($request->has('other_edu_type')){
+
+            $other_edu_type = htmlspecialchars($request->other_edu_type);
+            $other_edu_type = strip_tags($other_edu_type);
+
+            $data['other_edu_type'] = $other_edu_type;
+
+        }
+
+        if($request->has('teaching_method')){
+
+            $teaching_method = htmlspecialchars($request->teaching_method);
+            $teaching_method = strip_tags($teaching_method);
+
+            $data['teaching_method'] = $teaching_method;
+
+        }
+
+        // handling phone 
         $data['phone_main'] = $request->full.','.$request->phone_main;
         if($request->has('phone_secondary')){
             $data['phone_secondary'] = $request->sec_full.','.$request->phone_secondary;
@@ -168,8 +259,8 @@ class RegisterController extends Controller
 
     public function verify(Request $request){
         $this->validate($request, [
-            'email' => 'required',
-            'code' => 'required',
+            'email' => 'required|email',
+            'code' => 'required|numeric',
         ]);
 
         $user = User::where('email', $request->email)->first();
@@ -238,12 +329,20 @@ class RegisterController extends Controller
             'name' => 'required',
             'email' => 'required|email',
             'phone' => 'required',
-            'cost' => 'required',
+            'cost' => 'required|numeric',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
 
+
+        $data = $request->except(['_token', '_method', 'name']);
+
+        $name = htmlspecialchars($request->name);
+        $name = strip_tags($name);
+
+        $data['name'] = $name;
+
         //Store receipt data
-        $receipt = BankReceipt::create($request->all());
+        $receipt = BankReceipt::create($data);
         $receipt->update(['user_id' => $request->user_id]);
 
         // Upload reciept image

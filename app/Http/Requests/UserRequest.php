@@ -30,7 +30,7 @@ class UserRequest extends FormRequest
             // 'phone_secondary' => 'sometimes|min:9',
             'password' => 'required|min:6|required_with:password_confirmation|same:password_confirmation',
             'password_confirmation' => 'required|min:6',
-            'exper_years' => 'required_if:role_id,3|required_if:role_id,4|required_if:role_id,6',
+            'exper_years' => 'required_if:role_id,3|required_if:role_id,4|required_if:role_id,6|numeric',
             // 'age' => 'required_if:role_id,2|required_if:role_id,3|required_if:role_id,4|required_if:role_id,6',
 
             'stage_id' => 'required_if:role_id,2|required_if:other_stage,null',
@@ -58,7 +58,7 @@ class UserRequest extends FormRequest
 
             'teaching_method' => 'required_if:role_id,4',
             
-            'salary' => 'required_if:role_id,6',
+            'salary' => 'required_if:role_id,6|numeric',
             'cv' => 'required_if:role_id,6|mimetypes:application/pdf|max:10000',
 
             'edu_type_id' => 'required_if:role_id,5|required_if:other_edu_type,null',
