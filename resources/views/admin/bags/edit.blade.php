@@ -238,7 +238,7 @@
                                 <div class="col-12">
                                     <div class="form-group row">
                                         <div class="col-md-2">
-                                            <span>{{trans('admin.image')}}</span>
+                                            <span>{{trans('admin.image')}} ({{trans('admin.h_w')}} : 400 * 1094)</span>
                                         </div>
                                         <div class="col-md-10">
                                             <div class="input-group control-group slider_image_increment" >
@@ -407,7 +407,7 @@
                                 <div class="col-12">
                                     <div class="form-group row">
                                         <div class="col-md-2">
-                                            <span>{{trans('admin.image')}}</span>
+                                            <span>{{trans('admin.image')}} ({{trans('admin.h_w')}} : 400 * 1094)</span>
                                         </div>
                                         <div class="col-md-10">
                                             <div class="input-group control-group image_increment" >

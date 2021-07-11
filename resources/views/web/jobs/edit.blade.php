@@ -121,7 +121,7 @@
                                     <textarea name="description_en" id="city_id" required cols="30" rows="6" placeholder="{{trans('admin.description_en')}}">{{$job->description_en}}</textarea>
                                 </div>
 
-                                <div class="big-label">{{trans('admin.image')}} : </div>
+                                <div class="big-label">{{trans('admin.image')}} ({{trans('admin.h_w')}} : 125 * 200) : </div>
                                 <div class="userName">
                                     <input type="file" id="image" name="image"  accept=".gif, .jpg, .png, .webp" />
                                 </div>

@@ -102,5 +102,7 @@ class Setting extends Model
         
         'direct_teacher_text_ar',
         'direct_teacher_text_en',
+
+        'price',
     ];
 }

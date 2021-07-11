@@ -113,7 +113,7 @@
                                     <div class="userName">
                                         <input type="number" name="cost" min="1" required>
                                         <label>
-                                            <i class="fa fa-money-bill-wave-alt"></i> {{trans('web.cost')}}
+                                            <i class="fa fa-money-bill-wave-alt"></i> {{trans('web.cost')}} ({{$price}} {{trans('admin.sr')}})
                                         </label>
                                     </div>
 

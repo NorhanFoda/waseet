@@ -54,7 +54,7 @@
                                 <div class="col-12">
                                     <div class="form-group row">
                                         <div class="col-md-2">
-                                            <span>{{trans('admin.image')}}</span>
+                                            <span>{{trans('admin.image')}} ({{trans('admin.h_w')}} : 250 * 1094)</span>
                                         </div>
                                         <div class="col-md-10">
                                             <input type="file" name="image" accept=".gif, .jpg, .png, .webp" class="form-control" placeholder="{{trans('admin.image')}}" required>

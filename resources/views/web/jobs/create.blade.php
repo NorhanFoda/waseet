@@ -139,7 +139,7 @@
                                 {{-- description_en end --}}
 
                                 {{-- image start --}}
-                                <div class="big-label">{{trans('admin.image')}} : </div>
+                                <div class="big-label">{{trans('admin.image')}} ({{trans('admin.h_w')}} : 125 * 200) : </div>
                                 <div class="userName">
                                     <input type="file" id="image" name="image"  accept=".gif, .jpg, .png, .webp" />
                                 </div>

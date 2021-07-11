@@ -17,6 +17,8 @@ class SettingController extends Controller
     }
 
     public function update(Request $request){
+
+        // dd($request->all());
         $this->validate($request, [
             'header_logo' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'footer_logo' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
@@ -54,10 +56,6 @@ class SettingController extends Controller
             'step_3_text_ar' => $request->step_3_text_ar,
             'step_3_text_en' => $request->step_3_text_en,
             'section_2_title_ar' => $request->section_2_title_ar,
-            'section_2_title_en' => $request->section_2_title_en,
-            'section_2_text_ar' => $request->section_2_text_ar,
-            'section_2_text_en' => $request->section_2_text_en,
-            'section_3_title_ar' => $request->section_3_title_ar,
             'section_3_title_en' => $request->section_3_title_en,
             'section_3_text_ar' => $request->section_3_text_ar,
             'section_3_text_en' => $request->section_3_text_en,
@@ -83,6 +81,7 @@ class SettingController extends Controller
 
             'direct_teacher_text_ar' => $request->direct_teacher_text_ar,
             'direct_teacher_text_en' => $request->direct_teacher_text_en,
+            'price' => $request->price,
         ]);
 
         if($request->has('header_logo')){

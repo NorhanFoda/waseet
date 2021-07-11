@@ -43,6 +43,11 @@ return [
     'cost' => 'Cost',
     'receipt_image' => 'Receipt image',
     'details' => 'Additional details',
+    'h_w' => 'hegith * width',
+    'description' => 'Description',
+    'message' => 'Message',
+    'for_image' => 'For image',
+    'for_text' => 'For text',
 
     // Bag categories
     'bag_categories' => 'Educational Store categories',

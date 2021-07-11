@@ -3,14 +3,30 @@
   <component name="ChangeListManager">
     <list default="true" id="cd15da47-63c2-41ed-b1ce-7bae5fd08688" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Web/JobsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Web/JobsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Web/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Web/LoginController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/SettingController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/SettingController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Web/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Web/RegisterController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Web/StaticPagesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Web/StaticPagesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Job/JobRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Job/JobRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/UserRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/UserRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/auth/verify.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/auth/verify.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Setting.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Setting.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_06_11_142933_create_settings_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_06_11_142933_create_settings_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/SettingSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/SettingSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/ar/admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ar/admin.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/en/admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/admin.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/bag_categories/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/bag_categories/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/bag_categories/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/bag_categories/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/direct_teachers/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/direct_teachers/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/direct_teachers/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/direct_teachers/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/jobs/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/jobs/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/jobs/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/jobs/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/online_teachers/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/online_teachers/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/online_teachers/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/online_teachers/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/organizations/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/organizations/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/organizations/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/organizations/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/setting/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/setting/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/students/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/students/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/students/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/students/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/web/auth/payment.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/auth/payment.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/web/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/auth/register.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/web/jobs/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/jobs/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/web/jobs/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/jobs/edit.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,7 +145,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../stc_realtime_firebase_16-6-2021" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -225,7 +241,9 @@
       <workItem from="1625494492345" duration="1108000" />
       <workItem from="1625553078355" duration="1827000" />
       <workItem from="1625654525226" duration="49000" />
-      <workItem from="1625743877847" duration="48000" />
+      <workItem from="1625743877847" duration="1996000" />
+      <workItem from="1625990261048" duration="190000" />
+      <workItem from="1625993651593" duration="999000" />
     </task>
     <servers />
   </component>

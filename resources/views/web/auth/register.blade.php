@@ -315,7 +315,7 @@
           <div class="userName custom-file">
             <input type="file" id="image" name="image"  accept=".gif, .jpg, .png, .webp" />
             <label for="image">
-              <i class="fa fa-file"></i> <span>{{trans('web.image')}}</span>
+              <i class="fa fa-file"></i> <span>{{trans('web.image')}} <span>{{trans('admin.image')}} ({{trans('admin.h_w')}} : 46 * 30)</span></span>
             </label>
           </div>
         {{-- image end --}}

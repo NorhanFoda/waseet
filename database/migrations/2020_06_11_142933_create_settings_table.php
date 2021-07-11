@@ -117,6 +117,8 @@ class CreateSettingsTable extends Migration
             $table->text('direct_teacher_text_ar');
             $table->text('direct_teacher_text_en');
 
+            $table->float('price')->default(100);
+
             $table->timestamps();
         });
     }

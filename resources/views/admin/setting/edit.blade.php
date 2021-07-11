@@ -893,7 +893,9 @@
                                 <div class="col-12">
                                     <div class="form-group row">
                                         <div class="col-md-2">
-                                            <span>{{trans('admin.header_logo')}}</span>
+                                            <span>{{trans('admin.header_logo')}} <br>({{trans('admin.h_w')}} : 86 * 100) {{trans('admin.for_image')}}
+                                                <br> ({{trans('admin.h_w')}} : 39 * 281) {{trans('admin.for_text')}}
+                                            </span>
                                         </div>
                                         <div class="col-md-10">
                                             <input type="file" name="header_logo" class="form-control" accept=".gif, .jpg, .png, .webp" placeholder="{{trans('admin.header_logo')}}">
@@ -917,7 +919,7 @@
                                 <div class="col-12">
                                     <div class="form-group row">
                                         <div class="col-md-2">
-                                            <span>{{trans('admin.footer_logo')}}</span>
+                                            <span>{{trans('admin.footer_logo')}} ({{trans('admin.h_w')}} : 145 * 170)</span>
                                         </div>
                                         <div class="col-md-10">
                                             <input type="file" name="footer_logo" class="form-control" accept=".gif, .jpg, .png, .webp" placeholder="{{trans('admin.footer_logo')}}">
@@ -941,7 +943,7 @@
                                 <div class="col-12">
                                     <div class="form-group row">
                                         <div class="col-md-2">
-                                            <span>{{trans('admin.text_after_add_image')}}</span>
+                                            <span>{{trans('admin.text_after_add_image')}} ({{trans('admin.h_w')}} : 90 * 78)</span>
                                         </div>
                                         <div class="col-md-10">
                                             <input type="file" name="text_after_add_image" class="form-control" accept=".gif, .jpg, .png, .webp" placeholder="{{trans('admin.text_after_add_image')}}">
@@ -965,7 +967,7 @@
                                 <div class="col-12">
                                     <div class="form-group row">
                                         <div class="col-md-2">
-                                            <span>{{trans('admin.step_1_image')}}</span>
+                                            <span>{{trans('admin.step_1_image')}} ({{trans('admin.h_w')}} : 200 * 200)</span>
                                         </div>
                                         <div class="col-md-10">
                                             <input type="file" name="step_1_image" class="form-control" accept=".gif, .jpg, .png, .webp" placeholder="{{trans('admin.step_1_image')}}">
@@ -979,7 +981,7 @@
                                 <div class="col-12">
                                     <div class="form-group row">
                                         <div class="col-md-10">
-                                            <img src="{{$set->step_1_image}}" alt="" width="200px" height="100px">
+                                            <img src="{{$set->step_1_image}}" alt="" width="200px" height="200px">
                                         </div>
                                     </div>
                                 </div>
@@ -989,7 +991,7 @@
                                 <div class="col-12">
                                     <div class="form-group row">
                                         <div class="col-md-2">
-                                            <span>{{trans('admin.step_2_image')}}</span>
+                                            <span>{{trans('admin.step_2_image')}} ({{trans('admin.h_w')}} : 200 * 200)</span>
                                         </div>
                                         <div class="col-md-10">
                                             <input type="file" name="step_2_image" class="form-control" accept=".gif, .jpg, .png, .webp"
@@ -1004,7 +1006,7 @@
                                 <div class="col-12">
                                     <div class="form-group row">
                                         <div class="col-md-10">
-                                            <img src="{{$set->step_2_image}}" alt="" width="200px" height="100px">
+                                            <img src="{{$set->step_2_image}}" alt="" width="200px" height="200px">
                                         </div>
                                     </div>
                                 </div>
@@ -1014,7 +1016,7 @@
                                 <div class="col-12">
                                     <div class="form-group row">
                                         <div class="col-md-2">
-                                            <span>{{trans('admin.direct_teacher_image')}}</span>
+                                            <span>{{trans('admin.direct_teacher_image')}} ({{trans('admin.h_w')}} : 200 * 200)</span>
                                         </div>
                                         <div class="col-md-10">
                                             <input type="file" name="direct_teacher_image" class="form-control" accept=".gif, .jpg, .png, .webp" placeholder="{{trans('admin.direct_teacher_image')}}">
@@ -1028,7 +1030,7 @@
                                 <div class="col-12">
                                     <div class="form-group row">
                                         <div class="col-md-10">
-                                            <img src="{{$set->direct_teacher_image}}" alt="" width="200px" height="100px">
+                                            <img src="{{$set->direct_teacher_image}}" alt="" width="200px" height="200px">
                                         </div>
                                     </div>
                                 </div>
@@ -1039,7 +1041,7 @@
                                 <div class="col-12">
                                     <div class="form-group row">
                                         <div class="col-md-2">
-                                            <span>{{trans('admin.online_teacher_image')}}</span>
+                                            <span>{{trans('admin.online_teacher_image')}} ({{trans('admin.h_w')}} : 200 * 200)</span>
                                         </div>
                                         <div class="col-md-10">
                                             <input type="file" name="online_teacher_image" class="form-control" accept=".gif, .jpg, .png, .webp" placeholder="{{trans('admin.online_teacher_image')}}">
@@ -1053,7 +1055,7 @@
                                 <div class="col-12">
                                     <div class="form-group row">
                                         <div class="col-md-10">
-                                            <img src="{{$set->online_teacher_image}}" alt="" width="200px" height="100px">
+                                            <img src="{{$set->online_teacher_image}}" alt="" width="200px" height="200px">
                                         </div>
                                     </div>
                                 </div>
@@ -1063,7 +1065,7 @@
                                 <div class="col-12">
                                     <div class="form-group row">
                                         <div class="col-md-2">
-                                            <span>{{trans('admin.step_3_image')}}</span>
+                                            <span>{{trans('admin.step_3_image')}} ({{trans('admin.h_w')}} : 200 * 200)</span>
                                         </div>
                                         <div class="col-md-10">
                                             <input type="file" name="step_3_image" class="form-control" accept=".gif, .jpg, .png, .webp" placeholder="{{trans('admin.step_3_image')}}">
@@ -1077,11 +1079,29 @@
                                 <div class="col-12">
                                     <div class="form-group row">
                                         <div class="col-md-10">
-                                            <img src="{{$set->step_3_image}}" alt="" width="200px" height="100px">
+                                            <img src="{{$set->step_3_image}}" alt="" width="200px" height="200px">
                                         </div>
                                     </div>
                                 </div>
                                 {{-- step_3_image end --}}
+
+                                {{-- price start --}}
+                                <div class="col-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-2">
+                                            <span>{{trans('admin.price')}}</span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <input type="number" min="1" step="0.1" class="form-control" value="{{$set->price}}" placeholder="{{trans('admin.price')}}" name="price" required>
+                                            <div class="inkvalid-feedback">
+                                                {{trans('admin.price')}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- price end --}}
+
+                                
 
                                 <div class="col-12 text-center">
                                     <button type="submit" class="btn btn-primary mr-1 mb-1 waves-effect waves-light">{{trans('admin.save')}}</button>

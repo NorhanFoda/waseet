@@ -279,8 +279,9 @@ class RegisterController extends Controller
             else{
                 $banks = Bank::all();
                 $user_id = $user->id;
+                $price = Setting::find(1)->price;
                 session()->flash('success', trans('web.account_verified'));
-                return view('web.auth.payment', compact('banks', 'user_id'));
+                return view('web.auth.payment', compact('banks', 'user_id', 'price'));
             }
         }
         else{
